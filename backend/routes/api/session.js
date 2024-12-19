@@ -1,9 +1,11 @@
 const express = require("express");
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
+const { setTokenCookie, restoreUser } = require("../../utils/auth.js");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const { User } = require("../../db/models");
+const { Op } = require("sequelize");
 
 const validateLogin = [
   check("credential")
@@ -17,8 +19,10 @@ const validateLogin = [
 ];
 
 // * Log in
+// * request body key must use credential
 router.post("/", validateLogin, async (req, res, next) => {
   const { credential, password } = req.body;
+
   const user = await User.unscoped().findOne({
     where: {
       [Op.or]: {
@@ -48,5 +52,31 @@ router.post("/", validateLogin, async (req, res, next) => {
     user: safeUser,
   });
 });
+
+// * Get logged in user
+router.get("/", (req, res) => {
+  const { user } = req;
+
+  if (user) {
+    const safeUser = {
+      id: user.id,
+      email: user.email,
+      username: user.username,
+    };
+    return res.json({
+      user: safeUser,
+    });
+  } else return res.json({ user: null });
+});
+
+// * log out
+router.get('/logout', (req,res) => {
+  const { user } = req;
+  res.clearCookie('token');
+  return res.json({
+    user,
+    message: `${user.username} has signed out`
+  })
+})
 
 module.exports = router;
