@@ -80,6 +80,5 @@ module.exports = (sequelize, DataTypes) => {
       },
     }
   );
-  console.log(User);
   return User;
 };
