@@ -1,15 +1,16 @@
-const router = require('express').Router();
-const { User } = require('../../db/models');
-const { restoreUser, setTokenCookie, requireAuth  } = require('../../utils/auth.js');
+const router = require("express").Router();
+const { User } = require("../../db/models");
+const {
+  restoreUser,
+  setTokenCookie,
+  requireAuth,
+} = require("../../utils/auth.js");
+const sessionRouter = require("./session.js");
 
 // * keep before other middlewear
 router.use(restoreUser);
 
-
-
-
-
-
+router.use("/session", sessionRouter);
 
 // * for testing
 // router.get('/set-token-cookie', async (_req, res) => {
@@ -22,16 +23,12 @@ router.use(restoreUser);
 //   return res.json({ user: user });
 // });
 
-
-
 // router.get(
 //   '/restore-user',
 //   (req, res) => {
 //     return res.json(req.user);
 //   }
 // );
-
-
 
 // router.get(
 //   '/require-auth',
@@ -41,11 +38,8 @@ router.use(restoreUser);
 //   }
 // );
 
-
 // router.post('/test', function(req, res) {
 //   res.json({ requestBody: req.body });
 // });
-
-
 
 module.exports = router;
