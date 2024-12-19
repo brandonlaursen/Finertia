@@ -13,10 +13,26 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   User.init({
-    firstName: DataTypes.STRING,
-    lastName: DataTypes.STRING,
-    balance: DataTypes.INTEGER,
-    profilePic: DataTypes.STRING,
+    firstName: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      defaultValue: '', 
+    },
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      defaultValue: '', 
+    },
+    balance: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      defaultValue: 0, 
+    },
+    profilePic: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      defaultValue: '', 
+    },
     username: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -55,5 +71,6 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
   });
+  console.log(User)
   return User;
 };

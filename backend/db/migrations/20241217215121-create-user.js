@@ -6,7 +6,6 @@ if (process.env.NODE_ENV === "production") {
 }
 
 
-console.log(options)
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
@@ -39,9 +38,11 @@ module.exports = {
         },
         firstName: {
           type: Sequelize.STRING,
+          defaultValue: "",
         },
         lastName: {
           type: Sequelize.STRING,
+          defaultValue: "",
         },
 
         profilePic: {

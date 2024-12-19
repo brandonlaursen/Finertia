@@ -5,7 +5,7 @@ const { User } = require("../db/models");
 const { secret, expiresIn } = jwtConfig;
 
 // Sends a JWT Cookie
-const setTokenCookie = (res, user) => {
+const setTokenCookie = async (res, user) => {
   // Create the token.
   const safeUser = {
     id: user.id,

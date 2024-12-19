@@ -6,11 +6,13 @@ const {
   requireAuth,
 } = require("../../utils/auth.js");
 const sessionRouter = require("./session.js");
+const usersRouter = require("./users.js");
 
 // * keep before other middlewear
 router.use(restoreUser);
 
 router.use("/session", sessionRouter);
+router.use("/users", usersRouter);
 
 // * for testing
 // router.get('/set-token-cookie', async (_req, res) => {
