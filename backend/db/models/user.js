@@ -15,6 +15,12 @@ module.exports = (sequelize, DataTypes) => {
         hooks: true,
       });
 
+      User.hasMany(models.StockList, {
+        foreignKey: "userId",
+        onDelete: "CASCADE",
+        hooks: true,
+      });
+
       User.belongsToMany(models.Stock, {
         through: models.StockUserTransaction,
         foreignKey: "userId",
