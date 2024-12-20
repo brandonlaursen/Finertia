@@ -79,6 +79,7 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
+    options.tableName = "StockUserTransaction";
     const { Op } = Sequelize;
     return queryInterface.bulkDelete("StockUserTransaction", {
       userId: { [Op.in]: [1, 2, 3] },
