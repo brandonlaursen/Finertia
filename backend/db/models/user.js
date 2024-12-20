@@ -1,5 +1,5 @@
 "use strict";
-const { Model, Validator } = require('sequelize');
+const { Model, Validator } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
@@ -9,11 +9,16 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-
       User.hasMany(models.UserTransaction, {
         foreignKey: "userId",
         onDelete: "CASCADE",
         hooks: true,
+      });
+
+      User.belongsToMany(models.Stock, {
+        through: models.StockUserTransaction,
+        foreignKey: "userId",
+        otherKey: "stockId",
       });
     }
   }
