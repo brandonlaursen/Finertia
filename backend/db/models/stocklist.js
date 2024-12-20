@@ -11,6 +11,14 @@ module.exports = (sequelize, DataTypes) => {
       StockList.belongsTo(models.User, {
         foreignKey: "userId",
       });
+
+
+
+      StockList.belongsToMany(models.Stock, {
+        through: models.StockListJoin,
+        foreignKey: "stockListId",
+        otherKey: "stockId",
+      });
     }
   }
   StockList.init(
