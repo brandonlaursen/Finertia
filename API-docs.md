@@ -1,10 +1,5 @@
 # Finertia
 
-## `Datebase Schema Design`
-TBD
-
-
-
 
 ## `API Documentation`
 
