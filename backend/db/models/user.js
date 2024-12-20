@@ -1,5 +1,5 @@
 "use strict";
-const { Model } = require("sequelize");
+const { Model, Validator } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
 
-      User.hasMany(models.UserTransactions, {
+      User.hasMany(models.UserTransaction, {
         foreignKey: "userId",
         onDelete: "CASCADE",
         hooks: true,
