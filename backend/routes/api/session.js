@@ -70,7 +70,7 @@ router.get("/", (req, res) => {
 
 // * Edit user info
 router.put("/", async (req, res) => {
-  const { id, email, username, firstName, lastName } = req.user;
+  const { id } = req.user;
 
   const {
     email: newEmail,
@@ -91,6 +91,18 @@ router.put("/", async (req, res) => {
   return res.json({
     user,
     message: `Updated user profile with id ${id}`,
+  });
+});
+
+// * Delete account
+router.delete("/", async (req, res) => {
+  const { id } = req.user;
+  const user = await User.findByPk(id);
+  res.clearCookie("token");
+  user.destroy();
+  return res.json({
+    user,
+    message: `${user.username} has been deleted`,
   });
 });
 
