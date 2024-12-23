@@ -19,7 +19,6 @@ const validateLogin = [
 ];
 
 // * Log in
-// * request body key must use credential
 router.post("/", validateLogin, async (req, res, next) => {
   const { credential, password } = req.body;
 
@@ -53,7 +52,7 @@ router.post("/", validateLogin, async (req, res, next) => {
   });
 });
 
-// * Get logged in user
+// * Get logged in user info
 router.get("/", (req, res) => {
   const { user } = req;
 
@@ -69,14 +68,40 @@ router.get("/", (req, res) => {
   } else return res.json({ user: null });
 });
 
-// * log out
-router.get('/logout', (req,res) => {
-  const { user } = req;
-  res.clearCookie('token');
+// * Edit user info
+router.put("/", async (req, res) => {
+  const { id, email, username, firstName, lastName } = req.user;
+
+  const {
+    email: newEmail,
+    username: newUsername,
+    firstName: newFirstName,
+    lastName: newLastName,
+  } = req.body;
+
+  const user = await User.findByPk(id);
+
+  await user.update({
+    email: newEmail || email,
+    username: newUsername || username,
+    firstName: newFirstName || firstName,
+    lastName: newLastName || lastName,
+  });
+
   return res.json({
     user,
-    message: `${user.username} has signed out`
-  })
-})
+    message: `Updated user profile with id ${id}`,
+  });
+});
+
+// * log out
+router.get("/logout", (req, res) => {
+  const { user } = req;
+  res.clearCookie("token");
+  return res.json({
+    user,
+    message: `${user.username} has signed out`,
+  });
+});
 
 module.exports = router;
