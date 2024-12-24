@@ -1,9 +1,9 @@
 const express = require("express");
-const { check } = require("express-validator");
-const { handleValidationErrors } = require("../../utils/validation");
-const { setTokenCookie, restoreUser } = require("../../utils/auth.js");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
+const { check } = require("express-validator");
+const { handleValidationErrors } = require("../../utils/validation");
+const { setTokenCookie } = require("../../utils/auth.js");
 const { User } = require("../../db/models");
 const { Op } = require("sequelize");
 
