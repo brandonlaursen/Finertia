@@ -2,7 +2,7 @@
 
 
 const { StockUserTransaction } = require("../models");
-
+let options = {};
 if (process.env.NODE_ENV === "production") {
   options.schema = process.env.SCHEMA; // define your schema in options object
 }
@@ -16,7 +16,7 @@ module.exports = {
         {
           userId: 1,
           stockId: 1,
-          transactionType: 'buy', // transaction type can be 'buy' or 'sell'
+          transactionType: 'buy',
           quantity: 50,
           purchasePrice: 100,
           purchaseDate: new Date('2024-01-01T10:00:00Z'),
@@ -79,9 +79,9 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    options.tableName = "StockUserTransaction";
+    options.tableName = "StockUserTransactions";
     const { Op } = Sequelize;
-    return queryInterface.bulkDelete("StockUserTransaction", {
+    return queryInterface.bulkDelete(options, {
       userId: { [Op.in]: [1, 2, 3] },
     });
   }
