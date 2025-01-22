@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import SignUpPage from "./components/SignUpPage";
 import { restoreUser } from "../store/session";
+import Navigation from "./components/Navigation";
 
 function Layout() {
   const dispatch = useDispatch();
@@ -16,10 +17,14 @@ function Layout() {
     };
 
     loadUser();
-
   }, [dispatch]);
 
-  return <>{isLoaded && <Outlet />}</>;
+  return (
+    <>
+      <Navigation isLoaded={isLoaded} />
+      {isLoaded && <Outlet />}
+    </>
+  );
 }
 
 const router = createBrowserRouter([
@@ -35,9 +40,9 @@ const router = createBrowserRouter([
         element: <LoginFormPage />,
       },
       {
-        path:'/signup',
-        element: <SignUpPage />
-      }
+        path: "/signup",
+        element: <SignUpPage />,
+      },
     ],
   },
 ]);

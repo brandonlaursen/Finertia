@@ -25,6 +25,7 @@ function LoginFormPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors({});
+    console.log(credential, password)
 
     try {
       const res = await dispatch(login({ credential, password }));
