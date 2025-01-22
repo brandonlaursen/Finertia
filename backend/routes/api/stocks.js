@@ -100,8 +100,8 @@ const symbols = [
   "F",
   "TAP",
   "VTR",
-  "WBA"
-]
+  "WBA",
+];
 
 // * Get all stocks
 router.get("/", async (req, res) => {
@@ -114,12 +114,12 @@ router.get("/", async (req, res) => {
 });
 
 // * Get a single stock
-router.get('/:stockId', async(req, res) => {
+router.get("/:stockId", async (req, res) => {
   const { stockId } = req.params;
 
   return res.json({
     message: `successfully retrieved stock with id of ${stockId}`,
   });
-})
+});
 
 module.exports = router;

@@ -43,9 +43,9 @@ router.post("/deposit", async (req, res) => {
 
   await UserTransaction.create({
     userId: id,
-    transactionType: 'deposit',
+    transactionType: "deposit",
     amount,
-    transactionDate: new Date()
+    transactionDate: new Date(),
   });
 
   return res.json({
@@ -75,8 +75,8 @@ router.post("/withdraw", async (req, res) => {
 
   await UserTransaction.create({
     userId: id,
-    transactionType: 'withdraw',
-    amount
+    transactionType: "withdraw",
+    amount,
   });
 
   return res.json({
