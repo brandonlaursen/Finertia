@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
+import SignUpPage from "./components/SignUpPage";
 import { restoreUser } from "../store/session";
 
 function Layout() {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
         path: "/login",
         element: <LoginFormPage />,
       },
+      {
+        path:'/signup',
+        element: <SignUpPage />
+      }
     ],
   },
 ]);
