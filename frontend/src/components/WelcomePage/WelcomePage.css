@@ -19,18 +19,81 @@
 
 .welcome-page-1 {
   background-color: #3498db;
+  background-image: url("https://cdn.pixabay.com/photo/2022/08/06/13/49/space-7368670_1280.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  flex-direction: column;
+
+}
+
+.welcome-page-1-section-1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 70%;
+  gap: 5px;
+  height: 30%;
+  overflow: hidden;
+  font-size: 3vw;
+}
+
+.welcome-page-1-section-2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  text-align: center;
+  width: 70%;
+  gap: 5px;
+  overflow: hidden;
+
+}
+
+.welcome-page-1-section-2 > h1 {
+  color: rgb(198, 156, 194);
+  font-size: 5vw;
+}
+
+#get-started {
+  text-decoration: none;
+
+  align-items: center;
+
+  align-self: flex-start;
+  border-radius: 36px;
+  box-sizing: border-box;
+
+  display: inline-flex;
+  height: 44px;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0 32px;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  background-color: #ffffff;
+  border: 1px solid #ffffff;
+  color: #1c180d;
+  cursor: pointer;
+}
+
+#get-started:hover {
+  background-color: rgb(197, 197, 197);
 }
 
 .welcome-page-2 {
-  background-color: #2ecc71;
+  background-color: #535353;
 }
 
 .welcome-page-3 {
-  background-color: #f1c40f;
+  background-color: #272727;
 }
 
 .welcome-page-footer {
-  background-color: #34495e;
+  background-color: rgb(198, 156, 194);
   color: white;
   text-align: center;
   padding: 1.5rem;

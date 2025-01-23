@@ -14,6 +14,7 @@ function WelcomePageNav() {
   const navigate = useNavigate();
 
   const sessionUser = useSelector(selectUser);
+ 
 
   return (
     <nav className="navbar">

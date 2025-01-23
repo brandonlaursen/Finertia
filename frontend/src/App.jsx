@@ -6,19 +6,17 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import WelcomePage from "./components/WelcomePage";
 import LoginFormPage from "./components/LoginFormPage";
 import SignUpPage from "./components/SignUpPage";
-// import HomePage from "./components/WelcomePage/WelcomePage";
-// import LoadingSpinner from "./components/LoadingSpinner";
 
 // store
-// import { restoreUser } from "../store/session";
+import { restoreUser } from "../store/session";
 
 function Layout() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    const loadUser = () => {
-      // dispatch(restoreUser());
+    const loadUser = async () => {
+      await dispatch(restoreUser());
       setIsLoaded(true);
     };
 
