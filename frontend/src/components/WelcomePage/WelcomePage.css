@@ -1,0 +1,38 @@
+.welcome-page-container {
+  display: grid;
+  grid-template-rows: 66px 670px 300px 800px 100px;
+  height: 100%;
+  min-height: 100vh;
+  color: white;
+}
+
+.welcome-page-1,
+.welcome-page-2,
+.welcome-page-3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+}
+
+.welcome-page-1 {
+  background-color: #3498db;
+}
+
+.welcome-page-2 {
+  background-color: #2ecc71;
+}
+
+.welcome-page-3 {
+  background-color: #f1c40f;
+}
+
+.welcome-page-footer {
+  background-color: #34495e;
+  color: white;
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 1.5rem;
+}

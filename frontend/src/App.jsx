@@ -1,49 +1,45 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+// components
+import WelcomePage from "./components/WelcomePage";
 import LoginFormPage from "./components/LoginFormPage";
 import SignUpPage from "./components/SignUpPage";
-import { restoreUser } from "../store/session";
-import Navigation from "./components/Navigation";
+// import HomePage from "./components/WelcomePage/WelcomePage";
+// import LoadingSpinner from "./components/LoadingSpinner";
+
+// store
+// import { restoreUser } from "../store/session";
 
 function Layout() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    const loadUser = async () => {
-      dispatch(restoreUser());
+    const loadUser = () => {
+      // dispatch(restoreUser());
       setIsLoaded(true);
     };
 
     loadUser();
   }, [dispatch]);
 
-  return (
-    <>
-      <Navigation isLoaded={isLoaded} />
-      {isLoaded && <Outlet />}
-    </>
-  );
+  return <>{isLoaded && <WelcomePage isLoaded={isLoaded} />}</>;
 }
 
 const router = createBrowserRouter([
   {
+    path: "/",
     element: <Layout />,
-    children: [
-      {
-        path: "/",
-        element: <h1>Welcome!</h1>,
-      },
-      {
-        path: "/login",
-        element: <LoginFormPage />,
-      },
-      {
-        path: "/signup",
-        element: <SignUpPage />,
-      },
-    ],
+  },
+  {
+    path: "/login",
+    element: <LoginFormPage />,
+  },
+  {
+    path: "/signup",
+    element: <SignUpPage />,
   },
 ]);
 

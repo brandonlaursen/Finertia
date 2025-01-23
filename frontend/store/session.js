@@ -1,4 +1,5 @@
 import { csrfFetch } from "./csrf";
+import { createSelector } from "reselect";
 
 const SET_USER = "session/setUser";
 const REMOVE_USER = "session/removeUser";
@@ -12,7 +13,7 @@ const setUser = (user) => {
 
 const removeUser = () => {
   return {
-    type: REMOVE_USER
+    type: REMOVE_USER,
   };
 };
 
@@ -54,14 +55,16 @@ export const signup = (user) => async (dispatch) => {
   return response;
 };
 
-
 export const logout = () => async (dispatch) => {
-  const response = await csrfFetch('/api/session', {
-    method: 'DELETE'
-  });
+  console.log('log out thunk')
+  const response = await csrfFetch("/api/session/logout");
   dispatch(removeUser());
   return response;
 };
+
+export const userSelector = (state) => state.session.user;
+
+export const selectUser = createSelector([userSelector], (user) => user);
 
 const initialState = { user: null };
 
