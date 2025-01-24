@@ -136,14 +136,14 @@ function SignupFormPage() {
                 placeholder="Confirm Password"
               />
               {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
-              {/* <button type="submit">Sign Up</button> */}
+              <button type="submit">Sign Up</button>
             </div>
           </form>
         </div>
 
-        <div className="signup-page-bottom-right">
+        {/* <div className="signup-page-bottom-right">
           <button>Continue</button>
-        </div>
+        </div> */}
       </div>
     </div>
   );
