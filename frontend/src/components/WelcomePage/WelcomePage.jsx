@@ -2,10 +2,13 @@ import "./WelcomePage.css";
 import { FaSpaceShuttle } from "react-icons/fa";
 
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import WelcomePageNav from "./WelcomePageNav";
-
+import { selectUser } from "../../../store/session";
 function WelcomePage() {
+  const sessionUser = useSelector(selectUser);
+
   return (
     <div className="welcome-page-container">
       <WelcomePageNav />
@@ -21,9 +24,13 @@ function WelcomePage() {
             Investing, like space, requires momentum—stay the course, &quot;defy
             inertia.&quot;
           </h1>
-          <Link to="/signup">
-            <button id="get-started">Get Started</button>
-          </Link>
+          {sessionUser ? null : (
+            <Link to="/signup">
+              <button id="get-started">
+                Get Started
+              </button>
+            </Link>
+          )}
         </div>
       </div>
 

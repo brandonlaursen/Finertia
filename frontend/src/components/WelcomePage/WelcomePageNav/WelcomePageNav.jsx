@@ -3,6 +3,7 @@ import "./WelcomePageNav.css";
 import { useNavigate } from "react-router-dom";
 import { FaSpaceShuttle } from "react-icons/fa";
 
+
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -14,7 +15,7 @@ function WelcomePageNav() {
   const navigate = useNavigate();
 
   const sessionUser = useSelector(selectUser);
- 
+
 
   return (
     <nav className="navbar">

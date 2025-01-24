@@ -1,6 +1,6 @@
 .welcome-page-container {
   display: grid;
-  grid-template-rows: 66px 670px 300px 800px 100px;
+  grid-template-rows: 66px 703px 300px 800px 100px;
   height: 100%;
   min-height: 100vh;
   color: white;
@@ -18,7 +18,7 @@
 }
 
 .welcome-page-1 {
-  background-color: #3498db;
+  background-color: #000000;
   background-image: url("https://cdn.pixabay.com/photo/2022/08/06/13/49/space-7368670_1280.jpg");
   background-size: cover;
   background-position: center;
@@ -54,7 +54,7 @@
 
 .welcome-page-1-section-2 > h1 {
   color: rgb(198, 156, 194);
-  font-size: 5vw;
+  font-size: 4vw;
 }
 
 #get-started {
