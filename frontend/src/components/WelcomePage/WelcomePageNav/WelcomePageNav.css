@@ -41,7 +41,6 @@
   color: #c9abdb;
 }
 
-
 .nav-btn {
   align-items: center;
   border-radius: 36px;
@@ -65,27 +64,25 @@
   color: rgb(197, 197, 197);
 }
 
-.signup{
+.signup {
   background-color: white;
   color: black;
 }
 
-.signup:hover{
+.signup:hover {
   background-color: rgb(197, 197, 197);
   color: black;
 }
 
-.account{
+.account {
   background-color: white;
   color: black;
 }
 
-.account:hover{
+.account:hover {
   background-color: rgb(197, 197, 197);
   color: black;
 }
-
-
 
 @media (max-width: 768px) {
   .navbar-center {

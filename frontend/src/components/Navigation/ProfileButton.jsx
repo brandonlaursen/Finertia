@@ -1,7 +1,9 @@
-import { useDispatch } from "react-redux";
 import { FaUserCircle } from "react-icons/fa";
-import { logout } from "../../../store/session";
+
 import { useState, useEffect, useRef } from "react";
+import { useDispatch } from "react-redux";
+
+import { logout } from "../../../store/session";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -28,7 +30,7 @@ function ProfileButton({ user }) {
   };
 
   const toggleMenu = (e) => {
-    e.stopPropagation(); // Keep click from bubbling up to document and triggering closeMenu
+    e.stopPropagation();
     setShowMenu(!showMenu);
   };
 

@@ -1,11 +1,12 @@
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { Navigate } from "react-router-dom";
-import { login } from "../../../store/session";
 import "./LoginForm.css";
 import { LuInfo } from "react-icons/lu";
 import { MdRemoveRedEye } from "react-icons/md";
+
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, Navigate } from "react-router-dom";
+
+import { login } from "../../../store/session";
 
 function LoginFormPage() {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ function LoginFormPage() {
   const [showPassword, setShowPassword] = useState(false);
 
   const handlePasswordToggle = () => {
-    console.log(showPassword)
+    console.log(showPassword);
     setShowPassword(!showPassword);
   };
 
@@ -33,7 +34,7 @@ function LoginFormPage() {
       return res;
     } catch (res) {
       const data = await res.json();
-      if (data?.errors) setErrors(data.errors);
+      if (data.errors) setErrors(data.errors);
     }
   };
 
@@ -47,14 +48,14 @@ function LoginFormPage() {
             <p>Log In to Finertia</p>
             <label>Email</label>
             <input
-              type='text'
+              type="text"
               value={credential}
               onChange={(e) => setCredential(e.target.value.trim())}
               required
             />
 
-              <label>Password</label>
-              <div className="password-container">
+            <label>Password</label>
+            <div className="password-container">
               <input
                 type={showPassword ? "text" : "password"}
                 value={password}
@@ -62,8 +63,8 @@ function LoginFormPage() {
                 required
               />
               <MdRemoveRedEye
-              className='password-icon'
-              onClick={handlePasswordToggle}
+                className="password-icon"
+                onClick={handlePasswordToggle}
               />
             </div>
 

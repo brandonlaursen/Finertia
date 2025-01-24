@@ -21,11 +21,13 @@
   color: white;
   padding-top: 80px;
   width: 50%;
+
   max-width: 700px;
 }
 
 .login-form-top {
-  height: 60%;
+  height: 100%;
+  overflow: hidden;
 }
 
 .login-form {
@@ -34,6 +36,7 @@
   justify-content: start;
   align-items: start;
   padding: 2vh;
+  padding-left: 40px;
   overflow: hidden;
   font-size: 15px;
   gap: 15px;
@@ -45,11 +48,9 @@
 
 .login-form input,
 .password-container input {
-  /* width: 96%; */
-  width: calc(95% - 10px); /* Subtract padding to maintain alignment */
+  width: calc(95% - 10px);
   padding-left: 10px;
   min-height: 36px;
-  /* background: transparent; */
   background-color: #000000;
   border-style: solid;
   border-color: rgb(48, 54, 58);
@@ -116,7 +117,6 @@
 
   .login-form-top {
     height: 100%;
-    /* overflow: hidden; */
   }
 
   .login-button-container {
@@ -129,7 +129,7 @@
 .login-errors {
   background-color: rgb(30, 33, 37);
   min-height: 50px;
-  width: calc(95% - 6px); /* Subtract padding to maintain alignment */
+  width: calc(95% - 6px);
   padding-left: 10px;
   border-width: 1px;
   border-radius: 5px;
@@ -140,7 +140,6 @@
 }
 
 .info-icon {
-  /* background-color: rgb(36, 36, 36); */
   min-height: 20px;
   width: 20px;
   margin-right: 10px;
@@ -151,15 +150,13 @@
   display: flex;
   align-items: center;
   position: relative;
-  width: 100%;
 }
 
 .password-icon {
   position: relative;
   right: 30px;
   cursor: pointer;
-  color: rgb(255, 255, 255);  /* Icon color */
+  color: rgb(255, 255, 255); /* Icon color */
   font-size: 20px;
   background-color: rgb(0, 0, 0);
-
 }

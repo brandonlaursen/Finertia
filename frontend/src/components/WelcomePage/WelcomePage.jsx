@@ -5,7 +5,10 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import WelcomePageNav from "./WelcomePageNav";
+
 import { selectUser } from "../../../store/session";
+
+
 function WelcomePage() {
   const sessionUser = useSelector(selectUser);
 

@@ -8,4 +8,9 @@ html, body, div {
   position: relative;
   display: block;
   box-sizing: border-box;
+
+}
+
+html{
+  background-color: black;
 }

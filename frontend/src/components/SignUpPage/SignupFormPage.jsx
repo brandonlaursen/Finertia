@@ -1,9 +1,13 @@
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Navigate, useNavigate } from "react-router-dom";
 import "./SignupFormPage.css";
 import { FaSpaceShuttle } from "react-icons/fa";
 import { IoPlanetOutline } from "react-icons/io5";
+import { LuInfo } from "react-icons/lu";
+import { MdRemoveRedEye } from "react-icons/md";
+
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Navigate, useNavigate } from "react-router-dom";
+
 import { signup } from "../../../store/session";
 
 function SignupFormPage() {
@@ -17,35 +21,57 @@ function SignupFormPage() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  if (sessionUser) return <Navigate to="/" replace={true} />;
+  useEffect(() => {
+    if (password && confirmPassword && password !== confirmPassword) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        passwordMatch:
+          "Confirm Password field must be the same as the Password field",
+      }));
+    } else {
+      setErrors((prevErrors) => {
+        const { ...errors } = prevErrors;
+        delete errors["passwordMatch"];
+        return errors;
+      });
+    }
+  }, [password, confirmPassword]);
 
-  const handleSubmit = async (e) => {
+  if (sessionUser) return <Navigate to="/home" replace={true} />;
+
+  const handlePasswordToggle = () => {
+    console.log(showPassword);
+    setShowPassword(!showPassword);
+  };
+
+  const handleConfirmPasswordToggle = () => {
+    console.log(showConfirmPassword);
+    setShowConfirmPassword(!showConfirmPassword);
+  };
+
+  const handleSubmit2 = async (e) => {
     e.preventDefault();
 
-    if (password === confirmPassword) {
-      setErrors({});
-      try {
-        dispatch(
-          signup({
-            email,
-            username,
-            firstName,
-            lastName,
-            password,
-          })
-        );
-      } catch (res) {
-        const data = await res.json();
-        if (data?.errors) {
-          setErrors(data.errors);
-        }
+    try {
+      const res = await dispatch(
+        signup({
+          email,
+          username,
+          firstName,
+          lastName,
+          password,
+        })
+      );
+
+      if (res.ok) {
+        return res;
       }
-    } else {
-      setErrors({
-        confirmPassword:
-          "Confirm Password field must be the same as the Password field",
-      });
+    } catch (errors) {
+      const data = await errors.json();
+      setErrors(data.errors);
     }
   };
 
@@ -64,8 +90,8 @@ function SignupFormPage() {
         </div>
 
         <div className="signup-page-mid-left-2">
-          We'll need your name, email address, and a unique password. You'll use
-          this login to access Robinhood next time.
+          We&apos;ll need your name, email address, and a unique password.
+          You&apos;ll use this login to access Finertia next time.
         </div>
 
         <div className="signup-page-bottom-left">
@@ -79,7 +105,7 @@ function SignupFormPage() {
         </div>
 
         <div className="signup-page-form-container">
-          <form onSubmit={handleSubmit} className="signup-page-form">
+          <form onSubmit={handleSubmit2} className="signup-page-form">
             <div className="signup-form-top">
               <input
                 type="text"
@@ -89,8 +115,6 @@ function SignupFormPage() {
                 placeholder="First Name"
               />
 
-              {errors.firstName && <p>{errors.firstName}</p>}
-
               <input
                 type="text"
                 value={lastName}
@@ -98,8 +122,6 @@ function SignupFormPage() {
                 required
                 placeholder="Last Name"
               />
-
-              {errors.lastName && <p>{errors.lastName}</p>}
             </div>
 
             <div className="signup-form-bottom">
@@ -110,7 +132,6 @@ function SignupFormPage() {
                 required
                 placeholder="Email address"
               />
-              {errors.email && <p>{errors.email}</p>}
               <input
                 type="text"
                 value={username}
@@ -118,32 +139,57 @@ function SignupFormPage() {
                 required
                 placeholder="Username"
               />
-              {errors.username && <p>{errors.username}</p>}
 
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                placeholder="Password"
-              />
-              {errors.password && <p>{errors.password}</p>}
-              <input
-                type="password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                required
-                placeholder="Confirm Password"
-              />
-              {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
+              <div className="signup-form-password-container">
+                <div className="password-input-wrapper">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    placeholder="Password"
+                  />
+                  <MdRemoveRedEye
+                    className="signup-password-icon"
+                    onClick={handlePasswordToggle}
+                  />
+                </div>
+
+                <div className="password-input-wrapper">
+                  <input
+                    type={showConfirmPassword ? "text" : "password"}
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    required
+                    placeholder="Confirm Password"
+                  />
+                  <MdRemoveRedEye
+                    className="signup-password-icon"
+                    onClick={handleConfirmPasswordToggle}
+                  />
+                </div>
+
+                <div className="signup-errors">
+                  {errors &&
+                    Object.values(errors).map((error) => {
+                      console.log(error);
+                      return (
+                        <>
+                          <p className="signup-error">
+                            {" "}
+                            <LuInfo className="info-icon" />
+                            {error}
+                          </p>
+                        </>
+                      );
+                    })}
+                </div>
+              </div>
+
               <button type="submit">Sign Up</button>
             </div>
           </form>
         </div>
-
-        {/* <div className="signup-page-bottom-right">
-          <button>Continue</button>
-        </div> */}
       </div>
     </div>
   );
