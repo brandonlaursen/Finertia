@@ -35,18 +35,8 @@ if (process.env.NODE_ENV !== "production") {
   });
 }
 
-// router.use((req, res, next) => {
-//   console.log(`entering routes/index.js`)
-//   next()
-// })
-
-// router.get("/api/csrf/restore", (req, res) => {
-//   console.log('hello')
-//   const csrfToken = req.csrfToken();
-//   res.cookie("XSRF-TOKEN", csrfToken);
-//   res.status(200).json({
-//     "XSRF-Token": csrfToken,
-//   });
-// });
-
+const returnErrors = (err, req, res, next) => {
+  console.log("test");
+  return;
+};
 module.exports = router;

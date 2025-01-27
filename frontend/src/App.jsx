@@ -1,9 +1,14 @@
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { selectUser } from "../store/session";
 
 // components
 import WelcomePage from "./components/WelcomePage";
+import HomePage from "./components/HomePage";
 import LoginFormPage from "./components/LoginFormPage";
 import SignUpPage from "./components/SignUpPage";
 
@@ -12,6 +17,8 @@ import { restoreUser } from "../store/session";
 
 function Layout() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const sessionUser = useSelector(selectUser);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -23,13 +30,23 @@ function Layout() {
     loadUser();
   }, [dispatch]);
 
-  return <>{isLoaded && <WelcomePage isLoaded={isLoaded} />}</>;
+  useEffect(() => {
+    if (isLoaded && sessionUser) {
+      navigate("/home", { replace: true });
+    }
+  }, [isLoaded, sessionUser, navigate]);
+
+  return <>{isLoaded && !sessionUser && <WelcomePage isLoaded={isLoaded} />}</>;
 }
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
+  },
+  {
+    path:'/home',
+    element: <HomePage />
   },
   {
     path: "/login",

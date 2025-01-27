@@ -1,3 +1,3 @@
-import HomePage from "./WelcomePage";
+import WelcomePage from "./WelcomePage.jsx";
 
-export default HomePage;
+export default WelcomePage;

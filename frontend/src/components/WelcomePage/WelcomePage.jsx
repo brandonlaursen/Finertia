@@ -3,6 +3,7 @@ import { FaSpaceShuttle } from "react-icons/fa";
 
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+// import { Navigate } from "react-router-dom";
 
 import WelcomePageNav from "./WelcomePageNav";
 
@@ -11,6 +12,8 @@ import { selectUser } from "../../../store/session";
 
 function WelcomePage() {
   const sessionUser = useSelector(selectUser);
+
+  // if (sessionUser) return <Navigate to="/home" replace={true} />;
 
   return (
     <div className="welcome-page-container">
