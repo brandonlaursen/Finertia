@@ -35,8 +35,4 @@ if (process.env.NODE_ENV !== "production") {
   });
 }
 
-const returnErrors = (err, req, res, next) => {
-  console.log("test");
-  return;
-};
 module.exports = router;

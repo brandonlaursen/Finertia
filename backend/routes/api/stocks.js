@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { Stock } = require("../../db/models");
 const { Op } = require("sequelize");
+const finnhub = require("finnhub");
 
 const symbols = [
   "AAPL",
@@ -113,9 +114,64 @@ router.get("/", async (req, res) => {
   });
 });
 
+router.get("/news", async (req, res) => {
+  const api_key = finnhub.ApiClient.instance.authentications["api_key"];
+  api_key.apiKey = process.env.STOCK_API_KEY;
+  const finnhubClient = new finnhub.DefaultApi();
+
+  const fetchMarketNews = async () => {
+    return new Promise((resolve, reject) => {
+      finnhubClient.marketNews('general', {}, (error, data) => {
+        if (error) {
+          return reject(error); // Handle errors
+        }
+        resolve(data); // Resolve with data
+      });
+    });
+  };
+
+  try {
+    const newsData = await fetchMarketNews();
+
+    res.json(newsData);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch market news" });
+  }
+});
+
+router.get("/news/:category", async (req, res) => {
+  const { category } = req.params;
+  console.log(category)
+
+  const api_key = finnhub.ApiClient.instance.authentications["api_key"];
+  api_key.apiKey = process.env.STOCK_API_KEY;
+  const finnhubClient = new finnhub.DefaultApi();
+
+  const fetchMarketNews = async () => {
+    return new Promise((resolve, reject) => {
+      finnhubClient.marketNews(category, {}, (error, data) => {
+        if (error) {
+          return reject(error); // Handle errors
+        }
+        resolve(data); // Resolve with data
+      });
+    });
+  };
+
+  try {
+    const newsData = await fetchMarketNews();
+    // console.log("newsData:", newsData);
+
+    res.json(newsData);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch market news" });
+  }
+});
+
 // * Get a single stock
 router.get("/:stockId", async (req, res) => {
   const { stockId } = req.params;
+
 
   return res.json({
     message: `successfully retrieved stock with id of ${stockId}`,
