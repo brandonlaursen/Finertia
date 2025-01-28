@@ -49,6 +49,14 @@
   padding-left: 10px;
 }
 
+.home-page-nav-links-container span{
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: bold;
+}
+
 .home-page-nav-links-container a {
   color: rgb(0, 0, 0);
   text-decoration: none;
