@@ -1,22 +1,20 @@
-
-
 /* Account Dropdown */
 .account-dropdown-container {
   position: absolute;
   right: 35px;
   top: 65px;
-  height: 230px;
+  height: 250px;
   width: 250px;
-  border-radius: 3px;
+  border-radius: 2px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   align-items: start;
-  font-size: 15px;
+  font-size: 16px;
 }
 
 .account-dropdown-user {
-  height: 60px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: start;
@@ -26,6 +24,9 @@
   font-weight: bold;
   padding-left: 20px;
   border-bottom: solid 1px rgb(228, 228, 228);
+
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
 }
 
 .account-dropdown-link-container {
@@ -33,28 +34,31 @@
   background-color: rgb(255, 255, 255);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 20px;
-  gap: 20px;
+  /* justify-content: space-between; */
+  padding: 15px;
+  gap: 30px;
   width: 100%;
   border-bottom: solid 1px rgb(228, 228, 228);
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
 }
 
 .account-dropdown-link-container a,
 #account-logout {
-  font-size: 14px;
+  font-size: 15px;
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
 .account-dropdown-logout {
+  background-color: white;
   color: black;
   height: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-left: 20px;
+  padding-left: 15px;
   width: 100%;
   font-weight: bold;
   cursor: pointer;

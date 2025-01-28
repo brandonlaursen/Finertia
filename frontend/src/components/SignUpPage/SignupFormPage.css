@@ -2,7 +2,7 @@
   background-color: black;
   display: flex;
   flex-direction: row;
-  height: 100%;
+  height: 100vh;
 }
 
 /* left half */
@@ -25,6 +25,7 @@
   font-weight: bold;
   color: white;
   cursor: pointer;
+  gap:7px;
 }
 
 /* mid 1 left */
@@ -165,6 +166,10 @@
   font-weight: bold;
 
   cursor: pointer;
+}
+
+.signup-page-form-container button:hover{
+  color: rgb(61, 61, 61);
 }
 
 .signup-button-container a {

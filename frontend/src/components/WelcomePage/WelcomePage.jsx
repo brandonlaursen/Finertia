@@ -3,7 +3,6 @@ import { FaSpaceShuttle } from "react-icons/fa";
 
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-// import { Navigate } from "react-router-dom";
 
 import WelcomePageNav from "./WelcomePageNav";
 

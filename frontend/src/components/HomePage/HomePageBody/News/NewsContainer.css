@@ -1,0 +1,132 @@
+
+.left-container-news {
+  padding-left: 10px;
+  width: 100%;
+
+}
+
+.left-container-news > span {
+  display: block;
+  padding-bottom: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  border-bottom: solid 1px rgb(230, 230, 230);
+  width: 100%;
+}
+
+#news-info {
+  margin-left: 5px;
+  height: 15px;
+  width: 15px;
+  color: rgb(75, 75, 75);
+  cursor: pointer;
+}
+
+
+.category-btn-container{
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 50px;
+  border-bottom: solid 1px rgb(230, 230, 230);
+  padding-bottom: 25px;
+  width: 100%;
+}
+
+.category-btn-container button{
+  text-decoration: none;
+  align-items: center;
+  border-radius: 36px;
+  box-sizing: border-box;
+  height: 40px;
+  width: auto;
+  padding: 10px;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  background-color: #ffffff;
+  border: 1px solid #e6e6e6;
+  color: #1c180d;
+  cursor: pointer;
+  /* font-weight: bold; */
+  cursor: pointer;
+
+  display: flex;
+  align-content: center;
+  gap: 5px;
+}
+
+.category-btn-container button svg{
+  font-size: 15px;
+}
+
+.category-btn-container button:hover{
+  background-color: #eaeff2;
+}
+
+.news-anchor {
+  text-decoration: none;
+  color: black;
+}
+
+.news-link-container {
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 120px;
+  cursor: pointer;
+  border-bottom: solid 1px rgb(230, 230, 230);
+  width: 100%;
+  margin-top: 25px;
+  padding-bottom: 25px;
+}
+
+.news-text-container {
+  height: 100%;
+  /* background-color: rgb(114, 137, 207); */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.news-text-container span:first-child {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.time-ago {
+  margin-left: 5px;
+  font-style: italic;
+  color: gray;
+  font-size: 7px;
+}
+
+
+.news-text-container span:nth-child(2) {
+  font-size: 18px;
+}
+
+.news-text-container span:nth-child(3) {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+
+.news-image-container {
+  margin-left: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.news-link-container img {
+  height: 100px;
+  width: 180px;
+  border-radius: 4px;
+  object-fit: contain;
+}

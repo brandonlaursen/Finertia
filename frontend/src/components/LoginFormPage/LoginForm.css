@@ -1,8 +1,8 @@
 .login-page-container {
-  background-color: black;
+  background-color: rgb(0, 0, 0);
   display: flex;
   flex-direction: row;
-  height: 100%;
+  height: 100vh;
 }
 
 .login-form-section-1 {
@@ -14,6 +14,7 @@
   width: 50%;
   align-items: stretch;
   transition: width 1s ease;
+
 }
 
 .login-form-section-2 {
@@ -22,7 +23,7 @@
   padding-top: 80px;
   width: 50%;
 
-  max-width: 700px;
+  max-width: 800px;
 }
 
 .login-form-top {
