@@ -10,7 +10,11 @@ function Stock() {
 
   return (
     <div className="stock-container">
+
+      {/* Left side */}
       <div className="stock-left">
+
+
         <span className="stock-name">Snap</span>
         <span className="stock-price">$10.90</span>
         <span className="price-change-today">
@@ -18,6 +22,8 @@ function Stock() {
           <span className="price-change">(+0.51%)</span>
           <span>Today</span>
         </span>
+
+
         <span className="price-change-overnight">24 Hour Market</span>
         <div className="stock-chart"></div>
         <div className="time-frame-container">
@@ -31,7 +37,10 @@ function Stock() {
             </span>
           ))}
         </div>
+
+        {/* Stock Info */}
         <div className="stock-info-container">
+
           <span className="aboutTitle">About</span>
           <span className="companyDescription">
             Snap, Inc. operates as a technology company, which engages in the
@@ -42,6 +51,7 @@ function Stock() {
           </span>
           <span className="showMoreLink">Show More</span>
 
+          {/* Company Info */}
           <div className="company-info-container">
             <div className="company-info-item">
               <span className="info-label">CEO</span>
@@ -61,6 +71,7 @@ function Stock() {
             </div>
           </div>
 
+          {/* Company statistics */}
           <span className="key-statistics">Key statistics</span>
           <div className="statistics-container">
             <div className="statistics-column">
@@ -122,6 +133,7 @@ function Stock() {
         </div>
         <span className="news-title">News</span>
 
+        {/* Company news */}
         <div className="news-container">
 
 
@@ -140,12 +152,14 @@ function Stock() {
             <div className="news-image">
               <img src="https://tse1.mm.bing.net/th?id=OIP.2p8hNdgF1MQeiDaT9ivDFAHaHa&pid=Api&P=0&h=220" alt="news image" />
             </div>
-          </div>
+            
+        </div>
 
 
 
       </div>
 
+      {/* Right Side */}
       <div className="stock-right">right</div>
     </div>
   );

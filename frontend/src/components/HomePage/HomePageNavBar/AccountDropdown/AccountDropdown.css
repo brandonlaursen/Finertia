@@ -11,6 +11,7 @@
   flex-direction: column;
   align-items: start;
   font-size: 16px;
+  z-index: 10;
 }
 
 .account-dropdown-user {
@@ -18,7 +19,7 @@
   display: flex;
   align-items: center;
   justify-content: start;
-  width: 100%;
+  width: 250px;
   background-color: rgb(255, 255, 255);
   color: black;
   font-weight: bold;
@@ -34,10 +35,10 @@
   background-color: rgb(255, 255, 255);
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
+  justify-content: space-evenly;
   padding: 15px;
   gap: 30px;
-  width: 100%;
+  width: 250px;
   border-bottom: solid 1px rgb(228, 228, 228);
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
@@ -59,7 +60,7 @@
   flex-direction: column;
   justify-content: center;
   padding-left: 15px;
-  width: 100%;
+  width: 250px;
   font-weight: bold;
   cursor: pointer;
 }

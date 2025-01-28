@@ -78,35 +78,37 @@ function SignupFormPage() {
   return (
     <div className="signup-page-container">
       <div className="signup-page-left">
-        <div className="signup-page-top-left" onClick={() => navigate("/")}>
+        <div className="signup-page__header" onClick={() => navigate("/")}>
           {" "}
           <FaSpaceShuttle />
           Finertia
         </div>
 
-        <div className="signup-page-mid-left-1">
+        <div className="signup-page__description">
           Create your login
           <p></p>
         </div>
 
-        <div className="signup-page-mid-left-2">
+        <div className="signup-page__sub-description">
           We&apos;ll need your name, email address, and a unique password.
           You&apos;ll use this login to access Finertia next time.
         </div>
 
-        <div className="signup-page-bottom-left">
-          <IoPlanetOutline className="signup-image" />
+        <div className="signup-page__image">
+          <IoPlanetOutline className="signup-page__image-icon" />
         </div>
       </div>
 
-      <div className="signup-page-right">
-        <div className="signup-page-top-right">
+      <div className="signup-page__right">
+        <div className="signup-page__instructions">
           Enter your first and last name as they appear on your government ID.
         </div>
 
         <div className="signup-page-form-container">
+
           <form onSubmit={handleSubmit2} className="signup-page-form">
-            <div className="signup-form-top">
+            
+            <div className="signup-page__form-group-1">
               <input
                 type="text"
                 value={firstName}
@@ -124,7 +126,7 @@ function SignupFormPage() {
               />
             </div>
 
-            <div className="signup-form-bottom">
+            <div className="signup-page__form-group-2">
               <input
                 type="text"
                 value={email}

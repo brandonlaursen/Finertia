@@ -11,10 +11,8 @@
 .stock-left{
   width: 75%;
   height: 100%;
-  /* background-color: rgb(7, 91, 91); */
   display: flex;
   flex-direction: column;
-
   gap: 7px;
   padding: 32px;
 }
