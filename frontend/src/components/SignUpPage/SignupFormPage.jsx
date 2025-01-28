@@ -40,7 +40,7 @@ function SignupFormPage() {
     }
   }, [password, confirmPassword]);
 
-  if (sessionUser) return <Navigate to="/home" replace={true} />;
+  if (sessionUser) return <Navigate to="/" replace={true} />;
 
   const handlePasswordToggle = () => {
     console.log(showPassword);

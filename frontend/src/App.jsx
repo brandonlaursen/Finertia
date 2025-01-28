@@ -1,21 +1,21 @@
 import { useState, useEffect } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
-import { useDispatch, useSelector } from "react-redux";
-import { selectUser } from "../store/session";
+import { useDispatch } from "react-redux";
 
 // components
 import WelcomePage from "./components/WelcomePage";
 import HomePage from "./components/HomePage";
 import LoginFormPage from "./components/LoginFormPage";
 import SignUpPage from "./components/SignUpPage";
+import Stock from "./components/Stock/Stock";
+import NavBar from "./components/HomePage/HomePageNavBar";
 
 // store
 import { restoreUser } from "../store/session";
 
 function Layout() {
   const dispatch = useDispatch();
-  const sessionUser = useSelector(selectUser);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -27,36 +27,43 @@ function Layout() {
     loadUser();
   }, [dispatch]);
 
-
-  if(isLoaded) {
-    if (sessionUser) {
-      return <HomePage />;
-    } else {
-
-      return <WelcomePage />;
-    }
-  }
-
+  return <>{isLoaded && <Outlet />}</>;
 }
 
 const router = createBrowserRouter([
   {
-    path: "/",
     element: <Layout />,
-  },
-  {
-    path:'/home',
-    element: <HomePage />
-  },
-  {
-    path: "/login",
-    element: <LoginFormPage />,
-  },
-  {
-    path: "/signup",
-    element: <SignUpPage />,
+    children: [
+      {
+        path: "/welcome",
+        element: <WelcomePage />,
+      },
+      {
+        path: "/",
+        element: <NavBar />,
+        children: [
+          {
+            index: true,
+            element: <HomePage />,
+          },
+          {
+            path: "stocks/:stockId",
+            element: <Stock />,
+          },
+        ],
+      },
+      {
+        path: "/login",
+        element: <LoginFormPage />,
+      },
+      {
+        path: "/signup",
+        element: <SignUpPage />,
+      },
+    ],
   },
 ]);
+
 
 function App() {
   return <RouterProvider router={router} />;

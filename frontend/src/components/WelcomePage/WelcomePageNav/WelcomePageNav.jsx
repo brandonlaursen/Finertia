@@ -31,7 +31,9 @@ function WelcomePageNav() {
 
       <div className="navbar-right">
         {sessionUser ? (
-          <button className="nav-btn account"> My Account</button>
+          <button className="nav-btn account"
+          
+          > My Account</button>
         ) : (
           <>
             <button

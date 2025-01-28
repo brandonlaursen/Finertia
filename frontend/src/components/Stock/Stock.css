@@ -1,0 +1,20 @@
+
+.stock-container{
+  margin-top: 85px;
+  color: black;
+  height: 100vh;
+  display: flex;
+  background-color: rgb(168, 168, 168);
+}
+
+.stock-left{
+  width: 75%;
+  height: 100%;
+  background-color: rgb(7, 91, 91);
+}
+
+.stock-right{
+  width: 25%;
+  height: 100%;
+  background-color: rgb(81, 165, 135);
+}

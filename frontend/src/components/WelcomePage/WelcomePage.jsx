@@ -8,11 +8,8 @@ import WelcomePageNav from "./WelcomePageNav";
 
 import { selectUser } from "../../../store/session";
 
-
 function WelcomePage() {
   const sessionUser = useSelector(selectUser);
-
-  // if (sessionUser) return <Navigate to="/home" replace={true} />;
 
   return (
     <div className="welcome-page-container">
@@ -31,9 +28,7 @@ function WelcomePage() {
           </h1>
           {sessionUser ? null : (
             <Link to="/signup">
-              <button id="get-started">
-                Get Started
-              </button>
+              <button id="get-started">Get Started</button>
             </Link>
           )}
         </div>
