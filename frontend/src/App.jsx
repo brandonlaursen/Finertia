@@ -47,7 +47,7 @@ const router = createBrowserRouter([
             element: <HomePage />,
           },
           {
-            path: "stocks/:stockId",
+            path: "stocks/:stockSymbol",
             element: <Stock />,
           },
         ],

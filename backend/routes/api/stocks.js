@@ -104,24 +104,15 @@ const symbols = [
   "WBA",
 ];
 
-// * Get all stocks
-router.get("/", async (req, res) => {
-  const stocks = await Stock.findAll();
-
-  return res.json({
-    message: "successfully retrieved all stocks",
-    stocks,
-  });
-});
-
 router.get("/news", async (req, res) => {
   const api_key = finnhub.ApiClient.instance.authentications["api_key"];
   api_key.apiKey = process.env.STOCK_API_KEY;
   const finnhubClient = new finnhub.DefaultApi();
 
   const fetchMarketNews = async () => {
+    console.log("call made");
     return new Promise((resolve, reject) => {
-      finnhubClient.marketNews('general', {}, (error, data) => {
+      finnhubClient.marketNews("general", {}, (error, data) => {
         if (error) {
           return reject(error); // Handle errors
         }
@@ -141,7 +132,6 @@ router.get("/news", async (req, res) => {
 
 router.get("/news/:category", async (req, res) => {
   const { category } = req.params;
-  console.log(category)
 
   const api_key = finnhub.ApiClient.instance.authentications["api_key"];
   api_key.apiKey = process.env.STOCK_API_KEY;
@@ -160,7 +150,6 @@ router.get("/news/:category", async (req, res) => {
 
   try {
     const newsData = await fetchMarketNews();
-    // console.log("newsData:", newsData);
 
     res.json(newsData);
   } catch (error) {
@@ -169,12 +158,78 @@ router.get("/news/:category", async (req, res) => {
 });
 
 // * Get a single stock
-router.get("/:stockId", async (req, res) => {
-  const { stockId } = req.params;
+router.get("/:stockSymbol", async (req, res) => {
+  const { stockSymbol } = req.params;
 
+  const api_key = finnhub.ApiClient.instance.authentications["api_key"];
+  api_key.apiKey = process.env.STOCK_API_KEY;
+  const finnhubClient = new finnhub.DefaultApi();
+
+  const fetchStockNews = async () => {
+    return new Promise((resolve, reject) => {
+      finnhubClient.companyNews(
+        stockSymbol,
+        "2025-01-01",
+        "2025-01-28",
+        (error, data, response) => {
+          if (error) {
+            return reject(error); // Handle errors
+          }
+          resolve(data); // Resolve with data
+        }
+      );
+    });
+  };
+
+  const fetchCompanyInfo = async () => {
+    return new Promise((resolve, reject) => {
+      finnhubClient.companyProfile2(
+        { symbol: stockSymbol },
+        (error, data, response) => {
+          if (error) {
+            return reject(error); // Handle errors
+          }
+          resolve(data); // Resolve with data
+        }
+      );
+    });
+  };
+
+  const fetchCompanyFinancials = async () => {
+    return new Promise((resolve, reject) => {
+      finnhubClient.companyBasicFinancials(
+        stockSymbol,
+        "all",
+        (error, data, response) => {
+          if (error) {
+            return reject(error); // Handle errors
+          }
+          resolve(data); // Resolve with data
+        }
+      );
+    });
+  };
+
+  try {
+    const companyNews = await fetchStockNews();
+
+    const companyProfile = await fetchCompanyInfo();
+
+    const companyFinancials = await fetchCompanyFinancials();
+
+    res.json({ companyNews, companyProfile, companyFinancials });
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch stock data" });
+  }
+});
+
+// * Get all stocks
+router.get("/", async (req, res) => {
+  const stocks = await Stock.findAll();
 
   return res.json({
-    message: `successfully retrieved stock with id of ${stockId}`,
+    message: "successfully retrieved all stocks",
+    stocks,
   });
 });
 

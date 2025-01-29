@@ -19,12 +19,12 @@ import {
 function NewsContainer() {
   const dispatch = useDispatch();
   const stockNews = useSelector((state) => state.stock.news);
-  console.log("stockNews:", stockNews);
 
   useEffect(() => {
     async function getNews() {
-      await dispatch(getStockNews());
+      dispatch(getStockNews());
     }
+
     getNews();
   }, [dispatch]);
 

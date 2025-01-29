@@ -4,7 +4,7 @@ import { FaSpaceShuttle } from "react-icons/fa";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { Outlet, Navigate } from "react-router-dom";
+import { Outlet, Navigate, NavLink } from "react-router-dom";
 
 import SearchBar from "./SearchBar/SearchBar";
 import HamburgerMenu from "./HamburgerMenu/HamburgerMenu";
@@ -21,10 +21,13 @@ function NavBar() {
   return (
     <>
       <nav className="home-page-navbar">
-        <div className="search-bar-logo-container">
-          {" "}
-          <FaSpaceShuttle id="shuttle-logo" />
-        </div>
+        {/* <NavLink to="/"> */}
+          <NavLink  className="search-bar-logo-container">
+            {" "}
+            <FaSpaceShuttle id="shuttle-logo" />
+          </NavLink >
+        {/* </NavLink> */}
+
         <SearchBar />
         <HamburgerMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
         <div

@@ -216,15 +216,17 @@
   height: 150px;
   display: flex;
   flex-direction: row;
-  background-color: aliceblue;
+  /* background-color: aliceblue; */
   justify-content: space-between;
-  margin-top: 20px;;
+  margin-top: 20px;
+  color: black;
 }
 
 .text-container {
   display: flex;
   flex-direction: column; /* Makes the header span (first span) a column */
   gap: 10px; /* Adds some spacing between the elements */
+
 }
 
 .news-header {
@@ -249,7 +251,7 @@
   height: 130px;
   width: 200px;
   object-fit: cover;
-  background-color: aquamarine;
+  /* background-color: aquamarine; */
 }
 
 
@@ -261,4 +263,16 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+.stock-news-container a{
+  text-decoration: none;
+}
+
+.news-sub-text{
+  width: 75%;
+  color:#464646;
+  font-size: 14px;
+  /* background-color: red; */
+
 }
