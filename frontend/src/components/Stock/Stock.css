@@ -1,14 +1,12 @@
-
-.stock-container{
+.stock-container {
   margin-top: 85px;
   color: black;
   height: 100%;
   display: flex;
   background-color: rgb(255, 255, 255);
-
 }
 
-.stock-left{
+.stock-left {
   width: 75%;
   height: 100%;
   display: flex;
@@ -17,37 +15,33 @@
   padding: 32px;
 }
 
-
-.stock-name, .stock-price{
+.stock-name,
+.stock-price {
   font-size: 30px;
   font-weight: bold;
 }
 
-.price-change-today{
+.price-change-today {
   font-size: 14px;
   display: flex;
   flex-direction: row;
   gap: 7px;
 }
 
-.price-change{
-  color: rgb(204, 153, 219)
+.price-change {
+  color: rgb(204, 153, 219);
 }
 
+.negative {
+  color: red;
+}
 
-.price-change-overnight{
+.positive {
+  color: green;
+}
+
+.price-change-overnight {
   font-weight: bold;
-}
-
-
-.stock-chart{
-  background-image: url('https://webstockreview.net/images/graph-clipart-stock-market-graph-6.png');
-  background-color: aliceblue;
-  width: 100%;
-  height: 400px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 .time-frame-container {
@@ -68,7 +62,6 @@
   position: relative;
 }
 
-
 .time-frame-container span:hover {
   color: rgb(204, 153, 219);
 }
@@ -78,7 +71,7 @@
 }
 
 .time-frame-container span.selected::after {
-  content: ''; /* Required for pseudo-elements */
+  content: ""; /* Required for pseudo-elements */
   position: absolute;
   bottom: -1px; /* Position it directly above the container's border */
   left: 0;
@@ -87,10 +80,7 @@
   background-color: rgb(204, 153, 219); /* Color of the selected line */
 }
 
-
-
-
-.stock-info-container{
+.stock-info-container {
   /* background-color: antiquewhite; */
   margin-top: 20px;
   height: auto;
@@ -98,8 +88,8 @@
   flex-direction: column;
 }
 
-
-.aboutTitle, .key-statistics{
+.aboutTitle,
+.key-statistics {
   font-size: 24px;
   font-weight: bold;
   padding-bottom: 20px;
@@ -107,18 +97,17 @@
   /* background-color: aqua; */
 }
 
-.companyDescription{
+.companyDescription {
   margin-top: 20px;
 }
 
-.showMoreLink{
+.showMoreLink {
   color: rgb(204, 153, 219);
   margin-top: 3px;
   font-weight: bold;
 }
 
-
-.company-info-container{
+.company-info-container {
   /* background-color: aqua; */
   height: 100px;
   display: flex;
@@ -128,28 +117,23 @@
   font-size: 14px;
 }
 
-.company-info-item{
+.company-info-item {
   /* background-color: blue; */
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
 
-
-.info-label{
+.info-label {
   font-weight: bold;
 }
 
-
-
-.key-statistics{
+.key-statistics {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
   border-bottom: solid 1px rgb(234, 234, 234);
-
 }
-
 
 .statistics-container {
   /* background-color: rgb(112, 112, 112); */
@@ -160,7 +144,6 @@
   margin-top: 20px;
   /* padding-bottom: 20px; */
   border-bottom: solid 1px rgb(234, 234, 234);
-
 }
 
 .statistics-column {
@@ -178,7 +161,6 @@
 
 .statistics-column span {
   font-size: 14px;
-
 }
 
 .statistics-column span:first-child {
@@ -190,12 +172,12 @@
   color: #000;
 }
 
-.stocks-news-container{
+.stocks-news-container {
   background-color: aqua;
   height: 300px;
 }
 
-.news-title{
+.news-title {
   padding-bottom: 20px;
   font-size: 24px;
   font-weight: bold;
@@ -203,13 +185,10 @@
   margin-top: 12px;
 }
 
-
-.stock-right{
+.stock-right {
   width: 25%;
   /* height: 100%; */
   background-color: rgb(81, 165, 135);
-
-
 }
 
 .news-container {
@@ -226,7 +205,6 @@
   display: flex;
   flex-direction: column; /* Makes the header span (first span) a column */
   gap: 10px; /* Adds some spacing between the elements */
-
 }
 
 .news-header {
@@ -234,45 +212,57 @@
   gap: 5px; /* Space between "Sherwood News" and "Jan 23" */
 }
 
-.news-header span:nth-child(2),.news-sub-text {
+.news-header span:nth-child(2),
+.news-sub-text {
   color: #717171;
 }
 
-.news-main-text, .news-sub-text {
+.news-main-text,
+.news-sub-text {
   display: block; /* These spans are now displayed in a row by default */
 }
 
 .news-image {
   height: 100%;
-
 }
 
-.news-image img{
+.news-image img {
   height: 130px;
   width: 200px;
   object-fit: cover;
   /* background-color: aquamarine; */
 }
 
-
-.news-main-text{
+.news-main-text {
   font-weight: bold;
 }
 
-.news-text{
+.news-text {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.stock-news-container a{
+.stock-news-container a {
   text-decoration: none;
 }
 
-.news-sub-text{
+.news-sub-text {
   width: 75%;
-  color:#464646;
+  color: #464646;
   font-size: 14px;
   /* background-color: red; */
+}
 
+.loading-overlay {
+  position: fixed; /* Fixed positioning to cover the entire screen */
+  top: 0;
+  left: 0;
+  right: 0; /* Ensure it stretches across the screen */
+  bottom: 0; /* Ensure it stretches across the screen */
+  display: flex; /* Use flexbox to center the spinner */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  z-index: 9999; /* Ensure it appears above other content */
+  padding-top: 280px; /* Adjust for the navbar height */
 }

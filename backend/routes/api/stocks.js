@@ -211,15 +211,37 @@ router.get("/:stockSymbol", async (req, res) => {
   };
 
   try {
+    const stockQuotesJSON = await fetch(
+      `https://api.marketdata.app/v1/stocks/quotes/${stockSymbol}/?token=${process.env.STOCK_API_KEY2}`
+    );
+
+    const stockQuotes = await stockQuotesJSON.json();
+
+    // const stockCandlesJSON = await fetch(
+    //   `https://api.marketdata.app/v1/stocks/candles/D/${stockSymbol}/?from=2020-01-01&to=2020-12-31&token=${process.env.STOCK_API_KEY2}`
+    // );
+
+    const stockCandlesJSON = await fetch(
+      `https://api.marketdata.app/v1/stocks/candles/5/AAPL/?from=2025-01-29&token=dmlRaXgtM0taZF9nUkJxMjZjaHVWTVFDVFBRSHc2ZlI1bWdPZWFEdVNfWT0`
+    );
+
+    const stockCandles = await stockCandlesJSON.json();
+
     const companyNews = await fetchStockNews();
 
     const companyProfile = await fetchCompanyInfo();
 
     const companyFinancials = await fetchCompanyFinancials();
 
-    res.json({ companyNews, companyProfile, companyFinancials });
+    res.json({
+      stockQuotes,
+      stockCandles,
+      companyNews,
+      companyProfile,
+      companyFinancials,
+    });
   } catch (error) {
-    res.status(500).json({ error: "Failed to fetch stock data" });
+    res.status(500).json({ error, message: "Failed to fetch stock data" });
   }
 });
 

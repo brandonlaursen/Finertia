@@ -5,6 +5,8 @@
   height: 50px;
   animation: spin 2s linear infinite;
   margin: auto;
+  color: black;
+  margin-top: 100px;
 }
 
 @keyframes spin {

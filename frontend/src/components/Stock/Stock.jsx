@@ -3,19 +3,24 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getStockData } from "../../../store/stocks";
+import StockChart from "./StockChart/";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 function Stock() {
   const dispatch = useDispatch();
   const { stockSymbol } = useParams();
-  console.log("stockSymbol:", stockSymbol);
 
   const [selected, setSelected] = useState("1D");
 
   const stock = useSelector((state) => state.stock.currentStock);
 
-  const { companyProfile, companyFinancials, companyNews } = stock;
-
-  console.log(companyProfile, companyFinancials, companyNews);
+  const {
+    stockQuotes,
+    stockCandles,
+    companyProfile,
+    companyFinancials,
+    companyNews,
+  } = stock;
 
   useEffect(() => {
     dispatch(getStockData(stockSymbol));
@@ -64,20 +69,46 @@ function Stock() {
     }
   }
 
+  if (
+    !(
+      stockQuotes &&
+      stockCandles &&
+      companyProfile &&
+      companyFinancials &&
+      companyNews
+    )
+  )
+    return (
+      <div className="loading-overlay">
+        <LoadingSpinner />
+      </div>
+    );
+
+  console.log(stock);
   return (
     <div className="stock-container">
-      {companyProfile && companyFinancials && companyNews && (
+      {stock && (
         <div className="stock-left">
           <span className="stock-name">{companyProfile?.ticker}</span>
-          <span className="stock-price">$10.90</span>
+          <span className="stock-price">${stockQuotes?.ask}</span>
           <span className="price-change-today">
-            <span className="price-change">+$0.05</span>
-            <span className="price-change">(+0.51%)</span>
+            <span
+              className={`price-change ${
+                stockQuotes.change < 0
+                  ? "negative"
+                  : stockQuotes.change > 0
+                  ? "positive"
+                  : ""
+              }`}
+            >
+              ${stockQuotes.change}
+            </span>
+            <span className="price-change">(-0.55%)</span>
             <span>Today</span>
           </span>
 
           <span className="price-change-overnight">24 Hour Market</span>
-          <div className="stock-chart"></div>
+          <StockChart stockCandles={stockCandles} />
           <div className="time-frame-container">
             {["1D", "1W", "1M", "3M", "YTD", "5Y", "MAX"].map((timeFrame) => (
               <span
@@ -188,7 +219,7 @@ function Stock() {
                 </div>
                 <div>
                   <span>Volume</span>
-                  <span>—</span>
+                  <span>{formatMarketCap(stockQuotes.volume)}</span>
                 </div>
               </div>
             </div>
