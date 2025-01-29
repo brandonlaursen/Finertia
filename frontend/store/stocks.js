@@ -45,7 +45,8 @@ export const getStockNewsCategory = (category) => async (dispatch) => {
   }
 };
 
-export const getStockData = (symbol) => async (dispatch) => {
+export const getStockData = (symbol, time) => async (dispatch) => {
+  console.log("thunk", time);
   const cachedNews = localStorage.getItem(symbol);
   const json = JSON.parse(cachedNews);
 
@@ -53,7 +54,7 @@ export const getStockData = (symbol) => async (dispatch) => {
     dispatch(getStock(json));
     return;
   }
-  const response = await csrfFetch(`/api/stocks/${symbol}`);
+  const response = await csrfFetch(`/api/stocks/${symbol}/${time}`);
 
   if (response.ok) {
     const data = await response.json();

@@ -31,14 +31,16 @@ function StockChart({ stockCandles }) {
     const date = new Date(timestamp);
 
     if (convertToEST) {
-      date.setUTCHours(date.getUTCHours() - 5); // Convert to EST (UTC-5)
+      date.setUTCHours(date.getUTCHours()); // Convert to EST (UTC-5)
     }
 
     return date.toLocaleTimeString("en-US", {
+      month: "short", // Short month name (e.g., Jan, Feb)
+      day: "2-digit",
       hour: "2-digit",
       minute: "2-digit",
       hour12: true,
-      timeZone: "UTC", // Keep as UTC (remove this line if converting manually)
+      // timeZone: "UTC", // Keep as UTC (remove this line if converting manually)
     });
   };
 
@@ -49,6 +51,7 @@ function StockChart({ stockCandles }) {
       zoom: {
         enabled: false,
       },
+      tickAmount: 10,
     },
     xaxis: {
       type: "datetime",

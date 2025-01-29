@@ -158,8 +158,15 @@ router.get("/news/:category", async (req, res) => {
 });
 
 // * Get a single stock
-router.get("/:stockSymbol", async (req, res) => {
-  const { stockSymbol } = req.params;
+router.get("/:stockSymbol/:time", async (req, res) => {
+  const { stockSymbol, time } = req.params;
+  let resolution = "5";
+
+  if (time.includes("&")) {
+    resolution = "h";
+  }
+  console.log(time);
+  console.log("resolution:", resolution);
 
   const api_key = finnhub.ApiClient.instance.authentications["api_key"];
   api_key.apiKey = process.env.STOCK_API_KEY;
@@ -222,7 +229,7 @@ router.get("/:stockSymbol", async (req, res) => {
     // );
 
     const stockCandlesJSON = await fetch(
-      `https://api.marketdata.app/v1/stocks/candles/5/AAPL/?from=2025-01-29&token=dmlRaXgtM0taZF9nUkJxMjZjaHVWTVFDVFBRSHc2ZlI1bWdPZWFEdVNfWT0`
+      `https://api.marketdata.app/v1/stocks/candles/${resolution}/${stockSymbol}/?from=${time}&token=dmlRaXgtM0taZF9nUkJxMjZjaHVWTVFDVFBRSHc2ZlI1bWdPZWFEdVNfWT0`
     );
 
     const stockCandles = await stockCandlesJSON.json();

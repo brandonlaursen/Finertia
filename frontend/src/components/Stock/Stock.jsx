@@ -10,7 +10,10 @@ function Stock() {
   const dispatch = useDispatch();
   const { stockSymbol } = useParams();
 
-  const [selected, setSelected] = useState("1D");
+  const [selectedTimeFrame, setSelectedTimeFrame] = useState("1D");
+  const [time, setTime] = useState(
+    convertUnixToDate(Math.floor(Date.now() / 1000))
+  );
 
   const stock = useSelector((state) => state.stock.currentStock);
 
@@ -23,11 +26,44 @@ function Stock() {
   } = stock;
 
   useEffect(() => {
-    dispatch(getStockData(stockSymbol));
-  }, [dispatch, stockSymbol]);
+    localStorage.removeItem(stockSymbol);
+    dispatch(getStockData(stockSymbol, time));
+  }, [dispatch, stockSymbol, time]);
+
+  function convertUnixToDate(unixTimestamp) {
+    const date = new Date(unixTimestamp * 1000); // Convert to milliseconds
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0"); // Add leading zero for months < 10
+    const day = String(date.getDate()).padStart(2, "0"); // Add leading zero for days < 10
+
+    return `${year}-${month}-${day}`;
+  }
+
+  function getFormattedTimeFromWeekAgo() {
+    const now = new Date();
+    const weekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+
+    const year = weekAgo.getFullYear();
+    const month = String(weekAgo.getMonth() + 1).padStart(2, "0"); // Add leading zero for months
+    const day = String(weekAgo.getDate()).padStart(2, "0"); // Add leading zero for days
+
+    return `${year}-${month}-${day}`;
+  }
 
   const handleClick = (value) => {
-    setSelected(value);
+    const timeToday = convertUnixToDate(Math.floor(Date.now() / 1000));
+    if (value === "1D") {
+      setTime(timeToday);
+    }
+    if (value === "1W") {
+      // from=2020-01-01&to=2020-12-31
+      const timeWeekAgo = getFormattedTimeFromWeekAgo(timeToday);
+      // console.log(timeWeekAgo);
+      // 2020-01-01&to=2020-12-31
+      setTime(`${timeWeekAgo}&to=${timeToday}`);
+    }
+
+    setSelectedTimeFrame(value);
   };
 
   function formatMarketCap(marketCap) {
@@ -114,7 +150,7 @@ function Stock() {
               <span
                 key={timeFrame}
                 onClick={() => handleClick(timeFrame)}
-                className={selected === timeFrame ? "selected" : ""}
+                className={selectedTimeFrame === timeFrame ? "selected" : ""}
               >
                 {timeFrame}
               </span>
