@@ -11,24 +11,27 @@ function Stock() {
   const { stockSymbol } = useParams();
 
   const [selectedTimeFrame, setSelectedTimeFrame] = useState("1D");
+  const [hoveredValue, setHoveredValue] = useState(null);
+
   const [time, setTime] = useState(
     convertUnixToDate(Math.floor(Date.now() / 1000))
   );
 
   const stock = useSelector((state) => state.stock.currentStock);
 
-  const {
-    stockQuotes,
-    stockCandles,
-    companyProfile,
-    companyFinancials,
-    companyNews,
-  } = stock;
+  console.log("stock:", stock);
+
+  const { stockProfile, stockTickers, historicalData, companyNews } = stock;
 
   useEffect(() => {
-    localStorage.removeItem(stockSymbol);
-    dispatch(getStockData(stockSymbol, time));
-  }, [dispatch, stockSymbol, time]);
+    dispatch(getStockData(stockSymbol));
+  }, [dispatch, stockSymbol]);
+
+  const handleClick = (value) => {
+    console.log("value:", value);
+
+    setSelectedTimeFrame(value);
+  };
 
   function convertUnixToDate(unixTimestamp) {
     const date = new Date(unixTimestamp * 1000); // Convert to milliseconds
@@ -49,22 +52,6 @@ function Stock() {
 
     return `${year}-${month}-${day}`;
   }
-
-  const handleClick = (value) => {
-    const timeToday = convertUnixToDate(Math.floor(Date.now() / 1000));
-    if (value === "1D") {
-      setTime(timeToday);
-    }
-    if (value === "1W") {
-      // from=2020-01-01&to=2020-12-31
-      const timeWeekAgo = getFormattedTimeFromWeekAgo(timeToday);
-      // console.log(timeWeekAgo);
-      // 2020-01-01&to=2020-12-31
-      setTime(`${timeWeekAgo}&to=${timeToday}`);
-    }
-
-    setSelectedTimeFrame(value);
-  };
 
   function formatMarketCap(marketCap) {
     if (marketCap >= 1e6) {
@@ -105,192 +92,200 @@ function Stock() {
     }
   }
 
-  if (
-    !(
-      stockQuotes &&
-      stockCandles &&
-      companyProfile &&
-      companyFinancials &&
-      companyNews
-    )
-  )
+  if (!(stockProfile && stockTickers && historicalData && companyNews)) {
     return (
       <div className="loading-overlay">
         <LoadingSpinner />
       </div>
     );
+  } else {
+    const {
+      longBusinessSummary,
+      companyOfficers,
+      fullTimeEmployees,
+      city,
+      state,
+      industry,
+    } = stockProfile.body;
 
-  console.log(stock);
-  return (
-    <div className="stock-container">
-      {stock && (
-        <div className="stock-left">
-          <span className="stock-name">{companyProfile?.ticker}</span>
-          <span className="stock-price">${stockQuotes?.ask}</span>
-          <span className="price-change-today">
-            <span
-              className={`price-change ${
-                stockQuotes.change < 0
-                  ? "negative"
-                  : stockQuotes.change > 0
-                  ? "positive"
-                  : ""
-              }`}
-            >
-              ${stockQuotes.change}
+    const {
+      symbol,
+      primaryData: { askPrice },
+      secondaryData: { netChange, percentageChange },
+    } = stockTickers.body;
+
+    const {
+      fiftyTwoWeekHigh,
+      fiftyTwoWeekLow,
+      regularMarketDayHigh,
+      regularMarketDayLow,
+      regularMarketVolume,
+    } = historicalData.meta;
+
+    const allTimeFramesData = Object.entries(historicalData.body).map(
+      ([timestamp, obj]) => ({
+        x: Number(timestamp),
+        y: obj.close,
+      })
+    );
+
+    return (
+      <div className="stock-container">
+        {stockProfile && stockTickers && historicalData && (
+          <div className="stock-left">
+            <span className="stock-name">{symbol}</span>
+            <span className="stock-price">
+              {hoveredValue !== null ? hoveredValue : askPrice}
             </span>
-            <span className="price-change">(-0.55%)</span>
-            <span>Today</span>
-          </span>
-
-          <span className="price-change-overnight">24 Hour Market</span>
-          <StockChart stockCandles={stockCandles} />
-          <div className="time-frame-container">
-            {["1D", "1W", "1M", "3M", "YTD", "5Y", "MAX"].map((timeFrame) => (
+            <span className="price-change-today">
               <span
-                key={timeFrame}
-                onClick={() => handleClick(timeFrame)}
-                className={selectedTimeFrame === timeFrame ? "selected" : ""}
+                className={`price-change ${
+                  netChange < 0 ? "negative" : netChange > 0 ? "positive" : ""
+                }`}
               >
-                {timeFrame}
+                ${netChange}
               </span>
-            ))}
-          </div>
-
-          {/* Stock Info */}
-          <div className="stock-info-container">
-            <span className="aboutTitle">About</span>
-            <span className="companyDescription">
-              Snap, Inc. operates as a technology company, which engages in the
-              provision of a visual messaging application that was created to
-              help people communicate through short videos and images. The
-              company was founded by Frank Reginald Brown IV, Evan Thomas
-              Spiegel, and Robert C
+              <span className="price-change">{percentageChange}</span>
+              <span>Today</span>
             </span>
-            <span className="showMoreLink">Show More</span>
 
-            {/* Company Info */}
-            <div className="company-info-container">
-              <div className="company-info-item">
-                <span className="info-label">Company Name</span>
-                <span className="info-value">{companyProfile.name}</span>
-              </div>
-              <div className="company-info-item">
-                <span className="info-label">Exchange</span>
-                <span className="info-value">{companyProfile.exchange}</span>
-              </div>
-              <div className="company-info-item">
-                <span className="info-label">Outstanding Shares</span>
-                <span className="info-value">
-                  {companyProfile.shareOutstanding}
+            <span className="price-change-overnight">24 Hour Market</span>
+            <StockChart
+              allTimeFramesData={allTimeFramesData}
+              selectedTimeFrame={selectedTimeFrame}
+              hoveredValue={hoveredValue}
+              setHoveredValue={setHoveredValue}
+            />
+            <div className="time-frame-container">
+              {["1D", "1W", "1M", "3M", "YTD", "5Y", "MAX"].map((timeFrame) => (
+                <span
+                  key={timeFrame}
+                  onClick={() => handleClick(timeFrame)}
+                  className={selectedTimeFrame === timeFrame ? "selected" : ""}
+                >
+                  {timeFrame}
                 </span>
-              </div>
-              <div className="company-info-item">
-                <span className="info-label">Industry</span>
-                <span className="info-value">
-                  {companyProfile.finnhubIndustry}
-                </span>
-              </div>
+              ))}
             </div>
 
-            {/* Company statistics */}
-            <span className="key-statistics">Key statistics</span>
-            <div className="statistics-container">
-              <div className="statistics-column">
-                <div>
-                  <span>Market cap</span>
-                  <span>
-                    {formatMarketCap(companyProfile.marketCapitalization)}
+            {/* Stock Info */}
+            <div className="stock-info-container">
+              <span className="aboutTitle">About</span>
+              <span className="companyDescription">{longBusinessSummary}</span>
+              <span className="showMoreLink">Show More</span>
+
+              {/* Company Info */}
+              <div className="company-info-container">
+                <div className="company-info-item">
+                  <span className="info-label">CEO</span>
+                  <span className="info-value">{companyOfficers[0].name}</span>
+                </div>
+                <div className="company-info-item">
+                  <span className="info-label">Employees</span>
+                  <span className="info-value">{fullTimeEmployees}</span>
+                </div>
+                <div className="company-info-item">
+                  <span className="info-label">Headquarters</span>
+                  <span className="info-value">
+                    {city},{state}
                   </span>
                 </div>
-                <div>
-                  <span>High today</span>
-                  <span>—</span>
-                </div>
-                <div>
-                  <span>52 Week high</span>
-                  <span>{companyFinancials.metric["52WeekHigh"]}</span>
+                <div className="company-info-item">
+                  <span className="info-label">Industry</span>
+                  <span className="info-value">{industry}</span>
                 </div>
               </div>
 
-              <div className="statistics-column">
-                <div>
-                  <span>Price-Earnings ratio</span>
-                  <span>{companyFinancials.metric["peTTM"].toFixed(2)}</span>
+              {/* Company statistics */}
+              <span className="key-statistics">Key statistics</span>
+              <div className="statistics-container">
+                <div className="statistics-column">
+                  <div>
+                    <span>Market cap</span>
+                    <span>-</span>
+                  </div>
+                  <div>
+                    <span>High today</span>
+                    <span>{regularMarketDayHigh}</span>
+                  </div>
+                  <div>
+                    <span>52 Week high</span>
+                    <span>{fiftyTwoWeekHigh}</span>
+                  </div>
                 </div>
-                <div>
-                  <span>Low today</span>
-                  <span>—</span>
-                </div>
-                <div>
-                  <span>52 Week low</span>
-                  <span>{companyFinancials.metric["52WeekLow"]}</span>
-                </div>
-              </div>
 
-              <div className="statistics-column">
-                <div>
-                  <span>Dividend yield</span>
-                  <span>
-                    {companyFinancials.metric[
-                      "dividendYieldIndicatedAnnual"
-                    ].toFixed(2)}
-                    %
-                  </span>
+                <div className="statistics-column">
+                  <div>
+                    <span>Price-Earnings ratio</span>
+                    <span>-</span>
+                  </div>
+                  <div>
+                    <span>Low today</span>
+                    <span>{regularMarketDayLow}</span>
+                  </div>
+                  <div>
+                    <span>52 Week low</span>
+                    <span>{fiftyTwoWeekLow}</span>
+                  </div>
                 </div>
-                <div>
-                  <span>Open price</span>
-                  <span>—</span>
-                </div>
-              </div>
 
-              <div className="statistics-column">
-                <div>
-                  <span>Average volume</span>
-                  <span>
-                    {formatToMillions(
-                      companyFinancials.metric["10DayAverageTradingVolume"]
-                    )}
-                  </span>
+                <div className="statistics-column">
+                  <div>
+                    <span>Dividend yield</span>
+                    <span>-</span>
+                  </div>
+                  <div>
+                    <span>Open price</span>
+                    <span>—</span>
+                  </div>
                 </div>
-                <div>
-                  <span>Volume</span>
-                  <span>{formatMarketCap(stockQuotes.volume)}</span>
+
+                <div className="statistics-column">
+                  <div>
+                    <span>Average volume</span>
+                    <span>-</span>
+                  </div>
+                  <div>
+                    <span>Volume</span>
+                    <span>{formatMarketCap(regularMarketVolume / 100)}</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <span className="news-title">News</span>
+            <span className="news-title">News</span>
 
-          {/* Company news */}
-          <div className="stock-news-container">
-            {companyNews &&
-              companyNews.slice(0, 5).map((news) => {
-                return (
-                  <a href={news.url} key={news.id}>
-                    <div className="news-container">
-                      <div className="news-text">
-                        <span className="news-header">
-                          <span>{news.source}</span>
-                          <span>{timeAgo(news.datetime)}</span>
-                        </span>
-                        <span className="news-main-text">{news.headline}</span>
-                        <span className="news-sub-text">{news.summary}</span>
+            {/* Company news */}
+            <div className="stock-news-container">
+              {companyNews &&
+                companyNews.slice(0, 5).map((news) => {
+                  return (
+                    <a href={news.url} key={news.id}>
+                      <div className="news-container">
+                        <div className="news-text">
+                          <span className="news-header">
+                            <span>{news.source}</span>
+                            <span>{timeAgo(news.datetime)}</span>
+                          </span>
+                          <span className="news-main-text">
+                            {news.headline}
+                          </span>
+                          <span className="news-sub-text">{news.summary}</span>
+                        </div>
+                        <div className="news-image">
+                          {news.image && <img src={news.image} />}
+                        </div>
                       </div>
-                      <div className="news-image">
-                        {news.image && <img src={news.image} />}
-                      </div>
-                    </div>
-                  </a>
-                );
-              })}
+                    </a>
+                  );
+                })}
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
-      <div className="stock-right"></div>
-    </div>
-  );
+        <div className="stock-right"></div>
+      </div>
+    );
+  }
 }
 
 export default Stock;
