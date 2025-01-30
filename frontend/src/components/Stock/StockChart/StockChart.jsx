@@ -64,6 +64,16 @@ function StockChart({ allTimeFramesData, selectedTimeFrame }) {
         enabled: false,
       },
       tickAmount: 10,
+      plotOptions: {
+        line: {
+          isSlopeChart: false,
+          colors: {
+            threshold: "239",
+            colorAboveThreshold: "#00E396",
+            colorBelowThreshold: "FF4560",
+          },
+        },
+      },
     },
     xaxis: {
       type: "datetime", // Set x-axis to handle datetime
@@ -94,7 +104,7 @@ function StockChart({ allTimeFramesData, selectedTimeFrame }) {
     colors: ["#00E396"],
     stroke: {
       width: 3,
-      curve: "monotoneCubic",
+      curve: "straight",
     },
     markers: {
       size: 0,
@@ -134,71 +144,25 @@ function StockChart({ allTimeFramesData, selectedTimeFrame }) {
       });
     }
 
-    function within1W(data) {
+    function withinTimeFrame(data, range) {
       const unixTimeToday = Math.floor(Date.now() / 1000);
-      const weekInUnix = 604800;
-      const weekAway = unixTimeToday - weekInUnix;
+      let timeOffset = 0;
 
-      return data.filter((obj) => {
-        console.log(obj.x);
-        if (obj.x >= weekAway && obj.x <= unixTimeToday) return obj;
-      });
-    }
+      if (range === "1D") timeOffset = 86400;
+      if (range === "1W") timeOffset = 604800;
+      if (range === "1M") timeOffset = 2592000;
+      if (range === "3M") timeOffset = 7884000;
+      if (range === "1Y") timeOffset = 31536000;
 
-    function within1M(data) {
-      const unixTimeToday = Math.floor(Date.now() / 1000);
-      console.log("unixTimeToday:", unixTimeToday);
-
-      const monthInUnix = 2592000; // 30 days in seconds
-      const monthAway = unixTimeToday - monthInUnix;
-      console.log("monthAway:", monthAway);
-
-      return data.filter((obj) => {
-        console.log(obj.x);
-        if (obj.x >= monthAway && obj.x <= unixTimeToday) return obj;
-      });
-    }
-
-    function within3M(data) {
-      const unixTimeToday = Math.floor(Date.now() / 1000);
-
-      const threeMonthsInUnix = 7884000; // 3 months (30.5 days each) in seconds
-      const threeMonthsAway = unixTimeToday - threeMonthsInUnix;
-
-      return data.filter((obj) => {
-        if (obj.x >= threeMonthsAway && obj.x <= unixTimeToday) return obj;
-      });
-    }
-
-    function within1Y(data) {
-      const unixTimeToday = Math.floor(Date.now() / 1000);
-
-      const yearInUnix = 31536000; // 365 days in seconds
-      const yearAway = unixTimeToday - yearInUnix;
-
-      return data.filter((obj) => {
-        if (obj.x >= yearAway && obj.x <= unixTimeToday) return obj;
-      });
+      return data.filter((obj) => obj.x >= unixTimeToday - timeOffset);
     }
 
     if (selectedTimeFrame === "1D") {
       setData(within1D(allTimeFramesData));
+      return;
     }
 
-    if (selectedTimeFrame === "1W") {
-      setData(within1W(allTimeFramesData));
-    }
-
-    if (selectedTimeFrame === "1M") {
-      setData(within1M(allTimeFramesData));
-    }
-
-    if (selectedTimeFrame === "3M") {
-      setData(within3M(allTimeFramesData));
-    }
-    if (selectedTimeFrame === "1Y") {
-      setData(within1Y(allTimeFramesData));
-    }
+    setData(withinTimeFrame(allTimeFramesData, selectedTimeFrame));
   }, [selectedTimeFrame, allTimeFramesData]);
 
   return (

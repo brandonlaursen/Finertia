@@ -142,7 +142,7 @@ function Stock() {
               setHoveredValue={setHoveredValue}
             />
             <div className="time-frame-container">
-              {["1D", "1W", "1M", "3M", "YTD", "5Y", "MAX"].map((timeFrame) => (
+              {["1D", "1W", "1M", "3M"].map((timeFrame) => (
                 <span
                   key={timeFrame}
                   onClick={() => handleClick(timeFrame)}
