@@ -44,7 +44,7 @@ function AccountDropdown({ sessionUser }) {
 
   return (
     <span tabIndex={0} ref={accountDropdownRef} onClick={toggleAccountDropdown}>
-      <span>Account</span>
+      <span id='account-dropdown-text'>Account</span>
       {isAccountOpen && (
         <div className="account-dropdown-container">
           <div className="account-dropdown-user">

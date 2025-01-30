@@ -13,6 +13,10 @@ import AccountDropdown from "./AccountDropdown/AccountDropdown";
 import { selectUser } from "../../../../store/session";
 
 function NavBar() {
+  // const location = useLocation();
+  // const routeClass =
+  //   location.pathname === "/stocks" ? "all-stocks-nav" : "home-page-navbar";
+
   const sessionUser = useSelector(selectUser);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -20,12 +24,12 @@ function NavBar() {
 
   return (
     <>
-      <nav className="home-page-navbar">
+      <nav className={"home-page-navbar"}>
         {/* <NavLink to="/"> */}
-          <NavLink  className="search-bar-logo-container">
-            {" "}
-            <FaSpaceShuttle id="shuttle-logo" />
-          </NavLink >
+        <NavLink className="search-bar-logo-container">
+          {" "}
+          <FaSpaceShuttle id="shuttle-logo" />
+        </NavLink>
         {/* </NavLink> */}
 
         <SearchBar />

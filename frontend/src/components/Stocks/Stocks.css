@@ -1,0 +1,38 @@
+.all-stocks-container {
+  height: 100vh;
+  margin-top: 85px;
+  background-color: blueviolet;
+  display: flex;
+  flex-direction: column;
+}
+
+.all-stocks-header {
+  background-color: rgb(255, 255, 255);
+  height: 260px;
+  width: 100%;
+  background-image: url("https://mir-s3-cdn-cf.behance.net/project_modules/fs/c6578b84636997.5d63b6ac9ea2c.jpg");
+  background-size: cover;
+  background-position: center 10%;
+}
+
+.all-stocks-body-container {
+  background-color: rgb(178, 72, 72);
+  padding: 0 150px;
+  width:100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* width: 960px;*/
+  margin: 0 auto;
+}
+
+.all-stocks-body-left {
+  background-color: rgb(85, 24, 200);
+  width: 70%;
+}
+
+.all-stocks-body-right {
+  background-color: rgb(88, 185, 151);
+  width: 30%;
+}

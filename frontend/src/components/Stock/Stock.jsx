@@ -11,15 +11,8 @@ function Stock() {
   const { stockSymbol } = useParams();
 
   const [selectedTimeFrame, setSelectedTimeFrame] = useState("1D");
-  const [hoveredValue, setHoveredValue] = useState(null);
-
-  const [time, setTime] = useState(
-    convertUnixToDate(Math.floor(Date.now() / 1000))
-  );
 
   const stock = useSelector((state) => state.stock.currentStock);
-
-  console.log("stock:", stock);
 
   const { stockProfile, stockTickers, historicalData, companyNews } = stock;
 
@@ -32,15 +25,6 @@ function Stock() {
 
     setSelectedTimeFrame(value);
   };
-
-  function convertUnixToDate(unixTimestamp) {
-    const date = new Date(unixTimestamp * 1000); // Convert to milliseconds
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0"); // Add leading zero for months < 10
-    const day = String(date.getDate()).padStart(2, "0"); // Add leading zero for days < 10
-
-    return `${year}-${month}-${day}`;
-  }
 
   function formatMarketCap(marketCap) {
     if (marketCap >= 1e6) {
@@ -118,9 +102,7 @@ function Stock() {
         {stockProfile && stockTickers && historicalData && (
           <div className="stock-left">
             <span className="stock-name">{symbol}</span>
-            <span className="stock-price">
-              {hoveredValue !== null ? hoveredValue : askPrice}
-            </span>
+            <span className="stock-price">{askPrice}</span>
             <span className="price-change-today">
               {/* <span
                 className={`price-change ${
@@ -138,8 +120,6 @@ function Stock() {
             <StockChart
               allTimeFramesData={allTimeFramesData}
               selectedTimeFrame={selectedTimeFrame}
-              hoveredValue={hoveredValue}
-              setHoveredValue={setHoveredValue}
             />
             <div className="time-frame-container">
               {["1D", "1W", "1M", "3M"].map((timeFrame) => (

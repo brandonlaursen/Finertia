@@ -3,9 +3,7 @@ import ReactApexChart from "react-apexcharts";
 import "./StockChart.css";
 
 function StockChart({ allTimeFramesData, selectedTimeFrame }) {
-  console.log("allTimeFramesData:", allTimeFramesData);
   const [data, setData] = useState([]);
-  console.log("data:", data);
 
   const series = [
     {
@@ -56,7 +54,7 @@ function StockChart({ allTimeFramesData, selectedTimeFrame }) {
     return estDate;
   }
 
-  const [options, setOptions] = useState({
+  const [options] = useState({
     chart: {
       type: "line",
       height: 350,

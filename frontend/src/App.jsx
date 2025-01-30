@@ -10,6 +10,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import SignUpPage from "./components/SignUpPage";
 import Stock from "./components/Stock/Stock";
 import NavBar from "./components/HomePage/HomePageNavBar";
+import Stocks from "./components/Stocks";
 
 // store
 import { restoreUser } from "../store/session";
@@ -47,6 +48,11 @@ const router = createBrowserRouter([
             element: <HomePage />,
           },
           {
+            index: true,
+            path: "stocks",
+            element: <Stocks />,
+          },
+          {
             path: "stocks/:stockSymbol",
             element: <Stock />,
           },
@@ -63,7 +69,6 @@ const router = createBrowserRouter([
     ],
   },
 ]);
-
 
 function App() {
   return <RouterProvider router={router} />;

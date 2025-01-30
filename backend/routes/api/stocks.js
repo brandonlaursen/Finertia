@@ -233,7 +233,7 @@ router.get("/:stockSymbol", async (req, res) => {
 // * Get all stocks
 router.get("/", async (req, res) => {
   // const stocks = await Stock.findAll();
-
+  console.log("entering sever");
   const url =
     "https://yahoo-finance15.p.rapidapi.com/api/v1/markets/stock/quotes?ticker=AAPL%2CMSFT%2C%5ESPX%2C%5ENYA%2CGAZP.ME%2CSIBN.ME%2CGEECEE.NS";
 
@@ -246,6 +246,7 @@ router.get("/", async (req, res) => {
       },
     });
     const result = await response.json();
+    console.log("result:", result);
 
     return res.json({
       result,

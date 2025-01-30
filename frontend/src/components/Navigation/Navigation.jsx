@@ -8,6 +8,8 @@ import ProfileButton from "./ProfileButton";
 import { selectUser } from "../../../store/session";
 
 function Navigation({ isLoaded }) {
+
+
   const sessionUser = useSelector(selectUser);
 
   const sessionLinks = sessionUser ? (

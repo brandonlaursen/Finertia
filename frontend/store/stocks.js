@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const GET_NEWS = "stocks/getNews";
 const GET_STOCK = "stocks/getStock";
+const GET_STOCKS = "stocks/getAllStocks";
 
 export const getNews = (data) => {
   return {
@@ -15,6 +16,33 @@ const getStock = (data) => {
     type: GET_STOCK,
     payload: data,
   };
+};
+
+const getAllStocks = (data) => {
+  return {
+    type: GET_STOCKS,
+    payload: data,
+  };
+};
+
+export const getAllStocksData = () => async (dispatch) => {
+  const cachedNews = localStorage.getItem("allStocks");
+  const json = JSON.parse(cachedNews);
+
+  if (json) {
+    dispatch(getAllStocks(json));
+    return;
+  }
+
+  const response = await csrfFetch("/api/stocks");
+  console.log("response -thunk :", response);
+
+  if (response.ok) {
+    const data = await response.json();
+    localStorage.setItem("allStocks", JSON.stringify(data));
+
+    dispatch(getAllStocks(data));
+  }
 };
 
 export const getStockNews = () => async (dispatch) => {
@@ -53,7 +81,7 @@ export const getStockData = (symbol) => async (dispatch) => {
     dispatch(getStock(json));
     return;
   }
-  const response = await csrfFetch(`/api/stocks/${symbol}`);
+  const response = await csrfFetch(`/api/stocks`);
 
   if (response.ok) {
     const data = await response.json();
@@ -72,6 +100,9 @@ const stockReducer = (
     }
     case GET_STOCK: {
       return { ...state, currentStock: action.payload };
+    }
+    case GET_STOCKS: {
+      return { ...state, allStocks: action.payload };
     }
     default:
       return state;
