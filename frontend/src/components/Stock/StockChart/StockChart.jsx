@@ -2,13 +2,10 @@ import { useState, useEffect } from "react";
 import ReactApexChart from "react-apexcharts";
 import "./StockChart.css";
 
-function StockChart({
-  allTimeFramesData,
-  selectedTimeFrame,
-  hoveredValue,
-  setHoveredValue,
-}) {
+function StockChart({ allTimeFramesData, selectedTimeFrame }) {
+  console.log("allTimeFramesData:", allTimeFramesData);
   const [data, setData] = useState([]);
+  console.log("data:", data);
 
   const series = [
     {
@@ -59,45 +56,61 @@ function StockChart({
     return estDate;
   }
 
-  const options = {
+  const [options, setOptions] = useState({
     chart: {
       type: "line",
       height: 350,
-      zoom: { enabled: false },
-      events: {
-        dataPointMouseEnter: (
-          event,
-          chartContext,
-          { dataPointIndex, seriesIndex }
-        ) => {
-          if (
-            chartContext &&
-            chartContext.w &&
-            chartContext.w.config.series[seriesIndex]
-          ) {
-            const hoveredData =
-              chartContext.w.config.series[seriesIndex].data[dataPointIndex];
-            setHoveredValue(hoveredData.y); // Update hovered value
-          }
-        },
-        dataPointMouseLeave: () => {
-          setHoveredValue(null); // Reset value when not hovering
-        },
+      zoom: {
+        enabled: false,
       },
+      tickAmount: 10,
     },
     xaxis: {
-      type: "datetime",
+      type: "datetime", // Set x-axis to handle datetime
+      datetimeDiscrete: true,
       labels: { show: false },
       tickAmount: "dataPoints",
-      categories: data.map((d) => d.x),
+      axisBorder: { show: false },
+      axisTicks: { show: false },
+      crosshairs: {
+        show: true,
+        position: "back",
+        stroke: {
+          color: "#b6b6b6",
+          width: 1,
+          dashArray: 0,
+        },
+      },
+      tooltip: {
+        enabled: false,
+      },
     },
     yaxis: {
+      datetimeDiscrete: true,
       labels: { show: false },
+      axisBorder: { show: false },
+      axisTicks: { show: false },
     },
     colors: ["#00E396"],
-    stroke: { width: 3, curve: "straight" },
-    tooltip: { enabled: false },
-  };
+    stroke: {
+      width: 3,
+      curve: "monotoneCubic",
+    },
+    markers: {
+      size: 0,
+    },
+    grid: {
+      show: false,
+    },
+    tooltip: {
+      x: {
+        formatter: (timestamp) => convertTime(timestamp, "1D", "EST", true), // Format timestamp for tooltip
+      },
+      marker: {
+        show: false,
+      },
+    },
+  });
 
   useEffect(() => {
     function within1D(data) {
@@ -108,22 +121,23 @@ function StockChart({
         true
       );
 
-      const date = timeToday.split(" ")[1];
+      const targetMonth = timeToday.split(" ")[0];
+      const targetDay = timeToday.split(" ")[1];
+      const targetDate = targetMonth + targetDay;
 
       return data.filter((obj) => {
         const convertedTime = convertTime(obj.x, "1D", "EST", true);
-        const currDate = convertedTime.split(" ")[1];
-        if (currDate === date) return obj;
+        const currentMonth = convertedTime.split(" ")[0];
+        const currentDay = convertedTime.split(" ")[1];
+        const currentDate = currentMonth + currentDay;
+        if (currentDate === targetDate) return obj;
       });
     }
 
     function within1W(data) {
       const unixTimeToday = Math.floor(Date.now() / 1000);
-      console.log("unixTimeToday:", unixTimeToday);
-
       const weekInUnix = 604800;
       const weekAway = unixTimeToday - weekInUnix;
-      console.log("weekAway:", weekAway);
 
       return data.filter((obj) => {
         console.log(obj.x);
@@ -145,18 +159,6 @@ function StockChart({
       });
     }
 
-    function within1Y(data) {
-      const unixTimeToday = Math.floor(Date.now() / 1000);
-
-      const yearInUnix = 31536000; // 365 days in seconds
-      const yearAway = unixTimeToday - yearInUnix;
-
-      return data.filter((obj) => {
-        console.log(obj.x);
-        if (obj.x >= yearAway && obj.x <= unixTimeToday) return obj;
-      });
-    }
-
     function within3M(data) {
       const unixTimeToday = Math.floor(Date.now() / 1000);
 
@@ -164,8 +166,18 @@ function StockChart({
       const threeMonthsAway = unixTimeToday - threeMonthsInUnix;
 
       return data.filter((obj) => {
-        console.log(obj.x);
         if (obj.x >= threeMonthsAway && obj.x <= unixTimeToday) return obj;
+      });
+    }
+
+    function within1Y(data) {
+      const unixTimeToday = Math.floor(Date.now() / 1000);
+
+      const yearInUnix = 31536000; // 365 days in seconds
+      const yearAway = unixTimeToday - yearInUnix;
+
+      return data.filter((obj) => {
+        if (obj.x >= yearAway && obj.x <= unixTimeToday) return obj;
       });
     }
 
@@ -189,7 +201,6 @@ function StockChart({
     }
   }, [selectedTimeFrame, allTimeFramesData]);
 
-  console.log(hoveredValue);
   return (
     <div>
       <ReactApexChart
@@ -198,10 +209,6 @@ function StockChart({
         type="line"
         height={options.chart.height}
       />
-      <div className="hovered-value">
-        Hovered Price:{" "}
-        {hoveredValue !== null ? hoveredValue : "Hover over a point"}
-      </div>
     </div>
   );
 }

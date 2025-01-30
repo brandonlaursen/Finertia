@@ -42,17 +42,6 @@ function Stock() {
     return `${year}-${month}-${day}`;
   }
 
-  function getFormattedTimeFromWeekAgo() {
-    const now = new Date();
-    const weekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-
-    const year = weekAgo.getFullYear();
-    const month = String(weekAgo.getMonth() + 1).padStart(2, "0"); // Add leading zero for months
-    const day = String(weekAgo.getDate()).padStart(2, "0"); // Add leading zero for days
-
-    return `${year}-${month}-${day}`;
-  }
-
   function formatMarketCap(marketCap) {
     if (marketCap >= 1e6) {
       // If the value is 1 trillion or more, use "T"
@@ -67,10 +56,6 @@ function Stock() {
       // For smaller values, return the original number
       return marketCap.toString();
     }
-  }
-
-  function formatToMillions(value) {
-    return value.toFixed(2) + "M";
   }
 
   function timeAgo(timestamp) {
@@ -111,7 +96,6 @@ function Stock() {
     const {
       symbol,
       primaryData: { askPrice },
-      secondaryData: { netChange, percentageChange },
     } = stockTickers.body;
 
     const {
@@ -138,14 +122,15 @@ function Stock() {
               {hoveredValue !== null ? hoveredValue : askPrice}
             </span>
             <span className="price-change-today">
-              <span
+              {/* <span
                 className={`price-change ${
                   netChange < 0 ? "negative" : netChange > 0 ? "positive" : ""
                 }`}
               >
                 ${netChange}
-              </span>
-              <span className="price-change">{percentageChange}</span>
+              </span> */}
+              <span className={`price-change`}>-</span>
+              <span className="price-change">{"-"}</span>
               <span>Today</span>
             </span>
 

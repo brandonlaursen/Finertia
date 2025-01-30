@@ -193,7 +193,14 @@ router.get("/:stockSymbol", async (req, res) => {
       `https://yahoo-finance15.p.rapidapi.com/api/v1/markets/stock/history?symbol=${stockSymbol}&interval=5m&diffandsplits=false`,
       options
     );
+
     const historicalData = await historicalDataJSON.json();
+
+    // const historicalDataJSON2 = await fetch(
+    //   `https://yahoo-finance15.p.rapidapi.com/api/v1/markets/stock/history?symbol=${stockSymbol}&interval=1wk&diffandsplits=false`,
+    //   options
+    // );
+    // const historicalData2 = await historicalDataJSON2.json();
 
     const stockProfileJSON = await fetch(
       `https://yahoo-finance15.p.rapidapi.com/api/v1/markets/stock/modules?ticker=${stockSymbol}&module=asset-profile`,
@@ -214,6 +221,7 @@ router.get("/:stockSymbol", async (req, res) => {
       stockTickers,
       stockProfile,
       historicalData,
+      // historicalData2,
       companyNews,
       message: "successfully retrieved stock info",
     });
