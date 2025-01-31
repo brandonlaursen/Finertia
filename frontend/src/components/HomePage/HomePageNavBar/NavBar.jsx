@@ -1,9 +1,9 @@
 import "./NavBar.css";
 import { FaSpaceShuttle } from "react-icons/fa";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Outlet, Navigate, NavLink } from "react-router-dom";
 
 import SearchBar from "./SearchBar/SearchBar";
@@ -13,20 +13,38 @@ import AccountDropdown from "./AccountDropdown/AccountDropdown";
 import { selectUser } from "../../../../store/session";
 
 function NavBar() {
-  // const location = useLocation();
-  // const routeClass =
-  //   location.pathname === "/stocks" ? "all-stocks-nav" : "home-page-navbar";
+  const location = useLocation();
+  const routeClass =
+    location.pathname === "/stocks" ? "stocks-nav" : "home-page-navbar";
 
   const sessionUser = useSelector(selectUser);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const [scrolled, setScrolled] = useState(false);
+  console.log("scrolled:", scrolled);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const header = document.querySelector(".stocks__header");
+      if (header) {
+        const offset = header.getBoundingClientRect().top;
+        setScrolled(offset <= 80); // Change when header is near top
+      }
+    };
+
+
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    
+  }, [routeClass]);
 
   if (!sessionUser) return <Navigate to="/welcome" replace={true} />;
 
   return (
     <>
-      <nav className={"home-page-navbar"}>
+      <nav className={`${routeClass} ${scrolled ? "scrolled" : ""}`}>
         {/* <NavLink to="/"> */}
-        <NavLink className="search-bar-logo-container">
+        <NavLink className={`search-bar-logo-container`}>
           {" "}
           <FaSpaceShuttle id="shuttle-logo" />
         </NavLink>

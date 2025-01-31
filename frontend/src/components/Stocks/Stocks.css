@@ -1,38 +1,308 @@
-.all-stocks-container {
-  height: 100vh;
-  margin-top: 85px;
-  background-color: blueviolet;
+.stocks {
   display: flex;
   flex-direction: column;
-}
+  margin-top: 85px;
 
-.all-stocks-header {
-  background-color: rgb(255, 255, 255);
-  height: 260px;
+  height: 100vh;
+  min-height: 123vh;
+}
+.stocks-nav {
+  padding-top: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  background-color: rgb(36, 240, 172);
+  height: 80px;
   width: 100%;
-  background-image: url("https://mir-s3-cdn-cf.behance.net/project_modules/fs/c6578b84636997.5d63b6ac9ea2c.jpg");
-  background-size: cover;
-  background-position: center 10%;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+}
+.scrolled {
+  background-color: rgb(255, 255, 255);
 }
 
-.all-stocks-body-container {
-  background-color: rgb(178, 72, 72);
-  padding: 0 150px;
-  width:100%;
+.stocks__header {
+  background-color: rgb(36, 240, 172);
+  background-image: url("https://png.pngtree.com/png-vector/20230728/ourmid/pngtree-boost-clipart-cartoon-rocket-ship-traveling-into-the-space-vector-png-image_6796486.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 40%;
+
+  height: 30%;
+  max-height: 225px;
+  width: 100%;
+}
+
+.stocks__body {
+  /* padding: 0 80px; */
   flex-grow: 1;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  /* width: 960px;*/
-  margin: 0 auto;
+  height: 100vh;
+  gap: 20px;
 }
 
-.all-stocks-body-left {
-  background-color: rgb(85, 24, 200);
-  width: 70%;
+.stocks__body-left {
+  display: flex;
+  flex-direction: column;
+  width: 655px;
+  margin-bottom: 30px;
 }
 
-.all-stocks-body-right {
-  background-color: rgb(88, 185, 151);
-  width: 30%;
+
+/* max-height: 100px; */
+/* height: 1500px; */
+/* overflow-y: auto; */
+/* position: sticky; */
+/* top: 85px;  */
+
+.stocks__section {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.stocks__section-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100px;
+  width: 60%;
+  gap: 5px;
+  margin-left: 0px;
+}
+
+.stocks__title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.stocks__subtitle {
+  font-size: 14px;
+  color: #3e3e3e;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.green-checkmark {
+  color: rgb(118, 215, 183);
+  height: 10px;
+  width: 10px;
+}
+
+.stocks__actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  background-color: rgb(255, 255, 255);
+  align-items: center;
+  width: 40%;
+  gap: 15px;
+}
+
+.stocks__btn--settings {
+  height: 25px;
+  width: 25px;
+}
+
+.stocks__btn--follow {
+  align-self: center;
+  text-decoration: none;
+
+  align-items: center;
+
+  border-radius: 36px;
+  box-sizing: border-box;
+  height: 35px;
+  width: 96px;
+  margin-right: 50px;
+
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  background-color: #ffffff;
+  border: 1px solid rgb(118, 215, 183);
+  color: rgb(118, 215, 183);
+  cursor: pointer;
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+.stocks__btn--follow:hover {
+  background-color: rgb(63, 242, 186);
+}
+
+.stocks__description {
+  height: 50px;
+}
+
+.stocks__table-container {
+
+  display: block;
+  height: 100%;
+  scrollbar-width: none;
+  overflow-y: auto;
+  margin-top: 10px;
+  /* width: 90%; */
+}
+
+.stocks__table {
+  max-height: 500px;
+  height: auto;
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+}
+
+.stocks__table thead {
+  text-align: left;
+
+  height: 40px;
+  font-size: 14px;
+  color: rgb(130, 130, 130);
+}
+
+.stocks__table th,
+.stocks__table td {
+  border-bottom: 1px solid #ddd;
+
+}
+
+
+.stocks__table th:nth-of-type(1),
+.stocks__table td:nth-of-type(1) {
+  text-align: left;
+  width: 140px
+}
+
+.stocks__table tbody tr {
+  background-color: rgb(255, 255, 255);
+  height: 50px;
+  font-size: 14px;
+}
+
+.stocks__table tbody tr {
+  background-color: rgb(255, 255, 255);
+  height: 50px;
+  font-size: 14px;
+}
+
+.stocks__table tbody tr td:first-child {
+  font-weight: bold;
+}
+
+.stocks__btn--add {
+  background: none;
+  border: none;
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+}
+
+.stocks__btn--add:hover {
+  color: rgb(63, 242, 186);
+}
+
+
+.stocks__disclaimer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 180px;
+  font-size: 14px;
+  color: rgb(130, 130, 130);;
+}
+
+
+.stocks__body-right {
+  /* background-color: rgb(0, 145, 94);
+  width: 270px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column; */
+  margin-top: 30px;
+
+
+}
+
+
+.stocks__lists {
+  /* background-color: rgb(220, 255, 95); */
+  height: 86vh;
+  position: sticky;
+  top: 85px;
+  width: 270px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+
+.stocks__lists-header{
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+}
+
+
+.stocks__list-items{
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+  justify-content: center;
+  gap: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+
+.stocks__list-item{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  height: 40px;
+  text-decoration: none;
+}
+
+
+.stocks__list-content{
+background-color: rgb(255, 255, 255);
+display: flex;
+flex-direction: row;
+gap: 10px;
+}
+
+
+.stocks__list-icon{
+background-color: rgb(234, 243, 248);
+height: 35px;
+width: 27px;
+display: inline-flex;
+justify-content: center;
+align-items: center;
+font-size: 13px;
+}
+
+.stocks__list-name{
+background-color: rgb(255, 255, 255);
+display: inline-flex;
+justify-content: center;
+align-items: center;
+color: black;
+font-size: 13px;
 }
