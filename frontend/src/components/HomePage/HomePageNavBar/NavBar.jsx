@@ -32,10 +32,8 @@ function NavBar() {
       }
     };
 
-
-      window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll);
-    
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [routeClass]);
 
   if (!sessionUser) return <Navigate to="/welcome" replace={true} />;
@@ -64,7 +62,7 @@ function NavBar() {
           <AccountDropdown sessionUser={sessionUser} />
         </div>
       </nav>
-      <Outlet />
+      <Outlet context={{ scrolled }} />
     </>
   );
 }
