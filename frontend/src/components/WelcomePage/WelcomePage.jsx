@@ -13,7 +13,7 @@ function WelcomePage() {
   const sessionUser = useSelector(selectUser);
 
   return (
-    <div className="WelcomePage__body">
+    <div className="WelcomePage">
       <WelcomePageNavbar />
 
       <div className="WelcomePage__section-one">

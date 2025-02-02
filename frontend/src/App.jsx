@@ -6,7 +6,7 @@ import { restoreUser } from "../store/session";
 
 import WelcomePage from "./components/WelcomePage";
 import HomePage from "./components/HomePage";
-import LoginFormPage from "./components/LoginFormPage";
+import LoginPage from "./components/LoginPage";
 import SignUpPage from "./components/SignUpPage";
 import Stock from "./components/Stock/Stock";
 import NavBar from "./components/HomePage/HomePageNavBar";
@@ -57,7 +57,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/login",
-        element: <LoginFormPage />,
+        element: <LoginPage />,
       },
       {
         path: "/signup",

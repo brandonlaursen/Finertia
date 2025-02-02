@@ -1,0 +1,180 @@
+.LoginPage {
+  display: flex;
+  flex-direction: row;
+
+  height: 100vh;
+
+  background-color: rgb(0, 0, 0);
+}
+
+/* Aside */
+.LoginPage__aside {
+  align-items: stretch;
+
+  width: 50%;
+
+  background-color: black;
+  background-image: url("https://static.vecteezy.com/system/resources/previews/017/125/591/original/outer-space-background-with-planets-and-stars-free-vector.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  transition: width 1s ease;
+}
+
+/* Log in Form */
+.LoginPage__form-container {
+  padding-top: 80px;
+
+  height: 100%;
+  width: 50%;
+  max-width: 800px;
+
+  background-color: rgb(0, 0, 0);
+  color: white;
+
+  overflow: hidden;
+}
+
+.LoginPage__form {
+  display: flex;
+  flex-direction: column;
+  padding: 2vh;
+  padding-left: 40px;
+  gap: 15px;
+
+  font-size: 15px;
+
+  overflow: hidden;
+}
+
+.LoginPage__form p {
+  font-size: 20px;
+}
+
+.LoginPage__form input,
+.LoginPage__form__password input {
+  min-height: 36px;
+  width: calc(95% - 10px);
+  padding-left: 10px;
+
+  background-color: #000000;
+
+  border: 1px solid rgb(48, 54, 58);
+  border-radius: 5px;
+
+  color: white;
+}
+
+.LoginPage__form__password {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+}
+
+.LoginPage__form__password-icon {
+  position: relative;
+  right: 30px;
+
+  font-size: 20px;
+
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+
+  cursor: pointer;
+}
+
+/* Log in Form Errors*/
+.LoginPage__form__errors {
+  display: inline-flex;
+  align-items: center;
+  padding-left: 10px;
+
+  min-height: 50px;
+  width: calc(95% - 6px);
+
+  font-size: 17px !important;
+
+  background-color: rgb(30, 33, 37);
+
+  border-width: 1px;
+  border-radius: 5px;
+}
+
+.LoginPage__form__errors__icon {
+  min-height: 20px;
+  width: 20px;
+  margin-right: 10px;
+}
+
+/* Log in Form Buttons */
+.LoginPage__form__buttons {
+  display: flex;
+  gap: 15px;
+
+  width: 96%;
+}
+
+.LoginPage__form__buttons button {
+  position: relative;
+  margin-top: 20px;
+  gap: 10px;
+  padding: 0 32px;
+
+  height: 44px;
+  width: 50%;
+
+  font-weight: bold;
+
+  background-color: #ffffff;
+  color: #1c180d;
+
+  border: 1px solid #ffffff;
+  border-radius: 36px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.LoginPage__form__buttons a {
+  display: contents;
+}
+
+#LoginPage__form__buttons__create__account {
+  background-color: black;
+  color: white;
+}
+
+#LoginPage__form__buttons__create__account:hover {
+  background-color: rgb(47, 47, 47);
+}
+
+/* Media Queries */
+@media screen and (max-width: 770px) {
+  .LoginPage__aside {
+    display: none;
+  }
+  .LoginPage__form-container {
+    height: 100%;
+    width: 100%;
+
+  }
+
+  .LoginPage__form__buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .LoginPage__form__buttons button {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    
+    width: 100%;
+  }
+}
