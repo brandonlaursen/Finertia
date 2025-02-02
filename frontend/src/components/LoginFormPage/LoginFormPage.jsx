@@ -18,7 +18,7 @@ function LoginFormPage() {
   const [showPassword, setShowPassword] = useState(false);
 
   const handlePasswordToggle = () => {
-    console.log(showPassword);
+
     setShowPassword(!showPassword);
   };
 
@@ -27,8 +27,7 @@ function LoginFormPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors({});
-    console.log(credential, password);
-
+   
     try {
       const res = await dispatch(login({ credential, password }));
       return res;

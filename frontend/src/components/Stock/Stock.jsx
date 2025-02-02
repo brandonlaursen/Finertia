@@ -2,7 +2,7 @@ import "./Stock.css";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getStockData } from "../../../store/stocks";
+import { fetchStockDetails } from "../../../store/stocks";
 import StockChart from "./StockChart/";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
@@ -17,12 +17,10 @@ function Stock() {
   const { stockProfile, stockTickers, historicalData, companyNews } = stock;
 
   useEffect(() => {
-    dispatch(getStockData(stockSymbol));
+    dispatch(fetchStockDetails(stockSymbol));
   }, [dispatch, stockSymbol]);
 
   const handleClick = (value) => {
-    console.log("value:", value);
-
     setSelectedTimeFrame(value);
   };
 

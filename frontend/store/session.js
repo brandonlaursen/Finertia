@@ -56,7 +56,7 @@ export const signup = (user) => async (dispatch) => {
 };
 
 export const logout = () => async (dispatch) => {
-  console.log('log out thunk')
+
   const response = await csrfFetch("/api/session/logout");
   dispatch(removeUser());
   return response;

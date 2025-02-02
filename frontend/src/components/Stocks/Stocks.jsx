@@ -6,18 +6,19 @@ import { RiListSettingsLine } from "react-icons/ri";
 import { FaPlus } from "react-icons/fa6";
 
 import { useEffect } from "react";
-import { getAllStocksData } from "../../../store/stocks";
+import { fetchAllStocks } from "../../../store/stocks";
 
 function Stocks() {
   const { scrolled } = useOutletContext();
 
   const dispatch = useDispatch();
   const stocks = useSelector((state) => state.stock.allStocks);
-  console.log("stocks:", stocks);
-  console.log(scrolled);
+
   useEffect(() => {
-    dispatch(getAllStocksData());
+    dispatch(fetchAllStocks());
   }, [dispatch]);
+
+  // if(stocks)
 
   return (
     <div className="stocks">
@@ -46,8 +47,7 @@ function Stocks() {
               </button>
             </div>
           </div>
-          {/* stocks__description scrolled */}
-          {console.log(scrolled)}
+
           <div
             className={`stocks__description ${
               scrolled ? "stock__hide--description" : ""
@@ -70,9 +70,8 @@ function Stocks() {
                 </tr>
               </thead>
               <tbody className="stocks__table-body">
-                {stocks.result.body &&
-                  stocks.result.body.map((stock) => {
-                    console.log(stock);
+                {stocks &&
+                  stocks?.result?.body.map((stock) => {
                     return (
                       <tr key={stock.symbol} className="stock-row">
                         <td>{stock.displayName}</td>
@@ -86,9 +85,8 @@ function Stocks() {
                       </tr>
                     );
                   })}
-                {stocks.result.body &&
-                  stocks.result.body.map((stock) => {
-                    console.log(stock);
+                {stocks?.result?.body &&
+                  stocks?.result?.body.map((stock) => {
                     return (
                       <tr key={stock.symbol} className="stock-row">
                         <td>{stock.displayName}</td>
@@ -102,9 +100,8 @@ function Stocks() {
                       </tr>
                     );
                   })}
-                {stocks.result.body &&
-                  stocks.result.body.map((stock) => {
-                    console.log(stock);
+                {stocks?.result?.body &&
+                  stocks?.result?.body.map((stock) => {
                     return (
                       <tr key={stock.symbol} className="stock-row">
                         <td>{stock.displayName}</td>

@@ -43,12 +43,12 @@ function SignupFormPage() {
   if (sessionUser) return <Navigate to="/" replace={true} />;
 
   const handlePasswordToggle = () => {
-    console.log(showPassword);
+
     setShowPassword(!showPassword);
   };
 
   const handleConfirmPasswordToggle = () => {
-    console.log(showConfirmPassword);
+
     setShowConfirmPassword(!showConfirmPassword);
   };
 
@@ -107,7 +107,7 @@ function SignupFormPage() {
         <div className="signup-page-form-container">
 
           <form onSubmit={handleSubmit2} className="signup-page-form">
-            
+
             <div className="signup-page__form-group-1">
               <input
                 type="text"
@@ -174,7 +174,7 @@ function SignupFormPage() {
                 <div className="signup-errors">
                   {errors &&
                     Object.values(errors).map((error) => {
-                      console.log(error);
+              
                       return (
                         <>
                           <p className="signup-error">

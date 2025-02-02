@@ -12,8 +12,8 @@ import NewsArticle from "./NewsArticle";
 import LoadingSpinner from "../../../LoadingSpinner/LoadingSpinner";
 
 import {
-  getStockNews,
-  getStockNewsCategory,
+  fetchStockNews,
+  fetchStockNewsByCategory,
 } from "../../../../../store/stocks";
 
 function NewsContainer() {
@@ -22,7 +22,7 @@ function NewsContainer() {
 
   useEffect(() => {
     async function getNews() {
-      dispatch(getStockNews());
+      dispatch(fetchStockNews());
     }
 
     getNews();
@@ -35,7 +35,7 @@ function NewsContainer() {
   const chooseCategory = async (e) => {
     e.preventDefault();
 
-    await dispatch(getStockNewsCategory(e.target.value));
+    await dispatch(fetchStockNewsByCategory(e.target.value));
   };
 
   return (

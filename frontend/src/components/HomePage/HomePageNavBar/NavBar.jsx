@@ -21,7 +21,6 @@ function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const [scrolled, setScrolled] = useState(false);
-  console.log("scrolled:", scrolled);
 
   useEffect(() => {
     const handleScroll = () => {
