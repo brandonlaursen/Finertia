@@ -1,10 +1,11 @@
 import "./WelcomePage.css";
+
 import { FaSpaceShuttle } from "react-icons/fa";
 
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import WelcomePageNav from "./WelcomePageNav";
+import WelcomePageNavbar from "./WelcomePageNavbar";
 
 import { selectUser } from "../../../store/session";
 
@@ -12,31 +13,33 @@ function WelcomePage() {
   const sessionUser = useSelector(selectUser);
 
   return (
-    <div className="welcome-page-container">
-      <WelcomePageNav />
+    <div className="WelcomePage__body">
+      <WelcomePageNavbar />
 
-      <div className="welcome-page-1">
-        <div className="welcome-page-1-section-1">
+      <div className="WelcomePage__section-one">
+        <div className="WelcomePage__section-one__title">
           <FaSpaceShuttle />
           <h2>Finertia Investing</h2>
         </div>
 
-        <div className="welcome-page-1-section-2">
+        <div className="WelcomePage__section-one__highlight">
           <h1>
             Investing, like space, requires momentum—stay the course, &quot;defy
             inertia.&quot;
           </h1>
           {sessionUser ? null : (
             <Link to="/signup">
-              <button id="get-started">Get Started</button>
+              <button id="WelcomePage__section-one__button">Get Started</button>
             </Link>
           )}
         </div>
       </div>
 
-      <div className="welcome-page-2">Section 2</div>
-      <div className="welcome-page-3">Section 3</div>
-      <div className="welcome-page-footer">Footer</div>
+      <div className="WelcomePage__section-two">Section 2</div>
+
+      <div className="WelcomePage__section-three">Section 3</div>
+
+      <div className="WelcomePage__footer">Footer</div>
     </div>
   );
 }

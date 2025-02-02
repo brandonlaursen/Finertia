@@ -4,21 +4,12 @@ html, body{
   margin: 0;
   max-width: 100%;
   height: auto;
-  /* overflow-x: hidden; */
   position: relative;
   display: block;
   box-sizing: border-box;
   font-family: serif;
-
 }
 
 div{
   box-sizing: border-box;
-}
-
-
-html{
-  /* background-color: rgb(0, 0, 0); */
-  /* color: white; */
-
 }

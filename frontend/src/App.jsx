@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-
 import { useDispatch } from "react-redux";
 
-// components
+import { restoreUser } from "../store/session";
+
 import WelcomePage from "./components/WelcomePage";
 import HomePage from "./components/HomePage";
 import LoginFormPage from "./components/LoginFormPage";
@@ -11,9 +11,6 @@ import SignUpPage from "./components/SignUpPage";
 import Stock from "./components/Stock/Stock";
 import NavBar from "./components/HomePage/HomePageNavBar";
 import Stocks from "./components/Stocks";
-
-// store
-import { restoreUser } from "../store/session";
 
 function Layout() {
   const dispatch = useDispatch();

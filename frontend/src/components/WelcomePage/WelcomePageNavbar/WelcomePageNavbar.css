@@ -1,0 +1,116 @@
+.WelcomePageNavbar {
+  display: flex;
+  padding: 0 20px;
+
+  background-color: #000000;
+  color: white;
+
+  border-bottom: 1px solid white;
+}
+
+/* Logo */
+.WelcomePageNavbar__logo {
+  display: flex;
+  align-items: center;
+  margin-right: 50px;
+  gap: 5px;
+
+  font-size: 1.5rem;
+  font-weight: bold;
+
+  color: white;
+
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+.WelcomePageNavbar__logo:hover {
+  color: #c9abdb;
+}
+
+/* Links */
+.WelcomePageNavbar__links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.WelcomePageNavbar__link {
+  font-size: 0.9rem;
+  font-weight: bold;
+
+  color: white;
+
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+.WelcomePageNavbar__link:hover {
+  color: #c9abdb;
+}
+
+/* Buttons */
+.WelcomePageNavbar__links__buttons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: auto;
+}
+
+.WelcomePageNavbar__links__button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 32px;
+
+  height: 40px;
+  width: 50px;
+
+  background-color: transparent;
+  color: rgb(255, 255, 255);
+
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 36px;
+
+  white-space: nowrap;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.WelcomePageNavbar__links__button:hover {
+  border: 1px solid rgb(197, 197, 197);
+  color: rgb(197, 197, 197);
+}
+
+.signup-button {
+  background-color: white;
+  color: black;
+}
+
+.signup-button:hover {
+  background-color: rgb(197, 197, 197);
+  color: black;
+}
+
+.account-button {
+  font-weight: bold;
+  font-size: 0.8rem;
+
+  background-color: white;
+  color: black;
+}
+
+.account-button:hover {
+  background-color: rgb(197, 197, 197);
+}
+
+@media (max-width: 768px) {
+  .WelcomePageNavbar__links {
+    display: none;
+  }
+
+  .WelcomePageNavbar__logo {
+    margin-right: auto;
+  }
+}
