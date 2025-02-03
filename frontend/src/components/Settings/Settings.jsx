@@ -2,9 +2,9 @@ import "./Settings.css";
 
 import { Outlet, useLocation, Link } from "react-router-dom";
 
-
 function Settings() {
   const location = useLocation();
+  console.log("location:", location);
 
   return (
     <div className="Settings">
@@ -13,11 +13,11 @@ function Settings() {
           <span className="Settings__header__username">brandonlaursen</span>
           <div className="Settings__header__section">
             <Link
-              to="/settings/security"
+              to="/account/settings/security"
               className={`
                   Settings__select
                 ${
-                  location.pathname === "/settings/security"
+                  location.pathname.includes('settings')
                     ? "Settings__select__active"
                     : ""
                 }
@@ -27,11 +27,11 @@ function Settings() {
             </Link>
 
             <Link
-              to="/settings/help"
+              to="/account/help"
               className={`
                   Settings__select
                 ${
-                  location.pathname === "/settings/help"
+                  location.pathname === "/account/help"
                     ? "Help__select__active"
                     : ""
                 }
@@ -44,7 +44,6 @@ function Settings() {
       </div>
 
       <Outlet />
-
     </div>
   );
 }

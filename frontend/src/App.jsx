@@ -64,11 +64,11 @@ const router = createBrowserRouter([
             element: <ProfilePage />,
           },
           {
-            path: "settings",
+            path: "account",
             element: <Settings />,
             children: [
               {
-                path: "",
+                path: "settings",
                 element: <SettingsPage />,
                 children: [
                   {

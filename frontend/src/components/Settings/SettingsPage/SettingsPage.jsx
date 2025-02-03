@@ -1,9 +1,10 @@
 import "./SettingsPage.css";
 
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 
 function SettingsPage() {
-  console.log("hello");
+  const location = useLocation();
+  console.log("hello", location.pathname);
   return (
     <div className="Settings__main">
       <div className="Settings__main__aside">
@@ -12,11 +13,13 @@ function SettingsPage() {
             Account details and options
           </span>
           <Link
-            to="/settings/security"
+            to="/account/settings/security"
             className={`
         Settings__main__aside__subtitle
         ${
-          location.pathname === "/settings/security" ? "settings-highlight" : ""
+          location.pathname === "/account/settings/security"
+            ? "settings-highlight-security"
+            : ""
         }`}
           >
             Security and privacy
@@ -25,12 +28,12 @@ function SettingsPage() {
         <div className="Settings__main__aside__section">
           <span className="Settings__main__aside__title">App preferences</span>
           <Link
-            to="/settings/appearance"
+            to="/account/settings/appearance"
             className={`
         Settings__main__aside__subtitle
         ${
-          location.pathname === "/settings/appearance"
-            ? "settings-highlight"
+          location.pathname === "/account/settings/appearance"
+            ? "settings-highlight-appearance"
             : ""
         }`}
           >
@@ -39,7 +42,6 @@ function SettingsPage() {
         </div>
       </div>
 
-      {/* <SecurityPage /> */}
       <Outlet />
     </div>
   );

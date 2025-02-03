@@ -68,11 +68,11 @@ function AccountDropdown({ sessionUser }) {
               <MdAccountCircle className="AccountDropdown__icon" />
               Profile
             </Link>
-            <Link to="/settings/security">
+            <Link to="/account/settings/security">
               <IoMdSettings className="AccountDropdown__icon" />
               Settings
             </Link>
-            <Link to="/help">
+            <Link to="/account/help">
               <IoMdHelpCircle className="AccountDropdown__icon" />
               Help
             </Link>

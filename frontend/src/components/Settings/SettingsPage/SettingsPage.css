@@ -6,7 +6,6 @@
   width: 800px;
 }
 
-
 .Settings__main__aside {
   display: flex;
   flex-direction: column;
@@ -39,4 +38,12 @@
   text-decoration: none;
   font-weight: bold;
   cursor: pointer;
+}
+
+.settings-highlight-security {
+  color: rgb(198, 156, 194);
+}
+
+.settings-highlight-appearance {
+  color: rgb(198, 156, 194);
 }
