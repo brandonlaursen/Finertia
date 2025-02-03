@@ -35,7 +35,7 @@ function Stocks() {
               <span className="stocks__title">Daily Movers</span>
               <span className="stocks__subtitle">
                 <IoIosCheckmarkCircle className="green-checkmark" />
-                Robinhood · 20 items
+                Finertia · 20 items
               </span>
             </div>
 
@@ -121,7 +121,7 @@ function Stocks() {
             <div className="stocks__disclaimer">
               This list is based on data from one or more third party data
               providers. It is provided for informational purposes only by
-              Robinhood Financial, LLC., and is not investment advice or a
+              Finertia Financial, LLC., and is not investment advice or a
               recommendation. Investors should consider the characteristics of
               any security they consider purchasing, including the investment
               objectives and unique risk profile of any Exchange Traded Products

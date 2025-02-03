@@ -8,15 +8,12 @@ function ProfilePage() {
   return (
     <div className="ProfilePage">
       <div className="ProfilePage__container">
-        {/* User info */}
         <div className="ProfilePage__user">
-          {/* User image */}
           <div className="ProfilePage__user__image">
             <FaSmile className="ProfilePage__user__profile-pic" />
             <FiPlusCircle className="ProfilePage__user__plus-icon" />
           </div>
 
-          {/* User information */}
           <div className="ProfilePage__user__information">
             <div className="ProfilePage__user__information__name">
               Brandon Laursen
@@ -36,7 +33,6 @@ function ProfilePage() {
           </div>
         </div>
 
-        {/* Profile Page Total */}
         <div className="ProfilePage__total">
           <span className="ProfilePage__total__line"></span>
           Total in Finertia
@@ -67,7 +63,6 @@ function ProfilePage() {
               <span>Individual cash</span>
               <GoDash className="ProfilePage__investments__details__dash" />
             </div>
-
           </div>
         </div>
 
@@ -93,17 +88,13 @@ function ProfilePage() {
             </div>
           </div>
 
-
-
-
-
           <div className="ProfilePage__overview__description">
-            <span
-            className="ProfilePage__description__text"
-            >Stocks are pieces of a company that investors can own.</span>
-            <span
-            className="ProfilePage__description__subtext"
-            >Learn More</span>
+            <span className="ProfilePage__description__text">
+              Stocks are pieces of a company that investors can own.
+            </span>
+            <span className="ProfilePage__description__subtext">
+              Learn More
+            </span>
           </div>
         </div>
 
@@ -116,23 +107,21 @@ function ProfilePage() {
           <div>Hospitality</div>
           <div>Manufacturing & Materials</div>
           <div>Tech, Media, & Telecom</div>
-       
         </div>
 
         <div className="ProfilePage__disclaimer">
           <span>
             All investing involves risk, including the loss of principal.
             Brokerage Holdings include securities and related products offered
-            by registered broker-dealer Robinhood Financial LLC, member SIPC.
-            Crypto Holdings are offered by Robinhood Crypto, LLC, are not
-            securities, and are not covered by SIPC. Robinhood Crypto holdings
-            are not offered by Robinhood's broker-dealer and are therefore not
+            by registered broker-dealer Finertia Financial LLC, member SIPC.
+            Crypto Holdings are offered by Finertia Crypto, LLC, are not
+            securities, and are not covered by SIPC. Finertia Crypto holdings
+            are not offered by Finertias broker-dealer and are therefore not
             subject to the same regulatory protections as those offered by
-            Robinhood Financial...
+            Finertia Financial...
           </span>
           <span className="ProfilePage__disclaimer__show-more">Show More</span>
         </div>
-        {/* <div className="ProfilePage__footer"></div> */}
       </div>
     </div>
   );
