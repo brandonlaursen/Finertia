@@ -1,4 +1,4 @@
-import './AccountDropdown.css'
+import "./AccountDropdown.css";
 import { MdAccountCircle } from "react-icons/md";
 import { IoMdSettings } from "react-icons/io";
 import { IoMdHelpCircle } from "react-icons/io";
@@ -8,12 +8,14 @@ import { useState, useRef, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { logout } from "../../../../../store/session";
+import { logout } from "../../../../store/session";
 
 function AccountDropdown({ sessionUser }) {
   const dispatch = useDispatch();
-  const [isAccountOpen, setIsAccountOpen] = useState(false);
   const accountDropdownRef = useRef(null);
+  const accountSpanRef = useRef(null);
+  const [isAccountOpen, setIsAccountOpen] = useState(false);
+  const [isActive, setIsActive] = useState(null);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -22,6 +24,7 @@ function AccountDropdown({ sessionUser }) {
         !accountDropdownRef.current.contains(event.target)
       ) {
         setIsAccountOpen(false);
+        setIsActive(false);
       }
     };
 
@@ -42,32 +45,45 @@ function AccountDropdown({ sessionUser }) {
     await dispatch(logout());
   };
 
+  console.log(isActive);
   return (
     <span tabIndex={0} ref={accountDropdownRef} onClick={toggleAccountDropdown}>
-      <span id='account-dropdown-text'>Account</span>
+      <span
+        className={`AccountDropdown__span ${
+          isActive ? "AccountDropdown__span__active" : ""
+        }`}
+        ref={accountSpanRef}
+        onClick={() => setIsActive(!isActive)}
+      >
+        Account
+      </span>
       {isAccountOpen && (
-        <div className="account-dropdown-container">
-          <div className="account-dropdown-user">
+        <div className="AccountDropdown">
+          <div className="AccountDropdown__user">
             <span>{sessionUser.username}</span>
           </div>
-          <div className="account-dropdown-link-container">
+
+          <div className="AccountDropdown__links">
             <Link to="/account">
-              <MdAccountCircle />
+              <MdAccountCircle className="AccountDropdown__icon" />
               Profile
             </Link>
-
             <Link to="/settings">
-              <IoMdSettings />
+              <IoMdSettings className="AccountDropdown__icon" />
               Settings
             </Link>
             <Link to="/help">
-              <IoMdHelpCircle />
+              <IoMdHelpCircle className="AccountDropdown__icon" />
               Help
             </Link>
           </div>
-          <div className="account-dropdown-logout">
-            <span id="account-logout" onClick={handleLogout}>
-              <MdOutlineLogin />
+
+          <div className="AccountDropdown__logout">
+            <span
+              className="AccountDropdown__logout-button"
+              onClick={handleLogout}
+            >
+              <MdOutlineLogin className="AccountDropdown__icon" />
               Log Out
             </span>
           </div>

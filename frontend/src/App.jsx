@@ -7,9 +7,9 @@ import { restoreUser } from "../store/session";
 import WelcomePage from "./components/WelcomePage";
 import HomePage from "./components/HomePage";
 import LoginPage from "./components/LoginPage";
+import Navigation from "./components/Navigation";
 import SignUpPage from "./components/SignUpPage";
 import Stock from "./components/Stock/Stock";
-import NavBar from "./components/HomePage/HomePageNavBar";
 import Stocks from "./components/Stocks";
 
 function Layout() {
@@ -38,7 +38,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/",
-        element: <NavBar />,
+        element: <Navigation />,
         children: [
           {
             index: true,

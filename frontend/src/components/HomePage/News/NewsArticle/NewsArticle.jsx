@@ -1,7 +1,9 @@
+import "./NewsArticle.css";
+
 function NewsArticle({ news }) {
   function timeAgo(timestamp) {
     const now = Date.now() / 1000;
-    const diff = now - timestamp; 
+    const diff = now - timestamp;
 
     const minutes = Math.floor(diff / 60);
     const hours = Math.floor(diff / 3600);
@@ -19,18 +21,18 @@ function NewsArticle({ news }) {
   }
 
   return (
-    <a href={news.url && news.url} className="news-anchor">
-      <div className="news-link-container">
-        <div className="news-text-container">
+    <a href={news.url && news.url} className="NewsArticle-anchor">
+      <div className="NewsArticle">
+        <div className="NewsArticle__content">
           <span>
             {news.source && news.source}
-            <span className="time-ago">{timeAgo(news.datetime)}</span>
+            <span className="NewsArticle__time">{timeAgo(news.datetime)}</span>
           </span>
           <span>{news.headline && news.headline}</span>
           <span>{news.category && news.category}</span>
         </div>
 
-        <div className="news-image-container">
+        <div className="NewsArticle__image">
           <img src={news.image && news.image} />
         </div>
       </div>

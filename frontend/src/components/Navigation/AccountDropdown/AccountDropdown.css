@@ -1,0 +1,137 @@
+.AccountDropdown {
+  position: absolute;
+  right: 26px;
+  top: 64px;
+
+  display: flex;
+  flex-direction: column;
+
+  height: 250px;
+  width: 270px;
+
+  z-index: 10;
+}
+
+
+.AccountDropdown__span {
+  font-size: 17px;
+  font-weight: bold;
+
+  color: rgb(0, 0, 0);
+
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.AccountDropdown__span:hover {
+  color: rgb(204, 153, 219);
+}
+
+
+.AccountDropdown__span__active {
+  color: rgb(204, 153, 219);
+}
+
+.AccountDropdown__span__active::after {
+  content: "";
+  position: absolute;
+  top: 62px;
+  right: 39px;
+
+  width: 60px;
+  height: 2px;
+
+  background-color: rgb(204, 153, 219);
+}
+
+.AccountDropdown__user {
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+
+  height: 50px;
+
+  background-color: rgb(255, 255, 255);
+
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.AccountDropdown__user span {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.AccountDropdown__links {
+  display: flex;
+  flex-direction: column;
+
+  height: 150px;
+
+  background-color: rgb(255, 255, 255);
+
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: solid 2px rgb(228, 228, 228);
+}
+
+.AccountDropdown__links a {
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
+  gap: 8px;
+
+  height: 50px;
+
+  font-size: 14px;
+}
+
+.AccountDropdown__logout {
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+
+  height: 50px;
+
+  background-color: white;
+
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: solid 1px rgb(228, 228, 228);
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+
+  cursor: pointer;
+}
+
+.AccountDropdown__logout-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 14px;
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+.AccountDropdown__logout:hover {
+  background-color: rgb(247, 247, 247);
+  color: black;
+}
+
+.AccountDropdown__links a:hover {
+  background-color: rgb(247, 247, 247);
+  color: black;
+}
+
+.AccountDropdown__icon {
+  font-size: 20px;
+}
+
+@media screen and (max-width: 1080px) {
+  .AccountDropdown__span {
+    padding: 10px;
+  }
+}

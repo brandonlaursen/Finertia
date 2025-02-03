@@ -1,7 +1,67 @@
-.home-page-container {
-  height: 100%;
+.HomePage {
+  position: relative;
   display: flex;
   flex-direction: column;
-  background-color: rgb(255, 255, 255);
+  flex: 1;
+  margin-top: 85px;
 
+  height: 100%;
+
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+}
+
+/* HomePage Main */
+.HomePage__main {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  margin-right: 25%;
+
+  height: 100%;
+  width: 75%;
+}
+
+.HomePage__main__section {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.HomePage__main__title {
+  display: flex;
+  /* align-items: center; */
+  /* padding-bottom: 20px; */
+
+  height: 33px;
+
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.HomePage__main__banner {
+  height: 270px;
+
+  background-image: url("https://png.pngtree.com/png-clipart/20240512/original/pngtree-flying-space-shuttle-on-space-with-planets-and-asteroid-in-cartoon-png-image_15072578.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.HomePage__main__subtitle {
+  display: flex;
+  align-items: center;
+
+  height: 100px;
+
+  font-size: 40px;
+  font-weight: bold;
+}
+
+/* HomePage Aside */
+.HomePage__aside {
+  position: fixed;
+  right: 0;
+  background-color: rgb(252, 202, 255);
+  width: 25%;
+  min-height: 100vh;
 }

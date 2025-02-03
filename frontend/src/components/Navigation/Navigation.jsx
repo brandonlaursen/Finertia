@@ -1,25 +1,23 @@
-import "./NavBar.css";
+import "./Navigation.css";
 import { FaSpaceShuttle } from "react-icons/fa";
 
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
-import { Outlet, Navigate, NavLink } from "react-router-dom";
+import { Link, useLocation, Outlet, Navigate, NavLink } from "react-router-dom";
 
 import SearchBar from "./SearchBar/SearchBar";
 import HamburgerMenu from "./HamburgerMenu/HamburgerMenu";
 import AccountDropdown from "./AccountDropdown/AccountDropdown";
 
-import { selectUser } from "../../../../store/session";
+import { selectUser } from "../../../store/session";
 
-function NavBar() {
+function Navigation() {
   const location = useLocation();
   const routeClass =
-    location.pathname === "/stocks" ? "stocks-nav" : "home-page-navbar";
+    location.pathname === "/stocks" ? "stocks-nav" : "Navigation";
 
   const sessionUser = useSelector(selectUser);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -27,7 +25,7 @@ function NavBar() {
       const header = document.querySelector(".stocks__header");
       if (header) {
         const offset = header.getBoundingClientRect().top;
-        setScrolled(offset <= 80); // Change when header is near top
+        setScrolled(offset <= 80);
       }
     };
 
@@ -40,30 +38,33 @@ function NavBar() {
   return (
     <>
       <nav className={`${routeClass} ${scrolled ? "scrolled" : ""}`}>
-        {/* <NavLink to="/"> */}
-        <NavLink className={`search-bar-logo-container`}>
-          {" "}
-          <FaSpaceShuttle id="shuttle-logo" />
+
+        <NavLink className={`Navigation__logo__container`}>
+          <FaSpaceShuttle id="Navigation__logo" />
         </NavLink>
-        {/* </NavLink> */}
+
 
         <SearchBar />
+
         <HamburgerMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+
         <div
-          className={`home-page-nav-links-container ${
+          className={`Navigation__links ${
             isMenuOpen ? "show" : ""
           }`}
         >
-          <Link>Stocks</Link>
+          <Link to='/stocks'>Stocks</Link>
           <Link>Investing</Link>
           <Link>About</Link>
           <Link>Notifications</Link>
           <AccountDropdown sessionUser={sessionUser} />
         </div>
+
       </nav>
+
       <Outlet context={{ scrolled }} />
     </>
   );
 }
 
-export default NavBar;
+export default Navigation;
