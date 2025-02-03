@@ -1,0 +1,335 @@
+.SignUpPage {
+  display: flex;
+  flex-direction: row;
+
+  width: 100%;
+  height: 100vh;
+
+  background-color: rgb(0, 0, 0);
+  color: white;
+}
+
+/* SignUpPage Aside */
+.SignUpPage__aside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 60px;
+
+  width: 50%;
+}
+
+.SignUpPage__aside__logo {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  height: 150px;
+  width: 100%;
+
+  font-size: 30px;
+  font-weight: bold;
+
+  color: white;
+
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.SignUpPage__aside__logo:hover {
+  color: rgb(198, 156, 194);
+}
+
+.SignUpPage__aside__title {
+  display: flex;
+  align-items: center;
+
+  height: 150px;
+  width: 100%;
+
+  font-size: 4em;
+  font-weight: bold;
+}
+
+.SignUpPage__aside__description {
+  display: flex;
+  align-items: center;
+
+  height: 100px;
+  width: 100%;
+
+  font-size: 17px;
+
+  flex-wrap: wrap;
+  word-wrap: break-word;
+}
+
+.SignUpPage__aside__image-container {
+  height: auto;
+}
+
+.SignUpPage__aside__image {
+  height: 30vh;
+  width: 30vh;
+}
+
+/* SignUpPage section */
+.SignUpPage__section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 60px;
+
+  width: 50%;
+}
+
+.SignUpPage__section__title {
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 1rem;
+
+  height: 200px;
+
+  font-size: 20px;
+}
+
+.SignUpPage__section__form {
+  height: 100%;
+}
+
+.SignUpPage__form__section-one {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  gap: 30px;
+
+  height: 100px;
+}
+
+.SignUpPage__form__section-one input {
+  padding-left: 10px;
+
+  height: 55px;
+  width: 100%;
+
+  font-size: 15px;
+
+  background: transparent;
+
+  color: white;
+
+  border-style: solid;
+  border-color: rgb(48, 54, 58);
+  border-width: 1px;
+}
+
+.SignUpPage__form__section-two {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  width: 100%;
+}
+
+.SignUpPage__form__section-two input {
+  height: 55px;
+  padding-left: 10px;
+
+  font-size: 15px;
+
+  background: transparent;
+  color: white;
+
+  border-style: solid;
+  border-color: rgb(48, 54, 58);
+  border-width: 1px;
+}
+
+.SignUpPage__form__section-three {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.SignUpPage__form__password {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+}
+
+.SignUpPage__form__password input {
+  padding-left: 10px;
+  padding-right: 50px;
+
+  height: 55px;
+  width: 100%;
+
+  font-size: 15px;
+
+  background: transparent;
+  color: white;
+
+  border: 1px solid rgb(48, 54, 58);
+}
+
+.SignUpPage__hide-icon {
+  position: absolute;
+  right: 15px;
+
+  font-size: 24px;
+
+  background-color: transparent;
+  color: rgb(255, 255, 255);
+
+  cursor: pointer;
+}
+
+.SignUpPage__form__errors {
+  width: 100%;
+}
+
+.SignUpPage__form__error {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+
+  padding-left: 10px;
+  gap: 0px;
+
+  min-height: 50px;
+  width: 100%;
+
+  font-size: 17px !important;
+
+  background-color: rgb(30, 33, 37);
+
+  border-width: 1px;
+  border-radius: 5px;
+}
+
+.SignUpPage__info-icon {
+  margin-right: 10px;
+
+  min-height: 20px;
+  width: 20px;
+}
+
+.SignUpPage__section__form button {
+  align-self: center;
+
+  height: 54px;
+  width: 50%;
+  max-width: 250px;
+
+  font-weight: bold;
+
+  background-color: #ffffff;
+  color: #1c180d;
+
+  border: 1px solid #ffffff;
+  border-radius: 36px;
+
+  cursor: pointer;
+}
+
+.SignUpPage__section__form button:hover {
+  color: rgb(61, 61, 61);
+}
+
+input:focus {
+  border-color: rgb(255, 255, 255);
+  outline: none;
+}
+
+@media (max-width: 770px) {
+  .SignUpPage__hide-icon {
+    right: 10px;
+
+    font-size: 20px;
+  }
+}
+
+/* Media Queries */
+@media screen and (max-width: 770px) {
+  .SignUpPage {
+    flex-direction: column;
+    padding-bottom: 30px;
+
+    width: 100%;
+    height: 100vh;
+  }
+
+  /* SignUpPage Aside */
+  .SignUpPage__aside {
+    width: 100%;
+
+    padding: 0 20px;
+  }
+
+  .SignUpPage__aside__logo {
+    padding-top: 12px;
+
+    height: 30px;
+
+    font-size: 24px;
+  }
+
+  .SignUpPage__aside__title {
+    padding-top: 16px;
+
+    height: 50px;
+
+    font-size: 40px;
+  }
+
+  .SignUpPage__aside__description {
+    display: none;
+  }
+
+  .SignUpPage__aside__image-container {
+    display: none;
+  }
+
+  .SignUpPage__aside__image {
+    display: none;
+  }
+
+  /* SignUpPage section */
+  .SignUpPage__section {
+    display: flex;
+    padding: 0 20px;
+
+    width: 100%;
+  }
+
+  .SignUpPage__section__title {
+    height: 80px;
+  }
+
+  .signup-page__instructions {
+    display: flex;
+    align-items: center;
+
+    height: 100px;
+    width: 100%;
+
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 770px) and (max-height: 660px) {
+  .SignUpPage {
+    height: 100%;
+  }
+
+  .SignUpPage__aside__description {
+    display: none;
+  }
+
+  .SignUpPage__section__form {
+    height: 100%;
+  }
+}
