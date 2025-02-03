@@ -1,0 +1,34 @@
+.AppearancePage {
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+  width: 70%;
+
+  font-size: 14px;
+}
+
+.AppearancePage__content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 30px;
+
+  border-bottom: 1px solid rgb(231, 231, 231);
+}
+
+.AppearancePage__title {
+  align-content: center;
+
+  height: 50px;
+
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.AppearancePage__subtitle {
+  align-content: center;
+  margin-bottom: 20px;
+
+  height: 20px;
+}

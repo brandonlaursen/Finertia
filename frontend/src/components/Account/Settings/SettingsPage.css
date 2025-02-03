@@ -1,4 +1,4 @@
-.Settings__main {
+.SettingsPage {
   display: flex;
   margin: 0px auto 0;
 
@@ -6,7 +6,7 @@
   width: 800px;
 }
 
-.Settings__main__aside {
+.SettingsPage__aside {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -18,13 +18,13 @@
   font-size: 14px;
 }
 
-.Settings__main__aside__section {
+.SettingsPage__aside__section {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.Settings__main__aside__title {
+.SettingsPage__aside__title {
   height: 30px;
   width: 160px;
 
@@ -33,7 +33,7 @@
   border-bottom: 1px solid rgb(231, 231, 231);
 }
 
-.Settings__main__aside__subtitle {
+.SettingsPage__aside__subtitle {
   color: black;
   text-decoration: none;
   font-weight: bold;

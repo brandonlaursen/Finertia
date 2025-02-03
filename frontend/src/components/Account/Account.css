@@ -1,4 +1,4 @@
-.Settings {
+.Account {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -13,14 +13,14 @@
 }
 
 
-.Settings__header {
+.Account__header {
   height: 140px;
 
   border-bottom: 1px solid rgb(236, 236, 236);
 }
 
 
-.Settings__header__content {
+.Account__header__content {
   display: flex;
   flex-direction: column;
   justify-content: end;
@@ -32,12 +32,12 @@
   width: 800px;
 }
 
-.Settings__header__username {
+.Account__header__username {
   font-size: 30px;
   font-weight: bold;
 }
 
-.Settings__header__section {
+.Account__header__section {
   display: flex;
   gap: 16px;
   font-size: 14px;
@@ -47,7 +47,7 @@
 /* =============== */
 
 
-.Settings__main {
+.Account__main {
   display: flex;
   margin: 0px auto 0;
 
@@ -56,7 +56,7 @@
 }
 
 
-.Settings__main__aside {
+.Account__main__aside {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -68,13 +68,13 @@
   font-size: 14px;
 }
 
-.Settings__main__aside__section {
+.Account__main__aside__section {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.Settings__main__aside__title {
+.Account__main__aside__title {
   height: 30px;
   width: 160px;
 
@@ -83,7 +83,7 @@
   border-bottom: 1px solid rgb(231, 231, 231);
 }
 
-.Settings__main__aside__subtitle {
+.Account__main__aside__subtitle {
   color: black;
   text-decoration: none;
   font-weight: bold;
@@ -91,8 +91,8 @@
 }
 
 
-
-.Settings__select {
+/*  */
+.account-select {
   position: relative;
   cursor: pointer;
   text-decoration: none;
@@ -101,7 +101,7 @@
 
 }
 
-.Settings__select__active::after {
+.select-settings::after {
   content: "";
   position: absolute;
   bottom: -12px;
@@ -111,7 +111,7 @@
   background-color: rgb(198, 156, 194);
 }
 
-.Help__select__active::after {
+.select-help::after {
   content: "";
   position: absolute;
   bottom: -12px;

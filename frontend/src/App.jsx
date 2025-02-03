@@ -12,11 +12,11 @@ import HomePage from "./components/HomePage";
 import Stocks from "./components/Stocks";
 import Stock from "./components/Stock/Stock";
 import ProfilePage from "./components/Profile";
-import Settings from "./components/Settings";
-import SettingsPage from "./components/Settings/SettingsPage/SettingsPage";
-import SecurityPage from "./components/Settings/Security";
-import HelpPage from "./components/Settings/Help";
-import AppearancePage from "./components/Settings/Appearance";
+import Account from "./components/Account";
+import SettingsPage from "./components/Account/Settings/SettingsPage";
+import SecurityPage from "./components/Account/Settings/SecurityPage";
+import HelpPage from "./components/Account/HelpPage";
+import AppearancePage from "./components/Account/Settings/AppearancePage";
 
 function Layout() {
   const dispatch = useDispatch();
@@ -65,8 +65,12 @@ const router = createBrowserRouter([
           },
           {
             path: "account",
-            element: <Settings />,
+            element: <Account />,
             children: [
+              {
+                path: "help",
+                element: <HelpPage />,
+              },
               {
                 path: "settings",
                 element: <SettingsPage />,
@@ -80,10 +84,6 @@ const router = createBrowserRouter([
                     element: <AppearancePage />,
                   },
                 ],
-              },
-              {
-                path: "help",
-                element: <HelpPage />,
               },
             ],
           },

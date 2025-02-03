@@ -1,10 +1,10 @@
 import "./SecurityPage.css";
 
 import { useDispatch } from "react-redux";
-import { logout } from "../../../../store/session";
+import { logout } from "../../../../../store/session";
 
 function SecurityPage() {
-  console.log('first')
+  console.log("first");
   const dispatch = useDispatch();
 
   const handleLogout = async (e) => {
@@ -13,62 +13,62 @@ function SecurityPage() {
   };
 
   return (
-    <div className="Settings__main__section">
-      <div className="Settings__main__section__content">
-        <span className="Settings__main__content__title">Security</span>
-        <span className="Settings__main__content__subtitle">
+    <div className="SecurityPage">
+      <div className="SecurityPage__content">
+        <span className="SecurityPage__content__title">Security</span>
+        <span className="SecurityPage__content__subtitle">
           Keep your Finertia account secure with additional layers of
           protection.
         </span>
 
-        <div className="Settings__main__content__links">
-          <div className="Settings__link">
+        <div className="SecurityPage__content__links">
+          <div className="SecurityPage__link">
             <span>Password</span>
             <span>Update Password</span>
           </div>
-          <div className="Settings__link">
+          <div className="SecurityPage__link">
             <span>Two Factor Authentication</span>
             <span>Disabled</span>
           </div>
-          <div className="Settings__link">
+          <div className="SecurityPage__link">
             <span>Devices</span>
           </div>
-          <div className="Settings__link">
+          <div className="SecurityPage__link">
             <span>Linked Apps</span>
           </div>
         </div>
       </div>
 
-      <div className="Settings__main__section__content">
-        <span className="Settings__main__content__title">Privacy</span>
-        <span className="Settings__main__content__subtitle">
+      <div className="SecurityPage__content">
+        <span className="SecurityPage__content__title">Privacy</span>
+        <span className="SecurityPage__content__subtitle">
           Manage how your data is used..
         </span>
 
-        <div className="Settings__main__content__links">
-          <div className="Settings__link">
+        <div className="SecurityPage__content__links">
+          <div className="SecurityPage__link">
             <span>Profile Visibility</span>
           </div>
-          <div className="Settings__link">
+          <div className="SecurityPage__link">
             <span>Data Sharing Permissions</span>
             <span>Enabled</span>
           </div>
-          <div className="Settings__link">
+          <div className="SecurityPage__link">
             <span>Request Personal Data</span>
           </div>
-          <div className="Settings__link">
+          <div className="SecurityPage__link">
             <span>Request Data Deletion</span>
           </div>
-          <div className="Settings__link">
+          <div className="SecurityPage__link">
             <span>Private Privacy</span>
           </div>
         </div>
       </div>
 
-      <div className="Settings__logout">
-        <span className="Settings__logout-span"
-        onClick={handleLogout}
-        >Log out</span>
+      <div className="SecurityPage__logout">
+        <span className="SecurityPage__logout-span" onClick={handleLogout}>
+          Log out
+        </span>
       </div>
     </div>
   );
