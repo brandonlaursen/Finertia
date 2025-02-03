@@ -11,6 +11,6 @@ html, body{
   font-family: serif;
 }
 
-div{
+div, span{
   box-sizing: border-box;
 }

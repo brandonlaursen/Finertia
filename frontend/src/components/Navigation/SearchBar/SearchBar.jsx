@@ -1,9 +1,7 @@
-import './SearchBar.css';
+import "./SearchBar.css";
 import { IoSearch } from "react-icons/io5";
 
-
 import { useState } from "react";
-
 
 function SearchBar() {
   const [isFocused, setIsFocused] = useState(false);
@@ -29,6 +27,5 @@ function SearchBar() {
     </div>
   );
 }
-
 
 export default SearchBar;
