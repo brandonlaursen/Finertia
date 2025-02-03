@@ -1,0 +1,72 @@
+.Settings__main__section {
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+  width: 70%;
+
+  font-size: 14px;
+}
+
+.Settings__main__section__content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 30px;
+
+  border-bottom: 1px solid rgb(231, 231, 231);
+}
+
+.Settings__main__content__title {
+  align-content: center;
+
+  height: 50px;
+
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.Settings__main__content__subtitle {
+  align-content: center;
+  margin-bottom: 20px;
+
+  height: 20px;
+}
+
+.Settings__main__content__links {
+  display: flex;
+  flex-direction: column;
+}
+
+.Settings__link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 45px;
+
+  border-top: 1px solid rgb(232, 232, 232);
+
+  cursor: pointer;
+}
+
+.Settings__link:hover {
+  background-color: rgb(243, 243, 243);
+}
+
+.Settings__logout {
+  align-self: end;
+  padding-top: 30px;
+
+  /* height: 170px; */
+}
+
+.Settings__logout-span {
+  font-weight: bold;
+  color: rgb(198, 156, 194);
+  cursor: pointer;
+}
+
+.Settings__logout-span:hover {
+  color: rgb(163, 108, 157);
+}

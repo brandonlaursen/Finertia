@@ -1,0 +1,9 @@
+.Help__main__section {
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+  width: 70%;
+
+  font-size: 14px;
+}

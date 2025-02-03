@@ -1,0 +1,42 @@
+.Settings__main {
+  display: flex;
+  margin: 0px auto 0;
+
+  height: 100%;
+  width: 800px;
+}
+
+
+.Settings__main__aside {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 30px;
+
+  height: 200px;
+  width: 30%;
+
+  font-size: 14px;
+}
+
+.Settings__main__aside__section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.Settings__main__aside__title {
+  height: 30px;
+  width: 160px;
+
+  color: rgb(106, 106, 106);
+
+  border-bottom: 1px solid rgb(231, 231, 231);
+}
+
+.Settings__main__aside__subtitle {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+}

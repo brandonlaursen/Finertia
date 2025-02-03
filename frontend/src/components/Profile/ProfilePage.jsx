@@ -75,7 +75,7 @@ function ProfilePage() {
               <span className="ProfilePage__overview__percentage">0%</span>
             </div>
             <div className="ProfilePage__overview__button">
-              <span>ETF's</span>
+              <span>ETFs</span>
               <span className="ProfilePage__overview__percentage">0%</span>
             </div>
             <div className="ProfilePage__overview__button">
