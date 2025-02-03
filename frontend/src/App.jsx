@@ -5,12 +5,14 @@ import { useDispatch } from "react-redux";
 import { restoreUser } from "../store/session";
 
 import WelcomePage from "./components/WelcomePage";
-import HomePage from "./components/HomePage";
+import SignUpPage from "./components/SignUpPage";
 import LoginPage from "./components/LoginPage";
 import Navigation from "./components/Navigation";
-import SignUpPage from "./components/SignUpPage";
-import Stock from "./components/Stock/Stock";
+import HomePage from "./components/HomePage";
 import Stocks from "./components/Stocks";
+import Stock from "./components/Stock/Stock";
+import ProfilePage from "./components/Profile";
+
 
 function Layout() {
   const dispatch = useDispatch();
@@ -52,6 +54,10 @@ const router = createBrowserRouter([
           {
             path: "stocks/:stockSymbol",
             element: <Stock />,
+          },
+          {
+            path: "profile",
+            element: <ProfilePage />,
           },
         ],
       },

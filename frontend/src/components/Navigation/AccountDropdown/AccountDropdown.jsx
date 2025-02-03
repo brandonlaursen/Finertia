@@ -64,7 +64,7 @@ function AccountDropdown({ sessionUser }) {
           </div>
 
           <div className="AccountDropdown__links">
-            <Link to="/account">
+            <Link to="/profile">
               <MdAccountCircle className="AccountDropdown__icon" />
               Profile
             </Link>

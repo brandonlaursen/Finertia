@@ -1,0 +1,307 @@
+.ProfilePage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  margin: 120px auto 0;
+  padding: 20px;
+
+  height: 100vh;
+  width: 50%;
+  max-width: 800px;
+  min-width: 600px;
+
+  color: rgb(0, 0, 0);
+
+  margin-bottom: 120px;
+  /* overflow: auto; */
+}
+
+.ProfilePage__container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/*  */
+.ProfilePage__user {
+  display: flex;
+
+  height: 100px;
+}
+
+.ProfilePage__user__image {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100px;
+  width: 100px;
+}
+
+.ProfilePage__user__profile-pic {
+  height: 70%;
+  width: 70%;
+
+  color: rgb(180, 189, 194);
+}
+
+.ProfilePage__user__plus-icon {
+  position: absolute;
+  top: 70px;
+  right: 17px;
+
+  height: 20px;
+  width: 20px;
+
+  background-color: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.ProfilePage__user__information {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+/*  */
+
+.ProfilePage__user__information__name {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.ProfilePage__user__information__username {
+  margin-right: 3px;
+
+  font-size: 16px;
+}
+
+.ProfilePage__user__information__join-date {
+  margin-left: 3px;
+  color: rgb(169, 169, 169);
+}
+
+.ProfilePage__user__information__edit {
+  font-size: 14px;
+  font-weight: bold;
+
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: black;
+
+  cursor: pointer;
+}
+
+/*  */
+.ProfilePage__total {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+
+  height: 100px;
+
+  font-size: 14px;
+}
+
+.ProfilePage__total__line {
+  width: 26px;
+  height: 5px;
+
+  background-color: rgb(55, 55, 55);
+}
+
+/*  */
+.ProfilePage__investments {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  height: 180px;
+}
+
+.ProfilePage__investments__header {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding-bottom: 16px;
+
+  height: 36px;
+
+  border-bottom: solid 1px rgb(230, 230, 230);
+}
+
+.ProfilePage__investments__header__text {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.ProfilePage__investments__header__info-icon {
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.ProfilePage__investments__header__info-icon:hover {
+  font-size: 12px;
+  background-color: rgb(237, 237, 237);
+}
+
+.ProfilePage__investments__details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex-grow: 1;
+}
+
+.ProfilePage__investments__details__value {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 5px;
+}
+
+.ProfilePage__investments__details__value-text {
+  font-weight: bold;
+}
+
+.ProfilePage__investments__details__subtext {
+  font-size: 14px;
+  color: rgb(165, 165, 165);
+}
+
+.ProfilePage__investments__details__dash {
+  font-size: 20px;
+  color: black;
+}
+
+/*  */
+.ProfilePage__overview {
+  display: flex;
+  flex-direction: column;
+
+  height: 200px;
+}
+
+.ProfilePage__overview__title {
+  height: 40px;
+
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.ProfilePage__overview__contents {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  height: 100px;
+}
+
+.ProfilePage__overview__button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+
+  height: 70px;
+  width: 70px;
+
+  border-radius: 50%;
+  cursor: pointer;
+
+  background-color: rgb(232, 232, 232);
+}
+
+.ProfilePage__overview__button:hover {
+  background-color: black;
+  color: white;
+}
+
+.ProfilePage__overview__percentage {
+  font-weight: bold;
+}
+
+.ProfilePage__overview__description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  gap: 4px;
+  height: 70px;
+}
+
+.ProfilePage__description__text {
+  font-size: 14px;
+
+  color: rgb(124, 124, 124);
+}
+
+.ProfilePage__description__subtext {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/*  */
+.ProfilePage__buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+
+  font-size: 14px;
+}
+
+.ProfilePage__buttons div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+
+  height: 32px;
+  width: auto;
+
+  border-radius: 20px;
+  border: 1px solid rgb(232, 232, 232);
+
+  cursor: pointer;
+}
+
+.ProfilePage__buttons div:hover {
+  background-color: rgb(242, 253, 254);
+}
+
+/*  */
+
+.ProfilePage__disclaimer {
+  display: flex;
+  /* flex-grow: 1; */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  padding-top: 80px;
+
+  height: 100px;;
+
+  font-size: 14px;
+  color: rgb(165, 165, 165);
+}
+
+.ProfilePage__disclaimer__show-more {
+  align-self: self-start;
+
+  color: black;
+  font-weight: bold;
+}
+
+
+.ProfilePage__footer{
+  height: 50px;
+  background-color: red;
+}
