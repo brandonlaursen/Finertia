@@ -2,7 +2,7 @@ import "./WatchList.css";
 import { Link } from "react-router-dom";
 import { FaPlus } from "react-icons/fa6";
 
-import OpenModalButton from "../OpenModalButton/OpenModalButton";
+import OpenModalButton from "../OpenModalButton";
 
 import WatchListModal from "./WatchListModal";
 
@@ -21,7 +21,7 @@ function WatchList() {
           <span className="WatchList__title">Lists</span>
 
           <OpenModalButton
-            modalComponent={WatchListModal}
+            modalComponent={<WatchListModal />}
             className="WatchList__create-list-icon"
             Element={FaPlus}
             modalClass={WatchListModelStyles}
