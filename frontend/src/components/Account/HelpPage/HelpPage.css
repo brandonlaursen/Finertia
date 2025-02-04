@@ -1,9 +1,96 @@
 .HelpPage {
   display: flex;
+  margin: 0px auto 0;
   flex-direction: column;
 
   height: 100%;
-  width: 70%;
+  width: 800px;
+  /* background-color: red; */
+}
+
+
+.HelpPage__section{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 30px;
+  justify-content: center;
+
+  height: 40px;
+  width: 100%;
 
   font-size: 14px;
+
+  background-color: rgb(240, 248, 255);
+  border-radius: 5px;
+}
+
+.HelpPage__section__text{
+  display: inline-flex;
+  vertical-align: middle;
+  align-items: center;
+  font-size: 14px;
+
+
+}
+
+.HelpPage__info-icon{
+  margin-right: 3px;
+  height: 20px;
+  width:20px;
+}
+
+
+.HelpPage__support-section{
+
+  height: 200px;
+}
+
+.HelpPage__support-section__title{
+  font-size: 18px;
+  height: 40px;
+  margin-top: 20px;;
+  border-bottom: 1px solid rgb(239, 239, 239);
+  font-weight: bold;
+}
+
+.HelpPage__support-section__links{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  /* height: 150px; */
+  margin-bottom: 20px;;
+}
+
+.HelpPage__support-section__link{
+  font-size: 14px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgb(239, 239, 239);
+  gap: 10px;
+}
+
+
+.HelpPage__support-section__link:hover{
+  cursor: pointer;
+  background-color: rgb(229, 229, 229);
+
+}
+
+
+.HelpPage__button{
+  height: 40px;
+  width: 180px;
+  border-radius: 20px;
+  color: white;
+  background-color: rgb(7, 7, 7);
+  font-weight: bold;
+  font-size: 12px;
+}
+
+
+.HelpPage__icon{
+height: 20px;
+width: 20px;
 }
