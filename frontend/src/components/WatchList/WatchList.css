@@ -1,0 +1,87 @@
+
+
+.WatchList {
+
+  margin-top: 30px;
+
+  /* background-color: red; */
+}
+
+.WatchList__container {
+  /* background-color: rgb(220, 255, 95); */
+  height: 86vh;
+  position: sticky;
+  top: 85px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 36px;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.WatchList__header {
+  height: 50px;
+  min-height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+}
+
+.WatchList__lists {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+  justify-content: center;
+  gap: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.WatchList__list {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  height: 40px;
+  text-decoration: none;
+}
+
+.WatchList__stock-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.WatchList__stock-icon {
+  background-color: rgb(234, 243, 248);
+  height: 35px;
+  width: 27px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+}
+
+.WatchList__stock-title {
+  background-color: rgb(255, 255, 255);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-size: 13px;
+}
+
+
+.WatchList__create-list-icon{
+  cursor: pointer;
+}
+
+.WatchList__create-list-icon:hover{
+  cursor: pointer;
+  background-color: #e6e6e6;
+}

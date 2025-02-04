@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import "./index.css";
 
 import App from "./App";
+import { ModalProvider, Modal } from "./context/Modal";
 
 import configureStore from "../store";
 import { restoreCSRF, csrfFetch } from "../store/csrf";
@@ -21,8 +22,11 @@ if (import.meta.env.MODE !== "production") {
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <ModalProvider>
+      <Provider store={store}>
+        <App />
+        <Modal />
+      </Provider>
+    </ModalProvider>
   </React.StrictMode>
 );

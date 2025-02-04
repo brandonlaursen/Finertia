@@ -20,7 +20,7 @@ function HelpPage() {
           <div className="HelpPage__support-section__title">Support Tools</div>
           <div className="HelpPage__support-section__links">
             <span className="HelpPage__support-section__link">
-              <IoIosInformationCircle className="HelpPage__icon"/>
+              <IoMdHelpCircle className="HelpPage__icon"/>
               Help Center
             </span>
             <span className="HelpPage__support-section__link">

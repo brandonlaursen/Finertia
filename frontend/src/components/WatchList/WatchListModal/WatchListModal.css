@@ -1,0 +1,128 @@
+.WatchList__modal {
+  position: fixed;
+  top: 375px;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.WatchList__modal__background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.WatchList__modal__container {
+  position: absolute;
+
+  height: 400px;
+  width: 400px;
+
+  background-color: white;
+
+  border-radius: 5px;
+}
+
+.WatchListModal__contents {
+  /* background-color: aqua; */
+  display: flex;
+  padding: 10px 20px;
+  flex-direction: column;
+}
+
+.WatchListModal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.WatchListModal__close-button {
+  height: 22px;
+  width: 22px;
+  cursor: pointer;
+}
+
+.WatchListModal__title {
+  font-size: 18px;
+}
+
+
+.WatchListModal__section{
+  /* background-color: red; */
+  height: 260px;
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+
+
+}
+
+.WatchListModal__option{
+  height:260px;
+  width: 175px;
+  border: 1px solid rgb(234, 234, 234);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.WatchListModal__option__image{
+  background-color: rgb(230, 255, 255);
+  height: 60%;
+  width: 100%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.WatchListModal__image-one{
+  background-image: url('https://img.freepik.com/premium-vector/bright-telescope-cartoon-vector-illustration-white-background_1322560-79848.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+.WatchListModal__image-two{
+  background-image: url('https://i.etsystatic.com/27713397/r/il/ba1b96/4493269889/il_1080xN.4493269889_lz2v.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+
+.WatchListModal__option__text{
+  display: flex;
+  flex-direction: column;
+  height: 40%;
+  gap: 4px;
+  padding: 16px 12px;
+  font-size: 14px;
+}
+
+.WatchListModal__text__title{
+  font-weight: bold;
+}
+
+
+.WatchListModal__back-button{
+  margin-top: 20px;
+  height: 40px;
+  border-radius: 20px;
+  color: white;
+  background-color: black;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+.WatchListModal__back-button:hover{
+  background-color: rgb(42, 42, 42);
+}

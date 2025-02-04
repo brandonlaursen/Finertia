@@ -1,11 +1,14 @@
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useOutletContext } from "react-router-dom";
 import "./Stocks.css";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 import { RiListSettingsLine } from "react-icons/ri";
 import { FaPlus } from "react-icons/fa6";
 
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useOutletContext } from "react-router-dom";
+
+import WatchList from "../WatchList";
+
 import { fetchAllStocks } from "../../../store/stocks";
 
 function Stocks() {
@@ -17,8 +20,6 @@ function Stocks() {
   useEffect(() => {
     dispatch(fetchAllStocks());
   }, [dispatch]);
-
-  // if(stocks)
 
   return (
     <div className="stocks">
@@ -130,31 +131,7 @@ function Stocks() {
           </div>
         </div>
 
-        <div className="stocks__body-right">
-          <div className="stocks__lists">
-            <div className="stocks__lists-header">
-              <span className="stocks__lists-title">Lists</span>
-
-              <FaPlus className="stocks__btn stocks__btn--add" />
-            </div>
-
-            <div className="stocks__list-items">
-              <Link to="/list1" className="stocks__list-item">
-                <div className="stocks__list-content">
-                  <span className="stocks__list-icon">💡</span>
-                  <span className="stocks__list-name">My First List</span>
-                </div>
-              </Link>
-
-              <Link to="/list2" className="stocks__list-item">
-                <div className="stocks__list-content">
-                  <span className="stocks__list-icon">⚡</span>
-                  <span className="stocks__list-name">Stocks to Watch</span>
-                </div>
-              </Link>
-            </div>
-          </div>
-        </div>
+        <WatchList />
       </div>
     </div>
   );

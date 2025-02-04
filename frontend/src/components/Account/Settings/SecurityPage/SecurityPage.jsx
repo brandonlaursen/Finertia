@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { logout } from "../../../../../store/session";
 
 function SecurityPage() {
-  console.log("first");
+ 
   const dispatch = useDispatch();
 
   const handleLogout = async (e) => {

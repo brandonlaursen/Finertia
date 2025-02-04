@@ -4,7 +4,7 @@ import { Outlet, useLocation, Link } from "react-router-dom";
 
 function Account() {
   const location = useLocation();
-  console.log("location:", location);
+
 
   return (
     <div className="Account">

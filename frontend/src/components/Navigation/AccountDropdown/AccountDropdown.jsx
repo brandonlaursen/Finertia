@@ -45,7 +45,7 @@ function AccountDropdown({ sessionUser }) {
     await dispatch(logout());
   };
 
-  console.log(isActive);
+
   return (
     <span tabIndex={0} ref={accountDropdownRef} onClick={toggleAccountDropdown}>
       <span
