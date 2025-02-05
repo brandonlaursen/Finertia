@@ -14,8 +14,6 @@ function DeleteListModal({ listId, listName }) {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    console.log(listId);
-
     await dispatch(deleteList(listId));
     closeModal();
   }

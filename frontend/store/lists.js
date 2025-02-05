@@ -81,8 +81,6 @@ export const deleteList = (stockListId) => async (dispatch) => {
   });
 
   if (response.ok) {
-    const data = await response.json();
-
     dispatch(setDeletedList(stockListId));
   }
 };
@@ -120,10 +118,9 @@ const listsReducer = (state = {}, action) => {
     }
     case DELETE_LIST: {
       const newState = { ...state, allLists: { ...state.allLists } };
-      console.log("newState:", newState, action.id, newState.allLists);
 
       delete newState.allLists[action.listId];
-      console.log("newState:", newState);
+
       return newState;
     }
     default:
