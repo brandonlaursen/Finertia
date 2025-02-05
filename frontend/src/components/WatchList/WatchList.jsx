@@ -10,7 +10,7 @@ import OpenModalButton from "../OpenModalButton";
 import WatchListModal from "./CreateListModal";
 import ListItem from "./ListItem";
 
-function WatchList() {
+function WatchList({className}) {
   const dispatch = useDispatch();
 
   const lists = useSelector(selectListsArray);
@@ -23,7 +23,7 @@ function WatchList() {
 
   return (
     <div className="WatchList">
-      <div className="WatchList__container">
+      <div className={className}>
         <div className="WatchList__header">
           <span className="WatchList__title">Lists</span>
           <span className="WatchList__create-list-span">

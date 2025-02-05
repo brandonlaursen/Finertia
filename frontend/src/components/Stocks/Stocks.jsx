@@ -131,7 +131,7 @@ function Stocks() {
           </div>
         </div>
 
-        <WatchList />
+        <WatchList className='WatchList-Stocks-container'/>
       </div>
     </div>
   );

@@ -1,11 +1,12 @@
 import "./HomePage.css";
 
 import NewsFeed from "./News";
+import WatchList from "../WatchList";
 
 function HomePage() {
   return (
     <div className="HomePage">
-
+      <div className="HomePage__body">
         <div className="HomePage__main">
           <div className="HomePage__main__section">
             <div className="HomePage__main__title">Investing</div>
@@ -16,9 +17,8 @@ function HomePage() {
           <NewsFeed />
         </div>
 
-        {/* Stock lists */}
-        <div className="HomePage__aside"> </div>
-
+        <WatchList className="WatchList-HomePage-container" />
+      </div>
     </div>
   );
 }
