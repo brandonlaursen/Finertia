@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchUsersLists, selectListsArray } from "../../../store/lists";
 
 import OpenModalButton from "../OpenModalButton";
-import WatchListModal from "./WatchListModal";
+import WatchListModal from "./CreateListModal";
 import ListItem from "./ListItem";
 
 function WatchList() {
@@ -32,9 +32,9 @@ function WatchList() {
               className="WatchList__create-list-icon"
               Element={FaPlus}
               modalClass={{
-                modal: "WatchList__modal",
-                modalBackground: "WatchList__modal__background",
-                modalContainer: "WatchList__modal__container",
+                modal: "CreateListModal__one",
+                modalBackground: "CreateListModal__one__background",
+                modalContainer: "CreateListModal__one__container",
               }}
             />
           </span>

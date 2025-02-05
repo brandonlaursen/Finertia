@@ -1,4 +1,4 @@
-.WatchList__modal {
+.CreateListModal__one {
   position: fixed;
   top: 375px;
   right: 0;
@@ -10,7 +10,7 @@
   z-index: 100;
 }
 
-.WatchList__modal__background {
+.CreateListModal__one__background {
   position: fixed;
   top: 0;
   right: 0;
@@ -20,7 +20,7 @@
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-.WatchList__modal__container {
+.CreateListModal__one__container {
   position: absolute;
 
   height: 400px;
@@ -31,26 +31,26 @@
   border-radius: 5px;
 }
 
-.WatchListModal__contents {
+.CreateListModal__one__contents {
   display: flex;
   flex-direction: column;
   padding: 10px 20px;
 }
 
-.WatchListModal__header {
+.CreateListModal__one__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.WatchListModal__close-button {
+.CreateListModal__one__close-button {
   height: 22px;
   width: 22px;
 
   cursor: pointer;
 }
 
-.WatchListModal__close-button-span{
+.CreateListModal__one__close-button-span{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -62,17 +62,17 @@
   cursor: pointer;
 }
 
-.WatchListModal__close-button-span:hover {
+.CreateListModal__one__close-button-span:hover {
   background-color: rgb(225, 225, 225);
   border-radius: 5px;
 }
 
 
-.WatchListModal__title {
+.CreateListModal__one__title {
   font-size: 18px;
 }
 
-.WatchListModal__section {
+.CreateListModal__one__section {
   display: flex;
   flex-direction: row;
   gap: 10px;
@@ -80,7 +80,7 @@
   height: 260px;
 }
 
-.WatchListModal__option {
+.CreateListModal__one__option {
   display: flex;
   flex-direction: column;
 
@@ -93,7 +93,7 @@
   cursor: pointer;
 }
 
-.WatchListModal__option__image {
+.CreateListModal__one__option__image {
   height: 60%;
   width: 100%;
 
@@ -103,21 +103,21 @@
   border-top-right-radius: 5px;
 }
 
-.WatchListModal__image-one {
+.CreateListModal__one__image-one {
   background-image: url("https://img.freepik.com/premium-vector/bright-telescope-cartoon-vector-illustration-white-background_1322560-79848.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-.WatchListModal__image-two {
+.CreateListModal__one__image-two {
   background-image: url("https://i.etsystatic.com/27713397/r/il/ba1b96/4493269889/il_1080xN.4493269889_lz2v.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-.WatchListModal__option__text {
+.CreateListModal__one__option__text {
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -128,11 +128,11 @@
   font-size: 14px;
 }
 
-.WatchListModal__text__title {
+.CreateListModal__one__text__title {
   font-weight: bold;
 }
 
-.WatchListModal__back-button {
+.CreateListModal__one__back-button {
   margin-top: 20px;
   height: 40px;
 
@@ -146,13 +146,13 @@
   cursor: pointer;
 }
 
-.WatchListModal__back-button:hover {
+.CreateListModal__one__back-button:hover {
   background-color: rgb(42, 42, 42);
 }
 
 
 /*  */
-.CreateList__modal {
+.CreateListModal__two {
   position: fixed;
   top: 255px;
   right: 0;
@@ -164,7 +164,7 @@
   z-index: 100;
 }
 
-.CreateList__modal__background {
+.CreateListModal__two__background {
   position: fixed;
   top: 0;
   right: 0;
@@ -174,7 +174,7 @@
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-.CreateList__modal__container {
+.CreateListModal__two__container {
   position: absolute;
   display: flex;
   flex-direction: column;

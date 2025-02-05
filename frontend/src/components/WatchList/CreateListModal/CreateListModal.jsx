@@ -1,16 +1,16 @@
-import "./WatchListModal.css";
+import "./CreateListModal.css";
 import { MdClose } from "react-icons/md";
-
 import EmojiPicker from "emoji-picker-react";
-import { useModal } from "../../../context/Modal";
 
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createList } from "../../../../store/lists";
 
+import { useModal } from "../../../context/Modal";
+
+import { createList } from "../../../../store/lists";
 import { selectUser } from "../../../../store/session";
 
-function WatchListModal() {
+function CreateListModal() {
   const { closeModal } = useModal();
   const dispatch = useDispatch();
   const sessionUser = useSelector(selectUser);
@@ -42,10 +42,13 @@ function WatchListModal() {
 
   if (isOpen) {
     return (
-      <div className="CreateList__modal">
-        <div className="CreateList__modal__background" onClick={closeModal} />
+      <div className="CreateListModal__two">
+        <div
+          className="CreateListModal__two__background"
+          onClick={closeModal}
+        />
 
-        <div className="CreateList__modal__container">
+        <div className="CreateListModal__two__container">
           <div className="CreateList__header">
             <span className="CreateList__header__title">Create list</span>
             <span className="WatchListModal__close-button-span">
@@ -103,38 +106,38 @@ function WatchListModal() {
   }
 
   return (
-    <div className="WatchList__modal">
-      <div className="WatchList__modal__background" onClick={closeModal} />
-      <div className="WatchList__modal__container">
-        <div className="WatchListModal__contents">
-          <div className="WatchListModal__header">
-            <h1 className="WatchListModal__title">Choose a list type</h1>
-            <span className="WatchListModal__close-button-span">
+    <div className="CreateListModal__one">
+      <div className="CreateListModal__one__background" onClick={closeModal} />
+      <div className="CreateListModal__one__container">
+        <div className="CreateListModal__one__contents">
+          <div className="CreateListModal__one__header">
+            <h1 className="CreateListModal__one__title">Choose a list type</h1>
+            <span className="CreateListModal__one__close-button-span">
               <MdClose
-                className="WatchListModal__close-button"
+                className="CreateListModal__one__close-button"
                 onClick={closeModal}
               />
             </span>
           </div>
 
-          <div className="WatchListModal__section">
+          <div className="CreateListModal__one__section">
             <div
-              className="WatchListModal__option"
+              className="CreateListModal__one__option"
               onClick={() => setIsOpen(true)}
             >
-              <div className="WatchListModal__option__image WatchListModal__image-one"></div>
-              <div className="WatchListModal__option__text">
-                <span className="WatchListModal__text__title">
+              <div className="CreateListModal__one__option__image CreateListModal__one__image-one"></div>
+              <div className="CreateListModal__one__option__text">
+                <span className="CreateListModal__one__text__title">
                   Create Watchlist
                 </span>
 
                 <span>Keep an on investments youre interested in</span>
               </div>
             </div>
-            <div className="WatchListModal__option">
-              <div className="WatchListModal__option__image WatchListModal__image-two"></div>
-              <div className="WatchListModal__option__text">
-                <span className="WatchListModal__text__title">
+            <div className="CreateListModal__one__option">
+              <div className="CreateListModal__one__option__image CreateListModal__one__image-two"></div>
+              <div className="CreateListModal__one__option__text">
+                <span className="CreateListModal__one__text__title">
                   Create Screener
                 </span>
                 <span>
@@ -144,7 +147,10 @@ function WatchListModal() {
               </div>
             </div>
           </div>
-          <button className="WatchListModal__back-button" onClick={closeModal}>
+          <button
+            className="CreateListModal__one__back-button"
+            onClick={closeModal}
+          >
             Go back
           </button>
         </div>
@@ -153,4 +159,4 @@ function WatchListModal() {
   );
 }
 
-export default WatchListModal;
+export default CreateListModal;
