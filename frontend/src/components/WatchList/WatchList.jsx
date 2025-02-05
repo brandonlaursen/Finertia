@@ -1,10 +1,10 @@
 import "./WatchList.css";
 import { FaPlus } from "react-icons/fa6";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { fetchUsersLists } from "../../../store/lists";
+import { fetchUsersLists, selectListsArray } from "../../../store/lists";
 
 import OpenModalButton from "../OpenModalButton";
 import WatchListModal from "./WatchListModal";
@@ -12,17 +12,18 @@ import ListItem from "./ListItem";
 
 function WatchList() {
   const dispatch = useDispatch();
-  const lists = useSelector((state) => state.lists.allLists);
+
+  const lists = useSelector(selectListsArray);
+
+  const [selectedPopoverId, setSelectedPopoverId] = useState(null);
 
   useEffect(() => {
-     dispatch(fetchUsersLists());
+    dispatch(fetchUsersLists());
   }, [dispatch]);
 
   return (
     <div className="WatchList">
-
       <div className="WatchList__container">
-
         <div className="WatchList__header">
           <span className="WatchList__title">Lists</span>
           <span className="WatchList__create-list-span">
@@ -42,11 +43,17 @@ function WatchList() {
         <div className="WatchList__lists">
           {lists &&
             lists.slice(0, 10).map((list) => {
-              return <ListItem list={list} key={list.id} />;
+              return (
+                <ListItem
+                  list={list}
+                  key={list.id}
+                  selectedPopoverId={selectedPopoverId}
+                  setSelectedPopoverId={setSelectedPopoverId}
+                />
+              );
             })}
         </div>
       </div>
-
     </div>
   );
 }

@@ -10,8 +10,6 @@ import { createList } from "../../../../store/lists";
 
 import { selectUser } from "../../../../store/session";
 
-
-
 function WatchListModal() {
   const { closeModal } = useModal();
   const dispatch = useDispatch();
@@ -19,7 +17,7 @@ function WatchListModal() {
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectedEmoji, setSelectedEmoji] = useState("💡");
-  const [listName, setListName] = useState('');
+  const [listName, setListName] = useState("");
 
   const [showPicker, setShowPicker] = useState(false);
 
@@ -35,8 +33,8 @@ function WatchListModal() {
       userId: sessionUser.id,
       name: listName,
       type: selectedEmoji,
-      stockIds: []
-    }
+      stockIds: [],
+    };
 
     await dispatch(createList(newList));
     closeModal();
@@ -94,7 +92,7 @@ function WatchListModal() {
               className="CreateList__section__button
             CreateList__create-button
             "
-            onClick={handleSubmit}
+              onClick={handleSubmit}
             >
               Create List
             </button>
@@ -153,7 +151,6 @@ function WatchListModal() {
       </div>
     </div>
   );
-
 }
 
 export default WatchListModal;

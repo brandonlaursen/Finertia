@@ -1,22 +1,33 @@
 import "./ListItem.css";
-import { Link } from "react-router-dom";
-
-import { useState, useRef, useEffect } from "react";
-
 import { IoEllipsisHorizontalSharp } from "react-icons/io5";
 import { MdOutlineDragIndicator } from "react-icons/md";
 import { IoSettings } from "react-icons/io5";
 import { TiDeleteOutline } from "react-icons/ti";
 
-function ListItem({ list }) {
-  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+import { useRef, useEffect } from "react";
+
+// import { Link } from "react-router-dom";
+
+import EditListModal from "./EditListModal";
+
+import { useModal } from "../../../context/Modal";
+
+function ListItem({ list, selectedPopoverId, setSelectedPopoverId }) {
+  const { setModalContent, setModalClass } = useModal();
+
   const popoverRef = useRef(null);
   const ellipsisRef = useRef(null);
+
+  const isPopoverOpen = selectedPopoverId === list.id;
 
   const togglePopover = (e) => {
     e.stopPropagation();
     e.preventDefault();
-    setIsPopoverOpen((prev) => !prev);
+    if (isPopoverOpen) {
+      setSelectedPopoverId(null);
+    } else {
+      setSelectedPopoverId(list.id);
+    }
   };
 
   useEffect(() => {
@@ -27,21 +38,19 @@ function ListItem({ list }) {
         ellipsisRef.current &&
         !ellipsisRef.current.contains(e.target)
       ) {
-        setIsPopoverOpen(false); // Close the popover if clicked outside
+        setSelectedPopoverId(null);
       }
     };
 
-    // Add event listener
     document.addEventListener("click", handleClickOutside);
 
-    // Cleanup the event listener on component unmount
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, []);
+  }, [setSelectedPopoverId]);
 
   return (
-    <Link to="/list1" className="ListItem">
+    <div to="/list1" className="ListItem">
       <div className="ListItem__container">
         <div>
           <span className="ListItem__icon">{list?.type}</span>
@@ -57,10 +66,22 @@ function ListItem({ list }) {
         </span>
         {isPopoverOpen && (
           <div className="ListItem__popover" ref={popoverRef}>
-            <span className="ListItem__button">
+            <span
+              className="ListItem__button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setModalContent(<EditListModal listId={list.id} />);
+                setModalClass({
+                  modal: "EditListModal",
+                  modalBackground: "EditListModal__background",
+                  modalContainer: "EditListModal__container",
+                });
+              }}
+            >
               <IoSettings className="ListItem__button-icon" />
               Edit
             </span>
+
             <span className="ListItem__button">
               <MdOutlineDragIndicator className="ListItem__button-icon" />
               Rearrange
@@ -72,7 +93,7 @@ function ListItem({ list }) {
           </div>
         )}
       </div>
-    </Link>
+    </div>
   );
 }
 

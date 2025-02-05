@@ -1,5 +1,5 @@
 import "./Modal.css";
-import { useRef, useState, useContext, createContext } from "react";
+import { useRef, useState, useContext, createContext, useEffect } from "react";
 import ReactDOM from "react-dom";
 
 const ModalContext = createContext();
@@ -42,6 +42,8 @@ export function ModalProvider({ children }) {
 export function Modal() {
   const { modalRef, modalContent, closeModal, modalClass } =
     useContext(ModalContext);
+
+  useEffect(() => {}, [modalContent, modalClass]);
 
   if (!modalRef || !modalRef.current || !modalContent || !modalClass)
     return null;
