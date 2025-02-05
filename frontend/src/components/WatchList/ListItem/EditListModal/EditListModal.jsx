@@ -1,4 +1,3 @@
-import { useModal } from "../../../../context/Modal";
 import "./EditListModal.css";
 
 import { MdClose } from "react-icons/md";
@@ -7,6 +6,8 @@ import EmojiPicker from "emoji-picker-react";
 
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+
+import { useModal } from "../../../../context/Modal";
 
 import { editList } from "../../../../../store/lists";
 
@@ -45,7 +46,7 @@ function EditListModal({ listId }) {
       <div className="EditListModal__container">
         <div className="EditListModal__contents">
           <div className="EditListModal__header">
-            <span className="EditListModal__title">Choose a list type</span>
+            <span className="EditListModal__title">Edit List</span>
             <span className="EditListModal__close-button-span">
               <MdClose
                 className="EditListModal__close-button"

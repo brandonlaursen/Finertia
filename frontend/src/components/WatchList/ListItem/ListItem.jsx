@@ -9,6 +9,7 @@ import { useRef, useEffect } from "react";
 // import { Link } from "react-router-dom";
 
 import EditListModal from "./EditListModal/EditListModal";
+import DeleteListModal from "./DeleteListModal/DeleteListModal";
 
 import { useModal } from "../../../context/Modal";
 
@@ -86,7 +87,21 @@ function ListItem({ list, selectedPopoverId, setSelectedPopoverId }) {
               <MdOutlineDragIndicator className="ListItem__button-icon" />
               Rearrange
             </span>
-            <span className="ListItem__button">
+
+            <span
+              className="ListItem__button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setModalContent(
+                  <DeleteListModal listId={list.id} listName={list.name} />
+                );
+                setModalClass({
+                  modal: "DeleteListModal",
+                  modalBackground: "DeleteListModal__background",
+                  modalContainer: "DeleteListModal__container",
+                });
+              }}
+            >
               <TiDeleteOutline className="ListItem__button-icon" />
               Delete
             </span>

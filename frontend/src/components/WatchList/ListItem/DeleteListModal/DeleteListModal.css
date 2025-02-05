@@ -1,0 +1,127 @@
+
+.DeleteListModal {
+  position: fixed;
+  top: 255px;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.DeleteListModal__background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.DeleteListModal__container {
+  position: absolute;
+
+  height: 175px;
+  width: 400px;
+
+  background-color: rgb(255, 255, 255);
+
+  border-radius: 5px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding:0px 20px;
+
+}
+
+
+
+.DeleteListModal__header {
+  display: flex;
+  justify-content: space-between;
+
+  /* padding-right: 20px; */
+}
+
+
+.DeleteListModal__close-button {
+  height: 22px;
+  width: 22px;
+  cursor: pointer;
+
+}
+
+.DeleteListModal__close-button-span{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+
+.DeleteListModal__close-button-span:hover {
+  background-color: rgb(225, 225, 225);
+  border-radius: 5px;
+}
+
+.DeleteListModal__title {
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+
+.DeleteListModal__section {
+
+  display: flex;
+  align-items: end;
+  gap: 8px;
+  padding-bottom: 10px;
+  font-size:14px;
+
+  height: 40px;
+}
+
+
+
+
+
+.DeleteListModal__section__buttons{
+  display: flex;
+  justify-content: center;
+  gap:8px;
+  /* margin-right: 28px; */
+  /* padding-left: 16px; */
+  /* padding-right: 26px; */
+  padding-top: 10px;
+}
+
+.DeleteListModal__section__button{
+  height: 36px;
+  width: 100%;
+  border-radius: 16px;
+  padding: 0 20px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+.DeleteListModal__delete-button{
+  background-color: rgb(255,80,1);
+  color:white;
+  border: none;
+
+}
+
+.DeleteListModal__delete-button:hover{
+  background-color: rgb(214, 68, 1);
+}
