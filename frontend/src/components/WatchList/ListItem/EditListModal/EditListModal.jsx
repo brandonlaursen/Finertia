@@ -1,4 +1,4 @@
-import { useModal } from "../../../context/Modal";
+import { useModal } from "../../../../context/Modal";
 import "./EditListModal.css";
 
 import { MdClose } from "react-icons/md";
@@ -6,9 +6,9 @@ import { MdClose } from "react-icons/md";
 import EmojiPicker from "emoji-picker-react";
 
 import { useState } from "react";
-import { useDispatch  } from "react-redux";
+import { useDispatch } from "react-redux";
 
-import { editList } from "../../../../store/lists";
+import { editList } from "../../../../../store/lists";
 
 function EditListModal({ listId }) {
   const { closeModal } = useModal();

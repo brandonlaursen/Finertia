@@ -8,7 +8,7 @@ import { useRef, useEffect } from "react";
 
 // import { Link } from "react-router-dom";
 
-import EditListModal from "./EditListModal";
+import EditListModal from "./EditListModal/EditListModal";
 
 import { useModal } from "../../../context/Modal";
 
