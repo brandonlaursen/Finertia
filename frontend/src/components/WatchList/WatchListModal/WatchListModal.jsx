@@ -1,16 +1,25 @@
 import "./WatchListModal.css";
 import { MdClose } from "react-icons/md";
 
-import { useState } from "react";
-
 import EmojiPicker from "emoji-picker-react";
-
 import { useModal } from "../../../context/Modal";
+
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { createList } from "../../../../store/lists";
+
+import { selectUser } from "../../../../store/session";
+
+
 
 function WatchListModal() {
   const { closeModal } = useModal();
+  const dispatch = useDispatch();
+  const sessionUser = useSelector(selectUser);
+
   const [isOpen, setIsOpen] = useState(false);
   const [selectedEmoji, setSelectedEmoji] = useState("💡");
+  const [listName, setListName] = useState('');
 
   const [showPicker, setShowPicker] = useState(false);
 
@@ -19,7 +28,19 @@ function WatchListModal() {
     setShowPicker(false);
   };
 
-  console.log("selectedEmoji:", selectedEmoji);
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    const newList = {
+      userId: sessionUser.id,
+      name: listName,
+      type: selectedEmoji,
+      stockIds: []
+    }
+
+    await dispatch(createList(newList));
+    closeModal();
+  }
 
   if (isOpen) {
     return (
@@ -56,6 +77,8 @@ function WatchListModal() {
               className="CreateList__section__input"
               type="text"
               placeholder="List Name"
+              value={listName}
+              onChange={(e) => setListName(e.target.value)}
             />
           </div>
 
@@ -71,6 +94,7 @@ function WatchListModal() {
               className="CreateList__section__button
             CreateList__create-button
             "
+            onClick={handleSubmit}
             >
               Create List
             </button>
