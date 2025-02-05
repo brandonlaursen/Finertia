@@ -6,6 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
   z-index: 100;
 }
 
@@ -15,6 +16,7 @@
   right: 0;
   left: 0;
   bottom: 0;
+
   background-color: rgba(0, 0, 0, 0.7);
 }
 
@@ -30,10 +32,9 @@
 }
 
 .WatchListModal__contents {
-  /* background-color: aqua; */
   display: flex;
-  padding: 10px 20px;
   flex-direction: column;
+  padding: 10px 20px;
 }
 
 .WatchListModal__header {
@@ -45,8 +46,8 @@
 .WatchListModal__close-button {
   height: 22px;
   width: 22px;
-  cursor: pointer;
 
+  cursor: pointer;
 }
 
 .WatchListModal__close-button-span{
@@ -57,6 +58,7 @@
 
   height: 30px;
   width: 30px;
+
   cursor: pointer;
 }
 
@@ -71,27 +73,32 @@
 }
 
 .WatchListModal__section {
-  /* background-color: red; */
-  height: 260px;
   display: flex;
-  gap: 10px;
   flex-direction: row;
+  gap: 10px;
+
+  height: 260px;
 }
 
 .WatchListModal__option {
-  height: 260px;
-  width: 175px;
-  border: 1px solid rgb(234, 234, 234);
-  border-radius: 5px;
   display: flex;
   flex-direction: column;
+
+  height: 260px;
+  width: 175px;
+
+  border: 1px solid rgb(234, 234, 234);
+  border-radius: 5px;
+
   cursor: pointer;
 }
 
 .WatchListModal__option__image {
-  background-color: rgb(230, 255, 255);
   height: 60%;
   width: 100%;
+
+  background-color: rgb(230, 255, 255);
+
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
@@ -113,9 +120,11 @@
 .WatchListModal__option__text {
   display: flex;
   flex-direction: column;
-  height: 40%;
   gap: 4px;
   padding: 16px 12px;
+
+  height: 40%;
+
   font-size: 14px;
 }
 
@@ -126,10 +135,14 @@
 .WatchListModal__back-button {
   margin-top: 20px;
   height: 40px;
-  border-radius: 20px;
+
+  font-weight: bold;
+
   color: white;
   background-color: black;
-  font-weight: bold;
+
+  border-radius: 20px;
+
   cursor: pointer;
 }
 
@@ -147,6 +160,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
   z-index: 100;
 }
 
@@ -156,11 +170,15 @@
   right: 0;
   left: 0;
   bottom: 0;
+
   background-color: rgba(0, 0, 0, 0.7);
 }
 
 .CreateList__modal__container {
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px;
 
   height: 175px;
   width: 420px;
@@ -168,17 +186,12 @@
   background-color: rgb(255, 255, 255);
 
   border-radius: 5px;
-
-  display: flex;
-  flex-direction: column;
-  padding: 20px 20px;
 }
 
 .CreateList__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   padding-bottom: 8px;
 }
 
@@ -188,58 +201,61 @@
 }
 
 .CreateList__section {
-
-  height: 50px;
-  padding-left: 16px;
-  margin-bottom: 10px;
   display: flex;
   align-items: end;
-
+  padding-left: 16px;
+  margin-bottom: 10px;
   gap: 8px;
+
+  height: 50px;
 }
 
 .CreateList__section__emoji {
-  height: 38px;
-  width: 38px;
-
-  border: solid 1px rgb(232, 232, 232);
-  border-radius: 5px;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
+  height: 38px;
+  width: 38px;
+
   background-color: rgb(255, 255, 255);
+
+  border: solid 1px rgb(232, 232, 232);
+  border-radius: 5px;
   cursor: pointer;
 }
 
 .emoji-picker-wrapper{
   position: absolute;
-  top: 105px; /* Move it down */
-  right: 345px;   /* Align with button */
-  z-index: 1000;
+  top: 105px;
+  right: 345px;
+
   background: white;
+
   border-radius: 8px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
 }
 
 
 .CreateList__section__input {
   box-sizing: border-box;
-  background-color: aliceblue;
+  padding: 2px 15px;
+
   width: 80%;
   height: 36px;
 
-  border-radius: 5px;
-  border: none;
   font-size: 12px;
 
-  padding: 2px 15px;
+  background-color: aliceblue;
+
+  border-radius: 5px;
+  border: none;
 }
 
 .CreateList__section__input:focus {
   border: solid 1px rgb(36, 240, 172);
-
 }
 
 
@@ -252,21 +268,23 @@
 }
 
 .CreateList__section__button{
+  padding: 0 20px;
+
   height: 32px;
   width: auto;
-  border-radius: 16px;
-  padding: 0 20px;
+
   font-size: 12px;
   font-weight: bold;
+
+  border-radius: 16px;
   cursor: pointer;
 }
 
 .CreateList__cancel-button{
+  color: rgb(2, 215, 144);
   background-color: white;
+
   border: solid 1px rgb(36, 240, 172);
-
-
-  color: rgb(2, 215, 144);;
 }
 
 
@@ -275,10 +293,10 @@
 }
 
 .CreateList__create-button{
-  background-color: rgb(7, 222, 150);
   color:white;
-  border: none;
+  background-color: rgb(7, 222, 150);
 
+  border: none;
 }
 
 .CreateList__create-button:hover{
