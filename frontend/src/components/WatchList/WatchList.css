@@ -1,12 +1,17 @@
-
-
 .WatchList {
-
   margin-top: 30px;
-
-  /* background-color: red; */
 }
 
+/*
+
+  Watchlists page
+  width: 250px
+  settings menu
+
+  Home page
+  width: 300px;
+  settings menu + open close list menu
+*/
 .WatchList__container {
   /* background-color: rgb(220, 255, 95); */
   height: 86vh;
@@ -43,45 +48,28 @@
   border-bottom: 1px solid #ddd;
 }
 
-.WatchList__list {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  height: 40px;
-  text-decoration: none;
-}
 
-.WatchList__stock-container {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-}
-
-.WatchList__stock-icon {
-  background-color: rgb(234, 243, 248);
-  height: 35px;
-  width: 27px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 13px;
-}
-
-.WatchList__stock-title {
-  background-color: rgb(255, 255, 255);
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  color: black;
-  font-size: 13px;
-}
-
-
-.WatchList__create-list-icon{
+.WatchList__create-list-icon {
   cursor: pointer;
 }
 
-.WatchList__create-list-icon:hover{
+.WatchList__create-list-icon:hover {
   cursor: pointer;
   background-color: #e6e6e6;
+}
+
+.WatchList__create-list-span {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  height: 20px;
+  width: 20px;
+}
+
+.WatchList__create-list-span:hover {
+  background-color: rgb(225, 225, 225);
+  border-radius: 5px;
 }

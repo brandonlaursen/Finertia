@@ -11,7 +11,6 @@ export function ModalProvider({ children }) {
   const [modalClass, setModalClass] = useState(null);
 
   const closeModal = () => {
-
     setModalContent(null);
     setModalClass(null);
     if (typeof onModalClose === "function") {
@@ -19,7 +18,6 @@ export function ModalProvider({ children }) {
       onModalClose();
     }
   };
-
 
   const contextValue = {
     modalRef,
@@ -30,7 +28,6 @@ export function ModalProvider({ children }) {
     modalClass,
     setModalClass,
   };
-
 
   return (
     <>
@@ -50,9 +47,9 @@ export function Modal() {
     return null;
 
   return ReactDOM.createPortal(
-    <div className={modalClass.modal}>
-      <div className={modalClass.modalBackground} onClick={closeModal} />
-      <div className={modalClass.modalContainer}>{modalContent}</div>
+    <div>
+      <div onClick={closeModal} />
+      <div>{modalContent}</div>
     </div>,
     modalRef.current
   );

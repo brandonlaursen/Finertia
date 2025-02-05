@@ -1,0 +1,129 @@
+.ListItem {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+
+  height: 40px;
+
+  text-decoration: none;
+}
+
+.ListItem__container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  width: 100%;
+}
+
+.ListItem__container:hover .ListItem__ellipsis {
+  opacity: 1;
+}
+
+.ListItem__icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+
+  height: 35px;
+  width: 27px;
+
+  font-size: 13px;
+
+  background-color: rgb(234, 243, 248);
+
+  border-radius: 5px;
+}
+
+.ListItem__title {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 13px;
+
+  color: black;
+  background-color: rgb(255, 255, 255);
+}
+
+.ListItem__ellipsis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  height: 24px;
+  width: 24px;
+
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.ListItem__container:hover .ListItem__ellipsis {
+  opacity: 1;
+}
+
+.ListItem__popover {
+  position: absolute;
+  top: 32px;
+  left: 185px;
+  padding: 5px 0;
+
+
+  background: white;
+
+  border: 1px solid #dadfdf;
+  border-radius: 5px;
+  box-shadow: 0px 1px 10px rgba(231, 231, 231, 0.1);
+
+  height: 100px;
+  width: 150px;
+  display:flex;
+  flex-direction: column;
+  /* gap: 10px; */
+  justify-content: space-between;
+
+  font-size: 14px;
+}
+
+.ListItem__ellipsis:hover {
+  background-color: aliceblue;
+  opacity: 1;
+}
+
+.ListItem__button{
+
+  padding: 4px;
+  display: flex;
+  gap: 4px;
+  text-align: center;
+  align-items: center;
+  color: black;
+  padding-left: 10px;
+
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: black; 
+  text-underline-offset: 3px;
+
+  font-weight: bold;
+  font-size: 12px;
+}
+
+
+.ListItem__button:hover{
+  background-color: #f1f7ff;
+
+}
+
+
+.ListItem__button-icon{
+  height: 16px;
+  width:16px;
+}

@@ -46,34 +46,49 @@
   height: 22px;
   width: 22px;
   cursor: pointer;
+
 }
+
+.WatchListModal__close-button-span{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+
+.WatchListModal__close-button-span:hover {
+  background-color: rgb(225, 225, 225);
+  border-radius: 5px;
+}
+
 
 .WatchListModal__title {
   font-size: 18px;
 }
 
-
-.WatchListModal__section{
+.WatchListModal__section {
   /* background-color: red; */
   height: 260px;
   display: flex;
   gap: 10px;
   flex-direction: row;
-
-
 }
 
-.WatchListModal__option{
-  height:260px;
+.WatchListModal__option {
+  height: 260px;
   width: 175px;
   border: 1px solid rgb(234, 234, 234);
   border-radius: 5px;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
 
-
-.WatchListModal__option__image{
+.WatchListModal__option__image {
   background-color: rgb(230, 255, 255);
   height: 60%;
   width: 100%;
@@ -81,24 +96,21 @@
   border-top-right-radius: 5px;
 }
 
-.WatchListModal__image-one{
-  background-image: url('https://img.freepik.com/premium-vector/bright-telescope-cartoon-vector-illustration-white-background_1322560-79848.jpg');
+.WatchListModal__image-one {
+  background-image: url("https://img.freepik.com/premium-vector/bright-telescope-cartoon-vector-illustration-white-background_1322560-79848.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-
-.WatchListModal__image-two{
-  background-image: url('https://i.etsystatic.com/27713397/r/il/ba1b96/4493269889/il_1080xN.4493269889_lz2v.jpg');
+.WatchListModal__image-two {
+  background-image: url("https://i.etsystatic.com/27713397/r/il/ba1b96/4493269889/il_1080xN.4493269889_lz2v.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-
-
-.WatchListModal__option__text{
+.WatchListModal__option__text {
   display: flex;
   flex-direction: column;
   height: 40%;
@@ -107,12 +119,11 @@
   font-size: 14px;
 }
 
-.WatchListModal__text__title{
+.WatchListModal__text__title {
   font-weight: bold;
 }
 
-
-.WatchListModal__back-button{
+.WatchListModal__back-button {
   margin-top: 20px;
   height: 40px;
   border-radius: 20px;
@@ -122,7 +133,153 @@
   cursor: pointer;
 }
 
-
-.WatchListModal__back-button:hover{
+.WatchListModal__back-button:hover {
   background-color: rgb(42, 42, 42);
+}
+
+/*  */
+.CreateList__modal {
+  position: fixed;
+  top: 255px;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.CreateList__modal__background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.CreateList__modal__container {
+  position: absolute;
+
+  height: 175px;
+  width: 420px;
+
+  background-color: rgb(255, 255, 255);
+
+  border-radius: 5px;
+
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px;
+}
+
+.CreateList__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-bottom: 8px;
+}
+
+.CreateList__header__title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.CreateList__section {
+
+  height: 50px;
+  padding-left: 16px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: end;
+
+  gap: 8px;
+}
+
+.CreateList__section__emoji {
+  height: 38px;
+  width: 38px;
+
+  border: solid 1px rgb(232, 232, 232);
+  border-radius: 5px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+.emoji-picker-wrapper{
+  position: absolute;
+  top: 105px; /* Move it down */
+  right: 345px;   /* Align with button */
+  z-index: 1000;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+.CreateList__section__input {
+  box-sizing: border-box;
+  background-color: aliceblue;
+  width: 80%;
+  height: 36px;
+
+  border-radius: 5px;
+  border: none;
+  font-size: 12px;
+
+  padding: 2px 15px;
+}
+
+.CreateList__section__input:focus {
+  border: solid 1px rgb(36, 240, 172);
+
+}
+
+
+
+.CreateList__section__buttons{
+  display: flex;
+  justify-content: end;
+  gap:8px;
+  margin-right: 28px;
+}
+
+.CreateList__section__button{
+  height: 32px;
+  width: auto;
+  border-radius: 16px;
+  padding: 0 20px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.CreateList__cancel-button{
+  background-color: white;
+  border: solid 1px rgb(36, 240, 172);
+
+
+  color: rgb(2, 215, 144);;
+}
+
+
+.CreateList__cancel-button:hover{
+  background-color: rgb(211, 255, 240);
+}
+
+.CreateList__create-button{
+  background-color: rgb(7, 222, 150);
+  color:white;
+  border: none;
+
+}
+
+.CreateList__create-button:hover{
+  background-color: rgb(7, 196, 133);
 }

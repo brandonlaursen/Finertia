@@ -4,9 +4,9 @@ function OpenModalButton({
   modalComponent,
   onButtonClick,
   onModalClose,
-  className,
   Element,
   modalClass,
+  className,
 }) {
   const { setModalContent, setOnModalClose, setModalClass } = useModal();
 
@@ -19,7 +19,9 @@ function OpenModalButton({
     if (typeof onButtonClick === "function") onButtonClick();
   };
 
-  return <Element className={className} onClick={onClick}></Element>;
+
+
+  return <Element onClick={onClick} className={className}></Element>;
 }
 
 export default OpenModalButton;
