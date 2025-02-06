@@ -3,7 +3,8 @@ import { IoEllipsisHorizontalSharp } from "react-icons/io5";
 import { MdOutlineDragIndicator } from "react-icons/md";
 import { IoSettings } from "react-icons/io5";
 import { TiDeleteOutline } from "react-icons/ti";
-
+import { IoIosArrowUp } from "react-icons/io";
+import { IoIosArrowDown } from "react-icons/io";
 
 import { useRef, useEffect } from "react";
 
@@ -23,12 +24,19 @@ function ListItem({
   icon,
   title,
   popover,
+  setToggleListIds,
+  toggleListIds,
 }) {
   const { setModalContent, setModalClass } = useModal();
 
   const popoverRef = useRef(null);
   const ellipsisRef = useRef(null);
 
+  let isListOpen;
+  if (popover) {
+    isListOpen = toggleListIds.includes(list.id);
+  }
+  
   const isPopoverOpen = selectedPopoverId === list.id;
 
   const togglePopover = (e) => {
@@ -38,6 +46,22 @@ function ListItem({
       setSelectedPopoverId(null);
     } else {
       setSelectedPopoverId(list.id);
+    }
+  };
+
+  const toggleList = (e) => {
+    e.stopPropagation();
+    console.log(toggleListIds);
+    e.preventDefault();
+    if (isListOpen) {
+      const newListIds = [...toggleListIds];
+      const index = newListIds.indexOf(list.id);
+      newListIds.splice(index, 1);
+      setToggleListIds(newListIds);
+    } else {
+      const newListIds = [...toggleListIds];
+      newListIds.push(list.id);
+      setToggleListIds(newListIds);
     }
   };
 
@@ -66,17 +90,29 @@ function ListItem({
         <div>
           <span className={icon}>{list?.type}</span>
           <span className={title}>{list?.name}</span>
+
+          {/* {!popover && (
+            <span className={title}>{list?.Stocks.length} items</span>
+          )} */}
         </div>
 
         {popover && (
           <>
-            <span
-              className="ListItem__ellipsis"
-              onClick={togglePopover}
-              ref={ellipsisRef}
-            >
-              <IoEllipsisHorizontalSharp className="ListItem__ellipsis-icon" />
+            <span className="arrow-container">
+              <span
+                className="ListItem__ellipsis"
+                onClick={togglePopover}
+                ref={ellipsisRef}
+              >
+                <IoEllipsisHorizontalSharp className="ListItem__ellipsis-icon" />
+              </span>
+              {isListOpen ? (
+                <IoIosArrowDown onClick={toggleList} />
+              ) : (
+                <IoIosArrowUp onClick={toggleList} />
+              )}
             </span>
+
             {isPopoverOpen && (
               <div className="ListItem__popover" ref={popoverRef}>
                 <span

@@ -10,12 +10,15 @@ import OpenModalButton from "../OpenModalButton";
 import WatchListModal from "./CreateListModal";
 import ListItem from "./ListItem";
 
-function WatchList({className}) {
+import WatchListStocks from "./WatchListStocks/WatchListStocks";
+
+function WatchList({ className }) {
   const dispatch = useDispatch();
 
   const lists = useSelector(selectListsArray);
 
   const [selectedPopoverId, setSelectedPopoverId] = useState(null);
+  const [toggleListIds, setToggleListIds] = useState([]);
 
   useEffect(() => {
     dispatch(fetchUsersLists());
@@ -44,17 +47,25 @@ function WatchList({className}) {
           {lists &&
             lists.slice(0, 10).map((list) => {
               return (
-                <ListItem
-                  list={list}
-                  key={list.id}
-                  selectedPopoverId={selectedPopoverId}
-                  setSelectedPopoverId={setSelectedPopoverId}
-                  className="WatchList__lists__ListItem"
-                  container='ListItem__container'
-                  icon='ListItem__icon'
-                  title='ListItem__title'
-                  popover={true}
-                />
+                <>
+                  <ListItem
+                    list={list}
+                    selectedPopoverId={selectedPopoverId}
+                    setSelectedPopoverId={setSelectedPopoverId}
+                    className="WatchList__lists__ListItem"
+                    container="ListItem__container"
+                    icon="ListItem__icon"
+                    title="ListItem__title"
+                    popover={true}
+                    toggleListIds={toggleListIds}
+                    setToggleListIds={setToggleListIds}
+                  />
+                  <WatchListStocks
+                    toggleListIds={toggleListIds}
+                    setToggleListIds={setToggleListIds}
+                    list={list}
+                  />
+                </>
               );
             })}
         </div>
