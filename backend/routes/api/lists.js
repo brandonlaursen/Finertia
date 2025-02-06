@@ -3,36 +3,26 @@ const router = express.Router();
 const { StockList, User, Stock } = require("../../db/models");
 const { Op } = require("sequelize");
 
-// ! TODO
-// * Add error handling
-// * add validators
-// * add check for authorization
-// * add status codes
-// * refactor to follow DRY
-
 // * Get all lists of a user
 router.get("/", async (req, res) => {
   const { id } = req.user;
-  const allStockList = await StockList.findAll({
+  const lists = await StockList.findAll({
     where: {
       userId: id,
     },
     include: [Stock],
   });
 
-  return res.json({
-    message: "successfully retrieved all StockList",
-    allStockList,
-  });
+  return res.json(lists);
 });
 
 // * create a list
 router.post("/", async (req, res) => {
   const { id } = req.user;
-  const { stockListId } = req.params;
+
   const { name, type, stockIds } = req.body;
 
-  const newStockList = await StockList.create({
+  const newList = await StockList.create({
     userId: id,
     name,
     type,
@@ -40,34 +30,28 @@ router.post("/", async (req, res) => {
 
   if (stockIds) {
     for (const stockId of stockIds) {
-      await newStockList.addStocks(stockId);
+      await newList.addStocks(stockId);
     }
   }
 
-  return res.json({
-    message: `successfully updated StockList with id of ${stockListId}`,
-    newStockList,
-  });
+  return res.json(newList);
 });
 
 // * Get a single lists
 router.get("/:stockListId", async (req, res) => {
   const { stockListId } = req.params;
 
-  const stockList = await StockList.findByPk(stockListId, {
+  const lists = await StockList.findByPk(stockListId, {
     include: [Stock],
   });
 
-  if (!stockList) {
+  if (!lists) {
     return res.json({
       message: `stock list with id of ${stockListId} does not exists`,
     });
   }
 
-  return res.json({
-    message: `successfully retrieved StockList with id of ${stockListId}`,
-    stockList,
-  });
+  return res.json(lists);
 });
 
 // * Edit a list
@@ -75,28 +59,25 @@ router.put("/:stockListId", async (req, res) => {
   const { stockListId } = req.params;
   const { name: newName, type: newType } = req.body;
 
-  const stockList = await StockList.findByPk(stockListId);
+  const list = await StockList.findByPk(stockListId);
 
-  await stockList.update({
-    name: newName || name,
-    type: newType || type,
+  await list.update({
+    name: newName || stockList.name,
+    type: newType || stockList.type,
   });
 
-  return res.json({
-    message: `successfully updated StockList with id of ${stockListId}`,
-    stockList,
-  });
+  return res.json(list);
 });
 
 // * add stock to list
 router.post("/:stockListId/:stockId", async (req, res) => {
   const { stockListId, stockId } = req.params;
 
-  const stockList = await StockList.findByPk(stockListId, {
+  const list = await StockList.findByPk(stockListId, {
     include: [Stock],
   });
 
-  const stockIds = stockList.Stocks.map((stock) => +stock.id);
+  const stockIds = list.Stocks.map((stock) => +stock.id);
 
   if (stockIds.includes(+stockId)) {
     return res.json({
@@ -104,7 +85,79 @@ router.post("/:stockListId/:stockId", async (req, res) => {
     });
   }
 
-  await stockList.addStocks(stockId);
+  await list.addStocks(stockId);
+
+  return res.json({
+    message: `successfully added Stock with id of ${stockId} to StockList with id of ${stockListId}`,
+  });
+});
+
+// * stock to multiple list
+// * add/remove stock to list
+router.post("/update-stock-lists", async (req, res) => {
+  const { stockListsIdsObj, stockId } = req.body;
+  const { id } = req.user;
+
+  const stockLists = await Promise.all(
+    Object.keys(stockListsIdsObj).map(async (listId) => {
+      return await StockList.findByPk(listId, { include: [Stock] });
+    })
+  );
+
+  const messages = [];
+  let updatedListIds = [];
+  for (let list of stockLists) {
+    const currentListId = list.id;
+    const currentStockIds = list.Stocks.map((stock) => stock.id);
+
+    if (stockListsIdsObj[currentListId] === true) {
+      if (!currentStockIds.includes(stockId)) {
+        await list.addStocks(stockId);
+
+        updatedListIds.push(list.id);
+        messages.push(`Added ${stockId} to ${list.name} ${list.id}`);
+      } else {
+        messages.push(
+          `${stockId} is already present in ${list.name} ${list.id} no updates were made`
+        );
+        updatedListIds.push(list.id);
+      }
+    } else {
+      if (currentStockIds.includes(stockId)) {
+        await list.removeStocks(stockId);
+        messages.push(`Removed ${stockId} from ${list.name} ${list.id}`);
+      } else {
+        messages.push(
+          `${stockId} is not present in ${list.name} ${list.id} no updates were made`
+        );
+      }
+    }
+  }
+
+  return res.json({
+    messages,
+
+    updatedListIds,
+  });
+});
+
+// * add stock to list
+router.post("/:stockListId/:stockId", async (req, res) => {
+  const { stockListId, stockId } = req.params;
+
+  const list = await StockList.findByPk(stockListId, {
+    include: [Stock],
+  });
+
+  const stockIds = list.Stocks.map((stock) => +stock.id);
+
+  if (stockIds.includes(+stockId)) {
+    return res.json({
+      message: `stock with id of ${stockId} is already in the list`,
+    });
+  }
+
+  await list.addStocks(stockId);
 
   return res.json({
     message: `successfully added Stock with id of ${stockId} to StockList with id of ${stockListId}`,
@@ -115,17 +168,17 @@ router.post("/:stockListId/:stockId", async (req, res) => {
 router.delete("/:stockListId/:stockId", async (req, res) => {
   const { stockListId, stockId } = req.params;
 
-  const stockList = await StockList.findByPk(stockListId, {
+  const list = await StockList.findByPk(stockListId, {
     include: [Stock],
   });
 
-  if (!stockList) {
+  if (!list) {
     return res.json({
       message: `stock list with id of ${stockListId} does not exists`,
     });
   }
 
-  const stockIds = stockList.Stocks.map((stock) => +stock.id);
+  const stockIds = list.Stocks.map((stock) => +stock.id);
 
   if (!stockIds.includes(+stockId)) {
     return res.json({
@@ -133,7 +186,7 @@ router.delete("/:stockListId/:stockId", async (req, res) => {
     });
   }
 
-  await stockList.removeStocks(stockId);
+  await list.removeStocks(stockId);
 
   return res.json({
     message: `successfully removed Stock with id of ${stockId} to StockList with id of ${stockListId}`,
@@ -144,9 +197,9 @@ router.delete("/:stockListId/:stockId", async (req, res) => {
 router.delete("/:stockListId", async (req, res) => {
   const { stockListId } = req.params;
 
-  const stockList = await StockList.findByPk(stockListId);
+  const list = await StockList.findByPk(stockListId);
 
-  await stockList.destroy();
+  await list.destroy();
 
   return res.json({
     message: `successfully deleted stock list with id of ${stockListId}`,
