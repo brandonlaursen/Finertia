@@ -1,0 +1,49 @@
+.WatchListStocks{
+  height: auto;
+  width: auto;
+  font-size: 14px;
+  display: flex;
+
+}
+
+.WatchListStocks__container{
+
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+
+.WatchListStocks__container-title{
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+
+  width: 64px;
+}
+
+.WatchListStocks__container-graph{
+  height: 100%;
+  width: 100px;
+  flex: 1;
+  text-align: center;
+  align-content: center;
+
+}
+
+.WatchListStocks__container-data{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 64px;
+  gap: 4px;
+  font-size: 12px;
+}

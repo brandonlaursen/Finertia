@@ -11,7 +11,7 @@
   margin-left: 36px;
 
   height: 86vh;
-  width: 250px;
+  width: 300px;
 
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -24,7 +24,7 @@
 .WatchList-HomePage-container {
   position: sticky;
   top: 85px;
-  width: 300px;
+  width: 340px;
   height: 86vh;
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -94,12 +94,12 @@
   justify-content: center;
   text-align: center;
 
-  height: 20px;
-  width: 20px;
+  height: 24px;
+  width: 24px;
   margin-right: 5px;
 }
 
 .WatchList__create-list-span:hover {
-  background-color: rgb(225, 225, 225);
+  background-color: rgb(244, 244, 244);
   border-radius: 5px;
 }

@@ -3,7 +3,6 @@ import { IoEllipsisHorizontalSharp } from "react-icons/io5";
 import { MdOutlineDragIndicator } from "react-icons/md";
 import { IoSettings } from "react-icons/io5";
 import { TiDeleteOutline } from "react-icons/ti";
-import { IoIosArrowUp } from "react-icons/io";
 import { IoIosArrowDown } from "react-icons/io";
 
 import { useRef, useEffect } from "react";
@@ -36,7 +35,7 @@ function ListItem({
   if (popover) {
     isListOpen = toggleListIds.includes(list.id);
   }
-  
+
   const isPopoverOpen = selectedPopoverId === list.id;
 
   const togglePopover = (e) => {
@@ -106,11 +105,10 @@ function ListItem({
               >
                 <IoEllipsisHorizontalSharp className="ListItem__ellipsis-icon" />
               </span>
-              {isListOpen ? (
-                <IoIosArrowDown onClick={toggleList} />
-              ) : (
-                <IoIosArrowUp onClick={toggleList} />
-              )}
+              <IoIosArrowDown
+                onClick={toggleList}
+                className={`ListItem__arrow-icon ${isListOpen ? "open" : ""}`}
+              />
             </span>
 
             {isPopoverOpen && (
