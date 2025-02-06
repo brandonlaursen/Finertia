@@ -8,6 +8,7 @@ import { useModal } from "../../../../context/Modal";
 import { deleteList } from "../../../../../store/lists";
 
 function DeleteListModal({ listId, listName }) {
+
   const { closeModal } = useModal();
   const dispatch = useDispatch();
 

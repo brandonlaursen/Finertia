@@ -15,7 +15,7 @@ import { fetchStockNews, fetchStockNewsByCategory } from "../../../../store/stoc
 
 function NewsFeed() {
   const dispatch = useDispatch();
-  const stockNews = useSelector((state) => state.stock.news);
+  const stockNews = useSelector((state) => state.stocks.news);
 
   useEffect(() => {
     async function getNews() {

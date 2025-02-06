@@ -14,6 +14,7 @@ function CreateListModal() {
   const { closeModal } = useModal();
   const dispatch = useDispatch();
   const sessionUser = useSelector(selectUser);
+  
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectedEmoji, setSelectedEmoji] = useState("💡");

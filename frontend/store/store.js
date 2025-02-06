@@ -7,7 +7,7 @@ import listsReducer from "./lists";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
-  stock: stockReducer,
+  stocks: stockReducer,
   lists: listsReducer,
 });
 

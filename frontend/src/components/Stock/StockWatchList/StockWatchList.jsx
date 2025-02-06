@@ -6,8 +6,8 @@ import AddToListModal from "./AddToListModal/AddToListModal";
 
 import { useModal } from "../../../context/Modal";
 
-function StockWatchList({ stockSymbol }) {
-  console.log("stockSymbol:", stockSymbol);
+function StockWatchList({ stock }) {
+
   const { setModalContent, setModalClass } = useModal();
 
   return (
@@ -24,7 +24,7 @@ function StockWatchList({ stockSymbol }) {
           className="StockWatchList__button"
           onClick={(e) => {
             e.stopPropagation();
-            setModalContent(<AddToListModal stockId={1} />);
+            setModalContent(<AddToListModal stock={stock} />);
             setModalClass({
               modal: "AddToListModal",
               modalBackground: "AddToListModal__background",

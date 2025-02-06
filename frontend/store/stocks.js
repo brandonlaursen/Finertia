@@ -5,59 +5,74 @@ const FETCH_STOCK_NEWS = "stocks/FETCH_STOCK_NEWS";
 const FETCH_STOCK_DETAILS = "stocks/FETCH_STOCK_DETAILS";
 const FETCH_ALL_STOCKS = "stocks/FETCH_ALL_STOCKS";
 
+const UPDATE_LIST_STOCKS = "lists/UPDATE_LIST_STOCKS";
+
+export const setUpdatedStockLists = (updatedListIds, stockId) => ({
+  type: UPDATE_LIST_STOCKS,
+  updatedListIds,
+  stockId,
+});
+
+export const updateStockLists =
+  (stockListsIdsObj, stockId) => async (dispatch) => {
+    const response = await csrfFetch("/api/lists/update-stock-lists", {
+      method: "POST",
+      body: JSON.stringify({
+        stockListsIdsObj,
+        stockId,
+      }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      dispatch(setUpdatedStockLists(data.updatedListIds, stockId));
+      return { messages: data.messages };
+    }
+  };
+
 // * Action Creators
 export const setStockNews = (news) => ({
   type: FETCH_STOCK_NEWS,
-  payload: news,
+  news,
 });
 
-export const setStockDetails = (stock) => ({
+export const setStockDetails = (stock, listIds) => ({
   type: FETCH_STOCK_DETAILS,
-  payload: stock,
+  stock,
+  listIds,
 });
 
 export const setAllStocks = (stocks) => ({
   type: FETCH_ALL_STOCKS,
-  payload: stocks,
+  stocks,
 });
 
 // * Thunks
 export const fetchAllStocks = () => async (dispatch) => {
-  const cachedStocksData = localStorage.getItem("allStocks");
-  const parsedStocks = cachedStocksData ? JSON.parse(cachedStocksData) : null;
-
-  if (parsedStocks) {
-    dispatch(setAllStocks(parsedStocks));
-    return;
-  }
-
   const response = await csrfFetch("/api/stocks");
 
   if (response.ok) {
     const data = await response.json();
-    localStorage.setItem("allStocks", JSON.stringify(data));
 
     dispatch(setAllStocks(data));
   }
 };
 
-export const fetchStockNews = () => async (dispatch) => {
-  const cachedStocksNews = localStorage.getItem("stockNews");
+export const fetchStockDetails = (stockSymbol) => async (dispatch) => {
+  const response = await csrfFetch(`/api/stocks/${stockSymbol}`);
 
-  const parsedStocksNews = cachedStocksNews
-    ? JSON.parse(cachedStocksNews)
-    : null;
+  if (response.ok) {
+    const data = await response.json();
 
-  if (parsedStocksNews.length) {
-    dispatch(setStockNews(parsedStocksNews));
-    return;
+    dispatch(setStockDetails(data.stock, data.listIds));
   }
+};
 
+export const fetchStockNews = () => async (dispatch) => {
   const response = await csrfFetch("/api/stocks/news");
 
   if (response.ok) {
     const data = await response.json();
-    localStorage.setItem("stockNews", JSON.stringify(data));
 
     dispatch(setStockNews(data));
   }
@@ -72,46 +87,45 @@ export const fetchStockNewsByCategory = (category) => async (dispatch) => {
   }
 };
 
-export const fetchStockDetails = (stockSymbol) => async (dispatch) => {
-  // const cachedStockData = localStorage.getItem(symbol);
-
-  // const parsedStockData = cachedStockData ? JSON.parse(cachedStockData) : null;
-
-  // if (parsedStockData) {
-  //   dispatch(setStockDetails(parsedStockData));
-  //   return;
-  // }
-  const response = await csrfFetch(`/api/stocks/${stockSymbol}`);
-
-  if (response.ok) {
-    const data = await response.json();
-    // localStorage.setItem(symbol, JSON.stringify(data));
-    dispatch(setStockDetails(data));
-  }
+const initialState = {
+  1: { id: 1, name: "Apple", symbol: "AAPL" },
+  currentStock: {
+    listIds: [],
+  },
 };
 
 // * Reducer
-const stockReducer = (
-  state = { news: [], allStocks: {}, currentStock: {} },
-  action
-) => {
+const stockReducer = (state = initialState, action) => {
   switch (action.type) {
+    case FETCH_ALL_STOCKS: {
+      return { ...state, ...action.stocks };
+    }
     case FETCH_STOCK_NEWS: {
-      return { ...state, news: action.payload };
+      return { ...state, news: action.news };
     }
     case FETCH_STOCK_DETAILS: {
-
+      console.log(action);
       return {
         ...state,
         currentStock: {
-          ...state.currentStock,
-          ...action.payload,
-          lists: { ...state.currentStock.lists, ...action.payload.listIdsObj },
+          ...action.stock,
+          listIds: [...action.listIds],
         },
       };
     }
-    case FETCH_ALL_STOCKS: {
-      return { ...state, allStocks: action.payload };
+    case UPDATE_LIST_STOCKS: {
+      // const { listId, isAdding } = action.payload;
+
+      console.log("action ---->", action);
+      const newState = {
+        ...state,
+        currentStock: {
+          ...state.currentStock,
+          listIds: [...action.updatedListIds],
+        },
+      };
+      // console.log(state)
+      return newState;
     }
     default:
       return state;

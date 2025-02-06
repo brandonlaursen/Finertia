@@ -9,24 +9,30 @@ import { useSelector, useDispatch } from "react-redux";
 import { useModal } from "../../../../context/Modal";
 
 import { fetchUsersLists, selectListsArray } from "../../../../../store/lists";
-import { updateStockLists } from "../../../../../store/lists";
+import { updateStockLists } from "../../../../../store/stocks";
 
 import ListItem from "../../../WatchList/ListItem";
 
-function AddToListModal({ stockId }) {
+function AddToListModal({ stock }) {
+
   const dispatch = useDispatch();
   const { closeModal } = useModal();
 
   const lists = useSelector(selectListsArray);
-  const [checkedItems, setCheckedItems] = useState({});
-  // console.log("checkedItems:", lists);
-  const listObj = Object.values
+
+  let checkedList = {};
+  for (let listId of stock.listIds) {
+    checkedList[listId] = true;
+  }
+
+  const [checkedItems, setCheckedItems] = useState(checkedList);
 
   useEffect(() => {
     dispatch(fetchUsersLists());
   }, [dispatch]);
 
   const handleCheckboxChange = (id) => {
+    console.log(id)
     setCheckedItems((prev) => {
       const updatedItems = { ...prev };
 
@@ -38,12 +44,10 @@ function AddToListModal({ stockId }) {
   };
 
   async function handleSubmit() {
-    console.log(checkedItems, stockId);
+    console.log("handle submit for add to list", checkedItems, stock.id);
 
-    console.log("in handle submit");
-     await dispatch(updateStockLists(checkedItems, 1));
+    await dispatch(updateStockLists(checkedItems, 1));
 
-    // console.log(messages);
     closeModal();
   }
 

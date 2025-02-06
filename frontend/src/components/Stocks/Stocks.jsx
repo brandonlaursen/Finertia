@@ -15,7 +15,7 @@ function Stocks() {
   const { scrolled } = useOutletContext();
 
   const dispatch = useDispatch();
-  const stocks = useSelector((state) => state.stock.allStocks);
+  const stocks = useSelector((state) => state.stocks);
 
   useEffect(() => {
     dispatch(fetchAllStocks());

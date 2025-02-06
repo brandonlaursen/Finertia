@@ -13,14 +13,11 @@ import { fetchStockDetails } from "../../../store/stocks";
 function Stock() {
   const dispatch = useDispatch();
   const { stockSymbol } = useParams();
-  console.log("stockSymbol:", stockSymbol);
 
   const [selectedTimeFrame, setSelectedTimeFrame] = useState("1D");
 
-  const stock = useSelector((state) => state.stock.currentStock);
-  console.log("stock:", stock);
+  const stock = useSelector((state) => state.stocks.currentStock);
 
-  // const { stockProfile, stockTickers, historicalData, companyNews } = stock;
 
   useEffect(() => {
     dispatch(fetchStockDetails(stockSymbol));
@@ -30,72 +27,6 @@ function Stock() {
     setSelectedTimeFrame(value);
   };
 
-  // function formatMarketCap(marketCap) {
-  //   if (marketCap >= 1e6) {
-  //     return (marketCap / 1e6).toFixed(2) + "T";
-  //   } else if (marketCap >= 1e9) {
-  //     return (marketCap / 1e9).toFixed(2) + "B";
-  //   } else if (marketCap >= 1e12) {
-  //     return (marketCap / 1e12).toFixed(2) + "M";
-  //   } else {
-  //     return marketCap.toString();
-  //   }
-  // }
-
-  // function timeAgo(timestamp) {
-  //   const now = Date.now() / 1000;
-  //   const diff = now - timestamp;
-
-  //   const minutes = Math.floor(diff / 60);
-  //   const hours = Math.floor(diff / 3600);
-  //   const days = Math.floor(diff / (3600 * 24));
-
-  //   if (days > 0) {
-  //     return `${days} day${days > 1 ? "s" : ""} ago`;
-  //   } else if (hours > 0) {
-  //     return `${hours} hour${hours > 1 ? "s" : ""} ago`;
-  //   } else if (minutes > 0) {
-  //     return `${minutes} minute${minutes > 1 ? "s" : ""} ago`;
-  //   } else {
-  //     return `Just now`;
-  //   }
-  // }
-
-  // if (!(stockProfile && stockTickers && historicalData && companyNews)) {
-  //   return (
-  //     <div className="loading-overlay">
-  //       <LoadingSpinner />
-  //     </div>
-  //   );
-  // } else {
-  //   const {
-  //     longBusinessSummary,
-  //     companyOfficers,
-  //     fullTimeEmployees,
-  //     city,
-  //     state,
-  //     industry,
-  //   } = stockProfile.body;
-
-  //   const {
-  //     symbol,
-  //     primaryData: { askPrice },
-  //   } = stockTickers.body;
-
-  //   const {
-  //     fiftyTwoWeekHigh,
-  //     fiftyTwoWeekLow,
-  //     regularMarketDayHigh,
-  //     regularMarketDayLow,
-  //     regularMarketVolume,
-  //   } = historicalData.meta;
-
-  //   const allTimeFramesData = Object.entries(historicalData.body).map(
-  //     ([timestamp, obj]) => ({
-  //       x: Number(timestamp),
-  //       y: obj.close,
-  //     })
-  //   );
 
   return (
     <div className="stock-container">
@@ -250,7 +181,7 @@ function Stock() {
           </div>
         </div>
 
-        <StockWatchList stockSymbol={stockSymbol} />
+        <StockWatchList stock={stock} />
       </div>
     </div>
   );
