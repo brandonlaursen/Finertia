@@ -41,9 +41,9 @@ export const createList =
     });
 
     if (response.ok) {
-      const newStockList = await response.json();
+      const data = await response.json();
 
-      dispatch(setCreatedList(newStockList));
+      dispatch(setCreatedList(data));
     }
   };
 
@@ -51,9 +51,9 @@ export const fetchUsersLists = () => async (dispatch) => {
   const response = await csrfFetch("/api/lists");
 
   if (response.ok) {
-    const lists = await response.json();
+    const data = await response.json();
 
-    dispatch(setLists(lists));
+    dispatch(setLists(data));
   }
 };
 
@@ -70,9 +70,9 @@ export const editList =
     });
 
     if (response.ok) {
-      const stockList = await response.json();
+      const data = await response.json();
 
-      dispatch(setEditedList(stockList));
+      dispatch(setEditedList(data));
     }
   };
 

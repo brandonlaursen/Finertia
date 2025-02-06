@@ -14,7 +14,6 @@ import { updateStockLists } from "../../../../../store/stocks";
 import ListItem from "../../../WatchList/ListItem";
 
 function AddToListModal({ stock }) {
-
   const dispatch = useDispatch();
   const { closeModal } = useModal();
 
@@ -32,7 +31,6 @@ function AddToListModal({ stock }) {
   }, [dispatch]);
 
   const handleCheckboxChange = (id) => {
-    console.log(id)
     setCheckedItems((prev) => {
       const updatedItems = { ...prev };
 
@@ -44,8 +42,6 @@ function AddToListModal({ stock }) {
   };
 
   async function handleSubmit() {
-    console.log("handle submit for add to list", checkedItems, stock.id);
-
     await dispatch(updateStockLists(checkedItems, 1));
 
     closeModal();
@@ -68,7 +64,6 @@ function AddToListModal({ stock }) {
           </div>
         </div>
 
-        {/*  */}
         <div>
           <div className="AddToListModal__section">
             <div className="AddToListModal__section__create-container">

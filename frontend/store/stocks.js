@@ -1,50 +1,32 @@
 import { csrfFetch } from "./csrf";
 
 // * Action Type Constants
-const FETCH_STOCK_NEWS = "stocks/FETCH_STOCK_NEWS";
-const FETCH_STOCK_DETAILS = "stocks/FETCH_STOCK_DETAILS";
 const FETCH_ALL_STOCKS = "stocks/FETCH_ALL_STOCKS";
-
+const FETCH_STOCK_DETAILS = "stocks/FETCH_STOCK_DETAILS";
+const FETCH_STOCK_NEWS = "stocks/FETCH_STOCK_NEWS";
 const UPDATE_LIST_STOCKS = "lists/UPDATE_LIST_STOCKS";
 
-export const setUpdatedStockLists = (updatedListIds, stockId) => ({
-  type: UPDATE_LIST_STOCKS,
-  updatedListIds,
-  stockId,
-});
-
-export const updateStockLists =
-  (stockListsIdsObj, stockId) => async (dispatch) => {
-    const response = await csrfFetch("/api/lists/update-stock-lists", {
-      method: "POST",
-      body: JSON.stringify({
-        stockListsIdsObj,
-        stockId,
-      }),
-    });
-
-    if (response.ok) {
-      const data = await response.json();
-      dispatch(setUpdatedStockLists(data.updatedListIds, stockId));
-      return { messages: data.messages };
-    }
-  };
-
 // * Action Creators
-export const setStockNews = (news) => ({
-  type: FETCH_STOCK_NEWS,
-  news,
+export const setAllStocks = (stocks) => ({
+  type: FETCH_ALL_STOCKS,
+  stocks,
 });
 
-export const setStockDetails = (stock, listIds) => ({
+export const setCurrentStock = (stock, listIds) => ({
   type: FETCH_STOCK_DETAILS,
   stock,
   listIds,
 });
 
-export const setAllStocks = (stocks) => ({
-  type: FETCH_ALL_STOCKS,
-  stocks,
+export const setStockNews = (news) => ({
+  type: FETCH_STOCK_NEWS,
+  news,
+});
+
+export const setUpdatedStockLists = (updatedListIds, stockId) => ({
+  type: UPDATE_LIST_STOCKS,
+  updatedListIds,
+  stockId,
 });
 
 // * Thunks
@@ -64,7 +46,7 @@ export const fetchStockDetails = (stockSymbol) => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
 
-    dispatch(setStockDetails(data.stock, data.listIds));
+    dispatch(setCurrentStock(data.stock, data.listIds));
   }
 };
 
@@ -87,6 +69,23 @@ export const fetchStockNewsByCategory = (category) => async (dispatch) => {
   }
 };
 
+export const updateStockLists =
+  (stockListsIdsObj, stockId) => async (dispatch) => {
+    const response = await csrfFetch("/api/lists/update-stock-lists", {
+      method: "POST",
+      body: JSON.stringify({
+        stockListsIdsObj,
+        stockId,
+      }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      dispatch(setUpdatedStockLists(data.updatedListIds, stockId));
+      return { messages: data.messages };
+    }
+  };
+
 const initialState = {
   1: { id: 1, name: "Apple", symbol: "AAPL" },
   currentStock: {
@@ -100,11 +99,7 @@ const stockReducer = (state = initialState, action) => {
     case FETCH_ALL_STOCKS: {
       return { ...state, ...action.stocks };
     }
-    case FETCH_STOCK_NEWS: {
-      return { ...state, news: action.news };
-    }
     case FETCH_STOCK_DETAILS: {
-      console.log(action);
       return {
         ...state,
         currentStock: {
@@ -113,10 +108,10 @@ const stockReducer = (state = initialState, action) => {
         },
       };
     }
+    case FETCH_STOCK_NEWS: {
+      return { ...state, news: action.news };
+    }
     case UPDATE_LIST_STOCKS: {
-      // const { listId, isAdding } = action.payload;
-
-      console.log("action ---->", action);
       const newState = {
         ...state,
         currentStock: {
@@ -124,7 +119,6 @@ const stockReducer = (state = initialState, action) => {
           listIds: [...action.updatedListIds],
         },
       };
-      // console.log(state)
       return newState;
     }
     default:
