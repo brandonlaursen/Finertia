@@ -72,20 +72,20 @@ export const fetchStockNewsByCategory = (category) => async (dispatch) => {
   }
 };
 
-export const fetchStockDetails = (symbol) => async (dispatch) => {
-  const cachedStockData = localStorage.getItem(symbol);
+export const fetchStockDetails = (stockSymbol) => async (dispatch) => {
+  // const cachedStockData = localStorage.getItem(symbol);
 
-  const parsedStockData = cachedStockData ? JSON.parse(cachedStockData) : null;
+  // const parsedStockData = cachedStockData ? JSON.parse(cachedStockData) : null;
 
-  if (parsedStockData) {
-    dispatch(setStockDetails(parsedStockData));
-    return;
-  }
-  const response = await csrfFetch(`/api/stocks`);
+  // if (parsedStockData) {
+  //   dispatch(setStockDetails(parsedStockData));
+  //   return;
+  // }
+  const response = await csrfFetch(`/api/stocks/${stockSymbol}`);
 
   if (response.ok) {
     const data = await response.json();
-    localStorage.setItem(symbol, JSON.stringify(data));
+    // localStorage.setItem(symbol, JSON.stringify(data));
     dispatch(setStockDetails(data));
   }
 };
@@ -100,7 +100,15 @@ const stockReducer = (
       return { ...state, news: action.payload };
     }
     case FETCH_STOCK_DETAILS: {
-      return { ...state, currentStock: action.payload };
+
+      return {
+        ...state,
+        currentStock: {
+          ...state.currentStock,
+          ...action.payload,
+          lists: { ...state.currentStock.lists, ...action.payload.listIdsObj },
+        },
+      };
     }
     case FETCH_ALL_STOCKS: {
       return { ...state, allStocks: action.payload };

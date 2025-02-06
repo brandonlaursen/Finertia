@@ -120,48 +120,48 @@ function StockChart({ allTimeFramesData, selectedTimeFrame }) {
     },
   });
 
-  useEffect(() => {
-    function within1D(data) {
-      const timeToday = convertTime(
-        Math.floor(Date.now() / 1000),
-        "1D",
-        "EST",
-        true
-      );
+  // useEffect(() => {
+  //   function within1D(data) {
+  //     const timeToday = convertTime(
+  //       Math.floor(Date.now() / 1000),
+  //       "1D",
+  //       "EST",
+  //       true
+  //     );
 
-      const targetMonth = timeToday.split(" ")[0];
-      const targetDay = timeToday.split(" ")[1];
-      const targetDate = targetMonth + targetDay;
+  //     const targetMonth = timeToday.split(" ")[0];
+  //     const targetDay = timeToday.split(" ")[1];
+  //     const targetDate = targetMonth + targetDay;
 
-      return data.filter((obj) => {
-        const convertedTime = convertTime(obj.x, "1D", "EST", true);
-        const currentMonth = convertedTime.split(" ")[0];
-        const currentDay = convertedTime.split(" ")[1];
-        const currentDate = currentMonth + currentDay;
-        if (currentDate === targetDate) return obj;
-      });
-    }
+  //     return data.filter((obj) => {
+  //       const convertedTime = convertTime(obj.x, "1D", "EST", true);
+  //       const currentMonth = convertedTime.split(" ")[0];
+  //       const currentDay = convertedTime.split(" ")[1];
+  //       const currentDate = currentMonth + currentDay;
+  //       if (currentDate === targetDate) return obj;
+  //     });
+  //   }
 
-    function withinTimeFrame(data, range) {
-      const unixTimeToday = Math.floor(Date.now() / 1000);
-      let timeOffset = 0;
+  //   function withinTimeFrame(data, range) {
+  //     const unixTimeToday = Math.floor(Date.now() / 1000);
+  //     let timeOffset = 0;
 
-      if (range === "1D") timeOffset = 86400;
-      if (range === "1W") timeOffset = 604800;
-      if (range === "1M") timeOffset = 2592000;
-      if (range === "3M") timeOffset = 7884000;
-      if (range === "1Y") timeOffset = 31536000;
+  //     if (range === "1D") timeOffset = 86400;
+  //     if (range === "1W") timeOffset = 604800;
+  //     if (range === "1M") timeOffset = 2592000;
+  //     if (range === "3M") timeOffset = 7884000;
+  //     if (range === "1Y") timeOffset = 31536000;
 
-      return data.filter((obj) => obj.x >= unixTimeToday - timeOffset);
-    }
+  //     return data.filter((obj) => obj.x >= unixTimeToday - timeOffset);
+  //   }
 
-    if (selectedTimeFrame === "1D") {
-      setData(within1D(allTimeFramesData));
-      return;
-    }
+  //   if (selectedTimeFrame === "1D") {
+  //     setData(within1D(allTimeFramesData));
+  //     return;
+  //   }
 
-    setData(withinTimeFrame(allTimeFramesData, selectedTimeFrame));
-  }, [selectedTimeFrame, allTimeFramesData]);
+  //   setData(withinTimeFrame(allTimeFramesData, selectedTimeFrame));
+  // }, [selectedTimeFrame, allTimeFramesData]);
 
   return (
     <div>

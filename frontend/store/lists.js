@@ -6,6 +6,8 @@ const CREATE_LISTS = "lists/CREATE_LISTS";
 const EDIT_LIST = "lists/EDIT_LIST";
 const DELETE_LIST = "lists/DELETE_LIST";
 
+const UPDATE_LIST_STOCKS = "lists/UPDATE_LIST_STOCKS";
+
 export const setLists = (lists) => ({
   type: FETCH_LISTS,
   lists,
@@ -25,6 +27,32 @@ export const setDeletedList = (listId) => ({
   type: DELETE_LIST,
   listId,
 });
+
+export const setUpdatedStockLists = (updatedList, stockId) => ({
+  type: UPDATE_LIST_STOCKS,
+  updatedList,
+  stockId
+});
+
+export const updateStockLists =
+  (stockListsIdsObj, stockId) => async (dispatch) => {
+    console.log("entering thunk", stockListsIdsObj, stockId);
+    const response = await csrfFetch("/api/lists/update-stock-lists", {
+      method: "POST",
+      body: JSON.stringify({
+        stockListsIdsObj,
+        stockId,
+      }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+
+      // dispatch(setUpdatedStockLists(data.updatedList, stockId));
+      dispatch(setLists(data.lists));
+      return { messages: data.messages };
+    }
+  };
 
 // * Thunks
 export const fetchUsersLists = () => async (dispatch) => {
@@ -98,6 +126,7 @@ const listsReducer = (state = {}, action) => {
     case FETCH_LISTS: {
       const newState = { ...state, allLists: { ...state.allLists } };
 
+      console.log(state.allLists)
       action.lists.forEach((list) => {
         newState.allLists[list.id] = list;
       });
@@ -122,6 +151,11 @@ const listsReducer = (state = {}, action) => {
       delete newState.allLists[action.listId];
 
       return newState;
+    }
+    case UPDATE_LIST_STOCKS: {
+
+
+      return {};
     }
     default:
       return state;
