@@ -1,0 +1,222 @@
+.AddToListModal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 100;
+}
+
+.AddToListModal__background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.AddToListModal__container {
+  position: absolute;
+
+  height: 470px;
+  width: 380px;
+
+  background-color: rgb(255, 255, 255);
+
+  border-radius: 5px;
+
+  display: flex;
+  flex-direction: column;
+  padding: 20px 25px;
+}
+
+.AddToListModal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.AddToListModal__close-button {
+  height: 22px;
+  width: 22px;
+
+  cursor: pointer;
+}
+
+.AddToListModal__close-button-span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  height: 30px;
+  width: 30px;
+
+  cursor: pointer;
+}
+
+.AddToListModal__close-button-span:hover {
+  background-color: rgb(225, 225, 225);
+  border-radius: 5px;
+}
+
+.AddToListModal__title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/*  */
+.AddToListModal__section {
+  flex-direction: column;
+
+  margin-bottom: 10px;
+  overflow: auto;
+
+  height: 330px;
+}
+
+/*  */
+
+.AddToListModal__section__create-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  width: 100%;
+
+  padding: 0 32px;
+  margin-bottom: 12px;
+
+  height: 64px;
+  cursor: pointer;
+}
+
+
+
+.AddToListModal__plus-icon{
+  color: rgb(255, 118, 58);
+}
+
+.AddToListModal__section__create-icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+
+  height: 60px;
+  width: 45px;
+
+  font-size: 24px;
+
+  background-color: rgb(254, 237, 230);
+
+  border-radius: 5px;
+}
+
+.AddToListModal__section__create-title {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 16px;
+
+  color: black;
+}
+
+
+
+.AddToListModal__checkbox-container{
+  display: flex;
+  align-items: center;
+
+}
+
+.checkbox-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.checkbox-wrapper input[type="checkbox"] {
+
+  -webkit-appearance: none;
+  appearance: none;
+
+  width: 16px;
+  height: 16px;
+
+  margin-right: 13px;
+  border: 0.15em solid rgb(255, 118, 58);
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+input.checked {
+  background-color: rgb(255, 118, 58);
+  position: relative;
+}
+
+.checkbox-icon {
+  position: absolute;
+  color: white;
+  font-size: 24px;
+  pointer-events: none;
+  text-align: center;
+  align-self: center;
+  top: 50%;
+  left: 37%;
+  transform: translate(-50%, -50%)
+}
+
+
+
+
+/*  */
+.AddToListModal__section__buttons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding-top: 10px;
+}
+
+.AddToListModal__section__button {
+  padding: 0 20px;
+
+  height: 38px;
+  width: 100%;
+
+  font-size: 12px;
+  font-weight: bold;
+
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+.AddToListModal__create-button {
+  color: white;
+  background-color: rgb(7, 222, 150);
+
+  border: none;
+}
+
+.AddToListModal__create-button:hover {
+  background-color: rgb(7, 196, 133);
+}
+
+
+.AddToListModal__section__button:disabled{
+  background-color: rgb(138, 138, 138);
+}

@@ -57,39 +57,39 @@ function EditListModal({ listId }) {
         </div>
 
         <div>
-          <div className="EditListModal__section">
-            <div>
-              <button
-                className="EditListModal__section__emoji"
-                onClick={() => setShowPicker(!showPicker)}
-              >
-                {selectedEmoji}
-              </button>
-              {showPicker && (
-                <div className="emoji-picker-wrapper">
-                  <EmojiPicker onEmojiClick={handleEmojiClick} />
-                </div>
-              )}
-            </div>
+              <div className="EditListModal__section">
+                    <div>
+                      <button
+                        className="EditListModal__section__emoji"
+                        onClick={() => setShowPicker(!showPicker)}
+                      >
+                        {selectedEmoji}
+                      </button>
+                      {showPicker && (
+                        <div className="emoji-picker-wrapper">
+                          <EmojiPicker onEmojiClick={handleEmojiClick} />
+                        </div>
+                      )}
+                    </div>
 
-            <input
-              className="EditListModal__section__input"
-              type="text"
-              placeholder="List Name"
-              value={listName}
-              onChange={(e) => setListName(e.target.value)}
-            />
-          </div>
-          <div className="EditListModal__section__buttons">
-            <button
-              className="EditListModal__section__button
-            EditListModal__create-button
-            "
-              onClick={handleSubmit}
-            >
-              Save
-            </button>
-          </div>
+                    <input
+                      className="EditListModal__section__input"
+                      type="text"
+                      placeholder="List Name"
+                      value={listName}
+                      onChange={(e) => setListName(e.target.value)}
+                    />
+              </div>
+              <div className="EditListModal__section__buttons">
+                <button
+                  className="EditListModal__section__button
+                EditListModal__create-button
+                "
+                  onClick={handleSubmit}
+                >
+                  Save
+                </button>
+              </div>
         </div>
       </div>
     </div>

@@ -4,6 +4,7 @@ import { MdOutlineDragIndicator } from "react-icons/md";
 import { IoSettings } from "react-icons/io5";
 import { TiDeleteOutline } from "react-icons/ti";
 
+
 import { useRef, useEffect } from "react";
 
 // import { Link } from "react-router-dom";
@@ -13,7 +14,16 @@ import DeleteListModal from "./DeleteListModal/DeleteListModal";
 
 import { useModal } from "../../../context/Modal";
 
-function ListItem({ list, selectedPopoverId, setSelectedPopoverId }) {
+function ListItem({
+  list,
+  selectedPopoverId,
+  setSelectedPopoverId,
+  className,
+  container,
+  icon,
+  title,
+  popover,
+}) {
   const { setModalContent, setModalClass } = useModal();
 
   const popoverRef = useRef(null);
@@ -51,61 +61,66 @@ function ListItem({ list, selectedPopoverId, setSelectedPopoverId }) {
   }, [setSelectedPopoverId]);
 
   return (
-    <div to="/list1" className="ListItem">
-      <div className="ListItem__container">
+    <div to="/list1" className={`ListItem ${className}`}>
+      <div className={container}>
         <div>
-          <span className="ListItem__icon">{list?.type}</span>
-          <span className="ListItem__title">{list?.name}</span>
+          <span className={icon}>{list?.type}</span>
+          <span className={title}>{list?.name}</span>
         </div>
 
-        <span
-          className="ListItem__ellipsis"
-          onClick={togglePopover}
-          ref={ellipsisRef}
-        >
-          <IoEllipsisHorizontalSharp className="ListItem__ellipsis-icon" />
-        </span>
-        {isPopoverOpen && (
-          <div className="ListItem__popover" ref={popoverRef}>
+        {popover && (
+          <>
             <span
-              className="ListItem__button"
-              onClick={(e) => {
-                e.stopPropagation();
-                setModalContent(<EditListModal listId={list.id} />);
-                setModalClass({
-                  modal: "EditListModal",
-                  modalBackground: "EditListModal__background",
-                  modalContainer: "EditListModal__container",
-                });
-              }}
+              className="ListItem__ellipsis"
+              onClick={togglePopover}
+              ref={ellipsisRef}
             >
-              <IoSettings className="ListItem__button-icon" />
-              Edit
+              <IoEllipsisHorizontalSharp className="ListItem__ellipsis-icon" />
             </span>
+            {isPopoverOpen && (
+              <div className="ListItem__popover" ref={popoverRef}>
+                <span
+                  className="ListItem__button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedPopoverId(null);
+                    setModalContent(<EditListModal listId={list.id} />);
+                    setModalClass({
+                      modal: "EditListModal",
+                      modalBackground: "EditListModal__background",
+                      modalContainer: "EditListModal__container",
+                    });
+                  }}
+                >
+                  <IoSettings className="ListItem__button-icon" />
+                  Edit
+                </span>
 
-            <span className="ListItem__button">
-              <MdOutlineDragIndicator className="ListItem__button-icon" />
-              Rearrange
-            </span>
+                <span className="ListItem__button">
+                  <MdOutlineDragIndicator className="ListItem__button-icon" />
+                  Rearrange
+                </span>
 
-            <span
-              className="ListItem__button"
-              onClick={(e) => {
-                e.stopPropagation();
-                setModalContent(
-                  <DeleteListModal listId={list.id} listName={list.name} />
-                );
-                setModalClass({
-                  modal: "DeleteListModal",
-                  modalBackground: "DeleteListModal__background",
-                  modalContainer: "DeleteListModal__container",
-                });
-              }}
-            >
-              <TiDeleteOutline className="ListItem__button-icon" />
-              Delete
-            </span>
-          </div>
+                <span
+                  className="ListItem__button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setModalContent(
+                      <DeleteListModal listId={list.id} listName={list.name} />
+                    );
+                    setModalClass({
+                      modal: "DeleteListModal",
+                      modalBackground: "DeleteListModal__background",
+                      modalContainer: "DeleteListModal__container",
+                    });
+                  }}
+                >
+                  <TiDeleteOutline className="ListItem__button-icon" />
+                  Delete
+                </span>
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>

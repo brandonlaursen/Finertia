@@ -7,7 +7,9 @@ function HomePage() {
   return (
     <div className="HomePage">
       <div className="HomePage__body">
+
         <div className="HomePage__main">
+          
           <div className="HomePage__main__section">
             <div className="HomePage__main__title">Investing</div>
             <div className="HomePage__main__banner"></div>
@@ -18,6 +20,8 @@ function HomePage() {
         </div>
 
         <WatchList className="WatchList-HomePage-container" />
+
+
       </div>
     </div>
   );

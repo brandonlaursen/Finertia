@@ -49,6 +49,11 @@ function WatchList({className}) {
                   key={list.id}
                   selectedPopoverId={selectedPopoverId}
                   setSelectedPopoverId={setSelectedPopoverId}
+                  className="WatchList__lists__ListItem"
+                  container='ListItem__container'
+                  icon='ListItem__icon'
+                  title='ListItem__title'
+                  popover={true}
                 />
               );
             })}
