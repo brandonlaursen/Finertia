@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { logout } from "../../../../../store/session";
 
 function SecurityPage() {
- 
+
   const dispatch = useDispatch();
 
   const handleLogout = async (e) => {
@@ -53,12 +53,7 @@ function SecurityPage() {
             <span>Data Sharing Permissions</span>
             <span>Enabled</span>
           </div>
-          <div className="SecurityPage__link">
-            <span>Request Personal Data</span>
-          </div>
-          <div className="SecurityPage__link">
-            <span>Request Data Deletion</span>
-          </div>
+         
           <div className="SecurityPage__link">
             <span>Private Privacy</span>
           </div>
