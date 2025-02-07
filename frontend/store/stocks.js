@@ -1,4 +1,5 @@
 import { csrfFetch } from "./csrf";
+import { createSelector } from "reselect";
 
 // * Action Type Constants
 const FETCH_ALL_STOCKS = "stocks/FETCH_ALL_STOCKS";
@@ -85,13 +86,18 @@ export const updateStockLists =
     }
   };
 
+const selectAllStocks = (state) => state.stocks.allStocks || {};
+export const selectStocksArray = createSelector(selectAllStocks, (list) => {
+  return Object.values(list);
+});
+
 const initialState = {};
 
 // * Reducer
 const stockReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_ALL_STOCKS: {
-      return { ...state, ...action.stocks };
+      return { ...state, allStocks: [...action.stocks] };
     }
     case FETCH_STOCK_DETAILS: {
       return {

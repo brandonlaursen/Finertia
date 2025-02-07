@@ -42,7 +42,6 @@ const symbols = [
   "SPGI",
   "MS",
   "AXP",
-  "BRK.A",
   "TSM",
   "WFC",
   "P&G",
@@ -343,24 +342,49 @@ router.get("/:stockSymbol", async (req, res) => {
 
 // * Get all stocks
 router.get("/", async (req, res) => {
-  // const stocks = await Stock.findAll();
-
-  const url =
-    "https://yahoo-finance15.p.rapidapi.com/api/v1/markets/stock/quotes?ticker=AAPL%2CMSFT%2C%5ESPX%2C%5ENYA%2CGAZP.ME%2CSIBN.ME%2CGEECEE.NS";
-
   try {
-    const response = await fetch(url, {
-      method: "GET",
-      headers: {
-        "x-rapidapi-key": process.env.STOCK_API_KEY3,
-        "x-rapidapi-host": "yahoo-finance15.p.rapidapi.com",
-      },
-    });
-    const stocks = await response.json();
+    const dbStocks = await Stock.findAll();
+    const symbolsString = dbStocks.map((stock) => stock.stockSymbol).join(",");
 
-    return res.json(stocks);
+    const response = await fetch(
+      `https://api.polygon.io/v2/snapshot/locale/us/markets/stocks/tickers?tickers=${symbolsString}&apiKey=${process.env.STOCK_API_KEY2}`
+    );
+
+    if (!response.ok) {
+      return res.status(response.status).json({
+        error: `API request failed with status ${response.status}`,
+        message: await response.text(),
+      });
+    }
+
+    const stocksData = await response.json();
+    if (!stocksData.tickers) {
+      return res.status(500).json({ message: "API response missing tickers" });
+    }
+
+    const mergedStocks = stocksData.tickers.map((apiStock) => {
+      const dbStock = dbStocks.find((db) => db.stockSymbol === apiStock.ticker);
+
+      return {
+        id: dbStock?.id ?? null,
+        symbol: apiStock.ticker,
+        name: dbStock?.stockName ?? null,
+        current_price: apiStock.day?.c ?? null,
+        market_cap: dbStock?.marketCap ?? null,
+        todays_change_percent: apiStock.todaysChangePerc ?? null,
+        todays_change: apiStock.todaysChange ?? null,
+        updated: apiStock.updated ?? null,
+        day: apiStock.day ?? null,
+        min: apiStock.min ?? null,
+        prev_day: apiStock.prevDay ?? null,
+      };
+    });
+
+    return res.json(mergedStocks);
   } catch (error) {
-    res.status(500).json({ error, message: "Failed to fetch stock data" });
+    res
+      .status(500)
+      .json({ error: error.message, message: "Failed to fetch stock data" });
   }
 });
 

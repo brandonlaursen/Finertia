@@ -2,8 +2,10 @@ import "./Stocks.css";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 import { RiListSettingsLine } from "react-icons/ri";
 import { FaPlus } from "react-icons/fa6";
+import { GoTriangleDown } from "react-icons/go";
+import { GoTriangleUp } from "react-icons/go";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useOutletContext } from "react-router-dom";
 
@@ -11,15 +13,76 @@ import WatchList from "../WatchList";
 
 import { fetchAllStocks } from "../../../store/stocks";
 
+import { useNavigate } from "react-router-dom";
+
+import { selectStocksArray } from "../../../store/stocks";
+
 function Stocks() {
   const { scrolled } = useOutletContext();
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
-  const stocks = useSelector((state) => state.stocks);
+  const stocks = useSelector(selectStocksArray);
+
+  const [sortedStocks, setSortedStocks] = useState(stocks);
+  const [sortCriteria, setSortCriteria] = useState("name");
+  const [sortDirection, setSortDirection] = useState("asc");
+
+  const handleSort = (criteria) => {
+    let sortedData = [...stocks];
+
+    const newDirection =
+      criteria === sortCriteria && sortDirection === "asc" ? "desc" : "asc";
+    setSortDirection(newDirection);
+
+    if (criteria === "name") {
+      sortedData.sort((a, b) =>
+        newDirection === "asc"
+          ? a.name.localeCompare(b.name)
+          : b.name.localeCompare(a.name)
+      );
+    } else if (criteria === "symbol") {
+      sortedData.sort((a, b) =>
+        newDirection === "asc"
+          ? a.symbol.localeCompare(b.symbol)
+          : b.symbol.localeCompare(a.symbol)
+      );
+    } else if (criteria === "current_price") {
+      sortedData.sort((a, b) =>
+        newDirection === "asc"
+          ? a.current_price - b.current_price
+          : b.current_price - a.current_price
+      );
+    } else if (criteria === "market_cap") {
+      sortedData.sort((a, b) =>
+        newDirection === "asc"
+          ? a.market_cap - b.market_cap
+          : b.market_cap - a.market_cap
+      );
+    } else if (criteria === "todays_change_percent") {
+      sortedData.sort((a, b) =>
+        newDirection === "asc"
+          ? a.todays_change_percent - b.todays_change_percent
+          : b.todays_change_percent - a.todays_change_percent
+      );
+    }
+
+    setSortedStocks(sortedData);
+    setSortCriteria(criteria);
+  };
 
   useEffect(() => {
     dispatch(fetchAllStocks());
   }, [dispatch]);
+
+  function formatNumber(num) {
+    if (num >= 1e12) return (num / 1e12).toFixed(2) + "T";
+    if (num >= 1e9) return (num / 1e9).toFixed(2) + "B";
+    if (num >= 1e6) return (num / 1e6).toFixed(2) + "M";
+    return num;
+  }
+
+  if (!stocks) return <h1>Loading</h1>;
 
   return (
     <div className="stocks">
@@ -36,7 +99,7 @@ function Stocks() {
               <span className="stocks__title">Daily Movers</span>
               <span className="stocks__subtitle">
                 <IoIosCheckmarkCircle className="green-checkmark" />
-                Finertia · 20 items
+                Finertia · {stocks.length} items
               </span>
             </div>
 
@@ -54,68 +117,54 @@ function Stocks() {
               scrolled ? "stock__hide--description" : ""
             }`}
           >
-            Hot off the press. See the 20 companies with the biggest swing in
-            stock price today.
+            Explore some of the most popular stocks.
           </div>
 
           <div className="stocks__table-container">
             <table className="stocks__table">
               <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Symbol</th>
-                  <th>Price</th>
-                  <th>Today</th>
-                  <th>Market Cap</th>
+                  <th onClick={() => handleSort("name")}>Name</th>
+                  <th onClick={() => handleSort("symbol")}>Symbol</th>
+                  <th onClick={() => handleSort("current_price")}>Price</th>
+                  <th onClick={() => handleSort("todays_change_percent")}>
+                    Today
+                  </th>
+                  <th onClick={() => handleSort("market_cap")}>Market Cap</th>
                   <th></th>
                 </tr>
               </thead>
+
               <tbody className="stocks__table-body">
-                {stocks &&
-                  stocks?.result?.body.map((stock) => {
+                {stocks.length &&
+                  sortedStocks.map((stock) => {
                     return (
-                      <tr key={stock.symbol} className="stock-row">
-                        <td>{stock.displayName}</td>
-                        <td>{stock.symbol}</td>
-                        <td>${stock.ask}</td>
-                        <td>{stock.symbol}</td>
-                        <td>{stock.marketCap}</td>
+                      <tr
+                        key={stock?.id}
+                        className="stock-row"
+                        onClick={() => navigate(`/stocks/${stock?.symbol}`)}
+                      >
+                        <td>{stock?.name}</td>
+                        <td>{stock?.symbol}</td>
+                        <td>${stock?.current_price?.toFixed(2)}</td>
+                        <td>
+                          <span className="stocks-table-arrow-container">
+                            {stock?.todays_change_percent > 0 ? (
+                              <GoTriangleUp className="triangleIconUp" />
+                            ) : (
+                              <GoTriangleDown className="triangleIconDown" />
+                            )}
+                            {stock?.todays_change_percent?.toFixed(2)}%
+                          </span>
+                        </td>
+                        <td>{formatNumber(stock?.market_cap)}</td>
                         <td>
                           <FaPlus className="stocks__btn stocks__btn--add" />
                         </td>
                       </tr>
                     );
                   })}
-                {stocks?.result?.body &&
-                  stocks?.result?.body.map((stock) => {
-                    return (
-                      <tr key={stock.symbol} className="stock-row">
-                        <td>{stock.displayName}</td>
-                        <td>{stock.symbol}</td>
-                        <td>${stock.ask}</td>
-                        <td>{stock.symbol}</td>
-                        <td>{stock.marketCap}</td>
-                        <td>
-                          <FaPlus className="stocks__btn stocks__btn--add" />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                {stocks?.result?.body &&
-                  stocks?.result?.body.map((stock) => {
-                    return (
-                      <tr key={stock.symbol} className="stock-row">
-                        <td>{stock.displayName}</td>
-                        <td>{stock.symbol}</td>
-                        <td>${stock.ask}</td>
-                        <td>{stock.symbol}</td>
-                        <td>{stock.marketCap}</td>
-                        <td>
-                          <FaPlus className="stocks__btn stocks__btn--add" />
-                        </td>
-                      </tr>
-                    );
-                  })}
+
                 <tr className="stock-row"></tr>
               </tbody>
             </table>
@@ -131,7 +180,7 @@ function Stocks() {
           </div>
         </div>
 
-        <WatchList className='WatchList-Stocks-container'/>
+        <WatchList className="WatchList-Stocks-container" />
       </div>
     </div>
   );
