@@ -17,22 +17,23 @@ function Stock() {
   const [selectedTimeFrame, setSelectedTimeFrame] = useState("1D");
 
   const stock = useSelector((state) => state.stocks.currentStock);
-
+  console.log("stock:", stock?.stockDetails?.results);
 
   useEffect(() => {
     dispatch(fetchStockDetails(stockSymbol));
-  }, [dispatch, stockSymbol]);
+  }, [stockSymbol, dispatch]);
 
   const handleClick = (value) => {
     setSelectedTimeFrame(value);
   };
 
-
   return (
     <div className="stock-container">
       <div className="stock-body">
         <div className="stock-main">
-          <span className="stock-name">AAPL</span>
+          <span className="stock-name">
+            {stock?.stockDetails?.results?.name}
+          </span>
           <span className="stock-price">190</span>
           <span className="price-change-today">
             {/* <span
@@ -48,10 +49,11 @@ function Stock() {
           </span>
 
           <span className="price-change-overnight">24 Hour Market</span>
-          <StockChart
-          // allTimeFramesData={allTimeFramesData}
-          // selectedTimeFrame={selectedTimeFrame}
-          />
+
+          {stock?.aggregateBars?.results && (
+            <StockChart selectedTimeFrame={selectedTimeFrame} stock={stock} />
+          )}
+
           <div className="time-frame-container">
             {["1D", "1W", "1M", "3M"].map((timeFrame) => (
               <span
@@ -68,7 +70,7 @@ function Stock() {
           <div className="stock-info-container">
             <span className="aboutTitle">About</span>
             <span className="companyDescription">
-              {/* {longBusinessSummary} */}
+              {stock?.stockDetails?.results?.description}
             </span>
             <span className="showMoreLink">Show More</span>
 
@@ -82,15 +84,25 @@ function Stock() {
               </div>
               <div className="company-info-item">
                 <span className="info-label">Employees</span>
-                <span className="info-value"></span>
+                <span className="info-value">
+                  {" "}
+                  {stock?.stockDetails?.results?.total_employees}
+                </span>
               </div>
               <div className="company-info-item">
                 <span className="info-label">Headquarters</span>
-                <span className="info-value"></span>
+                <span className="info-value">
+                  {" "}
+                  {stock?.stockDetails?.results?.address?.city},
+                  {stock?.stockDetails?.results?.address?.state}
+                </span>
               </div>
               <div className="company-info-item">
                 <span className="info-label">Industry</span>
-                <span className="info-value"></span>
+                <span className="info-value">
+                  {" "}
+                  {stock?.stockDetails?.results?.description?.sic_description}
+                </span>
               </div>
             </div>
 
@@ -100,7 +112,7 @@ function Stock() {
               <div className="statistics-column">
                 <div>
                   <span>Market cap</span>
-                  <span>-</span>
+                  <span> {stock?.stockDetails?.results?.market_cap}</span>
                 </div>
                 <div>
                   <span>High today</span>

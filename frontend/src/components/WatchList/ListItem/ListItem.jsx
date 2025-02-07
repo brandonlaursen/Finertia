@@ -50,7 +50,7 @@ function ListItem({
 
   const toggleList = (e) => {
     e.stopPropagation();
-    console.log(toggleListIds);
+
     e.preventDefault();
     if (isListOpen) {
       const newListIds = [...toggleListIds];

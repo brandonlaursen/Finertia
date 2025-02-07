@@ -1,9 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import "./StockChart.css";
 
-function StockChart({ allTimeFramesData, selectedTimeFrame }) {
-  const [data, setData] = useState([]);
+function StockChart({ stock }) {
+  const data = stock.aggregateBars.results.map((data) => {
+    return {
+      x: data.t,
+      y: data.vw,
+    };
+  });
 
   const series = [
     {
@@ -12,46 +17,23 @@ function StockChart({ allTimeFramesData, selectedTimeFrame }) {
     },
   ];
 
-  function convertTime(
-    unixTime,
-    range = "1D",
-    timezone = "EST",
-    fullDate = false,
-    weekDay = false
-  ) {
-    const date = new Date(unixTime * 1000);
-    let options = {
-      // timeZoneName: "short",
+  function convertToEst(timestamp) {
+    const date = new Date(timestamp);
+
+    const options1 = {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
       hour: "numeric",
       minute: "numeric",
-      timeZone: timezone,
-      hour12: true,
+      timeZone: "America/New_York",
+      timeZoneName: "short",
     };
 
-    if (
-      range === "1W" ||
-      range === "1M" ||
-      range === "1Y" ||
-      range === "3M" ||
-      fullDate === true
-    ) {
-      options.month = "short";
-      options.day = "numeric";
-    }
-    if (range === "1Y" || range === "3M") {
-      options.year = "numeric";
-      delete options.hour;
-      delete options.minute;
-    }
-    if (fullDate === true) {
-      options.year = "numeric";
-    }
-    if (weekDay === true) {
-      options.weekday = "short";
-    }
+    const dateTimeFormat = new Intl.DateTimeFormat("en-US", options1);
 
-    const estDate = new Intl.DateTimeFormat("en-US", options).format(date);
-    return estDate;
+    return dateTimeFormat.format(date);
   }
 
   const [options] = useState({
@@ -74,7 +56,7 @@ function StockChart({ allTimeFramesData, selectedTimeFrame }) {
       },
     },
     xaxis: {
-      type: "datetime", // Set x-axis to handle datetime
+      type: "datetime",
       datetimeDiscrete: true,
       labels: { show: false },
       tickAmount: "dataPoints",
@@ -112,56 +94,13 @@ function StockChart({ allTimeFramesData, selectedTimeFrame }) {
     },
     tooltip: {
       x: {
-        formatter: (timestamp) => convertTime(timestamp, "1D", "EST", true), // Format timestamp for tooltip
+        formatter: (timestamp) => convertToEst(timestamp),
       },
       marker: {
         show: false,
       },
     },
   });
-
-  // useEffect(() => {
-  //   function within1D(data) {
-  //     const timeToday = convertTime(
-  //       Math.floor(Date.now() / 1000),
-  //       "1D",
-  //       "EST",
-  //       true
-  //     );
-
-  //     const targetMonth = timeToday.split(" ")[0];
-  //     const targetDay = timeToday.split(" ")[1];
-  //     const targetDate = targetMonth + targetDay;
-
-  //     return data.filter((obj) => {
-  //       const convertedTime = convertTime(obj.x, "1D", "EST", true);
-  //       const currentMonth = convertedTime.split(" ")[0];
-  //       const currentDay = convertedTime.split(" ")[1];
-  //       const currentDate = currentMonth + currentDay;
-  //       if (currentDate === targetDate) return obj;
-  //     });
-  //   }
-
-  //   function withinTimeFrame(data, range) {
-  //     const unixTimeToday = Math.floor(Date.now() / 1000);
-  //     let timeOffset = 0;
-
-  //     if (range === "1D") timeOffset = 86400;
-  //     if (range === "1W") timeOffset = 604800;
-  //     if (range === "1M") timeOffset = 2592000;
-  //     if (range === "3M") timeOffset = 7884000;
-  //     if (range === "1Y") timeOffset = 31536000;
-
-  //     return data.filter((obj) => obj.x >= unixTimeToday - timeOffset);
-  //   }
-
-  //   if (selectedTimeFrame === "1D") {
-  //     setData(within1D(allTimeFramesData));
-  //     return;
-  //   }
-
-  //   setData(withinTimeFrame(allTimeFramesData, selectedTimeFrame));
-  // }, [selectedTimeFrame, allTimeFramesData]);
 
   return (
     <div>

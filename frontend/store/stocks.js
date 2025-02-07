@@ -46,7 +46,7 @@ export const fetchStockDetails = (stockSymbol) => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
 
-    dispatch(setCurrentStock(data.stock, data.listIds));
+    dispatch(setCurrentStock(data.stockObj, data.listIds));
   }
 };
 
