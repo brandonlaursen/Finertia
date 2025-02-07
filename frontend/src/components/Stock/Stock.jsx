@@ -35,7 +35,7 @@ function Stock() {
       <div className="stock-body">
         <div className="stock-main">
           <span className="stock-name">{stock?.name}</span>
-          <span className="stock-price">${stock?.close}</span>
+          <span className="stock-price">${stock?.price?.toFixed(2)}</span>
           <span className="price-change-today">
             <span
               className={`price-change ${
@@ -49,7 +49,15 @@ function Stock() {
               ${stock?.regular_trading_change}
             </span>
 
-            <span className="price-change">
+            <span
+              className={`price-change ${
+                stock?.regular_trading_change_percent < 0
+                  ? "negative"
+                  : stock?.regular_trading_change_percent > 0
+                  ? "positive"
+                  : ""
+              }`}
+            >
               {`(${stock?.regular_trading_change_percent?.toFixed(2)}%)`}
             </span>
             <span>Today</span>

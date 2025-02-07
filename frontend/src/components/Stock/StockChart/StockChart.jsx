@@ -12,83 +12,6 @@ function StockChart({ stock, selectedTimeFrame }) {
     fiveYearAggregates,
   } = stock;
 
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    let aggregates;
-
-    if (selectedTimeFrame === "1D") {
-      aggregates = oneDayAggregates;
-    }
-    if (selectedTimeFrame === "1W") {
-      aggregates = oneWeekAggregates;
-    }
-    if (selectedTimeFrame === "1M") {
-      aggregates = oneMonthAggregates;
-    }
-    if (selectedTimeFrame === "3M") {
-      aggregates = threeMonthAggregates;
-    }
-    if (selectedTimeFrame === "1Y") {
-      aggregates = oneYearAggregates;
-    }
-    if (selectedTimeFrame === "5Y") {
-      aggregates = fiveYearAggregates;
-    }
-
-    console.log(aggregates, selectedTimeFrame);
-    if (aggregates) {
-      const graphData = aggregates.map((aggregate) => ({
-        x: aggregate.t,
-        y: aggregate.vw,
-      }));
-
-      setData(graphData);
-    }
-  }, [
-    selectedTimeFrame,
-    oneDayAggregates,
-    oneWeekAggregates,
-    oneMonthAggregates,
-    threeMonthAggregates,
-    oneYearAggregates,
-    fiveYearAggregates,
-  ]);
-
-  // console.log(data);
-  // const values = stock.oneDayAggregates.results.map((data) => {
-  //   return {
-  //     x: data.t,
-  //     y: data.vw,
-  //   };
-  // });
-
-  const series = [
-    {
-      name: "Price",
-      data,
-    },
-  ];
-
-  function convertToEst(timestamp) {
-    const date = new Date(timestamp);
-
-    const options1 = {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-      timeZone: "America/New_York",
-      timeZoneName: "short",
-    };
-
-    const dateTimeFormat = new Intl.DateTimeFormat("en-US", options1);
-
-    return dateTimeFormat.format(date);
-  }
-
   const [options] = useState({
     chart: {
       type: "line",
@@ -147,13 +70,80 @@ function StockChart({ stock, selectedTimeFrame }) {
     },
     tooltip: {
       x: {
-        formatter: (timestamp) => convertToEst(timestamp),
+        formatter: (timestamp) => convertToEst(timestamp, selectedTimeFrame),
       },
       marker: {
         show: false,
       },
     },
   });
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    let aggregates;
+
+    if (selectedTimeFrame === "1D") {
+      aggregates = oneDayAggregates;
+    }
+    if (selectedTimeFrame === "1W") {
+      aggregates = oneWeekAggregates;
+    }
+    if (selectedTimeFrame === "1M") {
+      aggregates = oneMonthAggregates;
+    }
+    if (selectedTimeFrame === "3M") {
+      aggregates = threeMonthAggregates;
+    }
+    if (selectedTimeFrame === "1Y") {
+      aggregates = oneYearAggregates;
+    }
+    if (selectedTimeFrame === "5Y") {
+      aggregates = fiveYearAggregates;
+    }
+
+    if (aggregates) {
+      const graphData = aggregates.map((aggregate) => ({
+        x: aggregate.t,
+        y: aggregate.vw,
+      }));
+
+      setData(graphData);
+    }
+  }, [
+    selectedTimeFrame,
+    oneDayAggregates,
+    oneWeekAggregates,
+    oneMonthAggregates,
+    threeMonthAggregates,
+    oneYearAggregates,
+    fiveYearAggregates,
+    options,
+  ]);
+
+  const series = [
+    {
+      name: "Price",
+      data,
+    },
+  ];
+
+  function convertToEst(timestamp) {
+    const date = new Date(timestamp);
+
+    const options1 = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      timeZone: "America/New_York",
+    };
+
+    const dateTimeFormat = new Intl.DateTimeFormat("en-US", options1);
+
+    return dateTimeFormat.format(date);
+  }
 
   return (
     <div>
