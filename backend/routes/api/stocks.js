@@ -195,10 +195,23 @@ router.get("/:stockSymbol", async (req, res) => {
     );
     const stockDetails = await response2.json();
 
+    const response3 = await fetch(
+      `https://api.polygon.io/v3/snapshot?ticker.any_of=${stockSymbol}&limit=10&apiKey=${process.env.STOCK_API_KEY2}`
+    );
+    const stockSnapshot = await response3.json();
+
+    const response4 = await fetch(
+      `https://api.polygon.io/v2/reference/news?ticker=${stockSymbol}&limit=10&apiKey=${process.env.STOCK_API_KEY2}`
+    );
+
+    const stockNews = await response4.json();
+
     const stockObj = {
       stockId: stock.id,
       stockDetails,
       aggregateBars,
+      stockSnapshot,
+      stockNews,
     };
 
     return res.json({ stockObj, listIds });

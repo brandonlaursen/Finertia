@@ -33,7 +33,7 @@
 }
 
 #Navigation__logo:hover {
-  color: rgb(197, 127, 187);
+  color: rgb(36, 240, 172);
 }
 
 .Navigation__links {
@@ -48,8 +48,6 @@
 
   z-index: 0;
 }
-
-
 
 .Navigation__links a {
   font-size: 17px;

@@ -12,7 +12,6 @@
   z-index: 10;
 }
 
-
 .AccountDropdown__span {
   font-size: 17px;
   font-weight: bold;
@@ -24,12 +23,11 @@
 }
 
 .AccountDropdown__span:hover {
-  color: rgb(204, 153, 219);
+  color: rgb(7, 222, 150);
 }
 
-
 .AccountDropdown__span__active {
-  color: rgb(204, 153, 219);
+  color: rgb(7, 222, 150);
 }
 
 .AccountDropdown__span__active::after {
@@ -41,7 +39,7 @@
   width: 60px;
   height: 2px;
 
-  background-color: rgb(204, 153, 219);
+  background-color: rgb(7, 222, 150);
 }
 
 .AccountDropdown__user {

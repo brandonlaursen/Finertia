@@ -57,7 +57,7 @@ function AddToListModal({ stock }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    await dispatch(updateStockLists(checkedItems, 1));
+    await dispatch(updateStockLists(checkedItems, stock.id));
 
     closeModal();
   }
@@ -78,7 +78,6 @@ function AddToListModal({ stock }) {
     setListName("");
     setSelectedEmoji("💡");
   };
-
 
   return (
     <div className="AddToListModal">

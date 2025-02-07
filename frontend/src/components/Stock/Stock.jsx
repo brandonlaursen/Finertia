@@ -17,7 +17,7 @@ function Stock() {
   const [selectedTimeFrame, setSelectedTimeFrame] = useState("1D");
 
   const stock = useSelector((state) => state.stocks.currentStock);
-  console.log("stock:", stock?.stockDetails?.results);
+  console.log("stock:", stock);
 
   useEffect(() => {
     dispatch(fetchStockDetails(stockSymbol));
@@ -34,21 +34,57 @@ function Stock() {
           <span className="stock-name">
             {stock?.stockDetails?.results?.name}
           </span>
-          <span className="stock-price">190</span>
+          <span className="stock-price">
+            ${stock?.stockSnapshot?.results[0]?.last_minute?.close}
+          </span>
           <span className="price-change-today">
-            {/* <span
-                className={`price-change ${
-                  netChange < 0 ? "negative" : netChange > 0 ? "positive" : ""
-                }`}
-              >
-                ${netChange}
-              </span> */}
-            <span className={`price-change`}>-</span>
-            <span className="price-change">{"-"}</span>
+            <span
+              className={`price-change ${
+                stock.stockSnapshot?.results[0]?.session
+                  ?.regular_trading_change < 0
+                  ? "negative"
+                  : stock?.stockSnapshot?.results[0]?.session
+                      ?.regular_trading_change > 0
+                  ? "positive"
+                  : ""
+              }`}
+            >
+              $
+              {stock.stockSnapshot?.results[0]?.session?.regular_trading_change}
+            </span>
+
+            <span className="price-change">
+              {`(${stock.stockSnapshot?.results[0]?.session?.regular_trading_change_percent.toFixed(
+                2
+              )}%)`}
+            </span>
             <span>Today</span>
           </span>
-
-          <span className="price-change-overnight">24 Hour Market</span>
+          {stock?.stockSnapshot?.results[0]?.market_status === "closed" ? (
+            <span className="price-change-today">
+              <span
+                className={`price-change ${
+                  stock.stockSnapshot?.results[0]?.session
+                    ?.late_trading_change < 0
+                    ? "negative"
+                    : stock?.stockSnapshot?.results[0]?.session
+                        ?.late_trading_change > 0
+                    ? "positive"
+                    : ""
+                }`}
+              >
+                {`$${
+                  stock.stockSnapshot?.results[0]?.session?.late_trading_change
+                }
+              (${stock.stockSnapshot?.results[0]?.session?.late_trading_change_percent.toFixed(
+                2
+              )}%)`}
+              </span>
+              <span>Overnight</span>
+            </span>
+          ) : (
+            <span className="price-change-overnight">24 Hour Market</span>
+          )}
 
           {stock?.aggregateBars?.results && (
             <StockChart selectedTimeFrame={selectedTimeFrame} stock={stock} />
@@ -78,15 +114,15 @@ function Stock() {
             <div className="company-info-container">
               <div className="company-info-item">
                 <span className="info-label">CEO</span>
-                <span className="info-value">
-                  {/* {companyOfficers[0].name} */}
-                </span>
+                <span className="info-value">-</span>
               </div>
               <div className="company-info-item">
                 <span className="info-label">Employees</span>
                 <span className="info-value">
                   {" "}
-                  {stock?.stockDetails?.results?.total_employees}
+                  {stock?.stockDetails?.results?.total_employees
+                    ? stock?.stockDetails?.results?.total_employees
+                    : "-"}
                 </span>
               </div>
               <div className="company-info-item">
@@ -101,7 +137,7 @@ function Stock() {
                 <span className="info-label">Industry</span>
                 <span className="info-value">
                   {" "}
-                  {stock?.stockDetails?.results?.description?.sic_description}
+                  {stock?.stockDetails?.results?.sic_description}
                 </span>
               </div>
             </div>
@@ -112,15 +148,20 @@ function Stock() {
               <div className="statistics-column">
                 <div>
                   <span>Market cap</span>
-                  <span> {stock?.stockDetails?.results?.market_cap}</span>
+                  <span>
+                    {" "}
+                    {stock?.stockDetails?.results?.market_cap
+                      ? stock?.stockDetails?.results?.market_cap
+                      : "-"}
+                  </span>
                 </div>
                 <div>
                   <span>High today</span>
-                  <span></span>
+                  <span>{stock?.stockSnapshot?.results[0]?.session?.high}</span>
                 </div>
                 <div>
                   <span>52 Week high</span>
-                  <span></span>
+                  <span>-</span>
                 </div>
               </div>
 
@@ -131,11 +172,13 @@ function Stock() {
                 </div>
                 <div>
                   <span>Low today</span>
-                  <span></span>
+                  <span>
+                    {stock?.stockSnapshot?.results[0]?.last_minute?.low}
+                  </span>
                 </div>
                 <div>
                   <span>52 Week low</span>
-                  <span></span>
+                  <span>-</span>
                 </div>
               </div>
 
@@ -146,7 +189,9 @@ function Stock() {
                 </div>
                 <div>
                   <span>Open price</span>
-                  <span>—</span>
+                  <span>
+                    {stock?.stockSnapshot?.results[0]?.last_minute?.high}
+                  </span>
                 </div>
               </div>
 
@@ -157,7 +202,10 @@ function Stock() {
                 </div>
                 <div>
                   <span>Volume</span>
-                  <span></span>
+                  <span>
+                    {" "}
+                    {stock.stockSnapshot?.results[0]?.session?.volume}
+                  </span>
                 </div>
               </div>
             </div>
@@ -166,30 +214,28 @@ function Stock() {
 
           {/* Company news */}
           <div className="stock-news-container">
-            {/* {companyNews &&
-                  companyNews.slice(0, 5).map((news) => {
-                    return (
-                      <a href={news.url} key={news.id}>
-                        <div className="news-container">
-                          <div className="news-text">
-                            <span className="news-header">
-                              <span>{news.source}</span>
-                              <span>{timeAgo(news.datetime)}</span>
-                            </span>
-                            <span className="news-main-text">
-                              {news.headline}
-                            </span>
-                            <span className="news-sub-text">
-                              {news.summary}
-                            </span>
-                          </div>
-                          <div className="news-image">
-                            {news.image && <img src={news.image} />}
-                          </div>
-                        </div>
-                      </a>
-                    );
-                  })} */}
+            {stock?.stockNews?.results &&
+              stock?.stockNews?.results?.map((news) => {
+                return (
+                  <a href={news.url} key={news.id}>
+                    <div className="news-container">
+                      <div className="news-text">
+                        <span className="news-header">
+                          <span>{news.author}</span>
+                          <span>{news?.published_utc.split("T")[0]}</span>
+                        </span>
+                        <span className="news-main-text">{news?.title}</span>
+                        <span className="news-sub-text">
+                          {news.description}
+                        </span>
+                      </div>
+                      <div className="news-image">
+                        {news?.image_url && <img src={news?.image_url} />}
+                      </div>
+                    </div>
+                  </a>
+                );
+              })}
           </div>
         </div>
 

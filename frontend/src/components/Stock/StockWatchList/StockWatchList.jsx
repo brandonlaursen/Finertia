@@ -7,14 +7,15 @@ import AddToListModal from "./AddToListModal/AddToListModal";
 import { useModal } from "../../../context/Modal";
 
 function StockWatchList({ stock }) {
-
   const { setModalContent, setModalClass } = useModal();
 
   return (
     <div className="StockWatchList">
       <div className="StockWatchList__container">
         <div className="StockWatchList__body">
-          <div className="StockWatchList__title">Buy AAPL</div>
+          <div className="StockWatchList__title">
+            {stock?.stockDetails?.results?.name}
+          </div>
           <div className="StockWatchList__text">
             You can start investing once your application is approved.
           </div>

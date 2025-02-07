@@ -43,7 +43,7 @@
 }
 
 .price-change {
-  color: rgb(7, 196, 133);
+  color: green;
 }
 
 .negative {
@@ -80,11 +80,11 @@
 }
 
 .time-frame-container span:hover {
-  color: rgb(7, 196, 133);
+  color: rgb(7, 222, 150);
 }
 
 .time-frame-container span.selected {
-  color: rgb(7, 196, 133); /* Color when selected */
+  color: rgb(7, 222, 150); /* Color when selected */
 }
 
 .time-frame-container span.selected::after {
@@ -96,7 +96,7 @@
 
   height: 2px;
 
-  background-color: rgb(7, 196, 133);
+  background-color: rgb(7, 222, 150);
 }
 
 .stock-info-container {
@@ -126,7 +126,7 @@
 
   font-weight: bold;
 
-  color: rgb(7, 196, 133);
+  color: rgb(7, 222, 150);
 }
 
 .company-info-container {
