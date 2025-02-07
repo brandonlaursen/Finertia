@@ -16,7 +16,6 @@ function WatchList({ className }) {
   const dispatch = useDispatch();
 
   const lists = useSelector(selectListsArray);
-  console.log("lists:", lists);
 
   const [selectedPopoverId, setSelectedPopoverId] = useState(null);
   const [toggleListIds, setToggleListIds] = useState([]);

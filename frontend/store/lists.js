@@ -111,6 +111,7 @@ const listsReducer = (state = {}, action) => {
       };
     }
     case EDIT_LIST: {
+      console.log("==>", state, action);
       return {
         ...state,
         [action.list.id]: action.list,

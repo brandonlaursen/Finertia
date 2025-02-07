@@ -59,7 +59,9 @@ router.put("/:stockListId", async (req, res) => {
   const { stockListId } = req.params;
   const { name: newName, type: newType } = req.body;
 
-  const list = await StockList.findByPk(stockListId);
+  const list = await StockList.findByPk(stockListId, {
+    include: [Stock],
+  });
 
   await list.update({
     name: newName || stockList.name,

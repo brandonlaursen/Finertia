@@ -118,7 +118,7 @@ function ListItem({
                   onClick={(e) => {
                     e.stopPropagation();
                     setSelectedPopoverId(null);
-                    setModalContent(<EditListModal listId={list.id} />);
+                    setModalContent(<EditListModal list={list} />);
                     setModalClass({
                       modal: "EditListModal",
                       modalBackground: "EditListModal__background",

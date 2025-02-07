@@ -11,13 +11,14 @@ import { useModal } from "../../../../context/Modal";
 
 import { editList } from "../../../../../store/lists";
 
-function EditListModal({ listId }) {
+function EditListModal({ list }) {
+  console.log("list:", list);
   const { closeModal } = useModal();
 
   const dispatch = useDispatch();
 
-  const [selectedEmoji, setSelectedEmoji] = useState("💡");
-  const [listName, setListName] = useState("");
+  const [selectedEmoji, setSelectedEmoji] = useState(list.type);
+  const [listName, setListName] = useState(list.name);
 
   const [showPicker, setShowPicker] = useState(false);
 
@@ -30,7 +31,7 @@ function EditListModal({ listId }) {
     e.preventDefault();
 
     const editedList = {
-      stockListId: listId,
+      stockListId: list.id,
       name: listName,
       type: selectedEmoji,
     };
@@ -57,39 +58,39 @@ function EditListModal({ listId }) {
         </div>
 
         <div>
-              <div className="EditListModal__section">
-                    <div>
-                      <button
-                        className="EditListModal__section__emoji"
-                        onClick={() => setShowPicker(!showPicker)}
-                      >
-                        {selectedEmoji}
-                      </button>
-                      {showPicker && (
-                        <div className="emoji-picker-wrapper">
-                          <EmojiPicker onEmojiClick={handleEmojiClick} />
-                        </div>
-                      )}
-                    </div>
+          <div className="EditListModal__section">
+            <div>
+              <button
+                className="EditListModal__section__emoji"
+                onClick={() => setShowPicker(!showPicker)}
+              >
+                {selectedEmoji}
+              </button>
+              {showPicker && (
+                <div className="emoji-picker-wrapper">
+                  <EmojiPicker onEmojiClick={handleEmojiClick} />
+                </div>
+              )}
+            </div>
 
-                    <input
-                      className="EditListModal__section__input"
-                      type="text"
-                      placeholder="List Name"
-                      value={listName}
-                      onChange={(e) => setListName(e.target.value)}
-                    />
-              </div>
-              <div className="EditListModal__section__buttons">
-                <button
-                  className="EditListModal__section__button
+            <input
+              className="EditListModal__section__input"
+              type="text"
+              placeholder="List Name"
+              value={listName}
+              onChange={(e) => setListName(e.target.value)}
+            />
+          </div>
+          <div className="EditListModal__section__buttons">
+            <button
+              className="EditListModal__section__button
                 EditListModal__create-button
                 "
-                  onClick={handleSubmit}
-                >
-                  Save
-                </button>
-              </div>
+              onClick={handleSubmit}
+            >
+              Save
+            </button>
+          </div>
         </div>
       </div>
     </div>
