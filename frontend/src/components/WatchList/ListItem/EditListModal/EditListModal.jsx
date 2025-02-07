@@ -12,7 +12,7 @@ import { useModal } from "../../../../context/Modal";
 import { editList } from "../../../../../store/lists";
 
 function EditListModal({ list }) {
-  console.log("list:", list);
+
   const { closeModal } = useModal();
 
   const dispatch = useDispatch();

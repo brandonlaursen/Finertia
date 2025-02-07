@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import StockChart from "./StockChart/";
-// import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import StockWatchList from "./StockWatchList";
 
 import { fetchStockDetails } from "../../../store/stocks";
@@ -14,10 +14,9 @@ function Stock() {
   const dispatch = useDispatch();
   const { stockSymbol } = useParams();
 
-  const [selectedTimeFrame, setSelectedTimeFrame] = useState("1D");
-
   const stock = useSelector((state) => state.stocks.currentStock);
-  console.log("stock:", stock);
+
+  const [selectedTimeFrame, setSelectedTimeFrame] = useState("1D");
 
   useEffect(() => {
     dispatch(fetchStockDetails(stockSymbol));
@@ -26,6 +25,10 @@ function Stock() {
   const handleClick = (value) => {
     setSelectedTimeFrame(value);
   };
+
+  if (!stock) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <div className="stock-container">
@@ -71,12 +74,12 @@ function Stock() {
             <span className="price-change-overnight">24 Hour Market</span>
           )}
 
-          {stock?.aggregateBars?.results && (
+          {stock && (
             <StockChart selectedTimeFrame={selectedTimeFrame} stock={stock} />
           )}
 
           <div className="time-frame-container">
-            {["1D", "1W", "1M", "3M"].map((timeFrame) => (
+            {["1D", "1W", "1M", "3M", "1Y", "5Y"].map((timeFrame) => (
               <span
                 key={timeFrame}
                 onClick={() => handleClick(timeFrame)}

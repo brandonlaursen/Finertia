@@ -326,12 +326,12 @@ router.get("/:stockSymbol", async (req, res) => {
       volume,
       news: stockNews?.results ?? [],
       listIds: stock.StockLists.map((stock) => stock.id),
-      oneDayAggregates,
-      oneWeekAggregates,
-      oneMonthAggregates,
-      threeMonthAggregates,
-      oneYearAggregates,
-      fiveYearAggregates,
+      oneDayAggregates: oneDayAggregates.results,
+      oneWeekAggregates: oneWeekAggregates.results,
+      oneMonthAggregates: oneMonthAggregates.results,
+      threeMonthAggregates: threeMonthAggregates.results,
+      oneYearAggregates: oneYearAggregates.results,
+      fiveYearAggregates: fiveYearAggregates.results,
     };
 
     return res.json(stockData);

@@ -85,12 +85,7 @@ export const updateStockLists =
     }
   };
 
-const initialState = {
-  1: { id: 1, name: "Apple", symbol: "AAPL" },
-  currentStock: {
-    listIds: [],
-  },
-};
+const initialState = {};
 
 // * Reducer
 const stockReducer = (state = initialState, action) => {

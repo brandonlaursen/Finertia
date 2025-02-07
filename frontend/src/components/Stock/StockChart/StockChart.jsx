@@ -1,14 +1,67 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import "./StockChart.css";
 
-function StockChart({ stock }) {
-  const data = stock.aggregateBars.results.map((data) => {
-    return {
-      x: data.t,
-      y: data.vw,
-    };
-  });
+function StockChart({ stock, selectedTimeFrame }) {
+  const {
+    oneDayAggregates,
+    oneWeekAggregates,
+    oneMonthAggregates,
+    threeMonthAggregates,
+    oneYearAggregates,
+    fiveYearAggregates,
+  } = stock;
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    let aggregates;
+
+    if (selectedTimeFrame === "1D") {
+      aggregates = oneDayAggregates;
+    }
+    if (selectedTimeFrame === "1W") {
+      aggregates = oneWeekAggregates;
+    }
+    if (selectedTimeFrame === "1M") {
+      aggregates = oneMonthAggregates;
+    }
+    if (selectedTimeFrame === "3M") {
+      aggregates = threeMonthAggregates;
+    }
+    if (selectedTimeFrame === "1Y") {
+      aggregates = oneYearAggregates;
+    }
+    if (selectedTimeFrame === "5Y") {
+      aggregates = fiveYearAggregates;
+    }
+
+    console.log(aggregates, selectedTimeFrame);
+    if (aggregates) {
+      const graphData = aggregates.map((aggregate) => ({
+        x: aggregate.t,
+        y: aggregate.vw,
+      }));
+
+      setData(graphData);
+    }
+  }, [
+    selectedTimeFrame,
+    oneDayAggregates,
+    oneWeekAggregates,
+    oneMonthAggregates,
+    threeMonthAggregates,
+    oneYearAggregates,
+    fiveYearAggregates,
+  ]);
+
+  // console.log(data);
+  // const values = stock.oneDayAggregates.results.map((data) => {
+  //   return {
+  //     x: data.t,
+  //     y: data.vw,
+  //   };
+  // });
 
   const series = [
     {
