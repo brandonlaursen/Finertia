@@ -12,10 +12,9 @@ export const setAllStocks = (stocks) => ({
   stocks,
 });
 
-export const setCurrentStock = (stock, listIds) => ({
+export const setCurrentStock = (stock) => ({
   type: FETCH_STOCK_DETAILS,
   stock,
-  listIds,
 });
 
 export const setStockNews = (news) => ({
@@ -46,7 +45,7 @@ export const fetchStockDetails = (stockSymbol) => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
 
-    dispatch(setCurrentStock(data.stockObj, data.listIds));
+    dispatch(setCurrentStock(data));
   }
 };
 
@@ -104,7 +103,7 @@ const stockReducer = (state = initialState, action) => {
         ...state,
         currentStock: {
           ...action.stock,
-          listIds: [...action.listIds],
+          listIds: [...action.stock.listIds],
         },
       };
     }

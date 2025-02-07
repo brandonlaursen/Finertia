@@ -31,54 +31,39 @@ function Stock() {
     <div className="stock-container">
       <div className="stock-body">
         <div className="stock-main">
-          <span className="stock-name">
-            {stock?.stockDetails?.results?.name}
-          </span>
-          <span className="stock-price">
-            ${stock?.stockSnapshot?.results[0]?.last_minute?.close}
-          </span>
+          <span className="stock-name">{stock?.name}</span>
+          <span className="stock-price">${stock?.close}</span>
           <span className="price-change-today">
             <span
               className={`price-change ${
-                stock.stockSnapshot?.results[0]?.session
-                  ?.regular_trading_change < 0
+                stock?.regular_trading_change < 0
                   ? "negative"
-                  : stock?.stockSnapshot?.results[0]?.session
-                      ?.regular_trading_change > 0
+                  : stock?.regular_trading_change > 0
                   ? "positive"
                   : ""
               }`}
             >
-              $
-              {stock.stockSnapshot?.results[0]?.session?.regular_trading_change}
+              ${stock?.regular_trading_change}
             </span>
 
             <span className="price-change">
-              {`(${stock.stockSnapshot?.results[0]?.session?.regular_trading_change_percent.toFixed(
-                2
-              )}%)`}
+              {`(${stock?.regular_trading_change_percent?.toFixed(2)}%)`}
             </span>
             <span>Today</span>
           </span>
-          {stock?.stockSnapshot?.results[0]?.market_status === "closed" ? (
+          {stock?.market_status === "closed" ? (
             <span className="price-change-today">
               <span
                 className={`price-change ${
-                  stock.stockSnapshot?.results[0]?.session
-                    ?.late_trading_change < 0
+                  stock?.late_trading_change < 0
                     ? "negative"
-                    : stock?.stockSnapshot?.results[0]?.session
-                        ?.late_trading_change > 0
+                    : stock?.late_trading_change > 0
                     ? "positive"
                     : ""
                 }`}
               >
-                {`$${
-                  stock.stockSnapshot?.results[0]?.session?.late_trading_change
-                }
-              (${stock.stockSnapshot?.results[0]?.session?.late_trading_change_percent.toFixed(
-                2
-              )}%)`}
+                {`$${stock?.late_trading_change}
+              (${stock?.late_trading_change_percent?.toFixed(2)}%)`}
               </span>
               <span>Overnight</span>
             </span>
@@ -105,9 +90,7 @@ function Stock() {
           {/* Stock Info */}
           <div className="stock-info-container">
             <span className="aboutTitle">About</span>
-            <span className="companyDescription">
-              {stock?.stockDetails?.results?.description}
-            </span>
+            <span className="companyDescription">{stock?.description}</span>
             <span className="showMoreLink">Show More</span>
 
             {/* Company Info */}
@@ -118,27 +101,15 @@ function Stock() {
               </div>
               <div className="company-info-item">
                 <span className="info-label">Employees</span>
-                <span className="info-value">
-                  {" "}
-                  {stock?.stockDetails?.results?.total_employees
-                    ? stock?.stockDetails?.results?.total_employees
-                    : "-"}
-                </span>
+                <span className="info-value"> {stock?.total_employees}</span>
               </div>
               <div className="company-info-item">
                 <span className="info-label">Headquarters</span>
-                <span className="info-value">
-                  {" "}
-                  {stock?.stockDetails?.results?.address?.city},
-                  {stock?.stockDetails?.results?.address?.state}
-                </span>
+                <span className="info-value"> {stock?.headquarters},</span>
               </div>
               <div className="company-info-item">
                 <span className="info-label">Industry</span>
-                <span className="info-value">
-                  {" "}
-                  {stock?.stockDetails?.results?.sic_description}
-                </span>
+                <span className="info-value"> {stock?.industry}</span>
               </div>
             </div>
 
@@ -148,16 +119,11 @@ function Stock() {
               <div className="statistics-column">
                 <div>
                   <span>Market cap</span>
-                  <span>
-                    {" "}
-                    {stock?.stockDetails?.results?.market_cap
-                      ? stock?.stockDetails?.results?.market_cap
-                      : "-"}
-                  </span>
+                  <span> {stock?.market_cap}</span>
                 </div>
                 <div>
                   <span>High today</span>
-                  <span>{stock?.stockSnapshot?.results[0]?.session?.high}</span>
+                  <span>{stock?.high}</span>
                 </div>
                 <div>
                   <span>52 Week high</span>
@@ -172,9 +138,7 @@ function Stock() {
                 </div>
                 <div>
                   <span>Low today</span>
-                  <span>
-                    {stock?.stockSnapshot?.results[0]?.last_minute?.low}
-                  </span>
+                  <span>{stock?.low}</span>
                 </div>
                 <div>
                   <span>52 Week low</span>
@@ -189,9 +153,7 @@ function Stock() {
                 </div>
                 <div>
                   <span>Open price</span>
-                  <span>
-                    {stock?.stockSnapshot?.results[0]?.last_minute?.high}
-                  </span>
+                  <span>{stock?.open}</span>
                 </div>
               </div>
 
@@ -202,10 +164,7 @@ function Stock() {
                 </div>
                 <div>
                   <span>Volume</span>
-                  <span>
-                    {" "}
-                    {stock.stockSnapshot?.results[0]?.session?.volume}
-                  </span>
+                  <span> {stock?.volume}</span>
                 </div>
               </div>
             </div>
@@ -214,19 +173,19 @@ function Stock() {
 
           {/* Company news */}
           <div className="stock-news-container">
-            {stock?.stockNews?.results &&
-              stock?.stockNews?.results?.map((news) => {
+            {stock?.news &&
+              stock?.news?.map((news) => {
                 return (
-                  <a href={news.url} key={news.id}>
+                  <a href={news?.url} key={news?.id}>
                     <div className="news-container">
                       <div className="news-text">
                         <span className="news-header">
-                          <span>{news.author}</span>
-                          <span>{news?.published_utc.split("T")[0]}</span>
+                          <span>{news?.author}</span>
+                          <span>{news?.published_utc?.split("T")[0]}</span>
                         </span>
                         <span className="news-main-text">{news?.title}</span>
                         <span className="news-sub-text">
-                          {news.description}
+                          {news?.description}
                         </span>
                       </div>
                       <div className="news-image">
