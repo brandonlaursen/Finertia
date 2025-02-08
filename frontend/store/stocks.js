@@ -23,10 +23,15 @@ export const setStockNews = (news) => ({
   news,
 });
 
-export const setUpdatedStockLists = (updatedListIds, stockId) => ({
+export const setUpdatedStockLists = (
+  updatedListIds,
+  stock,
+  removedFromIds
+) => ({
   type: UPDATE_LIST_STOCKS,
   updatedListIds,
-  stockId,
+  removedFromIds,
+  stock,
 });
 
 // * Thunks
@@ -70,18 +75,25 @@ export const fetchStockNewsByCategory = (category) => async (dispatch) => {
 };
 
 export const updateStockLists =
-  (stockListsIdsObj, stockId) => async (dispatch) => {
+  (stockListsIdsObj, stock) => async (dispatch) => {
+    console.log("asdfasdf", stockListsIdsObj);
     const response = await csrfFetch("/api/lists/update-stock-lists", {
       method: "POST",
       body: JSON.stringify({
         stockListsIdsObj,
-        stockId,
+        stockId: stock.id,
       }),
     });
 
     if (response.ok) {
       const data = await response.json();
-      dispatch(setUpdatedStockLists(data.updatedListIds, stockId));
+      dispatch(
+        setUpdatedStockLists(
+          data.updatedListIds,
+          data.stock,
+          data.removedFromIds
+        )
+      );
       return { messages: data.messages };
     }
   };
@@ -91,17 +103,28 @@ export const selectStocksArray = createSelector(selectAllStocks, (list) => {
   return Object.values(list);
 });
 
-const initialState = {};
+const initialState = { allStocks: [], currentStock: {} };
 
 // * Reducer
 const stockReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_ALL_STOCKS: {
-      return { ...state, allStocks: [...action.stocks] };
+      const normalizedStocks = {};
+
+      for (let stock of action.stocks) {
+        normalizedStocks[stock.id] = stock;
+      }
+
+      return {
+        ...state,
+
+        allStocks: { ...normalizedStocks },
+      };
     }
     case FETCH_STOCK_DETAILS: {
       return {
         ...state,
+        allStocks: { ...state.allStocks },
         currentStock: {
           ...action.stock,
           listIds: [...action.stock.listIds],
@@ -114,6 +137,14 @@ const stockReducer = (state = initialState, action) => {
     case UPDATE_LIST_STOCKS: {
       const newState = {
         ...state,
+        allStocks: {
+          ...state.allStocks,
+          [action.stock.id]: {
+            ...state.allStocks[action.stock.id],
+            listIds: [...action.updatedListIds],
+          },
+        },
+
         currentStock: {
           ...state.currentStock,
           listIds: [...action.updatedListIds],

@@ -17,14 +17,21 @@ import { useNavigate } from "react-router-dom";
 
 import { selectStocksArray } from "../../../store/stocks";
 
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+
+import AddToListModal from "../Stock/StockWatchList/AddToListModal/AddToListModal";
+import { useModal } from "../../context/Modal";
+
 function Stocks() {
   const { scrolled } = useOutletContext();
   const navigate = useNavigate();
+  const { setModalContent, setModalClass } = useModal();
 
   const dispatch = useDispatch();
   const stocks = useSelector(selectStocksArray);
 
   const [sortedStocks, setSortedStocks] = useState(stocks);
+
   const [sortCriteria, setSortCriteria] = useState("name");
   const [sortDirection, setSortDirection] = useState("asc");
 
@@ -82,6 +89,13 @@ function Stocks() {
     return num;
   }
 
+  useEffect(() => {
+    // Set sortedStocks when stocks are available
+    if (stocks && stocks.length > 0) {
+      setSortedStocks(stocks);
+    }
+  }, [stocks]);
+
   if (!stocks) return <h1>Loading</h1>;
 
   return (
@@ -134,9 +148,8 @@ function Stocks() {
                   <th></th>
                 </tr>
               </thead>
-
               <tbody className="stocks__table-body">
-                {stocks.length &&
+                {stocks.length ? (
                   sortedStocks.map((stock) => {
                     return (
                       <tr
@@ -159,11 +172,29 @@ function Stocks() {
                         </td>
                         <td>{formatNumber(stock?.market_cap)}</td>
                         <td>
-                          <FaPlus className="stocks__btn stocks__btn--add" />
+                          <FaPlus
+                            className="stocks__btn stocks__btn--add"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setModalContent(
+                                <AddToListModal stock={stock} create={true} />
+                              );
+                              setModalClass({
+                                modal: "AddToListModal",
+                                modalBackground: "AddToListModal__background",
+                                modalContainer: "AddToListModal__container",
+                              });
+                            }}
+                          />
                         </td>
                       </tr>
                     );
-                  })}
+                  })
+                ) : (
+                  <div className="Stocks-loading-spinner">
+                    <LoadingSpinner />
+                  </div>
+                )}
 
                 <tr className="stock-row"></tr>
               </tbody>

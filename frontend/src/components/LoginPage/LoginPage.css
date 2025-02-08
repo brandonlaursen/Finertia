@@ -14,7 +14,7 @@
   width: 50%;
 
   background-color: black;
-  background-image: url("https://static.vecteezy.com/system/resources/previews/017/125/591/original/outer-space-background-with-planets-and-stars-free-vector.jpg");
+  background-image: url("https://i.pinimg.com/originals/fd/b2/1c/fdb21c0e4f3dbb6ccd9a63c68fce8645.gif");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -161,7 +161,6 @@
   .LoginPage__form-container {
     height: 100%;
     width: 100%;
-
   }
 
   .LoginPage__form__buttons {
@@ -174,7 +173,7 @@
     flex-direction: column;
     align-items: center;
     gap: 0;
-    
+
     width: 100%;
   }
 }

@@ -21,7 +21,7 @@
   flex-direction: column;
 
   background-color: #000000;
-  background-image: url("https://cdn.pixabay.com/photo/2022/08/06/13/49/space-7368670_1280.jpg");
+  background-image: url("https://wallpapercave.com/wp/wp4199379.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -39,7 +39,7 @@
 
   font-size: 3vw;
 
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 /* Section One Highlight */
@@ -54,7 +54,7 @@
 
 .WelcomePage__section-one__highlight > h1 {
   font-size: 4vw;
-  color: rgb(198, 156, 194);
+  color: rgb(7, 222, 150);
 }
 
 /* Section One Button */
@@ -79,7 +79,6 @@
   background-color: rgb(197, 197, 197);
 }
 
-
 /* Section Two */
 .WelcomePage__section-two {
   background-color: #535353;
@@ -98,6 +97,6 @@
 
   font-size: 1.5rem;
 
-  background-color: rgb(198, 156, 194);
+  background-color: rgb(7, 222, 150);
   color: white;
 }

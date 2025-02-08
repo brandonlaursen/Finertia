@@ -5,6 +5,7 @@ const FETCH_LISTS = "lists/FETCH_LISTS";
 const CREATE_LISTS = "lists/CREATE_LISTS";
 const EDIT_LIST = "lists/EDIT_LIST";
 const DELETE_LIST = "lists/DELETE_LIST";
+const UPDATE_LIST_STOCKS = "lists/UPDATE_LIST_STOCKS";
 
 export const setLists = (lists) => ({
   type: FETCH_LISTS,
@@ -44,6 +45,8 @@ export const createList =
       const data = await response.json();
 
       dispatch(setCreatedList(data));
+
+      return data.id;
     }
   };
 
@@ -120,6 +123,28 @@ const listsReducer = (state = {}, action) => {
       const newState = { ...state };
 
       delete newState[action.listId];
+
+      return newState;
+    }
+    case UPDATE_LIST_STOCKS: {
+      const newState = { ...state };
+
+      for (let listId of action.updatedListIds) {
+        console.log(listId);
+        const found = newState[listId].Stocks.find(
+          (stock) => stock.id === action.stock.id
+        );
+        if (!found) {
+          newState[listId].Stocks.push(action.stock);
+        }
+      }
+
+      for (let listId of action.removedFromIds) {
+        const foundIndex = newState[listId].Stocks.findIndex(
+          (stock) => stock.id === action.stock.id
+        );
+        newState[listId].Stocks.splice(foundIndex, 1);
+      }
 
       return newState;
     }

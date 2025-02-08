@@ -251,3 +251,12 @@
   width: 18px;
   color: rgb(14, 248, 37);
 }
+
+.Stocks-loading-spinner {
+  /* background-color: red; */
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  height: 250px;
+  width: 620px;
+}

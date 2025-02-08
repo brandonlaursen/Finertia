@@ -16,7 +16,8 @@ import ListItem from "../../../WatchList/ListItem";
 
 import { createList } from "../../../../../store/lists";
 import { selectUser } from "../../../../../store/session";
-function AddToListModal({ stock }) {
+
+function AddToListModal({ stock, create }) {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
 
@@ -32,6 +33,7 @@ function AddToListModal({ stock }) {
   const [isVisible, setIsVisible] = useState(false);
   const [showPicker, setShowPicker] = useState(false);
   const [listName, setListName] = useState("");
+  const [newListId, setNewListId] = useState(null);
 
   const [selectedEmoji, setSelectedEmoji] = useState("💡");
 
@@ -57,7 +59,10 @@ function AddToListModal({ stock }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    await dispatch(updateStockLists(checkedItems, stock.id));
+
+    console.log(stock.id);
+    console.log(checkedItems);
+    await dispatch(updateStockLists(checkedItems, stock));
 
     closeModal();
   }
@@ -73,12 +78,20 @@ function AddToListModal({ stock }) {
       stockIds: [],
     };
 
-    await dispatch(createList(newList));
+    const newListId = await dispatch(createList(newList));
+    console.log("newListId:", newListId);
     setIsVisible(false);
     setListName("");
     setSelectedEmoji("💡");
+    setNewListId(newListId);
   };
 
+  useEffect(() => {
+    if (newListId) {
+      setCheckedItems((prev) => ({ ...prev, [newListId]: true }));
+    }
+  }, [newListId]);
+  console.log(checkedItems);
   return (
     <div className="AddToListModal">
       {showPicker && (

@@ -38,28 +38,19 @@ function Navigation() {
   return (
     <>
       <nav className={`${routeClass} ${scrolled ? "scrolled" : ""}`}>
-
         <NavLink className={`Navigation__logo__container`}>
           <FaSpaceShuttle id="Navigation__logo" />
         </NavLink>
-
 
         <SearchBar />
 
         <HamburgerMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
 
-        <div
-          className={`Navigation__links ${
-            isMenuOpen ? "show" : ""
-          }`}
-        >
-          <Link to='/stocks'>Stocks</Link>
-          <Link>Investing</Link>
-          <Link>About</Link>
+        <div className={`Navigation__links ${isMenuOpen ? "show" : ""}`}>
+          <Link to="/stocks">Stocks</Link>
           <Link>Notifications</Link>
           <AccountDropdown sessionUser={sessionUser} />
         </div>
-
       </nav>
 
       <Outlet context={{ scrolled }} />

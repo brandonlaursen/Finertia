@@ -26,13 +26,16 @@ function Stock() {
     setSelectedTimeFrame(value);
   };
 
-  // if (!stock) {
-  //   return <LoadingSpinner />;
-  // }
+  function formatNumber(num) {
+    if (num >= 1e12) return (num / 1e12).toFixed(2) + "T";
+    if (num >= 1e9) return (num / 1e9).toFixed(2) + "B";
+    if (num >= 1e6) return (num / 1e6).toFixed(2) + "M";
+    return num;
+  }
 
   return (
     <div className="stock-container">
-      {!stock ? (
+      {!stock.name ? (
         <LoadingSpinner />
       ) : (
         <div className="stock-body">
@@ -115,7 +118,10 @@ function Stock() {
                 </div>
                 <div className="company-info-item">
                   <span className="info-label">Employees</span>
-                  <span className="info-value"> {stock?.total_employees}</span>
+                  <span className="info-value">
+                    {" "}
+                    {formatNumber(stock?.employees)}
+                  </span>
                 </div>
                 <div className="company-info-item">
                   <span className="info-label">Headquarters</span>
@@ -133,11 +139,11 @@ function Stock() {
                 <div className="statistics-column">
                   <div>
                     <span>Market cap</span>
-                    <span> {stock?.market_cap}</span>
+                    <span> {formatNumber(stock?.market_cap)}</span>
                   </div>
                   <div>
                     <span>High today</span>
-                    <span>{stock?.high}</span>
+                    <span>${stock?.high}</span>
                   </div>
                   <div>
                     <span>52 Week high</span>
@@ -152,7 +158,7 @@ function Stock() {
                   </div>
                   <div>
                     <span>Low today</span>
-                    <span>{stock?.low}</span>
+                    <span>${stock?.low}</span>
                   </div>
                   <div>
                     <span>52 Week low</span>
@@ -167,7 +173,7 @@ function Stock() {
                   </div>
                   <div>
                     <span>Open price</span>
-                    <span>{stock?.open}</span>
+                    <span>${stock?.open}</span>
                   </div>
                 </div>
 
@@ -178,7 +184,7 @@ function Stock() {
                   </div>
                   <div>
                     <span>Volume</span>
-                    <span> {stock?.volume}</span>
+                    <span> {formatNumber(stock?.volume)}</span>
                   </div>
                 </div>
               </div>
