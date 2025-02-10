@@ -18,8 +18,8 @@ import SecurityPage from "./components/Account/Settings/SecurityPage";
 import HelpPage from "./components/Account/HelpPage";
 import AppearancePage from "./components/Account/Settings/AppearancePage";
 import InvestingPage from "./components/Account/InvestingPage/InvestingPage";
-
 import TransfersPage from "./components/Account/TransfersPage/TransfersPage";
+import HistoryPage from "./components/Account/HistoryPage/HistoryPage";
 
 function Layout() {
   const dispatch = useDispatch();
@@ -81,6 +81,10 @@ const router = createBrowserRouter([
               {
                 path: "transfers",
                 element: <TransfersPage />,
+              },
+              {
+                path: "history",
+                element: <HistoryPage />,
               },
               {
                 path: "settings",

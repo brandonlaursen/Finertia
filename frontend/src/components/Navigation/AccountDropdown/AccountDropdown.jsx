@@ -2,7 +2,7 @@ import "./AccountDropdown.css";
 import { FaBriefcase } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
 import { IoMdHelpCircle } from "react-icons/io";
-import { MdOutlineLogin } from "react-icons/md";
+import { LuLogOut } from "react-icons/lu";
 import { FaSmile } from "react-icons/fa";
 import { AiFillBank } from "react-icons/ai";
 import { LuHistory } from "react-icons/lu";
@@ -97,7 +97,7 @@ function AccountDropdown({ sessionUser }) {
               className="AccountDropdown__logout-button"
               onClick={handleLogout}
             >
-              <MdOutlineLogin className="AccountDropdown__icon" />
+              <LuLogOut className="AccountDropdown__icon" />
               Log Out
             </span>
           </div>

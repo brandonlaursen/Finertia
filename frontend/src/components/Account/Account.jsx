@@ -43,6 +43,16 @@ function Account() {
             </Link>
 
             <Link
+              to="/account/history"
+              className={`
+                  account-select
+                ${location.pathname === "/account/history" ? "select-history" : ""}
+                `}
+            >
+              History
+            </Link>
+
+            <Link
               to="/account/settings/security"
               className={`
                   account-select

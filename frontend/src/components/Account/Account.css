@@ -37,7 +37,7 @@
 
 .Account__header__section {
   display: flex;
-  gap: 16px;
+  gap: 24px;
   font-size: 14px;
   font-weight: bold;
 }
@@ -126,6 +126,16 @@
 }
 
 .select-transfers::after {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: rgb(7, 222, 150);
+}
+
+.select-history::after {
   content: "";
   position: absolute;
   bottom: -12px;
