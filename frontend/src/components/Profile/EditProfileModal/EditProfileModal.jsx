@@ -9,24 +9,21 @@ import { useState } from "react";
 
 import { editUser } from "../../../../store/session";
 
-function EditProfileModal(user) {
+function EditProfileModal() {
   const { closeModal } = useModal();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [userName, setUserName] = useState(sessionUser.username);
-  const [profilePic, setProfilePic] = useState(sessionUser.profilePic);
-
-  console.log("user:", user);
+  const [profilePic, ] = useState(sessionUser.profilePic);
 
   async function handleSubmit(e) {
     e.preventDefault();
 
     const editedProfile = {
       username: userName,
-      profilePic
+      profilePic,
     };
 
-    console.log(editedProfile);
     await dispatch(editUser(editedProfile));
     closeModal();
   }

@@ -1,0 +1,32 @@
+.TransfersPage {
+  display: flex;
+  margin: 0px auto 0;
+  flex-direction: column;
+
+  height: 100%;
+  width: 800px;
+  /* background-color: red; */
+}
+
+.TransfersPage__section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 30px;
+  justify-content: center;
+
+  height: 40px;
+  width: 100%;
+
+  font-size: 14px;
+
+  background-color: rgb(240, 248, 255);
+  border-radius: 5px;
+}
+
+
+.TransfersPage__invest-section{
+
+  height: 200px;
+  background-color: aqua;
+}

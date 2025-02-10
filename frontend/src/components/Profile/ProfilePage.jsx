@@ -19,7 +19,6 @@ function ProfilePage() {
     <div className="ProfilePage">
       <div className="ProfilePage__container">
         <div className="ProfilePage__user">
-          
           <div className="ProfilePage__user__image">
             <FaSmile className="ProfilePage__user__profile-pic" />
             <FiPlusCircle className="ProfilePage__user__plus-icon" />
@@ -43,7 +42,7 @@ function ProfilePage() {
               onClick={(e) => {
                 e.stopPropagation();
                 e.preventDefault();
-                setModalContent(<EditProfileModal user={sessionUser} />);
+                setModalContent(<EditProfileModal />);
                 setModalClass({
                   modal: "EditProfileModal",
                   modalBackground: "EditProfileModal__background",

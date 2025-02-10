@@ -1,8 +1,11 @@
 import "./AccountDropdown.css";
-import { MdAccountCircle } from "react-icons/md";
+import { FaBriefcase } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
 import { IoMdHelpCircle } from "react-icons/io";
 import { MdOutlineLogin } from "react-icons/md";
+import { FaSmile } from "react-icons/fa";
+import { AiFillBank } from "react-icons/ai";
+import { LuHistory } from "react-icons/lu";
 
 import { useState, useRef, useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -45,7 +48,6 @@ function AccountDropdown({ sessionUser }) {
     await dispatch(logout());
   };
 
-
   return (
     <span tabIndex={0} ref={accountDropdownRef} onClick={toggleAccountDropdown}>
       <span
@@ -60,13 +62,25 @@ function AccountDropdown({ sessionUser }) {
       {isAccountOpen && (
         <div className="AccountDropdown">
           <div className="AccountDropdown__user">
-            <span>{sessionUser.username}</span>
+            <span>{`${sessionUser.firstName} ${sessionUser.lastName}`}</span>
           </div>
 
           <div className="AccountDropdown__links">
             <Link to="/profile">
-              <MdAccountCircle className="AccountDropdown__icon" />
+              <FaSmile className="AccountDropdown__icon" />
               Profile
+            </Link>
+            <Link to="/account/investing">
+              <FaBriefcase className="AccountDropdown__icon" />
+              Investing
+            </Link>
+            <Link to="/account/transfers">
+              <AiFillBank className="AccountDropdown__icon" />
+              Transfers
+            </Link>
+            <Link to="/account/history">
+              <LuHistory className="AccountDropdown__icon" />
+              History
             </Link>
             <Link to="/account/settings/security">
               <IoMdSettings className="AccountDropdown__icon" />
