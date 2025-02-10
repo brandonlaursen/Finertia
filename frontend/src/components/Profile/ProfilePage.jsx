@@ -2,13 +2,24 @@ import "./ProfilePage.css";
 import { FaSmile } from "react-icons/fa";
 import { FiPlusCircle } from "react-icons/fi";
 import { LuInfo } from "react-icons/lu";
-import { GoDash } from "react-icons/go";
+// import { GoDash } from "react-icons/go";
+
+import { useSelector } from "react-redux";
+import { selectUser } from "../../../store/session";
+
+import { useModal } from "../../context/Modal";
+
+import EditProfileModal from "./EditProfileModal/EditProfileModal";
 
 function ProfilePage() {
+  const sessionUser = useSelector(selectUser);
+  const { setModalContent, setModalClass } = useModal();
+
   return (
     <div className="ProfilePage">
       <div className="ProfilePage__container">
         <div className="ProfilePage__user">
+          
           <div className="ProfilePage__user__image">
             <FaSmile className="ProfilePage__user__profile-pic" />
             <FiPlusCircle className="ProfilePage__user__plus-icon" />
@@ -16,25 +27,39 @@ function ProfilePage() {
 
           <div className="ProfilePage__user__information">
             <div className="ProfilePage__user__information__name">
-              Brandon Laursen
+              {`${sessionUser.firstName} ${sessionUser.lastName}`}
             </div>
             <div>
               <span className="ProfilePage__user__information__username">
-                @brandonlaursen
+                @{sessionUser.username}
               </span>
               ·
               <span className="ProfilePage__user__information__join-date">
-                Joined 2020
+                {`Joined ${sessionUser.joinDate.split("-")[0]}`}
               </span>
             </div>
-            <span className="ProfilePage__user__information__edit">
+            <span
+              className="ProfilePage__user__information__edit"
+              onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                setModalContent(<EditProfileModal user={sessionUser} />);
+                setModalClass({
+                  modal: "EditProfileModal",
+                  modalBackground: "EditProfileModal__background",
+                  modalContainer: "EditProfileModal__container",
+                });
+              }}
+            >
               Edit profile
             </span>
           </div>
         </div>
 
         <div className="ProfilePage__total">
-          <span className="ProfilePage__total__line"></span>
+          <span className="ProfilePage__total__balance">
+            ${sessionUser.balance}
+          </span>
           Total in Finertia
         </div>
 
@@ -51,17 +76,21 @@ function ProfilePage() {
               <span className="ProfilePage__investments__details__value-text">
                 Total Individual value
               </span>
-              <GoDash className="ProfilePage__investments__details__dash" />
+              {/* <GoDash className="ProfilePage__investments__details__dash" />
+               */}
+              ${sessionUser.balance}
             </div>
 
             <div className="ProfilePage__investments__details__value ProfilePage__investments__details__subtext">
               <span>Individual holdings</span>
-              <GoDash className="ProfilePage__investments__details__dash" />
+              {/* <GoDash className="ProfilePage__investments__details__dash" /> */}
+              ${sessionUser.balance}
             </div>
 
             <div className="ProfilePage__investments__details__value ProfilePage__investments__details__subtext">
               <span>Individual cash</span>
-              <GoDash className="ProfilePage__investments__details__dash" />
+              {/* <GoDash className="ProfilePage__investments__details__dash" /> */}
+              ${sessionUser.balance}
             </div>
           </div>
         </div>

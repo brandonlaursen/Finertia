@@ -48,6 +48,7 @@ export function Modal() {
   if (!modalRef || !modalRef.current || !modalContent || !modalClass)
     return null;
 
+  console.log("modalContent:", modalContent, modalClass);
   return ReactDOM.createPortal(
     <div>
       <div onClick={closeModal} />

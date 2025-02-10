@@ -1,5 +1,5 @@
 .ProfilePage {
-  position: relative;
+  /* position: relative; */
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -7,8 +7,8 @@
   padding: 20px;
 
   height: 100vh;
-  width: 50%;
-  max-width: 800px;
+  width: 65%;
+  /* max-width: 800px; */
   min-width: 600px;
 
   color: rgb(0, 0, 0);
@@ -26,17 +26,20 @@
 .ProfilePage__user {
   display: flex;
 
+  /* background-color: red; */
+
   height: 100px;
+  margin-bottom: 20px;
 }
 
 .ProfilePage__user__image {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-
+  /* justify-content: center; */
+  /* background-color: aqua; */
   height: 100px;
-  width: 100px;
+  width: 90px;
 }
 
 .ProfilePage__user__profile-pic {
@@ -49,7 +52,7 @@
 .ProfilePage__user__plus-icon {
   position: absolute;
   top: 70px;
-  right: 17px;
+  right: 30px;
 
   height: 20px;
   width: 20px;
@@ -73,13 +76,13 @@
 }
 
 .ProfilePage__user__information__username {
-  margin-right: 3px;
+  margin-right: 4px;
 
   font-size: 16px;
 }
 
 .ProfilePage__user__information__join-date {
-  margin-left: 3px;
+  margin-left: 4px;
   color: rgb(169, 169, 169);
 }
 
@@ -90,6 +93,7 @@
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-decoration-color: black;
+  text-underline-offset: 4px;
 
   cursor: pointer;
 }
@@ -296,5 +300,10 @@
   align-self: self-start;
 
   color: black;
+  font-weight: bold;
+}
+
+.ProfilePage__total__balance {
+  font-size: 24px;
   font-weight: bold;
 }
