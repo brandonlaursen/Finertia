@@ -8,16 +8,13 @@
   /* background-color: red; */
 }
 
-
-
-.InvestingPage__invest-section{
+.InvestingPage__invest-section {
   margin-top: 30px;
   height: auto;
   /* background-color: aqua; */
 }
 
-
-.InvestingPage__portfolio{
+.InvestingPage__portfolio {
   /* background-color: aquamarine; */
   display: flex;
   flex-direction: column;
@@ -25,32 +22,75 @@
   gap: 8px;
 }
 
-.InvestingPage__portfolio-title{
+.InvestingPage__portfolio-title {
   font-size: 14px;
 }
 
-.InvestingPage__portfolio-value{
-  font-size:32px;
+.InvestingPage__portfolio-value {
+  font-size: 32px;
   font-weight: bold;
 }
 
-
-
-
-.InvestingPage__invest-section-one{
-  background-color: aliceblue;
+.InvestingPage__invest-section-one {
   display: flex;
-  height: 300px;
+  height: 250px;
   width: 100%;
-
+  gap: 4px;
 }
 
+.InvestingPage__invest-section-one-left {
+  width: 70%;
+}
 
-.InvestingPage__invest-section-data{
+.InvestingPage__invest-section-one-left > *:last-child {
+  border-bottom: 1px solid rgb(232, 232, 232);
+}
+
+.InvestingPage__data {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 60px;
+
+  border-top: 1px solid rgb(232, 232, 232);
+
+  cursor: pointer;
+}
+
+.InvestingPage__data-title {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.InvestingPage__data-one {
+  display: flex;
+  gap: 20px;
+  padding-right: 48px;
+  font-size: 14px;
+}
+
+.InvestingPage__data-one-percentage {
+  color: rgb(152, 152, 152);
+}
+
+.InvestingPage__invest-section-one-right {
+  width: 30%;
+  background-color: bisque;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.InvestingPage__portfolio-two {
+  /* background-color: aquamarine; */
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  margin-bottom: 20px;
-  background-color: red;
-  width: 70%;
+  height: 50px;
+  gap: 8px;
+}
+
+.InvestingPage__portfolio-title-two {
+  font-size: 18px;
+  font-weight: bold;
 }

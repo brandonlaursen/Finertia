@@ -1,106 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { Stock, StockList } = require("../../db/models");
-const { Op } = require("sequelize");
 const finnhub = require("finnhub");
-const symbols = [
-  "AAPL",
-  "MSFT",
-  "GOOGL",
-  "AMZN",
-  "TSLA",
-  "META",
-  "NVDA",
-  "BRK.B",
-  "JNJ",
-  "V",
-  "WMT",
-  "DIS",
-  "PYPL",
-  "HD",
-  "INTC",
-  "XOM",
-  "UNH",
-  "PFE",
-  "CSCO",
-  "NFLX",
-  "GOOG",
-  "BABA",
-  "BA",
-  "CRM",
-  "MA",
-  "CAT",
-  "VZ",
-  "KO",
-  "MCD",
-  "IBM",
-  "GE",
-  "AMT",
-  "T",
-  "LMT",
-  "GS",
-  "SPGI",
-  "MS",
-  "AXP",
-  "TSM",
-  "WFC",
-  "P&G",
-  "SLB",
-  "NKE",
-  "LILAK",
-  "TGT",
-  "AMD",
-  "SBUX",
-  "CVX",
-  "DUK",
-  "EL",
-  "CSX",
-  "ADBE",
-  "AIG",
-  "MCO",
-  "ZTS",
-  "ABT",
-  "BMY",
-  "C",
-  "UPS",
-  "TROW",
-  "COST",
-  "MSCI",
-  "AMGN",
-  "LUV",
-  "EXC",
-  "DHR",
-  "MDT",
-  "ISRG",
-  "AON",
-  "BAX",
-  "TMUS",
-  "WDC",
-  "RSG",
-  "INTU",
-  "CLX",
-  "VLO",
-  "STT",
-  "NUE",
-  "KMB",
-  "HUM",
-  "CNC",
-  "BIIB",
-  "VRTX",
-  "CTSH",
-  "FIS",
-  "PGR",
-  "COP",
-  "NEM",
-  "AFL",
-  "CTAS",
-  "MET",
-  "OXY",
-  "F",
-  "TAP",
-  "VTR",
-  "WBA",
-];
 
 router.get("/news", async (req, res) => {
   const api_key = finnhub.ApiClient.instance.authentications["api_key"];
@@ -343,7 +244,7 @@ router.get("/:stockSymbol", async (req, res) => {
 // * Get all stocks
 router.get("/", async (req, res) => {
   try {
-    const dbStocks = await Stock.findAll();
+    const dbStocks = await Stock.findAll({ include: [StockList] });
     const symbolsString = dbStocks.map((stock) => stock.stockSymbol).join(",");
 
     const response = await fetch(
@@ -377,6 +278,7 @@ router.get("/", async (req, res) => {
         day: apiStock.day ?? null,
         min: apiStock.min ?? null,
         prev_day: apiStock.prevDay ?? null,
+        listIds: dbStock.StockLists.map((stock) => stock.id),
       };
     });
 

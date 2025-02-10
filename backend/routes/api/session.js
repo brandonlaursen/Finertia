@@ -61,6 +61,11 @@ router.get("/", (req, res) => {
       id: user.id,
       email: user.email,
       username: user.username,
+      balance: user.balance,
+      profilePic: user.profilePic,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      joinDate: user.createdAt,
     };
     return res.json({
       user: safeUser,
@@ -70,27 +75,30 @@ router.get("/", (req, res) => {
 
 // * Edit user info
 router.put("/", async (req, res) => {
-  const { id } = req.user;
+  const { user: userInfo } = req;
+  const { username: newUsername, profilePic: newProfilePic } = req.body;
 
-  const {
-    email: newEmail,
-    username: newUsername,
-    firstName: newFirstName,
-    lastName: newLastName,
-  } = req.body;
-
-  const user = await User.findByPk(id);
+  const user = await User.findByPk(userInfo.id);
 
   await user.update({
-    email: newEmail || email,
-    username: newUsername || username,
-    firstName: newFirstName || firstName,
-    lastName: newLastName || lastName,
+    username: newUsername || user.username,
+    profilePic: newProfilePic || user.profilePic,
   });
 
+  const safeUser = {
+    id: user.id,
+    email: user.email,
+    username: newUsername || user.username,
+    balance: user.balance,
+    profilePic: newProfilePic || user.profilePic,
+    firstName: user.firstName,
+    lastName: user.lastName,
+    joinDate: userInfo.createdAt,
+  };
+
   return res.json({
-    user,
-    message: `Updated user profile with id ${id}`,
+    user: safeUser,
+    message: `Updated user profile with id ${userInfo.id}`,
   });
 });
 

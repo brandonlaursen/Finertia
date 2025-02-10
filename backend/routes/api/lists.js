@@ -22,11 +22,17 @@ router.post("/", async (req, res) => {
 
   const { name, type, stockIds } = req.body;
 
-  const newList = await StockList.create({
-    userId: id,
-    name,
-    type,
-  });
+  const newList = await StockList.create(
+    {
+      userId: id,
+      name,
+      type,
+      Stocks: [],
+    },
+    {
+      include: [Stock],
+    }
+  );
 
   if (stockIds) {
     for (const stockId of stockIds) {
@@ -71,26 +77,16 @@ router.put("/:stockListId", async (req, res) => {
   return res.json(list);
 });
 
-// * add stock to list
-router.post("/:stockListId/:stockId", async (req, res) => {
-  const { stockListId, stockId } = req.params;
+// * delete a list
+router.delete("/:stockListId", async (req, res) => {
+  const { stockListId } = req.params;
 
-  const list = await StockList.findByPk(stockListId, {
-    include: [Stock],
-  });
+  const list = await StockList.findByPk(stockListId);
 
-  const stockIds = list.Stocks.map((stock) => +stock.id);
-
-  if (stockIds.includes(+stockId)) {
-    return res.json({
-      message: `stock with id of ${stockId} is already in the list`,
-    });
-  }
-
-  await list.addStocks(stockId);
+  await list.destroy();
 
   return res.json({
-    message: `successfully added Stock with id of ${stockId} to StockList with id of ${stockListId}`,
+    message: `successfully deleted stock list with id of ${stockListId}`,
   });
 });
 
@@ -98,16 +94,21 @@ router.post("/:stockListId/:stockId", async (req, res) => {
 // * add/remove stock to list
 router.post("/update-stock-lists", async (req, res) => {
   const { stockListsIdsObj, stockId } = req.body;
+
   const { id } = req.user;
 
-  const stockLists = await Promise.all(
+  const stockListsUnfiltered = await Promise.all(
     Object.keys(stockListsIdsObj).map(async (listId) => {
       return await StockList.findByPk(listId, { include: [Stock] });
     })
   );
 
+  const stockLists = stockListsUnfiltered.filter((list) => list && list);
+
+  
   const messages = [];
   let updatedListIds = [];
+  let removedFromIds = [];
   for (let list of stockLists) {
     const currentListId = list.id;
     const currentStockIds = list.Stocks.map((stock) => stock.id);
@@ -127,6 +128,7 @@ router.post("/update-stock-lists", async (req, res) => {
     } else {
       if (currentStockIds.includes(stockId)) {
         await list.removeStocks(stockId);
+        removedFromIds.push(list.id);
         messages.push(`Removed ${stockId} from ${list.name} ${list.id}`);
       } else {
         messages.push(
@@ -136,75 +138,13 @@ router.post("/update-stock-lists", async (req, res) => {
     }
   }
 
+  const stock = await Stock.findByPk(stockId);
+
   return res.json({
     messages,
-
     updatedListIds,
-  });
-});
-
-// * add stock to list
-router.post("/:stockListId/:stockId", async (req, res) => {
-  const { stockListId, stockId } = req.params;
-
-  const list = await StockList.findByPk(stockListId, {
-    include: [Stock],
-  });
-
-  const stockIds = list.Stocks.map((stock) => +stock.id);
-
-  if (stockIds.includes(+stockId)) {
-    return res.json({
-      message: `stock with id of ${stockId} is already in the list`,
-    });
-  }
-
-  await list.addStocks(stockId);
-
-  return res.json({
-    message: `successfully added Stock with id of ${stockId} to StockList with id of ${stockListId}`,
-  });
-});
-
-// * remove stock from list
-router.delete("/:stockListId/:stockId", async (req, res) => {
-  const { stockListId, stockId } = req.params;
-
-  const list = await StockList.findByPk(stockListId, {
-    include: [Stock],
-  });
-
-  if (!list) {
-    return res.json({
-      message: `stock list with id of ${stockListId} does not exists`,
-    });
-  }
-
-  const stockIds = list.Stocks.map((stock) => +stock.id);
-
-  if (!stockIds.includes(+stockId)) {
-    return res.json({
-      message: `stock with id of ${stockId} is is not in this list`,
-    });
-  }
-
-  await list.removeStocks(stockId);
-
-  return res.json({
-    message: `successfully removed Stock with id of ${stockId} to StockList with id of ${stockListId}`,
-  });
-});
-
-// * delete a list
-router.delete("/:stockListId", async (req, res) => {
-  const { stockListId } = req.params;
-
-  const list = await StockList.findByPk(stockListId);
-
-  await list.destroy();
-
-  return res.json({
-    message: `successfully deleted stock list with id of ${stockListId}`,
+    removedFromIds,
+    stock,
   });
 });
 
