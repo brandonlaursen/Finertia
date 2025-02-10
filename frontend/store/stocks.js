@@ -76,7 +76,6 @@ export const fetchStockNewsByCategory = (category) => async (dispatch) => {
 
 export const updateStockLists =
   (stockListsIdsObj, stock) => async (dispatch) => {
-    console.log("asdfasdf", stockListsIdsObj);
     const response = await csrfFetch("/api/lists/update-stock-lists", {
       method: "POST",
       body: JSON.stringify({

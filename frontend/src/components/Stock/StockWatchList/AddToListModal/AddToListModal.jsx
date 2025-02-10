@@ -17,7 +17,7 @@ import ListItem from "../../../WatchList/ListItem";
 import { createList } from "../../../../../store/lists";
 import { selectUser } from "../../../../../store/session";
 
-function AddToListModal({ stock, create }) {
+function AddToListModal({ stock }) {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
 
@@ -60,8 +60,6 @@ function AddToListModal({ stock, create }) {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    console.log(stock.id);
-    console.log(checkedItems);
     await dispatch(updateStockLists(checkedItems, stock));
 
     closeModal();
@@ -79,7 +77,7 @@ function AddToListModal({ stock, create }) {
     };
 
     const newListId = await dispatch(createList(newList));
-    console.log("newListId:", newListId);
+
     setIsVisible(false);
     setListName("");
     setSelectedEmoji("💡");
@@ -91,7 +89,7 @@ function AddToListModal({ stock, create }) {
       setCheckedItems((prev) => ({ ...prev, [newListId]: true }));
     }
   }, [newListId]);
-  console.log(checkedItems);
+
   return (
     <div className="AddToListModal">
       {showPicker && (
@@ -121,12 +119,8 @@ function AddToListModal({ stock, create }) {
                ${!isVisible ? "AddToListModal__padding" : ""}
               `}
             >
-              {/* !!!! */}
-
               {isVisible ? (
                 <div className="AddToListModal__create-list-container">
-                  {/*  */}
-
                   <div className="AddToListModal__create-list-container-one">
                     <button
                       className="container-one__emoji"
@@ -166,8 +160,6 @@ function AddToListModal({ stock, create }) {
                       Create List
                     </button>
                   </div>
-
-                  {/*  */}
                 </div>
               ) : (
                 <>
@@ -182,8 +174,6 @@ function AddToListModal({ stock, create }) {
                   </span>
                 </>
               )}
-
-              {/* !!!! */}
             </div>
 
             {lists &&

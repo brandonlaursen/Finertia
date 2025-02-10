@@ -130,7 +130,6 @@ const listsReducer = (state = {}, action) => {
       const newState = { ...state };
 
       for (let listId of action.updatedListIds) {
-        console.log(listId);
         const found = newState[listId].Stocks.find(
           (stock) => stock.id === action.stock.id
         );
