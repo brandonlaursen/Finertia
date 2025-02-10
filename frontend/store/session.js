@@ -17,6 +17,21 @@ const removeUser = () => {
   };
 };
 
+export const editUser = (user) => async (dispatch) => {
+  const { username, profilePic } = user;
+
+  const response = await csrfFetch("/api/session", {
+    method: "PUT",
+    body: JSON.stringify({
+      username,
+      profilePic,
+    }),
+  });
+  const data = await response.json();
+  dispatch(setUser(data.user));
+  return response;
+};
+
 export const login = (user) => async (dispatch) => {
   const { credential, password } = user;
   const response = await csrfFetch("/api/session", {
