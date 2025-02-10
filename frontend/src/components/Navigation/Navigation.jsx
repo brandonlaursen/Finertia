@@ -47,7 +47,7 @@ function Navigation() {
         <HamburgerMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
 
         <div className={`Navigation__links ${isMenuOpen ? "show" : ""}`}>
-          <Link to="/stocks">Stocks</Link>
+          <Link to="/stocks">Home</Link>
           <Link>Notifications</Link>
           <AccountDropdown sessionUser={sessionUser} />
         </div>
