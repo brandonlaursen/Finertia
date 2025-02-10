@@ -34,12 +34,11 @@
 .InvestingPage__invest-section-one {
   display: flex;
   height: 250px;
-  width: 100%;
   gap: 4px;
 }
 
 .InvestingPage__invest-section-one-left {
-  width: 70%;
+  width: 100%;
 }
 
 .InvestingPage__invest-section-one-left > *:last-child {
@@ -93,4 +92,64 @@
 .InvestingPage__portfolio-title-two {
   font-size: 18px;
   font-weight: bold;
+}
+
+/* stock table */
+
+.InvestingPage__stocks__table {
+  max-height: 600px;
+  height: auto;
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  background-color: aliceblue;
+}
+
+.InvestingPage__stocks__table thead {
+  text-align: left;
+
+  height: 40px;
+  font-size: 13px;
+  color: rgb(130, 130, 130);
+  cursor: pointer;
+
+
+}
+
+.InvestingPage__stocks__table thead th:hover {
+  color: rgb(118, 215, 183); /* Change text color on hover */
+}
+
+.InvestingPage__stocks__table th,
+.InvestingPage__stocks__table td {
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+}
+
+.InvestingPage__stocks__table td {
+  cursor: pointer;
+}
+
+.InvestingPage__stocks__table th:nth-of-type(1),
+.InvestingPage__stocks__table td:nth-of-type(1) {
+  text-align: left;
+  padding-right: 24px;
+}
+
+.InvestingPage__stock-row:hover {
+  background-color: rgb(242, 248, 250);
+}
+
+.InvestingPage__stocks__table tbody tr {
+  height: 54px;
+  font-size: 12px;
+}
+
+.InvestingPage__stocks__table tbody tr td:first-child {
+  font-weight: bold;
+}
+
+.InvestingPage__stocks-table-arrow-container {
+  display: flex;
+  gap: 5px;
 }
