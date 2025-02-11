@@ -16,8 +16,6 @@ function TransferModal() {
 
   const sessionUser = useSelector((state) => state.session.user);
 
-
-
   const fromRef = useRef(null);
   const toRef = useRef(null);
 
@@ -29,17 +27,23 @@ function TransferModal() {
   const [showMoneyButtons, setShowMoneyButtons] = useState(true);
   const [disableButton, setDisableButton] = useState(true);
   const [showConfirmation, setShowConfirmation] = useState(false);
-  const [error, setError] = useState(null)
+  const [error, setError] = useState(null);
 
   function handleSubmit(e) {
     e.preventDefault();
-
+    setShowMoneyButtons(false)
     setShowConfirmation(true);
   }
 
   async function submitTransaction(e) {
     e.preventDefault();
     e.stopPropagation();
+
+    if (amount > sessionUser.balance) {
+      setError("Amount exceeds your individual accounts balance");
+      setDisableButton(true)
+      return;
+    }
 
     if (to === "Individual") {
       await dispatch(depositMoney(Number(amount)));
@@ -181,7 +185,7 @@ function TransferModal() {
                 onClick={() => toggleDropdown("from")}
                 ref={fromRef}
               >
-                {from}  {from === 'Individual' && `· $${sessionUser.balance}`}
+                {from} {from === "Individual" && `· $${sessionUser.balance}`}
               </div>
             )}
 
@@ -363,6 +367,7 @@ function TransferModal() {
         <div className="TransferModal__section-footer">
           {showConfirmation ? (
             <>
+              {error && <span>{error}</span>}
               <span className="TransferModal__footer-title">
                 {from === "Bank" &&
                   `$${amount} will be withdrawn from Finertia Bank.`}
@@ -379,17 +384,20 @@ function TransferModal() {
               </button>
               <button
                 className="TransferModal__button cancel-button"
-                onClick={() => setShowConfirmation(false)}
+                onClick={() => {setShowConfirmation(false), setError(null)}}
               >
                 Cancel
               </button>
             </>
           ) : (
             <>
-              <span className="TransferModal__footer-title">
-                Daily deposit limit: $150,000
-                <span className="TransferModal__question-mark-container">
-                  <RiQuestionLine className="TransferModal__question-mark" />
+              <span className="TransferModal__footer-container">
+
+                <span className="TransferModal__footer-title">
+                  Daily deposit limit: $150,000
+                  <span className="TransferModal__question-mark-container">
+                    <RiQuestionLine className="TransferModal__question-mark" />
+                  </span>
                 </span>
               </span>
               <button

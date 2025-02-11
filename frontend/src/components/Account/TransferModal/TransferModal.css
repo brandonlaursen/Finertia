@@ -275,11 +275,20 @@
   padding-top: 26px;
 }
 
+.TransferModal__footer-container{
+  gap:4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .TransferModal__footer-title {
   font-size: 14px;
 
   width: 300px;
   display: flex;
+
   justify-content: center;
   gap: 4px;
 }
