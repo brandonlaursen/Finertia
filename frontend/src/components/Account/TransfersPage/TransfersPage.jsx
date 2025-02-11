@@ -2,8 +2,13 @@ import "./TransfersPage.css";
 import { FaMoneyBill } from "react-icons/fa";
 import { IoIosArrowForward } from "react-icons/io";
 import { RiQuestionLine } from "react-icons/ri";
+import { useModal } from "../../../context/Modal";
+
+import TransferModal from "../TransferModal/TransferModal";
 
 function TransfersPage() {
+  const { setModalContent, setModalClass } = useModal();
+
   return (
     <div className="TransfersPage">
       <div className="TransfersPage__section">
@@ -19,7 +24,18 @@ function TransfersPage() {
 
       <div>
         <div className="TransfersPage__invest-section">
-          <div className="TransfersPage__container">
+          <div
+            className="TransfersPage__container"
+            onClick={(e) => {
+              e.stopPropagation();
+              setModalContent(<TransferModal />);
+              setModalClass({
+                modal: "TransferModal",
+                modalBackground: "TransferModal__background",
+                modalContainer: "TransferModal__container",
+              });
+            }}
+          >
             <div className="TransfersPage__container-icon">
               <FaMoneyBill className="TransfersPage__money-icon" />
             </div>
@@ -66,9 +82,13 @@ function TransfersPage() {
             <span className="TransfersPage__completed-transactions-title">
               Withdrawal from individual to Wells Fargo Everyday Checking
             </span>
-            <span className="TransfersPage__completed-transactions-date">Jan 21, 2025</span>
+            <span className="TransfersPage__completed-transactions-date">
+              Jan 21, 2025
+            </span>
           </div>
-          <div className="TransfersPage__completed-transactions-amount">-$40.00</div>
+          <div className="TransfersPage__completed-transactions-amount">
+            -$40.00
+          </div>
         </div>
 
         <div className="TransfersPage__completed-transactions">
@@ -76,15 +96,14 @@ function TransfersPage() {
             <span className="TransfersPage__completed-transactions-title">
               Deposit to individual to Wells Fargo Everyday Checking
             </span>
-            <span className="TransfersPage__completed-transactions-date">Jan 21, 2025</span>
+            <span className="TransfersPage__completed-transactions-date">
+              Jan 21, 2025
+            </span>
           </div>
-          <div className="TransfersPage__completed-transactions-amount">+$90.00</div>
+          <div className="TransfersPage__completed-transactions-amount">
+            +$90.00
+          </div>
         </div>
-
-
-
-
-
       </div>
     </div>
   );

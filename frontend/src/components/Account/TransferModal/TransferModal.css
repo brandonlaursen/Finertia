@@ -1,0 +1,248 @@
+.TransferModal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 100;
+}
+
+.TransferModal__background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+
+  /* background-color: rgba(0, 0, 0, 0.7); */
+}
+
+.TransferModal__container {
+  position: absolute;
+  position: fixed;
+  top: 12%;
+
+  height: 520px;
+  width: 600px;
+
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 16px;
+
+  border-radius: 5px;
+}
+
+.TransferModal__background {
+  background-color: white;
+}
+
+.TransferModal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 24px;
+}
+
+.TransferModal__header__title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.TransferModal-button-span {
+  display: flex;
+  justify-content: flex-end;
+  padding: 24px;
+  cursor: pointer;
+}
+
+.TransferModal-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  height: 42px;
+  width: 42px;
+}
+
+.TransferModal-button-container:hover {
+  background-color: rgb(244, 244, 244);
+}
+
+.TransferModal__close-button {
+  height: 24px;
+  width: 24px;
+}
+
+.TransferModal__header-title {
+  /* background-color: aliceblue; */
+  height: 50px;
+  width: 100%;
+  display: flex;
+  font-size: 24px;
+}
+
+.TransferModal__input-container {
+  /* background-color: aqua; */
+  height: 210px;
+}
+
+.TransferModal__section {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 38px;
+}
+
+.TransferModal__amount-title {
+  font-size: 14px;
+}
+
+.TransferModal__amount-input {
+  width: 230px;
+  height: 24px;
+  border-radius: 3px;
+  border: 1px solid rgb(18, 18, 18);
+  outline: none;
+  text-align: right;
+  padding-right: 4px;
+}
+
+.TransferModal__from-dropdown-button {
+  width: 238px;
+  height: 28px;
+  border-radius: 3px;
+  border: 1px solid rgb(0, 0, 0);
+  /* outline: none; */
+  text-align: right;
+  padding-right: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  font-size: 14px;
+}
+
+.TransferModal__section-two {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.TransferModal__from-dropdown-button {
+  padding: 10px;
+  border: 1px solid #000000;
+  margin: 4px 0;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  width: 238px;
+  text-align: left;
+}
+
+.TransferModal__from-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 238px;
+  z-index: 10;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.TransferModal__from-dropdown div {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.TransferModal__from-dropdown div:hover {
+  background: #f0f0f0;
+}
+
+.TransferModal__amount-input:focus {
+  border: 2px solid rgb(51, 209, 135);
+}
+
+.TransferModal__amount-container {
+  display: flex;
+  width: 100%;
+  height: 40px;
+  justify-content: flex-end;
+  align-items: center;
+  /* background-color: red; */
+  gap: 4px;
+}
+
+.TransferModal__amount {
+  height: 32px;
+  width: auto;
+  border-radius: 16px;
+  border: 1px solid grey;
+  padding: 0 10px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.TransferModal__amount:hover {
+  background-color: rgb(206, 206, 206);
+}
+
+.TransferModal__section-footer {
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  justify-content: start;
+  align-items: center;
+  gap: 16px;
+  padding-top: 16px;
+}
+
+.TransferModal__footer-title {
+  font-size: 13px;
+
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+}
+
+.TransferModal__button {
+  width: 70%;
+  height: 36px;
+  border-radius: 20px;
+  border: none;
+  font-weight: bold;
+  font-size: 12px;
+  cursor: pointer;
+  background-color: rgb(130, 130, 130);
+}
+
+.TransferModal__question-mark-container {
+  height: 16px;
+  width: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.TransferModal__question-mark-container:hover {
+  background-color: rgb(201, 201, 201);
+}
+
+.TransferModal__question-mark {
+  height: 14px;
+  width: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
