@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { User, UserTransaction } = require("../../db/models");
-const { Op } = require("sequelize");
+const { Op, Transaction } = require("sequelize");
 
 // * Get users transactions
 router.get("/", async (req, res) => {
@@ -35,20 +35,26 @@ router.post("/deposit", async (req, res) => {
 
   const user = await User.findByPk(id);
 
-  const newBalance = balance + amount;
+  const newBalance = balance + Number(amount);
 
   await user.update({
     balance: newBalance,
   });
 
+  const transaction = {
+    amount,
+    transactionType: "deposit",
+    transactionDate: new Date(),
+  };
+
   await UserTransaction.create({
     userId: id,
-    transactionType: "deposit",
-    amount,
-    transactionDate: new Date(),
+    ...transaction,
   });
 
   return res.json({
+    transaction,
+    balance: newBalance,
     message: `successfully deposited ${amount} for user with id of ${id}, new balance is ${newBalance}`,
   });
 });
@@ -73,13 +79,20 @@ router.post("/withdraw", async (req, res) => {
     balance: newBalance,
   });
 
+  const transaction = {
+    amount,
+    transactionType: "withdraw",
+    transactionDate: new Date(),
+  };
+
   await UserTransaction.create({
     userId: id,
-    transactionType: "withdraw",
-    amount,
+    ...transaction
   });
 
   return res.json({
+    transaction,
+    balance: newBalance,
     message: `successfully withdrew ${amount} for user with id of ${id}, new balance is ${newBalance}`,
   });
 });

@@ -4,11 +4,13 @@ import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import stockReducer from "./stocks";
 import listsReducer from "./lists";
+import transactionsReducer from "./transactions";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   stocks: stockReducer,
   lists: listsReducer,
+  transactions: transactionsReducer,
 });
 
 let enhancer;

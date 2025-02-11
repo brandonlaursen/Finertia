@@ -3,6 +3,7 @@ import { createSelector } from "reselect";
 
 const SET_USER = "session/setUser";
 const REMOVE_USER = "session/removeUser";
+const SET_TRANSACTION = "transactions/SET_TRANSACTION";
 
 const setUser = (user) => {
   return {
@@ -88,6 +89,11 @@ const sessionReducer = (state = initialState, action) => {
       return { ...state, user: action.payload };
     case REMOVE_USER:
       return { ...state, user: null };
+    case SET_TRANSACTION:
+      return {
+        ...state,
+        user: { ...state.user, balance: action.balance },
+      };
     default:
       return state;
   }

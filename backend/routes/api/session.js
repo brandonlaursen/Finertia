@@ -53,15 +53,17 @@ router.post("/", validateLogin, async (req, res, next) => {
 });
 
 // * Get logged in user info
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
   const { user } = req;
+
+  const dbUser = await User.findByPk(user.id);
 
   if (user) {
     const safeUser = {
       id: user.id,
       email: user.email,
       username: user.username,
-      balance: user.balance,
+      balance: dbUser.balance,
       profilePic: user.profilePic,
       firstName: user.firstName,
       lastName: user.lastName,

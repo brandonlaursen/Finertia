@@ -6,8 +6,20 @@ import { useModal } from "../../../context/Modal";
 
 import TransferModal from "../TransferModal/TransferModal";
 
+import { useSelector, useDispatch } from "react-redux";
+import { getTransactions } from "../../../../store/transactions";
+import { useEffect } from "react";
+
 function TransfersPage() {
   const { setModalContent, setModalClass } = useModal();
+  const dispatch = useDispatch();
+
+  const sessionUser = useSelector((state) => state.session.user);
+  
+
+  useEffect(() => {
+    dispatch(getTransactions());
+  }, [dispatch]);
 
   return (
     <div className="TransfersPage">
@@ -68,7 +80,9 @@ function TransfersPage() {
             Individual cash available
             <RiQuestionLine className="TransfersPage__question-mark" />
           </span>
-          <span className="TransfersPage__withdraw-amount">$0.01</span>
+          <span className="TransfersPage__withdraw-amount">
+            ${sessionUser.balance}
+          </span>
         </div>
       </div>
 

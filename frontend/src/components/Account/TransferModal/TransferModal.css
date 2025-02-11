@@ -87,9 +87,7 @@
   font-size: 24px;
 }
 
-.TransferModal__input-container {
-  /* height: 210px; */
-}
+
 
 .TransferModal__section {
   width: 100%;
@@ -131,8 +129,8 @@
   border: 2px solid rgb(51, 209, 135);
 }
 .dollar-sign {
-  font-size: 16px;
-  margin-right: 4px;
+  font-size: 14px;
+
 }
 
 .amount-input {

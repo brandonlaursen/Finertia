@@ -6,24 +6,30 @@ import { GrFormCheckmark } from "react-icons/gr";
 import { useModal } from "../../../context/Modal";
 
 import { useState, useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { depositMoney, withdrawMoney } from "../../../../store/transactions";
 
 function TransferModal() {
   const { closeModal } = useModal();
+  const dispatch = useDispatch();
+
+  const sessionUser = useSelector((state) => state.session.user);
+
+
+
+  const fromRef = useRef(null);
+  const toRef = useRef(null);
 
   const [amount, setAmount] = useState(0.0);
   const [from, setFrom] = useState("Bank");
   const [to, setTo] = useState("Individual");
-  // const [frequency, setFrequency] = useState("Just once");
   const [showFrom, setShowFrom] = useState(false);
   const [showTo, setShowTo] = useState(false);
-  // const [showFrequency, setShowFrequency] = useState(false);
   const [showMoneyButtons, setShowMoneyButtons] = useState(true);
   const [disableButton, setDisableButton] = useState(true);
   const [showConfirmation, setShowConfirmation] = useState(false);
-
-  const fromRef = useRef(null);
-  const toRef = useRef(null);
-  // const frequencyRef = useRef(null);
+  const [error, setError] = useState(null)
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -31,15 +37,16 @@ function TransferModal() {
     setShowConfirmation(true);
   }
 
-  function submitTransaction(e) {
+  async function submitTransaction(e) {
     e.preventDefault();
     e.stopPropagation();
-    const transaction = {
-      amount,
-      to,
-      from,
-    };
-    console.log("transaction:", transaction);
+
+    if (to === "Individual") {
+      await dispatch(depositMoney(Number(amount)));
+    }
+    if (to === "Bank") {
+      await dispatch(withdrawMoney(Number(amount)));
+    }
     closeModal();
   }
 
@@ -62,7 +69,6 @@ function TransferModal() {
       ) {
         setShowFrom(false);
         setShowTo(false);
-        // setShowFrequency(false);
       }
     };
 
@@ -77,15 +83,12 @@ function TransferModal() {
     if (dropdown === "from") {
       setShowFrom((prev) => !prev);
       setShowTo(false);
-      // setShowFrequency(false);
     } else if (dropdown === "to") {
       setShowFrom(false);
       setShowTo((prev) => !prev);
-      // setShowFrequency(false);
     } else if (dropdown === "frequency") {
       setShowFrom(false);
       setShowTo(false);
-      // setShowFrequency((prev) => !prev);
     }
   };
 
@@ -178,7 +181,7 @@ function TransferModal() {
                 onClick={() => toggleDropdown("from")}
                 ref={fromRef}
               >
-                {from}
+                {from}  {from === 'Individual' && `· $${sessionUser.balance}`}
               </div>
             )}
 
@@ -209,7 +212,7 @@ function TransferModal() {
                         Individual
                       </span>
                       <span className="TransferModal__from-dropdown-container-subtext">
-                        Withdrawable cash
+                        Withdrawable cash · ${sessionUser.balance}
                       </span>
                     </div>
                   </div>
@@ -319,7 +322,7 @@ function TransferModal() {
 
                       <div className="dropdown-text-div">
                         <span className="TransferModal__from-dropdown-container-text">
-                          Individual
+                          Individual · ${sessionUser.balance}
                         </span>
                         <span className="TransferModal__from-dropdown-container-subtext">
                           Withdrawable cash
