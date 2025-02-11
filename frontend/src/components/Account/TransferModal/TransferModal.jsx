@@ -1,6 +1,7 @@
 import "./TransferModal.css";
 import { MdClose } from "react-icons/md";
 import { RiQuestionLine } from "react-icons/ri";
+import { GrFormCheckmark } from "react-icons/gr";
 
 import { useModal } from "../../../context/Modal";
 
@@ -17,6 +18,8 @@ function TransferModal() {
   const [showTo, setShowTo] = useState(false);
   const [showFrequency, setShowFrequency] = useState(false);
   const [showMoneyButtons, setShowMoneyButtons] = useState(true);
+  const [disableButton, setDisableButton] = useState(true);
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
   const fromRef = useRef(null);
   const toRef = useRef(null);
@@ -33,17 +36,20 @@ function TransferModal() {
     };
 
     console.log(transaction);
+    setShowConfirmation(true);
   }
 
   useEffect(() => {
     if (amount == 0) {
       setShowMoneyButtons(true);
+      setDisableButton(true);
+    } else {
+      setDisableButton(false);
     }
   }, [amount]);
 
   useEffect(() => {
     const handleClickOutside = (e) => {
-      // Close dropdown if click is outside of any dropdown
       if (
         fromRef.current &&
         !fromRef.current.contains(e.target) &&
@@ -64,6 +70,19 @@ function TransferModal() {
       document.removeEventListener("click", handleClickOutside);
     };
   }, []);
+
+  // useEffect(() => {
+  //   if (from === "Individual") {
+  //     setTo("Bank");
+  //   } else if (from === "Bank") {
+  //     setTo("Individual");
+  //   }
+  //   // if (to === "Individual") {
+  //   //   setFrom("Bank");
+  //   // } else if (to === "Bank") {
+  //   //   setFrom("Individual");
+  //   // }
+  // }, [from, to]);
 
   return (
     <div className="TransferModal">
@@ -145,8 +164,66 @@ function TransferModal() {
             </div>
             {showFrom && (
               <div className="TransferModal__from-dropdown">
-                <div onClick={() => setFrom("Bank")}>Bank</div>
-                <div onClick={() => setFrom("Individual")}>Individual</div>
+                <div className="TransferModal__from-dropdown-individual">
+                  <span className="TransferModal__from-dropdown-individual-header">
+                    Fintertia accounts
+                  </span>
+                  <div
+                    onClick={() => {
+                      setFrom("Individual"), setTo("Bank");
+                    }}
+                    className={`TransferModal__from-dropdown-individual-container ${
+                      from === "Individual"
+                        ? "TransferModal__from-dropdown-individual-selected"
+                        : ""
+                    }`}
+                  >
+                    <div className="checkmark-div">
+                      {from === "Individual" && (
+                        <GrFormCheckmark className="TransferModal__checkmark" />
+                      )}
+                    </div>
+
+                    <div className="dropdown-text-div">
+                      <span className="TransferModal__from-dropdown-container-text">
+                        Individual
+                      </span>
+                      <span className="TransferModal__from-dropdown-container-subtext">
+                        Withdrawable cash
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div className="TransferModal__from-dropdown-individual">
+                  <span className="TransferModal__from-dropdown-individual-header">
+                    External accounts
+                  </span>
+                  <div
+                    onClick={() => {
+                      setFrom("Bank"), setTo("Individual");
+                    }}
+                    className={`TransferModal__from-dropdown-individual-container ${
+                      from === "Bank"
+                        ? "TransferModal__from-dropdown-individual-selected"
+                        : ""
+                    }`}
+                  >
+                    <div className="checkmark-div">
+                      {from === "Bank" && (
+                        <GrFormCheckmark className="TransferModal__checkmark" />
+                      )}
+                    </div>
+
+                    <div className="dropdown-text-div">
+                      <span className="TransferModal__from-dropdown-container-text">
+                        Finertia Bank
+                      </span>
+                      <span className="TransferModal__from-dropdown-container-subtext">
+                        Typically 1-2 seconds
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </div>
             )}
           </div>
@@ -160,12 +237,67 @@ function TransferModal() {
               onClick={() => setShowTo(!showTo)}
               ref={toRef}
             >
-              {to}
+              {from === "Bank" ? "Individual" : "Bank"}
             </div>
             {showTo && (
               <div className="TransferModal__from-dropdown">
-                <div onClick={() => setTo("Individual")}>Individual</div>
-                <div onClick={() => setTo("Bank")}>Bank</div>
+                {to === "Bank" ? (
+                  <div className="TransferModal__from-dropdown-individual">
+                    <span className="TransferModal__from-dropdown-individual-header">
+                      External accounts
+                    </span>
+                    <div
+                      className={`TransferModal__from-dropdown-individual-container ${
+                        to === "Individual"
+                          ? "TransferModal__from-dropdown-individual-selected"
+                          : ""
+                      }`}
+                    >
+                      <div className="checkmark-div">
+                        {to === "Bank" && (
+                          <GrFormCheckmark className="TransferModal__checkmark" />
+                        )}
+                      </div>
+
+                      <div className="dropdown-text-div">
+                        <span className="TransferModal__from-dropdown-container-text">
+                          Finertia Bank
+                        </span>
+                        <span className="TransferModal__from-dropdown-container-subtext">
+                          Typically 1-2 seconds
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="TransferModal__from-dropdown-individual">
+                    <span className="TransferModal__from-dropdown-individual-header">
+                      Fintertia accounts
+                    </span>
+                    <div
+                      className={`TransferModal__from-dropdown-individual-container ${
+                        to === "Individual"
+                          ? "TransferModal__from-dropdown-individual-selected"
+                          : ""
+                      }`}
+                    >
+                      <div className="checkmark-div">
+                        {to === "Individual" && (
+                          <GrFormCheckmark className="TransferModal__checkmark" />
+                        )}
+                      </div>
+
+                      <div className="dropdown-text-div">
+                        <span className="TransferModal__from-dropdown-container-text">
+                          Individual
+                        </span>
+                        <span className="TransferModal__from-dropdown-container-subtext">
+                          Withdrawable cash
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             )}
           </div>
@@ -196,15 +328,45 @@ function TransferModal() {
         </div>
 
         <div className="TransferModal__section-footer">
-          <span className="TransferModal__footer-title">
-            Daily deposit limit: $150,000
-            <span className="TransferModal__question-mark-container">
-              <RiQuestionLine className="TransferModal__question-mark" />
-            </span>
-          </span>
-          <button className="TransferModal__button" onClick={handleSubmit}>
-            Review Transfer
-          </button>
+          {showConfirmation ? (
+            <>
+              <span className="TransferModal__footer-title">
+                ${amount} will be withdrawn from your {from} account
+              </span>
+              <button
+                className={`TransferModal__button ${
+                  !disableButton && "TransferModal__button-enabled"
+                }`}
+                onClick={handleSubmit}
+              >
+                Transfer ${amount}
+              </button>
+              <button
+                className="TransferModal__button cancel-button"
+                onClick={() => setShowConfirmation(false)}
+              >
+                Cancel
+              </button>
+            </>
+          ) : (
+            <>
+              <span className="TransferModal__footer-title">
+                Daily deposit limit: $150,000
+                <span className="TransferModal__question-mark-container">
+                  <RiQuestionLine className="TransferModal__question-mark" />
+                </span>
+              </span>
+              <button
+                className={`TransferModal__button ${
+                  !disableButton && "TransferModal__button-enabled"
+                }`}
+                onClick={handleSubmit}
+                disabled={disableButton}
+              >
+                Review Transfer
+              </button>
+            </>
+          )}
         </div>
       </div>
     </div>
