@@ -7,7 +7,7 @@
 }
 
 .WatchListStocks__container {
-  height: 50px;
+  height: 64px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -15,6 +15,7 @@
   padding-right: 8px;
   padding-left: 18px;
   cursor: pointer;
+  background-color: r;
 }
 
 .WatchListStocks__container:hover {
@@ -47,6 +48,21 @@
   align-items: center;
   height: 100%;
   width: 64px;
-  gap: 4px;
+  gap: 8px;
   font-size: 12px;
+}
+
+.WatchListStocks__percent-green{
+  color: rgb(44, 202, 4);
+}
+
+
+.WatchListStocks__percent-red{
+  color: rgb(255, 29, 4);
+}
+
+.WatchListStocks__container-title-shares{
+  gap:8px;
+  display: flex;
+  flex-direction: column;
 }
