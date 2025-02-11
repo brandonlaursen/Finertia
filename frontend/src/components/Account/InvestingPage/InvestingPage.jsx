@@ -3,9 +3,64 @@ import "./InvestingPage.css";
 // import { GoTriangleUp } from "react-icons/go";
 
 // import { useNavigate } from "react-router-dom";
+import ReactApexChart from "react-apexcharts";
+import { useState } from "react";
 
 function InvestingPage() {
   // const navigate = useNavigate();
+  // const [data, setData] = useState([]);
+  const [currentPoint, setCurrentPoint] = useState(null);
+  console.log("currentPoint:", currentPoint);
+  const series = [70.0, 30.0];
+  const labels = ["Stocks", "Individual Cash"];
+
+  const [options] = useState({
+    chart: {
+      type: "donut",
+      width: 250,
+      height: 250,
+      events: {
+        dataPointMouseEnter: function (event, chartContext, opts) {
+          setCurrentPoint({
+            value: series[opts.dataPointIndex],
+            label: labels[opts.dataPointIndex],
+          });
+        },
+        dataPointMouseLeave: function () {
+          setCurrentPoint(null);
+        },
+      },
+    },
+    labels: labels,
+    legend: {
+      show: false,
+    },
+    plotOptions: {
+      pie: {
+        donut: {
+          size: "88%",
+          background: "transparent",
+        },
+      },
+    },
+    dataLabels: {
+      enabled: false,
+      formatter: function (value, { seriesIndex, w }) {
+        return "$" + w.config.series[seriesIndex];
+      },
+
+      style: {
+        fontSize: "16px",
+      },
+    },
+    tooltip: {
+      enabled: false,
+    },
+    colors: ["#00f0A8", "#33FF57"],
+    fill: {
+      type: "solid", // Ensure the donut uses solid fill, not gradient or pattern that may change on hover
+    },
+  });
 
   return (
     <div className="InvestingPage">
@@ -15,7 +70,7 @@ function InvestingPage() {
             <span className="InvestingPage__portfolio-title">
               Total Portfolio value
             </span>
-            <span className="InvestingPage__portfolio-value">${23.33}</span>
+            <span className="InvestingPage__portfolio-value">${100.0}</span>
           </div>
 
           <div className="InvestingPage__invest-section-one">
@@ -24,9 +79,9 @@ function InvestingPage() {
                 <span className="InvestingPage__data-title">Stocks</span>
                 <div className="InvestingPage__data-one">
                   <span className="InvestingPage__data-one-percentage">
-                    99.96%
+                    70%
                   </span>
-                  <span>$23.11</span>
+                  <span>$70.00</span>
                 </div>
               </div>
 
@@ -36,14 +91,34 @@ function InvestingPage() {
                 </span>
                 <div className="InvestingPage__data-one IP-Cash">
                   <span className="InvestingPage__data-one-percentage">
-                    0.04%
+                    30%
                   </span>
-                  <span>$0.01</span>
+                  <span>$30.00</span>
                 </div>
               </div>
             </div>
 
-            <div className="InvestingPage__invest-section-one-right">graph</div>
+            <div className="InvestingPage__invest-section-one-right">
+              <ReactApexChart
+                options={options}
+                series={series}
+                type="donut"
+                height={options.chart.height}
+              />
+              <span className="testing">
+                {currentPoint ? (
+                  <>
+                    <span>{currentPoint.label}</span>
+                    <span>${currentPoint.value}</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Total portfolio value</span>
+                    <span>$100</span>
+                  </>
+                )}
+              </span>
+            </div>
           </div>
 
           <div className="InvestingPage__portfolio-two">
@@ -85,7 +160,28 @@ function InvestingPage() {
               </table>
             </div>
 
-            <div className="InvestingPage__invest-section-one-right">graph</div>
+            <div className="InvestingPage__invest-section-one-right">
+              {" "}
+              <ReactApexChart
+                options={options}
+                series={series}
+                type="donut"
+                height={options.chart.height}
+              />
+              <span className="testing">
+                {currentPoint ? (
+                  <>
+                    <span>{currentPoint.label}</span>
+                    <span>${currentPoint.value}</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Total portfolio value</span>
+                    <span>$100</span>
+                  </>
+                )}
+              </span>
+            </div>
           </div>
 
           {/*  */}
