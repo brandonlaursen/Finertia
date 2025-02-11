@@ -13,10 +13,10 @@ function TransferModal() {
   const [amount, setAmount] = useState(0.0);
   const [from, setFrom] = useState("Bank");
   const [to, setTo] = useState("Individual");
-  const [frequency, setFrequency] = useState("Just once");
+  // const [frequency, setFrequency] = useState("Just once");
   const [showFrom, setShowFrom] = useState(false);
   const [showTo, setShowTo] = useState(false);
-  const [showFrequency, setShowFrequency] = useState(false);
+  // const [showFrequency, setShowFrequency] = useState(false);
   const [showMoneyButtons, setShowMoneyButtons] = useState(true);
   const [disableButton, setDisableButton] = useState(true);
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -32,7 +32,7 @@ function TransferModal() {
       amount: Number(amount),
       from,
       to,
-      frequency,
+      // frequency,
     };
 
     console.log(transaction);
@@ -54,13 +54,11 @@ function TransferModal() {
         fromRef.current &&
         !fromRef.current.contains(e.target) &&
         toRef.current &&
-        !toRef.current.contains(e.target) &&
-        frequencyRef.current &&
-        !frequencyRef.current.contains(e.target)
+        !toRef.current.contains(e.target)
       ) {
         setShowFrom(false);
         setShowTo(false);
-        setShowFrequency(false);
+        // setShowFrequency(false);
       }
     };
 
@@ -71,18 +69,21 @@ function TransferModal() {
     };
   }, []);
 
-  // useEffect(() => {
-  //   if (from === "Individual") {
-  //     setTo("Bank");
-  //   } else if (from === "Bank") {
-  //     setTo("Individual");
-  //   }
-  //   // if (to === "Individual") {
-  //   //   setFrom("Bank");
-  //   // } else if (to === "Bank") {
-  //   //   setFrom("Individual");
-  //   // }
-  // }, [from, to]);
+  const toggleDropdown = (dropdown) => {
+    if (dropdown === "from") {
+      setShowFrom((prev) => !prev);
+      setShowTo(false);
+      // setShowFrequency(false);
+    } else if (dropdown === "to") {
+      setShowFrom(false);
+      setShowTo((prev) => !prev);
+      // setShowFrequency(false);
+    } else if (dropdown === "frequency") {
+      setShowFrom(false);
+      setShowTo(false);
+      // setShowFrequency((prev) => !prev);
+    }
+  };
 
   return (
     <div className="TransferModal">
@@ -157,7 +158,7 @@ function TransferModal() {
               className={`TransferModal__from-dropdown-button ${
                 showFrom && "TransferModal__amount-title-green"
               }`}
-              onClick={() => setShowFrom(!showFrom)}
+              onClick={() => toggleDropdown("from")}
               ref={fromRef}
             >
               {from}
@@ -234,7 +235,7 @@ function TransferModal() {
               className={`TransferModal__from-dropdown-button ${
                 showTo && "TransferModal__amount-title-green"
               }`}
-              onClick={() => setShowTo(!showTo)}
+              onClick={() => toggleDropdown("to")}
               ref={toRef}
             >
               {from === "Bank" ? "Individual" : "Bank"}
@@ -302,7 +303,7 @@ function TransferModal() {
             )}
           </div>
 
-          <div className="TransferModal__section-two">
+          {/* <div className="TransferModal__section-two">
             <span className="TransferModal__amount-title">Frequency</span>
             <div
               className={`TransferModal__from-dropdown-button ${
@@ -324,7 +325,7 @@ function TransferModal() {
                 <div onClick={() => setFrequency("Quarterly")}>Quarterly</div>
               </div>
             )}
-          </div>
+          </div> */}
         </div>
 
         <div className="TransferModal__section-footer">

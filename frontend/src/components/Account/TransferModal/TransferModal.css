@@ -125,8 +125,13 @@
   margin-left: auto;
   margin-bottom: 4px;
   /* background-color: red; */
+
 }
 
+
+.input-wrapper:focus-within {
+  border: 2px solid rgb(51, 209, 135);
+}
 .dollar-sign {
   font-size: 16px;
   margin-right: 4px;
@@ -174,18 +179,15 @@
   border-radius: 4px;
   width: 238px;
   z-index: 10;
-
 }
 
-
-.TransferModal__from-dropdown-individual{
-
+.TransferModal__from-dropdown-individual {
   display: flex;
   flex-direction: column;
   height: 100px;
 }
 
-.TransferModal__from-dropdown-individual-header{
+.TransferModal__from-dropdown-individual-header {
   font-size: 14px;
 
   font-weight: bold;
@@ -193,61 +195,51 @@
   border-bottom: 1px solid rgb(224, 224, 224);
 }
 
-.TransferModal__from-dropdown-individual-container{
-
+.TransferModal__from-dropdown-individual-container {
   height: 60%;
   display: flex;
   align-items: center;
   font-size: 14px;
-  gap:8px;
-
+  gap: 8px;
 }
 
-.dropdown-text-div{
+.dropdown-text-div {
   display: flex;
   flex-direction: column;
-  gap:4px;
+  gap: 4px;
 }
 
-.checkmark-div{
-
+.checkmark-div {
   height: 75%;
-  width:20px;
+  width: 20px;
   display: flex;
   justify-content: center;
   margin-left: 10px;
 }
-.TransferModal__checkmark{
+.TransferModal__checkmark {
   height: 22px;
   width: 22px;
 }
 
-
-.TransferModal__from-dropdown-individual-container:hover{
+.TransferModal__from-dropdown-individual-container:hover {
   background-color: aliceblue;
-
 }
 
-
-.TransferModal__from-dropdown-container-text{
+.TransferModal__from-dropdown-container-text {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-
-.TransferModal__from-dropdown-container-subtext{
+.TransferModal__from-dropdown-container-subtext {
   color: #6e6e6e;
   /* margin-left: 20px; */
 }
-
 
 .TransferModal__from-dropdown div {
   /* padding: 8px; */
   cursor: pointer;
 }
-
-
 
 .TransferModal__amount-input:focus {
   border: 2px solid rgb(51, 209, 135);
@@ -312,18 +304,16 @@
   color: white;
 }
 
-
 .TransferModal__button-enabled:hover {
   background-color: #323232;
 }
 
-
-.cancel-button{
+.cancel-button {
   background-color: white;
   border: 1px solid black;
 }
 
-.cancel-button:hover{
+.cancel-button:hover {
   background-color: rgb(218, 218, 218);
 }
 
@@ -349,7 +339,6 @@
   justify-content: center;
 }
 
-
-.TransferModal__from-dropdown-individual-selected{
+.TransferModal__from-dropdown-individual-selected {
   background-color: aliceblue;
 }
