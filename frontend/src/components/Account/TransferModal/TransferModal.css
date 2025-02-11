@@ -125,9 +125,7 @@
   margin-left: auto;
   margin-bottom: 4px;
   /* background-color: red; */
-
 }
-
 
 .input-wrapper:focus-within {
   border: 2px solid rgb(51, 209, 135);
@@ -276,11 +274,11 @@
   justify-content: start;
   align-items: center;
   gap: 16px;
-  padding-top: 16px;
+  padding-top: 26px;
 }
 
 .TransferModal__footer-title {
-  font-size: 13px;
+  font-size: 14px;
 
   width: 300px;
   display: flex;
@@ -341,4 +339,14 @@
 
 .TransferModal__from-dropdown-individual-selected {
   background-color: aliceblue;
+}
+
+.TransferModalDisabled {
+  color: rgb(166, 166, 166);
+  border-color: rgb(166, 166, 166);
+  cursor: default;
+}
+
+.amount-input:disabled {
+  color: rgb(166, 166, 166);
 }

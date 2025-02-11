@@ -23,20 +23,24 @@ function TransferModal() {
 
   const fromRef = useRef(null);
   const toRef = useRef(null);
-  const frequencyRef = useRef(null);
+  // const frequencyRef = useRef(null);
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    const transaction = {
-      amount: Number(amount),
-      from,
-      to,
-      // frequency,
-    };
-
-    console.log(transaction);
     setShowConfirmation(true);
+  }
+
+  function submitTransaction(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    const transaction = {
+      amount,
+      to,
+      from,
+    };
+    console.log("transaction:", transaction);
+    closeModal();
   }
 
   useEffect(() => {
@@ -106,7 +110,12 @@ function TransferModal() {
         <div className="TransferModal__input-container">
           <div className="TransferModal__section">
             <span className={`TransferModal__amount-title`}>Amount</span>
-            <div className="input-wrapper">
+
+            <div
+              className={`input-wrapper ${
+                showConfirmation && "TransferModalDisabled"
+              }`}
+            >
               <span className="dollar-sign">$</span>
               <input
                 type="number"
@@ -117,6 +126,7 @@ function TransferModal() {
                   setAmount(e.target.value);
                 }}
                 placeholder={0}
+                disabled={showConfirmation}
               />
             </div>
           </div>
@@ -154,15 +164,24 @@ function TransferModal() {
 
           <div className="TransferModal__section-two">
             <span className={`TransferModal__amount-title`}>From</span>
-            <div
-              className={`TransferModal__from-dropdown-button ${
-                showFrom && "TransferModal__amount-title-green"
-              }`}
-              onClick={() => toggleDropdown("from")}
-              ref={fromRef}
-            >
-              {from}
-            </div>
+            {showConfirmation ? (
+              <div
+                className={`TransferModal__from-dropdown-button TransferModalDisabled`}
+              >
+                {from}
+              </div>
+            ) : (
+              <div
+                className={`TransferModal__from-dropdown-button ${
+                  showFrom && "TransferModal__amount-title-green"
+                }`}
+                onClick={() => toggleDropdown("from")}
+                ref={fromRef}
+              >
+                {from}
+              </div>
+            )}
+
             {showFrom && (
               <div className="TransferModal__from-dropdown">
                 <div className="TransferModal__from-dropdown-individual">
@@ -231,15 +250,25 @@ function TransferModal() {
 
           <div className="TransferModal__section-two">
             <span className="TransferModal__amount-title">To</span>
-            <div
-              className={`TransferModal__from-dropdown-button ${
-                showTo && "TransferModal__amount-title-green"
-              }`}
-              onClick={() => toggleDropdown("to")}
-              ref={toRef}
-            >
-              {from === "Bank" ? "Individual" : "Bank"}
-            </div>
+
+            {showConfirmation ? (
+              <div
+                className={`TransferModal__from-dropdown-button TransferModalDisabled`}
+              >
+                {to}
+              </div>
+            ) : (
+              <div
+                className={`TransferModal__from-dropdown-button ${
+                  showTo && "TransferModal__amount-title-green"
+                }`}
+                onClick={() => toggleDropdown("to")}
+                ref={toRef}
+              >
+                {from === "Bank" ? "Individual" : "Bank"}
+              </div>
+            )}
+
             {showTo && (
               <div className="TransferModal__from-dropdown">
                 {to === "Bank" ? (
@@ -332,13 +361,16 @@ function TransferModal() {
           {showConfirmation ? (
             <>
               <span className="TransferModal__footer-title">
-                ${amount} will be withdrawn from your {from} account
+                {from === "Bank" &&
+                  `$${amount} will be withdrawn from Finertia Bank.`}
+                {from === "Individual" &&
+                  `$${amount} will be deposited into Finertia bank.`}
               </span>
               <button
                 className={`TransferModal__button ${
                   !disableButton && "TransferModal__button-enabled"
                 }`}
-                onClick={handleSubmit}
+                onClick={submitTransaction}
               >
                 Transfer ${amount}
               </button>
