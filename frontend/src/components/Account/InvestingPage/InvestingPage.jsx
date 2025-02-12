@@ -5,12 +5,15 @@ import "./InvestingPage.css";
 // import { useNavigate } from "react-router-dom";
 import ReactApexChart from "react-apexcharts";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../../../store/session";
 
 function InvestingPage() {
   // const navigate = useNavigate();
   // const [data, setData] = useState([]);
   const [currentPoint, setCurrentPoint] = useState(null);
-  console.log("currentPoint:", currentPoint);
+  const sessionUser = useSelector(selectUser);
+
   const series = [70.0, 30.0];
   const labels = ["Stocks", "Individual Cash"];
 
@@ -58,7 +61,7 @@ function InvestingPage() {
     },
     colors: ["#00f0A8", "#33FF57"],
     fill: {
-      type: "solid", // Ensure the donut uses solid fill, not gradient or pattern that may change on hover
+      type: "solid",
     },
   });
 
@@ -70,7 +73,7 @@ function InvestingPage() {
             <span className="InvestingPage__portfolio-title">
               Total Portfolio value
             </span>
-            <span className="InvestingPage__portfolio-value">${100.0}</span>
+            <span className="InvestingPage__portfolio-value">${sessionUser.balance}</span>
           </div>
 
           <div className="InvestingPage__invest-section-one">

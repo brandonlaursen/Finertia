@@ -14,3 +14,11 @@ html, body{
 div, span{
   box-sizing: border-box;
 }
+
+/* html {
+  scrollbar-gutter: stable;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+} */

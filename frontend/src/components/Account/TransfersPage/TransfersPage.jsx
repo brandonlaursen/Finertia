@@ -15,11 +15,22 @@ function TransfersPage() {
   const dispatch = useDispatch();
 
   const sessionUser = useSelector((state) => state.session.user);
-  
+  const transactions = useSelector(
+    (state) => state.transactions.accountTransactions
+  );
+  console.log("transactions:", transactions);
 
   useEffect(() => {
     dispatch(getTransactions());
   }, [dispatch]);
+
+  function convertTime(timestamp) {
+    const parts = timestamp.split("T")[0].split("-");
+
+    return `${parts[1]}-${parts[2]}-${parts[0]}`;
+  }
+
+  console.log(convertTime("2025-02-11T19:23:02.054Z"));
 
   return (
     <div className="TransfersPage">
@@ -91,21 +102,29 @@ function TransfersPage() {
           Completed Transfers
         </div>
 
-        <div className="TransfersPage__completed-transactions">
-          <div className="TransfersPage__completed-contents">
-            <span className="TransfersPage__completed-transactions-title">
-              Withdrawal from individual to Wells Fargo Everyday Checking
-            </span>
-            <span className="TransfersPage__completed-transactions-date">
-              Jan 21, 2025
-            </span>
-          </div>
-          <div className="TransfersPage__completed-transactions-amount">
-            -$40.00
-          </div>
-        </div>
+        {transactions.length &&
+          transactions.map((transaction, i) => {
+            return (
+              <div className="TransfersPage__completed-transactions" key={i}>
+                <div className="TransfersPage__completed-contents">
+                  <span className="TransfersPage__completed-transactions-title">
+                    {transaction.transactionType === "withdraw"
+                      ? "Withdrawal from Finertia Bank"
+                      : "Deposit to Individual from Finertia Band "}
+                  </span>
+                  <span className="TransfersPage__completed-transactions-date">
+                    {convertTime(transaction.transactionDate)}
+                  </span>
+                </div>
+                <div className="TransfersPage__completed-transactions-amount">
+                  {transaction.transactionType === "withdraw" ? "-" : "+"} $
+                  {transaction.amount}
+                </div>
+              </div>
+            );
+          })}
 
-        <div className="TransfersPage__completed-transactions">
+        {/* <div className="TransfersPage__completed-transactions">
           <div className="TransfersPage__completed-contents">
             <span className="TransfersPage__completed-transactions-title">
               Deposit to individual to Wells Fargo Everyday Checking
@@ -117,7 +136,7 @@ function TransfersPage() {
           <div className="TransfersPage__completed-transactions-amount">
             +$90.00
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

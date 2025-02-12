@@ -112,6 +112,8 @@
 
 .TransfersPage__completed {
   /* background-color: red; */
+  overflow: auto;
+  scrollbar-width: none;
 }
 
 .TransfersPage__completed-title {
@@ -151,4 +153,5 @@
 
 .TransfersPage__completed-transactions-amount {
   font-weight: bold;
+  margin-right: 20px;
 }

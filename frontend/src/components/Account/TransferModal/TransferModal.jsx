@@ -31,7 +31,7 @@ function TransferModal() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    setShowMoneyButtons(false)
+    setShowMoneyButtons(false);
     setShowConfirmation(true);
   }
 
@@ -41,7 +41,7 @@ function TransferModal() {
 
     if (amount > sessionUser.balance) {
       setError("Amount exceeds your individual accounts balance");
-      setDisableButton(true)
+      setDisableButton(true);
       return;
     }
 
@@ -384,7 +384,9 @@ function TransferModal() {
               </button>
               <button
                 className="TransferModal__button cancel-button"
-                onClick={() => {setShowConfirmation(false), setError(null)}}
+                onClick={() => {
+                  setShowConfirmation(false), setError(null);
+                }}
               >
                 Cancel
               </button>
@@ -392,7 +394,6 @@ function TransferModal() {
           ) : (
             <>
               <span className="TransferModal__footer-container">
-
                 <span className="TransferModal__footer-title">
                   Daily deposit limit: $150,000
                   <span className="TransferModal__question-mark-container">

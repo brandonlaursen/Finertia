@@ -3,6 +3,7 @@ import "./StockWatchList.css";
 import { IoIosCheckmark } from "react-icons/io";
 
 import AddToListModal from "./AddToListModal/AddToListModal";
+import StockTransaction from "../StockTransaction/StockTransaction";
 
 import { useModal } from "../../../context/Modal";
 
@@ -12,12 +13,13 @@ function StockWatchList({ stock }) {
   return (
     <div className="StockWatchList">
       <div className="StockWatchList__container">
-        <div className="StockWatchList__body">
+        {/* <div className="StockWatchList__body">
           <div className="StockWatchList__title">{stock?.name}</div>
           <div className="StockWatchList__text">
             You can start investing once your application is approved.
           </div>
-        </div>
+        </div> */}
+        <StockTransaction stock={stock}/>
 
         <button
           className="StockWatchList__button"
