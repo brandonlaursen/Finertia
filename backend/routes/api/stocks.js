@@ -91,17 +91,8 @@ router.get("/:stockSymbol", async (req, res) => {
   try {
     const stock = await Stock.findOne({
       where: { stockSymbol },
-      include: [
-        {
-          model: StockUserTransaction,
-          where: { userId },  // Filter for the specific userId
-          include: [{ model: User }],  // Include the User model to get user details
-        },
-        StockList,
-      ],
+      include: [StockList],
     });
-
-    const usersShare = stock.StockUserTransactions;
 
     const todaysDate = getDate();
 
