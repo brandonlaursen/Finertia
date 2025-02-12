@@ -5,7 +5,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectUser } from "../../../../store/session";
 import { TiArrowUnsorted } from "react-icons/ti";
 import { GrFormCheckmark } from "react-icons/gr";
-import { getStockTransactions, buyStock } from "../../../../store/transactions";
+import {
+  fetchStockTransactions,
+  executeStockTrade,
+} from "../../../../store/transactions";
 
 function StockTransaction({ stock }) {
   const dispatch = useDispatch();
@@ -16,7 +19,6 @@ function StockTransaction({ stock }) {
   );
 
   const [quantity, setQuantity] = useState(0);
-  console.log("stockTransactions:", stockTransactions);
 
   const [amount, setAmount] = useState(0.0);
   const [shares, setShares] = useState(0);
@@ -67,7 +69,7 @@ function StockTransaction({ stock }) {
       }
     }
     if (transactionType === "sell") {
-      if (quantity > shares ) {
+      if (quantity > shares) {
         return;
       }
       if (amount < quantity * stock.price) {
@@ -81,7 +83,7 @@ function StockTransaction({ stock }) {
       quantity: +quantity,
     };
 
-    await dispatch(buyStock(transaction, transactionType));
+    await dispatch(executeStockTrade(transaction, transactionType));
 
     let totalQuantity = 0;
     for (let transaction of stockTransactions) {
@@ -94,7 +96,7 @@ function StockTransaction({ stock }) {
   }
 
   useEffect(() => {
-    dispatch(getStockTransactions());
+    dispatch(fetchStockTransactions());
   }, [dispatch]);
 
   useEffect(() => {
@@ -116,7 +118,6 @@ function StockTransaction({ stock }) {
       if (transactionType === "sell") totalQuantity -= quantity;
     }
     setQuantity(totalQuantity);
-    console.log(totalQuantity);
   }, [stockTransactions]);
 
   async function sellAll() {
@@ -134,7 +135,7 @@ function StockTransaction({ stock }) {
       quantity: +totalQuantity,
     };
 
-    await dispatch(buyStock(transaction, transactionType));
+    await dispatch(executeStockTrade(transaction, transactionType));
     setQuantity(0);
   }
 

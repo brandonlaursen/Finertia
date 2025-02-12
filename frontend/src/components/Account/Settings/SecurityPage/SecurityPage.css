@@ -1,9 +1,9 @@
 .SecurityPage {
-  display: flex;
-  flex-direction: column;
-
   height: 100%;
   width: 70%;
+
+  display: flex;
+  flex-direction: column;
 
   font-size: 14px;
 }
@@ -11,6 +11,7 @@
 .SecurityPage__content {
   display: flex;
   flex-direction: column;
+
   gap: 10px;
   padding-top: 30px;
 
@@ -18,19 +19,20 @@
 }
 
 .SecurityPage__content__title {
-  align-content: center;
-
   height: 50px;
+
+  align-content: center;
 
   font-size: 24px;
   font-weight: bold;
 }
 
 .SecurityPage__content__subtitle {
-  align-content: center;
-  margin-bottom: 20px;
-
   height: 20px;
+
+  align-content: center;
+
+  margin-bottom: 20px;
 }
 
 .SecurityPage__content__links {
@@ -39,11 +41,11 @@
 }
 
 .SecurityPage__link {
+  height: 45px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  height: 45px;
 
   border-top: 1px solid rgb(232, 232, 232);
 
@@ -57,13 +59,13 @@
 .SecurityPage__logout {
   align-self: end;
   padding-top: 15px;
-
-  /* height: 170px; */
 }
 
 .SecurityPage__logout-span {
-  font-weight: bold;
   color: rgb(198, 156, 194);
+
+  font-weight: bold;
+
   cursor: pointer;
 }
 

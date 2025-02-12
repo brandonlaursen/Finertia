@@ -6,7 +6,7 @@ const {
   StockUserTransaction,
   Stock,
 } = require("../../db/models");
-const { Op, Transaction } = require("sequelize");
+const { Op, Transaction, ValidationErrorItemOrigin } = require("sequelize");
 
 router.post("/deposit", async (req, res) => {
   const { id, balance } = req.user;
@@ -81,14 +81,20 @@ router.get("/stock-transactions", async (req, res) => {
   const { id } = req.user;
 
   const userTransactions = await StockUserTransaction.findAll({
-    where: {
-      userId: id,
-    },
+    where: { userId: id },
+    include: [{ model: Stock, attributes: ["id", "stockSymbol", "stockName"] }],
   });
 
   const transactions = userTransactions.map((transaction) => {
-    const { stockId, transactionType, quantity, purchasePrice, purchaseDate } =
-      transaction;
+    const {
+      stockId,
+      transactionType,
+      quantity,
+      purchasePrice,
+      purchaseDate,
+      Stock,
+    } = transaction;
+
     return {
       stockId,
       transactionType,
@@ -97,7 +103,6 @@ router.get("/stock-transactions", async (req, res) => {
       purchaseDate,
     };
   });
-
 
   return res.json({
     transactions,
@@ -114,9 +119,9 @@ router.post("/buy/:stockId", async (req, res) => {
   const amount = +price * +quantity;
 
   let newBalance;
-  if(transactionType === 'buy') {
+  if (transactionType === "buy") {
     newBalance = Math.round(balance - Number(amount));
-  } else if(transactionType === 'sell') {
+  } else if (transactionType === "sell") {
     newBalance = Math.round(balance + Number(amount));
   }
 
@@ -124,7 +129,7 @@ router.post("/buy/:stockId", async (req, res) => {
     balance: newBalance,
   });
 
-  console.log(newBalance)
+
   const transaction = await StockUserTransaction.create({
     userId: id,
     stockId,
@@ -134,7 +139,7 @@ router.post("/buy/:stockId", async (req, res) => {
     purchaseDate: new Date(),
   });
 
-  console.log(transaction)
+
   return res.json({
     transaction,
     balance: newBalance,
@@ -152,6 +157,7 @@ router.get("/", async (req, res) => {
     },
   });
 
+  console.log(userTransactions);
   const transactions = userTransactions.map((transaction) => {
     const { amount, transactionType, transactionDate } = transaction;
     return {

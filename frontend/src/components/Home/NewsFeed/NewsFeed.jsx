@@ -8,10 +8,13 @@ import { TbArrowMergeRight } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
-import NewsArticle from "./NewsArticle";
+import NewsArticle from "../NewsArticle";
 import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
 
-import { fetchStockNews, fetchStockNewsByCategory } from "../../../../store/stocks";
+import {
+  fetchStockNews,
+  fetchStockNewsByCategory,
+} from "../../../../store/stocks";
 
 function NewsFeed() {
   const dispatch = useDispatch();
@@ -37,7 +40,6 @@ function NewsFeed() {
 
   return (
     <div className="NewsFeed">
-
       <span>
         Read Market News
         <MdInfoOutline id="NewsFeed__info-icon" />
@@ -67,7 +69,6 @@ function NewsFeed() {
         stockNews.map((news) => {
           return <NewsArticle news={news} key={news.id} />;
         })}
-
     </div>
   );
 }

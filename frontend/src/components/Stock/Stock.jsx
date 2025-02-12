@@ -8,7 +8,7 @@ import StockChart from "./StockChart/";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import StockWatchList from "./StockWatchList";
 
-import { fetchStockDetails } from "../../../store/stocks";
+import { fetchStock } from "../../../store/stocks";
 
 function Stock() {
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ function Stock() {
   const [selectedTimeFrame, setSelectedTimeFrame] = useState("1D");
 
   useEffect(() => {
-    dispatch(fetchStockDetails(stockSymbol));
+    dispatch(fetchStock(stockSymbol));
   }, [stockSymbol, dispatch]);
 
   const handleClick = (value) => {

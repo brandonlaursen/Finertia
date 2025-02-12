@@ -1,9 +1,9 @@
 .AppearancePage {
-  display: flex;
-  flex-direction: column;
-
   height: 100%;
   width: 70%;
+
+  display: flex;
+  flex-direction: column;
 
   font-size: 14px;
 }
@@ -11,6 +11,7 @@
 .AppearancePage__content {
   display: flex;
   flex-direction: column;
+
   gap: 10px;
   padding-top: 30px;
 
@@ -18,17 +19,17 @@
 }
 
 .AppearancePage__title {
-  align-content: center;
-
   height: 50px;
+
+  align-content: center;
 
   font-size: 24px;
   font-weight: bold;
 }
 
 .AppearancePage__subtitle {
+  height: 20px;
+
   align-content: center;
   margin-bottom: 20px;
-
-  height: 20px;
 }

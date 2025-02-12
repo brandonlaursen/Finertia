@@ -1,40 +1,43 @@
 .HomePage {
+  height: 100%;
+
   display: flex;
   justify-content: center;
-  margin-top: 85px;
 
-  height: 100%;
+  margin-top: 85px;
 }
 
 .HomePage__body {
   display: flex;
+  justify-content: center;
 
   gap: 20px;
-  justify-content: center;
 }
 
 .HomePage__main {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  padding-top: 36px;
-  padding-right: 50px;
-
   height: 100%;
   width: 950px;
+
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  padding-top: 36px;
+  padding-right: 50px;
 }
 
 .HomePage__main__section {
   display: flex;
   flex-direction: column;
+
   padding-left: 10px;
   padding-right: 10px;
 }
 
 .HomePage__main__title {
-  display: flex;
-
   height: 33px;
+
+  display: flex;
 
   font-size: 30px;
   font-weight: bold;
@@ -50,10 +53,10 @@
 }
 
 .HomePage__main__subtitle {
+  height: 100px;
+
   display: flex;
   align-items: center;
-
-  height: 100px;
 
   font-size: 40px;
   font-weight: bold;

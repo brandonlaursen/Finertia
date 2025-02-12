@@ -5,21 +5,21 @@ import { useDispatch } from "react-redux";
 import { restoreUser } from "../store/session";
 
 import WelcomePage from "./components/WelcomePage";
-import SignUpPage from "./components/SignUpPage";
 import LoginPage from "./components/LoginPage";
+import SignUpPage from "./components/SignUpPage";
 import Navigation from "./components/Navigation";
-import HomePage from "./components/HomePage";
+import HomePage from "./components/Home/HomePage";
 import Stocks from "./components/Stocks";
 import Stock from "./components/Stock/Stock";
 import ProfilePage from "./components/Profile";
-import Account from "./components/Account";
-import SettingsPage from "./components/Account/Settings/SettingsPage";
-import SecurityPage from "./components/Account/Settings/SecurityPage";
-import HelpPage from "./components/Account/HelpPage";
-import AppearancePage from "./components/Account/Settings/AppearancePage";
+import Account from "./components/Account/AccountLayout";
 import InvestingPage from "./components/Account/InvestingPage/InvestingPage";
 import TransfersPage from "./components/Account/TransfersPage/TransfersPage";
 import HistoryPage from "./components/Account/HistoryPage/HistoryPage";
+import HelpPage from "./components/Account/HelpPage";
+import SettingsPage from "./components/Account/Settings/SettingsLayout/SettingsLayout";
+import SecurityPage from "./components/Account/Settings/SecurityPage";
+import AppearancePage from "./components/Account/Settings/AppearancePage";
 
 function Layout() {
   const dispatch = useDispatch();
@@ -44,6 +44,14 @@ const router = createBrowserRouter([
       {
         path: "/welcome",
         element: <WelcomePage />,
+      },
+      {
+        path: "/login",
+        element: <LoginPage />,
+      },
+      {
+        path: "/signup",
+        element: <SignUpPage />,
       },
       {
         path: "/",
@@ -71,10 +79,6 @@ const router = createBrowserRouter([
             element: <Account />,
             children: [
               {
-                path: "help",
-                element: <HelpPage />,
-              },
-              {
                 path: "investing",
                 element: <InvestingPage />,
               },
@@ -86,6 +90,11 @@ const router = createBrowserRouter([
                 path: "history",
                 element: <HistoryPage />,
               },
+              {
+                path: "help",
+                element: <HelpPage />,
+              },
+
               {
                 path: "settings",
                 element: <SettingsPage />,
@@ -103,14 +112,6 @@ const router = createBrowserRouter([
             ],
           },
         ],
-      },
-      {
-        path: "/login",
-        element: <LoginPage />,
-      },
-      {
-        path: "/signup",
-        element: <SignUpPage />,
       },
     ],
   },

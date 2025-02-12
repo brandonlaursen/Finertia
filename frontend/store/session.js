@@ -1,11 +1,14 @@
 import { csrfFetch } from "./csrf";
 import { createSelector } from "reselect";
 
+// * Constants
 const SET_USER = "session/setUser";
 const REMOVE_USER = "session/removeUser";
-const SET_TRANSACTION = "transactions/SET_TRANSACTION";
-const BUY_STOCK = "transactions/BUY_STOCK";
 
+const ADD_ACCOUNT_TRANSACTION = "transactions/ADD_ACCOUNT_TRANSACTION";
+const ADD_STOCK_TRANSACTION = "transactions/ADD_STOCK_TRANSACTION";
+
+// * Action Creators
 const setUser = (user) => {
   return {
     type: SET_USER,
@@ -19,14 +22,17 @@ const removeUser = () => {
   };
 };
 
-export const editUser = (user) => async (dispatch) => {
-  const { username, profilePic } = user;
-
-  const response = await csrfFetch("/api/session", {
-    method: "PUT",
+// * Thunks
+export const signup = (user) => async (dispatch) => {
+  const { username, firstName, lastName, email, password } = user;
+  const response = await csrfFetch("/api/users", {
+    method: "POST",
     body: JSON.stringify({
       username,
-      profilePic,
+      firstName,
+      lastName,
+      email,
+      password,
     }),
   });
   const data = await response.json();
@@ -48,6 +54,12 @@ export const login = (user) => async (dispatch) => {
   return response;
 };
 
+export const logout = () => async (dispatch) => {
+  const response = await csrfFetch("/api/session/logout");
+  dispatch(removeUser());
+  return response;
+};
+
 export const restoreUser = () => async (dispatch) => {
   const response = await csrfFetch("/api/session");
   const data = await response.json();
@@ -59,16 +71,14 @@ export const restoreUser = () => async (dispatch) => {
   return response;
 };
 
-export const signup = (user) => async (dispatch) => {
-  const { username, firstName, lastName, email, password } = user;
-  const response = await csrfFetch("/api/users", {
-    method: "POST",
+export const editUser = (user) => async (dispatch) => {
+  const { username, profilePic } = user;
+
+  const response = await csrfFetch("/api/session", {
+    method: "PUT",
     body: JSON.stringify({
       username,
-      firstName,
-      lastName,
-      email,
-      password,
+      profilePic,
     }),
   });
   const data = await response.json();
@@ -76,16 +86,11 @@ export const signup = (user) => async (dispatch) => {
   return response;
 };
 
-export const logout = () => async (dispatch) => {
-  const response = await csrfFetch("/api/session/logout");
-  dispatch(removeUser());
-  return response;
-};
-
+// * Selectors
 export const userSelector = (state) => state.session.user;
-
 export const selectUser = createSelector([userSelector], (user) => user);
 
+// * Session Reducer
 const initialState = { user: null };
 
 const sessionReducer = (state = initialState, action) => {
@@ -94,15 +99,15 @@ const sessionReducer = (state = initialState, action) => {
       return { ...state, user: action.payload };
     case REMOVE_USER:
       return { ...state, user: null };
-    case SET_TRANSACTION:
+    case ADD_ACCOUNT_TRANSACTION:
       return {
         ...state,
-        user: { ...state.user, balance: action.balance },
+        user: { ...state.user, balance: action.updatedBalance },
       };
-    case BUY_STOCK:
+    case ADD_STOCK_TRANSACTION:
       return {
         ...state,
-        user: { ...state.user, balance: action.balance },
+        user: { ...state.user, balance: action.updatedBalance },
       };
     default:
       return state;

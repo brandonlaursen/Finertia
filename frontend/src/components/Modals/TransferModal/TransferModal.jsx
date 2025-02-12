@@ -3,12 +3,12 @@ import { MdClose } from "react-icons/md";
 import { RiQuestionLine } from "react-icons/ri";
 import { GrFormCheckmark } from "react-icons/gr";
 
-import { useModal } from "../../../context/Modal";
-
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { depositMoney, withdrawMoney } from "../../../../store/transactions";
+import { depositFunds, withdrawFunds } from "../../../../store/transactions";
+
+import { useModal } from "../../../context/Modal";
 
 function TransferModal() {
   const { closeModal } = useModal();
@@ -40,7 +40,7 @@ function TransferModal() {
     e.stopPropagation();
 
     if (to === "Individual") {
-      await dispatch(depositMoney(Number(amount)));
+      await dispatch(depositFunds(Number(amount)));
     }
     if (to === "Bank") {
       if (amount > sessionUser.balance) {
@@ -49,7 +49,7 @@ function TransferModal() {
         return;
       }
 
-      await dispatch(withdrawMoney(Number(amount)));
+      await dispatch(withdrawFunds(Number(amount)));
     }
     closeModal();
   }
@@ -338,30 +338,6 @@ function TransferModal() {
               </div>
             )}
           </div>
-
-          {/* <div className="TransferModal__section-two">
-            <span className="TransferModal__amount-title">Frequency</span>
-            <div
-              className={`TransferModal__from-dropdown-button ${
-                showFrequency && "TransferModal__amount-title-green"
-              }`}
-              onClick={() => setShowFrequency(!showFrequency)}
-              ref={frequencyRef}
-            >
-              {frequency}
-            </div>
-            {showFrequency && (
-              <div className="TransferModal__from-dropdown">
-                <div onClick={() => setFrequency("Just once")}>Just once</div>
-                <div onClick={() => setFrequency("Weekly")}>Weekly</div>
-                <div onClick={() => setFrequency("Twice a month")}>
-                  Twice a month
-                </div>
-                <div onClick={() => setFrequency("Monthly")}>Monthly</div>
-                <div onClick={() => setFrequency("Quarterly")}>Quarterly</div>
-              </div>
-            )}
-          </div> */}
         </div>
 
         <div className="TransferModal__section-footer">

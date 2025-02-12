@@ -1,9 +1,8 @@
-
-html, body{
+html,
+body {
   padding: 0;
   margin: 0;
   max-width: 100%;
-  /* width: 100%; */
   height: auto;
   position: relative;
   display: block;
@@ -11,14 +10,7 @@ html, body{
   font-family: serif;
 }
 
-div, span{
+div,
+span {
   box-sizing: border-box;
 }
-
-/* html {
-  scrollbar-gutter: stable;
-}
-
-::-webkit-scrollbar {
-  width: 0px;
-} */

@@ -9,8 +9,8 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { useModal } from "../../../../context/Modal";
 
-import { fetchUsersLists, selectListsArray } from "../../../../../store/lists";
-import { updateStockLists } from "../../../../../store/stocks";
+import { fetchLists, selectListsArray } from "../../../../../store/lists";
+import { editListStocks } from "../../../../../store/stocks";
 
 import ListItem from "../../../WatchList/ListItem";
 
@@ -38,7 +38,7 @@ function AddToListModal({ stock }) {
   const [selectedEmoji, setSelectedEmoji] = useState("💡");
 
   useEffect(() => {
-    dispatch(fetchUsersLists());
+    dispatch(fetchLists());
   }, [dispatch]);
 
   const handleCheckboxChange = (id) => {
@@ -60,7 +60,7 @@ function AddToListModal({ stock }) {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    await dispatch(updateStockLists(checkedItems, stock));
+    await dispatch(editListStocks(checkedItems, stock));
 
     closeModal();
   }

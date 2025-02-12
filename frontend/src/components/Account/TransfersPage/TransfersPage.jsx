@@ -2,13 +2,15 @@ import "./TransfersPage.css";
 import { FaMoneyBill } from "react-icons/fa";
 import { IoIosArrowForward } from "react-icons/io";
 import { RiQuestionLine } from "react-icons/ri";
-import { useModal } from "../../../context/Modal";
 
-import TransferModal from "../TransferModal/TransferModal";
-
-import { useSelector, useDispatch } from "react-redux";
-import { getTransactions } from "../../../../store/transactions";
 import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
+import TransferModal from "../../Modals/TransferModal/TransferModal";
+
+import { fetchAccountTransactions } from "../../../../store/transactions";
+
+import { useModal } from "../../../context/Modal";
 
 function TransfersPage() {
   const { setModalContent, setModalClass } = useModal();
@@ -19,9 +21,8 @@ function TransfersPage() {
     (state) => state.transactions.accountTransactions
   );
 
-
   useEffect(() => {
-    dispatch(getTransactions());
+    dispatch(fetchAccountTransactions());
   }, [dispatch]);
 
   function convertTime(timestamp) {
@@ -30,11 +31,10 @@ function TransfersPage() {
     return `${parts[1]}-${parts[2]}-${parts[0]}`;
   }
 
- 
   return (
     <div className="TransfersPage">
       <div className="TransfersPage__section">
-        <div className="TransfersPage__transfer">
+        <div className="TransfersPage__transfer-container">
           <span className="TransfersPage__transfer-title">
             Start a transfer
           </span>
@@ -47,7 +47,7 @@ function TransfersPage() {
       <div>
         <div className="TransfersPage__invest-section">
           <div
-            className="TransfersPage__container"
+            className="TransferPage__transfer-link"
             onClick={(e) => {
               e.stopPropagation();
               setModalContent(<TransferModal />);
@@ -58,7 +58,7 @@ function TransfersPage() {
               });
             }}
           >
-            <div className="TransfersPage__container-icon">
+            <div className="TransferPage__transfer__money-icon-container">
               <FaMoneyBill className="TransfersPage__money-icon" />
             </div>
             <div className="TransfersPage__text">
@@ -67,7 +67,7 @@ function TransfersPage() {
                 Transfer Money between your bank and your Finertia Account
               </span>
             </div>
-            <div className="TransfersPage__arrow">
+            <div className="TransfersPage__arrow-container">
               <IoIosArrowForward className="TransfersPage__arrow-icon" />
             </div>
           </div>
@@ -75,7 +75,7 @@ function TransfersPage() {
       </div>
 
       <div className="TransfersPage__section">
-        <div className="TransfersPage__transfer">
+        <div className="TransfersPage__transfer-container">
           <span className="TransfersPage__transfer-title">
             Available to withdraw
           </span>
@@ -84,27 +84,27 @@ function TransfersPage() {
           </span>
         </div>
 
-        <div className="TransfersPage__withdraw">
-          <span className="TransfersPage__withdraw-title">
+        <div className="TransfersPage__withdraw-section">
+          <span className="TransfersPage__withdraw-section-title">
             {" "}
             Individual cash available
-            <RiQuestionLine className="TransfersPage__question-mark" />
+            <RiQuestionLine className="TransfersPage__question-mark-icon" />
           </span>
-          <span className="TransfersPage__withdraw-amount">
+          <span className="TransfersPage__withdraw-section-amount">
             ${sessionUser.balance}
           </span>
         </div>
       </div>
 
-      <div className="TransfersPage__completed">
-        <div className="TransfersPage__completed-title">
+      <div className="TransfersPage__completed-transfer-section">
+        <div className="TransfersPage__completed-transfer-section-title">
           Completed Transfers
         </div>
 
         {transactions.length &&
           transactions.map((transaction, i) => {
             return (
-              <div className="TransfersPage__completed-transactions" key={i}>
+              <div className="TransfersPage__completed-transactions-container" key={i}>
                 <div className="TransfersPage__completed-contents">
                   <span className="TransfersPage__completed-transactions-title">
                     {transaction.transactionType === "withdraw"
@@ -122,20 +122,6 @@ function TransfersPage() {
               </div>
             );
           })}
-
-        {/* <div className="TransfersPage__completed-transactions">
-          <div className="TransfersPage__completed-contents">
-            <span className="TransfersPage__completed-transactions-title">
-              Deposit to individual to Wells Fargo Everyday Checking
-            </span>
-            <span className="TransfersPage__completed-transactions-date">
-              Jan 21, 2025
-            </span>
-          </div>
-          <div className="TransfersPage__completed-transactions-amount">
-            +$90.00
-          </div>
-        </div> */}
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import { FaPlus } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { fetchUsersLists, selectListsArray } from "../../../store/lists";
+import { fetchLists, selectListsArray } from "../../../store/lists";
 
 import OpenModalButton from "../OpenModalButton";
 import WatchListModal from "./CreateListModal";
@@ -21,7 +21,7 @@ function WatchList({ className }) {
   const [toggleListIds, setToggleListIds] = useState([]);
 
   useEffect(() => {
-    dispatch(fetchUsersLists());
+    dispatch(fetchLists());
   }, [dispatch]);
 
   return (

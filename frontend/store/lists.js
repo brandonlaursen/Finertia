@@ -1,33 +1,45 @@
 import { csrfFetch } from "./csrf";
 import { createSelector } from "reselect";
 
-const FETCH_LISTS = "lists/FETCH_LISTS";
-const CREATE_LISTS = "lists/CREATE_LISTS";
-const EDIT_LIST = "lists/EDIT_LIST";
-const DELETE_LIST = "lists/DELETE_LIST";
+// * Constants
+const SET_LISTS = "lists/SET_LISTS";
+const ADD_LIST = "lists/ADD_LIST";
+const UPDATE_LIST = "lists/UPDATE_LIST";
+const REMOVE_LIST = "lists/REMOVE_LIST";
+
 const UPDATE_LIST_STOCKS = "lists/UPDATE_LIST_STOCKS";
 
+// * Action Creators
 export const setLists = (lists) => ({
-  type: FETCH_LISTS,
+  type: SET_LISTS,
   lists,
 });
 
-export const setCreatedList = (list) => ({
-  type: CREATE_LISTS,
-  list,
+export const addList = (createdList) => ({
+  type: ADD_LIST,
+  createdList,
 });
 
-export const setEditedList = (list) => ({
-  type: EDIT_LIST,
-  list,
+export const updateList = (updatedList) => ({
+  type: UPDATE_LIST,
+  updatedList,
 });
 
-export const setDeletedList = (listId) => ({
-  type: DELETE_LIST,
-  listId,
+export const removeList = (removedListId) => ({
+  type: REMOVE_LIST,
+  removedListId,
 });
 
 // * Thunks
+export const fetchLists = () => async (dispatch) => {
+  const response = await csrfFetch("/api/lists");
+
+  if (response.ok) {
+    const data = await response.json();
+
+    dispatch(setLists(data));
+  }
+};
 
 export const createList =
   ({ name, type, stockIds }) =>
@@ -44,21 +56,10 @@ export const createList =
     if (response.ok) {
       const data = await response.json();
 
-      dispatch(setCreatedList(data));
-
+      dispatch(addList(data));
       return data.id;
     }
   };
-
-export const fetchUsersLists = () => async (dispatch) => {
-  const response = await csrfFetch("/api/lists");
-
-  if (response.ok) {
-    const data = await response.json();
-
-    dispatch(setLists(data));
-  }
-};
 
 export const editList =
   ({ name, type, stockListId }) =>
@@ -75,7 +76,7 @@ export const editList =
     if (response.ok) {
       const data = await response.json();
 
-      dispatch(setEditedList(data));
+      dispatch(updateList(data));
     }
   };
 
@@ -85,21 +86,20 @@ export const deleteList = (stockListId) => async (dispatch) => {
   });
 
   if (response.ok) {
-    dispatch(setDeletedList(stockListId));
+    dispatch(removeList(stockListId));
   }
 };
 
+// * Selector
 const selectAllLists = (state) => state.lists || {};
 export const selectListsArray = createSelector(selectAllLists, (list) => {
   return Object.values(list);
 });
 
-// export const selectListById = (listId) => (state) => state.lists.allLists[listId];
-
 // * Reducer
 const listsReducer = (state = {}, action) => {
   switch (action.type) {
-    case FETCH_LISTS: {
+    case SET_LISTS: {
       const normalizedLists = {};
 
       for (let list of action.lists) {
@@ -107,28 +107,28 @@ const listsReducer = (state = {}, action) => {
       }
       return { ...state, ...normalizedLists };
     }
-    case CREATE_LISTS: {
+    case ADD_LIST: {
       return {
         ...state,
-        [action.list.id]: action.list,
+        [action.createdList.id]: action.createdList,
       };
     }
-    case EDIT_LIST: {
+    case UPDATE_LIST: {
       return {
         ...state,
-        [action.list.id]: action.list,
+        [action.updatedList.id]: action.updatedList,
       };
     }
-    case DELETE_LIST: {
+    case REMOVE_LIST: {
       const newState = { ...state };
 
-      delete newState[action.listId];
+      delete newState[action.removedListId];
 
       return newState;
     }
     case UPDATE_LIST_STOCKS: {
       const newState = { ...state };
-   
+
       for (let listId of action.updatedListIds) {
         const found = newState[listId].Stocks.find(
           (stock) => stock.id === action.stock.id
@@ -138,7 +138,7 @@ const listsReducer = (state = {}, action) => {
         }
       }
 
-      for (let listId of action.removedFromIds) {
+      for (let listId of action.removedListIds) {
         const foundIndex = newState[listId].Stocks.findIndex(
           (stock) => stock.id === action.stock.id
         );

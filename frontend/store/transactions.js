@@ -1,78 +1,53 @@
 import { csrfFetch } from "./csrf";
 
-const GET_TRANSACTIONS = "transactions/GET_TRANSACTIONS";
-const SET_TRANSACTION = "transactions/SET_TRANSACTION";
+// * Constants
+const SET_ACCOUNT_TRANSACTIONS = "transactions/SET_ACCOUNT_TRANSACTIONS";
+const ADD_ACCOUNT_TRANSACTION = "transactions/ADD_ACCOUNT_TRANSACTION";
 
-const GET_STOCK_TRANSACTIONS = "transactions/GET_STOCK_TRANSACTIONS";
+const SET_STOCK_TRANSACTIONS = "transactions/SET_STOCK_TRANSACTIONS";
+const ADD_STOCK_TRANSACTION = "transactions/ADD_STOCK_TRANSACTION";
 
-const BUY_STOCK = "transactions/BUY_STOCK";
-
-const setBuyStock = (transaction, balance) => {
+// * Action Creators
+const setAccountTransactions = (transactions) => {
   return {
-    type: BUY_STOCK,
-    transaction,
-    balance,
+    type: SET_ACCOUNT_TRANSACTIONS,
+    transactions,
+  };
+};
+
+const addAccountTransaction = (updatedBalance, createdTransaction) => {
+  return {
+    type: ADD_ACCOUNT_TRANSACTION,
+    createdTransaction,
+    updatedBalance,
   };
 };
 
 const setStockTransactions = (transactions) => {
   return {
-    type: GET_STOCK_TRANSACTIONS,
+    type: SET_STOCK_TRANSACTIONS,
     transactions,
   };
 };
 
-const setTransaction = (balance, transaction) => {
+const addStockTransaction = (createdTransaction, updatedBalance) => {
   return {
-    type: SET_TRANSACTION,
-    balance,
-    transaction,
+    type: ADD_STOCK_TRANSACTION,
+    createdTransaction,
+    updatedBalance,
   };
 };
 
-const setTransactions = (transactions) => {
-  return {
-    type: GET_TRANSACTIONS,
-    transactions,
-  };
-};
-
-export const buyStock = (transaction, transactionType) => async (dispatch) => {
-
-  const response = await csrfFetch(
-    `/api/transactions/buy/${transaction.stockId}`,
-    {
-      method: "POST",
-      body: JSON.stringify({
-        stockId: transaction.stockId,
-        price: transaction.price,
-        quantity: transaction.quantity,
-        transactionType
-      }),
-    }
-  );
-  const data = await response.json();
-
-
-  dispatch(setBuyStock(data.transaction, data.balance));
-};
-
-export const getStockTransactions = () => async (dispatch) => {
-  const response = await csrfFetch("/api/transactions/stock-transactions");
-  const data = await response.json();
-
-  dispatch(setStockTransactions(data.transactions));
-};
-
-export const getTransactions = () => async (dispatch) => {
+// * Thunks
+export const fetchAccountTransactions = () => async (dispatch) => {
   const response = await csrfFetch("/api/transactions");
-  const data = await response.json();
+  const { transactions } = await response.json();
 
-  dispatch(setTransactions(data.transactions));
+  dispatch(setAccountTransactions(transactions));
 };
 
-export const depositMoney = (amount) => async (dispatch) => {
-
+// refactor in one route - updateFunds
+export const depositFunds = (amount) => async (dispatch) => {
   const response = await csrfFetch("/api/transactions/deposit", {
     method: "POST",
     body: JSON.stringify({
@@ -80,12 +55,11 @@ export const depositMoney = (amount) => async (dispatch) => {
     }),
   });
 
-  const data = await response.json();
-  dispatch(setTransaction(data.balance, data.transaction));
+  const { balance, transaction } = await response.json();
+  dispatch(addAccountTransaction(balance, transaction));
 };
 
-export const withdrawMoney = (amount) => async (dispatch) => {
-
+export const withdrawFunds = (amount) => async (dispatch) => {
   const response = await csrfFetch("/api/transactions/withdraw", {
     method: "POST",
     body: JSON.stringify({
@@ -93,38 +67,71 @@ export const withdrawMoney = (amount) => async (dispatch) => {
     }),
   });
 
-  const data = await response.json();
-  dispatch(setTransaction(data.balance, data.transaction));
+  const { balance, transaction } = await response.json();
+  dispatch(addAccountTransaction(balance, transaction));
 };
 
-const transactionsReducer = (
-  state = { accountTransactions: [], stockTransactions: [] },
-  action
-) => {
+export const fetchStockTransactions = () => async (dispatch) => {
+  const response = await csrfFetch("/api/transactions/stock-transactions");
+  const { transactions } = await response.json();
+
+  dispatch(setStockTransactions(transactions));
+};
+
+export const executeStockTrade =
+  (transaction, transactionType) => async (dispatch) => {
+    const { stockId, price, quantity } = transaction;
+
+    const response = await csrfFetch(`/api/transactions/buy/${stockId}`, {
+      method: "POST",
+      body: JSON.stringify({
+        stockId,
+        price,
+        quantity,
+        transactionType,
+      }),
+    });
+
+    const { balance, transaction } = await response.json();
+
+    dispatch(addStockTransaction(transaction, balance));
+  };
+
+// * Transactions reducer
+const initialState = { accountTransactions: [], stockTransactions: [] };
+
+const transactionsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_TRANSACTIONS:
+    case SET_ACCOUNT_TRANSACTIONS:
       return {
         ...state,
         accountTransactions: [...action.transactions],
         stockTransactions: [...state.stockTransactions],
       };
-    case GET_STOCK_TRANSACTIONS:
+
+    case ADD_ACCOUNT_TRANSACTION:
       return {
         ...state,
-        stockTransactions: [...action.transactions],
-        accountTransactions: [...state.accountTransactions],
-      };
-    case SET_TRANSACTION:
-      return {
-        ...state,
-        accountTransactions: [...state.accountTransactions, action.transaction],
+        accountTransactions: [
+          ...state.accountTransactions,
+          action.createdTransaction,
+        ],
         stockTransactions: [...state.stockTransactions],
       };
-    case BUY_STOCK:
+    case SET_STOCK_TRANSACTIONS:
       return {
         ...state,
-        stockTransactions: [...state.stockTransactions, action.transaction],
         accountTransactions: [...state.accountTransactions],
+        stockTransactions: [...action.transactions],
+      };
+    case ADD_STOCK_TRANSACTION:
+      return {
+        ...state,
+        accountTransactions: [...state.accountTransactions],
+        stockTransactions: [
+          ...state.stockTransactions,
+          action.createdTransaction,
+        ],
       };
     default:
       return state;

@@ -23,7 +23,7 @@ function NewsArticle({ news }) {
   return (
     <a href={news.url && news.url} className="NewsArticle-anchor">
       <div className="NewsArticle">
-        <div className="NewsArticle__content">
+        <div className="NewsArticle__main">
           <span>
             {news.source && news.source}
             <span className="NewsArticle__time">{timeAgo(news.datetime)}</span>
