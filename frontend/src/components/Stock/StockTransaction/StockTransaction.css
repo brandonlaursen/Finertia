@@ -27,7 +27,8 @@
   flex-direction: column;
   padding: 10px 20px;
   font-size: 13px;
-  height: 160px;
+  /* height: 160px; */
+  height: auto;
 }
 
 .StockTransaction_footer {
@@ -170,9 +171,9 @@
 .BuyInDropdown {
   position: absolute;
   width: 131px;
-  top: 40px;
+  top: 36px;
   left: -1px;
-  height: 72px;
+  height: 88px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -186,14 +187,14 @@
   width: 100%;
   padding: 8px 0px;
   display: flex;
-
+  align-items: center;
   cursor: pointer;
   z-index: 20;
   /* border-radius-bottom: 5px; */
 }
 
-.BuyInDropdown-option{
-
+.BuyInDropdown-option-hover{
+  background-color: aliceblue;
 }
 
 .BuyInDropdown-option:hover {
@@ -215,4 +216,19 @@
 .BuyInDropdown-option-checkmark {
   height: 16px;
   width: 16px;
+}
+
+
+.StockTransaction__market-price{
+  /* background-color: aqua; */
+  height: 24px;
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.StockTransaction__market-price-title{
+  color:rgb(44, 183, 118);
 }

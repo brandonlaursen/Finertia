@@ -9,12 +9,13 @@ import { GrFormCheckmark } from "react-icons/gr";
 function StockTransaction({ stock }) {
   const sessionUser = useSelector(selectUser);
   const [amount, setAmount] = useState(0.0);
+  const [shares, setShares] = useState(0);
   const [estimate, setEstimate] = useState(0);
+  const [estimateCost, setEstimateCost] = useState(0);
   const [buyIn, setBuyIn] = useState("Dollars");
   const [buyInDropdown, setBuyInDropdown] = useState(false);
 
   const { price } = stock;
-  // money / shares
 
   const buyInRef = useRef(null);
 
@@ -38,11 +39,21 @@ function StockTransaction({ stock }) {
     setAmount(number);
   }
 
+
+  // async function buyShares() {
+
+  // }
+
   useEffect(() => {
     const newEstimate = amount.toFixed(2) / price.toFixed(2);
     setEstimate(newEstimate.toFixed(2));
   }, [amount, price]);
-  console.log(amount, price, estimate);
+
+  useEffect(() => {
+    const newEstimatedCost = shares * price.toFixed(2);
+    setEstimateCost(newEstimatedCost);
+  }, [shares, price]);
+
   return (
     <div className="StockTransaction">
       <div className="StockTransaction__header">Buy {stock.symbol}</div>
@@ -81,7 +92,11 @@ function StockTransaction({ stock }) {
             </div>
             {buyInDropdown && (
               <div className={`BuyInDropdown`}>
-                <div className="BuyInDropdown-option">
+                <div
+                  className={`BuyInDropdown-option ${
+                    buyIn === "Dollars" && "BuyInDropdown-option-hover"
+                  }`}
+                >
                   <div className="checkmark-div">
                     {buyIn === "Dollars" && (
                       <GrFormCheckmark className="TransferModal__checkmark" />
@@ -90,7 +105,11 @@ function StockTransaction({ stock }) {
 
                   <span onClick={() => setBuyIn("Dollars")}>Dollars</span>
                 </div>
-                <div className="BuyInDropdown-option">
+                <div
+                  className={`BuyInDropdown-option ${
+                    buyIn === "Shares" && "BuyInDropdown-option-hover"
+                  }`}
+                >
                   <div className="checkmark-div">
                     {buyIn === "Shares" && (
                       <GrFormCheckmark className="TransferModal__checkmark" />
@@ -124,9 +143,31 @@ function StockTransaction({ stock }) {
               </div>
             </>
           ) : (
-            <h1>TBD</h1>
+            <>
+              <div className="StockTransaction__order-section__text">
+                <span>Shares</span>
+              </div>
+              <div className={`StockTransaction__input-wrapper`}>
+                <input
+                  type="number"
+                  pattern="[0-9]*"
+                  value={shares}
+                  placeholder="0"
+                  className="StockTransaction__amount-input"
+                  onChange={(e) => setShares(e.target.value)}
+                />
+              </div>
+            </>
           )}
         </div>
+        {buyIn === "Shares" && (
+          <div className="StockTransaction__market-price">
+            <span className="StockTransaction__market-price-title">
+              Market Price
+            </span>
+            <span>${stock.price}</span>
+          </div>
+        )}
         <div className="StockTransaction__line"></div>
       </div>
 
@@ -139,7 +180,12 @@ function StockTransaction({ stock }) {
             </span>
           </>
         ) : (
-          <h1>TBD</h1>
+          <>
+            <span>Estimated Cost</span>
+            <span className="StockTransaction__estimate-amount">
+              ${Number(estimateCost).toFixed(2)}
+            </span>
+          </>
         )}
       </div>
 
