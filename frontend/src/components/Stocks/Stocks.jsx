@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useOutletContext } from "react-router-dom";
 
-import WatchList from "../WatchList";
+import WatchListContainer from "../List/ListContainer";
 
 import { fetchAllStocks } from "../../../store/stocks";
 
@@ -19,7 +19,7 @@ import { selectStocksArray } from "../../../store/stocks";
 
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
-import AddToListModal from "../Stock/StockWatchList/AddToListModal/AddToListModal";
+import AddToListModal from "../Modals/AddToListModal";
 import { useModal } from "../../context/Modal";
 
 function Stocks() {
@@ -90,7 +90,6 @@ function Stocks() {
   }
 
   useEffect(() => {
-    // Set sortedStocks when stocks are available
     if (stocks && stocks.length > 0) {
       setSortedStocks(stocks);
     }
@@ -211,7 +210,7 @@ function Stocks() {
           </div>
         </div>
 
-        <WatchList className="WatchList-Stocks-container" />
+        <WatchListContainer className="WatchList-Stocks-container" />
       </div>
     </div>
   );

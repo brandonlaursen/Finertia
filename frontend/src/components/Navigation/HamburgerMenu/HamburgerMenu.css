@@ -1,25 +1,24 @@
 .hamburger-icon {
   display: none;
   color: black;
-
 }
 
 @media screen and (max-width: 1080px) {
   .hamburger-icon-container {
+    width: 120px;
+
     display: flex;
     justify-content: center;
     align-items: center;
-
-    width: 120px;
 
     cursor: pointer;
   }
 
   .hamburger-icon {
-    display: block;
-
     height: 30px;
     width: 30px;
+
+    display: block;
 
     color: black;
   }

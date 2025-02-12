@@ -1,4 +1,7 @@
 .AccountDropdown {
+  height: auto;
+  width: 270px;
+
   position: absolute;
   right: 26px;
   top: 64px;
@@ -6,27 +9,21 @@
   display: flex;
   flex-direction: column;
 
-  height: auto;
-  width: 270px;
-
   z-index: 10;
-
-
 }
 
 .AccountDropdown__span {
-  font-size: 17px;
+  font-size: 16px;
   font-weight: bold;
 
   color: rgb(0, 0, 0);
 
   text-decoration: none;
   cursor: pointer;
-
 }
 
 .AccountDropdown__span:hover {
-  color: rgb(7, 222, 150);
+  color: rgb(197, 127, 187);
 }
 
 .AccountDropdown__span__active {
@@ -34,31 +31,30 @@
 }
 
 .AccountDropdown__span__active::after {
+  width: 60px;
+  height: 2px;
+
   content: "";
   position: absolute;
   top: 62px;
   right: 39px;
 
-  width: 60px;
-  height: 2px;
-
   background-color: rgb(7, 222, 150);
 }
 
 .AccountDropdown__user {
+  height: 50px;
+
   display: flex;
   align-items: center;
-  padding-left: 12px;
 
-  height: 50px;
+  padding-left: 12px;
 
   background-color: rgb(255, 255, 255);
 
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-
-
 }
 
 .AccountDropdown__user span {
@@ -67,10 +63,10 @@
 }
 
 .AccountDropdown__links {
+  height: 300px;
+
   display: flex;
   flex-direction: column;
-
-  height: 300px;
 
   background-color: rgb(255, 255, 255);
 
@@ -80,22 +76,23 @@
 }
 
 .AccountDropdown__links a {
+  height: 50px;
+
   display: flex;
   align-items: center;
+
   padding-left: 16px;
   gap: 8px;
-
-  height: 50px;
 
   font-size: 14px;
 }
 
 .AccountDropdown__logout {
+  height: 50px;
+
   display: flex;
   align-items: center;
   padding-left: 12px;
-
-  height: 50px;
 
   background-color: white;
 
@@ -111,6 +108,7 @@
 .AccountDropdown__logout-button {
   display: flex;
   align-items: center;
+
   gap: 8px;
 
   font-size: 14px;

@@ -2,14 +2,13 @@ import "./ProfilePage.css";
 import { FaSmile } from "react-icons/fa";
 import { FiPlusCircle } from "react-icons/fi";
 import { LuInfo } from "react-icons/lu";
-// import { GoDash } from "react-icons/go";
 
 import { useSelector } from "react-redux";
 import { selectUser } from "../../../store/session";
 
 import { useModal } from "../../context/Modal";
 
-import EditProfileModal from "./EditProfileModal/EditProfileModal";
+import EditProfileModal from "../Modals/EditProfileModal/EditProfileModal";
 
 function ProfilePage() {
   const sessionUser = useSelector(selectUser);
@@ -75,21 +74,15 @@ function ProfilePage() {
               <span className="ProfilePage__investments__details__value-text">
                 Total Individual value
               </span>
-              {/* <GoDash className="ProfilePage__investments__details__dash" />
-               */}
               ${sessionUser.balance}
             </div>
 
             <div className="ProfilePage__investments__details__value ProfilePage__investments__details__subtext">
-              <span>Individual holdings</span>
-              {/* <GoDash className="ProfilePage__investments__details__dash" /> */}
-              ${sessionUser.balance}
+              <span>Individual holdings</span>${sessionUser.balance}
             </div>
 
             <div className="ProfilePage__investments__details__value ProfilePage__investments__details__subtext">
-              <span>Individual cash</span>
-              {/* <GoDash className="ProfilePage__investments__details__dash" /> */}
-              ${sessionUser.balance}
+              <span>Individual cash</span>${sessionUser.balance}
             </div>
           </div>
         </div>

@@ -72,6 +72,7 @@ export const fetchStockNewsByCategory = (category) => async (dispatch) => {
 };
 
 export const editListStocks = (stockListsIdsObj, stock) => async (dispatch) => {
+  console.log('entering thunk', stockListsIdsObj, stock)
   const response = await csrfFetch("/api/lists/update-stock-lists", {
     method: "POST",
     body: JSON.stringify({
@@ -82,6 +83,7 @@ export const editListStocks = (stockListsIdsObj, stock) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
+    console.log("data after response: ---->", data);
     dispatch(
       updateListStocks(data.stock, data.updatedListIds, data.removedFromIds)
     );

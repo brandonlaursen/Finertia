@@ -4,7 +4,6 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { IoClose } from "react-icons/io5";
 
 function HamburgerMenu({ isMenuOpen, setIsMenuOpen }) {
-
   return (
     <div className="hamburger-icon-container">
       {isMenuOpen ? (

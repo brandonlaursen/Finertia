@@ -1,7 +1,7 @@
 import "./HomePage.css";
 
 import NewsFeed from "../NewsFeed";
-import WatchList from "../../WatchList";
+import WatchListContainer from "../../List/ListContainer";
 
 function HomePage() {
   return (
@@ -17,7 +17,7 @@ function HomePage() {
           <NewsFeed />
         </div>
 
-        <WatchList className="WatchList-HomePage-container" />
+        <WatchListContainer className="WatchList-HomePage-container" />
       </div>
     </div>
   );

@@ -164,7 +164,6 @@ function SignUpPage() {
                     return (
                       <>
                         <p className="SignUpPage__form__error">
-                          {" "}
                           <LuInfo className="SignUpPage__info-icon" />
                           {error}
                         </p>

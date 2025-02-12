@@ -4,13 +4,13 @@ import { useDispatch } from "react-redux";
 
 import { restoreUser } from "../store/session";
 
-import WelcomePage from "./components/WelcomePage";
+import WelcomePage from "./components/Welcome/WelcomePage";
 import LoginPage from "./components/LoginPage";
 import SignUpPage from "./components/SignUpPage";
-import Navigation from "./components/Navigation";
+import Navigation from "./components/Navigation/NavigationBar";
 import HomePage from "./components/Home/HomePage";
 import Stocks from "./components/Stocks";
-import Stock from "./components/Stock/Stock";
+import Stock from "./components/Stock/StockPage/StockPage";
 import ProfilePage from "./components/Profile";
 import Account from "./components/Account/AccountLayout";
 import InvestingPage from "./components/Account/InvestingPage/InvestingPage";

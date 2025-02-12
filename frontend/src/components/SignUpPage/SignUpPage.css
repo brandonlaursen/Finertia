@@ -1,31 +1,32 @@
 .SignUpPage {
-  display: flex;
-  flex-direction: row;
-
   width: 100%;
   height: 100vh;
+
+  display: flex;
+  flex-direction: row;
 
   background-color: rgb(0, 0, 0);
   color: white;
 }
 
-/* SignUpPage Aside */
 .SignUpPage__aside {
+  width: 50%;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 60px;
 
-  width: 50%;
+  padding: 0 60px;
 }
 
 .SignUpPage__aside__logo {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-
   height: 150px;
   width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
 
   font-size: 30px;
   font-weight: bold;
@@ -42,22 +43,22 @@
 }
 
 .SignUpPage__aside__title {
-  display: flex;
-  align-items: center;
-
   height: 150px;
   width: 100%;
+
+  display: flex;
+  align-items: center;
 
   font-size: 4em;
   font-weight: bold;
 }
 
 .SignUpPage__aside__description {
-  display: flex;
-  align-items: center;
-
   height: 100px;
   width: 100%;
+
+  display: flex;
+  align-items: center;
 
   font-size: 17px;
 
@@ -74,22 +75,23 @@
   width: 30vh;
 }
 
-/* SignUpPage section */
 .SignUpPage__section {
+  width: 50%;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 60px;
 
-  width: 50%;
+  padding: 0 60px;
 }
 
 .SignUpPage__section__title {
+  height: 200px;
+
   display: flex;
   align-items: flex-end;
-  padding-bottom: 1rem;
 
-  height: 200px;
+  padding-bottom: 1rem;
 
   font-size: 20px;
 }
@@ -99,19 +101,20 @@
 }
 
 .SignUpPage__form__section-one {
+  height: 100px;
+
   display: flex;
   align-items: center;
   align-content: center;
-  gap: 30px;
 
-  height: 100px;
+  gap: 30px;
 }
 
 .SignUpPage__form__section-one input {
-  padding-left: 10px;
-
   height: 55px;
   width: 100%;
+
+  padding-left: 10px;
 
   font-size: 15px;
 
@@ -125,15 +128,17 @@
 }
 
 .SignUpPage__form__section-two {
+  width: 100%;
+
   display: flex;
   flex-direction: column;
-  gap: 20px;
 
-  width: 100%;
+  gap: 20px;
 }
 
 .SignUpPage__form__section-two input {
   height: 55px;
+
   padding-left: 10px;
 
   font-size: 15px;
@@ -149,23 +154,24 @@
 .SignUpPage__form__section-three {
   display: flex;
   flex-direction: column;
+
   gap: 20px;
 }
 
 .SignUpPage__form__password {
+  width: 100%;
+
   position: relative;
   display: flex;
   align-items: center;
-
-  width: 100%;
 }
 
 .SignUpPage__form__password input {
-  padding-left: 10px;
-  padding-right: 50px;
-
   height: 55px;
   width: 100%;
+
+  padding-left: 10px;
+  padding-right: 50px;
 
   font-size: 15px;
 
@@ -192,15 +198,15 @@
 }
 
 .SignUpPage__form__error {
+  min-height: 50px;
+  width: 100%;
+
   display: inline-flex;
   align-items: center;
   box-sizing: border-box;
 
   padding-left: 10px;
   gap: 0px;
-
-  min-height: 50px;
-  width: 100%;
 
   font-size: 17px !important;
 
@@ -211,18 +217,18 @@
 }
 
 .SignUpPage__info-icon {
-  margin-right: 10px;
-
   min-height: 20px;
   width: 20px;
+
+  margin-right: 10px;
 }
 
 .SignUpPage__section__form button {
-  align-self: center;
-
   height: 54px;
   width: 50%;
   max-width: 250px;
+
+  align-self: center;
 
   font-weight: bold;
 
@@ -252,17 +258,16 @@ input:focus {
   }
 }
 
-/* Media Queries */
 @media screen and (max-width: 770px) {
   .SignUpPage {
-    flex-direction: column;
-    padding-bottom: 30px;
-
     width: 100%;
     height: 100vh;
+
+    flex-direction: column;
+
+    padding-bottom: 30px;
   }
 
-  /* SignUpPage Aside */
   .SignUpPage__aside {
     width: 100%;
 
@@ -270,17 +275,17 @@ input:focus {
   }
 
   .SignUpPage__aside__logo {
-    padding-top: 12px;
-
     height: 30px;
+
+    padding-top: 12px;
 
     font-size: 24px;
   }
 
   .SignUpPage__aside__title {
-    padding-top: 16px;
-
     height: 50px;
+
+    padding-top: 16px;
 
     font-size: 40px;
   }
@@ -297,12 +302,11 @@ input:focus {
     display: none;
   }
 
-  /* SignUpPage section */
   .SignUpPage__section {
+    width: 100%;
+
     display: flex;
     padding: 0 20px;
-
-    width: 100%;
   }
 
   .SignUpPage__section__title {
@@ -310,11 +314,11 @@ input:focus {
   }
 
   .signup-page__instructions {
-    display: flex;
-    align-items: center;
-
     height: 100px;
     width: 100%;
+
+    display: flex;
+    align-items: center;
 
     font-size: 24px;
   }

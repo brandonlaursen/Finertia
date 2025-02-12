@@ -151,6 +151,9 @@ router.post("/update-stock-lists", async (req, res) => {
 
   const stock = await Stock.findByPk(stockId);
 
+  console.log('before return in route', updatedListIds,
+    removedFromIds,
+    stock,)
   return res.json({
     messages,
     updatedListIds,

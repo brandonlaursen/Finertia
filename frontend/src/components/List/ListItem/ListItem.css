@@ -1,0 +1,212 @@
+.ListItem {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+
+  text-decoration: none;
+  cursor: pointer;
+
+  margin-bottom: 12px;
+}
+
+/*  AddToListModal  */
+
+.AddToListModal__item__container {
+  width: 100%;
+  height: 64px;
+
+  position: relative;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.AddToListModal__item__icon {
+  height: 60px;
+  width: 45px;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-right: 10px;
+
+  font-size: 24px;
+
+  background-color: rgb(234, 243, 248);
+
+  border-radius: 5px;
+}
+
+.AddToListModal__item__title {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 16px;
+
+  color: black;
+}
+
+.WatchList__lists__ListItem {
+  height: 55px;
+}
+
+.ListItem__container {
+  width: 100%;
+
+  position: relative;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+  padding: 0 20px;
+}
+
+.WatchList__lists__ListItem:hover {
+  background-color: rgb(247, 251, 255);
+}
+
+.ListItem__container:hover .ListItem__ellipsis {
+  opacity: 1;
+}
+
+.ListItem__icon {
+  height: 35px;
+  width: 27px;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-right: 10px;
+
+  font-size: 13px;
+
+  background-color: rgb(234, 243, 248);
+
+  border-radius: 5px;
+}
+
+.ListItem__title {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 15px;
+
+  color: black;
+}
+.arrow-container {
+  display: flex;
+  align-items: center;
+
+  margin-right: 7px;
+}
+
+.ListItem__ellipsis {
+  height: 24px;
+  width: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  margin-right: 6px;
+
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  border-radius: 5px;
+}
+
+.ListItem__ellipsis-icon {
+  color: rgb(0, 0, 0);
+}
+
+.ListItem__popover {
+  height: 100px;
+  width: 150px;
+
+  position: absolute;
+  top: 32px;
+  left: 135px;
+  padding: 5px 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  background: white;
+
+  border: 1px solid #dadfdf;
+  border-radius: 5px;
+  box-shadow: 0px 1px 10px rgba(231, 231, 231, 0.1);
+
+  font-size: 14px;
+
+  z-index: 100;
+}
+
+.ListItem__ellipsis:hover {
+  background-color: rgb(244, 244, 244);
+  opacity: 1;
+}
+
+.ListItem__button {
+  display: flex;
+
+  gap: 4px;
+  padding: 4px;
+  text-align: center;
+  align-items: center;
+  padding-left: 10px;
+
+  font-weight: bold;
+  font-size: 12px;
+
+  color: black;
+
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: black;
+  text-underline-offset: 3px;
+
+  cursor: pointer;
+}
+
+.ListItem__button:hover {
+  background-color: #f1f7ff;
+}
+
+.ListItem__button-icon {
+  height: 16px;
+  width: 16px;
+}
+
+.ListItem__ellipsis:active,
+.ListItem__ellipsis:focus {
+  outline: none;
+  color: inherit;
+  background-color: inherit;
+}
+
+.ListItem__arrow-icon {
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+
+.ListItem__arrow-icon.open {
+  transform: rotate(180deg);
+}
+
+.ListItem__arrow-icon:hover {
+  color: rgb(37, 240, 172);
+}

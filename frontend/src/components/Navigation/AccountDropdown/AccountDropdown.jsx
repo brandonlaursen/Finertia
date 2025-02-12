@@ -52,7 +52,7 @@ function AccountDropdown({ sessionUser }) {
     <span tabIndex={0} ref={accountDropdownRef} onClick={toggleAccountDropdown}>
       <span
         className={`AccountDropdown__span ${
-          isActive ? "AccountDropdown__span__active" : ""
+          isActive && "AccountDropdown__span__active" 
         }`}
         ref={accountSpanRef}
         onClick={() => setIsActive(!isActive)}

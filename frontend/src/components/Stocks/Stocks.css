@@ -1,53 +1,63 @@
 .stocks {
-  display: flex;
-  flex-direction: column;
-  margin-top: 85px;
-
   height: 100vh;
   min-height: 123vh;
+
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 85px;
 }
 .stocks-nav {
-  padding-top: 5px;
+  height: 80px;
+  width: 100%;
+
+  position: fixed;
+  top: 0;
+
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-content: center;
+
+  padding-top: 5px;
+
   background-color: rgb(36, 240, 172);
-  height: 80px;
-  width: 100%;
-  position: fixed;
+
   z-index: 2;
-  top: 0;
 }
 .scrolled {
   background-color: rgb(255, 255, 255);
 }
 
 .stocks__header {
+  height: 30%;
+  max-height: 225px;
+  width: 100%;
+
   background-color: rgb(36, 240, 172);
   background-image: url("https://png.pngtree.com/png-vector/20230728/ourmid/pngtree-boost-clipart-cartoon-rocket-ship-traveling-into-the-space-vector-png-image_6796486.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: 40%;
-
-  height: 30%;
-  max-height: 225px;
-  width: 100%;
 }
 
 .stocks__body {
-  flex-grow: 1;
+  height: 100vh;
+
   display: flex;
+  flex-grow: 1;
   flex-direction: row;
   justify-content: center;
-  height: 100vh;
+
   gap: 20px;
 }
 
 .stocks__body-left {
+  width: 620px;
+
   display: flex;
   flex-direction: column;
-  width: 620px;
+
   margin-right: 6px;
   padding-bottom: 100px;
 }
@@ -55,15 +65,18 @@
 .stocks__section {
   display: flex;
   justify-content: space-between;
+
   margin-top: 20px;
 }
 
 .stocks__section-header {
+  height: 100px;
+  width: 60%;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100px;
-  width: 60%;
+
   gap: 5px;
   margin-left: 0px;
 }
@@ -78,32 +91,38 @@
 }
 
 .stocks__subtitle {
-  font-size: 14px;
-  color: #3e3e3e;
   display: flex;
   align-items: center;
+
   gap: 2px;
   margin-top: 2px;
+
+  font-size: 14px;
+  color: #3e3e3e;
 }
 
 .green-checkmark {
-  color: rgb(118, 215, 183);
   height: 10px;
   width: 10px;
+
+  color: rgb(118, 215, 183);
 }
 
 .stocks__actions {
+  width: 40%;
+
   display: flex;
   flex-direction: row;
   justify-content: end;
   align-items: center;
-  width: 40%;
+
   gap: 17px;
 }
 
 .stocks__btn--settings {
   height: 20px;
   width: 20px;
+
   cursor: pointer;
 }
 
@@ -112,27 +131,27 @@
 }
 
 .stocks__btn--follow {
-  align-self: center;
-  text-decoration: none;
-
-  align-items: center;
-
-  border-radius: 36px;
-  box-sizing: border-box;
   height: 32px;
   width: 86px;
 
   position: relative;
+
+  align-self: center;
+  align-items: center;
   text-align: center;
-  white-space: nowrap;
-  background-color: #ffffff;
-  border: 1px solid rgb(118, 215, 183);
-  color: rgb(118, 215, 183);
-  cursor: pointer;
+
   font-weight: bold;
   font-size: 11px;
 
+  background-color: #ffffff;
+  color: rgb(118, 215, 183);
+
+  border: 1px solid rgb(118, 215, 183);
+  border-radius: 36px;
+
   cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
 }
 
 .stocks__btn--follow:hover {
@@ -152,32 +171,37 @@
 }
 
 .stocks__table-container {
-  display: block;
   height: 90vh;
+
+  margin-top: 8px;
+
   scrollbar-width: none;
   overflow-y: auto;
-  margin-top: 8px;
 }
 
 .stocks__table {
   max-height: 600px;
   height: auto;
   width: 100%;
+
   border-collapse: collapse;
   table-layout: fixed;
 }
 
 .stocks__table thead {
-  text-align: left;
-
   height: 40px;
-  font-size: 13px;
-  color: rgb(130, 130, 130);
-  cursor: pointer;
 
   position: sticky;
   top: 0;
+
+  text-align: left;
+
+  font-size: 13px;
+
   background-color: white;
+  color: rgb(130, 130, 130);
+
+  cursor: pointer;
 }
 
 .stocks__table thead th:hover {
@@ -195,8 +219,10 @@
 
 .stocks__table th:nth-of-type(1),
 .stocks__table td:nth-of-type(1) {
-  text-align: left;
   width: 130px;
+
+  text-align: left;
+
   padding-right: 64px;
 }
 
@@ -206,6 +232,7 @@
 
 .stocks__table tbody tr {
   height: 54px;
+
   font-size: 12px;
 }
 
@@ -214,12 +241,15 @@
 }
 
 .stocks__btn--add {
-  background: none;
-  border: none;
-  cursor: pointer;
   height: 12px;
   width: 12px;
+
   margin-left: 60px;
+
+  background: none;
+
+  border: none;
+  cursor: pointer;
 }
 
 .stocks__btn--add:hover {
@@ -228,35 +258,37 @@
 
 .stocks__disclaimer {
   display: flex;
-  /* justify-content: center; */
   align-items: start;
-  /* height: 100px; */
+
   font-size: 14px;
   color: rgb(130, 130, 130);
 }
 
 .stocks-table-arrow-container {
   display: flex;
+
   gap: 5px;
 }
 
 .triangleIconDown {
   height: 18px;
   width: 18px;
+
   color: rgb(248, 124, 14);
 }
 
 .triangleIconUp {
   height: 18px;
   width: 18px;
+
   color: rgb(14, 248, 37);
 }
 
 .Stocks-loading-spinner {
-  /* background-color: red; */
+  height: 250px;
+  width: 620px;
+
   display: flex;
   justify-content: center;
   align-items: start;
-  height: 250px;
-  width: 620px;
 }

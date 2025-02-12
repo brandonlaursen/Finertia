@@ -3,14 +3,16 @@
 }
 
 .StockWatchList__container {
-  position: sticky;
-  top: 85px;
   width: 300px;
   height: auto;
+
+  position: sticky;
+  top: 85px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
+
   gap: 24px;
 }
 
@@ -24,30 +26,40 @@
 
   border-radius: 3px;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
 }
 
 .StockWatchList__title {
   height: 50%;
+
   display: flex;
   align-items: center;
+
   padding: 0 24px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
   font-weight: bold;
   font-size: 15px;
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .StockWatchList__text {
   height: 50%;
+
   display: flex;
   align-items: center;
+
   padding: 0 24px;
+
   font-size: 13px;
 }
 
 .StockWatchList__button {
   height: 36px;
   width: 90%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   background-color: white;
   color: rgb(255, 118, 58);
@@ -58,10 +70,6 @@
   font-size: 12px;
   font-weight: bold;
   cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .StockWatchList__check-mark {

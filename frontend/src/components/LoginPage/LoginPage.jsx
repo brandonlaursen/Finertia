@@ -1,5 +1,4 @@
 import "./LoginPage.css";
-
 import { LuInfo } from "react-icons/lu";
 import { MdRemoveRedEye } from "react-icons/md";
 
@@ -21,7 +20,6 @@ function LoginPage() {
   const handlePasswordToggle = () => {
     setShowPassword(!showPassword);
   };
-
 
   // ! Refactor to dynamically handle errors
   const handleSubmit = async (e) => {
