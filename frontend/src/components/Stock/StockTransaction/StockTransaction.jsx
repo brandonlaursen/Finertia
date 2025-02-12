@@ -8,9 +8,13 @@ import { GrFormCheckmark } from "react-icons/gr";
 
 function StockTransaction({ stock }) {
   const sessionUser = useSelector(selectUser);
+  const [amount, setAmount] = useState(0.0);
   const [estimate, setEstimate] = useState(0);
   const [buyIn, setBuyIn] = useState("Dollars");
   const [buyInDropdown, setBuyInDropdown] = useState(false);
+
+  const { price } = stock;
+  // money / shares
 
   const buyInRef = useRef(null);
 
@@ -28,6 +32,17 @@ function StockTransaction({ stock }) {
     };
   }, []);
 
+  function handleAmountChange(e) {
+    const value = e.target.value;
+    const number = Number(value);
+    setAmount(number);
+  }
+
+  useEffect(() => {
+    const newEstimate = amount.toFixed(2) / price.toFixed(2);
+    setEstimate(newEstimate.toFixed(2));
+  }, [amount, price]);
+  console.log(amount, price, estimate);
   return (
     <div className="StockTransaction">
       <div className="StockTransaction__header">Buy {stock.symbol}</div>
@@ -90,27 +105,42 @@ function StockTransaction({ stock }) {
         </div>
 
         <div className="StockTransaction__order-section">
-          <div className="StockTransaction__order-section__text">
-            <span>Amount</span>
-          </div>
+          {buyIn === "Dollars" ? (
+            <>
+              <div className="StockTransaction__order-section__text">
+                <span>Amount</span>
+              </div>
 
-          <div className={`StockTransaction__input-wrapper`}>
-            <span className="StockTransaction__dollar-sign">$</span>
-            <input
-              type="number"
-              pattern="[0-9]*"
-              className="StockTransaction__amount-input"
-            />
-          </div>
+              <div className={`StockTransaction__input-wrapper`}>
+                <span className="StockTransaction__dollar-sign">$</span>
+                <input
+                  type="number"
+                  pattern="[0-9]*"
+                  value={amount}
+                  placeholder="0.0"
+                  className="StockTransaction__amount-input"
+                  onChange={handleAmountChange}
+                />
+              </div>
+            </>
+          ) : (
+            <h1>TBD</h1>
+          )}
         </div>
         <div className="StockTransaction__line"></div>
       </div>
 
       <div className="StockTransaction__estimate">
-        <span>Est.Quantity</span>
-        <span className="StockTransaction__estimate-amount">
-          {estimate.toFixed(2)}
-        </span>
+        {buyIn === "Dollars" ? (
+          <>
+            <span>Est.Quantity</span>
+            <span className="StockTransaction__estimate-amount">
+              {Number(estimate).toFixed(2)}
+            </span>
+          </>
+        ) : (
+          <h1>TBD</h1>
+        )}
       </div>
 
       <div className="StockTransaction__button-container">

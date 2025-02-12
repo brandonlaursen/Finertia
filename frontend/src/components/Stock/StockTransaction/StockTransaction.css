@@ -92,7 +92,8 @@
   border-radius: 3px;
   height: 32px;
   width: 50%;
-  padding: 2px 5px;
+  padding-left: 5px;
+  padding-right: 8px;
   margin-left: auto;
   margin-bottom: 4px;
 }
@@ -109,6 +110,17 @@
   outline: none;
   width: 100%;
   text-align: right;
+
+}
+
+.StockTransaction__amount-input::-webkit-outer-spin-button,
+.StockTransaction__amount-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.StockTransaction__amount-input[type=number] {
+  -moz-appearance: textfield;
 }
 
 .StockTransaction__line {
@@ -144,6 +156,11 @@
   font-weight: bold;
   border: none;
   margin-top: 20px;
+  cursor: pointer;
+}
+
+.StockTransaction__button:hover{
+  background-color: rgb(65, 248, 65);
 }
 
 .StockTransaction__estimate-amount {
@@ -171,9 +188,12 @@
   display: flex;
 
   cursor: pointer;
-  /* background-color: rgb(255, 255, 255); */
   z-index: 20;
   /* border-radius-bottom: 5px; */
+}
+
+.BuyInDropdown-option{
+
 }
 
 .BuyInDropdown-option:hover {
