@@ -32,7 +32,7 @@ module.exports = {
           unique: true,
         },
         balance: {
-          type: Sequelize.INTEGER,
+          type: Sequelize.DECIMAL(10,2),
           defaultValue: 0,
         },
         firstName: {

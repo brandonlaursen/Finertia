@@ -4,6 +4,7 @@ import { createSelector } from "reselect";
 const SET_USER = "session/setUser";
 const REMOVE_USER = "session/removeUser";
 const SET_TRANSACTION = "transactions/SET_TRANSACTION";
+const BUY_STOCK = "transactions/BUY_STOCK";
 
 const setUser = (user) => {
   return {
@@ -50,7 +51,11 @@ export const login = (user) => async (dispatch) => {
 export const restoreUser = () => async (dispatch) => {
   const response = await csrfFetch("/api/session");
   const data = await response.json();
-  dispatch(setUser(data.user));
+  console.log(data,'---')
+  if (data) {
+    dispatch(setUser(data.user));
+  }
+
   return response;
 };
 
@@ -90,6 +95,11 @@ const sessionReducer = (state = initialState, action) => {
     case REMOVE_USER:
       return { ...state, user: null };
     case SET_TRANSACTION:
+      return {
+        ...state,
+        user: { ...state.user, balance: action.balance },
+      };
+    case BUY_STOCK:
       return {
         ...state,
         user: { ...state.user, balance: action.balance },

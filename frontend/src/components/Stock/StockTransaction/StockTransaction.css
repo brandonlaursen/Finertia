@@ -120,9 +120,9 @@
   margin: 0;
 }
 
-.StockTransaction__amount-input[type=number] {
+/* .StockTransaction__amount-input[type=number] {
   -moz-appearance: textfield;
-}
+} */
 
 .StockTransaction__line {
   background-color: rgba(0, 0, 0, 0.1);

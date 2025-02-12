@@ -128,7 +128,7 @@ const listsReducer = (state = {}, action) => {
     }
     case UPDATE_LIST_STOCKS: {
       const newState = { ...state };
-
+   
       for (let listId of action.updatedListIds) {
         const found = newState[listId].Stocks.find(
           (stock) => stock.id === action.stock.id

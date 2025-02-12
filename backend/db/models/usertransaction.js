@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   UserTransaction.init(
     {
       userId: { type: DataTypes.INTEGER, allowNull: false },
-      amount: DataTypes.INTEGER,
+      amount: DataTypes.DECIMAL(10, 2),
       transactionType: { type: DataTypes.STRING, allowNull: false },
       transactionDate: { type: DataTypes.DATE, allowNull: false },
     },

@@ -36,8 +36,8 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         unique: true,
       },
-      currentPrice: DataTypes.INTEGER,
-      marketCap: DataTypes.INTEGER,
+      currentPrice: DataTypes.DECIMAL(10,2),
+      marketCap: DataTypes.DECIMAL(10,2),
     },
     {
       sequelize,

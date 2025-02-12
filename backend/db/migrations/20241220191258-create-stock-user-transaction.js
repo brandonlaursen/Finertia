@@ -32,11 +32,11 @@ module.exports = {
         allowNull: false
       },
       quantity: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DECIMAL(10,2),
         allowNull: false
       },
       purchasePrice: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DECIMAL(10,2),
         allowNull: false
       },
       purchaseDate: {

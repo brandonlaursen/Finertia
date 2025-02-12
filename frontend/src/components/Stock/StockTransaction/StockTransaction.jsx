@@ -1,13 +1,21 @@
 import "./StockTransaction.css";
 import { MdInfoOutline } from "react-icons/md";
 import { useState, useRef, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { selectUser } from "../../../../store/session";
 import { TiArrowUnsorted } from "react-icons/ti";
 import { GrFormCheckmark } from "react-icons/gr";
+import { getStockTransactions, buyStock } from "../../../../store/transactions";
 
 function StockTransaction({ stock }) {
+  const dispatch = useDispatch();
+
   const sessionUser = useSelector(selectUser);
+  const stockTransactions = useSelector(
+    (state) => state.transactions.stockTransactions
+  );
+  // console.log("stockTransactions:", stockTransactions);
+
   const [amount, setAmount] = useState(0.0);
   const [shares, setShares] = useState(0);
   const [estimate, setEstimate] = useState(0);
@@ -39,10 +47,29 @@ function StockTransaction({ stock }) {
     setAmount(number);
   }
 
+  async function handleStockTransaction() {
+    let quantity;
+    if (buyIn === "Dollars") {
+      quantity = estimate;
+    } else if (buyIn === "Shares") {
+      quantity = shares;
+    }
 
-  // async function buyShares() {
+    const transaction = {
+      stockId: +stock.id,
+      price: +stock.price,
+      quantity: +quantity,
+    };
 
-  // }
+
+    await dispatch(buyStock(transaction));
+    return;
+  }
+
+  // useEffect(() => {
+  //   console.log('fetching....')
+  //   dispatch(getStockTransactions());
+  // },[dispatch])
 
   useEffect(() => {
     const newEstimate = amount.toFixed(2) / price.toFixed(2);
@@ -190,11 +217,16 @@ function StockTransaction({ stock }) {
       </div>
 
       <div className="StockTransaction__button-container">
-        <button className="StockTransaction__button">Review Order</button>
+        <button
+          className="StockTransaction__button"
+          onClick={handleStockTransaction}
+        >
+          Review Order
+        </button>
       </div>
 
       <div className="StockTransaction_footer">
-        ${sessionUser.balance.toFixed(2)} buying power available
+        {/* ${sessionUser.balance.toFixed(2)} buying power available */}
       </div>
     </div>
   );

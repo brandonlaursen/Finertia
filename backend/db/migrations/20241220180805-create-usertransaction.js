@@ -22,7 +22,7 @@ module.exports = {
         onDelete: "CASCADE",
       },
       amount: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DECIMAL(10,2),
         allowNull: false,
       },
       transactionType: {

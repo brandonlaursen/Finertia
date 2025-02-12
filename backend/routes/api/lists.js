@@ -6,6 +6,7 @@ const { Op } = require("sequelize");
 // * Get all lists of a user
 router.get("/", async (req, res) => {
   const { id } = req.user;
+  console.log("id:", id);
   const lists = await StockList.findAll({
     where: {
       userId: id,
@@ -47,7 +48,11 @@ router.post("/", async (req, res) => {
 router.get("/:stockListId", async (req, res) => {
   const { stockListId } = req.params;
 
-  const lists = await StockList.findByPk(stockListId, {
+  const lists = await StockList.findByPk({
+    where: {
+      userId: id,
+      id: stockListId,
+    },
     include: [Stock],
   });
 
@@ -94,18 +99,26 @@ router.delete("/:stockListId", async (req, res) => {
 // * add/remove stock to list
 router.post("/update-stock-lists", async (req, res) => {
   const { stockListsIdsObj, stockId } = req.body;
+  console.log("stockListsIdsObj:", stockListsIdsObj);
 
   const { id } = req.user;
 
   const stockListsUnfiltered = await Promise.all(
     Object.keys(stockListsIdsObj).map(async (listId) => {
-      return await StockList.findByPk(listId, { include: [Stock] });
+      console.log("------>", id);
+      return await StockList.findOne({
+        where: {
+          userId: id,
+          id: listId,
+        },
+        include: [Stock],
+      });
     })
   );
 
   const stockLists = stockListsUnfiltered.filter((list) => list && list);
+  console.log(stockLists);
 
-  
   const messages = [];
   let updatedListIds = [];
   let removedFromIds = [];

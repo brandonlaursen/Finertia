@@ -25,10 +25,10 @@ module.exports = {
         unique: true,
       },
       currentPrice: {
-        type: Sequelize.INTEGER
+        type: Sequelize.DECIMAL(10,2)
       },
       marketCap: {
-        type: Sequelize.INTEGER
+        type: Sequelize.DECIMAL(10,2)
       },
       createdAt: {
         allowNull: false,

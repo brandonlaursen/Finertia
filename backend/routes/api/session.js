@@ -43,6 +43,11 @@ router.post("/", validateLogin, async (req, res, next) => {
     id: user.id,
     email: user.email,
     username: user.username,
+    balance: user.balance,
+    profilePic: user.profilePic,
+    firstName: user.firstName,
+    lastName: user.lastName,
+    joinDate: user.createdAt,
   };
 
   await setTokenCookie(res, safeUser);
@@ -56,14 +61,15 @@ router.post("/", validateLogin, async (req, res, next) => {
 router.get("/", async (req, res) => {
   const { user } = req;
 
-  const dbUser = await User.findByPk(user.id);
-
   if (user) {
+    console.log("first", user);
+    const dbUser = await User.findByPk(user.id);
+    console.log("dbUser000000000000000000000:", dbUser);
     const safeUser = {
       id: user.id,
       email: user.email,
       username: user.username,
-      balance: dbUser.balance,
+      balance: user.balance,
       profilePic: user.profilePic,
       firstName: user.firstName,
       lastName: user.lastName,

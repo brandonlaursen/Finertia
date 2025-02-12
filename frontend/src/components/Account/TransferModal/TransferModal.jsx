@@ -39,16 +39,16 @@ function TransferModal() {
     e.preventDefault();
     e.stopPropagation();
 
-    if (amount > sessionUser.balance) {
-      setError("Amount exceeds your individual accounts balance");
-      setDisableButton(true);
-      return;
-    }
-
     if (to === "Individual") {
       await dispatch(depositMoney(Number(amount)));
     }
     if (to === "Bank") {
+      if (amount > sessionUser.balance) {
+        setError("Amount exceeds your individual accounts balance");
+        setDisableButton(true);
+        return;
+      }
+
       await dispatch(withdrawMoney(Number(amount)));
     }
     closeModal();
