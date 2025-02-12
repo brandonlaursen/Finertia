@@ -58,6 +58,23 @@ function StockTransaction({ stock }) {
       quantity = shares;
     }
 
+    if (transactionType === "buy") {
+      if (amount > sessionUser.balance) {
+        return;
+      }
+      if (shares * stock.price > sessionUser.balance) {
+        return;
+      }
+    }
+    if (transactionType === "sell") {
+      if (quantity > shares ) {
+        return;
+      }
+      if (amount < quantity * stock.price) {
+        return;
+      }
+    }
+
     const transaction = {
       stockId: +stock.id,
       price: +stock.price,
@@ -99,7 +116,8 @@ function StockTransaction({ stock }) {
       if (transactionType === "sell") totalQuantity -= quantity;
     }
     setQuantity(totalQuantity);
-  }, []);
+    console.log(totalQuantity);
+  }, [stockTransactions]);
 
   async function sellAll() {
     let totalQuantity = 0;
@@ -107,7 +125,7 @@ function StockTransaction({ stock }) {
       let { transactionType, quantity } = transaction;
 
       if (transactionType === "buy") totalQuantity += quantity;
-      if (transactionType === "sell") totalQuantity += quantity;
+      if (transactionType === "sell") totalQuantity -= quantity;
     }
 
     const transaction = {
