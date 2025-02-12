@@ -1,9 +1,10 @@
 import "./HomePage.css";
 
 import NewsFeed from "../NewsFeed";
-import WatchListContainer from "../../List/ListContainer";
+import ListContainer from "../../List/ListContainer";
 
 function HomePage() {
+  console.log('rendering home page....')
   return (
     <div className="HomePage">
       <div className="HomePage__body">
@@ -17,7 +18,7 @@ function HomePage() {
           <NewsFeed />
         </div>
 
-        <WatchListContainer className="WatchList-HomePage-container" />
+        <ListContainer className="WatchList-HomePage-container" />
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ const {
   StockUserTransaction,
   Stock,
 } = require("../../db/models");
-const { Op, Transaction, ValidationErrorItemOrigin } = require("sequelize");
+
 
 router.post("/deposit", async (req, res) => {
   const { id, balance } = req.user;

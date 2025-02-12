@@ -17,15 +17,12 @@ import {
 } from "../../../../store/stocks";
 
 function NewsFeed() {
+  console.log("rendering news feed....");
   const dispatch = useDispatch();
   const stockNews = useSelector((state) => state.stocks.news);
 
   useEffect(() => {
-    async function getNews() {
-      dispatch(fetchStockNews());
-    }
-
-    getNews();
+    dispatch(fetchStockNews());
   }, [dispatch]);
 
   if (!stockNews) {

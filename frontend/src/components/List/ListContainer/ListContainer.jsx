@@ -5,23 +5,27 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { fetchLists, selectListsArray } from "../../../../store/lists";
+import { fetchAllStocks } from "../../../../store/stocks";
 
 import OpenModalButton from "../../OpenModalButton";
 import CreateListModal from "../../Modals/CreateListModal";
 
 import ListItem from "../ListItem";
-import WatchListStocks from "../ListStocks/ListStocks";
+import ListStocks from "../ListStocks/ListStocks";
 
 function ListContainer({ className }) {
+  console.log('rendering list container...')
   const dispatch = useDispatch();
 
   const lists = useSelector(selectListsArray);
+  const stocks = useSelector((state) => state.stocks.allStocks);
 
   const [selectedPopoverId, setSelectedPopoverId] = useState(null);
   const [toggleListIds, setToggleListIds] = useState([]);
 
   useEffect(() => {
     dispatch(fetchLists());
+    dispatch(fetchAllStocks());
   }, [dispatch]);
 
   return (
@@ -60,10 +64,11 @@ function ListContainer({ className }) {
                     toggleListIds={toggleListIds}
                     setToggleListIds={setToggleListIds}
                   />
-                  <WatchListStocks
+                  <ListStocks
                     toggleListIds={toggleListIds}
                     setToggleListIds={setToggleListIds}
                     list={list}
+                    stocks={stocks}
                   />
                 </>
               );

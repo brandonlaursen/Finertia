@@ -1,22 +1,11 @@
 import "./ListStocks.css";
 
 import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
 
-import { fetchAllStocks } from "../../../../store/stocks";
-
-function ListStocks({ toggleListIds, list }) {
+function ListStocks({ toggleListIds, list, stocks }) {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  const stocks = useSelector((state) => state.stocks.allStocks);
 
   const isListOpen = toggleListIds.includes(list.id);
-
-  useEffect(() => {
-    dispatch(fetchAllStocks());
-  }, [dispatch]);
 
   return (
     <>

@@ -79,6 +79,7 @@ function Stocks() {
   };
 
   useEffect(() => {
+    console.log('fetching stocks... stocks page')
     dispatch(fetchAllStocks());
   }, [dispatch]);
 
@@ -90,6 +91,9 @@ function Stocks() {
   }
 
   useEffect(() => {
+    console.log(
+      'USE EFFECT TRIGGERED'
+    )
     if (stocks && stocks.length > 0) {
       setSortedStocks(stocks);
     }

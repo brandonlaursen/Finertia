@@ -96,7 +96,6 @@ router.delete("/:stockListId", async (req, res) => {
 });
 
 // * stock to multiple list
-// * add/remove stock to list
 router.post("/update-stock-lists", async (req, res) => {
   const { stockListsIdsObj, stockId } = req.body;
 

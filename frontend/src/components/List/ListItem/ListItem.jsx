@@ -24,6 +24,8 @@ function ListItem({
   setToggleListIds,
   toggleListIds,
 }) {
+
+  console.log('rendering list item...')
   const { setModalContent, setModalClass } = useModal();
 
   const popoverRef = useRef(null);

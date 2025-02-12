@@ -3,9 +3,8 @@ const router = express.Router();
 const {
   Stock,
   StockList,
-  StockUserTransaction,
-  User,
 } = require("../../db/models");
+
 const finnhub = require("finnhub");
 
 router.get("/news", async (req, res) => {
@@ -62,7 +61,6 @@ router.get("/news/:category", async (req, res) => {
 
 router.get("/:stockSymbol", async (req, res) => {
   const { stockSymbol } = req.params;
-  const { id: userId, balance } = req.user;
 
   function getDate(daysAgo = 0) {
     let date = new Date();
@@ -244,6 +242,7 @@ router.get("/:stockSymbol", async (req, res) => {
     res.status(500).json({ error, message: "Failed to fetch stock data" });
   }
 });
+
 
 // * Get all stocks
 router.get("/", async (req, res) => {
