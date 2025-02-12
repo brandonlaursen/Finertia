@@ -1,6 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const { Stock, StockList } = require("../../db/models");
+const {
+  Stock,
+  StockList,
+  StockUserTransaction,
+  User,
+} = require("../../db/models");
 const finnhub = require("finnhub");
 
 router.get("/news", async (req, res) => {
@@ -57,6 +62,7 @@ router.get("/news/:category", async (req, res) => {
 
 router.get("/:stockSymbol", async (req, res) => {
   const { stockSymbol } = req.params;
+  const { id: userId, balance } = req.user;
 
   function getDate(daysAgo = 0) {
     let date = new Date();
@@ -84,11 +90,18 @@ router.get("/:stockSymbol", async (req, res) => {
 
   try {
     const stock = await Stock.findOne({
-      where: {
-        stockSymbol,
-      },
-      include: [StockList],
+      where: { stockSymbol },
+      include: [
+        {
+          model: StockUserTransaction,
+          where: { userId },  // Filter for the specific userId
+          include: [{ model: User }],  // Include the User model to get user details
+        },
+        StockList,
+      ],
     });
+
+    const usersShare = stock.StockUserTransactions;
 
     const todaysDate = getDate();
 

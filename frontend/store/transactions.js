@@ -37,8 +37,8 @@ const setTransactions = (transactions) => {
   };
 };
 
-export const buyStock = (transaction) => async (dispatch) => {
-  console.log("transaction:--->", transaction);
+export const buyStock = (transaction, transactionType) => async (dispatch) => {
+
   const response = await csrfFetch(
     `/api/transactions/buy/${transaction.stockId}`,
     {
@@ -47,11 +47,12 @@ export const buyStock = (transaction) => async (dispatch) => {
         stockId: transaction.stockId,
         price: transaction.price,
         quantity: transaction.quantity,
+        transactionType
       }),
     }
   );
   const data = await response.json();
-  console.log("data:", data);
+
 
   dispatch(setBuyStock(data.transaction, data.balance));
 };
@@ -59,7 +60,6 @@ export const buyStock = (transaction) => async (dispatch) => {
 export const getStockTransactions = () => async (dispatch) => {
   const response = await csrfFetch("/api/transactions/stock-transactions");
   const data = await response.json();
-  console.log("data:", data);
 
   dispatch(setStockTransactions(data.transactions));
 };
@@ -72,7 +72,7 @@ export const getTransactions = () => async (dispatch) => {
 };
 
 export const depositMoney = (amount) => async (dispatch) => {
-  console.log("redux", amount);
+
   const response = await csrfFetch("/api/transactions/deposit", {
     method: "POST",
     body: JSON.stringify({
@@ -85,7 +85,7 @@ export const depositMoney = (amount) => async (dispatch) => {
 };
 
 export const withdrawMoney = (amount) => async (dispatch) => {
-  console.log("redux", amount);
+
   const response = await csrfFetch("/api/transactions/withdraw", {
     method: "POST",
     body: JSON.stringify({

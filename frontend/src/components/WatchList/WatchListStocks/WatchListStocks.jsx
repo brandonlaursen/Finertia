@@ -4,12 +4,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchAllStocks } from "../../../../store/stocks";
 function WatchListStocks({ toggleListIds, list }) {
-  console.log("list:", list);
+  
   const isListOpen = toggleListIds.includes(list.id);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const stocks = useSelector((state) => state.stocks.allStocks);
-  console.log("stocks:", stocks);
+
 
   useEffect(() => {
     dispatch(fetchAllStocks());

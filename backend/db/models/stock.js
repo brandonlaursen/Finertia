@@ -8,20 +8,19 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-
-
       Stock.belongsToMany(models.User, {
         through: models.StockUserTransaction,
         foreignKey: "stockId",
         otherKey: "userId",
       });
 
+      Stock.hasMany(models.StockUserTransaction, { foreignKey: "stockId" });
+
       Stock.belongsToMany(models.StockList, {
         through: models.StockListJoin,
         foreignKey: "stockId",
         otherKey: "stockListId",
       });
-
     }
   }
   Stock.init(
@@ -36,8 +35,8 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         unique: true,
       },
-      currentPrice: DataTypes.DECIMAL(10,2),
-      marketCap: DataTypes.DECIMAL(10,2),
+      currentPrice: DataTypes.DECIMAL(10, 2),
+      marketCap: DataTypes.DECIMAL(10, 2),
     },
     {
       sequelize,

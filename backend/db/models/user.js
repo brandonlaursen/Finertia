@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
         onDelete: "CASCADE",
         hooks: true,
       });
-
+      User.hasMany(models.StockUserTransaction, { foreignKey: "userId" });
       User.belongsToMany(models.Stock, {
         through: models.StockUserTransaction,
         foreignKey: "userId",
@@ -41,7 +41,7 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue: "",
       },
       balance: {
-        type: DataTypes.DECIMAL(10,2),
+        type: DataTypes.DECIMAL(10, 2),
         allowNull: true,
         defaultValue: 0,
       },
@@ -85,12 +85,7 @@ module.exports = (sequelize, DataTypes) => {
       modelName: "User",
       defaultScope: {
         attributes: {
-          exclude: [
-            "hashedPassword",
-            "email",
-            "createdAt",
-            "updatedAt",
-          ],
+          exclude: ["hashedPassword", "email", "createdAt", "updatedAt"],
         },
       },
     }

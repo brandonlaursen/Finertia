@@ -19,6 +19,21 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   font-weight: bold;
   font-size: 15px;
+  gap: 8px;
+}
+
+.StockTransaction__header-buy{
+
+  height: 100%;
+  width: auto;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.StockTransaction__header-selected{
+
+   box-shadow: 0 2px 0 #33d187;
 }
 
 .StockTransaction__body {
@@ -231,4 +246,16 @@
 
 .StockTransaction__market-price-title{
   color:rgb(44, 183, 118);
+}
+
+
+.StockTransaction_footer-sell{
+  display: flex;
+  gap: 4px;
+}
+
+
+.StockTransaction_footer-text{
+  cursor: pointer;
+  color: #33d187;
 }

@@ -14,7 +14,9 @@ function StockTransaction({ stock }) {
   const stockTransactions = useSelector(
     (state) => state.transactions.stockTransactions
   );
-  // console.log("stockTransactions:", stockTransactions);
+
+  const [quantity, setQuantity] = useState(0);
+  console.log("stockTransactions:", stockTransactions);
 
   const [amount, setAmount] = useState(0.0);
   const [shares, setShares] = useState(0);
@@ -22,6 +24,7 @@ function StockTransaction({ stock }) {
   const [estimateCost, setEstimateCost] = useState(0);
   const [buyIn, setBuyIn] = useState("Dollars");
   const [buyInDropdown, setBuyInDropdown] = useState(false);
+  const [transactionType, setTransactionType] = useState("buy");
 
   const { price } = stock;
 
@@ -61,15 +64,21 @@ function StockTransaction({ stock }) {
       quantity: +quantity,
     };
 
+    await dispatch(buyStock(transaction, transactionType));
 
-    await dispatch(buyStock(transaction));
-    return;
+    let totalQuantity = 0;
+    for (let transaction of stockTransactions) {
+      let { transactionType, quantity } = transaction;
+
+      if (transactionType === "buy") totalQuantity += quantity;
+      if (transactionType === "sell") totalQuantity -= quantity;
+    }
+    setQuantity(totalQuantity);
   }
 
-  // useEffect(() => {
-  //   console.log('fetching....')
-  //   dispatch(getStockTransactions());
-  // },[dispatch])
+  useEffect(() => {
+    dispatch(getStockTransactions());
+  }, [dispatch]);
 
   useEffect(() => {
     const newEstimate = amount.toFixed(2) / price.toFixed(2);
@@ -81,9 +90,56 @@ function StockTransaction({ stock }) {
     setEstimateCost(newEstimatedCost);
   }, [shares, price]);
 
+  useEffect(() => {
+    let totalQuantity = 0;
+    for (let transaction of stockTransactions) {
+      let { transactionType, quantity } = transaction;
+
+      if (transactionType === "buy") totalQuantity += quantity;
+      if (transactionType === "sell") totalQuantity -= quantity;
+    }
+    setQuantity(totalQuantity);
+  }, []);
+
+  async function sellAll() {
+    let totalQuantity = 0;
+    for (let transaction of stockTransactions) {
+      let { transactionType, quantity } = transaction;
+
+      if (transactionType === "buy") totalQuantity += quantity;
+      if (transactionType === "sell") totalQuantity += quantity;
+    }
+
+    const transaction = {
+      stockId: +stock.id,
+      price: +stock.price,
+      quantity: +totalQuantity,
+    };
+
+    await dispatch(buyStock(transaction, transactionType));
+    setQuantity(0);
+  }
+
   return (
     <div className="StockTransaction">
-      <div className="StockTransaction__header">Buy {stock.symbol}</div>
+      <div className="StockTransaction__header">
+        <div
+          className={`StockTransaction__header-buy  ${
+            transactionType === "buy" && "StockTransaction__header-selected"
+          }`}
+          onClick={() => setTransactionType("buy")}
+        >
+          Buy {stock.symbol}
+        </div>
+        <div
+          className={`StockTransaction__header-buy  ${
+            transactionType === "sell" && "StockTransaction__header-selected"
+          }`}
+          onClick={() => setTransactionType("sell")}
+        >
+          Sell {stock.symbol}
+        </div>
+      </div>
 
       <div className="StockTransaction__body">
         <div className="StockTransaction__order-section">
@@ -96,14 +152,16 @@ function StockTransaction({ stock }) {
 
           <div className="StockTransaction__order-section__select">
             <div className="StockTransaction__order-section__container">
-              <span>Buy Order</span>
+              <span>
+                {transactionType === "buy" ? "Buy Order" : "Sell Order"}
+              </span>
             </div>
           </div>
         </div>
 
         <div className="StockTransaction__order-section">
           <div className="StockTransaction__order-section__text">
-            <span>Buy in</span>
+            <span>{transactionType === "buy" ? "Buy In" : "Sell In"}</span>
           </div>
 
           <div className="StockTransaction__order-section__select">
@@ -226,7 +284,16 @@ function StockTransaction({ stock }) {
       </div>
 
       <div className="StockTransaction_footer">
-        {/* ${sessionUser.balance.toFixed(2)} buying power available */}
+        {transactionType === "buy" ? (
+          ` $${sessionUser.balance.toFixed(2)} buying power available`
+        ) : (
+          <div className="StockTransaction_footer-sell">
+            <span>{`$${(quantity * stock.price).toFixed(2)} Available`}</span> -
+            <span className="StockTransaction_footer-text" onClick={sellAll}>
+              Sell All
+            </span>
+          </div>
+        )}
       </div>
     </div>
   );

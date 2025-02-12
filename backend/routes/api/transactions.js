@@ -8,8 +8,6 @@ const {
 } = require("../../db/models");
 const { Op, Transaction } = require("sequelize");
 
-
-
 router.post("/deposit", async (req, res) => {
   const { id, balance } = req.user;
 
@@ -100,7 +98,7 @@ router.get("/stock-transactions", async (req, res) => {
     };
   });
 
-  console.log(transactions);
+
   return res.json({
     transactions,
     message: `successfully retrieved transactions for user with id of ${id}`,
@@ -109,40 +107,40 @@ router.get("/stock-transactions", async (req, res) => {
 
 router.post("/buy/:stockId", async (req, res) => {
   const { id, balance } = req.user;
-  console.log("balance:", balance);
-  const { stockId, price, quantity } = req.body;
-  console.log(req.body);
-  const amount = +price * +quantity;
-  console.log("amount:", amount);
-  const newBalance = Math.round(balance - Number(amount));
-  console.log("newBalance:", newBalance);
 
+  const { stockId, price, quantity, transactionType } = req.body;
   const user = await User.findByPk(id);
-  console.log("user", user);
+
+  const amount = +price * +quantity;
+
+  let newBalance;
+  if(transactionType === 'buy') {
+    newBalance = Math.round(balance - Number(amount));
+  } else if(transactionType === 'sell') {
+    newBalance = Math.round(balance + Number(amount));
+  }
+
   await user.update({
     balance: newBalance,
   });
 
+  console.log(newBalance)
   const transaction = await StockUserTransaction.create({
     userId: id,
     stockId,
-    transactionType: "buy",
+    transactionType,
     quantity,
     purchasePrice: price,
     purchaseDate: new Date(),
   });
 
-  console.log("transaction:", transaction);
-
-  console.log(user);
+  console.log(transaction)
   return res.json({
     transaction,
-    balance:newBalance,
+    balance: newBalance,
     message: `successfully retrieved transactions for user with id of ${id}`,
   });
 });
-
-
 
 // * Get users transactions
 router.get("/", async (req, res) => {

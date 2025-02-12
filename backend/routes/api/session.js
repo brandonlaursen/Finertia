@@ -62,9 +62,9 @@ router.get("/", async (req, res) => {
   const { user } = req;
 
   if (user) {
-    console.log("first", user);
+
     const dbUser = await User.findByPk(user.id);
-    console.log("dbUser000000000000000000000:", dbUser);
+  
     const safeUser = {
       id: user.id,
       email: user.email,

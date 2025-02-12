@@ -18,7 +18,7 @@ function TransfersPage() {
   const transactions = useSelector(
     (state) => state.transactions.accountTransactions
   );
-  console.log("transactions:", transactions);
+
 
   useEffect(() => {
     dispatch(getTransactions());
@@ -30,8 +30,7 @@ function TransfersPage() {
     return `${parts[1]}-${parts[2]}-${parts[0]}`;
   }
 
-  console.log(convertTime("2025-02-11T19:23:02.054Z"));
-
+ 
   return (
     <div className="TransfersPage">
       <div className="TransfersPage__section">
