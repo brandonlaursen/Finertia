@@ -5,8 +5,7 @@
 
   height: 100%;
   width: 900px;
-  /* background-color: red; */
-  margin-bottom: 50px;;
+  margin-bottom: 50px;
 }
 
 .HistoryPage__section {
@@ -21,13 +20,10 @@
 
   font-size: 14px;
 
-
   border-radius: 5px;
 }
 
-
-.HistoryPage__invest-section{
-
+.HistoryPage__invest-section {
   height: 200px;
   background-color: aqua;
 }

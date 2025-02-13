@@ -12,8 +12,6 @@ import { fetchAccountTransactions } from "../../../../store/transactions";
 
 import { useModal } from "../../../context/Modal";
 
-import LoadingSpinner from "../../LoadingSpinner";
-
 function TransfersPage() {
   const { setModalContent, setModalClass } = useModal();
   const dispatch = useDispatch();
