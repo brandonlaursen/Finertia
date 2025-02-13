@@ -232,7 +232,7 @@
   padding: 8px 0px;
   align-items: center;
 
-  cursor: pointer;
+  cursor:default;
   z-index: 20;
 }
 

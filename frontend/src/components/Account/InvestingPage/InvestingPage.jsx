@@ -12,9 +12,10 @@ function InvestingPage() {
   const dispatch = useDispatch();
   const [currentPoint, setCurrentPoint] = useState(null);
   const sessionUser = useSelector(selectUser);
-  // const stockTransactions = useSelector(
-  //   (state) => state.transactions.stockTransactions
-  // );
+  const { stockSummary } = sessionUser;
+
+  const totalInvestments = Object.values(stockSummary).reduce((total, stock) =>  stock.averageCost * stock.sharesOwned, 0);
+  console.log("totalInvestments:", totalInvestments);
 
   const series = [70.0, 30.0];
   const labels = ["Stocks", "Individual Cash"];
