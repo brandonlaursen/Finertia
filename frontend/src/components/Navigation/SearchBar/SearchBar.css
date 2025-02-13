@@ -48,7 +48,7 @@
   position: absolute;
   top: 55%;
 
-  padding: 10px 24px;
+  /* padding: 10px 24px; */
 
   width: 100%;
 
@@ -64,13 +64,38 @@
   border-bottom-left-radius: 2px;
 
   list-style: none;
+  overflow: auto;
+  scrollbar-width: none;
+  max-height: 200px;
+
 }
 
 .search-results li {
   padding: 10px;
   cursor: pointer;
+
 }
 
 .search-results li:hover {
-  background-color: #f2f2f2;
+  background-color: aliceblue;
+}
+
+
+.highlight {
+  color: rgb(22, 205, 22);
+  font-weight: bold;
+}
+
+
+.results-li{
+
+  display: flex;
+  gap: 20px;
+  align-items: center;
+
+}
+
+.stock-symbol{
+
+  width: 50px;
 }

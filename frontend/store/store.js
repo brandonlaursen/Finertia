@@ -5,12 +5,14 @@ import sessionReducer from "./session";
 import stockReducer from "./stocks";
 import listsReducer from "./lists";
 import transactionsReducer from "./transactions";
+import searchReducer from "./search";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   stocks: stockReducer,
   lists: listsReducer,
   transactions: transactionsReducer,
+  search: searchReducer
 });
 
 let enhancer;

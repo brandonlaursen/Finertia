@@ -1,10 +1,51 @@
 import "./SearchBar.css";
 import { IoSearch } from "react-icons/io5";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+import { fetchSearchResults } from "../../../../store/search";
 
 function SearchBar() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const searchResults = useSelector((state) => state.search);
+
   const [isFocused, setIsFocused] = useState(false);
+  const [search, setSearch] = useState("");
+
+  const searchResultsRef = useRef(null);
+
+  useEffect(() => {
+    if (search.length > 0) {
+      dispatch(fetchSearchResults(search));
+    }
+  }, [search, dispatch]);
+
+  const handleBlur = (e) => {
+    if (
+      searchResultsRef.current &&
+      !searchResultsRef.current.contains(e.relatedTarget)
+    ) {
+      setIsFocused(false);
+    }
+  };
+
+  function highlightMatch(text, search) {
+    if (!search) return text;
+
+    const regex = new RegExp(`(${search})`, "gi");
+    return text.split(regex).map((part, index) =>
+      part.toLowerCase() === search.toLowerCase() ? (
+        <span key={index} className="highlight">
+          {part}
+        </span>
+      ) : (
+        part
+      )
+    );
+  }
 
   return (
     <div className="search-bar-container">
@@ -13,15 +54,33 @@ function SearchBar() {
         className="search-bar"
         placeholder="Search"
         onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
+        onBlur={handleBlur}
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
       ></input>
       {isFocused && (
-        <ul className="search-results">
-          <li>Stocks</li>
-          <li>Search Result 1</li>
-          <li>Search Result 2</li>
-          <li>Search Result 3</li>
-          <li>Search Result 4</li>
+        <ul className="search-results" ref={searchResultsRef}>
+          {searchResults.length > 0 &&
+            search.length > 0 &&
+            searchResults.map((result) => {
+              return (
+                <li
+                  key={result.id}
+                  onMouseDown={(e) => {
+                    e.stopPropagation(),
+                      navigate(`/stocks/${result.stockSymbol}`);
+                  }}
+                  className='results-li'
+                >
+                  <span className="stock-symbol">
+                    {highlightMatch(result.stockSymbol, search)}
+                  </span>
+                  <span className="stock-name">
+                    {highlightMatch(result.stockName, search)}
+                  </span>
+                </li>
+              );
+            })}
         </ul>
       )}
     </div>
