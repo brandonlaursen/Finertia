@@ -1,6 +1,6 @@
 import "./InvestingPage.css";
 
-import { useState } from "react";
+import { useState} from "react";
 import { useNavigate } from "react-router-dom";
 
 import ReactApexChart from "react-apexcharts";
@@ -14,14 +14,15 @@ function PortfolioStocks({ stockInvestments, stockSummary }) {
   const stockHoldings = stockSymbols.map((stockSymbol) => {
     const currentStock = stockSummary[stockSymbol];
     const { sharesOwned, averageCost } = currentStock;
+
     const total = (sharesOwned * averageCost).toFixed(2);
     return Number(total);
   });
 
+  console.log(currentPoint);
+
   const series = stockHoldings;
-  console.log("series:", series);
   const labels = stockSymbols;
-  console.log("labels:", labels);
 
   const [options] = useState({
     chart: {
@@ -84,8 +85,6 @@ function PortfolioStocks({ stockInvestments, stockSummary }) {
                 <th>Shares</th>
                 <th>Price</th>
                 <th>Average Cost</th>
-                <th>Total Return</th>
-                <th>Equity</th>
               </tr>
             </thead>
             <tbody className="InvestingPage__stocks__table-body">
@@ -101,12 +100,6 @@ function PortfolioStocks({ stockInvestments, stockSummary }) {
                     <td>{stock.sharesOwned.toFixed(2)}</td>
                     <td>-</td>
                     <td>${stock.averageCost.toFixed(2)}</td>
-                    <td>
-                      <span className="InvestingPage__stocks-table-arrow-container">
-                        12
-                      </span>
-                    </td>
-                    <td>200</td>
                   </tr>
                 );
               })}
@@ -124,18 +117,13 @@ function PortfolioStocks({ stockInvestments, stockSummary }) {
           <span className="InvestingPage__section-right__value">
             {currentPoint ? (
               <>
-                <span>{currentPoint.value}</span>
-                <span>${currentPoint.label}</span>
-                <span className="InvestingPage__section-right__value-shares">
-                  {`${stockSummary[currentPoint.value].sharesOwned.toFixed(
-                    2
-                  )} Shares`}
-                </span>
+                <span>{currentPoint.label}</span>
+                <span>${currentPoint.value}</span>
               </>
             ) : (
               <>
                 <span>Stocks</span>
-                <span>${stockInvestments.toFixed(2)}</span>
+                <span>${stockInvestments?.toFixed(2)}</span>
               </>
             )}
           </span>

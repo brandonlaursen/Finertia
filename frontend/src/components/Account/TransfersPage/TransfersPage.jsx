@@ -12,6 +12,8 @@ import { fetchAccountTransactions } from "../../../../store/transactions";
 
 import { useModal } from "../../../context/Modal";
 
+import LoadingSpinner from "../../LoadingSpinner";
+
 function TransfersPage() {
   const { setModalContent, setModalClass } = useModal();
   const dispatch = useDispatch();
@@ -21,15 +23,16 @@ function TransfersPage() {
     (state) => state.transactions.accountTransactions
   );
 
+  const sortedTransactions = transactions.sort((a, b) => {
+    const dateA = a.transactionDate ? new Date(a.transactionDate) : new Date(0);
+    const dateB = b.transactionDate ? new Date(b.transactionDate) : new Date(0);
+
+    return dateB - dateA;
+  });
+
   useEffect(() => {
     dispatch(fetchAccountTransactions());
   }, [dispatch]);
-
-  function convertTime(timestamp) {
-    const parts = timestamp.split("T")[0].split("-");
-
-    return `${parts[1]}-${parts[2]}-${parts[0]}`;
-  }
 
   return (
     <div className="TransfersPage">
@@ -101,10 +104,13 @@ function TransfersPage() {
           Completed Transfers
         </div>
 
-        {transactions.length &&
-          transactions.map((transaction, i) => {
+        {sortedTransactions.length > 0 &&
+          sortedTransactions.map((transaction, i) => {
             return (
-              <div className="TransfersPage__completed-transactions-container" key={i}>
+              <div
+                className="TransfersPage__completed-transactions-container"
+                key={i}
+              >
                 <div className="TransfersPage__completed-contents">
                   <span className="TransfersPage__completed-transactions-title">
                     {transaction.transactionType === "withdraw"
@@ -112,7 +118,14 @@ function TransfersPage() {
                       : "Deposit to Individual from Finertia Band "}
                   </span>
                   <span className="TransfersPage__completed-transactions-date">
-                    {convertTime(transaction.transactionDate)}
+                    {new Date(transaction.transactionDate).toLocaleString(
+                      "en-US",
+                      {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                      }
+                    )}
                   </span>
                 </div>
                 <div className="TransfersPage__completed-transactions-amount">
