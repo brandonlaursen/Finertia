@@ -1,6 +1,4 @@
 .HomePage {
-  height: 100%;
-
   display: flex;
   justify-content: center;
 
@@ -15,7 +13,6 @@
 }
 
 .HomePage__main {
-  height: 100%;
   width: 950px;
 
   display: flex;
@@ -23,7 +20,7 @@
   flex: 1;
 
   padding-top: 36px;
-  padding-right: 50px;
+  padding-right: 30px;
 }
 
 .HomePage__main__section {
@@ -44,12 +41,12 @@
 }
 
 .HomePage__main__banner {
-  height: 270px;
+  /* height: 270px; */
 
-  background-image: url("https://png.pngtree.com/png-clipart/20240512/original/pngtree-flying-space-shuttle-on-space-with-planets-and-asteroid-in-cartoon-png-image_15072578.png");
+  /* background-image: url("https://png.pngtree.com/png-clipart/20240512/original/pngtree-flying-space-shuttle-on-space-with-planets-and-asteroid-in-cartoon-png-image_15072578.png");
   background-size: contain;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
 }
 
 .HomePage__main__subtitle {
@@ -60,4 +57,99 @@
 
   font-size: 40px;
   font-weight: bold;
+}
+
+.HomePage__main__user-info {
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+
+  font-size: 24px;
+}
+
+.HomePage__main__chart-container {
+  height: 200px;
+}
+
+.HomePage__main__buying-power {
+  height: 75px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  border-bottom: 1px solid rgb(237, 237, 237);
+  border-top: 1px solid rgb(237, 237, 237);
+}
+
+.HomePage__main__buying-power-span {
+  height: 100%;
+  width: 100px;
+
+  display: flex;
+  justify-content: end;
+  align-items: center;
+
+  gap: 8px;
+}
+
+.HomePage__main__buying-power__dropdown {
+  height: 170px;
+
+  display: flex;
+  justify-content: end;
+
+}
+
+.HomePage__main__dropdown-contents {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+}
+
+.dropdown-contents-text-container {
+  height: 60%;
+  border-bottom: 2px solid rgb(237, 237, 237);
+
+
+}
+
+.dropdown-contents-text {
+  display: flex;
+  justify-content: space-between;
+  height: 50%;
+  align-items: center;
+
+}
+
+.dropdown-contents-text-button-container{
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30%;
+
+}
+
+.dropdown-contents-text-button{
+  background-color: black;
+  color: white;
+  width: 50%;
+  height: 80%;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.dropdown-contents-text-button:hover{
+  background-color: rgb(51, 51, 51);
 }

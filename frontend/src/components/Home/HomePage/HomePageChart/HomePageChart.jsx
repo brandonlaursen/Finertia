@@ -1,0 +1,114 @@
+import { FaMillSign } from "react-icons/fa6";
+import "./HomePageChart.css";
+
+import ReactApexChart from "react-apexcharts";
+
+function HomePageChart() {
+  const [options] = useState({
+    chart: {
+      type: "line",
+      height: 350,
+      zoom: {
+        enabled: false,
+      },
+      tickAmount: 10,
+      plotOptions: {
+        line: {
+          isSlopeChart: false,
+          colors: {
+            threshold: "239",
+            colorAboveThreshold: "#00E396",
+            colorBelowThreshold: "FF4560",
+          },
+        },
+      },
+    },
+    xaxis: {
+      type: "datetime",
+      datetimeDiscrete: true,
+      labels: { show: false },
+      tickAmount: "dataPoints",
+      axisBorder: { show: false },
+      axisTicks: { show: false },
+      crosshairs: {
+        show: true,
+        position: "back",
+        stroke: {
+          color: "#b6b6b6",
+          width: 1,
+          dashArray: 0,
+        },
+      },
+      tooltip: {
+        enabled: false,
+      },
+    },
+    yaxis: {
+      datetimeDiscrete: true,
+      labels: { show: false },
+      axisBorder: { show: false },
+      axisTicks: { show: false },
+    },
+    colors: ["#00E396"],
+    stroke: {
+      width: 3,
+      curve: "straight",
+    },
+    markers: {
+      size: 0,
+    },
+    grid: {
+      show: false,
+    },
+    tooltip: {
+      x: {
+        formatter: (timestamp) => convertToEst(timestamp, selectedTimeFrame),
+      },
+      marker: {
+        show: false,
+      },
+    },
+  });
+
+  // we need the users stock shares and the dates theyve bought them
+  // how the users investments have changed over time
+  const [data, setData] = useState([]);
+
+  const series = [
+    {
+      name: "Price",
+      data,
+    },
+  ];
+
+
+  function convertToEst(timestamp) {
+    const date = new Date(timestamp);
+
+    const options1 = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      timeZone: "America/New_York",
+    };
+
+    const dateTimeFormat = new Intl.DateTimeFormat("en-US", options1);
+
+    return dateTimeFormat.format(date);
+  }
+
+  return (
+    <div>
+      <ReactApexChart
+        options={options}
+        series={series}
+        type="line"
+        height={options.chart.height}
+      />
+    </div>
+  );
+}
+
+export default HomePageChart;
