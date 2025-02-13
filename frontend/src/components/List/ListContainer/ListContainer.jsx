@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { fetchLists, selectListsArray } from "../../../../store/lists";
 import { fetchAllStocks } from "../../../../store/stocks";
+import { selectUser } from "../../../../store/session";
 
 import OpenModalButton from "../../OpenModalButton";
 import CreateListModal from "../../Modals/CreateListModal";
@@ -19,6 +20,7 @@ function ListContainer({ className }) {
 
   const lists = useSelector(selectListsArray);
   const stocks = useSelector((state) => state.stocks.allStocks);
+  const sessionUser = useSelector(selectUser);
 
   const [selectedPopoverId, setSelectedPopoverId] = useState(null);
   const [toggleListIds, setToggleListIds] = useState([]);
@@ -69,6 +71,7 @@ function ListContainer({ className }) {
                     setToggleListIds={setToggleListIds}
                     list={list}
                     stocks={stocks}
+                    sessionUser={sessionUser}
                   />
                 </>
               );

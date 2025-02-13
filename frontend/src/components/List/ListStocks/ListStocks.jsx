@@ -2,7 +2,7 @@ import "./ListStocks.css";
 
 import { useNavigate } from "react-router-dom";
 
-function ListStocks({ toggleListIds, list, stocks }) {
+function ListStocks({ toggleListIds, list, stocks, sessionUser }) {
   const navigate = useNavigate();
 
   const isListOpen = toggleListIds.includes(list.id);
@@ -24,24 +24,30 @@ function ListStocks({ toggleListIds, list, stocks }) {
                       {stock.stockSymbol}
                     </span>
                     <span className="WatchListStocks__container-subtitle">
-                      1 share
+                      {sessionUser?.stockSummary[
+                        stock.stockSymbol
+                      ]?.sharesOwned?.toFixed(2)
+                        ? `${sessionUser?.stockSummary[
+                            stock.stockSymbol
+                          ]?.sharesOwned?.toFixed(2)} Shares`
+                        : ""}
                     </span>
                   </div>
                   <span className="WatchListStocks__container-graph"></span>
                   <span className="WatchListStocks__container-data">
                     <span className={`WatchListStocks__container-price`}>
-                      ${stocks[stock.id].current_price}
+                      ${stocks[stock.id]?.current_price}
                     </span>
                     <span
                       className={`WatchListStocks__container-percent ${
-                        stocks[stock.id].todays_change_percent.toFixed(2) > 0
+                        stocks[stock.id]?.todays_change_percent.toFixed(2) > 0
                           ? "WatchListStocks__percent-green"
                           : "WatchListStocks__percent-red"
                       }`}
                     >
-                      {stocks[stock.id].todays_change_percent.toFixed(2) > 0 &&
+                      {stocks[stock.id]?.todays_change_percent.toFixed(2) > 0 &&
                         "+"}
-                      {stocks[stock.id].todays_change_percent.toFixed(2)}%
+                      {stocks[stock.id]?.todays_change_percent.toFixed(2)}%
                     </span>
                   </span>
                 </div>

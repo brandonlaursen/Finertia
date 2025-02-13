@@ -117,7 +117,6 @@ router.get("/stock-summary", async (req, res) => {
     where: { userId: id },
     include: [{ model: Stock, attributes: ["id", "stockSymbol", "stockName"] }],
   });
-
   const transactions = userTransactions.map((transaction) => {
     const {
       stockId,
@@ -130,6 +129,7 @@ router.get("/stock-summary", async (req, res) => {
 
     return {
       stockId,
+      stockName: Stock.stockName,
       stockSymbol: Stock.stockSymbol,
       transactionType,
       quantity,
@@ -141,11 +141,18 @@ router.get("/stock-summary", async (req, res) => {
   const stockSummary = {};
 
   transactions.forEach((transaction) => {
-    const { stockSymbol, stockId, quantity, purchasePrice, purchaseDate } =
-      transaction;
+    const {
+      stockSymbol,
+      stockId,
+      quantity,
+      purchasePrice,
+      purchaseDate,
+      stockName,
+    } = transaction;
 
     if (!stockSummary[stockSymbol]) {
       stockSummary[stockSymbol] = {
+        stockName,
         stockSymbol,
         stockId,
         sharesOwned: 0,
@@ -190,7 +197,10 @@ router.post("/trade/:stockId", async (req, res) => {
   const { stockId, price, quantity, transactionType } = req.body;
   const user = await User.findByPk(id);
 
+  console.log("============>", stockId, price, quantity, transactionType);
+
   const amount = +price * +quantity;
+  console.log("amount:", amount);
 
   let newBalance;
   if (transactionType === "buy") {

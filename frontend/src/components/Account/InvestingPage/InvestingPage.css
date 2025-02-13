@@ -6,6 +6,7 @@
   flex-direction: column;
 
   margin: 0px auto 0;
+  margin-bottom: 200px;
 }
 
 .InvestingPage__body {
@@ -183,4 +184,10 @@
 
 .apexcharts-canvas {
   cursor: pointer;
+}
+
+
+.InvestingPage__section-right__value-shares{
+  font-size: 14px;
+  color: #494949;
 }

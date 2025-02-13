@@ -13,6 +13,17 @@ import EditProfileModal from "../Modals/EditProfileModal/EditProfileModal";
 function ProfilePage() {
   const sessionUser = useSelector(selectUser);
   const { setModalContent, setModalClass } = useModal();
+  const { stockSummary } = sessionUser;
+  console.log("stockSummary:", stockSummary);
+
+  const stockInvestments = Object.values(stockSummary).reduce(
+    (total, stock) => (total += stock.averageCost * stock.sharesOwned),
+    0
+  );
+
+  let { balance } = sessionUser;
+  const total = balance + stockInvestments;
+
 
   return (
     <div className="ProfilePage">
@@ -56,7 +67,7 @@ function ProfilePage() {
 
         <div className="ProfilePage__total">
           <span className="ProfilePage__total__balance">
-            ${sessionUser.balance}
+            ${total.toFixed(2)}
           </span>
           Total in Finertia
         </div>
@@ -74,15 +85,15 @@ function ProfilePage() {
               <span className="ProfilePage__investments__details__value-text">
                 Total Individual value
               </span>
-              ${sessionUser.balance}
+              ${total.toFixed(2)}
             </div>
 
             <div className="ProfilePage__investments__details__value ProfilePage__investments__details__subtext">
-              <span>Individual holdings</span>${sessionUser.balance}
+              <span>Individual holdings</span>${stockInvestments.toFixed(2)}
             </div>
 
             <div className="ProfilePage__investments__details__value ProfilePage__investments__details__subtext">
-              <span>Individual cash</span>${sessionUser.balance}
+              <span>Individual cash</span>${sessionUser.balance.toFixed(2)}
             </div>
           </div>
         </div>
@@ -93,7 +104,7 @@ function ProfilePage() {
           <div className="ProfilePage__overview__contents">
             <div className="ProfilePage__overview__button">
               <span>Stocks</span>
-              <span className="ProfilePage__overview__percentage">0%</span>
+              <span className="ProfilePage__overview__percentage">100%</span>
             </div>
             <div className="ProfilePage__overview__button">
               <span>ETFs</span>

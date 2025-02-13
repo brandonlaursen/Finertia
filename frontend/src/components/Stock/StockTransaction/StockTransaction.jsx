@@ -11,7 +11,6 @@ import {
   executeStockTrade,
 } from "../../../../store/transactions";
 
-
 function StockTransaction({ stock }) {
   const dispatch = useDispatch();
 
@@ -19,7 +18,6 @@ function StockTransaction({ stock }) {
   const stockSummary = sessionUser.stockSummary[stock.symbol];
   const sharesOwned = stockSummary?.sharesOwned || 0;
 
-  
   const buyInRef = useRef(null);
 
   // * The dollar amount a user wants to trade
@@ -79,6 +77,10 @@ function StockTransaction({ stock }) {
   function handleTradeAmountChange(e) {
     const value = e.target.value;
     const amount = Number(value);
+    if (amount < 0) {
+      console.log("Trade amount cannot be negative.");
+      return;
+    }
     setTradeAmount(amount);
     setSharesToTrade(0);
   }
@@ -86,6 +88,10 @@ function StockTransaction({ stock }) {
   function handleTradeSharesChange(e) {
     const value = e.target.value;
     const amount = Number(value);
+    if (amount < 0) {
+      console.log("Trade amount cannot be negative.");
+      return;
+    }
     setSharesToTrade(amount);
     setTradeAmount(0);
   }
@@ -101,12 +107,32 @@ function StockTransaction({ stock }) {
     const numberOfShares =
       buyIn === "Dollars" ? estimatedShares : sharesToTrade;
 
+    if (balance <= 0 && transactionType === "buy") {
+      console.log("Cannot buy, insufficient balance.");
+      return;
+    }
+
+    if (sharesOwned <= 0 && transactionType === "sell") {
+      console.log("Cannot sell, no shares owned.");
+      return;
+    }
+
     if (
       (buyIn === "Dollars" && tradeAmount <= 0) ||
       (buyIn === "Shares" && sharesToTrade <= 0)
     ) {
       console.log(`NOT A VALID AMOUNT ${tradeAmount} ${sharesToTrade}`);
       return false;
+    }
+
+    if (isNaN(tradeAmount) || tradeAmount < 0) {
+      console.log("Invalid trade amount.");
+      return;
+    }
+
+    if (isNaN(sharesToTrade) || sharesToTrade < 0) {
+      console.log("Invalid share amount.");
+      return;
     }
 
     if (transactionType === "buy") {
@@ -130,6 +156,14 @@ function StockTransaction({ stock }) {
       console.log(
         `ATTEMPTING TO SELL ${estimatedShares} or ${sharesToTrade} with ${sharesOwned}`
       );
+
+      if (estimatedShares < 0 || sharesToTrade < 0) {
+        console.log(
+          "Cannot execute transaction: Shares to trade cannot be negative."
+        );
+        return;
+      }
+
       if (estimatedShares > sharesOwned) {
         console.log(
           `ESTIMATED SHARES - ${estimatedShares} EXCEEDS SHARES OWNED  - ${sharesOwned}`

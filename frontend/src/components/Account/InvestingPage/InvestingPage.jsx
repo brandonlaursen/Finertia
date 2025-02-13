@@ -1,220 +1,57 @@
 import "./InvestingPage.css";
 
-import ReactApexChart from "react-apexcharts";
-
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { selectUser } from "../../../../store/session";
 import { fetchStockTransactions } from "../../../../store/transactions";
 
+import PortfolioTotal from "./PortfolioTotal";
+import PortfolioStocks from "./PortfolioStocks";
+import LoadingSpinner from "../../LoadingSpinner";
+
 function InvestingPage() {
   const dispatch = useDispatch();
-  const [currentPoint, setCurrentPoint] = useState(null);
+
   const sessionUser = useSelector(selectUser);
   const { stockSummary } = sessionUser;
+  console.log("stockSummary:", stockSummary);
 
-  const totalInvestments = Object.values(stockSummary).reduce((total, stock) =>  stock.averageCost * stock.sharesOwned, 0);
-  console.log("totalInvestments:", totalInvestments);
+  const stockInvestments = Object.values(stockSummary).reduce(
+    (total, stock) => (total += stock.averageCost * stock.sharesOwned),
+    0
+  );
 
-  const series = [70.0, 30.0];
-  const labels = ["Stocks", "Individual Cash"];
+  let { balance } = sessionUser;
+  const total = balance + stockInvestments;
+
+  const stockPercentage = Math.round((stockInvestments / total) * 100).toFixed(
+    2
+  );
+  const balancePercentage = Math.round((balance / total) * 100).toFixed(2);
 
   useEffect(() => {
     dispatch(fetchStockTransactions());
   }, [dispatch]);
 
-  const [options] = useState({
-    chart: {
-      type: "donut",
-      width: 250,
-      height: 250,
-      events: {
-        dataPointMouseEnter: function (event, chartContext, opts) {
-          setCurrentPoint({
-            value: series[opts.dataPointIndex],
-            label: labels[opts.dataPointIndex],
-          });
-        },
-        dataPointMouseLeave: function () {
-          setCurrentPoint(null);
-        },
-      },
-    },
-    labels: labels,
-    legend: {
-      show: false,
-    },
-    plotOptions: {
-      pie: {
-        donut: {
-          size: "88%",
-          background: "transparent",
-        },
-      },
-    },
-    dataLabels: {
-      enabled: false,
-      formatter: function (value, { seriesIndex, w }) {
-        return "$" + w.config.series[seriesIndex];
-      },
-
-      style: {
-        fontSize: "16px",
-      },
-    },
-    tooltip: {
-      enabled: false,
-    },
-    colors: ["#00f0A8", "#33FF57"],
-    fill: {
-      type: "solid",
-    },
-  });
-
+  if (!stockSummary) return <LoadingSpinner />;
   return (
     <div className="InvestingPage">
       <div>
         <div className="InvestingPage__body">
-          <div className="InvestingPage__portfolio-section">
-            <span className="InvestingPage__portfolio-title">
-              Total Portfolio value
-            </span>
-            <span className="InvestingPage__portfolio-value">
-              ${sessionUser.balance}
-            </span>
-          </div>
+          <PortfolioTotal
+            total={total}
+            stockPercentage={stockPercentage}
+            stockInvestments={stockInvestments}
+            balancePercentage={balancePercentage}
+            balance={balance}
+          />
 
-          <div className="InvestingPage__section">
-            <div className="InvestingPage__section-left">
-              <div className="InvestingPage__section-left__main">
-                <span className="InvestingPage__section-left__main-title">
-                  Stocks
-                </span>
-                <div className="InvestingPage__section-left__main-value-container">
-                  <span className="InvestingPage__section-left__main-value">
-                    70%
-                  </span>
-                  <span>$70.00</span>
-                </div>
-              </div>
-
-              <div className="InvestingPage__section-left__main">
-                <span className="InvestingPage__section-left__main-title">
-                  Individual cash
-                </span>
-                <div className="InvestingPage__section-left__main-value-container">
-                  <span className="InvestingPage__section-left__main-value">
-                    30%
-                  </span>
-                  <span>$30.00</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="InvestingPage__section-right">
-              <ReactApexChart
-                options={options}
-                series={series}
-                type="donut"
-                height={options.chart.height}
-              />
-              <span className="InvestingPage__section-right__value">
-                {currentPoint ? (
-                  <>
-                    <span>{currentPoint.label}</span>
-                    <span>${currentPoint.value}</span>
-                  </>
-                ) : (
-                  <>
-                    <span>Total portfolio value</span>
-                    <span>$100</span>
-                  </>
-                )}
-              </span>
-            </div>
-          </div>
-
-          <div className="InvestingPage__stock-section">
-            <span className="InvestingPage__stock-section__title">Stocks</span>
-          </div>
-          {/*  */}
-          <div className="InvestingPage__section">
-            <div className="InvestingPage__section-left">
-              <table className="InvestingPage__stocks__table">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Symbol</th>
-                    <th>Shares</th>
-                    <th>Price</th>
-                    <th>Average Cost</th>
-                    <th>Total Return</th>
-                    <th>Equity</th>
-                  </tr>
-                </thead>
-                <tbody className="InvestingPage__stocks__table-body">
-                  {/* {stockTransactions.length &&
-                    stockTransactions.map((transaction) => {
-                      return (
-                        <tr className="InvestingPage__stock-row">
-                          <td>apple</td>
-                          <td>AAPL</td>
-                          <td>20</td>
-                          <td>5</td>
-                          <td>200</td>
-                          <td>
-                            <span className="InvestingPage__stocks-table-arrow-container">
-                              12
-                            </span>
-                          </td>
-                          <td>200</td>
-                          <td></td>
-                        </tr>
-                      );
-                    })} */}
-                  {/* <tr className="InvestingPage__stock-row">
-                    <td>apple</td>
-                    <td>AAPL</td>
-                    <td>20</td>
-                    <td>5</td>
-                    <td>200</td>
-                    <td>
-                      <span className="InvestingPage__stocks-table-arrow-container">
-                        12
-                      </span>
-                    </td>
-                    <td>200</td>
-                    <td></td>
-                  </tr>
-            */}
-                </tbody>
-              </table>
-            </div>
-
-            <div className="InvestingPage__section-right">
-              {" "}
-              <ReactApexChart
-                options={options}
-                series={series}
-                type="donut"
-                height={options.chart.height}
-              />
-              <span className="InvestingPage__section-right__value">
-                {currentPoint ? (
-                  <>
-                    <span>{currentPoint.label}</span>
-                    <span>${currentPoint.value}</span>
-                  </>
-                ) : (
-                  <>
-                    <span>Total portfolio value</span>
-                    <span>$100</span>
-                  </>
-                )}
-              </span>
-            </div>
-          </div>
+          <PortfolioStocks
+            stockSummary={stockSummary}
+            stockInvestments={stockInvestments}
+            balance={balance}
+          />
         </div>
       </div>
     </div>
