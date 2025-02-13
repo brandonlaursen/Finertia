@@ -11,20 +11,18 @@ import {
   executeStockTrade,
 } from "../../../../store/transactions";
 
-import { isValidTransaction, calculateOwnedShares } from "./helpers";
+import { isValidTransaction } from "./helpers";
 
 function StockTransaction({ stock }) {
   const dispatch = useDispatch();
 
   const sessionUser = useSelector(selectUser);
-  const stockTransactions = useSelector(
-    (state) => state.transactions.stockTransactions
-  );
+  const stockSummary = sessionUser.stockSummary[stock.symbol];
+  const { sharesOwned } = stockSummary;
+
+  console.log("stockSummary:", stockSummary);
 
   const buyInRef = useRef(null);
-
-  // * How many shares a users owns
-  const [userOwnedShares, setUserOwnedShares] = useState(0);
 
   // * The dollar amount a user wants to trade
   const [tradeAmount, setTradeAmount] = useState(0.0);
@@ -54,12 +52,6 @@ function StockTransaction({ stock }) {
   useEffect(() => {
     dispatch(fetchStockTransactions());
   }, [dispatch]);
-
-  // * Get users owned shares of stock
-  useEffect(() => {
-    const getUsersOwnedShares = calculateOwnedShares(stockTransactions);
-    setUserOwnedShares(getUsersOwnedShares);
-  }, [stockTransactions]);
 
   // * Update estimated amount of shares
   useEffect(() => {
@@ -106,10 +98,11 @@ function StockTransaction({ stock }) {
       buyIn === "Dollars" ? estimatedShares : sharesToTrade;
 
     // * Check if this is a valid transaction
+    if (tradeAmount === 0 || sharesToTrade === 0) return false;
     if (
       !isValidTransaction(
         balance,
-        userOwnedShares,
+        sharesOwned,
         price,
         transactionType,
         tradeAmount,
@@ -125,25 +118,20 @@ function StockTransaction({ stock }) {
     };
 
     // * Execute trade
-    await dispatch(executeStockTrade(transaction, transactionType));
-
-    // * Update user-owned shares
-    const getUsersOwnedShares = calculateOwnedShares(stockTransactions);
-    setUserOwnedShares(getUsersOwnedShares);
+    await dispatch(
+      executeStockTrade(transaction, transactionType, stock.symbol)
+    );
   }
 
   // * Sell all shares of stock
   async function handleSellAll() {
-    const getUsersOwnedShares = calculateOwnedShares(stockTransactions);
-
     const transaction = {
       stockId: stock.id,
       price,
-      quantity: getUsersOwnedShares,
+      quantity: sharesOwned,
     };
 
     await dispatch(executeStockTrade(transaction, transactionType));
-    setUserOwnedShares(0);
   }
 
   return (
@@ -314,8 +302,10 @@ function StockTransaction({ stock }) {
           ` $${balance.toFixed(2)} buying power available`
         ) : (
           <div className="StockTransaction_footer-sell">
-            {console.log(userOwnedShares, price)}
-            <span>{`$${(Number(userOwnedShares) * price).toFixed(2)} Available`}</span>-
+            <span>{`$${(Number(sharesOwned) * price).toFixed(
+              2
+            )} Available`}</span>
+            -
             <span
               className="StockTransaction_footer-text"
               onClick={handleSellAll}

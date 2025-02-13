@@ -9,10 +9,11 @@ const ADD_ACCOUNT_TRANSACTION = "transactions/ADD_ACCOUNT_TRANSACTION";
 const ADD_STOCK_TRANSACTION = "transactions/ADD_STOCK_TRANSACTION";
 
 // * Action Creators
-const setUser = (user) => {
+const setUser = (user, stockSummary) => {
   return {
     type: SET_USER,
-    payload: user,
+    user,
+    stockSummary,
   };
 };
 
@@ -62,10 +63,14 @@ export const logout = () => async (dispatch) => {
 
 export const restoreUser = () => async (dispatch) => {
   const response = await csrfFetch("/api/session");
-  const data = await response.json();
+  const userInfo = await response.json();
 
-  if (data) {
-    dispatch(setUser(data.user));
+  if (userInfo) {
+    const response = await csrfFetch("/api/transactions/stock-summary");
+    const data = await response.json();
+    console.log("stockSummary:", data);
+
+    dispatch(setUser(userInfo.user, data.stockSummary));
   }
 
   return response;
@@ -96,7 +101,10 @@ const initialState = { user: null };
 const sessionReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_USER:
-      return { ...state, user: action.payload };
+      return {
+        ...state,
+        user: { ...action.user, stockSummary: { ...action.stockSummary } },
+      };
     case REMOVE_USER:
       return { ...state, user: null };
     case ADD_ACCOUNT_TRANSACTION:
@@ -107,7 +115,11 @@ const sessionReducer = (state = initialState, action) => {
     case ADD_STOCK_TRANSACTION:
       return {
         ...state,
-        user: { ...state.user, balance: action.updatedBalance },
+        user: {
+          ...state.user,
+          balance: action.updatedBalance,
+          stockSummary: action.updatedStockSummary,
+        },
       };
     default:
       return state;

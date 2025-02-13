@@ -12,6 +12,9 @@ function InvestingPage() {
   const dispatch = useDispatch();
   const [currentPoint, setCurrentPoint] = useState(null);
   const sessionUser = useSelector(selectUser);
+  // const stockTransactions = useSelector(
+  //   (state) => state.transactions.stockTransactions
+  // );
 
   const series = [70.0, 30.0];
   const labels = ["Stocks", "Individual Cash"];
@@ -150,7 +153,26 @@ function InvestingPage() {
                   </tr>
                 </thead>
                 <tbody className="InvestingPage__stocks__table-body">
-                  <tr className="InvestingPage__stock-row">
+                  {/* {stockTransactions.length &&
+                    stockTransactions.map((transaction) => {
+                      return (
+                        <tr className="InvestingPage__stock-row">
+                          <td>apple</td>
+                          <td>AAPL</td>
+                          <td>20</td>
+                          <td>5</td>
+                          <td>200</td>
+                          <td>
+                            <span className="InvestingPage__stocks-table-arrow-container">
+                              12
+                            </span>
+                          </td>
+                          <td>200</td>
+                          <td></td>
+                        </tr>
+                      );
+                    })} */}
+                  {/* <tr className="InvestingPage__stock-row">
                     <td>apple</td>
                     <td>AAPL</td>
                     <td>20</td>
@@ -164,8 +186,7 @@ function InvestingPage() {
                     <td>200</td>
                     <td></td>
                   </tr>
-
-                  <tr className="InvestingPage__stock-row"></tr>
+            */}
                 </tbody>
               </table>
             </div>

@@ -30,11 +30,12 @@ const setStockTransactions = (transactions) => {
   };
 };
 
-const addStockTransaction = (createdTransaction, updatedBalance) => {
+const addStockTransaction = (createdTransaction, updatedBalance, updatedStockSummary) => {
   return {
     type: ADD_STOCK_TRANSACTION,
     createdTransaction,
     updatedBalance,
+    updatedStockSummary
   };
 };
 
@@ -94,7 +95,7 @@ export const executeStockTrade = (transaction, transactionType) => async (dispat
 
     const data = await response.json();
 
-    dispatch(addStockTransaction(data.transaction, data.balance));
+    dispatch(addStockTransaction(data.transaction, data.balance, data.stockSummary));
   };
 
 // * Transactions reducer

@@ -9,6 +9,7 @@ function validateSellTransaction(
   estimatedCost
 ) {
   const priceOfTransaction = userOwnedShares * price;
+
   return (
     tradeAmount <= priceOfTransaction && estimatedCost <= priceOfTransaction
   );
