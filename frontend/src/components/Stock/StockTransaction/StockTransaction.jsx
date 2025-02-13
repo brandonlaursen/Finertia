@@ -11,7 +11,6 @@ import {
   executeStockTrade,
 } from "../../../../store/transactions";
 
-import { isValidTransaction } from "./helpers";
 
 function StockTransaction({ stock }) {
   const dispatch = useDispatch();
@@ -20,8 +19,7 @@ function StockTransaction({ stock }) {
   const stockSummary = sessionUser.stockSummary[stock.symbol];
   const sharesOwned = stockSummary?.sharesOwned || 0;
 
-  console.log("stockSummary:", stockSummary);
-
+  
   const buyInRef = useRef(null);
 
   // * The dollar amount a user wants to trade
