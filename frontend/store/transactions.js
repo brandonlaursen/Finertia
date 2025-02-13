@@ -78,11 +78,11 @@ export const fetchStockTransactions = () => async (dispatch) => {
   dispatch(setStockTransactions(transactions));
 };
 
-export const executeStockTrade =
-  (transaction, transactionType) => async (dispatch) => {
+export const executeStockTrade = (transaction, transactionType) => async (dispatch) => {
+    console.log("transaction:", transaction);
     const { stockId, price, quantity } = transaction;
 
-    const response = await csrfFetch(`/api/transactions/buy/${stockId}`, {
+    const response = await csrfFetch(`/api/transactions/trade/${stockId}`, {
       method: "POST",
       body: JSON.stringify({
         stockId,
@@ -92,9 +92,9 @@ export const executeStockTrade =
       }),
     });
 
-    const { balance, transaction } = await response.json();
+    const data = await response.json();
 
-    dispatch(addStockTransaction(transaction, balance));
+    dispatch(addStockTransaction(data.transaction, data.balance));
   };
 
 // * Transactions reducer

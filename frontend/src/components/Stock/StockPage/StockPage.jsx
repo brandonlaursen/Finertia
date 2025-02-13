@@ -102,7 +102,7 @@ function StockPage() {
                 <span
                   key={timeFrame}
                   onClick={() => handleClick(timeFrame)}
-                  className={selectedTimeFrame === timeFrame ? "selected" : ""}
+                  className={selectedTimeFrame === timeFrame && "selected"}
                 >
                   {timeFrame}
                 </span>

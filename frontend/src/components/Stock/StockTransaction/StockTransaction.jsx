@@ -11,6 +11,8 @@ import {
   executeStockTrade,
 } from "../../../../store/transactions";
 
+import { isValidTransaction, calculateOwnedShares } from "./helpers";
+
 function StockTransaction({ stock }) {
   const dispatch = useDispatch();
 
@@ -19,24 +21,63 @@ function StockTransaction({ stock }) {
     (state) => state.transactions.stockTransactions
   );
 
-  const [quantity, setQuantity] = useState(0);
+  const buyInRef = useRef(null);
 
-  const [amount, setAmount] = useState(0.0);
-  const [shares, setShares] = useState(0);
-  const [estimate, setEstimate] = useState(0);
-  const [estimateCost, setEstimateCost] = useState(0);
+  // * How many shares a users owns
+  const [userOwnedShares, setUserOwnedShares] = useState(0);
+
+  // * The dollar amount a user wants to trade
+  const [tradeAmount, setTradeAmount] = useState(0.0);
+
+  // * The number of shares a user wants to trade
+  const [sharesToTrade, setSharesToTrade] = useState(0);
+
+  // * The estimated number of shares of the trade transaction
+  const [estimatedShares, setEstimatedShares] = useState(0);
+
+  // * The estimated cost of the trade trade transaction
+  const [estimatedCost, setEstimatedCost] = useState(0);
+
+  // * The type of buy in - Dollars or Shares
   const [buyIn, setBuyIn] = useState("Dollars");
-  const [buyInDropdown, setBuyInDropdown] = useState(false);
+
+  // * Toggle buy in drop down
+  const [isBuyDropdownOpen, setIsBuyDropdownOpen] = useState(false);
+
+  // * Type of transaction - buy or sell
   const [transactionType, setTransactionType] = useState("buy");
 
   const { price } = stock;
+  const { balance } = sessionUser;
 
-  const buyInRef = useRef(null);
+  // * get users transactions with current stock
+  useEffect(() => {
+    dispatch(fetchStockTransactions());
+  }, [dispatch]);
 
+  // * Get users owned shares of stock
+  useEffect(() => {
+    const getUsersOwnedShares = calculateOwnedShares(stockTransactions);
+    setUserOwnedShares(getUsersOwnedShares);
+  }, [stockTransactions]);
+
+  // * Update estimated amount of shares
+  useEffect(() => {
+    const estimatedAmountOfShares = tradeAmount.toFixed(2) / price.toFixed(2);
+    setEstimatedShares(estimatedAmountOfShares.toFixed(2));
+  }, [tradeAmount, price]);
+
+  // * Update estimated amount in dollars
+  useEffect(() => {
+    const newEstimatedCost = sharesToTrade * price.toFixed(2);
+    setEstimatedCost(newEstimatedCost);
+  }, [sharesToTrade, price]);
+
+  // * handle dropdowns
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (buyInRef.current && !buyInRef.current.contains(e.target)) {
-        setBuyInDropdown(false);
+        setIsBuyDropdownOpen(false);
       }
     };
 
@@ -47,97 +88,62 @@ function StockTransaction({ stock }) {
     };
   }, []);
 
-  function handleAmountChange(e) {
+  function handleTradeAmountChange(e) {
     const value = e.target.value;
-    const number = Number(value);
-    setAmount(number);
+    const amount = Number(value);
+    setTradeAmount(amount);
+  }
+
+  function handleTradeSharesChange(e) {
+    const value = e.target.value;
+    const amount = Number(value);
+    setSharesToTrade(amount);
   }
 
   async function handleStockTransaction() {
-    let quantity;
-    if (buyIn === "Dollars") {
-      quantity = estimate;
-    } else if (buyIn === "Shares") {
-      quantity = shares;
-    }
+    // * Determine the number of shares based on buy-in type
+    const numberOfShares =
+      buyIn === "Dollars" ? estimatedShares : sharesToTrade;
 
-    if (transactionType === "buy") {
-      if (amount > sessionUser.balance) {
-        return;
-      }
-      if (shares * stock.price > sessionUser.balance) {
-        return;
-      }
-    }
-    if (transactionType === "sell") {
-      if (quantity > shares) {
-        return;
-      }
-      if (amount < quantity * stock.price) {
-        return;
-      }
-    }
+    // * Check if this is a valid transaction
+    if (
+      !isValidTransaction(
+        balance,
+        userOwnedShares,
+        price,
+        transactionType,
+        tradeAmount,
+        estimatedCost
+      )
+    )
+      return;
 
     const transaction = {
-      stockId: +stock.id,
-      price: +stock.price,
-      quantity: +quantity,
+      stockId: stock.id,
+      price,
+      quantity: numberOfShares,
     };
 
+    // * Execute trade
     await dispatch(executeStockTrade(transaction, transactionType));
 
-    let totalQuantity = 0;
-    for (let transaction of stockTransactions) {
-      let { transactionType, quantity } = transaction;
-
-      if (transactionType === "buy") totalQuantity += quantity;
-      if (transactionType === "sell") totalQuantity -= quantity;
-    }
-    setQuantity(totalQuantity);
+    // * Update user-owned shares
+    const getUsersOwnedShares = calculateOwnedShares(stockTransactions);
+    setUserOwnedShares(getUsersOwnedShares);
   }
 
-  useEffect(() => {
-    dispatch(fetchStockTransactions());
-  }, [dispatch]);
-
-  useEffect(() => {
-    const newEstimate = amount.toFixed(2) / price.toFixed(2);
-    setEstimate(newEstimate.toFixed(2));
-  }, [amount, price]);
-
-  useEffect(() => {
-    const newEstimatedCost = shares * price.toFixed(2);
-    setEstimateCost(newEstimatedCost);
-  }, [shares, price]);
-
-  useEffect(() => {
-    let totalQuantity = 0;
-    for (let transaction of stockTransactions) {
-      let { transactionType, quantity } = transaction;
-
-      if (transactionType === "buy") totalQuantity += quantity;
-      if (transactionType === "sell") totalQuantity -= quantity;
-    }
-    setQuantity(totalQuantity);
-  }, [stockTransactions]);
-
-  async function sellAll() {
-    let totalQuantity = 0;
-    for (let transaction of stockTransactions) {
-      let { transactionType, quantity } = transaction;
-
-      if (transactionType === "buy") totalQuantity += quantity;
-      if (transactionType === "sell") totalQuantity -= quantity;
-    }
+  // * Sell all shares of stock
+  async function handleSellAll() {
+    const getUsersOwnedShares = calculateOwnedShares(stockTransactions);
 
     const transaction = {
-      stockId: +stock.id,
-      price: +stock.price,
-      quantity: +totalQuantity,
+      stockId: stock.id,
+      price,
+      quantity: getUsersOwnedShares,
     };
 
     await dispatch(executeStockTrade(transaction, transactionType));
-    setQuantity(0);
+    setUserOwnedShares(0);
   }
 
   return (
@@ -187,15 +193,15 @@ function StockTransaction({ stock }) {
           <div className="StockTransaction__order-section__select">
             <div
               className={`StockTransaction__order-section__container  ${
-                buyInDropdown && "buyInDropDownBorder"
+                isBuyDropdownOpen && "buyInDropDownBorder"
               }`}
-              onClick={() => setBuyInDropdown(!buyInDropdown)}
+              onClick={() => setIsBuyDropdownOpen(!isBuyDropdownOpen)}
               ref={buyInRef}
             >
               <span>{buyIn}</span>
               <TiArrowUnsorted />
             </div>
-            {buyInDropdown && (
+            {isBuyDropdownOpen && (
               <div className={`BuyInDropdown`}>
                 <div
                   className={`BuyInDropdown-option ${
@@ -240,10 +246,10 @@ function StockTransaction({ stock }) {
                 <input
                   type="number"
                   pattern="[0-9]*"
-                  value={amount}
+                  value={tradeAmount}
                   placeholder="0.0"
                   className="StockTransaction__amount-input"
-                  onChange={handleAmountChange}
+                  onChange={handleTradeAmountChange}
                 />
               </div>
             </>
@@ -256,10 +262,10 @@ function StockTransaction({ stock }) {
                 <input
                   type="number"
                   pattern="[0-9]*"
-                  value={shares}
+                  value={sharesToTrade}
                   placeholder="0"
                   className="StockTransaction__amount-input"
-                  onChange={(e) => setShares(e.target.value)}
+                  onChange={handleTradeSharesChange}
                 />
               </div>
             </>
@@ -270,7 +276,7 @@ function StockTransaction({ stock }) {
             <span className="StockTransaction__market-price-title">
               Market Price
             </span>
-            <span>${stock.price}</span>
+            <span>${price}</span>
           </div>
         )}
         <div className="StockTransaction__line"></div>
@@ -281,14 +287,14 @@ function StockTransaction({ stock }) {
           <>
             <span>Est.Quantity</span>
             <span className="StockTransaction__estimate-amount">
-              {Number(estimate).toFixed(2)}
+              {Number(estimatedShares).toFixed(2)}
             </span>
           </>
         ) : (
           <>
             <span>Estimated Cost</span>
             <span className="StockTransaction__estimate-amount">
-              ${Number(estimateCost).toFixed(2)}
+              ${Number(estimatedCost).toFixed(2)}
             </span>
           </>
         )}
@@ -305,11 +311,15 @@ function StockTransaction({ stock }) {
 
       <div className="StockTransaction_footer">
         {transactionType === "buy" ? (
-          ` $${sessionUser.balance.toFixed(2)} buying power available`
+          ` $${balance.toFixed(2)} buying power available`
         ) : (
           <div className="StockTransaction_footer-sell">
-            <span>{`$${(quantity * stock.price).toFixed(2)} Available`}</span> -
-            <span className="StockTransaction_footer-text" onClick={sellAll}>
+            {console.log(userOwnedShares, price)}
+            <span>{`$${(Number(userOwnedShares) * price).toFixed(2)} Available`}</span>-
+            <span
+              className="StockTransaction_footer-text"
+              onClick={handleSellAll}
+            >
               Sell All
             </span>
           </div>

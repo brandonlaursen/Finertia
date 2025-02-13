@@ -110,7 +110,7 @@ router.get("/stock-transactions", async (req, res) => {
   });
 });
 
-router.post("/buy/:stockId", async (req, res) => {
+router.post("/trade/:stockId", async (req, res) => {
   const { id, balance } = req.user;
 
   const { stockId, price, quantity, transactionType } = req.body;
