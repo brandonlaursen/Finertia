@@ -1,0 +1,176 @@
+.ListPage {
+  height: 100vh;
+  min-height: 123vh;
+
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 85px;
+}
+
+.ListPage__body {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+
+  gap: 60px;
+}
+
+.ListPage__body-left {
+  width: 620px;
+
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  padding-bottom: 100px;
+}
+
+.ListPage__section {
+
+  display: flex;
+
+  margin-top: 32px;
+
+  display: flex;
+  /* gap: 8px; */
+  flex-direction: column;
+  height: 140px;
+  /* padding-left: 4px; */
+}
+
+
+.ListPage__section__emoji {
+  height: 64px;
+  width: 64px;
+  font-size: 48px;
+  cursor: pointer;
+  background-color: white;
+  border: none;
+}
+
+.ListPage__section__emoji:hover {
+  background-color: #f5fffd;
+}
+
+.ListPage__emoji-picker-wrapper {
+  position: absolute;
+
+  z-index: 1000;
+
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.ListPage__title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.ListPage__list-edit {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.ListPage_delete-popover{
+  position: absolute;
+  right:-20px;
+  top: 40px;
+  height: 50px;
+  width: 160px;
+
+  background-color: #ffffff;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border: 1px solid rgb(221, 221, 221);
+  gap:8px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.ListPage__delete-icon{
+  font-size: 20px;
+}
+
+.ListPage_delete-popover:hover{
+  color: rgb(55, 225, 33);
+}
+
+.ListPage__list-name-input {
+  width: 85%;
+  height: 36px;
+  border-radius: 5px;
+
+  font-size: 20px;
+  outline: none;
+  border: none;
+  border: 2px solid rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+.ListPage__list-name-input:hover {
+  background-color: aliceblue;
+}
+
+.ListPage__list-name-input:focus {
+  border: 2px solid red;
+  background-color: #ffffff;
+}
+
+.ListPage__list-name-ellipsis {
+  height: 18px;
+  width: 20px;
+  cursor: pointer;
+}
+
+.ListPage__list-name-ellipsis:hover {
+  color: rgb(132, 235, 49);
+}
+
+.ListPage__subtitle {
+  display: flex;
+  align-items: center;
+  padding-left: 4px;
+
+  font-size: 14px;
+  color: #3e3e3e;
+}
+
+.ListPage__delete {
+  height: 14px;
+  width: 14px;
+
+  margin-left: 60px;
+
+  background: none;
+
+  border: none;
+  cursor: pointer;
+}
+
+.ListPage__delete:hover {
+color: rgb(74, 241, 127);
+}
+
+.ListPage__no-stocks {
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.ListPage__no-stocks-text {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.ListPage__no-stocks-subtext {
+}

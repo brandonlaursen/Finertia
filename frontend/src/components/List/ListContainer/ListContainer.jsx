@@ -31,7 +31,7 @@ function ListContainer({ className, navigate }) {
     dispatch(fetchAllStocks());
   }, [dispatch]);
 
-  console.log(location.pathname);
+
 
   return (
     <div className="WatchList">

@@ -223,7 +223,7 @@
 
   text-align: left;
 
-  padding-right: 64px;
+  /* padding-right: 64px; */
 }
 
 .stock-row:hover {
@@ -234,6 +234,7 @@
   height: 54px;
 
   font-size: 12px;
+
 }
 
 .stocks__table tbody tr td:first-child {
@@ -268,6 +269,7 @@
   display: flex;
 
   gap: 5px;
+  align-items: center;
 }
 
 .triangleIconDown {

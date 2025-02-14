@@ -7,8 +7,7 @@ import { useModal } from "../../../context/Modal";
 
 import { deleteList } from "../../../../store/lists";
 
-function DeleteListModal({ listId, listName }) {
-
+function DeleteListModal({ listId, listName, navigate }) {
   const { closeModal } = useModal();
   const dispatch = useDispatch();
 
@@ -16,6 +15,9 @@ function DeleteListModal({ listId, listName }) {
     e.preventDefault();
 
     await dispatch(deleteList(listId));
+    if (location.pathname.includes(listId)) {
+      navigate("/");
+    }
     closeModal();
   }
 
