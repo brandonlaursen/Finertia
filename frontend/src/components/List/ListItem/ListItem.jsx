@@ -6,6 +6,7 @@ import { TiDeleteOutline } from "react-icons/ti";
 import { IoIosArrowDown } from "react-icons/io";
 
 import { useRef, useEffect } from "react";
+import {  useNavigate } from "react-router-dom";
 
 import EditListModal from "../../Modals/EditListModal";
 import DeleteListModal from "../../Modals/DeleteListModal";
@@ -23,9 +24,10 @@ function ListItem({
   popover,
   setToggleListIds,
   toggleListIds,
+  navigate
 }) {
 
-  console.log('rendering list item...')
+
   const { setModalContent, setModalClass } = useModal();
 
   const popoverRef = useRef(null);
@@ -84,9 +86,9 @@ function ListItem({
   }, [setSelectedPopoverId]);
 
   return (
-    <div to="/list1" className={`ListItem ${className}`}>
+    <div onClick={() => navigate(`/`)} className={`ListItem ${className}`}>
       <div className={container}>
-        <div>
+        <div className='ListItem__header'>
           <span className={icon}>{list?.type}</span>
           <span className={title}>{list?.name}</span>
         </div>

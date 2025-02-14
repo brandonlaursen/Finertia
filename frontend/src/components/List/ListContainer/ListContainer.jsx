@@ -16,10 +16,9 @@ import ListItem from "../ListItem";
 import ListStocks from "../ListStocks/ListStocks";
 import StocksOwned from "../../Home/StocksOwned/StocksOwned";
 
-function ListContainer({ className }) {
+function ListContainer({ className, navigate }) {
   const dispatch = useDispatch();
   const location = useLocation();
-
   const lists = useSelector(selectListsArray);
   const stocks = useSelector((state) => state.stocks.allStocks);
   const sessionUser = useSelector(selectUser);
@@ -79,6 +78,8 @@ function ListContainer({ className }) {
                     popover={true}
                     toggleListIds={toggleListIds}
                     setToggleListIds={setToggleListIds}
+                    navigate={navigate}
+
                   />
                   <ListStocks
                     toggleListIds={toggleListIds}

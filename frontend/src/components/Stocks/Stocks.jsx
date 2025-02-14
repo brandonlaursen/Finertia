@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useOutletContext } from "react-router-dom";
 
-import WatchListContainer from "../List/ListContainer";
+import ListContainer from "../List/ListContainer";
 
 import { fetchAllStocks } from "../../../store/stocks";
 
@@ -214,7 +214,7 @@ function Stocks() {
           </div>
         </div>
 
-        <WatchListContainer className="WatchList-Stocks-container" />
+        <ListContainer className="WatchList-Stocks-container" navigate={navigate}/>
       </div>
     </div>
   );

@@ -6,10 +6,22 @@
   text-decoration: none;
   cursor: pointer;
 
-  margin-bottom: 12px;
+  /* margin-bottom: 12px; */
+
 }
 
 /*  AddToListModal  */
+
+.ListItem__header{
+
+  width: auto;
+  padding: 6px;
+}
+
+.ListItem__header:hover{
+  background-color: #f4f3f3;
+  border-radius: 5px;
+}
 
 .AddToListModal__item__container {
   width: 100%;
@@ -21,6 +33,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+
 }
 
 .AddToListModal__item__icon {
@@ -36,6 +49,7 @@
   font-size: 24px;
 
   background-color: rgb(234, 243, 248);
+
 
   border-radius: 5px;
 }
@@ -66,7 +80,7 @@
   justify-content: space-between;
 
   gap: 10px;
-  padding: 0 20px;
+  padding: 0 14px;
 }
 
 .WatchList__lists__ListItem:hover {
@@ -107,7 +121,7 @@
   display: flex;
   align-items: center;
 
-  margin-right: 7px;
+  margin-right: 12px;
 }
 
 .ListItem__ellipsis {
@@ -136,7 +150,7 @@
   width: 150px;
 
   position: absolute;
-  top: 32px;
+  top: 36px;
   left: 135px;
   padding: 5px 0;
 

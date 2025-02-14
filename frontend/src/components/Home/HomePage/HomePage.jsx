@@ -13,8 +13,10 @@ import ListContainer from "../../List/ListContainer";
 import HomePageChart from "./HomePageChart/HomePageChart";
 
 import { useModal } from "../../../context/Modal";
+import {  useNavigate } from "react-router-dom";
 
 function HomePage() {
+  const navigate = useNavigate();
   const sessionUser = useSelector(selectUser);
   const { setModalContent, setModalClass } = useModal();
 
@@ -88,7 +90,7 @@ function HomePage() {
           <NewsFeed />
         </div>
 
-        <ListContainer className="WatchList-HomePage-container" />
+        <ListContainer className="WatchList-HomePage-container" navigate={navigate} />
       </div>
     </div>
   );
