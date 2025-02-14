@@ -10,6 +10,8 @@ import NewsFeed from "../NewsFeed";
 import TransferModal from "../../Modals/TransferModal/TransferModal";
 import ListContainer from "../../List/ListContainer";
 
+import HomePageChart from "./HomePageChart/HomePageChart";
+
 import { useModal } from "../../../context/Modal";
 
 function HomePage() {
@@ -21,7 +23,7 @@ function HomePage() {
     (total, stock) => (total += stock.averageCost * stock.sharesOwned),
     0
   );
-  const [dropDownVisible, setDropDownVisible] = useState(true);
+  const [dropDownVisible, setDropDownVisible] = useState(false);
 
   return (
     <div className="HomePage">
@@ -33,7 +35,9 @@ function HomePage() {
               <div className="HomePage__main__user-info">
                 <span>${stockInvestments.toFixed(2)}</span>
               </div>
-              <div className="HomePage__main__chart-container"></div>
+              <div className="HomePage__main__chart-container">
+                <HomePageChart />
+              </div>
               <div
                 className="HomePage__main__buying-power"
                 onClick={() => setDropDownVisible(!dropDownVisible)}

@@ -13,8 +13,6 @@ function HistoryPage() {
 
   const transactions = useSelector((state) => state.transactions);
 
-  console.log(transactions);
-
   useEffect(() => {
     dispatch(fetchAccountTransactions());
     dispatch(fetchStockTransactions());

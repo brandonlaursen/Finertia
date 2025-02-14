@@ -1,9 +1,32 @@
-import { FaMillSign } from "react-icons/fa6";
 import "./HomePageChart.css";
+
+
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchStockTransactions } from "../../../../../store/transactions";
 
 import ReactApexChart from "react-apexcharts";
 
 function HomePageChart() {
+  const dispatch = useDispatch();
+  const transactions = useSelector(
+    (state) => state.transactions.stockTransactions
+  );
+
+  const sortedTransactions = transactions.sort((a, b) => {
+    const dateA = a.transactionDate ? new Date(a.transactionDate) : new Date(0);
+    const dateB = b.transactionDate ? new Date(b.transactionDate) : new Date(0);
+
+    return dateB - dateA;
+  });
+
+
+
+
+  console.log("sortedTransactions:", sortedTransactions);
+
+  const [data, ] = useState([]);
+
   const [options] = useState({
     chart: {
       type: "line",
@@ -62,17 +85,13 @@ function HomePageChart() {
     },
     tooltip: {
       x: {
-        formatter: (timestamp) => convertToEst(timestamp, selectedTimeFrame),
+        formatter: (timestamp) => convertToEst(timestamp),
       },
       marker: {
         show: false,
       },
     },
   });
-
-  // we need the users stock shares and the dates theyve bought them
-  // how the users investments have changed over time
-  const [data, setData] = useState([]);
 
   const series = [
     {
@@ -81,6 +100,9 @@ function HomePageChart() {
     },
   ];
 
+  useEffect(() => {
+    dispatch(fetchStockTransactions());
+  }, [dispatch]);
 
   function convertToEst(timestamp) {
     const date = new Date(timestamp);

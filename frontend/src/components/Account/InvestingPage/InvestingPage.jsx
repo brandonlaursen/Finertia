@@ -34,7 +34,7 @@ function InvestingPage() {
     dispatch(fetchStockTransactions());
   }, [dispatch]);
 
-  if (!stockSummary) return <LoadingSpinner />;
+  if (stockInvestments.length < 0) return <LoadingSpinner />;
   return (
     <div className="InvestingPage">
       <div>

@@ -19,7 +19,6 @@ function PortfolioStocks({ stockInvestments, stockSummary }) {
     return Number(total);
   });
 
-  console.log(currentPoint);
 
   const series = stockHoldings;
   const labels = stockSymbols;
