@@ -6,12 +6,14 @@
   flex-direction: column;
 
   margin: 0px auto 0;
+  margin-bottom: 100px;
 }
 
 .TransfersPage__section {
   height: auto;
 
   margin-top: 30px;
+
 }
 
 .TransfersPage__transfer-container {

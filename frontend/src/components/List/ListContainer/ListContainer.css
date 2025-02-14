@@ -19,6 +19,9 @@
 
   overflow: auto;
   scrollbar-width: none;
+
+   border-top: 1px solid #ddd;
+
 }
 
 .WatchList-HomePage-container {
@@ -49,11 +52,18 @@
   align-items: center;
 
   padding: 0 20px;
-  margin-bottom: 8px;
+  /* margin-bottom: 8px; */
 
   font-weight: bold;
 
   border-bottom: 1px solid #ddd;
+
+
+}
+
+
+.WatchList__header-lists{
+  /* border-top: 1px solid #ddd; */
 }
 
 .WatchList__lists {
@@ -87,4 +97,9 @@
 .WatchList__create-list-span:hover {
   background-color: rgb(244, 244, 244);
   border-radius: 5px;
+}
+
+.WatchListStocks-stocks-owned{
+  
+  border-bottom: 1px solid #ddd;
 }

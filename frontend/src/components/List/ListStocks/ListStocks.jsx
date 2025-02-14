@@ -36,7 +36,7 @@ function ListStocks({ toggleListIds, list, stocks, sessionUser }) {
                   <span className="WatchListStocks__container-graph"></span>
                   <span className="WatchListStocks__container-data">
                     <span className={`WatchListStocks__container-price`}>
-                      ${stocks[stock.id]?.current_price}
+                      ${stocks[stock.id]?.current_price.toFixed(2)}
                     </span>
                     <span
                       className={`WatchListStocks__container-percent ${

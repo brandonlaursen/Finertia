@@ -13,9 +13,9 @@ import CreateListModal from "../../Modals/CreateListModal";
 
 import ListItem from "../ListItem";
 import ListStocks from "../ListStocks/ListStocks";
+import StocksOwned from "../../Home/StocksOwned/StocksOwned";
 
 function ListContainer({ className }) {
-  console.log('rendering list container...')
   const dispatch = useDispatch();
 
   const lists = useSelector(selectListsArray);
@@ -34,6 +34,12 @@ function ListContainer({ className }) {
     <div className="WatchList">
       <div className={className}>
         <div className="WatchList__header">
+          <span className="WatchList__title">Stocks</span>
+        </div>
+
+        <StocksOwned allStocks={stocks} />
+
+        <div className="WatchList__header WatchList__header-lists">
           <span className="WatchList__title">Lists</span>
           <span className="WatchList__create-list-span">
             <OpenModalButton
@@ -48,7 +54,6 @@ function ListContainer({ className }) {
             />
           </span>
         </div>
-
         <div className="WatchList__lists">
           {lists &&
             lists.slice(0, 10).map((list) => {
