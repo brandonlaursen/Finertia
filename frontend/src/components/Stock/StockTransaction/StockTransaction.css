@@ -288,3 +288,12 @@
 
   cursor: pointer;
 }
+
+
+.StockTransaction__review-container{
+  background-color: #33d187;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

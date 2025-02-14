@@ -39,6 +39,9 @@ function StockTransaction({ stock }) {
   // * Toggle buy in drop down
   const [isBuyDropdownOpen, setIsBuyDropdownOpen] = useState(false);
 
+  const [showReview, setShowReview] = useState(false);
+  const [errors, setErrors] = useState(null);
+
   const { price } = stock;
   const { balance } = sessionUser;
 
@@ -103,17 +106,23 @@ function StockTransaction({ stock }) {
   };
 
   async function handleStockTransaction() {
+    setShowReview(!showReview);
+
     // * Determine the number of shares based on buy-in type
     const numberOfShares =
       buyIn === "Dollars" ? estimatedShares : sharesToTrade;
 
     if (balance <= 0 && transactionType === "buy") {
-      console.log("Cannot buy, insufficient balance.");
+      console.log(`Insufficient balance. ${balance}`);
+      // newErrors.push(`Insufficient balance. ${balance}`);
+      setErrors(`Insufficient balance. ${balance}`);
       return;
     }
 
     if (sharesOwned <= 0 && transactionType === "sell") {
-      console.log("Cannot sell, no shares owned.");
+      console.log(`Insufficient shares ${sharesOwned}`);
+      // newErrors.push(`Insufficient shares ${sharesOwned}`);
+      setErrors(`Insufficient shares ${sharesOwned}`);
       return;
     }
 
@@ -121,17 +130,23 @@ function StockTransaction({ stock }) {
       (buyIn === "Dollars" && tradeAmount <= 0) ||
       (buyIn === "Shares" && sharesToTrade <= 0)
     ) {
-      console.log(`NOT A VALID AMOUNT ${tradeAmount} ${sharesToTrade}`);
+      console.log(`Minimum Dollar Amount`);
+      // newErrors.push(`Minimum Dollar Amount`);
+      setErrors(`Minimum Dollar Amount`);
       return false;
     }
 
     if (isNaN(tradeAmount) || tradeAmount < 0) {
-      console.log("Invalid trade amount.");
+      console.log(`Minimum Dollar Amount`);
+      // newErrors.push(`Minimum Dollar Amount`);
+      setErrors(`Minimum Dollar Amount`);
       return;
     }
 
     if (isNaN(sharesToTrade) || sharesToTrade < 0) {
-      console.log("Invalid share amount.");
+      console.log(`Minimum Shares Amount`);
+      // newErrors.push(`Minimum Shares Amount`);
+      setErrors(`Minimum Dollar Amount`);
       return;
     }
 
@@ -143,11 +158,21 @@ function StockTransaction({ stock }) {
         console.log(
           `TRADE AMOUNT - ${tradeAmount} EXCEEDS BALANCE - ${balance}`
         );
+        // newErrors.push(
+        //   `Trade Amount - ${tradeAmount} Exceeds Balance - ${balance}`
+        // );
+        setErrors(`Trade Amount - ${tradeAmount} Exceeds Balance - ${balance}`);
         return;
       }
       if (estimatedCost > balance) {
         console.log(
           `ESTIMATED COST - ${estimatedCost} EXCEEDS BALANCE - ${balance}`
+        );
+        // newErrors.push(
+        //   `Estimated Cost - ${estimatedCost} Exceeds Balance - ${balance}`
+        // );
+        setErrors(
+          `Estimated Cost - ${estimatedCost} Exceeds Balance - ${balance}`
         );
         return;
       }
@@ -158,9 +183,9 @@ function StockTransaction({ stock }) {
       );
 
       if (estimatedShares < 0 || sharesToTrade < 0) {
-        console.log(
-          "Cannot execute transaction: Shares to trade cannot be negative."
-        );
+        console.log(`Minimum Shares Amount`);
+        // newErrors.push(`Minimum Shares Amount`);
+        setErrors(`Minimum Shares Amount`);
         return;
       }
 
@@ -168,11 +193,23 @@ function StockTransaction({ stock }) {
         console.log(
           `ESTIMATED SHARES - ${estimatedShares} EXCEEDS SHARES OWNED  - ${sharesOwned}`
         );
+        // newErrors.push(
+        //   `Estimated Shares - ${estimatedShares} Exceeds Shares Owned  - ${sharesOwned}`
+        // );
+        setErrors(
+          `Estimated Shares - ${estimatedShares} Exceeds Shares Owned  - ${sharesOwned}`
+        );
         return;
       }
       if (sharesToTrade > sharesOwned) {
         console.log(
           `SHARES AMOUNT - ${sharesToTrade} EXCEEDS OWNED - ${sharesOwned}`
+        );
+        // newErrors.push(
+        //   `Estimated Shares - ${estimatedShares} Exceeds Shares Owned  - ${sharesOwned}`
+        // );
+        setErrors(
+          `Estimated Shares - ${estimatedShares} Exceeds Shares Owned  - ${sharesOwned}`
         );
         return;
       }
@@ -182,20 +219,26 @@ function StockTransaction({ stock }) {
             sharesOwned * price
           }`
         );
+        // newErrors.push(
+        //   `Estimated Cost - ${estimatedCost} Exceeds Balance - ${balance}`
+        // );
+        setErrors(
+          `Estimated Cost - ${estimatedCost} Exceeds Balance - ${balance}`
+        );
         return;
       }
     }
 
-    const transaction = {
-      stockId: stock.id,
-      price,
-      quantity: numberOfShares,
-    };
+    // const transaction = {
+    //   stockId: stock.id,
+    //   price,
+    //   quantity: numberOfShares,
+    // };
 
     // * Execute trade
-    await dispatch(
-      executeStockTrade(transaction, transactionType, stock.symbol)
-    );
+    // await dispatch(
+    //   executeStockTrade(transaction, transactionType, stock.symbol)
+    // );
   }
 
   // * Sell all shares of stock
@@ -371,14 +414,34 @@ function StockTransaction({ stock }) {
           </>
         )}
       </div>
-
+      {showReview && (
+        <>
+          <div className="StockTransaction__review-container">Review</div>
+          {errors && <span>{errors}</span>}
+        </>
+      )}
       <div className="StockTransaction__button-container">
-        <button
-          className="StockTransaction__button"
-          onClick={handleStockTransaction}
-        >
-          Review Order
-        </button>
+        {showReview && errors && (
+          <button
+            className="StockTransaction__button"
+            onClick={() => {
+              setShowReview(false), setErrors(null);
+            }}
+            // onClick={handleStockTransaction}
+          >
+            Cancel
+          </button>
+        )}
+
+        {!showReview && (
+          <button
+            className="StockTransaction__button"
+            onClick={handleStockTransaction}
+            // onClick={handleStockTransaction}
+          >
+            Review Order
+          </button>
+        )}
       </div>
 
       <div className="StockTransaction_footer">
