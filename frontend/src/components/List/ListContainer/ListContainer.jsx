@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchLists, selectListsArray } from "../../../../store/lists";
 import { fetchAllStocks } from "../../../../store/stocks";
 import { selectUser } from "../../../../store/session";
+import { useLocation } from "react-router-dom";
 
 import OpenModalButton from "../../OpenModalButton";
 import CreateListModal from "../../Modals/CreateListModal";
@@ -17,6 +18,7 @@ import StocksOwned from "../../Home/StocksOwned/StocksOwned";
 
 function ListContainer({ className }) {
   const dispatch = useDispatch();
+  const location = useLocation();
 
   const lists = useSelector(selectListsArray);
   const stocks = useSelector((state) => state.stocks.allStocks);
@@ -30,14 +32,20 @@ function ListContainer({ className }) {
     dispatch(fetchAllStocks());
   }, [dispatch]);
 
+  console.log(location.pathname);
+
   return (
     <div className="WatchList">
       <div className={className}>
-        <div className="WatchList__header">
-          <span className="WatchList__title">Stocks</span>
-        </div>
+        {location.pathname === "/" && (
+          <>
+            <div className="WatchList__header">
+              <span className="WatchList__title">Stocks</span>
+            </div>
 
-        <StocksOwned allStocks={stocks} />
+            <StocksOwned allStocks={stocks} />
+          </>
+        )}
 
         <div className="WatchList__header WatchList__header-lists">
           <span className="WatchList__title">Lists</span>
@@ -54,6 +62,7 @@ function ListContainer({ className }) {
             />
           </span>
         </div>
+
         <div className="WatchList__lists">
           {lists &&
             lists.slice(0, 10).map((list) => {

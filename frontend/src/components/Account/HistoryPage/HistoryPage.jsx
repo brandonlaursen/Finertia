@@ -65,7 +65,7 @@ function HistoryPage() {
                     </span>
                   </div>
                   <div className="TransfersPage__completed-transactions-amount">
-                    ${transaction.purchasePrice}
+                    ${transaction.purchasePrice.toFixed(2)}
                   </div>
                 </div>
               );

@@ -117,7 +117,7 @@ function PortfolioStocks({ stockInvestments, stockSummary }) {
             {currentPoint ? (
               <>
                 <span>{currentPoint.label}</span>
-                <span>${currentPoint.value}</span>
+                <span>${currentPoint.value.toFixed(2)}</span>
               </>
             ) : (
               <>
