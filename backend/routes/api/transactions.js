@@ -208,7 +208,7 @@ router.post("/trade/:stockId", async (req, res) => {
   } else if (transactionType === "sell") {
     newBalance = Math.round(balance + Number(amount));
   }
-
+  console.log('NEW BALANCE', newBalance)
 
   await user.update({
     balance: newBalance,

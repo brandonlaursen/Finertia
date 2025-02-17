@@ -1,6 +1,8 @@
 import "./DeleteListModal.css";
 import { MdClose } from "react-icons/md";
 
+
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { useModal } from "../../../context/Modal";
@@ -11,8 +13,14 @@ function DeleteListModal({ listId, listName, navigate }) {
   const { closeModal } = useModal();
   const dispatch = useDispatch();
 
+  const [isLoading, setIsLoading] = useState(false);
+
   async function handleSubmit(e) {
     e.preventDefault();
+
+    setIsLoading(true);
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    setIsLoading(false);
 
     await dispatch(deleteList(listId));
     if (location.pathname.includes(listId)) {
@@ -52,7 +60,12 @@ function DeleteListModal({ listId, listName, navigate }) {
               "
               onClick={handleSubmit}
             >
-              Delete {listName}
+              {isLoading ? (
+              <span className="StockTransaction__spinner"></span>
+            ) : (
+              ` Delete ${listName}`
+            )}
+
             </button>
           </div>
         </div>

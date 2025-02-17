@@ -297,7 +297,7 @@
 .CreateList__create-button {
   color: white;
   background-color: rgb(7, 222, 150);
-
+  min-width: 102px;
   border: none;
 }
 

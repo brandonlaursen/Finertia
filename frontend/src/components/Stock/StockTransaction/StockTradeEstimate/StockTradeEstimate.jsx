@@ -44,15 +44,15 @@ function StockTradeEstimate({
     const transaction = {
       stockId: stock.id,
       price,
-      quantity: +numberOfShares.toFixed(5),
-      transactionType
+      quantity: Number(numberOfShares).toFixed(5),
+      transactionType,
     };
 
     setIsLoading(true);
     await new Promise((resolve) => setTimeout(resolve, 500));
     setIsLoading(false);
 
-    dispatch(executeStockTrade(transaction))
+    dispatch(executeStockTrade(transaction));
     clearReview();
   }
 
@@ -113,9 +113,9 @@ function StockTradeEstimate({
       )}
 
       <div className="StockTransaction__button-container">
+   
         {showReview && errors && (
           <>
-            {console.log(errors[0])}
             {transactionType === "buy" &&
               errors[0] === "Not Enough Buying Power" && (
                 <button
@@ -143,11 +143,11 @@ function StockTradeEstimate({
               onClick={handleSubmitOrder}
               disabled={isLoading}
             >
-               {isLoading ? (
-              <span className="StockTransaction__spinner"></span>
-            ) : (
-              "Submit Order"
-            )}
+              {isLoading ? (
+                <span className="StockTransaction__spinner"></span>
+              ) : (
+                "Submit Order"
+              )}
             </button>
             <button
               className="StockTransaction__button"

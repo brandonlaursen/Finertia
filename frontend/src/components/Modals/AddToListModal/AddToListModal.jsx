@@ -32,6 +32,8 @@ function AddToListModal({ stock }) {
     checkedList[listId] = true;
   }
 
+  const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingCreate, setIsLoadingCreate] = useState(false);
   const [checkedItems, setCheckedItems] = useState(checkedList);
   const [isVisible, setIsVisible] = useState(false);
   const [showPicker, setShowPicker] = useState(false);
@@ -63,6 +65,10 @@ function AddToListModal({ stock }) {
   async function handleSubmit(e) {
     e.preventDefault();
 
+    setIsLoading(true);
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    setIsLoading(false);
+
     await dispatch(editListStocks(checkedItems, stock));
 
     closeModal();
@@ -71,6 +77,10 @@ function AddToListModal({ stock }) {
   const handleCreateList = async (e) => {
     e.preventDefault();
     if (listName === "") return;
+
+    setIsLoadingCreate(true);
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    setIsLoadingCreate(false);
 
     const newList = {
       userId: sessionUser.id,
@@ -160,7 +170,11 @@ function AddToListModal({ stock }) {
                   "
                       onClick={handleCreateList}
                     >
-                      Create List
+                      {isLoadingCreate ? (
+                        <span className="StockTransaction__spinner"></span>
+                      ) : (
+                        "Create List"
+                      )}
                     </button>
                   </div>
                 </div>
@@ -222,7 +236,11 @@ function AddToListModal({ stock }) {
             onClick={handleSubmit}
             disabled={!Object.keys(checkedItems).length}
           >
-            Save Changes
+            {isLoading ? (
+              <span className="StockTransaction__spinner"></span>
+            ) : (
+              "Save Changes"
+            )}
           </button>
         </div>
       </div>

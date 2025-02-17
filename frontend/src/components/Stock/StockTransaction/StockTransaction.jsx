@@ -9,13 +9,11 @@ import OrderType from "./OrderType/OrderType";
 import StockTransactionOrder from "./StockTransactionOrder";
 import StockTradeEstimate from "./StockTradeEstimate/StockTradeEstimate";
 import StockTransactionFooter from "./StockTransactionFooter/StockTransactionFooter";
+import NotificationPopUp from "../../NotificationPopUp/NotificationPopUp";
 
 import { selectUser } from "../../../../store/session";
 
-import {
-  fetchStockTransactions,
-  executeStockTrade,
-} from "../../../../store/transactions";
+import { fetchStockTransactions } from "../../../../store/transactions";
 
 function StockTransaction({ stock }) {
   const dispatch = useDispatch();
@@ -54,12 +52,13 @@ function StockTransaction({ stock }) {
   // Update estimated amount of shares
   useEffect(() => {
     const estimatedAmountOfShares = tradeAmount / price;
-    setEstimatedShares(+estimatedAmountOfShares);
+
+    setEstimatedShares(Number(estimatedAmountOfShares).toFixed(5));
   }, [tradeAmount, price]);
 
   // Update estimated amount in dollars
   useEffect(() => {
-    const newEstimatedCost = sharesToTrade * price;
+    const newEstimatedCost = Number(sharesToTrade).toFixed(5) * price;
     setEstimatedCost(newEstimatedCost);
   }, [sharesToTrade, price]);
 
@@ -107,8 +106,11 @@ function StockTransaction({ stock }) {
       }
 
       if (buyIn === "Shares") {
-        if (sharesToTrade < 0.000001) {
-          setErrors([`Minimum Shares Amount`, `Enter at least 0.000001 shares`]);
+        if (Number(sharesToTrade).toFixed(5) < 0.000001) {
+          setErrors([
+            `Minimum Shares Amount`,
+            `Enter at least 0.000001 shares`,
+          ]);
           return;
         }
         if (estimatedCost > balance) {
@@ -128,18 +130,21 @@ function StockTransaction({ stock }) {
           return;
         }
 
-        if (sharesOwned < estimatedShares) {
+        if (sharesOwned.toFixed(5) < Number(estimatedShares).toFixed(5)) {
           setErrors([`Not Enough Shares Available`, ``]);
           return;
         }
       }
 
       if (buyIn === "Shares") {
-        if (sharesToTrade < 0.000001) {
-          setErrors([`Not Enough Shares Available`, `Enter at least 0.000001 shares`]);
+        if (Number(sharesToTrade).toFixed(5) < 0.000001) {
+          setErrors([
+            `Not Enough Shares Available`,
+            `Enter at least 0.000001 shares`,
+          ]);
           return;
         }
-        if (sharesOwned < sharesToTrade) {
+        if (sharesOwned.toFixed(5) < Number(sharesToTrade).toFixed(5)) {
           setErrors([`Not Enough Shares Available`, ``]);
           return;
         }
@@ -150,9 +155,9 @@ function StockTransaction({ stock }) {
       if (transactionType === "buy") {
         if (buyIn === "Shares") {
           setMessage(
-            `You are placing a market order to buy ${sharesToTrade.toFixed(
-              5
-            )} shares of ${
+            `You are placing a market order to buy ${Number(
+              sharesToTrade
+            ).toFixed(5)} shares of ${
               stock.name
             } at an estimated cost of $${estimatedCost.toFixed(2)}`
           );
@@ -160,9 +165,9 @@ function StockTransaction({ stock }) {
         }
         if (buyIn === "Dollars") {
           setMessage(
-            `You are placing a market order to buy ${estimatedShares.toFixed(
-              5
-            )} shares of ${
+            `You are placing a market order to buy ${Number(
+              estimatedShares
+            ).toFixed(5)} shares of ${
               stock.name
             } at an estimated cost of $${tradeAmount.toFixed(2)}`
           );
@@ -172,7 +177,7 @@ function StockTransaction({ stock }) {
       if (transactionType === "sell") {
         if (buyIn === "Shares") {
           setMessage(
-            `You are selling ${sharesToTrade.toFixed(
+            `You are selling ${Number(sharesToTrade).toFixed(
               5
             )} shares at the current market price. The estimated credit for this order is $${estimatedCost.toFixed(
               2
@@ -182,7 +187,7 @@ function StockTransaction({ stock }) {
         }
         if (buyIn === "Dollars") {
           setMessage(
-            `You are selling ${estimatedShares.toFixed(
+            `You are selling ${Number(estimatedShares).toFixed(
               5
             )} shares at the current market price. The estimated credit for this order is $${tradeAmount.toFixed(
               2
@@ -192,35 +197,15 @@ function StockTransaction({ stock }) {
         }
       }
     }
-
-    // const transaction = {
-    //   stockId: stock.id,
-    //   price,
-    //   quantity: numberOfShares,
-    // };
-
-    // * Execute trade
-    // await dispatch(
-    //   executeStockTrade(transaction, transactionType, stock.symbol)
-    // );
   }
 
   async function handleSellAll() {
-    if (sharesOwned <= 0) {
-      console.log(`NO SHARES TO SELL ${sharesOwned}`);
-      return;
-    }
-    const transaction = {
-      stockId: stock.id,
-      price,
-      quantity: sharesOwned,
-    };
-
-    await dispatch(executeStockTrade(transaction, transactionType));
+    setTransactionType("sell");
+    setBuyIn("Shares");
+    setSharesToTrade(Number(sharesOwned).toFixed(2));
   }
 
   function clearReview() {
-    console.log("clearing review");
     setShowReview(false);
     setErrors(null);
     setMessage(null);
@@ -281,6 +266,8 @@ function StockTransaction({ stock }) {
         price={price}
         handleSellAll={handleSellAll}
       />
+
+      <NotificationPopUp />
     </div>
   );
 }

@@ -16,6 +16,7 @@ function EditListModal({ list }) {
 
   const dispatch = useDispatch();
 
+  const [isLoading, setIsLoading] = useState(false);
   const [selectedEmoji, setSelectedEmoji] = useState(list.type);
   const [listName, setListName] = useState(list.name);
 
@@ -28,6 +29,10 @@ function EditListModal({ list }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
+
+    setIsLoading(true);
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    setIsLoading(false);
 
     const editedList = {
       stockListId: list.id,
@@ -87,7 +92,11 @@ function EditListModal({ list }) {
                 "
               onClick={handleSubmit}
             >
-              Save
+                {isLoading ? (
+              <span className="StockTransaction__spinner"></span>
+            ) : (
+              "Save"
+            )}
             </button>
           </div>
         </div>

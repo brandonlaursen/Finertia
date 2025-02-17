@@ -16,6 +16,7 @@ function CreateListModal() {
   const sessionUser = useSelector(selectUser);
 
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [selectedEmoji, setSelectedEmoji] = useState("💡");
   const [listName, setListName] = useState("");
 
@@ -28,6 +29,10 @@ function CreateListModal() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+
+    setIsLoading(true);
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    setIsLoading(false);
 
     const newList = {
       userId: sessionUser.id,
@@ -97,7 +102,11 @@ function CreateListModal() {
             "
               onClick={handleSubmit}
             >
-              Create List
+              {isLoading ? (
+                <span className="StockTransaction__spinner"></span>
+              ) : (
+                "Create List"
+              )}
             </button>
           </div>
         </div>

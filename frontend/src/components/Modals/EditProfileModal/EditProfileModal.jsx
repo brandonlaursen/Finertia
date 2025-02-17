@@ -12,12 +12,18 @@ import { editUser } from "../../../../store/session";
 function EditProfileModal() {
   const { closeModal } = useModal();
   const dispatch = useDispatch();
+
+  const [isLoading, setIsLoading] = useState(false);
   const sessionUser = useSelector((state) => state.session.user);
   const [userName, setUserName] = useState(sessionUser.username);
   const [profilePic, ] = useState(sessionUser.profilePic);
 
   async function handleSubmit(e) {
     e.preventDefault();
+
+    setIsLoading(true);
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    setIsLoading(false);
 
     const editedProfile = {
       username: userName,
@@ -77,7 +83,11 @@ function EditProfileModal() {
               className="EditProfileModal__section_save-button"
               onClick={handleSubmit}
             >
-              Save Changes
+              {isLoading ? (
+              <span className="StockTransaction__spinner"></span>
+            ) : (
+              "Save Changes"
+            )}
             </button>
           </div>
         </div>
