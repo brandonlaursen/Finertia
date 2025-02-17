@@ -82,6 +82,7 @@ function ListContainer({ className, navigate }) {
                     toggleListIds={toggleListIds}
                     setToggleListIds={setToggleListIds}
                     navigate={navigate}
+                    hover={true}
 
                   />
                   <ListStocks

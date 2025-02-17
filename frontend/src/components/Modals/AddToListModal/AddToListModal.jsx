@@ -206,6 +206,7 @@ function AddToListModal({ stock }) {
                       icon="AddToListModal__item__icon"
                       title="AddToListModal__item__title"
                       popover={false}
+                      hover={false}
                     />
                   </div>
                 );
