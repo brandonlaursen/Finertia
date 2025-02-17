@@ -3,6 +3,7 @@ function StocksOwnedItem({ stock, navigate, stocks }) {
   const { stockId, stockSymbol, sharesOwned } = stock;
 
   const stockInfo = stocks[stockId];
+  console.log("stockInfo:", stockInfo);
 
   return (
     <div
