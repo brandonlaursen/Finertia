@@ -1,57 +1,79 @@
 import "./ListPage.css";
-
-import { GoTriangleDown } from "react-icons/go";
-import { GoTriangleUp } from "react-icons/go";
 import { IoEllipsisHorizontalSharp } from "react-icons/io5";
 import { TiDeleteOutline } from "react-icons/ti";
+import { GoTriangleDown } from "react-icons/go";
+import { GoTriangleUp } from "react-icons/go";
+import { MdClose } from "react-icons/md";
 
 import EmojiPicker from "emoji-picker-react";
 
-import { useParams, useLocation } from "react-router-dom";
-// import { useModal } from "../../context/Modal";
 import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-
-import { fetchAllStocks } from "../../../store/stocks";
-import { fetchLists } from "../../../store/lists";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 
 import LoadingSpinner from "../LoadingSpinner";
-
 import ListContainer from "../List/ListContainer";
 
-import { editList } from "../../../store/lists";
-import { MdClose } from "react-icons/md";
+import { fetchAllStocks, editListStocks } from "../../../store/stocks";
+import { fetchLists, editList, deleteList } from "../../../store/lists";
 
-import { deleteList } from "../../../store/lists";
-
-import { editListStocks } from "../../../store/stocks";
+import { selectListById } from "../../../store/lists";
 
 function ListPage() {
   const { listId } = useParams();
   const location = useLocation();
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const stocks = useSelector((state) => state.stocks.allStocks);
-  const lists = useSelector((state) => state.lists);
 
-  const list = lists[listId];
-  console.log("list:", list);
+  const list = useSelector((state) => selectListById(state, listId));
 
-  // const { setModalContent, setModalClass } = useModal();
+  const popoverRef = useRef(null);
+
   const [selectedEmoji, setSelectedEmoji] = useState(list?.type || "");
   const [showPicker, setShowPicker] = useState(false);
-
   const [listName, setListName] = useState("");
-
   const [sortedStocks, setSortedStocks] = useState([]);
   const [sortCriteria, setSortCriteria] = useState("name");
   const [sortDirection, setSortDirection] = useState("asc");
-
-  const popoverRef = useRef(null);
   const [deletePopover, setDeletePopover] = useState(false);
+
+  useEffect(() => {
+    dispatch(fetchLists());
+    dispatch(fetchAllStocks());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (list?.Stocks && list?.Stocks?.length > 0) {
+      setSortedStocks(list.Stocks);
+    } else {
+      setSortedStocks([]);
+    }
+  }, [list, listId]);
+
+  useEffect(() => {
+    if (list) {
+      setSelectedEmoji(list.type);
+      setListName(list.name);
+    }
+  }, [list]);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (popoverRef.current && !popoverRef.current.contains(e.target)) {
+        setDeletePopover(false);
+      }
+    };
+
+    if (deletePopover) {
+      document.addEventListener("click", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [deletePopover]);
 
   const handleEmojiClick = async (emojiData) => {
     const newEmoji = emojiData.emoji;
@@ -66,12 +88,6 @@ function ListPage() {
 
     setShowPicker(false);
   };
-  useEffect(() => {
-    if (list) {
-      setSelectedEmoji(list.type);
-      setListName(list.name);
-    }
-  }, [list]);
 
   const handleListName = async (e) => {
     const newName = e.target.value;
@@ -82,7 +98,7 @@ function ListPage() {
       name: newName,
       type: selectedEmoji,
     };
-    console.log(editedList);
+
     await dispatch(editList(editedList));
   };
 
@@ -136,42 +152,12 @@ function ListPage() {
     setSortCriteria(criteria);
   };
 
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (popoverRef.current && !popoverRef.current.contains(e.target)) {
-        setDeletePopover(false);
-      }
-    };
-
-    if (deletePopover) {
-      document.addEventListener("click", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, [deletePopover]);
-
-  useEffect(() => {
-    console.log("fetching stocks... stocks page");
-    dispatch(fetchLists());
-    dispatch(fetchAllStocks());
-  }, [dispatch]);
-
   function formatNumber(num) {
     if (num >= 1e12) return (num / 1e12).toFixed(2) + "T";
     if (num >= 1e9) return (num / 1e9).toFixed(2) + "B";
     if (num >= 1e6) return (num / 1e6).toFixed(2) + "M";
     return num;
   }
-
-  useEffect(() => {
-    if (list?.Stocks && list?.Stocks?.length > 0) {
-      setSortedStocks(list.Stocks);
-    } else {
-      setSortedStocks([]);
-    }
-  }, [list, listId]);
 
   if (!stocks) return <h1>Loading</h1>;
 
@@ -289,7 +275,7 @@ function ListPage() {
                               onClick={async (e) => {
                                 e.preventDefault();
                                 e.stopPropagation();
-                                console.log("clicked");
+
                                 const id = Number(listId);
                                 await dispatch(
                                   editListStocks({ [id]: false }, stock)

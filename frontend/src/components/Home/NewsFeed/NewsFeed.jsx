@@ -17,7 +17,6 @@ import {
 } from "../../../../store/stocks";
 
 function NewsFeed() {
-  console.log("rendering news feed....");
   const dispatch = useDispatch();
   const stockNews = useSelector((state) => state.stocks.news);
 
@@ -25,15 +24,15 @@ function NewsFeed() {
     dispatch(fetchStockNews());
   }, [dispatch]);
 
-  if (!stockNews) {
-    return <LoadingSpinner />;
-  }
-
   const chooseCategory = async (e) => {
     e.preventDefault();
 
     await dispatch(fetchStockNewsByCategory(e.target.value));
   };
+
+  if (!stockNews) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <div className="NewsFeed">

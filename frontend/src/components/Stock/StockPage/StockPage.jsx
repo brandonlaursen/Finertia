@@ -18,7 +18,6 @@ function StockPage() {
 
   const [selectedTimeFrame, setSelectedTimeFrame] = useState("1D");
 
-  // clicking between stocks too fast, can have old stock data
   useEffect(() => {
     dispatch(fetchStock(stockSymbol));
   }, [stockSymbol, dispatch]);

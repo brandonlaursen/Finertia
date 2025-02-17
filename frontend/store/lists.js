@@ -92,9 +92,13 @@ export const deleteList = (stockListId) => async (dispatch) => {
 
 // * Selector
 const selectAllLists = (state) => state.lists || {};
+const selectListId = (state, listId) => listId;
+
 export const selectListsArray = createSelector(selectAllLists, (list) => {
   return Object.values(list);
 });
+
+export const selectListById = createSelector([selectAllLists, selectListId], (lists, listId) => lists[listId]);
 
 // * Reducer
 const listsReducer = (state = {}, action) => {

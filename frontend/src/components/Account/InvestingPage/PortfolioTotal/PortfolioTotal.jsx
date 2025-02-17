@@ -1,4 +1,4 @@
-import "./InvestingPage.css";
+import "../InvestingPage.css";
 
 import { useState } from "react";
 import ReactApexChart from "react-apexcharts";

@@ -3,24 +3,27 @@ import { FaPlus } from "react-icons/fa6";
 
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 import { fetchLists, selectListsArray } from "../../../../store/lists";
 import { fetchAllStocks } from "../../../../store/stocks";
 import { selectUser } from "../../../../store/session";
-import { useLocation } from "react-router-dom";
 
 import OpenModalButton from "../../OpenModalButton";
 import CreateListModal from "../../Modals/CreateListModal";
 
 import ListItem from "../ListItem";
 import ListStocks from "../ListStocks/ListStocks";
-import StocksOwned from "../../Home/StocksOwned/StocksOwned";
+import StocksOwned from "../StocksOwned/StocksOwned";
+
+import { selectStocksObject } from "../../../../store/stocks";
 
 function ListContainer({ className, navigate }) {
   const dispatch = useDispatch();
   const location = useLocation();
+
   const lists = useSelector(selectListsArray);
-  const stocks = useSelector((state) => state.stocks.allStocks);
+  const stocks = useSelector(selectStocksObject);
   const sessionUser = useSelector(selectUser);
 
   const [selectedPopoverId, setSelectedPopoverId] = useState(null);
@@ -42,7 +45,7 @@ function ListContainer({ className, navigate }) {
               <span className="WatchList__title">Stocks</span>
             </div>
 
-            <StocksOwned allStocks={stocks} />
+            <StocksOwned stocks={stocks} sessionUser={sessionUser}/>
           </>
         )}
 

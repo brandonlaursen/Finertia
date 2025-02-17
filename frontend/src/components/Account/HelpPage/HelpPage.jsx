@@ -1,5 +1,4 @@
 import "./HelpPage.css";
-
 import { IoIosInformationCircle } from "react-icons/io";
 import { IoMdHelpCircle } from "react-icons/io";
 import { IoChatboxEllipsesSharp } from "react-icons/io5";

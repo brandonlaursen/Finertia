@@ -15,7 +15,6 @@ function InvestingPage() {
 
   const sessionUser = useSelector(selectUser);
   const { stockSummary } = sessionUser;
-  console.log("stockSummary:", stockSummary);
 
   const stockInvestments = Object.values(stockSummary).reduce(
     (total, stock) => (total += stock.averageCost * stock.sharesOwned),

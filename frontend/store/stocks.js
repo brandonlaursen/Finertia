@@ -72,7 +72,7 @@ export const fetchStockNewsByCategory = (category) => async (dispatch) => {
 };
 
 export const editListStocks = (stockListsIdsObj, stock) => async (dispatch) => {
-  console.log('entering thunk', stockListsIdsObj, stock)
+  console.log("entering thunk", stockListsIdsObj, stock);
   const response = await csrfFetch("/api/lists/update-stock-lists", {
     method: "POST",
     body: JSON.stringify({
@@ -93,9 +93,21 @@ export const editListStocks = (stockListsIdsObj, stock) => async (dispatch) => {
 
 // * Selectors
 const selectAllStocks = (state) => state.stocks.allStocks || {};
+const selectStockId = (state, stockId) => stockId;
+
+export const selectStockById = createSelector(
+  [selectAllStocks, selectStockId],
+  (stocks, stockId) => stocks[stockId]
+);
+
 export const selectStocksArray = createSelector(selectAllStocks, (list) => {
   return Object.values(list);
 });
+
+export const selectStocksObject = createSelector(
+  selectAllStocks,
+  (stocks) => stocks
+);
 
 // * Stock Reducer
 const initialState = { allStocks: [], currentStock: {} };

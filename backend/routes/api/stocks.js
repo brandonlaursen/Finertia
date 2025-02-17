@@ -138,8 +138,11 @@ router.get("/:stockSymbol", async (req, res) => {
       fiveYearAggregatesJSON.json(),
     ]);
 
+    // !! need to account for weekends
     if (oneDayAggregates.status === "DELAYED") {
+
       const yesterdayDay = getDate(1);
+      console.log("yesterdayDay:", yesterdayDay);
       const yesterdaysAggregatesJSON = await fetch(
         `https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/5/minute/${yesterdayDay}/${todaysDate}?adjusted=true&sort=asc&apiKey=${process.env.STOCK_API_KEY2}`
       );
@@ -148,6 +151,8 @@ router.get("/:stockSymbol", async (req, res) => {
 
       oneDayAggregates = yesterdaysAggregates;
     }
+
+    console.log(oneDayAggregates)
 
     const [stockDetailsJSON, stockSnapshotJSON, stockNewsJSON] =
       await Promise.all([
@@ -235,6 +240,7 @@ router.get("/:stockSymbol", async (req, res) => {
       oneYearAggregates: oneYearAggregates.results,
       fiveYearAggregates: fiveYearAggregates.results,
     };
+
 
     return res.json(stockData);
   } catch (error) {

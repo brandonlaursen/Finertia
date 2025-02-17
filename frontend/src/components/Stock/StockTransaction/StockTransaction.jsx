@@ -109,8 +109,8 @@ function StockTransaction({ stock }) {
     setShowReview(!showReview);
 
     // * Determine the number of shares based on buy-in type
-    const numberOfShares =
-      buyIn === "Dollars" ? estimatedShares : sharesToTrade;
+    // const numberOfShares =
+    //   buyIn === "Dollars" ? estimatedShares : sharesToTrade;
 
     if (balance <= 0 && transactionType === "buy") {
       console.log(`Insufficient balance. ${balance}`);
