@@ -4,6 +4,7 @@ function StockTransactionHeader({
   stock,
   transactionType,
   handleTransactionType,
+  clearReview,
 }) {
   return (
     <div className="StockTransaction__header">
@@ -11,7 +12,9 @@ function StockTransactionHeader({
         className={`StockTransaction__header-buy  ${
           transactionType === "buy" && "StockTransaction__header-selected"
         }`}
-        onClick={() => handleTransactionType("buy")}
+        onClick={() => {
+          handleTransactionType("buy"), clearReview();
+        }}
       >
         Buy {stock.symbol}
       </div>
@@ -19,7 +22,10 @@ function StockTransactionHeader({
         className={`StockTransaction__header-buy  ${
           transactionType === "sell" && "StockTransaction__header-selected"
         }`}
-        onClick={() => handleTransactionType("sell")}
+        onClick={() => {
+          handleTransactionType("sell");
+          clearReview();
+        }}
       >
         Sell {stock.symbol}
       </div>

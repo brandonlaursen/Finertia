@@ -1,7 +1,7 @@
 import "./BuyInDropdown.css";
 import { GrFormCheckmark } from "react-icons/gr";
 
-function BuyInDropdown({ buyIn, setBuyIn }) {
+function BuyInDropdown({ buyIn, setBuyIn, clearReview }) {
   return (
     <div className={`BuyInDropdown`}>
       <div
@@ -15,7 +15,13 @@ function BuyInDropdown({ buyIn, setBuyIn }) {
           )}
         </div>
 
-        <span onClick={() => setBuyIn("Dollars")}>Dollars</span>
+        <span
+          onClick={() => {
+            setBuyIn("Dollars"), clearReview();
+          }}
+        >
+          Dollars
+        </span>
       </div>
       <div
         className={`BuyInDropdown-option ${
@@ -28,7 +34,13 @@ function BuyInDropdown({ buyIn, setBuyIn }) {
           )}
         </div>
 
-        <span onClick={() => setBuyIn("Shares")}>Shares</span>
+        <span
+          onClick={() => {
+            setBuyIn("Shares"), clearReview();
+          }}
+        >
+          Shares
+        </span>
       </div>
     </div>
   );

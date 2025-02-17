@@ -29,6 +29,7 @@ function StockTransaction({ stock }) {
 
   const [showReview, setShowReview] = useState(false);
   const [errors, setErrors] = useState(null);
+  const [message, setMessage] = useState(null);
 
   // Type of transaction - buy or sell
   const [transactionType, setTransactionType] = useState("buy");
@@ -36,14 +37,14 @@ function StockTransaction({ stock }) {
   const [buyIn, setBuyIn] = useState("Dollars");
 
   // The dollar amount a user wants to trade
-  const [tradeAmount, setTradeAmount] = useState(0.0);
+  const [tradeAmount, setTradeAmount] = useState("");
   // The number of shares a user wants to trade
-  const [sharesToTrade, setSharesToTrade] = useState(0);
+  const [sharesToTrade, setSharesToTrade] = useState("");
 
   // Estimated number of shares of trade transaction
-  const [estimatedShares, setEstimatedShares] = useState(0);
+  const [estimatedShares, setEstimatedShares] = useState("");
   // Estimated cost of the trade transaction
-  const [estimatedCost, setEstimatedCost] = useState(0);
+  const [estimatedCost, setEstimatedCost] = useState("");
 
   // get users transactions with current stock
   useEffect(() => {
@@ -65,10 +66,7 @@ function StockTransaction({ stock }) {
   function handleTradeAmountChange(e) {
     const value = e.target.value;
     const amount = Number(value);
-    if (amount < 0) {
-      console.log("Trade amount cannot be negative.");
-      return;
-    }
+    clearReview();
     setTradeAmount(amount);
     setSharesToTrade(0);
   }
@@ -76,10 +74,7 @@ function StockTransaction({ stock }) {
   function handleTradeSharesChange(e) {
     const value = e.target.value;
     const amount = Number(value);
-    if (amount < 0) {
-      console.log("Trade amount cannot be negative.");
-      return;
-    }
+    clearReview();
     setSharesToTrade(amount);
     setTradeAmount(0);
   }
@@ -96,105 +91,105 @@ function StockTransaction({ stock }) {
     // * Determine the number of shares based on buy-in type
     // const numberOfShares = buyIn === "Dollars" ? estimatedShares : sharesToTrade;
 
-    if (balance <= 0 && transactionType === "buy") {
-      console.log(`Insufficient balance. ${balance}`);
-      setErrors(`Insufficient balance. ${balance}`);
-      return;
-    }
-
-    if (sharesOwned <= 0 && transactionType === "sell") {
-      console.log(`Insufficient shares ${sharesOwned}`);
-      setErrors(`Insufficient shares ${sharesOwned}`);
-      return;
-    }
-
-    if (
-      (buyIn === "Dollars" && tradeAmount <= 0) ||
-      (buyIn === "Shares" && sharesToTrade <= 0)
-    ) {
-      console.log(`Minimum Dollar Amount`);
-      setErrors(`Minimum Dollar Amount`);
-      return false;
-    }
-
-    if (isNaN(tradeAmount) || tradeAmount < 0) {
-      console.log(`Minimum Dollar Amount`);
-      setErrors(`Minimum Dollar Amount`);
-      return;
-    }
-
-    if (isNaN(sharesToTrade) || sharesToTrade < 0) {
-      console.log(`Minimum Shares Amount`);
-      setErrors(`Minimum Dollar Amount`);
-      return;
-    }
-
     if (transactionType === "buy") {
-      console.log(
-        `ATTEMPTING TO BUY ${tradeAmount} or ${estimatedCost} with ${balance}`
-      );
-      if (tradeAmount > balance) {
-        console.log(
-          `TRADE AMOUNT - ${tradeAmount} EXCEEDS BALANCE - ${balance}`
-        );
-
-        setErrors(`Trade Amount - ${tradeAmount} Exceeds Balance - ${balance}`);
-        return;
+      if (buyIn === "Dollars") {
+        if (tradeAmount < 1) {
+          setErrors([`Minimum Dollar Amount`, `Enter at least $1.00`]);
+          return;
+        }
+        if (tradeAmount > balance) {
+          setErrors([
+            `Not Enough Buying Power`,
+            `Edit your order or make a deposit in your individual account to continue.`,
+          ]);
+          return;
+        }
       }
-      if (estimatedCost > balance) {
-        console.log(
-          `ESTIMATED COST - ${estimatedCost} EXCEEDS BALANCE - ${balance}`
-        );
 
-        setErrors(
-          `Estimated Cost - ${estimatedCost} Exceeds Balance - ${balance}`
-        );
-        return;
+      if (buyIn === "Shares") {
+        if (sharesToTrade < 0.000001) {
+          setErrors([`Not Enough Shares`, `Enter at least 0.000001 shares`]);
+          return;
+        }
+        if (estimatedCost > balance) {
+          setErrors([
+            `Not Enough Buying Power`,
+            `Edit your order or make a deposit in your individual account to continue.`,
+          ]);
+          return;
+        }
       }
     }
+
     if (transactionType === "sell") {
-      console.log(
-        `ATTEMPTING TO SELL ${estimatedShares} or ${sharesToTrade} with ${sharesOwned}`
-      );
+      if (buyIn === "Dollars") {
+        if (tradeAmount < 1) {
+          setErrors([`Minimum Dollar Amount`, `Enter at least $1.00`]);
+          return;
+        }
 
-      if (estimatedShares < 0 || sharesToTrade < 0) {
-        console.log(`Minimum Shares Amount`);
-
-        setErrors(`Minimum Shares Amount`);
-        return;
+        if (sharesOwned < estimatedShares) {
+          setErrors([`Not enough Shares`, ``]);
+          return;
+        }
       }
 
-      if (estimatedShares > sharesOwned) {
-        console.log(
-          `ESTIMATED SHARES - ${estimatedShares} EXCEEDS SHARES OWNED  - ${sharesOwned}`
-        );
-
-        setErrors(
-          `Estimated Shares - ${estimatedShares} Exceeds Shares Owned  - ${sharesOwned}`
-        );
-        return;
+      if (buyIn === "Shares") {
+        if (sharesToTrade < 0.000001) {
+          setErrors([`Not Enough Shares`, `Enter at least 0.000001 shares`]);
+          return;
+        }
+        if (sharesOwned < sharesToTrade) {
+          setErrors([`Not enough Shares`, ``]);
+          return;
+        }
       }
-      if (sharesToTrade > sharesOwned) {
-        console.log(
-          `SHARES AMOUNT - ${sharesToTrade} EXCEEDS OWNED - ${sharesOwned}`
-        );
+    }
 
-        setErrors(
-          `Estimated Shares - ${estimatedShares} Exceeds Shares Owned  - ${sharesOwned}`
-        );
-        return;
+    if (!errors) {
+      if (transactionType === "buy") {
+        if (buyIn === "Shares") {
+          setMessage(
+            `You are placing a market order to buy ${sharesToTrade.toFixed(
+              5
+            )} shares of ${
+              stock.name
+            } at an estimated cost of $${estimatedCost.toFixed(2)}`
+          );
+          return;
+        }
+        if (buyIn === "Dollars") {
+          setMessage(
+            `You are placing a market order to buy ${estimatedShares.toFixed(
+              5
+            )} shares of ${
+              stock.name
+            } at an estimated cost of $${tradeAmount.toFixed(2)}`
+          );
+          return;
+        }
       }
-      if (sharesOwned * price < estimatedCost) {
-        console.log(
-          `ESTIMATED COST - ${estimatedCost} EXCEEDS BALANCE - ${
-            sharesOwned * price
-          }`
-        );
-
-        setErrors(
-          `Estimated Cost - ${estimatedCost} Exceeds Balance - ${balance}`
-        );
-        return;
+      if (transactionType === "sell") {
+        if (buyIn === "Shares") {
+          setMessage(
+            `You are selling ${sharesToTrade.toFixed(
+              5
+            )} shares at the current market price. The estimated credit for this order is $${estimatedCost.toFixed(
+              2
+            )}`
+          );
+          return;
+        }
+        if (buyIn === "Dollars") {
+          setMessage(
+            `You are selling ${estimatedShares.toFixed(
+              5
+            )} shares at the current market price. The estimated credit for this order is $${tradeAmount.toFixed(
+              2
+            )}`
+          );
+          return;
+        }
       }
     }
 
@@ -224,12 +219,20 @@ function StockTransaction({ stock }) {
     await dispatch(executeStockTrade(transaction, transactionType));
   }
 
+  function clearReview() {
+    console.log("clearing review");
+    setShowReview(false);
+    setErrors(null);
+    setMessage(null);
+  }
+
   return (
     <div className="StockTransaction">
       <StockTransactionHeader
         stock={stock}
         transactionType={transactionType}
         handleTransactionType={handleTransactionType}
+        clearReview={clearReview}
       />
 
       <div className="StockTransaction__body">
@@ -239,6 +242,7 @@ function StockTransaction({ stock }) {
           transactionType={transactionType}
           buyIn={buyIn}
           setBuyIn={setBuyIn}
+          clearReview={clearReview}
         />
 
         <StockTransactionOrder
@@ -261,6 +265,9 @@ function StockTransaction({ stock }) {
         errors={errors}
         setErrors={setErrors}
         handleStockTransaction={handleStockTransaction}
+        message={message}
+        setMessage={setMessage}
+        clearReview={clearReview}
       />
 
       <StockTransactionFooter

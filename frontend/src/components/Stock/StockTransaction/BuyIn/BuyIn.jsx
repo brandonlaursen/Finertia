@@ -5,7 +5,7 @@ import { useState, useRef, useEffect } from "react";
 
 import BuyInDropdown from "../BuyInDropdown/BuyInDropdown";
 
-function BuyIn({ transactionType, setBuyIn, buyIn }) {
+function BuyIn({ transactionType, setBuyIn, buyIn, clearReview }) {
   const buyInRef = useRef(null);
 
   // * Toggle buy in drop down
@@ -37,14 +37,21 @@ function BuyIn({ transactionType, setBuyIn, buyIn }) {
           className={`StockTransaction__order-section__container  ${
             isBuyDropdownOpen && "buyInDropDownBorder"
           }`}
-          onClick={() => setIsBuyDropdownOpen(!isBuyDropdownOpen)}
+          onClick={() => {
+            setIsBuyDropdownOpen(!isBuyDropdownOpen)
+
+          }}
           ref={buyInRef}
         >
           <span>{buyIn}</span>
           <TiArrowUnsorted />
         </div>
         {isBuyDropdownOpen && (
-          <BuyInDropdown buyIn={buyIn} setBuyIn={setBuyIn} />
+          <BuyInDropdown
+            buyIn={buyIn}
+            setBuyIn={setBuyIn}
+            clearReview={clearReview}
+          />
         )}
       </div>
     </div>
