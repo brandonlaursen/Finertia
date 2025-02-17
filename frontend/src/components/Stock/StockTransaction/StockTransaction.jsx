@@ -1,10 +1,15 @@
 import "./StockTransaction.css";
+
 import { MdInfoOutline } from "react-icons/md";
-import { useState, useRef, useEffect } from "react";
+
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+
+import StockTransactionHeader from "./StockTransactionHeader";
+import BuyIn from "./BuyIn";
+import StockTransactionFooter from "./StockTransactionFooter/StockTransactionFooter";
+
 import { selectUser } from "../../../../store/session";
-import { TiArrowUnsorted } from "react-icons/ti";
-import { GrFormCheckmark } from "react-icons/gr";
 
 import {
   fetchStockTransactions,
@@ -17,8 +22,6 @@ function StockTransaction({ stock }) {
   const sessionUser = useSelector(selectUser);
   const stockSummary = sessionUser.stockSummary[stock.symbol];
   const sharesOwned = stockSummary?.sharesOwned || 0;
-
-  const buyInRef = useRef(null);
 
   // * The dollar amount a user wants to trade
   const [tradeAmount, setTradeAmount] = useState(0.0);
@@ -35,9 +38,6 @@ function StockTransaction({ stock }) {
   const [estimatedShares, setEstimatedShares] = useState(0);
   // * The estimated cost of the trade transaction
   const [estimatedCost, setEstimatedCost] = useState(0);
-
-  // * Toggle buy in drop down
-  const [isBuyDropdownOpen, setIsBuyDropdownOpen] = useState(false);
 
   const [showReview, setShowReview] = useState(false);
   const [errors, setErrors] = useState(null);
@@ -61,21 +61,6 @@ function StockTransaction({ stock }) {
     const newEstimatedCost = sharesToTrade * price;
     setEstimatedCost(newEstimatedCost);
   }, [sharesToTrade, price]);
-
-  // * handle dropdowns
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (buyInRef.current && !buyInRef.current.contains(e.target)) {
-        setIsBuyDropdownOpen(false);
-      }
-    };
-
-    document.addEventListener("click", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, []);
 
   function handleTradeAmountChange(e) {
     const value = e.target.value;
@@ -258,24 +243,11 @@ function StockTransaction({ stock }) {
 
   return (
     <div className="StockTransaction">
-      <div className="StockTransaction__header">
-        <div
-          className={`StockTransaction__header-buy  ${
-            transactionType === "buy" && "StockTransaction__header-selected"
-          }`}
-          onClick={() => handleTransactionType("buy")}
-        >
-          Buy {stock.symbol}
-        </div>
-        <div
-          className={`StockTransaction__header-buy  ${
-            transactionType === "sell" && "StockTransaction__header-selected"
-          }`}
-          onClick={() => handleTransactionType("sell")}
-        >
-          Sell {stock.symbol}
-        </div>
-      </div>
+      <StockTransactionHeader
+        stock={stock}
+        transactionType={transactionType}
+        handleTransactionType={handleTransactionType}
+      />
 
       <div className="StockTransaction__body">
         <div className="StockTransaction__order-section">
@@ -295,54 +267,11 @@ function StockTransaction({ stock }) {
           </div>
         </div>
 
-        <div className="StockTransaction__order-section">
-          <div className="StockTransaction__order-section__text">
-            <span>{transactionType === "buy" ? "Buy In" : "Sell In"}</span>
-          </div>
-
-          <div className="StockTransaction__order-section__select">
-            <div
-              className={`StockTransaction__order-section__container  ${
-                isBuyDropdownOpen && "buyInDropDownBorder"
-              }`}
-              onClick={() => setIsBuyDropdownOpen(!isBuyDropdownOpen)}
-              ref={buyInRef}
-            >
-              <span>{buyIn}</span>
-              <TiArrowUnsorted />
-            </div>
-            {isBuyDropdownOpen && (
-              <div className={`BuyInDropdown`}>
-                <div
-                  className={`BuyInDropdown-option ${
-                    buyIn === "Dollars" && "BuyInDropdown-option-hover"
-                  }`}
-                >
-                  <div className="checkmark-div">
-                    {buyIn === "Dollars" && (
-                      <GrFormCheckmark className="TransferModal__checkmark" />
-                    )}
-                  </div>
-
-                  <span onClick={() => setBuyIn("Dollars")}>Dollars</span>
-                </div>
-                <div
-                  className={`BuyInDropdown-option ${
-                    buyIn === "Shares" && "BuyInDropdown-option-hover"
-                  }`}
-                >
-                  <div className="checkmark-div">
-                    {buyIn === "Shares" && (
-                      <GrFormCheckmark className="TransferModal__checkmark" />
-                    )}
-                  </div>
-
-                  <span onClick={() => setBuyIn("Shares")}>Shares</span>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
+        <BuyIn
+          transactionType={transactionType}
+          buyIn={buyIn}
+          setBuyIn={setBuyIn}
+        />
 
         <div className="StockTransaction__order-section">
           {buyIn === "Dollars" ? (
@@ -444,30 +373,14 @@ function StockTransaction({ stock }) {
         )}
       </div>
 
-      <div className="StockTransaction_footer">
-        {transactionType === "buy" ? (
-          ` $${balance.toFixed(2)} buying power available`
-        ) : (
-          <div className="StockTransaction_footer-sell">
-            {buyIn === "Dollars" ? (
-              <span>{`$${(Number(sharesOwned) * price).toFixed(
-                2
-              )} Available`}</span>
-            ) : (
-              <span>{`${Number(sharesOwned).toFixed(2)} Share${
-                Math.round(sharesOwned) > 1 ? "s" : ""
-              } Available`}</span>
-            )}
-            -
-            <span
-              className="StockTransaction_footer-text"
-              onClick={handleSellAll}
-            >
-              Sell All
-            </span>
-          </div>
-        )}
-      </div>
+      <StockTransactionFooter
+        transactionType={transactionType}
+        balance={balance}
+        buyIn={buyIn}
+        sharesOwned={sharesOwned}
+        price={price}
+        handleSellAll={handleSellAll}
+      />
     </div>
   );
 }

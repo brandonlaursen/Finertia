@@ -63,7 +63,6 @@ function AddToListModal({ stock }) {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    console.log("submitting list updates...");
     await dispatch(editListStocks(checkedItems, stock));
 
     closeModal();

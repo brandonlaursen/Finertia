@@ -14,7 +14,6 @@ function ProfilePage() {
   const sessionUser = useSelector(selectUser);
   const { setModalContent, setModalClass } = useModal();
   const { stockSummary } = sessionUser;
-  console.log("stockSummary:", stockSummary);
 
   const stockInvestments = Object.values(stockSummary).reduce(
     (total, stock) => (total += stock.averageCost * stock.sharesOwned),

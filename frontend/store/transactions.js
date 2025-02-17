@@ -80,7 +80,7 @@ export const fetchStockTransactions = () => async (dispatch) => {
 };
 
 export const executeStockTrade = (transaction, transactionType) => async (dispatch) => {
-    console.log("transaction:", transaction);
+   
     const { stockId, price, quantity } = transaction;
 
     const response = await csrfFetch(`/api/transactions/trade/${stockId}`, {

@@ -11,7 +11,7 @@ import { useModal } from "../../../context/Modal";
 import { editList } from "../../../../store/lists";
 
 function EditListModal({ list }) {
-  console.log('rendering edit list modal...')
+
   const { closeModal } = useModal();
 
   const dispatch = useDispatch();

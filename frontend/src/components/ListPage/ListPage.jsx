@@ -239,7 +239,7 @@ function ListPage() {
                 <tbody className="stocks__table-body">
                   {sortedStocks ? (
                     sortedStocks?.map((stock) => {
-                      console.log(stock);
+                      
                       return (
                         <tr
                           key={stock?.id}

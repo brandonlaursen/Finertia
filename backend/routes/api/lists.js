@@ -103,7 +103,6 @@ router.post("/update-stock-lists", async (req, res) => {
 
   const stockListsUnfiltered = await Promise.all(
     Object.keys(stockListsIdsObj).map(async (listId) => {
-
       return await StockList.findOne({
         where: {
           userId: id,
@@ -150,9 +149,6 @@ router.post("/update-stock-lists", async (req, res) => {
 
   const stock = await Stock.findByPk(stockId);
 
-  console.log('before return in route', updatedListIds,
-    removedFromIds,
-    stock,)
   return res.json({
     messages,
     updatedListIds,
