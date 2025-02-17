@@ -30,12 +30,16 @@ const setStockTransactions = (transactions) => {
   };
 };
 
-const addStockTransaction = (createdTransaction, updatedBalance, updatedStockSummary) => {
+const addStockTransaction = (
+  createdTransaction,
+  updatedBalance,
+  updatedStockSummary
+) => {
   return {
     type: ADD_STOCK_TRANSACTION,
     createdTransaction,
     updatedBalance,
-    updatedStockSummary
+    updatedStockSummary,
   };
 };
 
@@ -79,24 +83,25 @@ export const fetchStockTransactions = () => async (dispatch) => {
   dispatch(setStockTransactions(transactions));
 };
 
-export const executeStockTrade = (transaction, transactionType) => async (dispatch) => {
-   
-    const { stockId, price, quantity } = transaction;
+export const executeStockTrade = (transaction) => async (dispatch) => {
+  const { stockId, price, quantity, transactionType } = transaction;
 
-    const response = await csrfFetch(`/api/transactions/trade/${stockId}`, {
-      method: "POST",
-      body: JSON.stringify({
-        stockId,
-        price,
-        quantity,
-        transactionType,
-      }),
-    });
+  const response = await csrfFetch(`/api/transactions/trade/${stockId}`, {
+    method: "POST",
+    body: JSON.stringify({
+      stockId,
+      price,
+      quantity,
+      transactionType,
+    }),
+  });
 
-    const data = await response.json();
+  const data = await response.json();
 
-    dispatch(addStockTransaction(data.transaction, data.balance, data.stockSummary));
-  };
+  dispatch(
+    addStockTransaction(data.transaction, data.balance, data.stockSummary)
+  );
+};
 
 // * Transactions reducer
 const initialState = { accountTransactions: [], stockTransactions: [] };

@@ -2,6 +2,12 @@ import "./StockTradeEstimate.css";
 import { MdInfoOutline } from "react-icons/md";
 
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+
+import { executeStockTrade } from "../../../../../store/transactions";
+
+import TransferModal from "../../../Modals/TransferModal";
+import { useModal } from "../../../../context/Modal";
 
 function StockTradeEstimate({
   buyIn,
@@ -12,9 +18,15 @@ function StockTradeEstimate({
   errors,
   handleStockTransaction,
   message,
-  clearReview
+  clearReview,
+  price,
+  stock,
+  sharesToTrade,
 }) {
+  const dispatch = useDispatch();
+
   const [isLoading, setIsLoading] = useState(false);
+  const { setModalContent, setModalClass } = useModal();
 
   async function handleSubmitDelay() {
     setIsLoading(true);
@@ -23,7 +35,37 @@ function StockTradeEstimate({
     handleStockTransaction();
   }
 
-  // async function handleSubmitOrder() {}
+  async function handleSubmitOrder() {
+    if (errors) return;
+
+    const numberOfShares =
+      buyIn === "Dollars" ? estimatedShares : sharesToTrade;
+
+    const transaction = {
+      stockId: stock.id,
+      price,
+      quantity: +numberOfShares.toFixed(5),
+      transactionType
+    };
+
+    setIsLoading(true);
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    setIsLoading(false);
+
+    dispatch(executeStockTrade(transaction))
+    clearReview();
+  }
+
+  function handleDeposit(e) {
+    e.stopPropagation();
+    setModalContent(<TransferModal />);
+    setModalClass({
+      modal: "TransferModal",
+      modalBackground: "TransferModal__background",
+      modalContainer: "TransferModal__container",
+    });
+    clearReview();
+  }
 
   return (
     <>
@@ -54,7 +96,7 @@ function StockTradeEstimate({
           {errors && (
             <div className="StockTradeEstimate__errors">
               <span className="StockTradeEstimate__error">
-                <MdInfoOutline />
+                <MdInfoOutline className="StockTradeEstimate__error-icon" />
                 {errors[0]}
               </span>
               <span className="StockTradeEstimate__error-subtext">
@@ -69,32 +111,48 @@ function StockTradeEstimate({
           )}
         </>
       )}
+
       <div className="StockTransaction__button-container">
         {showReview && errors && (
-          <button
-            className="StockTransaction__button"
-            onClick={() => {
-              clearReview()
-            }}
-          >
-            Dismiss
-          </button>
+          <>
+            {console.log(errors[0])}
+            {transactionType === "buy" &&
+              errors[0] === "Not Enough Buying Power" && (
+                <button
+                  className="StockTransaction__button"
+                  onClick={handleDeposit}
+                >
+                  Make Deposit
+                </button>
+              )}
+            <button
+              className="StockTransaction__button"
+              onClick={() => {
+                clearReview();
+              }}
+            >
+              Dismiss
+            </button>
+          </>
         )}
 
         {showReview && !errors && (
           <div className="StockTransaction__confirm-container">
             <button
               className="StockTransaction__button"
-              onClick={() => {
-                // setShowReview(false), setErrors(null);
-              }}
+              onClick={handleSubmitOrder}
+              disabled={isLoading}
             >
-              Submit Order
+               {isLoading ? (
+              <span className="StockTransaction__spinner"></span>
+            ) : (
+              "Submit Order"
+            )}
             </button>
             <button
               className="StockTransaction__button"
               onClick={() => {
-                clearReview()
+                clearReview();
               }}
             >
               Cancel
@@ -106,6 +164,7 @@ function StockTradeEstimate({
           <button
             className="StockTransaction__button"
             onClick={handleSubmitDelay}
+            disabled={isLoading}
           >
             {isLoading ? (
               <span className="StockTransaction__spinner"></span>

@@ -198,7 +198,9 @@ router.post("/trade/:stockId", async (req, res) => {
   const user = await User.findByPk(id);
 
 
-  const amount = +price * +quantity;
+  let amount = +price * +quantity;
+  amount = amount.toFixed(2);
+  console.log("amount:--------->", amount);
 
   let newBalance;
   if (transactionType === "buy") {
@@ -207,7 +209,7 @@ router.post("/trade/:stockId", async (req, res) => {
     newBalance = Math.round(balance + Number(amount));
   }
 
-  
+
   await user.update({
     balance: newBalance,
   });

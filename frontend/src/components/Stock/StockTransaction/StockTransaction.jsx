@@ -108,7 +108,7 @@ function StockTransaction({ stock }) {
 
       if (buyIn === "Shares") {
         if (sharesToTrade < 0.000001) {
-          setErrors([`Not Enough Shares`, `Enter at least 0.000001 shares`]);
+          setErrors([`Minimum Shares Amount`, `Enter at least 0.000001 shares`]);
           return;
         }
         if (estimatedCost > balance) {
@@ -129,18 +129,18 @@ function StockTransaction({ stock }) {
         }
 
         if (sharesOwned < estimatedShares) {
-          setErrors([`Not enough Shares`, ``]);
+          setErrors([`Not Enough Shares Available`, ``]);
           return;
         }
       }
 
       if (buyIn === "Shares") {
         if (sharesToTrade < 0.000001) {
-          setErrors([`Not Enough Shares`, `Enter at least 0.000001 shares`]);
+          setErrors([`Not Enough Shares Available`, `Enter at least 0.000001 shares`]);
           return;
         }
         if (sharesOwned < sharesToTrade) {
-          setErrors([`Not enough Shares`, ``]);
+          setErrors([`Not Enough Shares Available`, ``]);
           return;
         }
       }
@@ -268,6 +268,9 @@ function StockTransaction({ stock }) {
         message={message}
         setMessage={setMessage}
         clearReview={clearReview}
+        price={price}
+        stock={stock}
+        sharesToTrade={sharesToTrade}
       />
 
       <StockTransactionFooter

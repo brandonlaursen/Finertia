@@ -138,7 +138,7 @@ router.get("/:stockSymbol", async (req, res) => {
       fiveYearAggregatesJSON.json(),
     ]);
 
-    // !! need to account for weekends
+    // !! need to account for weekends and holidays
     if (oneDayAggregates.status === "DELAYED") {
 
       const yesterdayDay = getDate(1);

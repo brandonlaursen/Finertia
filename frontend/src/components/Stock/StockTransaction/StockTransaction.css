@@ -172,9 +172,11 @@
 
 .StockTransaction__button-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 16px;
+  gap: 8px;
 
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
@@ -312,10 +314,11 @@
   justify-content: center;
   align-items: center;
   gap: 4px;
+  font-weight: bold;
 }
 
 .StockTradeEstimate__error-subtext {
-  margin-left: 20px;
+  margin-left: 18px;
   margin-top: 4px;
 }
 
@@ -347,4 +350,9 @@
 .StockTradeEstimate__message {
   /* background-color: #33d187; */
   padding-right: 20px;
+}
+
+.StockTradeEstimate__error-icon{
+  font-size: 14px;
+  color: black;
 }

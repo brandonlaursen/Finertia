@@ -19,6 +19,7 @@ function TransferModal() {
   const fromRef = useRef(null);
   const toRef = useRef(null);
 
+  const [isLoading, setIsLoading] = useState(false);
   const [amount, setAmount] = useState(0.0);
   const [from, setFrom] = useState("Bank");
   const [to, setTo] = useState("Individual");
@@ -28,31 +29,6 @@ function TransferModal() {
   const [disableButton, setDisableButton] = useState(true);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [error, setError] = useState(null);
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    setShowMoneyButtons(false);
-    setShowConfirmation(true);
-  }
-
-  async function submitTransaction(e) {
-    e.preventDefault();
-    e.stopPropagation();
-
-    if (to === "Individual") {
-      await dispatch(depositFunds(Number(amount)));
-    }
-    if (to === "Bank") {
-      if (amount > sessionUser.balance) {
-        setError("Amount exceeds your individual accounts balance");
-        setDisableButton(true);
-        return;
-      }
-
-      await dispatch(withdrawFunds(Number(amount)));
-    }
-    closeModal();
-  }
 
   useEffect(() => {
     if (amount == 0) {
@@ -82,6 +58,35 @@ function TransferModal() {
       document.removeEventListener("click", handleClickOutside);
     };
   }, []);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    setShowMoneyButtons(false);
+    setShowConfirmation(true);
+  }
+
+  async function submitTransaction(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    setIsLoading(true);
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    setIsLoading(false);
+
+    if (to === "Individual") {
+      await dispatch(depositFunds(Number(amount)));
+    }
+    if (to === "Bank") {
+      if (amount > sessionUser.balance) {
+        setError("Amount exceeds your individual accounts balance");
+        setDisableButton(true);
+        return;
+      }
+
+      await dispatch(withdrawFunds(Number(amount)));
+    }
+    closeModal();
+  }
 
   const toggleDropdown = (dropdown) => {
     if (dropdown === "from") {
@@ -350,14 +355,20 @@ function TransferModal() {
                 {from === "Individual" &&
                   `$${amount} will be deposited into Finertia bank.`}
               </span>
+
               <button
                 className={`TransferModal__button ${
                   !disableButton && "TransferModal__button-enabled"
                 }`}
                 onClick={submitTransaction}
               >
-                Transfer ${amount}
+                {isLoading ? (
+                  <span className="StockTransaction__spinner"></span>
+                ) : (
+                  `Transfer ${amount}`
+                )}
               </button>
+
               <button
                 className="TransferModal__button cancel-button"
                 onClick={() => {
