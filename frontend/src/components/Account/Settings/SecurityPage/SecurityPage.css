@@ -1,6 +1,6 @@
 .SecurityPage {
   height: 100%;
-  width: 70%;
+  width: 90%;
 
   display: flex;
   flex-direction: column;
@@ -15,8 +15,6 @@
 
   gap: 10px;
   padding-top: 30px;
-
-  border-bottom: 1px solid rgb(231, 231, 231);
 }
 
 .SecurityPage__content__title {
@@ -26,6 +24,7 @@
 
   font-size: 24px;
   font-weight: bold;
+  padding-left: 20px;
 }
 
 .SecurityPage__content__subtitle {
@@ -34,6 +33,7 @@
   align-content: center;
 
   margin-bottom: 20px;
+  padding-left: 20px;
 }
 
 .SecurityPage__content__links {
@@ -48,18 +48,40 @@
   justify-content: space-between;
   align-items: center;
 
-  border-top: 1px solid rgb(232, 232, 232);
-
   cursor: pointer;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.border-bottom {
+  border-bottom: 1px solid rgb(231, 231, 231);
+}
+
+.border-top-bottom {
+  border-top: 1px solid rgb(232, 232, 232);
+  border-bottom: 1px solid rgb(231, 231, 231);
+}
+
+.SecurityPage_border-link {
+  border-bottom: 1px solid rgb(232, 232, 232);
+}
+
+.SecurityPage_border {
+  border-top: 1px solid rgb(232, 232, 232);
 }
 
 .SecurityPage__link:hover {
   background-color: rgb(243, 243, 243);
 }
 
+.SecurityPage_border-link:hover {
+  background-color: white;
+}
+
 .SecurityPage__logout {
   align-self: end;
   padding-top: 15px;
+  margin-right: 20px;
 }
 
 .SecurityPage__logout-span {
@@ -72,4 +94,105 @@
 
 .SecurityPage__logout-span:hover {
   color: rgb(7, 222, 150);
+}
+
+.SecurityPage__link-password {
+  /* */
+}
+
+.SecurityPage_border-password {
+  border: 1px solid rgb(232, 232, 232);
+  border-radius: 5px;
+}
+
+.SecurityPage__editContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  border-radius: 5px;
+
+}
+
+.SecurityPage_input-container {
+  display: flex;
+
+  margin-bottom: 15px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.SecurityPage_input-label {
+  margin-right: 10px;
+  font-weight: bold;
+  text-align: right;
+  font-size: 13px;
+}
+
+.SecurityPage_input-field {
+  width: 40%;
+  padding: 8px;
+  font-size: 13px;
+  border: 1px solid #aaaaaa;
+  border-radius: 4px;
+}
+
+.SecurityPage_input-field:focus {
+  border: 1px solid #38e850;
+}
+
+.SecurityPage_button-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.SecurityPage_cancel-button,
+.SecurityPage_save-button {
+  padding: 10px 20px;
+  font-size: 12px;
+  font-weight: bold;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  width: 120px;
+}
+
+.SecurityPage_cancel-button {
+  background-color: #ffffff;
+  border: 1px solid #38e850;
+  color: #38e850;
+  cursor: pointer;
+}
+
+.SecurityPage_save-button {
+  background-color: #38e850;
+  color: white;
+}
+
+.SecurityPage_cancel-button:hover {
+  background-color: #ace8b2;
+}
+
+.SecurityPage_save-button:hover {
+  background-color: rgb(140, 215, 144);
+}
+
+.SecurityPage__hide-icon {
+  position: absolute;
+  right: 28px;
+
+  font-size: 16px;
+
+  background-color: transparent;
+  color: rgb(0, 0, 0);
+
+  cursor: pointer;
 }
