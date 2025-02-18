@@ -111,7 +111,11 @@ router.get("/stock-transactions", async (req, res) => {
 });
 
 router.get("/stock-summary", async (req, res) => {
+  console.log("=================================");
   const { id } = req.user;
+
+  const MULTIPLIER_100000 = 100000;
+  const MULTIPLIER_100 = 100;
 
   const userTransactions = await StockUserTransaction.findAll({
     where: { userId: id },
@@ -140,75 +144,151 @@ router.get("/stock-summary", async (req, res) => {
 
   const stockSummary = {};
 
+  console.log("TRANSACTIONS", transactions);
   transactions.forEach((transaction) => {
     const {
-      stockSymbol,
       stockId,
+      stockName,
+      stockSymbol,
+      transactionType,
       quantity,
       purchasePrice,
       purchaseDate,
-      stockName,
     } = transaction;
 
     if (!stockSummary[stockSymbol]) {
       stockSummary[stockSymbol] = {
+        stockId,
         stockName,
         stockSymbol,
-        stockId,
         sharesOwned: 0,
         totalAmountOwned: 0,
         transactions: [],
       };
     }
 
-    stockSummary[stockSymbol].sharesOwned += quantity;
-    stockSummary[stockSymbol].totalAmountOwned += quantity * purchasePrice;
+    // current user values
+    const sharesOwned = stockSummary[stockSymbol].sharesOwned;
+    const totalAmountOwned = stockSummary[stockSymbol].totalAmountOwned;
 
-    stockSummary[stockSymbol].transactions.push({
-      stockId,
-      stockSymbol,
-      transactionType: transaction.transactionType,
-      quantity,
-      purchasePrice,
-      purchaseDate,
-    });
+    // rounded user values
+    const roundedSharesOwned =
+      Math.round(Number(sharesOwned) * MULTIPLIER_100000) / MULTIPLIER_100000;
+    const roundedTotalAmountOwned =
+      Math.round(Number(totalAmountOwned) * MULTIPLIER_100) / MULTIPLIER_100;
+
+    // rounded stock quantity
+    const roundedQuantity =
+      Math.round(Number(quantity) * MULTIPLIER_100000) / MULTIPLIER_100000;
+    // rounded stock price
+    const roundedPrice =
+      Math.round(Number(purchasePrice) * MULTIPLIER_100) / MULTIPLIER_100;
+
+    if (transactionType === "buy") {
+      stockSummary[stockSymbol].sharesOwned =
+        Math.round((roundedSharesOwned + roundedQuantity) * MULTIPLIER_100000) /
+        MULTIPLIER_100000;
+
+      stockSummary[stockSymbol].totalAmountOwned =
+        Math.round(
+          (roundedTotalAmountOwned + roundedQuantity * roundedPrice) *
+            MULTIPLIER_100
+        ) / MULTIPLIER_100;
+    } else if (transactionType === "sell") {
+      stockSummary[stockSymbol].sharesOwned =
+        Math.round((roundedSharesOwned - roundedQuantity) * MULTIPLIER_100000) /
+        MULTIPLIER_100000;
+
+      stockSummary[stockSymbol].totalAmountOwned =
+        Math.round(
+          (roundedTotalAmountOwned - roundedQuantity * roundedPrice) *
+            MULTIPLIER_100
+        ) / MULTIPLIER_100;
+    }
+
+    if (stockSummary[stockSymbol].sharesOwned > 0) {
+      stockSummary[stockSymbol].transactions.push({
+        stockId,
+        stockName,
+        stockSymbol,
+        transactionType: transaction.transactionType,
+        quantity,
+        purchasePrice,
+        purchaseDate,
+      });
+    }
   });
 
   for (const stockSymbol in stockSummary) {
     const stockData = stockSummary[stockSymbol];
 
-    if (stockData.totalAmountOwned > 0) {
+    if (stockData.totalAmountOwned <= 0 || stockData.sharesOwned <= 0) {
+      delete stockSummary[stockSymbol];
+    } else {
       stockData.averageCost = Number(
         (stockData.totalAmountOwned / stockData.sharesOwned).toFixed(2)
       );
-    } else {
-      stockData.averageCost = 0;
     }
   }
 
+  console.log(
+    "stock summary -------------------------------------",
+    stockSummary
+  );
   return res.json({
     stockSummary,
   });
 });
 
 router.post("/trade/:stockId", async (req, res) => {
+  console.log("=================== NEW ===================");
   const { id, balance } = req.user;
 
   const { stockId, price, quantity, transactionType } = req.body;
   const user = await User.findByPk(id);
 
+  // Constants
+  const MULTIPLIER_100000 = 100000;
+  const MULTIPLIER_100 = 100;
 
-  let amount = +price * +quantity;
-  amount = amount.toFixed(2);
-  console.log("amount:--------->", amount);
+  // Round price and quantity
+  const roundedPrice =
+    Math.round(Number(price) * MULTIPLIER_100) / MULTIPLIER_100;
+  const roundedQuantity =
+    Math.round(Number(quantity) * MULTIPLIER_100000) / MULTIPLIER_100000;
+
+  // Calculate amount (price * quantity)
+  const amount = roundedPrice * roundedQuantity;
+
+  // Round the amount to 2 decimal places (since it's a currency value)
+  const roundedAmount = Math.round(amount * MULTIPLIER_100) / MULTIPLIER_100;
+
+  console.log("-------------- TRANSACTION --------------", {
+    balance,
+    transactionType,
+    quantity,
+    roundedQuantity,
+    price,
+    roundedPrice,
+    amount,
+    roundedAmount,
+  });
 
   let newBalance;
   if (transactionType === "buy") {
-    newBalance = Math.round(balance - Number(amount));
+    newBalance = balance - roundedAmount;
   } else if (transactionType === "sell") {
-    newBalance = Math.round(balance + Number(amount));
+    newBalance = balance + roundedAmount;
   }
-  console.log('NEW BALANCE', newBalance)
+
+  newBalance = Math.round(newBalance * MULTIPLIER_100) / MULTIPLIER_100;
+
+  console.log("NEW BALANCE DETAILS", {
+    balance,
+    amount,
+    roundedAmount,
+    newBalance,
+  });
 
   await user.update({
     balance: newBalance,
@@ -240,6 +320,7 @@ router.post("/trade/:stockId", async (req, res) => {
 
     return {
       stockId,
+      stockName: Stock.stockName,
       stockSymbol: Stock.stockSymbol,
       transactionType,
       quantity,
@@ -252,53 +333,91 @@ router.post("/trade/:stockId", async (req, res) => {
 
   transactions.forEach((transaction) => {
     const {
-      stockSymbol,
       stockId,
+      stockName,
+      stockSymbol,
+      transactionType,
       quantity,
       purchasePrice,
       purchaseDate,
-      transactionType,
     } = transaction;
 
     if (!stockSummary[stockSymbol]) {
       stockSummary[stockSymbol] = {
-        stockSymbol,
         stockId,
+        stockName,
+        stockSymbol,
         sharesOwned: 0,
         totalAmountOwned: 0,
         transactions: [],
       };
     }
 
+    // current user values
+    const sharesOwned = stockSummary[stockSymbol].sharesOwned;
+    const totalAmountOwned = stockSummary[stockSymbol].totalAmountOwned;
+
+    // rounded user values
+    const roundedSharesOwned =
+      Math.round(Number(sharesOwned) * MULTIPLIER_100000) / MULTIPLIER_100000;
+    const roundedTotalAmountOwned =
+      Math.round(Number(totalAmountOwned) * MULTIPLIER_100) / MULTIPLIER_100;
+
+    // rounded stock quantity
+    const roundedQuantity =
+      Math.round(Number(quantity) * MULTIPLIER_100000) / MULTIPLIER_100000;
+    // rounded stock price
+    const roundedPrice =
+      Math.round(Number(purchasePrice) * MULTIPLIER_100) / MULTIPLIER_100;
+
     if (transactionType === "buy") {
-      stockSummary[stockSymbol].sharesOwned += quantity;
-      stockSummary[stockSymbol].totalAmountOwned += quantity * purchasePrice;
+      stockSummary[stockSymbol].sharesOwned =
+        Math.round((roundedSharesOwned + roundedQuantity) * MULTIPLIER_100000) /
+        MULTIPLIER_100000;
+
+      stockSummary[stockSymbol].totalAmountOwned =
+        Math.round(
+          (roundedTotalAmountOwned + roundedQuantity * roundedPrice) *
+            MULTIPLIER_100
+        ) / MULTIPLIER_100;
     } else if (transactionType === "sell") {
-      stockSummary[stockSymbol].sharesOwned -= quantity;
-      stockSummary[stockSymbol].totalAmountOwned -= quantity * purchasePrice;
+      stockSummary[stockSymbol].sharesOwned =
+        Math.round((roundedSharesOwned - roundedQuantity) * MULTIPLIER_100000) /
+        MULTIPLIER_100000;
+
+      stockSummary[stockSymbol].totalAmountOwned =
+        Math.round(
+          (roundedTotalAmountOwned - roundedQuantity * roundedPrice) *
+            MULTIPLIER_100
+        ) / MULTIPLIER_100;
     }
 
-    stockSummary[stockSymbol].transactions.push({
-      stockId,
-      stockSymbol,
-      transactionType: transaction.transactionType,
-      quantity,
-      purchasePrice,
-      purchaseDate,
-    });
+    if (stockSummary[stockSymbol].sharesOwned > 0) {
+      stockSummary[stockSymbol].transactions.push({
+        stockId,
+        stockName,
+        stockSymbol,
+        transactionType: transaction.transactionType,
+        quantity,
+        purchasePrice,
+        purchaseDate,
+      });
+    }
   });
 
   for (const stockSymbol in stockSummary) {
     const stockData = stockSummary[stockSymbol];
 
-    if (stockData.totalAmountOwned > 0) {
+    if (stockData.totalAmountOwned <= 0 || stockData.sharesOwned <= 0) {
+      delete stockSummary[stockSymbol];
+    } else {
       stockData.averageCost = Number(
         (stockData.totalAmountOwned / stockData.sharesOwned).toFixed(2)
       );
-    } else {
-      stockData.averageCost = 0;
     }
   }
+
+  console.log("LOOOK HERE", stockSummary);
 
   return res.json({
     transaction,

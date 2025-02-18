@@ -24,6 +24,8 @@ function StockTradeEstimate({
   sharesToTrade,
   setNotifications,
   setNotificationMessage,
+  setSharesToTrade,
+  setTradeAmount,
 }) {
   const dispatch = useDispatch();
 
@@ -59,14 +61,17 @@ function StockTradeEstimate({
     clearReview();
 
     if (transactionType === "buy") {
-      setNotificationMessage(
-       [ `Successfully bought ${transaction.quantity} shares of ${stock.name}`]
-      );
+      setNotificationMessage([
+        `Successfully bought ${transaction.quantity} shares of ${stock.name}`,
+      ]);
     } else if (transactionType === "sell") {
-      setNotificationMessage(
-       [ `Successfully sold ${transaction.quantity} shares of ${stock.name}`]
-      );
+      setNotificationMessage([
+        `Successfully sold ${transaction.quantity} shares of ${stock.name}`,
+      ]);
     }
+
+    setTradeAmount(0);
+    setSharesToTrade(0);
 
     setNotifications(true);
 

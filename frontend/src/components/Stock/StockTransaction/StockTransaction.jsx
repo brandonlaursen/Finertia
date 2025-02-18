@@ -204,7 +204,7 @@ function StockTransaction({ stock, setNotifications, setNotificationMessage  }) 
   async function handleSellAll() {
     setTransactionType("sell");
     setBuyIn("Shares");
-    setSharesToTrade(Number(sharesOwned).toFixed(2));
+    setSharesToTrade(Number(sharesOwned).toFixed(5));
   }
 
   function clearReview() {
@@ -259,7 +259,9 @@ function StockTransaction({ stock, setNotifications, setNotificationMessage  }) 
         stock={stock}
         sharesToTrade={sharesToTrade}
         setNotifications={setNotifications}
-              setNotificationMessage={setNotificationMessage}
+        setNotificationMessage={setNotificationMessage}
+        setSharesToTrade={setSharesToTrade}
+        setTradeAmount={setTradeAmount}
       />
 
       <StockTransactionFooter

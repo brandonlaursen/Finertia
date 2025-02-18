@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 import StocksOwnedItem from "../StocksOwnedItem/StocksOwnedItem";
 
-
 function StocksOwned({ sessionUser, stocks }) {
   const navigate = useNavigate();
 
@@ -15,7 +14,7 @@ function StocksOwned({ sessionUser, stocks }) {
   return (
     <>
       <div className="WatchListStocks-stocks-owned">
-        {ownedStocks.length > 0 &&
+        {ownedStocks.length > 0 ? (
           ownedStocks.map((stock) => {
             return (
               <StocksOwnedItem
@@ -25,7 +24,13 @@ function StocksOwned({ sessionUser, stocks }) {
                 stocks={stocks}
               />
             );
-          })}
+          })
+        ) : (
+          <div className="WatchListStocks-stocks-owned-empty">
+            Your portfolio is waiting to grow! 🚀 Start exploring stocks and
+            make your first investment today.
+          </div>
+        )}
       </div>
     </>
   );

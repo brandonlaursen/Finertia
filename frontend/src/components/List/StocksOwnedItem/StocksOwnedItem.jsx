@@ -15,7 +15,7 @@ function StocksOwnedItem({ stock, navigate, stocks }) {
       <div className="WatchListStocks__container-title-shares">
         <span className="WatchListStocks__container-title">{stockSymbol}</span>
         <span className="StocksOwnedItem__container-subtitle">
-          {sharesOwned?.toFixed(2) ? `${sharesOwned?.toFixed(2)} Shares` : ""}
+          {sharesOwned?.toFixed(5) ? `${sharesOwned?.toFixed(5)} Shares` : ""}
         </span>
       </div>
       <span className="WatchListStocks__container-graph"></span>

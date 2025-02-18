@@ -50,9 +50,14 @@ export const login = (user) => async (dispatch) => {
       password,
     }),
   });
-  const data = await response.json();
-  dispatch(setUser(data.user));
-  return response;
+  const userInfo = await response.json();
+
+  if (userInfo.user) {
+    const response = await csrfFetch("/api/transactions/stock-summary");
+    const data = await response.json();
+
+    dispatch(setUser(userInfo.user, data.stockSummary));
+  }
 };
 
 export const logout = () => async (dispatch) => {
@@ -65,10 +70,11 @@ export const restoreUser = () => async (dispatch) => {
   const response = await csrfFetch("/api/session");
   const userInfo = await response.json();
 
-  if (userInfo) {
+  if (userInfo.user) {
     const response = await csrfFetch("/api/transactions/stock-summary");
     const data = await response.json();
- 
+    console.log("data:", data);
+
     dispatch(setUser(userInfo.user, data.stockSummary));
   }
 

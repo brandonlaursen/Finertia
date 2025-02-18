@@ -19,7 +19,7 @@ function StockTransactionFooter({
               2
             )} Available`}</span>
           ) : (
-            <span>{`${Number(sharesOwned).toFixed(2)} Share${
+            <span>{`${Number(sharesOwned).toFixed(5)} Share${
               Math.round(sharesOwned) > 1 ? "s" : ""
             } Available`}</span>
           )}

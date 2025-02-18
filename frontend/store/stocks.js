@@ -7,6 +7,7 @@ const SET_CURRENT_STOCK = "stocks/SET_CURRENT_STOCK";
 const SET_STOCKS_NEWS = "stocks/SET_STOCKS_NEWS";
 
 const UPDATE_LIST_STOCKS = "lists/UPDATE_LIST_STOCKS";
+const REMOVE_USER = "session/removeUser";
 
 // * Action Creators
 export const setAllStocks = (stocks) => ({
@@ -157,6 +158,8 @@ const stockReducer = (state = initialState, action) => {
       };
       return newState;
     }
+    case REMOVE_USER:
+      return initialState;
     default:
       return state;
   }

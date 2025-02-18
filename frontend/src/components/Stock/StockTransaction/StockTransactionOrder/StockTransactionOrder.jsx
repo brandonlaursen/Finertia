@@ -52,7 +52,7 @@ function StockTransactionOrder({
           <span className="StockTransaction__market-price-title">
             Market Price
           </span>
-          <span>${price}</span>
+          <span>${price.toFixed(2)}</span>
         </div>
       )}
       <div className="StockTransaction__line"></div>

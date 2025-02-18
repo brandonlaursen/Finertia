@@ -1,3 +1,4 @@
+
 import { csrfFetch } from "./csrf";
 import { createSelector } from "reselect";
 
@@ -8,6 +9,7 @@ const UPDATE_LIST = "lists/UPDATE_LIST";
 const REMOVE_LIST = "lists/REMOVE_LIST";
 
 const UPDATE_LIST_STOCKS = "lists/UPDATE_LIST_STOCKS";
+const REMOVE_USER = "session/removeUser";
 
 // * Action Creators
 export const setLists = (lists) => ({
@@ -100,8 +102,9 @@ export const selectListsArray = createSelector(selectAllLists, (list) => {
 
 export const selectListById = createSelector([selectAllLists, selectListId], (lists, listId) => lists[listId]);
 
+const initialState = {}
 // * Reducer
-const listsReducer = (state = {}, action) => {
+const listsReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_LISTS: {
       const normalizedLists = {};
@@ -151,6 +154,8 @@ const listsReducer = (state = {}, action) => {
 
       return newState;
     }
+    case REMOVE_USER:
+      return initialState;
     default:
       return state;
   }

@@ -135,13 +135,16 @@
 .company-info-container {
   height: 100px;
 
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
 
+  padding-top: 32px;
+  display: flex;
+  /* justify-content: flex-start; */
+  align-items: start;
+  /* align-items: center; */
   gap: 130px;
 
   font-size: 14px;
+
 }
 
 .company-info-item {
@@ -159,7 +162,7 @@
   font-size: 24px;
   font-weight: bold;
 
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   border-bottom: solid 1px rgb(234, 234, 234);
 }
 

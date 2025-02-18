@@ -6,6 +6,7 @@ const ADD_ACCOUNT_TRANSACTION = "transactions/ADD_ACCOUNT_TRANSACTION";
 
 const SET_STOCK_TRANSACTIONS = "transactions/SET_STOCK_TRANSACTIONS";
 const ADD_STOCK_TRANSACTION = "transactions/ADD_STOCK_TRANSACTION";
+const REMOVE_USER = "session/removeUser";
 
 // * Action Creators
 const setAccountTransactions = (transactions) => {
@@ -139,6 +140,8 @@ const transactionsReducer = (state = initialState, action) => {
           action.createdTransaction,
         ],
       };
+    case REMOVE_USER:
+      return initialState;
     default:
       return state;
   }
