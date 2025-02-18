@@ -10,6 +10,7 @@ function SecurityPage() {
   const dispatch = useDispatch();
 
   const [showPasswordEdit, setShowPasswordEdit] = useState(false);
+
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -18,9 +19,30 @@ function SecurityPage() {
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
+  const [currentPasswordErrors, setCurrentPasswordErrors] = useState("");
+  const [newPasswordErrors, setNewPasswordErrors] = useState("");
+  const [confirmPasswordErrors, setConfirmPasswordErrors] = useState("");
+
   const handleSave = () => {
-    // Handle save logic
-    console.log("Password changed");
+    if (currentPassword.length === 0) {
+      setCurrentPasswordErrors("This field is required");
+    }
+    if (newPassword.length <= 3) {
+      setNewPasswordErrors("Password required is a minimum of 3 characters");
+    }
+    if (confirmPassword.length <= 3) {
+      setConfirmPasswordErrors(
+        "Password required is a minimum of 3 characters"
+      );
+    }
+    if (newPassword !== confirmPassword) {
+      setConfirmPasswordErrors("Passwords do not match");
+    }
+    console.log(
+      currentPasswordErrors,
+      newPasswordErrors,
+      confirmPasswordErrors
+    );
   };
 
   const handleLogout = async (e) => {
@@ -56,55 +78,96 @@ function SecurityPage() {
             </div>
             {showPasswordEdit && (
               <div className="SecurityPage__editContainer">
-                <div className="SecurityPage_input-container">
-                  <label className="SecurityPage_input-label">
-                    Current Password
-                  </label>
-                  <input
-                    type={showCurrentPassword ? "text" : "password"}
-                    placeholder="Current Password"
-                    value={currentPassword}
-                    onChange={(e) => setCurrentPassword(e.target.value)}
-                    className="SecurityPage_input-field"
-                  />
-                  <MdRemoveRedEye
-                    className="SecurityPage__hide-icon"
-                    onClick={() => setShowCurrentPassword(!showCurrentPassword)}
-                  />
+                <div className="SecurityPage_section">
+                  <div className="SecurityPage_input-container">
+                    <label className="SecurityPage_input-label">
+                      Current Password
+                    </label>
+
+                    <input
+                      type={showCurrentPassword ? "text" : "password"}
+                      placeholder="Current Password"
+                      value={currentPassword}
+                      onChange={(e) => {
+                        setCurrentPassword(e.target.value),
+                          setCurrentPasswordErrors(false);
+                      }}
+                      className={`SecurityPage_input-field ${
+                        currentPasswordErrors && "error-border"
+                      }`}
+                    />
+                    <MdRemoveRedEye
+                      className="SecurityPage__hide-icon"
+                      onClick={() =>
+                        setShowCurrentPassword(!showCurrentPassword)
+                      }
+                    />
+                  </div>
+                  {currentPasswordErrors && (
+                    <span className="SecurityPage-errors">
+                      {currentPasswordErrors}
+                    </span>
+                  )}
                 </div>
 
-                <div className="SecurityPage_input-container">
-                  <label className="SecurityPage_input-label">
-                    New Password
-                  </label>
-                  <input
-                    type={showNewPassword ? "text" : "password"}
-                    placeholder="New Password"
-                    value={newPassword}
-                    onChange={(e) => setNewPassword(e.target.value)}
-                    className="SecurityPage_input-field"
-                  />
-                  <MdRemoveRedEye
-                    className="SecurityPage__hide-icon"
-                    onClick={() => setShowNewPassword(!showNewPassword)}
-                  />
+                <div className="SecurityPage_section">
+                  <div className="SecurityPage_input-container">
+                    <label className="SecurityPage_input-label">
+                      New Password
+                    </label>
+                    <input
+                      type={showNewPassword ? "text" : "password"}
+                      placeholder="New Password"
+                      value={newPassword}
+                      onChange={(e) => {
+                        setNewPassword(e.target.value),
+                          setNewPasswordErrors(false);
+                      }}
+                      className={`SecurityPage_input-field ${
+                        newPasswordErrors && "error-border"
+                      }`}
+                    />
+                    <MdRemoveRedEye
+                      className="SecurityPage__hide-icon"
+                      onClick={() => setShowNewPassword(!showNewPassword)}
+                    />
+                  </div>
+                  {newPasswordErrors && (
+                    <span className="SecurityPage-errors">
+                      {newPasswordErrors}
+                    </span>
+                  )}
                 </div>
 
-                <div className="SecurityPage_input-container">
-                  <label className="SecurityPage_input-label">
-                    Confirm New Password
-                  </label>
-                  <input
-                    type={showConfirmPassword ? "text" : "password"}
-                    placeholder="Confirm New Password"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    className="SecurityPage_input-field"
-                  />
-                  <MdRemoveRedEye
-                    className="SecurityPage__hide-icon"
-                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  />
+                <div className="SecurityPage_section">
+                  <div className="SecurityPage_input-container">
+                    <label className="SecurityPage_input-label">
+                      Confirm New Password
+                    </label>
+                    <input
+                      type={showConfirmPassword ? "text" : "password"}
+                      placeholder="Confirm New Password"
+                      value={confirmPassword}
+                      onChange={(e) => {
+                        setConfirmPassword(e.target.value),
+                          setConfirmPasswordErrors(false);
+                      }}
+                      className={`SecurityPage_input-field ${
+                        confirmPasswordErrors && "error-border"
+                      }`}
+                    />
+                    <MdRemoveRedEye
+                      className="SecurityPage__hide-icon"
+                      onClick={() =>
+                        setShowConfirmPassword(!showConfirmPassword)
+                      }
+                    />
+                  </div>
+                  {confirmPasswordErrors && (
+                    <span className="SecurityPage-errors">
+                      {confirmPasswordErrors}
+                    </span>
+                  )}
                 </div>
 
                 <div className="SecurityPage_button-container">
