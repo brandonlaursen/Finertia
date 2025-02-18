@@ -45,7 +45,7 @@ function ListContainer({ className, navigate }) {
               <span className="WatchList__title">Stocks</span>
             </div>
 
-            <StocksOwned stocks={stocks} sessionUser={sessionUser}/>
+            {sessionUser && <StocksOwned stocks={stocks} sessionUser={sessionUser}/>}
           </>
         )}
 

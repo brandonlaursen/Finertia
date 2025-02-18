@@ -22,11 +22,14 @@ function StockTradeEstimate({
   price,
   stock,
   sharesToTrade,
+  setNotifications,
+  setNotificationMessage,
 }) {
   const dispatch = useDispatch();
 
-  const [isLoading, setIsLoading] = useState(false);
   const { setModalContent, setModalClass } = useModal();
+
+  const [isLoading, setIsLoading] = useState(false);
 
   async function handleSubmitDelay() {
     setIsLoading(true);
@@ -54,6 +57,26 @@ function StockTradeEstimate({
 
     dispatch(executeStockTrade(transaction));
     clearReview();
+
+    if (transactionType === "buy") {
+      setNotificationMessage(
+       [ `Successfully bought ${transaction.quantity} shares of ${stock.name}`]
+      );
+    } else if (transactionType === "sell") {
+      setNotificationMessage(
+       [ `Successfully sold ${transaction.quantity} shares of ${stock.name}`]
+      );
+    }
+
+    setNotifications(true);
+
+    await new Promise((resolve) => {
+      setTimeout(() => {
+        setNotifications(false);
+        resolve();
+      }, 10000);
+    });
+    setNotificationMessage([]);
   }
 
   function handleDeposit(e) {
@@ -113,7 +136,6 @@ function StockTradeEstimate({
       )}
 
       <div className="StockTransaction__button-container">
-   
         {showReview && errors && (
           <>
             {transactionType === "buy" &&

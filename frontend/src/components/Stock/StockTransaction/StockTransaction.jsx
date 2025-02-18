@@ -9,13 +9,12 @@ import OrderType from "./OrderType/OrderType";
 import StockTransactionOrder from "./StockTransactionOrder";
 import StockTradeEstimate from "./StockTradeEstimate/StockTradeEstimate";
 import StockTransactionFooter from "./StockTransactionFooter/StockTransactionFooter";
-import NotificationPopUp from "../../NotificationPopUp/NotificationPopUp";
 
 import { selectUser } from "../../../../store/session";
 
 import { fetchStockTransactions } from "../../../../store/transactions";
 
-function StockTransaction({ stock }) {
+function StockTransaction({ stock, setNotifications, setNotificationMessage  }) {
   const dispatch = useDispatch();
 
   const sessionUser = useSelector(selectUser);
@@ -28,6 +27,9 @@ function StockTransaction({ stock }) {
   const [showReview, setShowReview] = useState(false);
   const [errors, setErrors] = useState(null);
   const [message, setMessage] = useState(null);
+
+
+
 
   // Type of transaction - buy or sell
   const [transactionType, setTransactionType] = useState("buy");
@@ -256,6 +258,8 @@ function StockTransaction({ stock }) {
         price={price}
         stock={stock}
         sharesToTrade={sharesToTrade}
+        setNotifications={setNotifications}
+              setNotificationMessage={setNotificationMessage}
       />
 
       <StockTransactionFooter
@@ -267,7 +271,7 @@ function StockTransaction({ stock }) {
         handleSellAll={handleSellAll}
       />
 
-      <NotificationPopUp />
+
     </div>
   );
 }

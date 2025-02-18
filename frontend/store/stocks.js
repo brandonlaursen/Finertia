@@ -83,11 +83,11 @@ export const editListStocks = (stockListsIdsObj, stock) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
-  
+
     dispatch(
       updateListStocks(data.stock, data.updatedListIds, data.removedFromIds)
     );
-    return { messages: data.messages };
+    return { updatedListIds:data.updatedListIds, removedFromIds: data.removedFromIds };
   }
 };
 

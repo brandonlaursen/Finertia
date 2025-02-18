@@ -12,6 +12,8 @@ import StockInfo from "../StockInfo";
 import StockNews from "../StockNews";
 import StockWatchList from "../StockWatchList";
 
+import NotificationPopUp from "../../NotificationPopUp/NotificationPopUp";
+
 import { fetchStock } from "../../../../store/stocks";
 
 function StockPage() {
@@ -19,6 +21,9 @@ function StockPage() {
   const { stockSymbol } = useParams();
 
   const stock = useSelector((state) => state.stocks.currentStock);
+
+  const [notifications, setNotifications] = useState(false);
+  const [notificationMessage, setNotificationMessage] = useState([]);
 
   const [isLoading, setIsLoading] = useState(true);
   const [selectedTimeFrame, setSelectedTimeFrame] = useState("1D");
@@ -41,26 +46,44 @@ function StockPage() {
   }, [stockSymbol, dispatch, isLoading]);
 
   return (
-    <div className="StockPage">
-      {isLoading ? (
-        <LoadingSpinner />
-      ) : (
-        <div className="StockPage__body">
-          <div className="StockPage__body__main">
-            <StockHeader stock={stock} />
-            <StockChart selectedTimeFrame={selectedTimeFrame} stock={stock} />
-            <SelectTimeFrame
-              selectedTimeFrame={selectedTimeFrame}
-              setSelectedTimeFrame={setSelectedTimeFrame}
-            />
-            <StockInfo stock={stock} />
-            <StockNews stockNews={stock.news} />
-          </div>
+    <>
+      <div className="StockPage">
+        {isLoading ? (
+          <LoadingSpinner />
+        ) : (
+          <div className="StockPage__body">
+            <div className="StockPage__body__main">
+              <StockHeader stock={stock} />
+              <StockChart selectedTimeFrame={selectedTimeFrame} stock={stock} />
+              <SelectTimeFrame
+                selectedTimeFrame={selectedTimeFrame}
+                setSelectedTimeFrame={setSelectedTimeFrame}
+              />
+              <StockInfo stock={stock} />
+              <StockNews stockNews={stock.news} />
+            </div>
 
-          <StockWatchList stock={stock} />
+            <StockWatchList
+              stock={stock}
+              setNotifications={setNotifications}
+              setNotificationMessage={setNotificationMessage}
+              notifications={notifications}
+              notificationMessage={notificationMessage}
+            />
+          </div>
+        )}
+      </div>
+
+      {console.log("notifications:", notifications)}
+      {notifications && (
+        <div className="NotificationPopsContainer">
+          <NotificationPopUp
+            message={notificationMessage}
+            setNotifications={setNotifications}
+          />
         </div>
       )}
-    </div>
+    </>
   );
 }
 

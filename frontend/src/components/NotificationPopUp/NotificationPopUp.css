@@ -1,17 +1,25 @@
-.NotificationPopUp{
+.NotificationPopsContainer {
   position: fixed;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 100;
+}
+
+.NotificationPopUp {
+
   background-color: #333;
   color: #fff;
   padding: 12px 24px;
   border-radius: 8px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  opacity: 1;
-  transition: opacity 0.3s ease-in-out;
-  width: 800px;
+
   height: 50px;
+  width: 800px;
   display: flex;
   align-items: center;
   border: 1px solid rgb(219, 219, 219);
@@ -23,12 +31,18 @@
   opacity: 0;
 }
 
-.NotificationPopUp-view{
+.NotificationPopUp-view {
   display: flex;
   gap: 8px;
   align-items: center;
 }
 
-.NotificationPopUp-icon{
+.NotificationPopUp-icon {
   font-size: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.NotificationPopUp-icon:hover {
+  background-color: #676767;
 }

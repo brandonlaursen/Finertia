@@ -1,9 +1,11 @@
 
+import './StocksOwnedItem.css'
+
 function StocksOwnedItem({ stock, navigate, stocks }) {
   const { stockId, stockSymbol, sharesOwned } = stock;
 
   const stockInfo = stocks[stockId];
- 
+
   return (
     <div
       className="WatchListStocks__container"
@@ -12,8 +14,8 @@ function StocksOwnedItem({ stock, navigate, stocks }) {
     >
       <div className="WatchListStocks__container-title-shares">
         <span className="WatchListStocks__container-title">{stockSymbol}</span>
-        <span className="WatchListStocks__container-subtitle">
-          {sharesOwned.toFixed(2) ? `${sharesOwned.toFixed(2)} Shares` : ""}
+        <span className="StocksOwnedItem__container-subtitle">
+          {sharesOwned?.toFixed(2) ? `${sharesOwned?.toFixed(2)} Shares` : ""}
         </span>
       </div>
       <span className="WatchListStocks__container-graph"></span>
