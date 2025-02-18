@@ -111,7 +111,7 @@ router.get("/stock-transactions", async (req, res) => {
 });
 
 router.get("/stock-summary", async (req, res) => {
-  console.log("=================================");
+
   const { id } = req.user;
 
   const MULTIPLIER_100000 = 100000;
@@ -144,7 +144,7 @@ router.get("/stock-summary", async (req, res) => {
 
   const stockSummary = {};
 
-  console.log("TRANSACTIONS", transactions);
+
   transactions.forEach((transaction) => {
     const {
       stockId,
@@ -231,17 +231,14 @@ router.get("/stock-summary", async (req, res) => {
     }
   }
 
-  console.log(
-    "stock summary -------------------------------------",
-    stockSummary
-  );
+
   return res.json({
     stockSummary,
   });
 });
 
 router.post("/trade/:stockId", async (req, res) => {
-  console.log("=================== NEW ===================");
+
   const { id, balance } = req.user;
 
   const { stockId, price, quantity, transactionType } = req.body;
@@ -263,16 +260,7 @@ router.post("/trade/:stockId", async (req, res) => {
   // Round the amount to 2 decimal places (since it's a currency value)
   const roundedAmount = Math.round(amount * MULTIPLIER_100) / MULTIPLIER_100;
 
-  console.log("-------------- TRANSACTION --------------", {
-    balance,
-    transactionType,
-    quantity,
-    roundedQuantity,
-    price,
-    roundedPrice,
-    amount,
-    roundedAmount,
-  });
+
 
   let newBalance;
   if (transactionType === "buy") {
@@ -283,12 +271,7 @@ router.post("/trade/:stockId", async (req, res) => {
 
   newBalance = Math.round(newBalance * MULTIPLIER_100) / MULTIPLIER_100;
 
-  console.log("NEW BALANCE DETAILS", {
-    balance,
-    amount,
-    roundedAmount,
-    newBalance,
-  });
+
 
   await user.update({
     balance: newBalance,
@@ -417,7 +400,6 @@ router.post("/trade/:stockId", async (req, res) => {
     }
   }
 
-  console.log("LOOOK HERE", stockSummary);
 
   return res.json({
     transaction,

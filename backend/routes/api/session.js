@@ -57,14 +57,59 @@ router.post("/", validateLogin, async (req, res, next) => {
   });
 });
 
+// * Update password
+router.put("/update-password", async (req, res, next) => {
+  const { currentPassword, newPassword } = req.body;
+  const { user } = req;
+
+  const dbUser = await User.unscoped().findOne({
+    where: {
+      [Op.or]: {
+        username: user.username,
+        email: user.email,
+      },
+    },
+  });
+
+  if (
+    !dbUser ||
+    !bcrypt.compareSync(currentPassword, dbUser.hashedPassword.toString())
+  ) {
+    const err = new Error("Password is incorrect");
+
+    return res.json({ err, errorMessage: err.message });
+  }
+
+  const hashedPassword = bcrypt.hashSync(newPassword);
+
+
+  await dbUser.update({
+    hashedPassword: hashedPassword,
+  });
+
+  
+
+  const safeUser = {
+    id: user.id,
+    email: user.email,
+    username: user.username,
+    balance: user.balance,
+    profilePic: user.profilePic,
+    firstName: user.firstName,
+    lastName: user.lastName,
+    joinDate: user.createdAt,
+  };
+
+  return res.json({
+    user: safeUser,
+  });
+});
+
 // * Get logged in user info
 router.get("/", async (req, res) => {
   const { user } = req;
 
   if (user) {
-
-    const dbUser = await User.findByPk(user.id);
-  
     const safeUser = {
       id: user.id,
       email: user.email,

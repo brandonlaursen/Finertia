@@ -4,7 +4,7 @@ import { MdRemoveRedEye } from "react-icons/md";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { logout } from "../../../../../store/session";
+import { logout, editPassword } from "../../../../../store/session";
 
 function SecurityPage() {
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ function SecurityPage() {
   const [newPasswordErrors, setNewPasswordErrors] = useState("");
   const [confirmPasswordErrors, setConfirmPasswordErrors] = useState("");
 
-  const handleSave = () => {
+  const handleSave = async () => {
     if (currentPassword.length === 0) {
       setCurrentPasswordErrors("This field is required");
     }
@@ -38,11 +38,12 @@ function SecurityPage() {
     if (newPassword !== confirmPassword) {
       setConfirmPasswordErrors("Passwords do not match");
     }
-    console.log(
-      currentPasswordErrors,
-      newPasswordErrors,
-      confirmPasswordErrors
-    );
+
+
+    await dispatch(editPassword({currentPassword, newPassword}));
+    setCurrentPassword("");
+    setShowCurrentPassword("");
+    setConfirmPasswordErrors("");
   };
 
   const handleLogout = async (e) => {

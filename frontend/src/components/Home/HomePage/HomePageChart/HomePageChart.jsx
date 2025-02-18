@@ -23,7 +23,6 @@ function HomePageChart() {
 
 
 
-  console.log("sortedTransactions:", sortedTransactions);
 
   const [data, ] = useState([]);
 

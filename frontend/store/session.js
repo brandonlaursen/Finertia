@@ -73,7 +73,6 @@ export const restoreUser = () => async (dispatch) => {
   if (userInfo.user) {
     const response = await csrfFetch("/api/transactions/stock-summary");
     const data = await response.json();
-    console.log("data:", data);
 
     dispatch(setUser(userInfo.user, data.stockSummary));
   }
@@ -94,6 +93,26 @@ export const editUser = (user) => async (dispatch) => {
   const data = await response.json();
   dispatch(setUser(data.user));
   return response;
+};
+
+export const editPassword = (passwordInfo) => async (dispatch) => {
+  const { currentPassword, newPassword } = passwordInfo;
+
+  const response = await csrfFetch("/api/session/update-password", {
+    method: "PUT",
+    body: JSON.stringify({
+      currentPassword,
+      newPassword,
+    }),
+  });
+
+  const data = await response.json();
+
+  if (data.err) {
+    return data.err.message;
+  } else {
+    dispatch(restoreUser());
+  }
 };
 
 // * Selectors

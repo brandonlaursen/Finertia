@@ -74,7 +74,7 @@ function StockPage() {
         )}
       </div>
 
-      {console.log("notifications:", notifications)}
+
       {notifications && (
         <div className="NotificationPopsContainer">
           <NotificationPopUp
