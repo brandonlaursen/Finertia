@@ -84,19 +84,21 @@ export const editUser = (user) => async (dispatch) => {
   const { username, image } = user;
   const formData = new FormData();
 
-  console.log("formData:", formData);
   formData.append("username", username);
-
-
   if (image) formData.append("image", image);
 
   const response = await csrfFetch("/api/session", {
     method: "PUT",
     body: formData,
   });
-  const data = await response.json();
-  dispatch(setUser(data.user));
-  return response;
+  const userInfo = await response.json();
+
+  if (userInfo.user) {
+    const response = await csrfFetch("/api/transactions/stock-summary");
+    const data = await response.json();
+
+    dispatch(setUser(userInfo.user, data.stockSummary, userInfo.profilePic));
+  }
 };
 
 export const editPassword = (passwordInfo) => async (dispatch) => {

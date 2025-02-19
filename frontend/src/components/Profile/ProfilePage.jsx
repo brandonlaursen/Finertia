@@ -1,24 +1,66 @@
 import "./ProfilePage.css";
-import { FaSmile } from "react-icons/fa";
-import { FiPlusCircle } from "react-icons/fi";
 import { LuInfo } from "react-icons/lu";
+import { IoCloseCircleOutline } from "react-icons/io5";
+import { FiPlusCircle } from "react-icons/fi";
+import { PiSpinner } from "react-icons/pi";
 
+import { useState, useRef, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
-import { useState } from "react";
-import { useSelector } from "react-redux";
-
-import { selectUser } from "../../../store/session";
+import { selectUser, editUser } from "../../../store/session";
 
 import { useModal } from "../../context/Modal";
 
 import EditProfileModal from "../Modals/EditProfileModal/EditProfileModal";
 
+const DEFAULT_IMAGE =
+  "https://finertia.s3.amazonaws.com/public/1739990232538.png";
+
 function ProfilePage() {
   const sessionUser = useSelector(selectUser);
+  console.log("sessionUser:", sessionUser);
+  const dispatch = useDispatch();
+
   const { setModalContent, setModalClass } = useModal();
   const { stockSummary } = sessionUser;
 
-  
+  const fileInputRef = useRef(null);
+  const [profilePic, setProfilePic] = useState(sessionUser.profilePic);
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setProfilePic(sessionUser.profilePic);
+  }, [sessionUser.profilePic]);
+
+  const handleIconClick = () => {
+    fileInputRef.current?.click();
+  };
+
+  const handleRemoveImage = async () => {
+    setProfilePic(DEFAULT_IMAGE);
+    await dispatch(editUser({ username: sessionUser.username, image: null }));
+  };
+
+  const handleFileUpload = async (file) => {
+    if (!file) return;
+
+    const editedProfile = {
+      username: sessionUser.username,
+      image: file,
+    };
+
+    await dispatch(editUser(editedProfile));
+    setIsLoading(true);
+
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    setIsLoading(false);
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    handleFileUpload(file);
+  };
 
   const stockInvestments = Object.values(stockSummary).reduce(
     (total, stock) => (total += stock.averageCost * stock.sharesOwned),
@@ -28,14 +70,48 @@ function ProfilePage() {
   let { balance } = sessionUser;
   const total = balance + stockInvestments;
 
-
   return (
     <div className="ProfilePage">
       <div className="ProfilePage__container">
         <div className="ProfilePage__user">
           <div className="ProfilePage__user__image">
-            <FaSmile className="ProfilePage__user__profile-pic" />
-            <FiPlusCircle className="ProfilePage__user__plus-icon" />
+            {isLoading ? (
+              <div>
+                <img
+                  src={profilePic}
+                  alt="User Profile"
+                  className={`EditProfileModal___user__profile-pic ${
+                    isLoading && "profile-blur"
+                  }`}
+                />
+                <PiSpinner className="ProfilePage__spinner" />
+              </div>
+            ) : (
+              <img
+                src={profilePic}
+                alt="User Profile"
+                className="EditProfileModal___user__profile-pic"
+              />
+            )}
+
+            {profilePic !== DEFAULT_IMAGE ? (
+              <IoCloseCircleOutline
+                className="ProfilePage__user__plus-icon"
+                onClick={handleRemoveImage}
+              />
+            ) : (
+              <FiPlusCircle
+                className="ProfilePage__user__plus-icon"
+                onClick={handleIconClick}
+              />
+            )}
+
+            <input
+              type="file"
+              ref={fileInputRef}
+              onChange={handleFileChange}
+              style={{ display: "none" }}
+            />
           </div>
 
           <div className="ProfilePage__user__information">
@@ -56,7 +132,7 @@ function ProfilePage() {
               onClick={(e) => {
                 e.stopPropagation();
                 e.preventDefault();
-                setModalContent(<EditProfileModal />);
+                setModalContent(<EditProfileModal sessionUser={sessionUser} />);
                 setModalClass({
                   modal: "EditProfileModal",
                   modalBackground: "EditProfileModal__background",

@@ -31,12 +31,7 @@ function SecurityPage() {
   const [notifications, setNotifications] = useState(false);
   const [notificationMessage, setNotificationMessage] = useState("");
 
-  console.log(
-    "==>",
-    currentPasswordErrors.length ||
-      newPasswordErrors.length ||
-      confirmPasswordErrors.length
-  );
+
 
   const handleSave = async () => {
     setIsLoading(true);
@@ -45,8 +40,7 @@ function SecurityPage() {
 
     if (!isDirty) setIsDirty(true);
 
-    console.log(currentPassword, newPassword, confirmPassword);
-
+ 
     if (
       currentPassword.length === 0 ||
       newPassword.length === 0 ||

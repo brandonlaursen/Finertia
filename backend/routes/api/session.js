@@ -77,7 +77,7 @@ router.put("/update-password", async (req, res, next) => {
     !dbUser ||
     !bcrypt.compareSync(currentPassword, dbUser.hashedPassword.toString())
   ) {
-    console.log("password not updated");
+
     const err = new Error("Password is incorrect");
 
     return res.json({ err, errorMessage: err.message });
@@ -88,7 +88,7 @@ router.put("/update-password", async (req, res, next) => {
   await dbUser.update({
     hashedPassword: hashedPassword,
   });
-  console.log("password updated");
+
 
   const safeUser = {
     id: user.id,
@@ -131,13 +131,14 @@ router.get("/", async (req, res) => {
 // * Edit user info
 router.put("/", singleMulterUpload("image"), async (req, res) => {
   const { user: userInfo } = req;
+
   const { username: newUsername } = req.body;
 
   let profileImageUrl = req.file
     ? await singleFileUpload({ file: req.file, public: true })
     : null;
 
-  console.log(profileImageUrl);
+
   if (!profileImageUrl) {
     profileImageUrl =
       "https://finertia.s3.amazonaws.com/public/1739990232538.png";
