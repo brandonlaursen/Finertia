@@ -22,7 +22,7 @@ function StockTransactionOrder({
               <input
                 type="number"
                 pattern="[0-9]*"
-                value={tradeAmount}
+                value={tradeAmount || ''}
                 placeholder="0.0"
                 className="StockTransaction__amount-input"
                 onChange={handleTradeAmountChange}
@@ -38,7 +38,7 @@ function StockTransactionOrder({
               <input
                 type="number"
                 pattern="[0-9]*"
-                value={sharesToTrade}
+                value={sharesToTrade || ''}
                 placeholder="0"
                 className="StockTransaction__amount-input"
                 onChange={handleTradeSharesChange}

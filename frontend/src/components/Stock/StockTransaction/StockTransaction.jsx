@@ -69,7 +69,7 @@ function StockTransaction({ stock, setNotifications, setNotificationMessage  }) 
     const amount = Number(value);
     clearReview();
     setTradeAmount(amount);
-    setSharesToTrade(0);
+    setSharesToTrade('');
   }
 
   function handleTradeSharesChange(e) {
@@ -77,13 +77,13 @@ function StockTransaction({ stock, setNotifications, setNotificationMessage  }) 
     const amount = Number(value);
     clearReview();
     setSharesToTrade(amount);
-    setTradeAmount(0);
+    setTradeAmount('');
   }
 
   const handleTransactionType = (type) => {
     setTransactionType(type);
-    setSharesToTrade(0);
-    setTradeAmount(0);
+    setSharesToTrade('');
+    setTradeAmount('');
   };
 
   async function handleStockTransaction() {
