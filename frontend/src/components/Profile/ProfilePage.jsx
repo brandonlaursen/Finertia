@@ -3,7 +3,10 @@ import { FaSmile } from "react-icons/fa";
 import { FiPlusCircle } from "react-icons/fi";
 import { LuInfo } from "react-icons/lu";
 
+
+import { useState } from "react";
 import { useSelector } from "react-redux";
+
 import { selectUser } from "../../../store/session";
 
 import { useModal } from "../../context/Modal";
@@ -14,6 +17,8 @@ function ProfilePage() {
   const sessionUser = useSelector(selectUser);
   const { setModalContent, setModalClass } = useModal();
   const { stockSummary } = sessionUser;
+
+  
 
   const stockInvestments = Object.values(stockSummary).reduce(
     (total, stock) => (total += stock.averageCost * stock.sharesOwned),

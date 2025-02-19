@@ -6,6 +6,9 @@ const { setTokenCookie } = require("../../utils/auth.js");
 const { User } = require("../../db/models");
 const bcrypt = require("bcryptjs");
 
+
+const { singleFileUpload, singleMulterUpload } = require("../../awsS3");
+
 const validateSignup = [
   check("email")
     .exists({ checkFalsy: true })
@@ -53,5 +56,29 @@ router.post("/", validateSignup, async (req, res) => {
     user: safeUser,
   });
 });
+
+
+router.post(
+  '',
+  singleMulterUpload("image"),
+  validateSignup,
+  async (req, res) => {
+    const { password, username } = req.body;
+    const profileImageUrl = req.file ?
+      await singleFileUpload({ file: req.file, public: true }) :
+      null;
+    const user = await User.signup({
+      username,
+      password,
+      profileImageUrl
+    });
+
+    await setTokenCookie(res, user);
+
+    return res.json({
+      user
+    });
+  }
+);
 
 module.exports = router;

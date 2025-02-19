@@ -88,14 +88,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 
 .EditProfileModal___user__profile-pic {
-  height: 80%;
-  width: 80%;
+  height: 72px;
+  width: 72px;
 
   color: rgb(180, 189, 194);
+
+  border-radius: 50%;
+
 }
+
+
 
 .EditProfileModal___user__plus-icon {
   height: 20px;

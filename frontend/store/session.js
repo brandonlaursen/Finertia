@@ -81,14 +81,18 @@ export const restoreUser = () => async (dispatch) => {
 };
 
 export const editUser = (user) => async (dispatch) => {
-  const { username, profilePic } = user;
+  const { username, image } = user;
+  const formData = new FormData();
+
+  console.log("formData:", formData);
+  formData.append("username", username);
+
+
+  if (image) formData.append("image", image);
 
   const response = await csrfFetch("/api/session", {
     method: "PUT",
-    body: JSON.stringify({
-      username,
-      profilePic,
-    }),
+    body: formData,
   });
   const data = await response.json();
   dispatch(setUser(data.user));
@@ -107,7 +111,6 @@ export const editPassword = (passwordInfo) => async (dispatch) => {
   });
 
   const data = await response.json();
-
 
   if (data.err) {
     return data;

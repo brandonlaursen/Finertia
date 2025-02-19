@@ -7,6 +7,8 @@ const { setTokenCookie } = require("../../utils/auth.js");
 const { User } = require("../../db/models");
 const { Op } = require("sequelize");
 
+const { singleFileUpload, singleMulterUpload } = require("../../awsS3");
+
 const validateLogin = [
   check("credential")
     .exists({ checkFalsy: true })
@@ -127,15 +129,25 @@ router.get("/", async (req, res) => {
 });
 
 // * Edit user info
-router.put("/", async (req, res) => {
+router.put("/", singleMulterUpload("image"), async (req, res) => {
   const { user: userInfo } = req;
-  const { username: newUsername, profilePic: newProfilePic } = req.body;
+  const { username: newUsername } = req.body;
+
+  let profileImageUrl = req.file
+    ? await singleFileUpload({ file: req.file, public: true })
+    : null;
+
+  console.log(profileImageUrl);
+  if (!profileImageUrl) {
+    profileImageUrl =
+      "https://finertia.s3.amazonaws.com/public/1739990232538.png";
+  }
 
   const user = await User.findByPk(userInfo.id);
 
   await user.update({
     username: newUsername || user.username,
-    profilePic: newProfilePic || user.profilePic,
+    profilePic: profileImageUrl || user.profilePic,
   });
 
   const safeUser = {
@@ -143,7 +155,7 @@ router.put("/", async (req, res) => {
     email: user.email,
     username: newUsername || user.username,
     balance: user.balance,
-    profilePic: newProfilePic || user.profilePic,
+    profilePic: profileImageUrl || user.profilePic,
     firstName: user.firstName,
     lastName: user.lastName,
     joinDate: userInfo.createdAt,
