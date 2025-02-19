@@ -1,8 +1,10 @@
 import "./SecurityPage.css";
 import { MdRemoveRedEye } from "react-icons/md";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
+
+import NotificationPopUp from "../../../NotificationPopUp/NotificationPopUp";
 
 import { logout, editPassword } from "../../../../../store/session";
 
@@ -10,6 +12,9 @@ function SecurityPage() {
   const dispatch = useDispatch();
 
   const [showPasswordEdit, setShowPasswordEdit] = useState(false);
+
+  const [isDirty, setIsDirty] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -23,7 +28,73 @@ function SecurityPage() {
   const [newPasswordErrors, setNewPasswordErrors] = useState("");
   const [confirmPasswordErrors, setConfirmPasswordErrors] = useState("");
 
+  const [notifications, setNotifications] = useState(false);
+  const [notificationMessage, setNotificationMessage] = useState("");
+
+  console.log(
+    "==>",
+    currentPasswordErrors.length ||
+      newPasswordErrors.length ||
+      confirmPasswordErrors.length
+  );
+
   const handleSave = async () => {
+    setIsLoading(true);
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    setIsLoading(false);
+
+    if (!isDirty) setIsDirty(true);
+
+    console.log(currentPassword, newPassword, confirmPassword);
+
+    if (
+      currentPassword.length === 0 ||
+      newPassword.length === 0 ||
+      confirmPassword.length === 0
+    )
+      return;
+    if (newPassword !== confirmPassword) return;
+
+    const data = await dispatch(editPassword({ currentPassword, newPassword }));
+
+    if (data.errorMessage) {
+      setCurrentPasswordErrors(data.errorMessage);
+      return;
+    }
+
+    setShowPasswordEdit(false);
+    setNotificationMessage(data.message);
+    setNotifications(true);
+    setIsDirty(false);
+    setCurrentPassword("");
+    setNewPassword("");
+    setConfirmPassword("");
+    setCurrentPasswordErrors("");
+    setShowCurrentPassword("");
+    setConfirmPasswordErrors("");
+
+    await new Promise((resolve) => {
+      setTimeout(() => {
+        setNotifications(false);
+        resolve();
+      }, 5000);
+    });
+  };
+
+  const handleCancel = async () => {
+    setShowPasswordEdit(false);
+    setIsDirty(false);
+    setCurrentPassword("");
+    setNewPassword("");
+    setConfirmPassword("");
+    setCurrentPasswordErrors("");
+    setShowCurrentPassword("");
+    setConfirmPasswordErrors("");
+  };
+
+  useEffect(() => {
+    if (!isDirty) return;
+
     if (currentPassword.length === 0) {
       setCurrentPasswordErrors("This field is required");
     }
@@ -38,13 +109,15 @@ function SecurityPage() {
     if (newPassword !== confirmPassword) {
       setConfirmPasswordErrors("Passwords do not match");
     }
-
-
-    await dispatch(editPassword({currentPassword, newPassword}));
-    setCurrentPassword("");
-    setShowCurrentPassword("");
-    setConfirmPasswordErrors("");
-  };
+  }, [
+    currentPassword,
+    confirmPassword,
+    newPassword,
+    setCurrentPasswordErrors,
+    setNewPasswordErrors,
+    setConfirmPasswordErrors,
+    isDirty,
+  ]);
 
   const handleLogout = async (e) => {
     e.stopPropagation();
@@ -86,6 +159,7 @@ function SecurityPage() {
                     </label>
 
                     <input
+                      required
                       type={showCurrentPassword ? "text" : "password"}
                       placeholder="Current Password"
                       value={currentPassword}
@@ -117,6 +191,7 @@ function SecurityPage() {
                       New Password
                     </label>
                     <input
+                      required
                       type={showNewPassword ? "text" : "password"}
                       placeholder="New Password"
                       value={newPassword}
@@ -146,6 +221,7 @@ function SecurityPage() {
                       Confirm New Password
                     </label>
                     <input
+                      required
                       type={showConfirmPassword ? "text" : "password"}
                       placeholder="Confirm New Password"
                       value={confirmPassword}
@@ -173,7 +249,7 @@ function SecurityPage() {
 
                 <div className="SecurityPage_button-container">
                   <button
-                    onClick={() => setShowPasswordEdit(false)}
+                    onClick={handleCancel}
                     className="SecurityPage_cancel-button"
                   >
                     Cancel
@@ -181,8 +257,17 @@ function SecurityPage() {
                   <button
                     onClick={handleSave}
                     className="SecurityPage_save-button"
+                    disabled={
+                      confirmPasswordErrors.length ||
+                      currentPasswordErrors.length ||
+                      confirmPasswordErrors.length
+                    }
                   >
-                    Save
+                    {isLoading ? (
+                      <span className="StockTransaction__spinner"></span>
+                    ) : (
+                      "Save"
+                    )}
                   </button>
                 </div>
               </div>
@@ -228,6 +313,14 @@ function SecurityPage() {
           Log out
         </span>
       </div>
+      {notifications && (
+        <div className="NotificationPopsContainer">
+          <NotificationPopUp
+            message={notificationMessage}
+            setNotifications={setNotifications}
+          />
+        </div>
+      )}
     </div>
   );
 }

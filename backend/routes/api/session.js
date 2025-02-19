@@ -75,6 +75,7 @@ router.put("/update-password", async (req, res, next) => {
     !dbUser ||
     !bcrypt.compareSync(currentPassword, dbUser.hashedPassword.toString())
   ) {
+    console.log("password not updated");
     const err = new Error("Password is incorrect");
 
     return res.json({ err, errorMessage: err.message });
@@ -82,12 +83,10 @@ router.put("/update-password", async (req, res, next) => {
 
   const hashedPassword = bcrypt.hashSync(newPassword);
 
-
   await dbUser.update({
     hashedPassword: hashedPassword,
   });
-
-  
+  console.log("password updated");
 
   const safeUser = {
     id: user.id,
@@ -102,6 +101,7 @@ router.put("/update-password", async (req, res, next) => {
 
   return res.json({
     user: safeUser,
+    message: "Password successfully updated",
   });
 });
 

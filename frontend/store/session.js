@@ -108,10 +108,12 @@ export const editPassword = (passwordInfo) => async (dispatch) => {
 
   const data = await response.json();
 
+
   if (data.err) {
-    return data.err.message;
+    return data;
   } else {
     dispatch(restoreUser());
+    return data;
   }
 };
 
