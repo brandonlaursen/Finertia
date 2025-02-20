@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   UserPortfolioSnapshot.init(
     {
       userId: { type: DataTypes.INTEGER, allowNull: false },
-      timestamp: { type: DataTypes.BIGINT, allowNull: false },
+      timestamp: { type: DataTypes.INTEGER, allowNull: false },
       portfolioValue: { type: DataTypes.DECIMAL(10, 2), allowNull: false },
     },
     {

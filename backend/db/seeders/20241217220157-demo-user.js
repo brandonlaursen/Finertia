@@ -19,6 +19,8 @@ module.exports = {
           balance: 0,
           firstName: "demo",
           lastName: "man",
+          profilePic:
+            "https://finertia.s3.amazonaws.com/public/1739990232538.png",
         },
         {
           email: "user1@user.io",
@@ -27,6 +29,8 @@ module.exports = {
           balance: 0,
           firstName: "fake",
           lastName: "user1",
+          profilePic:
+            "https://finertia.s3.amazonaws.com/public/1739990232538.png",
         },
         {
           email: "user2@user.io",
@@ -35,6 +39,8 @@ module.exports = {
           balance: 0,
           firstName: "fake",
           lastName: "user2",
+          profilePic:
+            "https://finertia.s3.amazonaws.com/public/1739990232538.png",
         },
       ],
       { validate: true }
