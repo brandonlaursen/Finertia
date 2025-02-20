@@ -18,10 +18,15 @@
 
 .WelcomePage__section-one {
   flex-direction: column;
-  height: 75vmin;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 64px;
+  height: 75vw;
+  min-height: 300px;
+  max-height: 700px;
 
   background-color: #000000;
-  background-image: url("https://i.makeagif.com/media/4-24-2017/xzMHOc.gif");
+  background-image: url("https://cdn11.bigcommerce.com/s-nq6l4syi/images/stencil/1280x1280/products/190583/842746/254459-1024__91316.1686213449.jpg?c=2");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -35,8 +40,9 @@
   gap: 0.5rem;
 
   font-size: clamp(16px, 5vw, 2rem);
+  font-weight: bold;
 
-  color: #3EB489
+  color: rgb(7, 222, 150);
 }
 
 .WelcomePage__section-one__highlight {
@@ -58,29 +64,28 @@
 
   height: 40px;
 
-  background-color: #ffffff;
-  color: #1c180d;
+  background-color: rgb(22, 7, 40);
+  color: #ffffff;
 
-  border: 1px solid #ffffff;
+  border: none;
   border-radius: 36px;
 
   text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
+  font-weight: bold;
 }
 
-#WelcomePage__section-one__button:hover {
-  background-color: rgb(197, 197, 197);
+.WelcomePage__section-one__button:hover {
+  background-color: rgb(45, 13, 83);
 }
-
 
 .WelcomePage__section-two {
   background-color: rgb(22, 7, 40);
 
-  height: 85vmin;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 85vh;
+  min-height: 550px;
+  max-height: 700px;
 
   color: rgb(255, 255, 255);
 }
@@ -99,26 +104,30 @@
 }
 
 .WelcomePage__section-two__text-container {
-  padding: 20px;
-  gap: 8px;
+  padding: 8vh;
+  gap: 0.5vh;
 
   display: flex;
   flex-direction: column;
+
   height: 50%;
 }
 
 .WelcomePage__header {
   font-size: 32px;
+  font-size: clamp(16px, 3vw, 2rem);
   color: #cfcfcf;
 }
 
 .WelcomePage__sub-header {
   font-size: 40px;
+  font-size: clamp(18px, 4vw, 2rem);
   margin-bottom: 8px;
 }
 
 .WelcomePage__text {
   font-size: 18px;
+  font-size: clamp(14px, 1vw, 2rem);
   margin-bottom: 8px;
 }
 
@@ -136,14 +145,12 @@
   color: #c4c4c4;
 }
 
-
-.WelcomePage__learn-more__button{
-
+.WelcomePage__learn-more__button {
   margin-top: 32px;
-  height: 40px;
+  min-height: 40px;
   width: 140px;
 
-  background-color: #abf62d;
+  background-color: rgb(7, 222, 150);
   color: #1c180d;
 
   border: none;
@@ -152,25 +159,61 @@
   text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
+  font-weight: bold;
 }
 
-
-.WelcomePage__learn-more__button:hover{
-  background-color: #a7ee2d;
+.WelcomePage__learn-more__button:hover {
+  background-color: rgb(7, 239, 162);
 }
-
-
-
-
-
-
-
 
 .WelcomePage__section-three {
-  background-color: #272727;
+  height: 75vh;
+  min-height: 600px;
+  max-height: 700px;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+
+  background-color: rgb(13, 15, 21);
 }
 
+.WelcomePage__section-three__image {
+  height: 350px;
+  width: 450px;
+  background-color: #000000;
+  background-image: url("https://www.shutterstock.com/image-vector/astronaut-sitting-on-planet-saturn-600nw-1989572933.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
+.WelcomePage__section-three__text {
+  color: white;
+  font-size: clamp(24px, 3vw, 2rem);
+}
+
+.WelcomePage__section-three__button {
+  min-height: 40px;
+
+  width: 140px;
+
+  background-color: rgb(7, 222, 150);
+  color: #1c180d;
+
+  border: none;
+  border-radius: 36px;
+
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.WelcomePage__section-three__button:hover {
+  background-color: rgb(7, 239, 162);
+}
 
 .WelcomePage__footer {
   padding: 1.5rem;
@@ -180,5 +223,15 @@
   font-size: 1.5rem;
 
   background-color: rgb(7, 222, 150);
-  color: white;
+  color: rgb(0, 0, 0);
+}
+
+@media (max-width: 768px) {
+  /* Styles for tablets */
+  .WelcomePage__section-two {
+    flex-direction: column-reverse;
+  }
+  .WelcomePage__section-two__image-container {
+    margin-bottom: 20px;
+  }
 }

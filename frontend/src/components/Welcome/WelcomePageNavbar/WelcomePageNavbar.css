@@ -6,7 +6,7 @@
   color: white;
 
   border-bottom: 1px solid white;
-  height: 58px;
+  height: 60px;
 }
 
 
@@ -27,7 +27,7 @@
 }
 
 .WelcomePageNavbar__logo:hover {
-  color: #3EB489
+  color: rgb(7, 222, 150);
 }
 
 
@@ -48,7 +48,7 @@
 }
 
 .WelcomePageNavbar__link:hover {
-  color: #bcfd4c;
+  color: rgb(7, 239, 162);
 }
 
 
@@ -57,6 +57,7 @@
   align-items: center;
   gap: 1rem;
   margin-left: auto;
+  transition: color 0.3s ease-in-out;
 }
 
 .WelcomePageNavbar__links__button {
@@ -79,19 +80,27 @@
   text-decoration: none;
 }
 
-.WelcomePageNavbar__links__button:hover {
-  border: 1px solid rgb(197, 197, 197);
-  color: rgb(197, 197, 197);
+
+.login-button{
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.login-button:hover{
+  border: 1px solid rgb(7, 222, 150);
+  color: rgb(7, 222, 150);
 }
 
 .signup-button {
   background-color: white;
   color: black;
+  font-weight: bold;
 }
 
 .signup-button:hover {
-  background-color: rgb(197, 197, 197);
-  color: black;
+  color: rgb(202,99,252);
+  border: 1px solid rgb(202,99,252);
 }
 
 .account-button {

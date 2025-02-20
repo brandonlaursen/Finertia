@@ -14,13 +14,21 @@
 
   display: flex;
   flex-direction: column;
-  align-items: center;
+
+  gap: 14px;
 
   padding: 0 60px;
+
+  box-shadow: 0 0 0 0.5px rgb(255, 255, 255);
+  /* box-shadow: 5px 0 10px rgba(255, 255, 255, 0.5); */
+
+
 }
 
 .SignUpPage__aside__logo {
-  height: 150px;
+  /* height: 150px; */
+
+  padding-top: 48px;
   width: 100%;
 
   display: flex;
@@ -28,7 +36,7 @@
 
   gap: 7px;
 
-  font-size: 30px;
+  font-size: 24px;
   font-weight: bold;
 
   color: white;
@@ -36,6 +44,7 @@
   text-decoration: none;
   cursor: pointer;
   transition: color 0.3s ease-in-out;
+  padding-bottom: 40px;
 }
 
 .SignUpPage__aside__logo:hover {
@@ -43,36 +52,53 @@
 }
 
 .SignUpPage__aside__title {
-  height: 150px;
+  /* height: 150px; */
   width: 100%;
 
   display: flex;
-  align-items: center;
+  align-items: end;
 
-  font-size: 4em;
+  font-size: 3em;
   font-weight: bold;
+
 }
 
 .SignUpPage__aside__description {
-  height: 100px;
+  /* height: 100px; */
   width: 100%;
 
   display: flex;
-  align-items: center;
 
   font-size: 17px;
 
   flex-wrap: wrap;
   word-wrap: break-word;
+  margin-top: 32px;
 }
 
 .SignUpPage__aside__image-container {
-  height: auto;
+
+  height: 60%;
+  display: flex;
+
+  padding-top: 60px;
+
+
 }
 
 .SignUpPage__aside__image {
-  height: 30vh;
-  width: 30vh;
+  height: 350px;
+  width: 350px;
+
+
+  background-color: #000000;
+
+  background-image: url("https://img.freepik.com/premium-vector/space-minimalist-simple-silhouette-vector-illustration_801978-39259.jpg?w=360");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+
 }
 
 .SignUpPage__section {
@@ -271,27 +297,30 @@ input:focus {
   .SignUpPage__aside {
     width: 100%;
 
-    padding: 0 20px;
+    padding: 10px 20px;
+
+    padding-bottom: 24px;
+
+    gap: 16px;
   }
 
   .SignUpPage__aside__logo {
     height: 30px;
 
-    padding-top: 12px;
-
-    font-size: 24px;
+    font-size: 18px;
+    padding-top: 8px;
   }
 
   .SignUpPage__aside__title {
     height: 50px;
 
-    padding-top: 16px;
-
     font-size: 40px;
   }
 
   .SignUpPage__aside__description {
-    display: none;
+
+    font-size: 16px;
+    line-height: 1.5;
   }
 
   .SignUpPage__aside__image-container {
@@ -306,11 +335,14 @@ input:focus {
     width: 100%;
 
     display: flex;
-    padding: 0 20px;
+    padding: 24px 20px;
   }
 
   .SignUpPage__section__title {
-    height: 80px;
+    padding-top: 44px;
+    height: 36px;
+    font-size: 16px;
+    line-height: 1.5;
   }
 
   .signup-page__instructions {

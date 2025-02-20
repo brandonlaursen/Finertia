@@ -50,9 +50,13 @@ function WelcomePage() {
 
       </div>
 
-      <div className="WelcomePage__section-three">Section 3</div>
+      <div className="WelcomePage__section-three">
+        <div className="WelcomePage__section-three__image"></div>
+        <span className="WelcomePage__section-three__text">Join a new generation of investors.</span>
+        <button className="WelcomePage__section-three__button">Sign up</button>
+      </div>
 
-      <div className="WelcomePage__footer">Footer</div>
+      <div className="WelcomePage__footer">Brandon Laursen</div>
     </div>
   );
 }

@@ -1,6 +1,5 @@
 import "./SignUpPage.css";
 import { FaSpaceShuttle } from "react-icons/fa";
-import { IoPlanetOutline } from "react-icons/io5";
 import { LuInfo } from "react-icons/lu";
 import { MdRemoveRedEye } from "react-icons/md";
 
@@ -85,13 +84,15 @@ function SignUpPage() {
         </div>
 
         <div className="SignUpPage__aside__image-container">
-          <IoPlanetOutline className="SignUpPage__aside__image" />
+          <div className="SignUpPage__aside__image"></div>
+          {/* <IoPlanetOutline className="SignUpPage__aside__image" /> */}
         </div>
       </div>
 
       <div className="SignUpPage__section">
         <div className="SignUpPage__section__title">
           Enter your first and last name as they appear on your government ID.
+          You’ll use this login to access Robinhood next time.
         </div>
 
         <form onSubmit={handleSubmit} className="SignUpPage__section__form">
