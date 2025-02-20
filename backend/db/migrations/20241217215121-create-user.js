@@ -20,6 +20,11 @@ module.exports = {
             primaryKey: true,
             type: Sequelize.INTEGER,
           },
+          email: {
+            type: Sequelize.STRING,
+            allowNull: false,
+            unique: true,
+          },
           username: {
             type: Sequelize.STRING,
             allowNull: false,
@@ -28,11 +33,6 @@ module.exports = {
           hashedPassword: {
             type: Sequelize.STRING,
             allowNull: false,
-          },
-          email: {
-            type: Sequelize.STRING,
-            allowNull: false,
-            unique: true,
           },
           balance: {
             type: Sequelize.DECIMAL(10, 2),

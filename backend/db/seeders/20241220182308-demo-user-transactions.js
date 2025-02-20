@@ -3,7 +3,7 @@
 const { UserTransaction } = require("../models");
 let options = {};
 if (process.env.NODE_ENV === "production") {
-  options.schema = process.env.SCHEMA; // define your schema in options object
+  options.schema = process.env.SCHEMA;
 }
 
 /** @type {import('sequelize-cli').Migration} */
@@ -19,21 +19,21 @@ module.exports = {
         },
         {
           userId: 1,
-          amount: 200,
+          amount: 20,
           transactionType: "withdrawal",
           transactionDate: new Date(),
         },
         {
           userId: 1,
-          amount: 150,
+          amount: 100,
           transactionType: "deposit",
           transactionDate: new Date(),
         },
 
         {
           userId: 2,
-          amount: 300,
-          transactionType: "withdrawal",
+          amount: 3000,
+          transactionType: "deposit",
           transactionDate: new Date(),
         },
         {
@@ -45,7 +45,7 @@ module.exports = {
         {
           userId: 2,
           amount: 100,
-          transactionType: "withdrawal",
+          transactionType: "withdraw",
           transactionDate: new Date(),
         },
         {
@@ -57,7 +57,7 @@ module.exports = {
         {
           userId: 3,
           amount: 400,
-          transactionType: "withdrawal",
+          transactionType: "withdraw",
           transactionDate: new Date(),
         },
         {

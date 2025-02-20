@@ -19,6 +19,7 @@ module.exports = (sequelize, DataTypes) => {
       stockId: { type: DataTypes.INTEGER, allowNull: false },
       timestamp: { type: DataTypes.DATE, allowNull: false },
       price: { type: DataTypes.DECIMAL, allowNull: false },
+      interval: { type: DataTypes.STRING, allowNull: false },
     },
     {
       sequelize,

@@ -5,7 +5,7 @@ const { StockList } = require("../models");
 
 let options = {};
 if (process.env.NODE_ENV === "production") {
-  options.schema = process.env.SCHEMA; // define your schema in options object
+  options.schema = process.env.SCHEMA; 
 }
 
 /** @type {import('sequelize-cli').Migration} */
@@ -15,21 +15,21 @@ module.exports = {
       [
         {
           name: 'Owned',
-          type: 'owned',
+          emoji: '💡',
           userId: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           name: 'Favorites',
-          type: 'favorites',
+          emoji: '💡',
           userId: 2,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           name: 'Watched',
-          type: 'watched',
+          emoji: '💡',
           userId: 3,
           createdAt: new Date(),
           updatedAt: new Date(),

@@ -37,14 +37,14 @@ module.exports = {
           defaultValue: "-",
         },
         totalEmployees: {
-          type: Sequelize.STRING,
+          type: Sequelize.INTEGER,
           allowNull: true,
-          defaultValue: "-",
+          defaultValue: 0,
         },
         marketCap: {
           type: Sequelize.STRING,
           allowNull: true,
-          defaultValue: "-",
+          defaultValue: '-',
         },
         industry: {
           type: Sequelize.STRING,

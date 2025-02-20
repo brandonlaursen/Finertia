@@ -5,7 +5,7 @@ const { Stock } = require("../models");
 
 let options = {};
 if (process.env.NODE_ENV === "production") {
-  options.schema = process.env.SCHEMA; // define your schema in options object
+  options.schema = process.env.SCHEMA;
 }
 
 const data = {
@@ -240,25 +240,25 @@ module.exports = {
 
           const {
             name,
-            market_cap = "",
+            market_cap = 0,
             address = "",
             description = "",
-            total_employees = "",
+            total_employees = 0,
             sic_description = "",
-          } = stockData?.results;
+          } = stockData.results;
 
           const newAddress = `${address.city || ""}, ${address.state || ""}`;
 
           const stockSeed = {
             stockName: name,
             stockSymbol: data[stock].ticker,
-            address: newAddress || "-",
-            description: description || "-",
-            totalEmployees: `${total_employees}` || "-",
-            marketCap: `${market_cap}` || "-",
-            industry: sic_description || "-",
-            createdAt: new Date(),
-            updatedAt: new Date(),
+            address: newAddress,
+            description: description,
+            totalEmployees: total_employees,
+            marketCap: market_cap,
+            industry: sic_description,
+            // createdAt: new Date(),
+            // updatedAt: new Date(),
           };
 
           stocks.push(stockSeed);

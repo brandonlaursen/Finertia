@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       userId: { type: DataTypes.INTEGER, allowNull: false },
       amount: { type: DataTypes.DECIMAL(10, 2), allowNull: false },
       transactionType: { type: DataTypes.STRING, allowNull: false },
-      transactionDate: { type: DataTypes.INTEGER, allowNull: false },
+      transactionDate: { type: DataTypes.DATE, allowNull: false },
     },
     {
       sequelize,

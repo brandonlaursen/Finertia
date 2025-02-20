@@ -46,7 +46,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: true,
       },
       totalEmployees: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: true,
       },
       marketCap: {
