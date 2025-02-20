@@ -40,10 +40,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
-    });
+    },options);
   },
   async down(queryInterface, Sequelize) {
     options.tableName = "StockPriceTimestamps";
-    await queryInterface.dropTable(options);
+    await queryInterface.dropTable("StockPriceTimestamps",options);
   },
 };
