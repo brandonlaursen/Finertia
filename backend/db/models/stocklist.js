@@ -12,8 +12,6 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "userId",
       });
 
-
-
       StockList.belongsToMany(models.Stock, {
         through: models.StockListJoin,
         foreignKey: "stockListId",
@@ -27,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      type: DataTypes.STRING,
+      emoji: DataTypes.STRING,
       userId: { type: DataTypes.INTEGER, allowNull: false },
     },
     {

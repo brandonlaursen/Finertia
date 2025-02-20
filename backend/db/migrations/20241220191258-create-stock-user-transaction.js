@@ -32,7 +32,7 @@ module.exports = {
         allowNull: false
       },
       quantity: {
-        type: Sequelize.DECIMAL(10,2),
+        type: Sequelize.DECIMAL(10,5),
         allowNull: false
       },
       purchasePrice: {
@@ -55,6 +55,6 @@ module.exports = {
   },
   async down(queryInterface, Sequelize) {
     options.tableName = "StockUserTransactions";
-    await queryInterface.dropTable('StockUserTransactions');
+    await queryInterface.dropTable(options);
   }
 };

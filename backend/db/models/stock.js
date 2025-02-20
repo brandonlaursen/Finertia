@@ -16,6 +16,8 @@ module.exports = (sequelize, DataTypes) => {
 
       Stock.hasMany(models.StockUserTransaction, { foreignKey: "stockId" });
 
+      Stock.hasMany(models.StockPriceTimestamp, { foreignKey: "stockId" });
+
       Stock.belongsToMany(models.StockList, {
         through: models.StockListJoin,
         foreignKey: "stockId",
@@ -35,8 +37,26 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         unique: true,
       },
-      currentPrice: DataTypes.DECIMAL(10, 2),
-      marketCap: DataTypes.DECIMAL(10, 2),
+      address: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      description: {
+        type: DataTypes.TEXT,
+        allowNull: true,
+      },
+      totalEmployees: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      marketCap: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      industry: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
     },
     {
       sequelize,

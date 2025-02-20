@@ -1,45 +1,45 @@
-'use strict';
+"use strict";
 
 let options = {};
 if (process.env.NODE_ENV === "production") {
   options.schema = process.env.SCHEMA; // define your schema in options object
 }
-
-
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('StockListJoins', {
+    await queryInterface.createTable("UserPortfolioSnapshots", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
-      },
-      stockId: {
         type: Sequelize.INTEGER,
-        references: { model: "Stocks" },
+      },
+      userId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: { model: "Users" },
         onDelete: "CASCADE",
+      },
+      timestamp: {
+        type: Sequelize.BIGINT,
         allowNull: false,
       },
-      stockListId: {
-        type: Sequelize.INTEGER,
-        references: { model: "StockLists" },
-        onDelete: "CASCADE",
+      portfolioValue: {
+        type: Sequelize.DECIMAL(10, 2),
         allowNull: false,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   async down(queryInterface, Sequelize) {
-    options.tableName = "StockListJoins";
+    options.tableName = "UserPortfolioSnapshots";
     await queryInterface.dropTable(options);
-  }
+  },
 };

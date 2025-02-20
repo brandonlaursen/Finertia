@@ -1,29 +1,28 @@
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class UserTransaction extends Model {
+  class UserPortfolioSnapshot extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      UserTransaction.belongsTo(models.User, {
+      UserPortfolioSnapshot.belongsTo(models.User, {
         foreignKey: "userId",
       });
     }
   }
-  UserTransaction.init(
+  UserPortfolioSnapshot.init(
     {
       userId: { type: DataTypes.INTEGER, allowNull: false },
-      amount: { type: DataTypes.DECIMAL(10, 2), allowNull: false },
-      transactionType: { type: DataTypes.STRING, allowNull: false },
-      transactionDate: { type: DataTypes.BIGINT, allowNull: false },
+      timestamp: { type: DataTypes.BIGINT, allowNull: false },
+      portfolioValue: { type: DataTypes.DECIMAL(10, 2), allowNull: false },
     },
     {
       sequelize,
-      modelName: "UserTransaction",
+      modelName: "UserPortfolioSnapshot",
     }
   );
-  return UserTransaction;
+  return UserPortfolioSnapshot;
 };

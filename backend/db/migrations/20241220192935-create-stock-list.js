@@ -19,7 +19,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      type: {
+      emoji: {
         type: Sequelize.STRING
       },
       userId: {
@@ -40,6 +40,6 @@ module.exports = {
   },
   async down(queryInterface, Sequelize) {
     options.tableName = "StockLists";
-    await queryInterface.dropTable('StockLists');
+    await queryInterface.dropTable(options);
   }
 };

@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       userId: { type: DataTypes.INTEGER, allowNull: false },
       stockId: { type: DataTypes.INTEGER, allowNull: false },
       transactionType: { type: DataTypes.STRING, allowNull: false },
-      quantity: { type: DataTypes.DECIMAL(10,2), allowNull: false },
+      quantity: { type: DataTypes.DECIMAL(10,5), allowNull: false },
       purchasePrice: { type: DataTypes.DECIMAL(10,2), allowNull: false },
       purchaseDate: { type: DataTypes.DATE, allowNull: false },
     },
