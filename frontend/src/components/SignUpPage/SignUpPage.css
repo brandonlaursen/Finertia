@@ -291,7 +291,7 @@ input:focus {
 
     flex-direction: column;
 
-    padding-bottom: 30px;
+    /* padding-bottom: 30px; */
   }
 
   .SignUpPage__aside {
@@ -301,20 +301,25 @@ input:focus {
 
     padding-bottom: 24px;
 
-    gap: 16px;
+    gap: 0px;
+
   }
 
   .SignUpPage__aside__logo {
-    height: 30px;
+    /* height: 10px; */
 
     font-size: 18px;
-    padding-top: 8px;
+    padding-top: 10px;
+    padding-bottom: 16px;
+    /* background-color: rebeccapurple; */
   }
 
   .SignUpPage__aside__title {
     height: 50px;
 
     font-size: 40px;
+
+
   }
 
   .SignUpPage__aside__description {
