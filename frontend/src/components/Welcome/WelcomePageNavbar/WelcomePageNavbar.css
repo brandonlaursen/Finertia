@@ -6,14 +6,15 @@
   color: white;
 
   border-bottom: 1px solid white;
+  height: 58px;
 }
 
-/* Logo */
+
 .WelcomePageNavbar__logo {
   display: flex;
   align-items: center;
-  margin-right: 50px;
   gap: 5px;
+  margin-left: 16px;
 
   font-size: 1.5rem;
   font-weight: bold;
@@ -26,10 +27,10 @@
 }
 
 .WelcomePageNavbar__logo:hover {
-  color: rgb(7, 222, 150);
+  color: #3EB489
 }
 
-/* Links */
+
 .WelcomePageNavbar__links {
   display: flex;
   align-items: center;
@@ -47,10 +48,10 @@
 }
 
 .WelcomePageNavbar__link:hover {
-  color: rgb(7, 222, 150);
+  color: #bcfd4c;
 }
 
-/* Buttons */
+
 .WelcomePageNavbar__links__buttons {
   display: flex;
   align-items: center;

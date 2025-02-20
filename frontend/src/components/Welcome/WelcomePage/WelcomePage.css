@@ -1,9 +1,7 @@
 .WelcomePage {
-  display: grid;
-  grid-template-rows: 66px 703px 300px 800px 100px;
-
-  height: 100%;
-  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   background-color: #000000;
 }
@@ -11,58 +9,54 @@
 .WelcomePage__section-one,
 .WelcomePage__section-two,
 .WelcomePage__section-three {
+  width: 100%;
+
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Section One */
 .WelcomePage__section-one {
   flex-direction: column;
+  height: 75vmin;
 
   background-color: #000000;
-  background-image: url("https://wallpapercave.com/wp/wp4199379.png");
+  background-image: url("https://i.makeagif.com/media/4-24-2017/xzMHOc.gif");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-/* Section One Title */
 .WelcomePage__section-one__title {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
 
-  height: 30%;
-  width: 70%;
+  gap: 0.5rem;
 
-  font-size: 3vw;
+  font-size: clamp(16px, 5vw, 2rem);
 
-  color: rgb(255, 255, 255);
+  color: #3EB489
 }
 
-/* Section One Highlight */
 .WelcomePage__section-one__highlight {
   display: flex;
   flex-direction: column;
   text-align: center;
-  gap: 5px;
 
   width: 70%;
+  font-size: clamp(16px, 3vw, 2rem);
 }
 
 .WelcomePage__section-one__highlight > h1 {
-  font-size: 4vw;
-  color: rgb(7, 222, 150);
+  color: rgb(255, 255, 255);
 }
 
-/* Section One Button */
-#WelcomePage__section-one__button {
+.WelcomePage__section-one__button {
   box-sizing: border-box;
   padding: 0 32px;
 
-  height: 44px;
+  height: 40px;
 
   background-color: #ffffff;
   color: #1c180d;
@@ -79,17 +73,105 @@
   background-color: rgb(197, 197, 197);
 }
 
-/* Section Two */
+
 .WelcomePage__section-two {
-  background-color: #535353;
+  background-color: rgb(22, 7, 40);
+
+  height: 85vmin;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: rgb(255, 255, 255);
 }
 
-/* Section One */
+.WelcomePage__section-two__text-container,
+.WelcomePage__section-two__image-container {
+  height: 100%;
+  width: 500px;
+}
+
+.WelcomePage__section-two__image-container {
+  background-image: url("https://img.freepik.com/premium-photo/astronaut-sitting-computer-desk-with-computer-monitor-monitor-screen-generative-ai_902846-103881.jpg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.WelcomePage__section-two__text-container {
+  padding: 20px;
+  gap: 8px;
+
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+}
+
+.WelcomePage__header {
+  font-size: 32px;
+  color: #cfcfcf;
+}
+
+.WelcomePage__sub-header {
+  font-size: 40px;
+  margin-bottom: 8px;
+}
+
+.WelcomePage__text {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.WelcomePage__disclosure {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  font-size: 14px;
+  color: #c4c4c4;
+}
+
+.WelcomePage__info-icon {
+  font-size: 14px;
+  color: #c4c4c4;
+}
+
+
+.WelcomePage__learn-more__button{
+
+  margin-top: 32px;
+  height: 40px;
+  width: 140px;
+
+  background-color: #abf62d;
+  color: #1c180d;
+
+  border: none;
+  border-radius: 36px;
+
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+
+.WelcomePage__learn-more__button:hover{
+  background-color: #a7ee2d;
+}
+
+
+
+
+
+
+
+
 .WelcomePage__section-three {
   background-color: #272727;
 }
 
-/* Footer */
+
+
 .WelcomePage__footer {
   padding: 1.5rem;
 

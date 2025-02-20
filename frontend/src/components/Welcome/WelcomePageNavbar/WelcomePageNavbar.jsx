@@ -18,14 +18,14 @@ function WelcomePageNavbar() {
         Finertia
       </Link>
 
-      <div className="WelcomePageNavbar__links">
+      {/* <div className="WelcomePageNavbar__links">
         <Link to="/about" className="WelcomePageNavbar__link">
           About
         </Link>
         <Link to="/contact" className="WelcomePageNavbar__link">
           Contact
         </Link>
-      </div>
+      </div> */}
 
       <div className="WelcomePageNavbar__links__buttons">
         {sessionUser ? (

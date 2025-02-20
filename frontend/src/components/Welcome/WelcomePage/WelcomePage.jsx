@@ -1,5 +1,5 @@
 import "./WelcomePage.css";
-
+import { LuInfo } from "react-icons/lu";
 import { FaSpaceShuttle } from "react-icons/fa";
 
 import { Link } from "react-router-dom";
@@ -19,7 +19,7 @@ function WelcomePage() {
       <div className="WelcomePage__section-one">
         <div className="WelcomePage__section-one__title">
           <FaSpaceShuttle />
-          <h2>Finertia Investing</h2>
+          <span>Finertia Investing</span>
         </div>
 
         <div className="WelcomePage__section-one__highlight">
@@ -29,13 +29,26 @@ function WelcomePage() {
           </h1>
           {sessionUser ? null : (
             <Link to="/signup">
-              <button id="WelcomePage__section-one__button">Get Started</button>
+              <button className="WelcomePage__section-one__button">Get Started</button>
             </Link>
           )}
         </div>
       </div>
 
-      <div className="WelcomePage__section-two">Section 2</div>
+      <div className="WelcomePage__section-two">
+          <div className="WelcomePage__section-two__image-container">
+
+          </div>
+          <div className="WelcomePage__section-two__text-container">
+              <div className="WelcomePage__header">Investing</div>
+              <div className="WelcomePage__sub-header">Build your portfolio starting with just $1</div>
+              <div className="WelcomePage__text">Invest in stocks, at your pace and commission-free</div>
+              <div className="WelcomePage__disclosure"> <LuInfo className="WelcomePage__info-icon"/>Investing Disclosures</div>
+              <button className="WelcomePage__learn-more__button">Learn More</button>
+          </div>
+
+
+      </div>
 
       <div className="WelcomePage__section-three">Section 3</div>
 
