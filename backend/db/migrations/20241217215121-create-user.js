@@ -32,7 +32,7 @@ module.exports = {
           unique: true,
         },
         balance: {
-          type: Sequelize.DECIMAL(10,2),
+          type: Sequelize.DECIMAL(10, 5),
           defaultValue: 0,
         },
         firstName: {
@@ -43,9 +43,10 @@ module.exports = {
           type: Sequelize.STRING,
           defaultValue: "",
         },
-
         profilePic: {
           type: Sequelize.STRING,
+          defaultValue:
+            "https://finertia.s3.amazonaws.com/public/1739990232538.png",
         },
         createdAt: {
           allowNull: false,
