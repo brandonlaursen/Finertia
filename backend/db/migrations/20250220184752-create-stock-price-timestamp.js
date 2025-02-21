@@ -22,7 +22,6 @@ module.exports = {
           allowNull: false,
           references: { model: "Stocks" },
           onDelete: "CASCADE",
-          type: Sequelize.DECIMAL(10, 2),
           allowNull: false,
         },
         timestamp: {
@@ -30,7 +29,6 @@ module.exports = {
           allowNull: false,
         },
         price: {
-          type: Sequelize.DECIMAL,
           type: Sequelize.DECIMAL(10, 2),
           allowNull: false,
         },
@@ -50,9 +48,17 @@ module.exports = {
       },
       options
     );
+
+    await queryInterface.addConstraint("StockPriceTimestamps", {
+      fields: ["stockId", "timestamp", "interval"],
+      type: "unique",
+      name: "unique_stock_timestamp_interval",
+    });
+
   },
   async down(queryInterface, Sequelize) {
     options.tableName = "StockPriceTimestamps";
+    // await queryInterface.removeConstraint("StockPriceTimestamps", "unique_stock_timestamp_interval");
     await queryInterface.dropTable(options);
   },
 };

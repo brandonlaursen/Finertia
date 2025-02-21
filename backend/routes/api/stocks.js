@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { Stock, StockList, StockPriceTimestamp } = require("../../db/models");
 const { getDate } = require("./helpers/getDate.js");
+const { convertToUnix } = require("./helpers/convertToUnix.js");
 
 const finnhub = require("finnhub");
 
@@ -71,10 +72,7 @@ router.get("/:stockSymbol", async (req, res) => {
         stockId: stock.id,
         interval: "1H",
       },
-      order: [
-        ['timestamp', 'ASC'],  // Order by timestamp in ascending order
-      ],
-
+      order: [["timestamp", "ASC"]],
     });
 
     const oneDayIntervals = await StockPriceTimestamp.findAll({
@@ -82,33 +80,57 @@ router.get("/:stockSymbol", async (req, res) => {
         stockId: stock.id,
         interval: "1D",
       },
-      order: [
-        ['timestamp', 'ASC'],  // Order by timestamp in ascending order
-      ],
-
+      order: [["timestamp", "ASC"]],
     });
 
-    const highestPriceEntry = await StockPriceTimestamp.findOne({
+    const latestTimestamp = await StockPriceTimestamp.findOne({
       where: {
-        stockId: stock.id,  // Specify the stock ID
+        stockId: stock.id,
       },
-      order: [
-        ['timestamp', 'DESC'],  // Order by price in descending order
-      ],
-      limit: 1,  // Limit the result to only one entry
+      order: [["timestamp", "DESC"]],
+      limit: 1,
     });
 
-    console.log(oneHourIntervals[oneHourIntervals.length - 1],oneHourIntervals[0]);
-
-    // const todaysDate = getDate();
+    const todaysDate = getDate();
+    console.log(" todaysDate:", todaysDate);
+    const oneDay = getDate(1);
     // const oneWeek = getDate(7);
 
-    return res.json();
+    // * fetch data after latest timestamp stored in db
+    // ? could store date in db as unix
+    const latestDate = new Date(latestTimestamp.timestamp); // February 20, 2025 at 4:00 AM
+    const latestDateInUnix = latestDate.getTime();
+    const oneHourLater = latestDateInUnix + 3600000;
+    console.log(" oneHourLater:", oneHourLater);
+    console.log(" oneHourLater:", oneHourLater);
+
+    console.log(" latestDateInUnix:", latestDateInUnix);
+
+    const [oneDayAggregatesJSON, oneWeekAggregatesJSON] = await Promise.all([
+      fetch(
+        `https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/5/minute/${oneDay}/${todaysDate}?adjusted=true&sort=asc&apiKey=${process.env.STOCK_API_KEY2}`
+      ),
+      fetch(
+        `https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/1/hour/${oneHourLater}/${todaysDate}?adjusted=true&sort=asc&apiKey=${process.env.STOCK_API_KEY2}`
+      ),
+    ]);
+
+    let [oneDayAggregates, oneWeekAggregates] = await Promise.all([
+      oneDayAggregatesJSON.json(),
+      oneWeekAggregatesJSON.json(),
+    ]);
+
+    return res.json({
+      // oneHourIntervals,
+      //  oneDayIntervals
+      oneWeekAggregates,
+    });
   } catch (error) {
     console.log(error);
     res.status(500).json({ error, message: "Failed to fetch stock data" });
   }
 });
+
 
 // * Get all stocks
 router.get("/", async (req, res) => {

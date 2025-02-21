@@ -401,6 +401,16 @@ router.post("/trade/:stockId", async (req, res) => {
   }
 
 
+  // const highestPriceEntry = await StockPriceTimestamp.findOne({
+  //   where: {
+  //     stockId: stock.id,
+  //   },
+  //   order: [
+  //     ["timestamp", "DESC"],
+  //   ],
+  //   limit: 1,
+  // });
+
   return res.json({
     transaction,
     balance: newBalance,

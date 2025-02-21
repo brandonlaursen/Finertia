@@ -24,6 +24,13 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "StockPriceTimestamp",
+      indexes: [
+        {
+          unique: true,
+          fields: ["stockId", "timestamp", "interval"],
+          name: "unique_stock_timestamp_interval", // Optional: You can name the constraint
+        },
+      ],
     }
   );
   return StockPriceTimestamp;
