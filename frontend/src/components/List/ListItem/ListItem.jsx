@@ -87,7 +87,7 @@ function ListItem({
     <div onClick={() => navigate(`/lists/${list.id}`)} className={`ListItem ${className}`}>
       <div className={container}>
         <div className={`ListItem__header ${hover && `ListItem__header-hover`}`}>
-          <span className={icon}>{list?.type}</span>
+          <span className={icon}>{list?.emoji}</span>
           <span className={title}>{list?.name}</span>
         </div>
 

@@ -44,13 +44,13 @@ export const fetchLists = () => async (dispatch) => {
 };
 
 export const createList =
-  ({ name, type, stockIds }) =>
+  ({ name, emoji, stockIds }) =>
   async (dispatch) => {
     const response = await csrfFetch("/api/lists", {
       method: "POST",
       body: JSON.stringify({
         name,
-        type,
+        emoji,
         stockIds,
       }),
     });
@@ -64,14 +64,14 @@ export const createList =
   };
 
 export const editList =
-  ({ name, type, stockListId }) =>
+  ({ name, emoji, stockListId }) =>
   async (dispatch) => {
     const response = await csrfFetch(`/api/lists/${stockListId}`, {
       method: "PUT",
 
       body: JSON.stringify({
         name,
-        type,
+        emoji,
       }),
     });
 

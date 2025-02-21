@@ -16,14 +16,14 @@ function ListPageEdit({ list, listId, navigate }) {
 
   const popoverRef = useRef(null);
 
-  const [selectedEmoji, setSelectedEmoji] = useState(list?.type || "");
+  const [selectedEmoji, setSelectedEmoji] = useState(list?.emoji || "");
   const [showPicker, setShowPicker] = useState(false);
   const [listName, setListName] = useState("");
   const [deletePopover, setDeletePopover] = useState(false);
 
   useEffect(() => {
     if (list) {
-      setSelectedEmoji(list.type);
+      setSelectedEmoji(list.emoji);
       setListName(list.name);
     }
   }, [list]);
@@ -51,7 +51,7 @@ function ListPageEdit({ list, listId, navigate }) {
     const editedList = {
       stockListId: list.id,
       name: newName,
-      type: selectedEmoji,
+      emoji: selectedEmoji,
     };
 
     await dispatch(editList(editedList));
@@ -63,7 +63,7 @@ function ListPageEdit({ list, listId, navigate }) {
     const editedList = {
       stockListId: list.id,
       name: listName,
-      type: newEmoji,
+      emoji: newEmoji,
     };
 
     await dispatch(editList(editedList));

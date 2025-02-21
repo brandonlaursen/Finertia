@@ -21,19 +21,20 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
   const { id } = req.user;
 
-  const { name, type, stockIds } = req.body;
+  const { name, emoji, stockIds } = req.body;
 
   const newList = await StockList.create(
     {
       userId: id,
       name,
-      type,
+      emoji,
       Stocks: [],
     },
     {
       include: [Stock],
     }
   );
+
 
   if (stockIds) {
     for (const stockId of stockIds) {
@@ -68,15 +69,15 @@ router.get("/:stockListId", async (req, res) => {
 // * Edit a list
 router.put("/:stockListId", async (req, res) => {
   const { stockListId } = req.params;
-  const { name: newName, type: newType } = req.body;
+  const { name: newName, emoji: newEmoji } = req.body;
 
   const list = await StockList.findByPk(stockListId, {
     include: [Stock],
   });
 
   await list.update({
-    name: newName || stockList.name,
-    type: newType || stockList.type,
+    name: newName || list.name,
+    emoji: newEmoji || list.emoji,
   });
 
   return res.json(list);

@@ -3,6 +3,7 @@ import ReactApexChart from "react-apexcharts";
 import "./StockChart.css";
 
 function StockChart({ stock, selectedTimeFrame }) {
+  console.log("rerender");
   const {
     oneDayAggregates,
     oneWeekAggregates,
@@ -12,39 +13,29 @@ function StockChart({ stock, selectedTimeFrame }) {
     fiveYearsAggregates,
   } = stock;
 
+  // const [currentPoint, setCurrentPoint] = useState(null);
 
-  const [currentPoint, setCurrentPoint] = useState(null);
-console.log(currentPoint)
   const [options] = useState({
     chart: {
       type: "line",
       height: 350,
-      events: {
-        dataPointMouseEnter: function (event, chartContext, opts) {
-          console.log(event)
-          setCurrentPoint({
-            value: series[opts.dataPointIndex],
 
-          });
-        },
-        dataPointMouseLeave: function () {
-          setCurrentPoint(null);
-        },
-      },
+      // events: {
+      //   mouseMove: function (event, chartContext, opts) {
+      //     console.log(currentPoint);
+
+      //     setCurrentPoint({
+      //       value: chartContext.w.config.series[0].data[opts.dataPointIndex].y,
+      //     });
+      //   },
+      //   mouseLeave: function () {
+      //     setCurrentPoint(null);
+      //   },
+      // },
       zoom: {
         enabled: false,
       },
       tickAmount: 10,
-      plotOptions: {
-        line: {
-          isSlopeChart: false,
-          colors: {
-            threshold: "239",
-            colorAboveThreshold: "#00E396",
-            colorBelowThreshold: "FF4560",
-          },
-        },
-      },
     },
     xaxis: {
       type: "datetime",
@@ -62,6 +53,7 @@ console.log(currentPoint)
           dashArray: 0,
         },
       },
+
       tooltip: {
         enabled: false,
       },

@@ -75,7 +75,7 @@ function AddToListModal({
     setIsLoading(true);
     await new Promise((resolve) => setTimeout(resolve, 500));
     setIsLoading(false);
-    
+
 
     const { removedFromIds } = await dispatch(
       editListStocks(checkedItems, stock)
@@ -139,7 +139,7 @@ function AddToListModal({
     const newList = {
       userId: sessionUser.id,
       name: listName,
-      type: selectedEmoji,
+      emoji: selectedEmoji,
       stockIds: [],
     };
 

@@ -37,7 +37,7 @@ function CreateListModal() {
     const newList = {
       userId: sessionUser.id,
       name: listName,
-      type: selectedEmoji,
+      emoji: selectedEmoji,
       stockIds: [],
     };
 

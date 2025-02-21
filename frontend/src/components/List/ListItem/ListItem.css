@@ -15,6 +15,7 @@
 .ListItem__header{
 
   width: auto;
+  display: flex;
   /* padding: 6px; */
 }
 

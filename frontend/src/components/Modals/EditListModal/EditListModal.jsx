@@ -17,7 +17,7 @@ function EditListModal({ list }) {
   const dispatch = useDispatch();
 
   const [isLoading, setIsLoading] = useState(false);
-  const [selectedEmoji, setSelectedEmoji] = useState(list.type);
+  const [selectedEmoji, setSelectedEmoji] = useState(list.emoji);
   const [listName, setListName] = useState(list.name);
 
   const [showPicker, setShowPicker] = useState(false);
@@ -37,7 +37,7 @@ function EditListModal({ list }) {
     const editedList = {
       stockListId: list.id,
       name: listName,
-      type: selectedEmoji,
+      emoji: selectedEmoji,
     };
 
     await dispatch(editList(editedList));
