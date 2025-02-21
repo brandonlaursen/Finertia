@@ -33,59 +33,68 @@ module.exports = {
 
     async function getOneDayIntervalsUpToFiveYears(stockSymbol, stockId) {
       const fiveYearsAgo = getDate(1825);
+      let currentUrl = `https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/1/day/${fiveYearsAgo}/${todaysDate}?adjusted=true&sort=asc&apiKey=${process.env.STOCK_API_KEY2}`;
 
       const timestamps = [];
-      const response = await fetch(
-        `https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/1/day/${fiveYearsAgo}/${todaysDate}?adjusted=true&sort=asc&apiKey=${process.env.STOCK_API_KEY2}`
-      );
 
-      const data = await response.json();
-      for (let aggregateBar of data.results) {
-        timestamps.push({
-          stockId,
-          timestamp: aggregateBar.t,
-          price: aggregateBar.c,
-          interval: "1D",
-        });
+      while (currentUrl) {
+        const response = await fetch(currentUrl);
+        const data = await response.json();
+        if (!data.results) {
+          currentUrl = null;
+          continue;
+        }
+
+        for (let aggregateBar of data.results) {
+          timestamps.push({
+            stockId,
+            timestamp: aggregateBar.t,
+            price: aggregateBar.c,
+            interval: "1D",
+          });
+        }
+
+        if (data.next_url) {
+          currentUrl = data.next_url + `&apiKey=${process.env.STOCK_API_KEY2}`;
+        } else {
+          currentUrl = null;
+        }
       }
+
       return timestamps;
     }
 
     async function getOneHourIntervalsUpToOneMonth(stockSymbol, stockId) {
       const oneMonthAgo = getDate(30);
+      let currentUrl = `https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/1/hour/${oneMonthAgo}/${todaysDate}?adjusted=true&sort=asc&apiKey=${process.env.STOCK_API_KEY2}`;
 
       const timestamps = [];
-      const response = await fetch(
-        `https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/1/hour/${oneMonthAgo}/${todaysDate}?adjusted=true&sort=asc&apiKey=${process.env.STOCK_API_KEY2}`
-      );
 
-      const data = await response.json();
-      for (let aggregateBar of data.results) {
-        timestamps.push({
-          stockId,
-          timestamp: aggregateBar.t,
-          price: aggregateBar.c,
-          interval: "1H",
-        });
+      while (currentUrl) {
+        const response = await fetch(currentUrl);
+        const data = await response.json();
+        if (!data.results) {
+          currentUrl = null;
+          continue;
+        }
+
+        for (let aggregateBar of data.results) {
+          timestamps.push({
+            stockId,
+            timestamp: aggregateBar.t,
+            price: aggregateBar.c,
+            interval: "1H",
+          });
+        }
+        if (data.next_url) {
+          currentUrl = data.next_url + `&apiKey=${process.env.STOCK_API_KEY2}`;
+        } else {
+          currentUrl = null;
+        }
       }
 
       return timestamps;
     }
-
-    // for (let stock of stocks) {
-    //   const oneHourIntervals = await getOneHourIntervalsUpToOneMonth(
-    //     stock.stockSymbol,
-    //     stock.id
-    //   );
-    //   const oneDayIntervals = await getOneDayIntervalsUpToFiveYears(
-    //     stock.stockSymbol,
-    //     stock.id
-    //   );
-
-    //   const combinedIntervals = [...oneHourIntervals, ...oneDayIntervals];
-
-    //   await StockPriceTimestamp.bulkCreate(combinedIntervals);
-    // }
 
     const fetchIntervals = stocks.map(async (stock) => {
       try {
@@ -110,10 +119,8 @@ module.exports = {
       }
     });
 
-
     const combinedIntervals = await Promise.all(fetchIntervals);
 
-  
     await StockPriceTimestamp.bulkCreate(combinedIntervals.flat());
 
     // await StockPriceTimestamp.bulkCreate([
