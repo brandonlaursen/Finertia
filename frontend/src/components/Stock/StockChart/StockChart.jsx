@@ -7,15 +7,30 @@ function StockChart({ stock, selectedTimeFrame }) {
     oneDayAggregates,
     oneWeekAggregates,
     oneMonthAggregates,
-    threeMonthAggregates,
+    threeMonthsAggregates,
     oneYearAggregates,
-    fiveYearAggregates,
+    fiveYearsAggregates,
   } = stock;
 
+
+  const [currentPoint, setCurrentPoint] = useState(null);
+console.log(currentPoint)
   const [options] = useState({
     chart: {
       type: "line",
       height: 350,
+      events: {
+        dataPointMouseEnter: function (event, chartContext, opts) {
+          console.log(event)
+          setCurrentPoint({
+            value: series[opts.dataPointIndex],
+
+          });
+        },
+        dataPointMouseLeave: function () {
+          setCurrentPoint(null);
+        },
+      },
       zoom: {
         enabled: false,
       },
@@ -72,6 +87,11 @@ function StockChart({ stock, selectedTimeFrame }) {
       x: {
         formatter: (timestamp) => convertToEst(timestamp, selectedTimeFrame),
       },
+      y: {
+        formatter: function (value) {
+          return `$` + value.toFixed(2);
+        },
+      },
       marker: {
         show: false,
       },
@@ -93,31 +113,26 @@ function StockChart({ stock, selectedTimeFrame }) {
       aggregates = oneMonthAggregates;
     }
     if (selectedTimeFrame === "3M") {
-      aggregates = threeMonthAggregates;
+      aggregates = threeMonthsAggregates;
     }
     if (selectedTimeFrame === "1Y") {
       aggregates = oneYearAggregates;
     }
     if (selectedTimeFrame === "5Y") {
-      aggregates = fiveYearAggregates;
+      aggregates = fiveYearsAggregates;
     }
 
     if (aggregates) {
-      const graphData = aggregates.map((aggregate) => ({
-        x: aggregate.t,
-        y: aggregate.c,
-      }));
-
-      setData(graphData);
+      setData(aggregates);
     }
   }, [
     selectedTimeFrame,
     oneDayAggregates,
     oneWeekAggregates,
     oneMonthAggregates,
-    threeMonthAggregates,
+    threeMonthsAggregates,
     oneYearAggregates,
-    fiveYearAggregates,
+    fiveYearsAggregates,
     options,
   ]);
 
