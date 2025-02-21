@@ -111,10 +111,8 @@ const data = {
   BP: { ticker: "BP", name: "BP p.l.c." },
   EQNR: { ticker: "EQNR", name: "Equinor ASA" },
   NVS: { ticker: "NVS", name: "Novartis AG" },
-
   AZN: { ticker: "AZN", name: "AstraZeneca PLC" },
   SHEL: { ticker: "SHEL", name: "Shell plc" },
-  TOT: { ticker: "TOT", name: "TotalEnergies SE" },
   PTR: { ticker: "PTR", name: "PetroChina Company Limited" },
   BIDU: { ticker: "BIDU", name: "Baidu, Inc." },
   JD: { ticker: "JD", name: "JD.com, Inc." },
@@ -202,7 +200,6 @@ const data = {
   KB: { ticker: "KB", name: "KB Financial Group Inc." },
   SHG: { ticker: "SHG", name: "Shinhan Financial Group Co., Ltd." },
   WF: { ticker: "WF", name: "Woori Financial Group Inc." },
-  MTU: { ticker: "MTU", name: "Mitsubishi UFJ Financial Group, Inc." },
   NMR: { ticker: "NMR", name: "Nomura Holdings, Inc." },
   IX: { ticker: "IX", name: "ORIX Corporation" },
   ITUB: { ticker: "ITUB", name: "Itaú Unibanco Holding S.A." },
@@ -257,8 +254,6 @@ module.exports = {
             totalEmployees: total_employees,
             marketCap: market_cap,
             industry: sic_description,
-            // createdAt: new Date(),
-            // updatedAt: new Date(),
           };
 
           stocks.push(stockSeed);
