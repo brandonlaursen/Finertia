@@ -40,6 +40,7 @@ function StockTradeEstimate({
     handleStockTransaction();
   }
 
+  console.log("stock!!!!!", stock);
   async function handleSubmitOrder() {
     if (errors) return;
 
@@ -49,6 +50,8 @@ function StockTradeEstimate({
     const transaction = {
       stockId: stock.id,
       price,
+      stockName: stock.name,
+      stockSymbol: stock.symbol,
       quantity: Number(numberOfShares).toFixed(5),
       transactionType,
     };

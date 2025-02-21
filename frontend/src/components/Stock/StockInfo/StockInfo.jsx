@@ -1,18 +1,17 @@
 import "./StockInfo.css";
 function StockInfo({ stock }) {
-
   const {
     description,
-    employees,
-    headquarters,
+    totalEmployees,
+    address,
     industry,
-    market_cap,
+    marketCap,
     high,
     low,
     open,
     volume,
   } = stock;
-
+  
   function formatNumber(num) {
     if (num >= 1e12) return (num / 1e12).toFixed(2) + "T";
     if (num >= 1e9) return (num / 1e9).toFixed(2) + "B";
@@ -33,11 +32,11 @@ function StockInfo({ stock }) {
         </div>
         <div className="company-info-item">
           <span className="info-label">Employees</span>
-          <span className="info-value">{formatNumber(employees)}</span>
+          <span className="info-value">{formatNumber(totalEmployees)}</span>
         </div>
         <div className="company-info-item">
           <span className="info-label">Headquarters</span>
-          <span className="info-value"> {headquarters},</span>
+          <span className="info-value"> {address},</span>
         </div>
         <div className="company-info-item">
           <span className="info-label">Industry</span>
@@ -50,7 +49,7 @@ function StockInfo({ stock }) {
         <div className="statistics-column">
           <div>
             <span>Market cap</span>
-            <span> {formatNumber(market_cap)}</span>
+            <span> {marketCap === 0 ? "-" : formatNumber(marketCap)}</span>
           </div>
           <div>
             <span>High today</span>

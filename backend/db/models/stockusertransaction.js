@@ -23,12 +23,10 @@ module.exports = (sequelize, DataTypes) => {
       stockName: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
       },
       stockSymbol: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
       },
     },
     {

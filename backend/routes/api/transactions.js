@@ -111,7 +111,6 @@ router.get("/stock-transactions", async (req, res) => {
 });
 
 router.get("/stock-summary", async (req, res) => {
-
   const { id } = req.user;
 
   const MULTIPLIER_100000 = 100000;
@@ -144,7 +143,6 @@ router.get("/stock-summary", async (req, res) => {
 
   const stockSummary = {};
 
-
   transactions.forEach((transaction) => {
     const {
       stockId,
@@ -231,17 +229,25 @@ router.get("/stock-summary", async (req, res) => {
     }
   }
 
-
   return res.json({
     stockSummary,
   });
 });
 
 router.post("/trade/:stockId", async (req, res) => {
-
   const { id, balance } = req.user;
 
-  const { stockId, price, quantity, transactionType } = req.body;
+  const { stockId, price, quantity, transactionType, stockName, stockSymbol } =
+    req.body;
+
+  console.log({
+    stockId,
+    price,
+    quantity,
+    transactionType,
+    stockName,
+    stockSymbol,
+  });
   const user = await User.findByPk(id);
 
   // Constants
@@ -260,8 +266,6 @@ router.post("/trade/:stockId", async (req, res) => {
   // Round the amount to 2 decimal places (since it's a currency value)
   const roundedAmount = Math.round(amount * MULTIPLIER_100) / MULTIPLIER_100;
 
-
-
   let newBalance;
   if (transactionType === "buy") {
     newBalance = balance - roundedAmount;
@@ -271,19 +275,19 @@ router.post("/trade/:stockId", async (req, res) => {
 
   newBalance = Math.round(newBalance * MULTIPLIER_100) / MULTIPLIER_100;
 
-
-
-  await user.update({
-    balance: newBalance,
-  });
-
   const transaction = await StockUserTransaction.create({
     userId: id,
     stockId,
     transactionType,
     quantity,
+    stockName,
+    stockSymbol,
     purchasePrice: price,
     purchaseDate: new Date(),
+  });
+
+  await user.update({
+    balance: newBalance,
   });
 
   const userTransactions = await StockUserTransaction.findAll({
@@ -399,7 +403,6 @@ router.post("/trade/:stockId", async (req, res) => {
       );
     }
   }
-
 
   // const highestPriceEntry = await StockPriceTimestamp.findOne({
   //   where: {

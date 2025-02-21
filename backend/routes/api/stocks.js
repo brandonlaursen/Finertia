@@ -211,14 +211,15 @@ router.get("/:stockSymbol", async (req, res) => {
       };
     });
 
+
     const stockData = {
       id: stock.id,
       name: stock.stockName,
       symbol: stock.stockSymbol,
       address: stock.address,
       description: stock.description,
-      totalEmployees: stock.total_employees,
-      marketCap: stock.market_cap,
+      totalEmployees: stock.totalEmployees,
+      marketCap: stock.marketCap,
       industry: stock.industry,
       listIds: stock.StockLists.map((stock) => stock.id),
       price,
@@ -245,6 +246,7 @@ router.get("/:stockSymbol", async (req, res) => {
       fiveYearsAggregates,
     };
 
+    console.log(stockData.marketCap)
     return res.json(stockData);
   } catch (error) {
     console.log(error);

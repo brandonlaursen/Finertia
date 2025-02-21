@@ -48,12 +48,10 @@ module.exports = {
         stockName: {
           type: Sequelize.STRING,
           allowNull: false,
-          unique: true,
         },
         stockSymbol: {
           type: Sequelize.STRING,
           allowNull: false,
-          unique: true,
         },
         createdAt: {
           allowNull: false,

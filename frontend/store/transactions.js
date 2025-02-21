@@ -85,16 +85,11 @@ export const fetchStockTransactions = () => async (dispatch) => {
 };
 
 export const executeStockTrade = (transaction) => async (dispatch) => {
-  const { stockId, price, quantity, transactionType } = transaction;
-
+  const { stockId } = transaction;
+console.log(transaction)
   const response = await csrfFetch(`/api/transactions/trade/${stockId}`, {
     method: "POST",
-    body: JSON.stringify({
-      stockId,
-      price,
-      quantity,
-      transactionType,
-    }),
+    body: JSON.stringify(transaction),
   });
 
   const data = await response.json();
