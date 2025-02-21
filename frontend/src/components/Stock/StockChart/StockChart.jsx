@@ -105,7 +105,7 @@ function StockChart({ stock, selectedTimeFrame }) {
     if (aggregates) {
       const graphData = aggregates.map((aggregate) => ({
         x: aggregate.t,
-        y: aggregate.vw,
+        y: aggregate.c,
       }));
 
       setData(graphData);
