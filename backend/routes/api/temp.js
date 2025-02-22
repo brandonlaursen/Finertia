@@ -143,3 +143,109 @@
       oneYearAggregates: oneYearAggregates.results,
       fiveYearAggregates: fiveYearAggregates.results,
     };
+
+
+    // const stockSharesTracker = {};
+
+      // let currentTransactionGroup5min = {};
+      // for (let transaction of userTransactions) {
+      //   let {
+      //     purchaseDate,
+      //     transactionType,
+      //     quantity,
+      //     purchasePrice,
+      //     stockName,
+      //     stockSymbol,
+      //   } = transaction;
+
+      //   // const roundedToHourUnix = roundToNearestIntervalInUnix(purchaseDate, 5);
+      //   // const roundedToDayUnix = roundToNearestIntervalInUnix(purchaseDate, 5);
+      //   const roundedTo5minUnix = roundToNearestIntervalInUnix(purchaseDate, 5); //1740173400000
+
+      //   // ! check if stock is shares track
+      //   if (!stockSharesTracker[stockSymbol]) {
+      //     stockSharesTracker[stockSymbol] = {
+      //       stockSymbol,
+      //       stockName,
+      //       totalShares: 0,
+      //     };
+      //   }
+
+      //   console.log('ENTERING', stockSharesTracker[stockSymbol])
+
+      //   // * check if timestamp exists in object
+
+      //   if (!currentTransactionGroup5min[roundedTo5minUnix]) {
+      //     // ! update stock shares
+
+      //       if (transactionType === "buy") {
+      //         console.log('buy updating shares', stockSharesTracker[stockSymbol].totalShares, '+', quantity)
+      //         stockSharesTracker[stockSymbol].totalShares += quantity;
+      //       } else {
+      //         console.log('sell updating shares', stockSharesTracker[stockSymbol].totalShares, '-', quantity)
+      //         stockSharesTracker[stockSymbol].totalShares -= quantity;
+      //       }
+
+
+      //     // * if timestamp doesnt exists add it
+      //     currentTransactionGroup5min[roundedTo5minUnix] = {};
+
+      //     // * check if stock symbol is in object
+      //     if (!currentTransactionGroup5min[roundedTo5minUnix][stockSymbol]) {
+      //       // * if stock symbol doesnt exists, add it
+
+      //       currentTransactionGroup5min[roundedTo5minUnix][stockSymbol] = {
+      //         stockName,
+      //         stockSymbol,
+      //         quantity,
+      //         purchaseDate,
+      //         transactionType,
+      //       };
+      //     }
+      //     // * IF TIME FRAME DOESNT EXISTS, A STOCK SYMBOL CAN ONLY BE ADDED AS IF ITS THE SAME TIME FRAME IT WILL HIT THE ELSE
+      //   } else {
+      //     // * if timestamp already exists
+      //     // ! update stock shares
+
+      //       if (transactionType === "buy") {
+      //         console.log('buy updating shares', stockSharesTracker[stockSymbol].totalShares, '+', quantity)
+      //         stockSharesTracker[stockSymbol].totalShares += quantity;
+      //       } else {
+      //         console.log('sell updating shares', stockSharesTracker[stockSymbol].totalShares, '-', quantity)
+      //         stockSharesTracker[stockSymbol].totalShares -= quantity;
+      //       }
+
+
+      //     // * check if symbol is in timestamp
+      //     if (!currentTransactionGroup5min[roundedTo5minUnix][stockSymbol]) {
+      //       // * stock symbol doest exists in this time frame
+
+      //       currentTransactionGroup5min[roundedTo5minUnix][stockSymbol] = {
+      //         stockName,
+      //         stockSymbol,
+      //         quantity,
+      //         purchaseDate,
+      //         transactionType,
+      //       };
+      //     }
+
+      //     console.log(stockSharesTracker);
+      //   }
+      // }
+
+      // console.log("====");
+      // console.log(currentTransactionGroup5min);
+
+
+       // const firstTransaction = await StockUserTransaction.findOne({
+  //   where: { userId: id },
+  //   include: [{ model: Stock, attributes: ["id", "stockSymbol", "stockName"] }],
+  //   order: [["createdAt", "ASC"]], // Order by creation date in ascending order (oldest first)
+  // });
+
+  // console.log(firstTransaction);
+  // console.log(firstTransaction.purchaseDate); // 2025-02-21T21:30:40.950Z
+
+  // const firstTransactionDate = new Date(firstTransaction.purchaseDate);
+  // const unixTimestamp = firstTransactionDate.getTime();
+  // // console.log(" unixTimestamp:", unixTimestamp); // 1740173440950
