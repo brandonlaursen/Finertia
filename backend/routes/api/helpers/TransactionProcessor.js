@@ -1,8 +1,8 @@
-const { StockUserTransaction } = require('../../../db/models')
+const { StockUserTransaction } = require("../../../db/models");
 
 class TransactionProcessor {
   constructor() {
-    this.stockSharesTracker = { balance: 0 };
+    this.stockSharesTracker = { balance: 0, allStocksEverOwned: new Set() };
     this.transactionGroups = {};
   }
 
@@ -21,7 +21,9 @@ class TransactionProcessor {
 
   updateBalance(transactionType, amount) {
     const MULTIPLIER_100 = 100;
-    let balance = Math.round(this.stockSharesTracker.balance * MULTIPLIER_100) / MULTIPLIER_100;
+    let balance =
+      Math.round(this.stockSharesTracker.balance * MULTIPLIER_100) /
+      MULTIPLIER_100;
     let amountFixed = Math.round(amount * MULTIPLIER_100) / MULTIPLIER_100;
 
     if (transactionType === "withdraw") {
@@ -30,7 +32,8 @@ class TransactionProcessor {
       balance += amountFixed;
     }
 
-    this.stockSharesTracker.balance = Math.round(balance * MULTIPLIER_100) / MULTIPLIER_100;
+    this.stockSharesTracker.balance =
+      Math.round(balance * MULTIPLIER_100) / MULTIPLIER_100;
   }
 
   updateShares(stockSymbol, transactionType, quantity, purchasePrice) {
@@ -42,21 +45,38 @@ class TransactionProcessor {
     }
 
     const stock = this.stockSharesTracker[stockSymbol];
-    let currentShares = Math.round(stock.totalShares * MULTIPLIER_100000) / MULTIPLIER_100000;
-    let quantityFixed = Math.round(quantity * MULTIPLIER_100000) / MULTIPLIER_100000;
-    let totalPrice = Math.round(purchasePrice * quantityFixed * MULTIPLIER_100) / MULTIPLIER_100;
+    let currentShares =
+      Math.round(stock.totalShares * MULTIPLIER_100000) / MULTIPLIER_100000;
+    let quantityFixed =
+      Math.round(quantity * MULTIPLIER_100000) / MULTIPLIER_100000;
+    let totalPrice =
+      Math.round(purchasePrice * quantityFixed * MULTIPLIER_100) /
+      MULTIPLIER_100;
 
     if (transactionType === "buy") {
       if (this.stockSharesTracker.balance >= totalPrice) {
-        stock.totalShares = Math.round((currentShares + quantityFixed) * MULTIPLIER_100000) / MULTIPLIER_100000;
-        this.stockSharesTracker.balance = Math.round((this.stockSharesTracker.balance - totalPrice) * MULTIPLIER_100) / MULTIPLIER_100;
+        stock.totalShares =
+          Math.round((currentShares + quantityFixed) * MULTIPLIER_100000) /
+          MULTIPLIER_100000;
+        this.stockSharesTracker.balance =
+          Math.round(
+            (this.stockSharesTracker.balance - totalPrice) * MULTIPLIER_100
+          ) / MULTIPLIER_100;
+        if (!this.stockSharesTracker.allStocksEverOwned.has(stockSymbol)) {
+          this.stockSharesTracker.allStocksEverOwned.add(stockSymbol);
+        }
       } else {
         console.log("Insufficient balance to buy shares.");
       }
     } else if (transactionType === "sell") {
       if (currentShares >= quantityFixed) {
-        stock.totalShares = Math.round((currentShares - quantityFixed) * MULTIPLIER_100000) / MULTIPLIER_100000;
-        this.stockSharesTracker.balance = Math.round((this.stockSharesTracker.balance + totalPrice) * MULTIPLIER_100) / MULTIPLIER_100;
+        stock.totalShares =
+          Math.round((currentShares - quantityFixed) * MULTIPLIER_100000) /
+          MULTIPLIER_100000;
+        this.stockSharesTracker.balance =
+          Math.round(
+            (this.stockSharesTracker.balance + totalPrice) * MULTIPLIER_100
+          ) / MULTIPLIER_100;
       } else {
         console.log("Insufficient shares to sell.");
         stock.totalShares = 0;
@@ -66,15 +86,25 @@ class TransactionProcessor {
 
   processTransaction(transaction) {
     const isStockTransaction = transaction instanceof StockUserTransaction;
-    const timestamp = isStockTransaction ? transaction.purchaseDate : transaction.transactionDate;
+    const timestamp = isStockTransaction
+      ? transaction.purchaseDate
+      : transaction.transactionDate;
     const roundedTime = this.roundToNearestInterval(timestamp, 5);
 
     if (!this.transactionGroups[roundedTime]) {
-      this.transactionGroups[roundedTime] = { balance: this.stockSharesTracker.balance };
+      this.transactionGroups[roundedTime] = {
+        balance: this.stockSharesTracker.balance,
+      };
     }
 
     if (isStockTransaction) {
-      const { stockSymbol, stockName, transactionType, quantity, purchasePrice } = transaction;
+      const {
+        stockSymbol,
+        stockName,
+        transactionType,
+        quantity,
+        purchasePrice,
+      } = transaction;
       this.updateShares(stockSymbol, transactionType, quantity, purchasePrice);
 
       this.transactionGroups[roundedTime][stockSymbol] = {
@@ -91,7 +121,7 @@ class TransactionProcessor {
   }
 
   processAll(transactions) {
-    transactions.forEach(transaction => this.processTransaction(transaction));
+    transactions.forEach((transaction) => this.processTransaction(transaction));
     return this.transactionGroups;
   }
 }

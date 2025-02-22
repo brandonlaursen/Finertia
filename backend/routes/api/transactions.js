@@ -7,7 +7,7 @@ const {
   Stock,
 } = require("../../db/models");
 
-const { TransactionProcessor } = require('./helpers/TransactionProcessor')
+const { TransactionProcessor } = require("./helpers/TransactionProcessor");
 
 router.post("/deposit", async (req, res) => {
   const { id, balance } = req.user;
@@ -125,15 +125,82 @@ router.get("/stock-summary", async (req, res) => {
     where: { userId: id },
   });
 
-
-
-  console.log(TransactionProcessor)
   const processor = new TransactionProcessor();
   const allTransactions = [...accountTransactions, ...userTransactions];
   const transactionData = processor.processAll(allTransactions);
 
-  console.log(processor.stockSharesTracker, transactionData )
-  res.json({ stockSharesTracker: processor.stockSharesTracker, transactionData });
+  function roundToNearestInterval(timestamp, intervalMinutes) {
+    const date = new Date(timestamp);
+    const remainder = date.getMinutes() % intervalMinutes;
+    date.setMinutes(
+      remainder >= intervalMinutes / 2
+        ? date.getMinutes() + (intervalMinutes - remainder)
+        : date.getMinutes() - remainder,
+      0,
+      0
+    );
+    return date.getTime();
+  }
+
+  const todaysDate = new Date().getTime();
+
+  const firstTransactionDate = allTransactions[0].transactionDate;
+  console.log(" firstTransactionDate:", firstTransactionDate);
+
+
+
+  const newDate = new Date(firstTransactionDate);
+  // console.log(newDate)
+
+  const firstUnix = newDate.getTime();
+  // console.log(firstUnix)
+
+  const roundedUnix = roundToNearestInterval(firstUnix, 5) - 11460;
+  // console.log(roundedUnix);// 1740173400000
+
+  const usersHistoricalStocks = processor.stockSharesTracker.allStocksEverOwned;
+
+  let stockAggregates = {};
+  for (let stock of usersHistoricalStocks) {
+    console.log(stock);
+    const oneDayDataResponse = await fetch(
+      `https://api.polygon.io/v2/aggs/ticker/${stock}/range/5/minute/${roundedUnix}/${todaysDate}?adjusted=true&sort=asc&apiKey=${process.env.STOCK_API_KEY2}`
+    );
+
+    const oneDayData = await oneDayDataResponse.json();
+
+    stockAggregates[stock] = oneDayData.results.map((aggregate) => ({
+      x: aggregate.t,
+      y: aggregate.c,
+    }));
+  }
+
+  console.log(stockAggregates);
+  console.log(" ");
+  console.log(transactionData);
+
+  let combinedData = [];
+  for(let stock in stockAggregates) {
+
+    const aggregates = stockAggregates[stock];
+
+    for(let aggregate of aggregates) {
+      const {x, y} = aggregate;
+      console.log(x, y);
+
+      if(transactionData[`${x}`]){
+        console.log(transactionData[`${x}`])
+      }
+
+      break;
+    }
+    break;
+  }
+
+  res.json({
+    stockSharesTracker: processor.stockSharesTracker,
+    transactionData,
+  });
 });
 
 router.get("/stock-summary", async (req, res) => {
