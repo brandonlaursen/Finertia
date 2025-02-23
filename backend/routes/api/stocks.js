@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const { Stock, StockList, StockPriceTimestamp } = require("../../db/models");
 const { getDate } = require("./helpers/getDate.js");
-const { convertToUnix } = require("./helpers/convertToUnix.js");
 
 const finnhub = require("finnhub");
 
@@ -148,10 +147,15 @@ router.get("/:stockSymbol", async (req, res) => {
       ),
     ]);
 
-    const [oneDayData, oneWeekData] = await Promise.all([
+
+    let [oneDayData, oneWeekData] = await Promise.all([
       oneDayDataResponse.json(),
       oneWeekDataResponse.json(),
     ]);
+
+    if(oneDayData.status === 'DELAYED') {
+      oneDayData = oneWeekData
+    }
 
     const oneDayAggregates = oneDayData.results.map((aggregate) => ({
       x: aggregate.t,

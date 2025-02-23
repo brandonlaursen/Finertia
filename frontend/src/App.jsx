@@ -27,6 +27,7 @@ function Layout() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+    console.log('asdf')
     const loadUser = async () => {
       await dispatch(restoreUser());
       setIsLoaded(true);
