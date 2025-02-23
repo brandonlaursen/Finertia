@@ -52,12 +52,23 @@ function processTransactionSummary(userTransactions, accountTransactions) {
       if (transactionType === "buy") {
         balance -= purchasePrice;
         investments += purchasePrice;
-        updateStockHoldings(stocksHoldings, stockSymbol, quantity, true); // Buying stock
+        updateStockHoldings(
+          stocksHoldings,
+          stockSymbol,
+          quantity,
+          transactionType
+        ); // Buying stock
       } else {
         balance += purchasePrice;
         investments -= purchasePrice;
-        updateStockHoldings(stocksHoldings, stockSymbol, quantity, false); // Selling stock
+        updateStockHoldings(
+          stocksHoldings,
+          stockSymbol,
+          quantity,
+          transactionType
+        ); // Selling stock
       }
+      summary.stockSharesOwned = stocksHoldings;
     } else {
       // Non-stock transactions (e.g., deposit/withdraw)
       const amount = transaction.amount;
@@ -71,7 +82,11 @@ function processTransactionSummary(userTransactions, accountTransactions) {
     // Add to summary
     summary.balance = balance;
     summary.investments = investments;
-    summary.stockSharesOwned = stocksHoldings;
+    console.log(summary);
+    console.log(" ");
+ 
+
+
     processedTransactions.push(summary);
   }
 

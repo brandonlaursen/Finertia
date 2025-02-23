@@ -268,7 +268,7 @@ router.get("/stock-summary", async (req, res) => {
     accountTransactions
   );
 
-  console.log(processedTransactions)
+  // console.log(processedTransactions)
   res.end();
 });
 
