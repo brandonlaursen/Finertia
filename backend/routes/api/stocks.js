@@ -153,9 +153,6 @@ router.get("/:stockSymbol", async (req, res) => {
       oneWeekDataResponse.json(),
     ]);
 
-    if(oneDayData.status === 'DELAYED') {
-      oneDayData = oneWeekData
-    }
 
     const oneDayAggregates = oneDayData.results.map((aggregate) => ({
       x: aggregate.t,

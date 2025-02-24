@@ -304,3 +304,30 @@
 .CreateList__create-button:hover {
   background-color: rgb(7, 196, 133);
 }
+
+
+
+
+.WatchListModal__close-button {
+  height: 22px;
+  width: 22px;
+
+  cursor: pointer;
+}
+
+.WatchListModal__close-button-span {
+  height: 30px;
+  width: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  cursor: pointer;
+}
+
+.WatchListModal__close-button-span:hover {
+  background-color: rgb(225, 225, 225);
+  border-radius: 5px;
+}

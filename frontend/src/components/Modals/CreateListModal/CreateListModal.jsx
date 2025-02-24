@@ -137,7 +137,7 @@ function CreateListModal() {
               <div className="CreateListModal__one__option__image CreateListModal__one__image-one"></div>
               <div className="CreateListModal__one__option__text">
                 <span className="CreateListModal__one__text__title">
-                  Create Watchlist
+                  Create Watch list
                 </span>
 
                 <span>Keep an on investments youre interested in</span>
