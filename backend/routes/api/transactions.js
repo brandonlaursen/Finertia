@@ -275,6 +275,16 @@ router.get("/stock-summary", async (req, res) => {
     processedHistoricalData
   );
 
+
+  const lastTimestamp = Math.max(
+    ...Object.keys(processedTransactions).map(Number)
+  );
+  const lastTransaction = processedTransactions[lastTimestamp];
+
+
+
+
+
   const userHistoricalData = Object.values(mergedTransactionData).map(
     (data) => ({
       x: data.timestamp,
@@ -306,15 +316,19 @@ router.get("/stock-summary", async (req, res) => {
   const oneDayUserAggregates = aggregatePoints(userHistoricalData, oneDayMs);
 
 
-  const userAggregates = {
+  const userSummary = {
+    totalInvestments: lastTransaction.investments,
+    balance: lastTransaction.balance,
+    stocksOwned: lastTransaction.stockSharesOwned,
     fiveMinAggregates: userHistoricalData,
     oneHourUserAggregates: oneHourUserAggregates,
     oneDayAggregates: oneDayUserAggregates,
-  }
+  };
 
-  console.log(userAggregates)
 
-  res.end();
+  console.log(userSummary);
+
+  return res.json(userSummary);
 });
 
 router.post("/trade/:stockId", async (req, res) => {

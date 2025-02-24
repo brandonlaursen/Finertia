@@ -40,15 +40,15 @@ function mergeTransactionAndAggregateData(processedTransactions, historicalPrice
       lastHistoricalSnapshot = historicalPrices[tsStr];
     }
 
-    // Build the stockOwned object using the last known historical snapshot (if any)
-    let stockOwned = {};
+    // Build the stocksOwned object using the last known historical snapshot (if any)
+    let stocksOwned = {};
     let totalInvestments = 0;
 
     if (lastHistoricalSnapshot) {
       for (const [stock, shares] of Object.entries(currentStockSharesOwned)) {
         if (shares > 0 && lastHistoricalSnapshot[stock]) {
           const price = lastHistoricalSnapshot[stock].price;
-          stockOwned[stock] = { price, sharesOwned: shares };
+          stocksOwned[stock] = { price, sharesOwned: shares };
           const stockTotal = Math.round((price * shares) * 100) / 100;
           const newTotalInvestments = Math.round((totalInvestments + stockTotal) * 100) / 100;
           totalInvestments = newTotalInvestments;
@@ -59,7 +59,7 @@ function mergeTransactionAndAggregateData(processedTransactions, historicalPrice
     result[tsStr] = {
       timestamp: ts,
       balance: currentBalance,
-      stockOwned,
+      stocksOwned,
       totalInvestments
     };
   });

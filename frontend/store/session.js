@@ -76,6 +76,7 @@ export const restoreUser = () => async (dispatch) => {
     const response = await csrfFetch("/api/transactions/stock-summary");
     const data = await response.json();
 
+    console.log('data', data)
     dispatch(setUser(userInfo.user, data.stockSummary));
   }
 
