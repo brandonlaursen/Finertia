@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
         hooks: true,
       });
       User.hasMany(models.StockUserTransaction, { foreignKey: "userId" });
-      
+
       User.belongsToMany(models.Stock, {
         through: models.StockUserTransaction,
         foreignKey: "userId",
@@ -49,7 +49,7 @@ module.exports = (sequelize, DataTypes) => {
       profilePic: {
         type: DataTypes.STRING,
         allowNull: true,
-        defaultValue: "",
+        defaultValue: "https://finertia.s3.amazonaws.com/public/1739990232538.png",
       },
       username: {
         type: DataTypes.STRING,

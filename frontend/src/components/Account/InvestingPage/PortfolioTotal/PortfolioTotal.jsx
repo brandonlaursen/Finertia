@@ -94,7 +94,8 @@ function PortfolioTotal({
             </span>
             <div className="InvestingPage__section-left__main-value-container">
               <span className="InvestingPage__section-left__main-value">
-                {balancePercentage}%
+                {console.log(balancePercentage)}
+                {!balancePercentage ? 0 : balancePercentage  }%
               </span>
               <span>${balance.toFixed(2)}</span>
             </div>

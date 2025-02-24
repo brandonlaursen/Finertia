@@ -29,7 +29,7 @@ function processTransactionSummary(userTransactions, accountTransactions) {
       transactionDate,
       1440
     );
-
+   
     // Summary object for each transaction
     const summary = {
       transactionDate,
@@ -51,7 +51,7 @@ function processTransactionSummary(userTransactions, accountTransactions) {
       // Buy or sell stock
       if (transactionType === "buy") {
         balance -= purchasePrice;
-        // investments += purchasePrice;
+        investments += purchasePrice;
         updateStockHoldings(
           stocksHoldings,
           stockSymbol,
@@ -60,7 +60,7 @@ function processTransactionSummary(userTransactions, accountTransactions) {
         ); // Buying stock
       } else {
         balance += purchasePrice;
-        // investments -= purchasePrice;
+        investments -= purchasePrice;
         updateStockHoldings(
           stocksHoldings,
           stockSymbol,

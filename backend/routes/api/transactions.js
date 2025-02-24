@@ -8,6 +8,8 @@ const {
 } = require("../../db/models");
 
 const processTransactionSummary = require("./helpers/processTransactionSummary.js");
+const processHistoricalData = require("./helpers/processHistoricalData.js");
+const mergeTransactionAndAggregateData = require("./helpers/mergeTransactionAndAggregateData.js");
 const { getDate } = require("./helpers/getDate.js");
 
 router.post("/deposit", async (req, res) => {
@@ -113,139 +115,137 @@ router.get("/stock-transactions", async (req, res) => {
   });
 });
 
+// router.get("/stock-summary", async (req, res) => {
+//   const { id } = req.user;
+
+//   const MULTIPLIER_100000 = 100000;
+//   const MULTIPLIER_100 = 100;
+
+//   const userTransactions = await StockUserTransaction.findAll({
+//     where: { userId: id },
+//     include: [{ model: Stock, attributes: ["id", "stockSymbol", "stockName"] }],
+//   });
+
+//   //(Shares Owned×Stock Price at Time)+Cash Balance+Other Assets
+//   // The percentage change displayed (e.g., +3.5% today) is calculated relative to the starting portfolio value of the selected time range.
+
+//   const transactions = userTransactions.map((transaction) => {
+//     const {
+//       stockId,
+//       transactionType,
+//       quantity,
+//       purchasePrice,
+//       purchaseDate,
+//       Stock,
+//     } = transaction;
+
+//     return {
+//       stockId,
+//       stockName: Stock.stockName,
+//       stockSymbol: Stock.stockSymbol,
+//       transactionType,
+//       quantity,
+//       purchasePrice,
+//       purchaseDate,
+//     };
+//   });
+
+//   const stockSummary = {};
+
+//   transactions.forEach((transaction) => {
+//     const {
+//       stockId,
+//       stockName,
+//       stockSymbol,
+//       transactionType,
+//       quantity,
+//       purchasePrice,
+//       purchaseDate,
+//     } = transaction;
+
+//     if (!stockSummary[stockSymbol]) {
+//       stockSummary[stockSymbol] = {
+//         stockId,
+//         stockName,
+//         stockSymbol,
+//         sharesOwned: 0,
+//         totalAmountOwned: 0,
+//         transactions: [],
+//       };
+//     }
+
+//     // current user values
+//     const sharesOwned = stockSummary[stockSymbol].sharesOwned;
+//     const totalAmountOwned = stockSummary[stockSymbol].totalAmountOwned;
+
+//     // rounded user values
+//     const roundedSharesOwned =
+//       Math.round(Number(sharesOwned) * MULTIPLIER_100000) / MULTIPLIER_100000;
+//     const roundedTotalAmountOwned =
+//       Math.round(Number(totalAmountOwned) * MULTIPLIER_100) / MULTIPLIER_100;
+
+//     // rounded stock quantity
+//     const roundedQuantity =
+//       Math.round(Number(quantity) * MULTIPLIER_100000) / MULTIPLIER_100000;
+//     // rounded stock price
+//     const roundedPrice =
+//       Math.round(Number(purchasePrice) * MULTIPLIER_100) / MULTIPLIER_100;
+
+//     if (transactionType === "buy") {
+//       stockSummary[stockSymbol].sharesOwned =
+//         Math.round((roundedSharesOwned + roundedQuantity) * MULTIPLIER_100000) /
+//         MULTIPLIER_100000;
+
+//       stockSummary[stockSymbol].totalAmountOwned =
+//         Math.round(
+//           (roundedTotalAmountOwned + roundedQuantity * roundedPrice) *
+//             MULTIPLIER_100
+//         ) / MULTIPLIER_100;
+//     } else if (transactionType === "sell") {
+//       stockSummary[stockSymbol].sharesOwned =
+//         Math.round((roundedSharesOwned - roundedQuantity) * MULTIPLIER_100000) /
+//         MULTIPLIER_100000;
+
+//       stockSummary[stockSymbol].totalAmountOwned =
+//         Math.round(
+//           (roundedTotalAmountOwned - roundedQuantity * roundedPrice) *
+//             MULTIPLIER_100
+//         ) / MULTIPLIER_100;
+//     }
+
+//     if (stockSummary[stockSymbol].sharesOwned > 0) {
+//       stockSummary[stockSymbol].transactions.push({
+//         stockId,
+//         stockName,
+//         stockSymbol,
+//         transactionType: transaction.transactionType,
+//         quantity,
+//         purchasePrice,
+//         purchaseDate,
+//       });
+//     }
+//   });
+
+//   for (const stockSymbol in stockSummary) {
+//     const stockData = stockSummary[stockSymbol];
+
+//     if (stockData.totalAmountOwned <= 0 || stockData.sharesOwned <= 0) {
+//       delete stockSummary[stockSymbol];
+//     } else {
+//       stockData.averageCost = Number(
+//         (stockData.totalAmountOwned / stockData.sharesOwned).toFixed(2)
+//       );
+//     }
+//   }
+
+//   // console.log('STOCK SUMMARY =====>',{stockSummary})
+
+//   return res.json({
+//     stockSummary,
+//   });
+// });
+
 router.get("/stock-summary", async (req, res) => {
-  const { id } = req.user;
-
-  const MULTIPLIER_100000 = 100000;
-  const MULTIPLIER_100 = 100;
-
-  const userTransactions = await StockUserTransaction.findAll({
-    where: { userId: id },
-    include: [{ model: Stock, attributes: ["id", "stockSymbol", "stockName"] }],
-  });
-
-  //(Shares Owned×Stock Price at Time)+Cash Balance+Other Assets
-  // The percentage change displayed (e.g., +3.5% today) is calculated relative to the starting portfolio value of the selected time range.
-
-  const transactions = userTransactions.map((transaction) => {
-    const {
-      stockId,
-      transactionType,
-      quantity,
-      purchasePrice,
-      purchaseDate,
-      Stock,
-    } = transaction;
-
-    return {
-      stockId,
-      stockName: Stock.stockName,
-      stockSymbol: Stock.stockSymbol,
-      transactionType,
-      quantity,
-      purchasePrice,
-      purchaseDate,
-    };
-  });
-
-  const stockSummary = {};
-
-  transactions.forEach((transaction) => {
-    const {
-      stockId,
-      stockName,
-      stockSymbol,
-      transactionType,
-      quantity,
-      purchasePrice,
-      purchaseDate,
-    } = transaction;
-
-    if (!stockSummary[stockSymbol]) {
-      stockSummary[stockSymbol] = {
-        stockId,
-        stockName,
-        stockSymbol,
-        sharesOwned: 0,
-        totalAmountOwned: 0,
-        transactions: [],
-      };
-    }
-
-    // current user values
-    const sharesOwned = stockSummary[stockSymbol].sharesOwned;
-    const totalAmountOwned = stockSummary[stockSymbol].totalAmountOwned;
-
-    // rounded user values
-    const roundedSharesOwned =
-      Math.round(Number(sharesOwned) * MULTIPLIER_100000) / MULTIPLIER_100000;
-    const roundedTotalAmountOwned =
-      Math.round(Number(totalAmountOwned) * MULTIPLIER_100) / MULTIPLIER_100;
-
-    // rounded stock quantity
-    const roundedQuantity =
-      Math.round(Number(quantity) * MULTIPLIER_100000) / MULTIPLIER_100000;
-    // rounded stock price
-    const roundedPrice =
-      Math.round(Number(purchasePrice) * MULTIPLIER_100) / MULTIPLIER_100;
-
-    if (transactionType === "buy") {
-      stockSummary[stockSymbol].sharesOwned =
-        Math.round((roundedSharesOwned + roundedQuantity) * MULTIPLIER_100000) /
-        MULTIPLIER_100000;
-
-      stockSummary[stockSymbol].totalAmountOwned =
-        Math.round(
-          (roundedTotalAmountOwned + roundedQuantity * roundedPrice) *
-            MULTIPLIER_100
-        ) / MULTIPLIER_100;
-    } else if (transactionType === "sell") {
-      stockSummary[stockSymbol].sharesOwned =
-        Math.round((roundedSharesOwned - roundedQuantity) * MULTIPLIER_100000) /
-        MULTIPLIER_100000;
-
-      stockSummary[stockSymbol].totalAmountOwned =
-        Math.round(
-          (roundedTotalAmountOwned - roundedQuantity * roundedPrice) *
-            MULTIPLIER_100
-        ) / MULTIPLIER_100;
-    }
-
-    if (stockSummary[stockSymbol].sharesOwned > 0) {
-      stockSummary[stockSymbol].transactions.push({
-        stockId,
-        stockName,
-        stockSymbol,
-        transactionType: transaction.transactionType,
-        quantity,
-        purchasePrice,
-        purchaseDate,
-      });
-    }
-  });
-
-  for (const stockSymbol in stockSummary) {
-    const stockData = stockSummary[stockSymbol];
-
-    if (stockData.totalAmountOwned <= 0 || stockData.sharesOwned <= 0) {
-      delete stockSummary[stockSymbol];
-    } else {
-      stockData.averageCost = Number(
-        (stockData.totalAmountOwned / stockData.sharesOwned).toFixed(2)
-      );
-    }
-  }
-
-  // console.log('STOCK SUMMARY =====>',{stockSummary})
-
-  return res.json({
-    stockSummary,
-  });
-});
-
-
-router.get("/stock-summary", async (req, res) => {
-
   const { id } = req.user;
 
   const [userTransactions, accountTransactions] = await Promise.all([
@@ -266,97 +266,23 @@ router.get("/stock-summary", async (req, res) => {
     accountTransactions
   );
 
-  const processedTransactionsArr = Object.values(processedTransactions);
 
-  const lastProcessedTransaction =
-    processedTransactionsArr[processedTransactionsArr.length - 1];
-  const stockOwnedAtSomePoint = lastProcessedTransaction.stockSharesOwned;
 
-  const todaysDate = getDate();
-  const oneDayAway = getDate(1);
-  const oneWeekAway = getDate(7);
 
-  let historicalData = {
-    ...processedTransactions,
+  // console.log(processedTransactions);
 
-    1739869200000: {
-      unixTimestamp: 1740348298743,
-      roundedTo5minInterval: 1740348300000,
-      transactionType: "buy",
-      stockSymbol: "META",
-      shares: 0.14644,
-      balance: 500,
-      investments: 0,
-      stockSharesOwned: { AAPL: 0, META: 0.29287 },
-    },
-  };
+  const processedHistoricalData = await processHistoricalData(
+    processedTransactions
+  );
 
-  let temp;
-  for (let stockSymbol of Object.keys(stockOwnedAtSomePoint)) {
-    console.log(stockSymbol);
-    const [oneWeekDataResponse] = await Promise.all([
-      fetch(
-        `https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/1/hour/${oneWeekAway}/${todaysDate}?adjusted=true&sort=asc&apiKey=${process.env.STOCK_API_KEY2}`
-      ),
-    ]);
+  // console.log(processedHistoricalData)
 
-    let [oneWeekData] = await Promise.all([oneWeekDataResponse.json()]);
 
-    const aggregates = oneWeekData.results;
+  const mergedData = mergeTransactionAndAggregateData(processedTransactions, processedHistoricalData);
 
-    for (let aggregate of aggregates) {
-      if (!historicalData[aggregate.t]) {
-        historicalData[aggregate.t] = {};
-      } else {
-        if (historicalData[aggregate.t].stockSharesOwned) {
-          temp = historicalData[aggregate.t].stockSharesOwned;
-          balance = historicalData[aggregate.t].balance;
-        }
+  console.log(mergedData)
 
-        if (!historicalData[aggregate.t][stockSymbol]) {
-          historicalData[aggregate.t][stockSymbol] = {
-            stockSymbol,
-            price: aggregate.c,
-          };
-        }
-      }
-      if (!historicalData[aggregate.t][stockSymbol]) {
-        historicalData[aggregate.t][stockSymbol] = {
-          stockSymbol,
-          price: aggregate.c,
-        };
-      }
-      historicalData[aggregate.t].stockSharesOwned = temp;
-      historicalData[aggregate.t].balance = balance;
-
-      const sharesOwned =
-        historicalData[aggregate.t].stockSharesOwned[stockSymbol];
-
-      const stockPrice = historicalData[aggregate.t][stockSymbol].price;
-
-      const stockValue = Math.round(sharesOwned * stockPrice * 100) / 100;
-
-      historicalData[aggregate.t][stockSymbol].stockValue = stockValue;
-    }
-  }
-
-  function convertToTimestampArray(data) {
-    return Object.entries(data).map(([timestamp, entry]) => {
-      const totalStockValue = Object.values(entry)
-        .filter((item) => typeof item === "object" && "stockValue" in item)
-        .reduce((sum, stock) => sum + stock.stockValue, 0);
-
-      return {
-        x: Number(timestamp), // Convert timestamp string to number
-        y: Math.round((entry.balance + totalStockValue) * 100) / 100, // Sum of balance and total stock value
-      };
-    });
-  }
-
-  const formattedData = convertToTimestampArray(historicalData);
-  const sortedData = formattedData.sort((a, b) => b.x - a.x);
-
-  console.log(sortedData);
+  // console.log(Object.keys(mergedData).length)
 
   res.end();
 });
