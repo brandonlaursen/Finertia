@@ -3,7 +3,7 @@ import ReactApexChart from "react-apexcharts";
 import "./StockChart.css";
 
 function StockChart({ stock, selectedTimeFrame }) {
-  console.log("rerender");
+  
   const {
     oneDayAggregates,
     oneWeekAggregates,

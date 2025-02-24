@@ -16,18 +16,20 @@ function InvestingPage() {
   const sessionUser = useSelector(selectUser);
   const { stockSummary } = sessionUser;
 
-  const stockInvestments = Object.values(stockSummary).reduce(
-    (total, stock) => (total += stock.averageCost * stock.sharesOwned),
-    0
-  );
+  const stockInvestments = stockSummary.totalInvestments;
+  const balance = Number(stockSummary.balance);
+  const total = Number((stockInvestments + balance).toFixed(2));
 
-  let { balance } = sessionUser;
-  const total = balance + stockInvestments;
+  const balancePercentage = (balance / total) * 100;
+  const stockPercentage = (stockInvestments / total) * 100;
 
-  const stockPercentage = Math.round((stockInvestments / total) * 100).toFixed(
-    2
-  );
-  const balancePercentage = Math.round((balance / total) * 100).toFixed(2);
+  console.log({
+    total,
+    balance,
+    balancePercentage,
+    stockInvestments,
+    stockPercentage,
+  });
 
   useEffect(() => {
     dispatch(fetchStockTransactions());
@@ -39,7 +41,7 @@ function InvestingPage() {
       <div>
         <div className="InvestingPage__body">
           <PortfolioTotal
-            total={total}
+            total={stockInvestments}
             stockPercentage={stockPercentage}
             stockInvestments={stockInvestments}
             balancePercentage={balancePercentage}

@@ -88,6 +88,7 @@ function processTransactionSummary(userTransactions, accountTransactions) {
     summary.investments = investments;
 
     const stocksHoldingsCopy = {...stocksHoldings}
+    console.log('==>',stocksHoldingsCopy)
     summary.stockSharesOwned = stocksHoldingsCopy;
     processedTransactions[roundedTo5minInterval] = summary
 

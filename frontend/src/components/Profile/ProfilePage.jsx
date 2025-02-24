@@ -18,7 +18,7 @@ const DEFAULT_IMAGE =
 
 function ProfilePage() {
   const sessionUser = useSelector(selectUser);
-  console.log("sessionUser:", sessionUser);
+
   const dispatch = useDispatch();
 
   const { setModalContent, setModalClass } = useModal();

@@ -4,11 +4,10 @@ import './StocksOwnedItem.css'
 function StocksOwnedItem({ stock, navigate, stocks }) {
   const { symbol, shares } = stock;
 
-  console.log(stock, symbol)
-  // const stockInfo = stocks[stockId];
+
   const stockInfo = Object.values(stocks).find(stock => stock.symbol === symbol)
 
-  console.log(stockInfo, shares)
+
   return (
     <div
       className="WatchListStocks__container"

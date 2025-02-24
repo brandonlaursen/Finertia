@@ -131,45 +131,33 @@ router.get("/stock-summary", async (req, res) => {
     }),
   ]);
 
-  // console.log(userTransactions)
-  /*
-    _previousDataValues: {
-      userId: 4,
-      stockId: 8,
-      transactionType: 'buy',
-      quantity: 0.30286,
-      purchasePrice: 100,
-      purchaseDate: 2025-02-24T15:28:57.224Z,
-      stockName: 'Tesla, Inc. Common Stock',
-      stockSymbol: 'TSLA',
-      createdAt: 2025-02-24T15:28:57.224Z,
-      updatedAt: 2025-02-24T15:28:57.224Z,
-      Stock: [Stock]
-    },
-  */
 
   const processedTransactions = processTransactionSummary(
     userTransactions,
     accountTransactions
   );
 
-  console.log(processedTransactions)
+  // console.log(processedTransactions);
+
 
   const processedHistoricalData = await processHistoricalData(
     processedTransactions
   );
 
-  // console.log(processedHistoricalData)
 
+  // console.log(processHistoricalData)
   const mergedTransactionData = mergeTransactionAndAggregateData(
     processedTransactions,
     processedHistoricalData
   );
 
-  const lastTimestamp = Math.max(
-    ...Object.keys(processedTransactions).map(Number)
-  );
-  const lastTransaction = processedTransactions[lastTimestamp];
+  // console.log(mergedTransactionData)
+
+  const mergedTransactionDataArray = Object.values(mergedTransactionData);
+
+
+  const lastTransaction = mergedTransactionDataArray[mergedTransactionDataArray.length - 1];
+  console.log(" lastTransaction:", lastTransaction);
 
   const userHistoricalData = Object.values(mergedTransactionData).map(
     (data) => ({
@@ -201,15 +189,16 @@ router.get("/stock-summary", async (req, res) => {
   const oneHourUserAggregates = aggregatePoints(userHistoricalData, oneHourMs);
   const oneDayUserAggregates = aggregatePoints(userHistoricalData, oneDayMs);
 
-  const stocksArray = Object.entries(lastTransaction.stockSharesOwned).map(
+  const stocksArray = Object.entries(lastTransaction.stocksOwned).map(
     ([symbol, shares]) => ({
       symbol,
       shares,
     })
   );
 
+  console.log(lastTransaction)
   const userSummary = {
-    totalInvestments: lastTransaction.investments,
+    totalInvestments: lastTransaction.totalInvestments,
     balance: lastTransaction.balance,
     stocksOwned: stocksArray,
     fiveMinAggregates: userHistoricalData,

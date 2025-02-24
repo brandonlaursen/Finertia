@@ -73,7 +73,7 @@ function EditProfileModal({ sessionUser }) {
             />
           </span>
         </div>
-        {console.log(preview)}
+   
         <div className="EditProfileModal__section">
           <div className="EditProfileModal___user__image">
             {preview ||

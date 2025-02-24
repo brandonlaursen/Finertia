@@ -8,7 +8,7 @@ import ReactApexChart from "react-apexcharts";
 function PortfolioStocks({ stockInvestments, stockSummary }) {
   const navigate = useNavigate();
   const [currentPoint, setCurrentPoint] = useState(null);
-
+console.log(stockSummary)
   const stockSymbols = Object.keys(stockSummary);
 
   const stockHoldings = stockSymbols.map((stockSymbol) => {
@@ -87,12 +87,12 @@ function PortfolioStocks({ stockInvestments, stockSummary }) {
               </tr>
             </thead>
             <tbody className="InvestingPage__stocks__table-body">
-              {Object.values(stockSummary).map((stock) => {
+              {stockSummary.stocksOwned.map((stock) => {
                 return (
                   <tr
                     className="InvestingPage__stock-row"
                     key={stock.stockId}
-                    onClick={() => navigate(`/stocks/${stock?.stockSymbol}`)}
+                    onClick={() => navigate(`/stocks/${stock?.symbol}`)}
                   >
                     <td>{stock.stockName}</td>
                     <td>{stock.stockSymbol}</td>

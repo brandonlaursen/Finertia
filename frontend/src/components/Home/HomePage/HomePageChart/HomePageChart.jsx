@@ -84,11 +84,10 @@ function HomePageChart({ stockSummary, selectedTimeFrame }) {
 
   const [data, setData] = useState(fiveMinAggregates);
 
-  console.log(data)
-  console.log(selectedTimeFrame)
+
   useEffect(() => {
     let aggregates;
-    console.log('inside useEffect')
+
     if (selectedTimeFrame === "1D") {
       aggregates = fiveMinAggregates;
     }
