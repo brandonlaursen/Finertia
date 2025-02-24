@@ -1,7 +1,8 @@
 const { getDate } = require("./getDate.js");
+const roundTimestampToInterval = require("./roundTimestampToInterval.js");
+
 async function processHistoricalData(processedTransactions) {
   const todaysDate = getDate();
-
 
   // * users first transaction
   const firstTimestamp = Math.min(
@@ -9,6 +10,8 @@ async function processHistoricalData(processedTransactions) {
   );
   const firstTransaction = processedTransactions[firstTimestamp];
   const firstTransactionTimestamp = firstTransaction.unixTimestamp;
+
+  const roundedTransactionTimestamp = roundTimestampToInterval(firstTransactionTimestamp, 5)
 
   // * get users last transaction
   const lastTimestamp = Math.max(
@@ -24,7 +27,7 @@ async function processHistoricalData(processedTransactions) {
 
   for (let stockSymbol of stocksOwnedOverTime) {
     const response = await fetch(
-      `https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/5/minute/${firstTransactionTimestamp}/${todaysDate}?adjusted=true&sort=asc&apiKey=${process.env.STOCK_API_KEY2}`
+      `https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/5/minute/${roundedTransactionTimestamp}/${todaysDate}?adjusted=true&sort=asc&apiKey=${process.env.STOCK_API_KEY2}`
     );
     const data = await response.json();
     const currentStocksAggregates = data.results || [];
@@ -49,7 +52,7 @@ async function processHistoricalData(processedTransactions) {
 
   // Ensure each stock has a value at every timestamp
   for (let timestamp of sortedTimestamps) {
-    for (let stockSymbol of Object.keys(stocksOwnedOverTime)) {
+    for (let stockSymbol of stocksOwnedOverTime) {
       if (!aggregateData[timestamp]) {
         aggregateData[timestamp] = {};
       }

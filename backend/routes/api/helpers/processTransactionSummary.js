@@ -9,6 +9,7 @@ function processTransactionSummary(userTransactions, accountTransactions) {
       new Date(b.purchaseDate || b.transactionDate)
   );
 
+
   let balance = 0;
   let investments = 0;
   const stocksHoldings = {};
