@@ -11,15 +11,18 @@ function PortfolioStocks({ stockInvestments, stockSummary }) {
 
   const stocks = stockSummary.stocksOwned;
 
-  const stockSymbols = stocks.map((stock) => stock.symbol);
+  console.log(stocks);
 
-  const stockHoldings = stocks.map((stock) => {
-    const { sharesOwned, price } = stock;
+  const stockSymbols = Object.keys(stocks);
+  const stockHoldings = [];
 
+  for(let stockSymbol in stocks){
+    const {sharesOwned, price} = stocks[stockSymbol];
     const total = (sharesOwned * price).toFixed(2);
 
-    return Number(total);
-  });
+    stockHoldings.push(Number(total));
+  }
+
 
   const series = stockHoldings;
   const labels = stockSymbols;
@@ -88,7 +91,7 @@ function PortfolioStocks({ stockInvestments, stockSummary }) {
               </tr>
             </thead>
             <tbody className="InvestingPage__stocks__table-body">
-              {stocks.map((stock) => {
+              {Object.values(stocks).map((stock) => {
                 return (
                   <tr
                     className="InvestingPage__stock-row"

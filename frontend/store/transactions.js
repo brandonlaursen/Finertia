@@ -1,5 +1,5 @@
 import { csrfFetch } from "./csrf";
-
+import { setUser } from "./session";
 // * Constants
 const SET_ACCOUNT_TRANSACTIONS = "transactions/SET_ACCOUNT_TRANSACTIONS";
 const ADD_ACCOUNT_TRANSACTION = "transactions/ADD_ACCOUNT_TRANSACTION";
@@ -7,6 +7,8 @@ const ADD_ACCOUNT_TRANSACTION = "transactions/ADD_ACCOUNT_TRANSACTION";
 const SET_STOCK_TRANSACTIONS = "transactions/SET_STOCK_TRANSACTIONS";
 const ADD_STOCK_TRANSACTION = "transactions/ADD_STOCK_TRANSACTION";
 const REMOVE_USER = "session/removeUser";
+
+const SET_USER = "session/setUser";
 
 // * Action Creators
 const setAccountTransactions = (transactions) => {
@@ -31,18 +33,18 @@ const setStockTransactions = (transactions) => {
   };
 };
 
-const addStockTransaction = (
-  createdTransaction,
-  updatedBalance,
-  updatedStockSummary
-) => {
-  return {
-    type: ADD_STOCK_TRANSACTION,
-    createdTransaction,
-    updatedBalance,
-    updatedStockSummary,
-  };
-};
+// const addStockTransaction = (
+//   createdTransaction,
+//   updatedBalance,
+//   updatedStockSummary
+// ) => {
+//   return {
+//     type: ADD_STOCK_TRANSACTION,
+//     createdTransaction,
+//     updatedBalance,
+//     updatedStockSummary,
+//   };
+// };
 
 // * Thunks
 export const fetchAccountTransactions = () => async (dispatch) => {
@@ -92,11 +94,16 @@ export const executeStockTrade = (transaction) => async (dispatch) => {
     body: JSON.stringify(transaction),
   });
 
-  const data = await response.json();
+  const {user} = await response.json();
 
-  dispatch(
-    addStockTransaction(data.transaction, data.balance, data.stockSummary)
-  );
+
+  if (user) {
+    const response = await csrfFetch("/api/transactions/stock-summary");
+    const stockSummary = await response.json();
+    console.log(" stockSummary:", stockSummary);
+
+    dispatch(setUser(user, stockSummary));
+  }
 };
 
 // * Transactions reducer
@@ -134,6 +141,11 @@ const transactionsReducer = (state = initialState, action) => {
           ...state.stockTransactions,
           action.createdTransaction,
         ],
+      };
+    case SET_USER:
+      return {
+        ...state,
+        user: { ...action.user, stockSummary: { ...action.stockSummary } },
       };
     case REMOVE_USER:
       return initialState;

@@ -9,7 +9,7 @@ const ADD_ACCOUNT_TRANSACTION = "transactions/ADD_ACCOUNT_TRANSACTION";
 const ADD_STOCK_TRANSACTION = "transactions/ADD_STOCK_TRANSACTION";
 
 // * Action Creators
-const setUser = (user, stockSummary) => {
+export const setUser = (user, stockSummary) => {
   return {
     type: SET_USER,
     user,
@@ -43,7 +43,7 @@ export const signup = (user) => async (dispatch) => {
 
 export const login = (user) => async (dispatch) => {
   const { credential, password } = user;
-  
+
   const response = await csrfFetch("/api/session", {
     method: "POST",
     body: JSON.stringify({

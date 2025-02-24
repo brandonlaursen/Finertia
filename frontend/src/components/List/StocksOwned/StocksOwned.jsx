@@ -11,11 +11,13 @@ function StocksOwned({ sessionUser, stocks }) {
     stockSummary: { stocksOwned },
   } = sessionUser;
 
+ const stocksOwnedArray = Object.values(stocksOwned);
+
   return (
     <>
       <div className="WatchListStocks-stocks-owned">
-        {stocksOwned.length > 0 ? (
-          stocksOwned.map((stock) => {
+        {stocksOwnedArray.length > 0 ? (
+          stocksOwnedArray.map((stock) => {
             return (
               <StocksOwnedItem
                 key={stock.id}

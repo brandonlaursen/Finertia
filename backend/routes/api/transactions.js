@@ -131,32 +131,24 @@ router.get("/stock-summary", async (req, res) => {
     }),
   ]);
 
-
   const processedTransactions = processTransactionSummary(
     userTransactions,
     accountTransactions
   );
 
-
-
-
   const processedHistoricalData = await processHistoricalData(
     processedTransactions
   );
 
-
-  // console.log(processHistoricalData)
   const mergedTransactionData = mergeTransactionAndAggregateData(
     processedTransactions,
     processedHistoricalData
   );
 
-  // console.log(mergedTransactionData)
-
   const mergedTransactionDataArray = Object.values(mergedTransactionData);
 
-
-  const lastTransaction = mergedTransactionDataArray[mergedTransactionDataArray.length - 1];
+  const lastTransaction =
+    mergedTransactionDataArray[mergedTransactionDataArray.length - 1];
 
   const userHistoricalData = Object.values(mergedTransactionData).map(
     (data) => ({
@@ -186,22 +178,15 @@ router.get("/stock-summary", async (req, res) => {
 
   // Aggregate to hourly and daily snapshots.
   const oneHourUserAggregates = aggregatePoints(userHistoricalData, oneHourMs);
-  console.log(userHistoricalData)
+
   const oneDayUserAggregates = aggregatePoints(userHistoricalData, oneDayMs);
 
-  const stocksArray = Object.entries(lastTransaction.stocksOwned).map(
-    ([symbol, shares]) => ({
-      symbol,
-      ...shares,
-    })
-  );
-
-  console.log(stocksArray)
+  
 
   const userSummary = {
     totalInvestments: lastTransaction.totalInvestments,
     balance: lastTransaction.balance,
-    stocksOwned: stocksArray,
+    stocksOwned: lastTransaction.stocksOwned,
     fiveMinAggregates: userHistoricalData,
     oneHourUserAggregates: oneHourUserAggregates,
     oneDayAggregates: oneDayUserAggregates,
@@ -272,134 +257,39 @@ router.post("/trade/:stockId", async (req, res) => {
     balance: newBalance,
   });
 
+  // pass rounded amount to front end to add to totalInvestments
+  // pass newBalance for balance
+  // add stocksOwned to
+
+  const recentTransaction = await StockUserTransaction.findOne({
+    where: { userId: id },
+    order: [['purchaseDate', 'DESC']], // change to 'createdAt' if that's your timestamp field
+    include: [{
+      model: Stock,
+      attributes: ['id', 'stockSymbol', 'stockName']
+    }]
+  });
+
+  console.log(recentTransaction)
+
   const userTransactions = await StockUserTransaction.findAll({
     where: { userId: id },
     include: [{ model: Stock, attributes: ["id", "stockSymbol", "stockName"] }],
   });
 
-  const transactions = userTransactions.map((transaction) => {
-    const {
-      stockId,
-      transactionType,
-      quantity,
-      purchasePrice,
-      purchaseDate,
-      Stock,
-    } = transaction;
+// user balances is updated
+// newBalance - we have
+// totalInvestments we can ignore
+// stocksOwned is updated
 
-    return {
-      stockId,
-      stockName: Stock.stockName,
-      stockSymbol: Stock.stockSymbol,
-      transactionType,
-      quantity,
-      purchasePrice,
-      purchaseDate,
-    };
-  });
 
-  const stockSummary = {};
 
-  transactions.forEach((transaction) => {
-    const {
-      stockId,
-      stockName,
-      stockSymbol,
-      transactionType,
-      quantity,
-      purchasePrice,
-      purchaseDate,
-    } = transaction;
-
-    if (!stockSummary[stockSymbol]) {
-      stockSummary[stockSymbol] = {
-        stockId,
-        stockName,
-        stockSymbol,
-        sharesOwned: 0,
-        totalAmountOwned: 0,
-        transactions: [],
-      };
-    }
-
-    // current user values
-    const sharesOwned = stockSummary[stockSymbol].sharesOwned;
-    const totalAmountOwned = stockSummary[stockSymbol].totalAmountOwned;
-
-    // rounded user values
-    const roundedSharesOwned =
-      Math.round(Number(sharesOwned) * MULTIPLIER_100000) / MULTIPLIER_100000;
-    const roundedTotalAmountOwned =
-      Math.round(Number(totalAmountOwned) * MULTIPLIER_100) / MULTIPLIER_100;
-
-    // rounded stock quantity
-    const roundedQuantity =
-      Math.round(Number(quantity) * MULTIPLIER_100000) / MULTIPLIER_100000;
-    // rounded stock price
-    const roundedPrice =
-      Math.round(Number(purchasePrice) * MULTIPLIER_100) / MULTIPLIER_100;
-
-    if (transactionType === "buy") {
-      stockSummary[stockSymbol].sharesOwned =
-        Math.round((roundedSharesOwned + roundedQuantity) * MULTIPLIER_100000) /
-        MULTIPLIER_100000;
-
-      stockSummary[stockSymbol].totalAmountOwned =
-        Math.round(
-          (roundedTotalAmountOwned + roundedQuantity * roundedPrice) *
-            MULTIPLIER_100
-        ) / MULTIPLIER_100;
-    } else if (transactionType === "sell") {
-      stockSummary[stockSymbol].sharesOwned =
-        Math.round((roundedSharesOwned - roundedQuantity) * MULTIPLIER_100000) /
-        MULTIPLIER_100000;
-
-      stockSummary[stockSymbol].totalAmountOwned =
-        Math.round(
-          (roundedTotalAmountOwned - roundedQuantity * roundedPrice) *
-            MULTIPLIER_100
-        ) / MULTIPLIER_100;
-    }
-
-    if (stockSummary[stockSymbol].sharesOwned > 0) {
-      stockSummary[stockSymbol].transactions.push({
-        stockId,
-        stockName,
-        stockSymbol,
-        transactionType: transaction.transactionType,
-        quantity,
-        purchasePrice,
-        purchaseDate,
-      });
-    }
-  });
-
-  for (const stockSymbol in stockSummary) {
-    const stockData = stockSummary[stockSymbol];
-
-    if (stockData.totalAmountOwned <= 0 || stockData.sharesOwned <= 0) {
-      delete stockSummary[stockSymbol];
-    } else {
-      stockData.averageCost = Number(
-        (stockData.totalAmountOwned / stockData.sharesOwned).toFixed(2)
-      );
-    }
-  }
-
-  // const highestPriceEntry = await StockPriceTimestamp.findOne({
-  //   where: {
-  //     stockId: stock.id,
-  //   },
-  //   order: [
-  //     ["timestamp", "DESC"],
-  //   ],
-  //   limit: 1,
-  // });
 
   return res.json({
-    transaction,
-    balance: newBalance,
-    stockSummary,
+    // transaction,
+    // balance: newBalance,
+    // stockSummary,
+    user: req.user,
     message: `successfully retrieved transactions for user with id of ${id}`,
   });
 });
