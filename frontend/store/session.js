@@ -77,7 +77,7 @@ export const restoreUser = () => async (dispatch) => {
     const data = await response.json();
 
     console.log('data', data)
-    dispatch(setUser(userInfo.user, data.stockSummary));
+    dispatch(setUser(userInfo.user, data));
   }
 
   return response;

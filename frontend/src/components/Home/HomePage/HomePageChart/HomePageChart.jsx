@@ -1,30 +1,17 @@
 import "./HomePageChart.css";
 
-
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchStockTransactions } from "../../../../../store/transactions";
 
 import ReactApexChart from "react-apexcharts";
 
-function HomePageChart() {
+function HomePageChart({ stockSummary }) {
   const dispatch = useDispatch();
-  const transactions = useSelector(
-    (state) => state.transactions.stockTransactions
-  );
 
-  const sortedTransactions = transactions.sort((a, b) => {
-    const dateA = a.transactionDate ? new Date(a.transactionDate) : new Date(0);
-    const dateB = b.transactionDate ? new Date(b.transactionDate) : new Date(0);
+  const { fiveMinAggregates, oneHourUserAggregates, oneDayAggregates } =
+    stockSummary;
 
-    return dateB - dateA;
-  });
-
-
-
-
-
-  const [data, ] = useState([]);
 
   const [options] = useState({
     chart: {
@@ -86,11 +73,19 @@ function HomePageChart() {
       x: {
         formatter: (timestamp) => convertToEst(timestamp),
       },
+      y: {
+        formatter: function (value) {
+          return `$` + value.toFixed(2);
+        },
+      },
       marker: {
         show: false,
       },
     },
   });
+
+  const [data] = useState(fiveMinAggregates);
+
 
   const series = [
     {
@@ -99,9 +94,6 @@ function HomePageChart() {
     },
   ];
 
-  useEffect(() => {
-    dispatch(fetchStockTransactions());
-  }, [dispatch]);
 
   function convertToEst(timestamp) {
     const date = new Date(timestamp);

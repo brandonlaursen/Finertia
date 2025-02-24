@@ -15,10 +15,8 @@ function HomePage() {
   const sessionUser = useSelector(selectUser);
 
   const { stockSummary } = sessionUser;
-  const stockInvestments = Object.values(stockSummary).reduce(
-    (total, stock) => (total += stock.averageCost * stock.sharesOwned),
-    0
-  );
+
+  console.log(stockSummary)
 
   return (
     <div className="HomePage">
@@ -28,10 +26,10 @@ function HomePage() {
             <div className="HomePage__main__title">Investing</div>
             <div className="HomePage__main__banner">
               <div className="HomePage__main__user-info">
-                <span>${stockInvestments.toFixed(2)}</span>
+                <span>${stockSummary.totalInvestments}</span>
               </div>
               <div className="HomePage__main__chart-container">
-                <HomePageChart />
+                <HomePageChart stockSummary={stockSummary}/>
               </div>
               <BuyingPowerDropDown sessionUser={sessionUser} />
             </div>
