@@ -62,13 +62,8 @@ function ProfilePage() {
     handleFileUpload(file);
   };
 
-  const stockInvestments = Object.values(stockSummary).reduce(
-    (total, stock) => (total += stock.averageCost * stock.sharesOwned),
-    0
-  );
+  const total = stockSummary.totalInvestments + stockSummary.balance;
 
-  let { balance } = sessionUser;
-  const total = balance + stockInvestments;
 
   return (
     <div className="ProfilePage">
@@ -147,7 +142,7 @@ function ProfilePage() {
 
         <div className="ProfilePage__total">
           <span className="ProfilePage__total__balance">
-            ${total.toFixed(2)}
+            ${stockSummary.balance.toFixed(2)}
           </span>
           Total in Finertia
         </div>
@@ -169,11 +164,11 @@ function ProfilePage() {
             </div>
 
             <div className="ProfilePage__investments__details__value ProfilePage__investments__details__subtext">
-              <span>Individual holdings</span>${stockInvestments.toFixed(2)}
+              <span>Individual holdings</span>${stockSummary.totalInvestments.toFixed(2)}
             </div>
 
             <div className="ProfilePage__investments__details__value ProfilePage__investments__details__subtext">
-              <span>Individual cash</span>${sessionUser.balance.toFixed(2)}
+              <span>Individual cash</span>${stockSummary.balance.toFixed(2)}
             </div>
           </div>
         </div>
