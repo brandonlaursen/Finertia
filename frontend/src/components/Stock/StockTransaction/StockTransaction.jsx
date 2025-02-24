@@ -19,8 +19,8 @@ function StockTransaction({ stock, setNotifications, setNotificationMessage  }) 
 
   const sessionUser = useSelector(selectUser);
 
-  const stockSummary = sessionUser.stockSummary.stocksOwned.find(ownedStock => ownedStock.symbol === stock.symbol);
-  console.log(stockSummary)
+  const stockSummary = sessionUser.stockSummary.stocksOwned[stock.symbol];
+  
   const sharesOwned = stockSummary?.sharesOwned || 0;
   const { price } = stock;
   const { balance } = sessionUser.stockSummary;

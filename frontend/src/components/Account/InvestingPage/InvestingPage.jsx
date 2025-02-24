@@ -15,7 +15,7 @@ function InvestingPage() {
 
   const sessionUser = useSelector(selectUser);
   const { stockSummary } = sessionUser;
-  
+
   const stockInvestments = stockSummary.totalInvestments;
   const balance = Number(stockSummary.balance);
   const total = Number((stockInvestments + balance).toFixed(2));
@@ -35,7 +35,7 @@ function InvestingPage() {
       <div>
         <div className="InvestingPage__body">
           <PortfolioTotal
-            total={stockInvestments}
+            total={total}
             stockPercentage={stockPercentage}
             stockInvestments={stockInvestments}
             balancePercentage={balancePercentage}

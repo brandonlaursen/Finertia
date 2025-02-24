@@ -68,14 +68,12 @@ export const logout = () => async (dispatch) => {
 };
 
 export const restoreUser = () => async (dispatch) => {
-
   const response = await csrfFetch("/api/session");
   const userInfo = await response.json();
 
   if (userInfo.user) {
     const response = await csrfFetch("/api/transactions/stock-summary");
     const data = await response.json();
-
 
     dispatch(setUser(userInfo.user, data));
   }
@@ -144,7 +142,11 @@ const sessionReducer = (state = initialState, action) => {
     case ADD_ACCOUNT_TRANSACTION:
       return {
         ...state,
-        user: { ...state.user, balance: action.updatedBalance },
+        user: {
+          ...state.user,
+          balance: action.updatedBalance,
+          stockSummary: { ...state.user.stockSummary, balance: action.updatedBalance },
+        },
       };
     case ADD_STOCK_TRANSACTION:
       return {

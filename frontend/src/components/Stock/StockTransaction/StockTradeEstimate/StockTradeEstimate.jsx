@@ -56,12 +56,14 @@ function StockTradeEstimate({
       transactionType,
     };
 
+    dispatch(executeStockTrade(transaction));
+    clearReview();
+
     setIsLoading(true);
     await new Promise((resolve) => setTimeout(resolve, 500));
     setIsLoading(false);
 
-    dispatch(executeStockTrade(transaction));
-    clearReview();
+
 
     if (transactionType === "buy") {
       setNotificationMessage([
