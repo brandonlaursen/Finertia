@@ -1,12 +1,12 @@
-
-import './StocksOwnedItem.css'
+import "./StocksOwnedItem.css";
 
 function StocksOwnedItem({ stock, navigate, stocks }) {
-  const { symbol, shares } = stock;
+  const { symbol, sharesOwned } = stock;
 
-
-  const stockInfo = Object.values(stocks).find(stock => stock.symbol === symbol)
-
+  console.log("asdfasdfsadf", stock);
+  const stockInfo = Object.values(stocks).find(
+    (stock) => stock.symbol === symbol
+  );
 
   return (
     <div
@@ -15,9 +15,11 @@ function StocksOwnedItem({ stock, navigate, stocks }) {
       onClick={() => navigate(`/stocks/${stockInfo?.symbol}`)}
     >
       <div className="WatchListStocks__container-title-shares">
-        <span className="WatchListStocks__container-title">{stockInfo?.symbol}</span>
+        <span className="WatchListStocks__container-title">
+          {stockInfo?.symbol}
+        </span>
         <span className="StocksOwnedItem__container-subtitle">
-          {shares?.toFixed(5) ? `${shares?.toFixed(5)} Shares` : ""}
+          {sharesOwned?.toFixed(5) ? `${sharesOwned?.toFixed(5)} Shares` : ""}
         </span>
       </div>
       <span className="WatchListStocks__container-graph"></span>
