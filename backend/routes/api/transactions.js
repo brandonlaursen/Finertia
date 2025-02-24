@@ -181,7 +181,7 @@ router.get("/stock-summary", async (req, res) => {
 
   const oneDayUserAggregates = aggregatePoints(userHistoricalData, oneDayMs);
 
-  
+
 
   const userSummary = {
     totalInvestments: lastTransaction.totalInvestments,
@@ -283,13 +283,22 @@ router.post("/trade/:stockId", async (req, res) => {
 // stocksOwned is updated
 
 
-
+const safeUser = {
+  id: req.user.id,
+  email: req.user.email,
+  username:req.user.username,
+  balance: req.user.balance,
+  profilePic: req.user.profilePic,
+  firstName: req.user.firstName,
+  lastName: req.user.lastName,
+  joinDate: req.user.createdAt,
+};
 
   return res.json({
     // transaction,
     // balance: newBalance,
     // stockSummary,
-    user: req.user,
+    user: safeUser,
     message: `successfully retrieved transactions for user with id of ${id}`,
   });
 });
