@@ -27,11 +27,14 @@ function mergeTransactionAndAggregateData(processedTransactions, historicalPrice
     const tsStr = ts.toString();
 
     // Update portfolio state if there's a transaction at this timestamp.
+
     if (processedTransactions[tsStr]) {
       const transaction = processedTransactions[tsStr];
+
       currentBalance = transaction.balance;
       // Overwrite with the snapshot of shares owned from the transaction.
       currentStockSharesOwned = { ...transaction.stockSharesOwned };
+
     }
 
     // Update the historical price snapshot if available at this timestamp.
@@ -45,11 +48,13 @@ function mergeTransactionAndAggregateData(processedTransactions, historicalPrice
     let totalInvestments = 0;
 
     if (lastHistoricalSnapshot) {
+
       for (const [stock, shares] of Object.entries(currentStockSharesOwned)) {
-        if (shares > 0 && lastHistoricalSnapshot[stock]) {
+      
+        if (shares.quantity > 0 && lastHistoricalSnapshot[stock]) {
           const price = lastHistoricalSnapshot[stock].price;
-          stocksOwned[stock] = { price, sharesOwned: shares };
-          const stockTotal = Math.round((price * shares) * 100) / 100;
+          stocksOwned[stock] = { price, sharesOwned: shares.quantity, symbol: stock, purchasePrice: shares.purchasePrice, stockName: shares.stockName, stockId: shares.stockId  };
+          const stockTotal = Math.round((price * shares.quantity) * 100) / 100;
           const newTotalInvestments = Math.round((totalInvestments + stockTotal) * 100) / 100;
           totalInvestments = newTotalInvestments;
         }

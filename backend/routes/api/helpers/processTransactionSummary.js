@@ -47,8 +47,9 @@ function processTransactionSummary(userTransactions, accountTransactions) {
 
     // Stock transaction processing
     if (transaction.stockSymbol) {
-      const { quantity, purchasePrice, stockSymbol, transactionType, stockId } =
+      const { quantity, purchasePrice, stockSymbol, transactionType, stockId, stockName } =
         transaction;
+
       // summary.purchaseAmount = purchasePrice;
       summary.shares = quantity;
 
@@ -61,6 +62,9 @@ function processTransactionSummary(userTransactions, accountTransactions) {
           stockSymbol,
           quantity,
           transactionType,
+          stockId,
+          purchasePrice,
+          stockName
         ); // Buying stock
       } else {
         balance += purchasePrice;
@@ -70,6 +74,9 @@ function processTransactionSummary(userTransactions, accountTransactions) {
           stockSymbol,
           quantity,
           transactionType,
+          stockId,
+          purchasePrice,
+          stockName
         ); // Selling stock
       }
 
@@ -88,11 +95,13 @@ function processTransactionSummary(userTransactions, accountTransactions) {
     summary.investments = investments;
 
     const stocksHoldingsCopy = {...stocksHoldings}
-    console.log('==>',stocksHoldingsCopy)
+
     summary.stockSharesOwned = stocksHoldingsCopy;
+   
     processedTransactions[roundedTo5minInterval] = summary
 
   }
+
 
   return processedTransactions;
 }

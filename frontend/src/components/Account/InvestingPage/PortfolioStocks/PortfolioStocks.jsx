@@ -1,6 +1,6 @@
 import "../InvestingPage.css";
 
-import { useState} from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import ReactApexChart from "react-apexcharts";
@@ -8,17 +8,18 @@ import ReactApexChart from "react-apexcharts";
 function PortfolioStocks({ stockInvestments, stockSummary }) {
   const navigate = useNavigate();
   const [currentPoint, setCurrentPoint] = useState(null);
-console.log(stockSummary)
-  const stockSymbols = Object.keys(stockSummary);
 
-  const stockHoldings = stockSymbols.map((stockSymbol) => {
-    const currentStock = stockSummary[stockSymbol];
-    const { sharesOwned, averageCost } = currentStock;
+  const stocks = stockSummary.stocksOwned;
 
-    const total = (sharesOwned * averageCost).toFixed(2);
+  const stockSymbols = stocks.map((stock) => stock.symbol);
+
+  const stockHoldings = stocks.map((stock) => {
+    const { sharesOwned, price } = stock;
+
+    const total = (sharesOwned * price).toFixed(2);
+
     return Number(total);
   });
-
 
   const series = stockHoldings;
   const labels = stockSymbols;
@@ -87,7 +88,7 @@ console.log(stockSummary)
               </tr>
             </thead>
             <tbody className="InvestingPage__stocks__table-body">
-              {stockSummary.stocksOwned.map((stock) => {
+              {stocks.map((stock) => {
                 return (
                   <tr
                     className="InvestingPage__stock-row"
@@ -95,10 +96,10 @@ console.log(stockSummary)
                     onClick={() => navigate(`/stocks/${stock?.symbol}`)}
                   >
                     <td>{stock.stockName}</td>
-                    <td>{stock.stockSymbol}</td>
+                    <td>{stock.symbol}</td>
                     <td>{stock.sharesOwned.toFixed(2)}</td>
                     <td>-</td>
-                    <td>${stock.averageCost.toFixed(2)}</td>
+                    <td>${stock.price.toFixed(2)}</td>
                   </tr>
                 );
               })}

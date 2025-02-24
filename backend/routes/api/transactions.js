@@ -137,7 +137,7 @@ router.get("/stock-summary", async (req, res) => {
     accountTransactions
   );
 
-  // console.log(processedTransactions);
+
 
 
   const processedHistoricalData = await processHistoricalData(
@@ -157,7 +157,6 @@ router.get("/stock-summary", async (req, res) => {
 
 
   const lastTransaction = mergedTransactionDataArray[mergedTransactionDataArray.length - 1];
-  console.log(" lastTransaction:", lastTransaction);
 
   const userHistoricalData = Object.values(mergedTransactionData).map(
     (data) => ({
@@ -187,16 +186,18 @@ router.get("/stock-summary", async (req, res) => {
 
   // Aggregate to hourly and daily snapshots.
   const oneHourUserAggregates = aggregatePoints(userHistoricalData, oneHourMs);
+  console.log(userHistoricalData)
   const oneDayUserAggregates = aggregatePoints(userHistoricalData, oneDayMs);
 
   const stocksArray = Object.entries(lastTransaction.stocksOwned).map(
     ([symbol, shares]) => ({
       symbol,
-      shares,
+      ...shares,
     })
   );
 
-  console.log(lastTransaction)
+  console.log(stocksArray)
+
   const userSummary = {
     totalInvestments: lastTransaction.totalInvestments,
     balance: lastTransaction.balance,

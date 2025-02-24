@@ -15,7 +15,7 @@ function InvestingPage() {
 
   const sessionUser = useSelector(selectUser);
   const { stockSummary } = sessionUser;
-
+  
   const stockInvestments = stockSummary.totalInvestments;
   const balance = Number(stockSummary.balance);
   const total = Number((stockInvestments + balance).toFixed(2));
@@ -23,13 +23,7 @@ function InvestingPage() {
   const balancePercentage = (balance / total) * 100;
   const stockPercentage = (stockInvestments / total) * 100;
 
-  console.log({
-    total,
-    balance,
-    balancePercentage,
-    stockInvestments,
-    stockPercentage,
-  });
+
 
   useEffect(() => {
     dispatch(fetchStockTransactions());
