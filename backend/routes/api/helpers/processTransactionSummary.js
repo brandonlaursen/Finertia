@@ -19,24 +19,27 @@ function processTransactionSummary(userTransactions, accountTransactions) {
       transaction.purchaseDate || transaction.transactionDate;
     const unixTimestamp = new Date(transactionDate).getTime();
 
-    // Round to the nearest intervals
+    // 5 min intervals
     const roundedTo5minInterval = roundTimestampToInterval(transactionDate, 5);
+
+    // 1 hour intervals
     const roundedToOneHourInterval = roundTimestampToInterval(
       transactionDate,
       60
     );
+    // 1 day intervals
     const roundedToOneDayInterval = roundTimestampToInterval(
       transactionDate,
       1440
     );
-   
+
     // Summary object for each transaction
     const summary = {
       transactionDate,
       unixTimestamp,
       roundedTo5minInterval,
-      // roundedToOneHourInterval,
-      // roundedToOneDayInterval,
+      roundedToOneHourInterval,
+      roundedToOneDayInterval,
       transactionType: transaction.transactionType,
       ...(transaction.stockSymbol && { stockSymbol: transaction.stockSymbol }),
     };
@@ -82,8 +85,7 @@ function processTransactionSummary(userTransactions, accountTransactions) {
     // Add to summary
     summary.balance = balance;
     summary.investments = investments;
-    // console.log(summary)
-    // processedTransactions.push(summary);
+
     const stocksHoldingsCopy = {...stocksHoldings}
     summary.stockSharesOwned = stocksHoldingsCopy;
     processedTransactions[roundedTo5minInterval] = summary

@@ -266,21 +266,27 @@ router.get("/stock-summary", async (req, res) => {
     accountTransactions
   );
 
+  console.log(processedTransactions)
 
 
-
-  // console.log(processedTransactions);
 
   const processedHistoricalData = await processHistoricalData(
     processedTransactions
   );
 
-  // console.log(processedHistoricalData)
+  const mergedTransactionData = mergeTransactionAndAggregateData(
+    processedTransactions,
+    processedHistoricalData
+  );
 
+  // console.log(mergedTransactionData);
 
-  const mergedData = mergeTransactionAndAggregateData(processedTransactions, processedHistoricalData);
+  const userAggregates = Object.values(mergedTransactionData).map((data) => ({
+    x: data.timestamp,
+    y: data.totalInvestments,
+  }));
 
-  console.log(mergedData)
+  // console.log(userAggregates)
 
   // console.log(Object.keys(mergedData).length)
 

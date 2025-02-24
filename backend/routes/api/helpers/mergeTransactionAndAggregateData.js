@@ -57,6 +57,7 @@ function mergeTransactionAndAggregateData(processedTransactions, historicalPrice
     }
 
     result[tsStr] = {
+      timestamp: ts,
       balance: currentBalance,
       stockOwned,
       totalInvestments
@@ -71,40 +72,3 @@ function mergeTransactionAndAggregateData(processedTransactions, historicalPrice
 
 
 module.exports = mergeTransactionAndAggregateData;
-
-/*
-processedTransactions
-},
-  '1740411000000': {
-    transactionDate: 2025-02-24T15:28:57.224Z,
-    unixTimestamp: 1740410937224,
-    roundedTo5minInterval: 1740411000000,
-    transactionType: 'buy',
-    stockSymbol: 'TSLA',
-    shares: 0.30286,
-    balance: 250,
-    investments: 450,
-    stockSharesOwned: { AAPL: 0.60592, META: 0.29764, TSLA: 0.30286 }
-  }
-
-*/
-
-/*
-aggregateData
-  },
-  '1740393000000': {
-    TSLA: { price: 337.77 },
-    AAPL: { price: 245.2 },
-    META: { price: 686.78 }
-  },
-  '1740393300000': {
-    TSLA: { price: 338.03 },
-    AAPL: { price: 245.2 },
-    META: { price: 686.78 }
-  },
-  '1740394500000': {
-    TSLA: { price: 337.76 },
-    AAPL: { price: 245.21 },
-    META: { price: 686.7 }
-  }
-*/
