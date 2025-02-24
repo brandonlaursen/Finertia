@@ -2,6 +2,7 @@ import "./HomePage.css";
 
 import { selectUser } from "../../../../store/session";
 
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -10,13 +11,17 @@ import ListContainer from "../../List/ListContainer";
 import HomePageChart from "./HomePageChart/HomePageChart";
 import NewsFeed from "../NewsFeed";
 
+import SelectTimeFrame from "../../Stock/SelectTimeFrame/SelectTimeFrame";
+
 function HomePage() {
   const navigate = useNavigate();
   const sessionUser = useSelector(selectUser);
 
   const { stockSummary } = sessionUser;
 
-  console.log(stockSummary)
+  const [selectedTimeFrame, setSelectedTimeFrame] = useState("1D");
+
+
 
   return (
     <div className="HomePage">
@@ -29,7 +34,11 @@ function HomePage() {
                 <span>${stockSummary.totalInvestments}</span>
               </div>
               <div className="HomePage__main__chart-container">
-                <HomePageChart stockSummary={stockSummary}/>
+                <HomePageChart stockSummary={stockSummary} selectedTimeFrame={selectedTimeFrame}/>
+                <SelectTimeFrame
+                selectedTimeFrame={selectedTimeFrame}
+                setSelectedTimeFrame={setSelectedTimeFrame}
+              />
               </div>
               <BuyingPowerDropDown sessionUser={sessionUser} />
             </div>

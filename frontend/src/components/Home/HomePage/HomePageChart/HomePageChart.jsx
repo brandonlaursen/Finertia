@@ -1,16 +1,14 @@
 import "./HomePageChart.css";
 
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchStockTransactions } from "../../../../../store/transactions";
 
 import ReactApexChart from "react-apexcharts";
 
-function HomePageChart({ stockSummary }) {
-  const dispatch = useDispatch();
+function HomePageChart({ stockSummary, selectedTimeFrame }) {
 
   const { fiveMinAggregates, oneHourUserAggregates, oneDayAggregates } =
     stockSummary;
+
 
 
   const [options] = useState({
@@ -84,8 +82,42 @@ function HomePageChart({ stockSummary }) {
     },
   });
 
-  const [data] = useState(fiveMinAggregates);
+  const [data, setData] = useState(fiveMinAggregates);
 
+  console.log(data)
+  console.log(selectedTimeFrame)
+  useEffect(() => {
+    let aggregates;
+    console.log('inside useEffect')
+    if (selectedTimeFrame === "1D") {
+      aggregates = fiveMinAggregates;
+    }
+    if (selectedTimeFrame === "1W") {
+
+      aggregates = oneHourUserAggregates;
+    }
+    if (selectedTimeFrame === "1M") {
+      aggregates = oneHourUserAggregates;
+    }
+    if (selectedTimeFrame === "3M") {
+      aggregates = oneDayAggregates;
+    }
+    if (selectedTimeFrame === "1Y") {
+      aggregates = oneDayAggregates;
+    }
+    if (selectedTimeFrame === "5Y") {
+      aggregates = oneDayAggregates;
+    }
+
+    if (aggregates) {
+      setData(aggregates);
+    }
+  }, [
+    fiveMinAggregates,
+    oneHourUserAggregates,
+    oneDayAggregates,
+    selectedTimeFrame,
+  ]);
 
   const series = [
     {
@@ -93,7 +125,6 @@ function HomePageChart({ stockSummary }) {
       data,
     },
   ];
-
 
   function convertToEst(timestamp) {
     const date = new Date(timestamp);
