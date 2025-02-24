@@ -266,10 +266,6 @@ router.get("/stock-summary", async (req, res) => {
     accountTransactions
   );
 
-  console.log(processedTransactions)
-
-
-
   const processedHistoricalData = await processHistoricalData(
     processedTransactions
   );
@@ -279,16 +275,44 @@ router.get("/stock-summary", async (req, res) => {
     processedHistoricalData
   );
 
-  // console.log(mergedTransactionData);
+  const userHistoricalData = Object.values(mergedTransactionData).map(
+    (data) => ({
+      x: data.timestamp,
+      y: data.totalInvestments,
+    })
+  );
 
-  const userAggregates = Object.values(mergedTransactionData).map((data) => ({
-    x: data.timestamp,
-    y: data.totalInvestments,
-  }));
+  function aggregatePoints(points, bucketDurationMs) {
+    const buckets = {};
+    points.forEach((point) => {
+      // Round down the timestamp to the start of the bucket.
+      const bucketKey =
+        Math.floor(point.x / bucketDurationMs) * bucketDurationMs;
+      // For each bucket, keep the point with the latest timestamp.
+      if (!buckets[bucketKey] || point.x > buckets[bucketKey].x) {
+        buckets[bucketKey] = point;
+      }
+    });
+    // Return the aggregated points sorted by time.
+    return Object.values(buckets).sort((a, b) => a.x - b.x);
+  }
 
-  // console.log(userAggregates)
+  // Define bucket durations in milliseconds.
+  const oneHourMs = 60 * 60 * 1000;
+  const oneDayMs = 24 * oneHourMs;
 
-  // console.log(Object.keys(mergedData).length)
+  // Aggregate to hourly and daily snapshots.
+  const oneHourUserAggregates = aggregatePoints(userHistoricalData, oneHourMs);
+  const oneDayUserAggregates = aggregatePoints(userHistoricalData, oneDayMs);
+
+
+  const userAggregates = {
+    fiveMinAggregates: userHistoricalData,
+    oneHourUserAggregates: oneHourUserAggregates,
+    oneDayAggregates: oneDayUserAggregates,
+  }
+
+  console.log(userAggregates)
 
   res.end();
 });
@@ -350,7 +374,6 @@ router.post("/trade/:stockId", async (req, res) => {
     purchasePrice: roundedAmount,
     purchaseDate: new Date(),
   });
-  console.log(transaction);
 
   await user.update({
     balance: newBalance,
