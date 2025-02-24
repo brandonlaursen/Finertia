@@ -7,15 +7,15 @@ import StocksOwnedItem from "../StocksOwnedItem/StocksOwnedItem";
 function StocksOwned({ sessionUser, stocks }) {
   const navigate = useNavigate();
 
-  const { stockSummary } = sessionUser;
-
-  const ownedStocks = Object.values(stockSummary);
+  const {
+    stockSummary: { stocksOwned },
+  } = sessionUser;
 
   return (
     <>
       <div className="WatchListStocks-stocks-owned">
-        {ownedStocks.length > 0 ? (
-          ownedStocks.map((stock) => {
+        {stocksOwned.length > 0 ? (
+          stocksOwned.map((stock) => {
             return (
               <StocksOwnedItem
                 key={stock.id}

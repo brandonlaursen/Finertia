@@ -115,7 +115,6 @@ router.get("/stock-transactions", async (req, res) => {
   });
 });
 
-
 router.get("/stock-summary", async (req, res) => {
   const { id } = req.user;
 
@@ -132,12 +131,29 @@ router.get("/stock-summary", async (req, res) => {
     }),
   ]);
 
+  // console.log(userTransactions)
+  /*
+    _previousDataValues: {
+      userId: 4,
+      stockId: 8,
+      transactionType: 'buy',
+      quantity: 0.30286,
+      purchasePrice: 100,
+      purchaseDate: 2025-02-24T15:28:57.224Z,
+      stockName: 'Tesla, Inc. Common Stock',
+      stockSymbol: 'TSLA',
+      createdAt: 2025-02-24T15:28:57.224Z,
+      updatedAt: 2025-02-24T15:28:57.224Z,
+      Stock: [Stock]
+    },
+  */
+
   const processedTransactions = processTransactionSummary(
     userTransactions,
     accountTransactions
   );
 
-
+  console.log(processedTransactions)
 
   const processedHistoricalData = await processHistoricalData(
     processedTransactions
@@ -150,15 +166,10 @@ router.get("/stock-summary", async (req, res) => {
     processedHistoricalData
   );
 
-
   const lastTimestamp = Math.max(
     ...Object.keys(processedTransactions).map(Number)
   );
   const lastTransaction = processedTransactions[lastTimestamp];
-
-
-
-
 
   const userHistoricalData = Object.values(mergedTransactionData).map(
     (data) => ({
@@ -190,16 +201,21 @@ router.get("/stock-summary", async (req, res) => {
   const oneHourUserAggregates = aggregatePoints(userHistoricalData, oneHourMs);
   const oneDayUserAggregates = aggregatePoints(userHistoricalData, oneDayMs);
 
+  const stocksArray = Object.entries(lastTransaction.stockSharesOwned).map(
+    ([symbol, shares]) => ({
+      symbol,
+      shares,
+    })
+  );
 
   const userSummary = {
     totalInvestments: lastTransaction.investments,
     balance: lastTransaction.balance,
-    stocksOwned: lastTransaction.stockSharesOwned,
+    stocksOwned: stocksArray,
     fiveMinAggregates: userHistoricalData,
     oneHourUserAggregates: oneHourUserAggregates,
     oneDayAggregates: oneDayUserAggregates,
   };
-
 
   return res.json(userSummary);
 });

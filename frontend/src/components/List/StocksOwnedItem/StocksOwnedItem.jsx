@@ -2,20 +2,23 @@
 import './StocksOwnedItem.css'
 
 function StocksOwnedItem({ stock, navigate, stocks }) {
-  const { stockId, stockSymbol, sharesOwned } = stock;
+  const { symbol, shares } = stock;
 
-  const stockInfo = stocks[stockId];
+  console.log(stock, symbol)
+  // const stockInfo = stocks[stockId];
+  const stockInfo = Object.values(stocks).find(stock => stock.symbol === symbol)
 
+  console.log(stockInfo, shares)
   return (
     <div
       className="WatchListStocks__container"
-      key={stockId}
-      onClick={() => navigate(`/stocks/${stockSymbol}`)}
+      key={stockInfo?.id}
+      onClick={() => navigate(`/stocks/${stockInfo?.symbol}`)}
     >
       <div className="WatchListStocks__container-title-shares">
-        <span className="WatchListStocks__container-title">{stockSymbol}</span>
+        <span className="WatchListStocks__container-title">{stockInfo?.symbol}</span>
         <span className="StocksOwnedItem__container-subtitle">
-          {sharesOwned?.toFixed(5) ? `${sharesOwned?.toFixed(5)} Shares` : ""}
+          {shares?.toFixed(5) ? `${shares?.toFixed(5)} Shares` : ""}
         </span>
       </div>
       <span className="WatchListStocks__container-graph"></span>

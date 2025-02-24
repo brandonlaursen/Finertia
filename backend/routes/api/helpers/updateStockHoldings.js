@@ -3,7 +3,7 @@ const updateStockHoldings = (
   stocksHoldings,
   stockSymbol,
   quantity,
-  transactionType
+  transactionType,
 ) => {
   if (transactionType === "buy") {
     if (!stocksHoldings[stockSymbol]) {

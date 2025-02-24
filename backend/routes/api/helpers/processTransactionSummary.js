@@ -47,7 +47,7 @@ function processTransactionSummary(userTransactions, accountTransactions) {
 
     // Stock transaction processing
     if (transaction.stockSymbol) {
-      const { quantity, purchasePrice, stockSymbol, transactionType } =
+      const { quantity, purchasePrice, stockSymbol, transactionType, stockId } =
         transaction;
       // summary.purchaseAmount = purchasePrice;
       summary.shares = quantity;
@@ -60,7 +60,7 @@ function processTransactionSummary(userTransactions, accountTransactions) {
           stocksHoldings,
           stockSymbol,
           quantity,
-          transactionType
+          transactionType,
         ); // Buying stock
       } else {
         balance += purchasePrice;
@@ -69,7 +69,7 @@ function processTransactionSummary(userTransactions, accountTransactions) {
           stocksHoldings,
           stockSymbol,
           quantity,
-          transactionType
+          transactionType,
         ); // Selling stock
       }
 
