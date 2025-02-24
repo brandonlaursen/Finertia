@@ -1,5 +1,3 @@
-
-
 function roundTimestampToInterval(timestamp, intervalMinutes) {
   const date = new Date(timestamp);
   const remainder = date.getMinutes() % intervalMinutes;
@@ -12,6 +10,5 @@ function roundTimestampToInterval(timestamp, intervalMinutes) {
   );
   return date.getTime();
 }
-
 
 module.exports = roundTimestampToInterval;

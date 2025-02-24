@@ -7,10 +7,8 @@ const {
   Stock,
 } = require("../../db/models");
 
-const { TransactionProcessor } = require("./helpers/TransactionProcessor");
-const roundTimestampToInterval = require("./helpers/roundTimestampToInterval.js");
-const updateStockHoldings = require("./helpers/updateStockHoldings.js");
 const processTransactionSummary = require("./helpers/processTransactionSummary.js");
+const { getDate } = require("./helpers/getDate.js");
 
 router.post("/deposit", async (req, res) => {
   const { id, balance } = req.user;
@@ -263,12 +261,133 @@ router.get("/stock-summary", async (req, res) => {
     }),
   ]);
 
+  // console.log(accountTransactions)
+
   const processedTransactions = processTransactionSummary(
     userTransactions,
     accountTransactions
   );
 
   // console.log(processedTransactions)
+  const processedTransactionsArr = Object.values(processedTransactions);
+  // console.log(processedTransactionsArr);
+
+  const lastProcessedTransaction =
+    processedTransactionsArr[processedTransactionsArr.length - 1];
+  const stockOwnedAtSomePoint = lastProcessedTransaction.stockSharesOwned;
+
+  const todaysDate = getDate();
+  const oneDayAway = getDate(1);
+  const oneWeekAway = getDate(7);
+
+  let historicalData = {
+    ...processedTransactions,
+
+    1739869200000: {
+      unixTimestamp: 1740348298743,
+      roundedTo5minInterval: 1740348300000,
+      transactionType: "buy",
+      stockSymbol: "META",
+      shares: 0.14644,
+      balance: 500,
+      investments: 0,
+      stockSharesOwned: { AAPL: 0, META: 0.29287 },
+    },
+  };
+  // console.log(historicalData);
+  let temp;
+  for (let stockSymbol of Object.keys(stockOwnedAtSomePoint)) {
+    console.log(stockSymbol);
+    const [oneWeekDataResponse] = await Promise.all([
+      fetch(
+        `https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/1/hour/${oneWeekAway}/${todaysDate}?adjusted=true&sort=asc&apiKey=${process.env.STOCK_API_KEY2}`
+      ),
+    ]);
+
+    let [oneWeekData] = await Promise.all([oneWeekDataResponse.json()]);
+
+    const aggregates = oneWeekData.results;
+
+    for (let aggregate of aggregates) {
+      if (!historicalData[aggregate.t]) {
+        historicalData[aggregate.t] = {};
+      } else {
+        if (historicalData[aggregate.t].stockSharesOwned) {
+          temp = historicalData[aggregate.t].stockSharesOwned;
+          balance = historicalData[aggregate.t].balance;
+        }
+
+        if (!historicalData[aggregate.t][stockSymbol]) {
+          historicalData[aggregate.t][stockSymbol] = {
+            stockSymbol,
+            price: aggregate.c,
+          };
+        }
+      }
+      if (!historicalData[aggregate.t][stockSymbol]) {
+        historicalData[aggregate.t][stockSymbol] = {
+          stockSymbol,
+          price: aggregate.c,
+        };
+      }
+      historicalData[aggregate.t].stockSharesOwned = temp;
+      historicalData[aggregate.t].balance = balance;
+      // console.log(historicalData[aggregate.t], "====--======");
+      // console.log("1 ");
+      // console.log(historicalData[aggregate.t][stockSymbol]);
+      // console.log(historicalData[aggregate.t][stockSymbol].price);
+      // console.log("2 ");
+      // // console.log(historicalData[aggregate.t].stockSharesOwned[stockSymbol]);
+
+      // console.log("3 ", stockSymbol);
+      // console.log("-----------------------------------");
+      // console.log(
+      //   "4.",
+      //   historicalData[aggregate.t].stockSharesOwned[stockSymbol]
+      // );
+      const sharesOwned =
+        historicalData[aggregate.t].stockSharesOwned[stockSymbol];
+      // console.log(sharesOwned)
+
+      const stockPrice = historicalData[aggregate.t][stockSymbol].price;
+      // console.log(stockPrice)
+      const stockValue = Math.round(sharesOwned * stockPrice * 100) / 100;
+
+      // console.log('--',stockValue);
+      // console.log(historicalData[aggregate.t])
+      historicalData[aggregate.t][stockSymbol].stockValue = stockValue;
+    }
+  }
+
+  // console.log(historicalData);
+
+  function convertToTimestampArray(data) {
+    return Object.entries(data).map(([timestamp, entry]) => {
+      const totalStockValue = Object.values(entry)
+        .filter((item) => typeof item === "object" && "stockValue" in item)
+        .reduce((sum, stock) => sum + stock.stockValue, 0);
+
+      return {
+        x: Number(timestamp), // Convert timestamp string to number
+        y: Math.round((entry.balance + totalStockValue) * 100) / 100, // Sum of balance and total stock value
+      };
+    });
+  }
+
+  const formattedData = convertToTimestampArray(historicalData);
+  const sortedData = formattedData.sort((a, b) => b.x - a.x);
+
+  console.log(sortedData);
+
+  // const userAggregates = [];
+
+  // for(let timestamp in userAggregates) {
+
+  //   if(!userAggregates[timestamp]) {
+  //     userAggregates[timestamp] = {};
+  //   }
+  // }
+
   res.end();
 });
 

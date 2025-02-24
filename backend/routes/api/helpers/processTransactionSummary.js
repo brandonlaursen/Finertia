@@ -12,7 +12,7 @@ function processTransactionSummary(userTransactions, accountTransactions) {
   let balance = 0;
   let investments = 0;
   const stocksHoldings = {};
-  const processedTransactions = [];
+  const processedTransactions = {};
 
   for (let transaction of allTransactions) {
     const transactionDate =
@@ -35,8 +35,8 @@ function processTransactionSummary(userTransactions, accountTransactions) {
       transactionDate,
       unixTimestamp,
       roundedTo5minInterval,
-      roundedToOneHourInterval,
-      roundedToOneDayInterval,
+      // roundedToOneHourInterval,
+      // roundedToOneDayInterval,
       transactionType: transaction.transactionType,
       ...(transaction.stockSymbol && { stockSymbol: transaction.stockSymbol }),
     };
@@ -45,13 +45,13 @@ function processTransactionSummary(userTransactions, accountTransactions) {
     if (transaction.stockSymbol) {
       const { quantity, purchasePrice, stockSymbol, transactionType } =
         transaction;
-      summary.purchaseAmount = purchasePrice;
+      // summary.purchaseAmount = purchasePrice;
       summary.shares = quantity;
 
       // Buy or sell stock
       if (transactionType === "buy") {
         balance -= purchasePrice;
-        investments += purchasePrice;
+        // investments += purchasePrice;
         updateStockHoldings(
           stocksHoldings,
           stockSymbol,
@@ -60,7 +60,7 @@ function processTransactionSummary(userTransactions, accountTransactions) {
         ); // Buying stock
       } else {
         balance += purchasePrice;
-        investments -= purchasePrice;
+        // investments -= purchasePrice;
         updateStockHoldings(
           stocksHoldings,
           stockSymbol,
@@ -68,7 +68,7 @@ function processTransactionSummary(userTransactions, accountTransactions) {
           transactionType
         ); // Selling stock
       }
-      summary.stockSharesOwned = stocksHoldings;
+
     } else {
       // Non-stock transactions (e.g., deposit/withdraw)
       const amount = transaction.amount;
@@ -82,12 +82,12 @@ function processTransactionSummary(userTransactions, accountTransactions) {
     // Add to summary
     summary.balance = balance;
     summary.investments = investments;
-    console.log(summary);
-    console.log(" ");
- 
+    // console.log(summary)
+    // processedTransactions.push(summary);
+    const stocksHoldingsCopy = {...stocksHoldings}
+    summary.stockSharesOwned = stocksHoldingsCopy;
+    processedTransactions[roundedTo5minInterval] = summary
 
-
-    processedTransactions.push(summary);
   }
 
   return processedTransactions;
