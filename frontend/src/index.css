@@ -7,12 +7,65 @@ body {
   position: relative;
   display: block;
   box-sizing: border-box;
-  font-family: serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 16px;
-  /* background-color: black; */
 }
 
 div,
 span {
   box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+}
+
+section {
+  box-sizing: border-box;
+}
+
+:root {
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  /* Typography */
+  --font-base: 16px;
+  --font-sm: 14px;
+  --font-lg: 20px;
+  --font-xl: 24px;
+  --font-family-sans: "Montserrat", sans-serif;
+  --line-height: 1.5;
+  --font-weight-normal: 500;
+  --font-weight-bold: 700;
+
+  /* Colors */
+  --color-primary: #07de96;
+  --color-primary-hover: rgb(7, 239, 162);
+  --color-secondary: #ca63fc;
+  --color-tertiary: rgb(22, 7, 40);
+  --color-accent: #e0e0e0;
+  --color-background-white: #ffffff;
+  --color-background-black: #000000;
+  --color-text: #333;
+  --color-muted: #888;
+
+  /* Button Padding */
+  --button-padding: 0 32px;
+
+  --button-border-white: 1px solid #fff;
+  --button-border-dark: 1px solid #000000;
+
+  --button-border-radius-lg: 36px;
+
+  --button-height: 40px;
+}
+
+.dark-mode {
+  --background-color: #121212;
+  --text-color: #e0e0e0;
+  --primary-color: #bb86fc;
 }

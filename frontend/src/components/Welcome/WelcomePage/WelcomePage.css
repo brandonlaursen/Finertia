@@ -6,213 +6,192 @@
   background-color: #000000;
 }
 
-.WelcomePage__section-one,
-.WelcomePage__section-two,
-.WelcomePage__section-three {
+.WelcomePage__section {
   width: 100%;
-
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0 32px;
+  height: 70vmax;
+  min-height: 600px;
+  max-height: 600px;
 }
 
-.WelcomePage__section-one {
+.WelcomePage__hero {
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  padding-top: 64px;
-  height: 75vw;
-  min-height: 300px;
-  max-height: 700px;
 
-  background-color: #000000;
-  background-image: url("https://wallpapercave.com/wp/wp4199379.png");
+  background-image: url("https://i.makeagif.com/media/4-24-2017/xzMHOc.gif");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-.WelcomePage__section-one__title {
+.WelcomePage__hero-title {
   display: flex;
   align-items: center;
   justify-content: center;
 
-  gap: 0.5rem;
+  gap: var(--spacing-sm);
 
   font-size: clamp(16px, 5vw, 2rem);
-  font-weight: bold;
+  font-weight: var(--font-weight-bold);
 
-  color: rgb(7, 222, 150);
+  color: var(--color-primary);
 }
 
-.WelcomePage__section-one__highlight {
+.WelcomePage__hero-highlight {
   display: flex;
   flex-direction: column;
   text-align: center;
 
-  width: 70%;
-  font-size: clamp(16px, 3vw, 2rem);
+  width: 60%;
+  font-size: clamp(16px, 4vw, 32px);
 }
 
-.WelcomePage__section-one__highlight > h1 {
-  color: rgb(255, 255, 255);
+.WelcomePage__hero-highlight > h1 {
+  color: var(--color-accent);
 }
 
-.WelcomePage__section-one__button {
+.WelcomePage__hero-button {
   box-sizing: border-box;
-  padding: 0 32px;
+  padding: var(--button-padding);
 
-  height: 40px;
+  height: var(--button-height);
 
-  background-color: rgb(22, 7, 40);
-  color: #ffffff;
+  font-weight: var(--font-weight-bold);
+
+  background-color: var(--color-background-white);
 
   border: none;
-  border-radius: 36px;
+  border-radius: var(--button-border-radius-lg);
 
   text-decoration: none;
   white-space: nowrap;
-  cursor: pointer;
-  font-weight: bold;
 }
 
-.WelcomePage__section-one__button:hover {
-  background-color: rgb(45, 13, 83);
+.WelcomePage__hero-button:hover {
+  background-color: var(--color-accent);
 }
 
-.WelcomePage__section-two {
-  background-color: rgb(22, 7, 40);
+.WelcomePage__features {
+  background-color: var(--color-tertiary);
 
-  height: 85vh;
-  min-height: 550px;
-  max-height: 700px;
-
-  color: rgb(255, 255, 255);
+  color: var(--color-background-white);
 }
 
-.WelcomePage__section-two__text-container,
-.WelcomePage__section-two__image-container {
-  height: 100%;
-  width: 500px;
-}
+.WelcomePage__features-image {
+  width: 400px;
+  height: 400px;
 
-.WelcomePage__section-two__image-container {
   background-image: url("https://img.freepik.com/premium-photo/astronaut-sitting-computer-desk-with-computer-monitor-monitor-screen-generative-ai_902846-103881.jpg");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-.WelcomePage__section-two__text-container {
-  padding: 8vh;
-  gap: 0.5vh;
+.WelcomePage__features-contents {
+  padding: 32px 32px;
+  gap: var(--spacing-sm);
 
   display: flex;
   flex-direction: column;
-
-  height: 50%;
 }
 
-.WelcomePage__header {
+.WelcomePage__features-contents__header {
   font-size: 32px;
   font-size: clamp(16px, 3vw, 2rem);
-  color: #cfcfcf;
+  color: var(--color-accent);
 }
 
-.WelcomePage__sub-header {
+.WelcomePage__features-contents__sub-header {
   font-size: 40px;
   font-size: clamp(18px, 4vw, 2rem);
-  margin-bottom: 8px;
+  margin-bottom: var(--spacing-sm);
 }
 
-.WelcomePage__text {
+.WelcomePage__features-contents__text {
   font-size: 18px;
   font-size: clamp(14px, 1vw, 2rem);
-  margin-bottom: 8px;
+  margin-bottom: var(--spacing-sm);
 }
 
-.WelcomePage__disclosure {
+.WelcomePage__features-contents__disclosure {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 
   font-size: 14px;
-  color: #c4c4c4;
+  color: var(--color-accent);
 }
 
-.WelcomePage__info-icon {
+.WelcomePage__features-contents__info-icon {
   font-size: 14px;
-  color: #c4c4c4;
+  color: var(--color-accent);
 }
 
-.WelcomePage__learn-more__button {
+.WelcomePage__features-content__button {
   margin-top: 32px;
   min-height: 40px;
   width: 140px;
 
-  background-color: rgb(7, 222, 150);
-  color: #1c180d;
+  background-color: var(--color-primary);
+  color: var(--color-background-black);
 
   border: none;
-  border-radius: 36px;
+  border-radius: var(--button-border-radius-lg);
 
   text-decoration: none;
   white-space: nowrap;
-  cursor: pointer;
-  font-weight: bold;
+
+  font-weight: var(--font-weight-bold);
 }
 
-.WelcomePage__learn-more__button:hover {
-  background-color: rgb(7, 239, 162);
+.WelcomePage__features-content__button:hover {
+  background-color: var(--color-primary-hover);
 }
 
-.WelcomePage__section-three {
-  height: 75vh;
-  min-height: 600px;
-  max-height: 700px;
-
+.WelcomePage__join {
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 32px;
+
+  gap: var(--spacing-xl);
 
   background-color: rgb(13, 15, 21);
 }
 
-.WelcomePage__section-three__image {
+.WelcomePage__join__image {
   height: 350px;
   width: 450px;
-  background-color: #000000;
+
   background-image: url("https://www.shutterstock.com/image-vector/astronaut-sitting-on-planet-saturn-600nw-1989572933.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-.WelcomePage__section-three__text {
-  color: white;
+.WelcomePage__join__header {
+  color: var(--color-accent);
   font-size: clamp(24px, 3vw, 2rem);
 }
 
-.WelcomePage__section-three__button {
+.WelcomePage__join__button {
   min-height: 40px;
 
   width: 140px;
 
-  background-color: rgb(7, 222, 150);
-  color: #1c180d;
+  background-color: var(--color-primary);
+  color: var(--color-background-black);
 
   border: none;
-  border-radius: 36px;
+  border-radius: var(--button-border-radius-lg);
 
   text-decoration: none;
   white-space: nowrap;
-  cursor: pointer;
-  font-weight: bold;
+
+  font-weight: var(--font-weight-bold);
 }
 
-.WelcomePage__section-three__button:hover {
-  background-color: rgb(7, 239, 162);
+.WelcomePage__join__button:hover {
+  background-color: var(--color-primary-hover);
 }
 
 .WelcomePage__footer {
@@ -222,16 +201,13 @@
 
   font-size: 1.5rem;
 
-  background-color: rgb(7, 222, 150);
+  background-color: var(--color-primary);
   color: rgb(0, 0, 0);
 }
 
 @media (max-width: 768px) {
   /* Styles for tablets */
-  .WelcomePage__section-two {
+  .WelcomePage__features {
     flex-direction: column-reverse;
-  }
-  .WelcomePage__section-two__image-container {
-    margin-bottom: 20px;
   }
 }

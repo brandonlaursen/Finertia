@@ -16,47 +16,57 @@ function WelcomePage() {
     <div className="WelcomePage">
       <WelcomePageNavbar />
 
-      <div className="WelcomePage__section-one">
-        <div className="WelcomePage__section-one__title">
+      <section className="WelcomePage__hero WelcomePage__section ">
+        <div className="WelcomePage__hero-title">
           <FaSpaceShuttle />
           <span>Finertia Investing</span>
         </div>
 
-        <div className="WelcomePage__section-one__highlight">
+        <div className="WelcomePage__hero-highlight">
           <h1>
             Investing, like space, requires momentum—stay the course, &quot;defy
             inertia.&quot;
           </h1>
           {sessionUser ? null : (
             <Link to="/signup">
-              <button className="WelcomePage__section-one__button">Get Started</button>
+              <button className="WelcomePage__hero-button">Get Started</button>
             </Link>
           )}
         </div>
-      </div>
+      </section>
 
-      <div className="WelcomePage__section-two">
-          <div className="WelcomePage__section-two__image-container">
+      <section className="WelcomePage__features WelcomePage__section ">
+        <figure className="WelcomePage__features-image" />
 
-          </div>
-          <div className="WelcomePage__section-two__text-container">
-              <div className="WelcomePage__header">Investing</div>
-              <div className="WelcomePage__sub-header">Build your portfolio starting with just $1</div>
-              <div className="WelcomePage__text">Invest in stocks, at your pace and commission-free</div>
-              <div className="WelcomePage__disclosure"> <LuInfo className="WelcomePage__info-icon"/>Investing Disclosures</div>
-              <button className="WelcomePage__learn-more__button">Learn More</button>
-          </div>
+        <div className="WelcomePage__features-contents">
+          <header className="WelcomePage__features-contents__header">
+            Investing
+          </header>
+          <sub className="WelcomePage__features-contents__sub-header">
+            Build your portfolio starting with just $1
+          </sub>
+          <text className="WelcomePage__features-contents__text">
+            Invest in stocks, at your pace and commission-free
+          </text>
+          <small className="WelcomePage__features-contents__disclosure">
+            <LuInfo className="WelcomePage__features-contents__info-icon" />
+            Investing Disclosures
+          </small>
+          <button className="WelcomePage__features-content__button">
+            Learn More
+          </button>
+        </div>
+      </section>
 
+      <section className="WelcomePage__join WelcomePage__section ">
+        <figure className="WelcomePage__join__image"/>
+        <header className="WelcomePage__join__header">
+          Join a new generation of investors.
+        </header>
+        <button className="WelcomePage__join__button">Sign up</button>
+      </section>
 
-      </div>
-
-      <div className="WelcomePage__section-three">
-        <div className="WelcomePage__section-three__image"></div>
-        <span className="WelcomePage__section-three__text">Join a new generation of investors.</span>
-        <button className="WelcomePage__section-three__button">Sign up</button>
-      </div>
-
-      <div className="WelcomePage__footer">Brandon Laursen</div>
+      <footer className="WelcomePage__footer">Brandon Laursen</footer>
     </div>
   );
 }

@@ -11,8 +11,6 @@ function PortfolioStocks({ stockInvestments, stockSummary }) {
 
   const stocks = stockSummary.stocksOwned;
 
-  console.log(stocks);
-
   const stockSymbols = Object.keys(stocks);
   const stockHoldings = [];
 

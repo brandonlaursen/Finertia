@@ -32,8 +32,6 @@ function StockChart({ stock, selectedTimeFrame }) {
   // Use the average as your middle value
   const middleValue = avgValue;
 
-  console.log({ dynamicMin, dynamicMax, middleValue });
-
   const series = [
     {
       name: "Price",
@@ -41,10 +39,8 @@ function StockChart({ stock, selectedTimeFrame }) {
     },
   ];
 
-
   const options = useMemo(
     () => ({
-
       chart: {
         type: "line",
         height: 350,
@@ -59,7 +55,6 @@ function StockChart({ stock, selectedTimeFrame }) {
             opacityTo: 1,
           },
         },
-
       },
 
       xaxis: {
@@ -84,9 +79,7 @@ function StockChart({ stock, selectedTimeFrame }) {
             borderWidth: 1,
             strokeDashArray: "1, 15",
           },
-
         ],
-
       },
       yaxis: {
         min: dynamicMin,
@@ -94,8 +87,6 @@ function StockChart({ stock, selectedTimeFrame }) {
         labels: { show: false },
         axisBorder: { show: false },
         axisTicks: { show: false },
-
-
       },
 
       colors: ["#00E396"],
@@ -151,7 +142,6 @@ function StockChart({ stock, selectedTimeFrame }) {
     fiveYearsAggregates,
     options,
   ]);
-
 
   function convertToEst(timestamp) {
     const date = new Date(timestamp);

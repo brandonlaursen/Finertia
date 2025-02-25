@@ -33,19 +33,6 @@ const setStockTransactions = (transactions) => {
   };
 };
 
-// const addStockTransaction = (
-//   createdTransaction,
-//   updatedBalance,
-//   updatedStockSummary
-// ) => {
-//   return {
-//     type: ADD_STOCK_TRANSACTION,
-//     createdTransaction,
-//     updatedBalance,
-//     updatedStockSummary,
-//   };
-// };
-
 // * Thunks
 export const fetchAccountTransactions = () => async (dispatch) => {
   const response = await csrfFetch("/api/transactions");
@@ -54,7 +41,6 @@ export const fetchAccountTransactions = () => async (dispatch) => {
   dispatch(setAccountTransactions(transactions));
 };
 
-// refactor in one route - updateFunds
 export const depositFunds = (amount) => async (dispatch) => {
   const response = await csrfFetch("/api/transactions/deposit", {
     method: "POST",
@@ -94,13 +80,11 @@ export const executeStockTrade = (transaction) => async (dispatch) => {
     body: JSON.stringify(transaction),
   });
 
-  const {user} = await response.json();
-
+  const { user } = await response.json();
 
   if (user) {
     const response = await csrfFetch("/api/transactions/stock-summary");
     const stockSummary = await response.json();
-    console.log(" stockSummary:", stockSummary);
 
     dispatch(setUser(user, stockSummary));
   }

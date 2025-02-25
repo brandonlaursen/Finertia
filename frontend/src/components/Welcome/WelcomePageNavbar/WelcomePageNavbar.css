@@ -9,17 +9,16 @@
   height: 60px;
 }
 
-
 .WelcomePageNavbar__logo {
   display: flex;
   align-items: center;
   gap: 5px;
   margin-left: 16px;
 
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-size: var(--font-lg);
+  font-weight: var(--font-weight-bold);
 
-  color: white;
+  color: var(--color-background-white);
 
   cursor: pointer;
   text-decoration: none;
@@ -27,98 +26,62 @@
 }
 
 .WelcomePageNavbar__logo:hover {
-  color: rgb(7, 222, 150);
+  color: #07de96;
 }
 
-
-.WelcomePageNavbar__links {
+.WelcomePageNavbar__menu {
   display: flex;
   align-items: center;
-  gap: 2rem;
-}
+  gap: var(--spacing-sm);
 
-.WelcomePageNavbar__link {
-  font-size: 0.9rem;
-  font-weight: bold;
-
-  color: white;
-
-  text-decoration: none;
-  transition: color 0.3s ease-in-out;
-}
-
-.WelcomePageNavbar__link:hover {
-  color: rgb(7, 239, 162);
-}
-
-
-.WelcomePageNavbar__links__buttons {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
   margin-left: auto;
+
+  list-style: none;
   transition: color 0.3s ease-in-out;
 }
 
-.WelcomePageNavbar__links__button {
+.WelcomePageNavbar__menu-item {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  padding: 0px 32px;
+  white-space: nowrap;
 
-  height: 40px;
+  padding: var(--button-padding);
+
+  height: var(--button-height);
   width: 50px;
 
-  background-color: transparent;
-  color: rgb(255, 255, 255);
+  color: var(--color-background-white);
 
-  border: 1px solid rgb(255, 255, 255);
-  border-radius: 36px;
+  font-size: var(--font-sm);
+  font-weight: var(--font-weight-norma);
 
-  white-space: nowrap;
+  border: var(--button-border-white);
+  border-radius: var(--button-border-radius-lg);
+
   cursor: pointer;
   text-decoration: none;
+
+  font-weight: var(--font-weight-normal);
 }
 
-
-.login-button{
-  border: 1px solid #ffffff;
-  color: #ffffff;
-  font-weight: bold;
-}
-
-.login-button:hover{
-  border: 1px solid rgb(7, 222, 150);
-  color: rgb(7, 222, 150);
+.login-button:hover {
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
 }
 
 .signup-button {
-  background-color: white;
+  background-color: var(--color-background-white);
   color: black;
-  font-weight: bold;
 }
 
 .signup-button:hover {
-  color: rgb(202,99,252);
-  border: 1px solid rgb(202,99,252);
+  background-color: var(--color-accent);
 }
 
-.account-button {
-  font-weight: bold;
-  font-size: 0.8rem;
 
-  background-color: white;
-  color: black;
-}
-
-.account-button:hover {
-  background-color: rgb(197, 197, 197);
-}
 
 @media (max-width: 768px) {
-  .WelcomePageNavbar__links {
-    display: none;
-  }
 
   .WelcomePageNavbar__logo {
     margin-right: auto;

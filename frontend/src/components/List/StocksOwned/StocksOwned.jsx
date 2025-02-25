@@ -12,9 +12,7 @@ function StocksOwned({ sessionUser, stocks }) {
   } = sessionUser;
 
   const stocksOwnedArray = Object.values(stocksOwned);
-  console.log(stocks, "a---");
 
- 
   return (
     <>
       {
