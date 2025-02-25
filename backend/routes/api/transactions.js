@@ -181,8 +181,6 @@ router.get("/stock-summary", async (req, res) => {
 
   const oneDayUserAggregates = aggregatePoints(userHistoricalData, oneDayMs);
 
-
-
   const userSummary = {
     totalInvestments: lastTransaction.totalInvestments,
     balance: lastTransaction.balance,
@@ -207,14 +205,6 @@ router.post("/trade/:stockId", async (req, res) => {
     stockSymbol,
   } = req.body;
 
-  console.log({
-    stockId,
-    stockPrice,
-    quantity,
-    transactionType,
-    stockName,
-    stockSymbol,
-  });
   const user = await User.findByPk(id);
 
   // Constants
@@ -263,36 +253,37 @@ router.post("/trade/:stockId", async (req, res) => {
 
   const recentTransaction = await StockUserTransaction.findOne({
     where: { userId: id },
-    order: [['purchaseDate', 'DESC']], // change to 'createdAt' if that's your timestamp field
-    include: [{
-      model: Stock,
-      attributes: ['id', 'stockSymbol', 'stockName']
-    }]
+    order: [["purchaseDate", "DESC"]], // change to 'createdAt' if that's your timestamp field
+    include: [
+      {
+        model: Stock,
+        attributes: ["id", "stockSymbol", "stockName"],
+      },
+    ],
   });
 
-  console.log(recentTransaction)
+  console.log(recentTransaction);
 
   const userTransactions = await StockUserTransaction.findAll({
     where: { userId: id },
     include: [{ model: Stock, attributes: ["id", "stockSymbol", "stockName"] }],
   });
 
-// user balances is updated
-// newBalance - we have
-// totalInvestments we can ignore
-// stocksOwned is updated
+  // user balances is updated
+  // newBalance - we have
+  // totalInvestments we can ignore
+  // stocksOwned is updated
 
-
-const safeUser = {
-  id: req.user.id,
-  email: req.user.email,
-  username:req.user.username,
-  balance: req.user.balance,
-  profilePic: req.user.profilePic,
-  firstName: req.user.firstName,
-  lastName: req.user.lastName,
-  joinDate: req.user.createdAt,
-};
+  const safeUser = {
+    id: req.user.id,
+    email: req.user.email,
+    username: req.user.username,
+    balance: req.user.balance,
+    profilePic: req.user.profilePic,
+    firstName: req.user.firstName,
+    lastName: req.user.lastName,
+    joinDate: req.user.createdAt,
+  };
 
   return res.json({
     // transaction,

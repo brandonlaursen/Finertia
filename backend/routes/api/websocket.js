@@ -3,6 +3,13 @@ const router = express.Router();
 
 // const { websocketClient } = require("@polygon.io/client-js");
 
+// const http = require("http");
+// const { Server } = require("socket.io");
+// const app = express();
+// const server = http.createServer(app);
+// const io = new Server(server);
+
+
 // // create a websocket client using the polygon client-js library
 // const ws = websocketClient(
 //   process.env.STOCK_API_KEY2,
@@ -31,13 +38,14 @@ const router = express.Router();
 //     parsedMessage[0].status === "auth_success"
 //   ) {
 
-//     // ws.send(JSON.stringify({ action: "subscribe", params: "A.AAPL" })); // For second aggregates
+//     const data = ws.send(JSON.stringify({ action: "subscribe", params: "A.AAPL" })); // For second aggregates
+//     console.log(parsedMessage.data)
 //   }
 // };
 
-// // Route to fetch WebSocket data
-router.get("/", (req, res) => {
-  res.json("s");
-});
+// // // Route to fetch WebSocket data
+// router.get("/", (req, res) => {
+//   res.json("s");
+// });
 
 module.exports = router;

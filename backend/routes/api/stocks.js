@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const { Op } = require('sequelize');
+
 const { Stock, StockList, StockPriceTimestamp } = require("../../db/models");
 const { getDate } = require("./helpers/getDate.js");
 
@@ -56,6 +58,7 @@ router.get("/news/:category", async (req, res) => {
     res.status(500).json({ error: "Failed to fetch market news" });
   }
 });
+
 
 // ! come back to
 // const latestTimestamp = await StockPriceTimestamp.findOne({
@@ -147,12 +150,10 @@ router.get("/:stockSymbol", async (req, res) => {
       ),
     ]);
 
-
     let [oneDayData, oneWeekData] = await Promise.all([
       oneDayDataResponse.json(),
       oneWeekDataResponse.json(),
     ]);
-
 
     const oneDayAggregates = oneDayData.results.map((aggregate) => ({
       x: aggregate.t,
@@ -212,7 +213,6 @@ router.get("/:stockSymbol", async (req, res) => {
       };
     });
 
-
     const stockData = {
       id: stock.id,
       name: stock.stockName,
@@ -247,7 +247,6 @@ router.get("/:stockSymbol", async (req, res) => {
       fiveYearsAggregates,
     };
 
-   
     return res.json(stockData);
   } catch (error) {
     console.log(error);

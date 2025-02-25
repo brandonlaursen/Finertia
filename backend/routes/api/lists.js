@@ -14,8 +14,6 @@ router.get("/", async (req, res) => {
     include: [Stock],
   });
 
-  console.log(lists)
-
   return res.json(lists);
 });
 
@@ -36,7 +34,6 @@ router.post("/", async (req, res) => {
       include: [Stock],
     }
   );
-
 
   if (stockIds) {
     for (const stockId of stockIds) {
