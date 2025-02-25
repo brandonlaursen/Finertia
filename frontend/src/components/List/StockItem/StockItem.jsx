@@ -1,11 +1,18 @@
 import "./StockItem.css";
-
+import TinyChart from "../TinyChart/TinyChart";
 function StockItem({ stock, stocks, navigate }) {
 
   const { id, stockSymbol } = stock;
 
   const currentPrice = stocks[id].current_price;
   const todaysPriceChange = stocks[id].todays_change_percent;
+
+  const stockInfo = Object.values(stocks).find(
+    (stock) => stock.symbol === stockSymbol
+  );
+
+  const { o, h, c } = stockInfo.day;
+
 
 
   return (
@@ -17,9 +24,10 @@ function StockItem({ stock, stocks, navigate }) {
       <div className="WatchListStocks__container-title-shares">
         <span className="WatchListStocks__container-title">{stockSymbol}</span>
         <span className="WatchListStocks__container-subtitle">
+          {'     '}
         </span>
       </div>
-      <span className="WatchListStocks__container-graph"></span>
+      <TinyChart o={o} h={h} c={c} />
       <span className="WatchListStocks__container-data">
         <span className={`WatchListStocks__container-price`}>
           ${currentPrice.toFixed(2)}

@@ -38,13 +38,15 @@
 
 .WatchListStocks__container-graph {
   height: 100%;
-  width: 100px;
+
 
   flex: 1;
   text-align: center;
   align-content: center;
   justify-content: center;
   align-items: center;
+
+
 }
 
 .WatchListStocks__container-data {
