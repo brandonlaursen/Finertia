@@ -5,85 +5,210 @@ import { useState, useEffect } from "react";
 import ReactApexChart from "react-apexcharts";
 
 function HomePageChart({ stockSummary, selectedTimeFrame }) {
-
   const { fiveMinAggregates, oneHourUserAggregates, oneDayAggregates } =
     stockSummary;
 
+  const [data, setData] = useState(fiveMinAggregates);
 
+  const relevantValues = data
+    .filter((point) => point.y > 0)
+    .map((point) => point.y);
+  const minValue = Math.min(...relevantValues);
+  const maxValue = Math.max(...relevantValues);
+
+  const range = maxValue - minValue;
+
+  const padding = Math.max(range * 0.2, 0.5);
+  const dynamicMin = minValue - padding;
+  const dynamicMax = maxValue + padding;
+  const middleValue = (dynamicMin + dynamicMax) / 2;
 
   const [options] = useState({
+    // hides the grid
+    grid: {
+      show: false,
+    },
+
+    // color of chart line
+    colors: ["#00E396"],
+
+    // type of line stroke
+    stroke: {
+      width: 3,
+      curve: "straight",
+    },
+
+    // controls the line gradient
+    fill: {
+      type: "gradient",
+      gradient: {
+        shade: "light",
+        type: "horizontal",
+        shadeIntensity: 0.6,
+        opacityFrom: 1,
+        opacityTo: 1,
+      },
+    },
+
+    // size of circle marker
+    markers: {
+      size: 0,
+    },
+
+    // controls the chart
     chart: {
       type: "line",
       height: 350,
       zoom: {
         enabled: false,
       },
-      tickAmount: 10,
-      plotOptions: {
-        line: {
-          isSlopeChart: false,
-          colors: {
-            threshold: "239",
-            colorAboveThreshold: "#00E396",
-            colorBelowThreshold: "FF4560",
-          },
+      // background: "black",
+
+      // moves chart up,down,left, right
+      offsetX: 0,
+      offsetY: 0,
+
+      // removes x-axis y-axis labels
+      // sparkline: {
+      //   enabled: true
+      // },
+
+      // controls tool bar options
+      toolbar: {
+        show: false,
+        tools: {
+          // download: true,
+          // selection: true,
+          // zoom: true,
+          // zoomin: true,
+          // zoomout: true,
+          // pan: true,
+          // reset: true,
         },
       },
     },
+
+    // controls bottom labels
     xaxis: {
+      // title: {
+      //   // text: "Time",
+      // },
       type: "datetime",
-      datetimeDiscrete: true,
-      labels: { show: false },
-      tickAmount: "dataPoints",
-      axisBorder: { show: false },
-      axisTicks: { show: false },
+
+      // Formats the lables on x-axis
+      labels: {
+        show: false, // hides the labels
+        format: "MMM dd ", // e.g., "Feb 24"
+        style: {
+          fontSize: "12px",
+          color: "#333",
+        },
+      },
+
+      axisTicks: {
+        show: false,
+        color: "#e0e0e0",
+      },
+      // tickAmount: 4,
+      // tickPlacement: "on",
+
+      axisBorder: {
+        show: false,
+        color: "#e0e0e0",
+      },
+
+      // controls the tool tip pop up for the x axis
+      tooltip: {
+        enabled: false,
+        style: {
+          fontSize: "12px",
+          fontFamily: undefined,
+        },
+        formatter: function (val) {
+          // Format the x-axis value as desired.
+          // For instance, just show the date:
+          return new Date(val).toLocaleDateString("en-US", {
+            timeZone: "America/New_York",
+            month: "short",
+            day: "numeric",
+            hour: "numeric",
+            minute: "numeric",
+          });
+        },
+      },
+
+      // controls the vertical line when hovering a point
       crosshairs: {
         show: true,
-        position: "back",
+
         stroke: {
           color: "#b6b6b6",
           width: 1,
           dashArray: 0,
         },
       },
-      tooltip: {
-        enabled: false,
-      },
+
+      // datetimeDiscrete: true,
     },
+
     yaxis: {
-      datetimeDiscrete: true,
+      title: {
+        // text: "Price"
+      },
+      min: dynamicMin, // Set a minimum value to zoom into a specific range
+      max: dynamicMax,
+
+      // datetimeDiscrete: true,
       labels: { show: false },
       axisBorder: { show: false },
       axisTicks: { show: false },
-    },
-    colors: ["#00E396"],
-    stroke: {
-      width: 3,
-      curve: "straight",
-    },
-    markers: {
-      size: 0,
-    },
-    grid: {
-      show: false,
-    },
-    tooltip: {
-      x: {
-        formatter: (timestamp) => convertToEst(timestamp),
+      // logarithmic: true
+
+      tooltip: {
+        enabled: false,
+        // formatter: (value) => `$${value.toFixed(2)}`
       },
-      y: {
-        formatter: function (value) {
-          return `$` + value.toFixed(2);
+    },
+
+    annotations: {
+      yaxis: [
+        {
+          y: middleValue,
+          borderColor: "grey",
+          borderWidth: 1,
+          fillColor: "#blue",
+
+          strokeDashArray: "1, 15",
         },
-      },
-      marker: {
-        show: false,
-      },
+      ],
     },
+
+    tooltip: {
+          x: {
+            formatter: function (val) {
+              // Format the x-axis value as desired.
+              // For instance, just show the date:
+              return new Date(val).toLocaleDateString("en-US", {
+                timeZone: "America/New_York",
+                month: "short",
+                day: "numeric",
+                hour: "numeric",
+                minute: "numeric",
+              });
+            },
+          },
+          y: {
+            formatter: function (value) {
+              return `$` + value.toFixed(2);
+            },
+          },
+          marker: {
+            show: false,
+          },
+        },
   });
 
-  const [data, setData] = useState(fiveMinAggregates);
-
+  // console.log(data);
 
   useEffect(() => {
     let aggregates;
@@ -92,7 +217,6 @@ function HomePageChart({ stockSummary, selectedTimeFrame }) {
       aggregates = fiveMinAggregates;
     }
     if (selectedTimeFrame === "1W") {
-
       aggregates = oneHourUserAggregates;
     }
     if (selectedTimeFrame === "1M") {
@@ -120,7 +244,7 @@ function HomePageChart({ stockSummary, selectedTimeFrame }) {
 
   const series = [
     {
-      name: "Price",
+      name: "",
       data,
     },
   ];
@@ -143,7 +267,7 @@ function HomePageChart({ stockSummary, selectedTimeFrame }) {
   }
 
   return (
-    <div>
+    <div className="chart-container">
       <ReactApexChart
         options={options}
         series={series}
@@ -155,3 +279,68 @@ function HomePageChart({ stockSummary, selectedTimeFrame }) {
 }
 
 export default HomePageChart;
+
+// const [options] = useState({
+//   chart: {
+//     type: "line",
+//     height: 350,
+//     zoom: {
+//       enabled: false,
+//     },
+
+//   },
+
+//   xaxis: {
+//     type: "datetime",
+//     datetimeDiscrete: true,
+//     labels: { show: false },
+//     tickAmount: "dataPoints",
+//     axisBorder: { show: false },
+//     // axisTicks: { show: false },
+//     crosshairs: {
+//       show: true,
+//       position: "back",
+//       stroke: {
+//         color: "#b6b6b6",
+//         width: 1,
+//         dashArray: 0,
+//       },
+//     },
+//     // tooltip: {
+//     //   enabled: false,
+//     // },
+
+//   },
+//   yaxis: {
+//     datetimeDiscrete: true,
+//     labels: { show: false },
+//     axisBorder: { show: false },
+//     axisTicks: { show: false },
+
+//   },
+
+//   colors: ["#00E396"],
+//   stroke: {
+//     width: 3,
+//     curve: "straight",
+//   },
+//   // markers: {
+//   //   size: 0,
+//   // },
+//   grid: {
+//     show: false,
+//   },
+//   tooltip: {
+//     x: {
+//       formatter: (timestamp) => convertToEst(timestamp),
+//     },
+//     y: {
+//       formatter: function (value) {
+//         return `$` + value.toFixed(2);
+//       },
+//     },
+//     marker: {
+//       show: false,
+//     },
+//   },
+// });
