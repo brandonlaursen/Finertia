@@ -13,8 +13,8 @@
   justify-content: center;
   padding: 0 32px;
   height: 70vmax;
-  min-height: 600px;
-  max-height: 600px;
+  min-height: 630px;
+  max-height: 630px;
 }
 
 .WelcomePage__hero {
@@ -60,7 +60,7 @@
 
   font-weight: var(--font-weight-bold);
 
-  background-color: var(--color-background-white);
+  background-color: var(--color-white);
 
   border: none;
   border-radius: var(--button-border-radius-lg);
@@ -76,7 +76,7 @@
 .WelcomePage__features {
   background-color: var(--color-tertiary);
 
-  color: var(--color-background-white);
+  color: var(--color-white);
 }
 
 .WelcomePage__features-image {
@@ -135,7 +135,7 @@
   width: 140px;
 
   background-color: var(--color-primary);
-  color: var(--color-background-black);
+  color: var(--color-black);
 
   border: none;
   border-radius: var(--button-border-radius-lg);
@@ -179,7 +179,7 @@
   width: 140px;
 
   background-color: var(--color-primary);
-  color: var(--color-background-black);
+  color: var(--color-black);
 
   border: none;
   border-radius: var(--button-border-radius-lg);

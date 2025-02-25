@@ -11,8 +11,7 @@ body {
   font-size: 16px;
 }
 
-div,
-span {
+* {
   box-sizing: border-box;
 }
 
@@ -20,10 +19,9 @@ button {
   cursor: pointer;
 }
 
-section {
-  box-sizing: border-box;
-}
 
+
+/* var(); */
 :root {
   /* Spacing */
   --spacing-xs: 4px;
@@ -48,8 +46,8 @@ section {
   --color-secondary: #ca63fc;
   --color-tertiary: rgb(22, 7, 40);
   --color-accent: #e0e0e0;
-  --color-background-white: #ffffff;
-  --color-background-black: #000000;
+  --color-white: #ffffff;
+  --color-black: #000000;
   --color-text: #333;
   --color-muted: #888;
 
@@ -59,9 +57,14 @@ section {
   --button-border-white: 1px solid #fff;
   --button-border-dark: 1px solid #000000;
 
+  --border-radius-xs: 5px;
   --button-border-radius-lg: 36px;
 
   --button-height: 40px;
+
+  --border-color: rgb(48, 54, 58);
+
+  --dark-grey: #1e2125;
 }
 
 .dark-mode {

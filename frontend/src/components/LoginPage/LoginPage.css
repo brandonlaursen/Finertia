@@ -1,10 +1,9 @@
 .LoginPage {
   height: 100vh;
-
   display: flex;
   flex-direction: row;
 
-  background-color: rgb(0, 0, 0);
+  background-color: var(--color-black);
 }
 
 .LoginPage__aside {
@@ -12,7 +11,7 @@
 
   align-items: stretch;
 
-  background-color: black;
+  background-color: var(--color-black);
   background-image: url("https://preview.redd.it/kurzgesagt-4k-wallpapers-3840x2160-v0-thrpw4zmouhb1.png?width=3840&format=png&auto=webp&s=b1dfb23b2606ba97b175f60c77bfc8a9eb13f4f8");
   background-size: cover;
   background-position: center;
@@ -21,158 +20,141 @@
   transition: width 1s ease;
 }
 
-.LoginPage__form-container {
-  height: 100%;
+.LoginPage__main {
   width: 50%;
-  max-width: 800px;
 
-  padding-top: 80px;
+  background-color: var(--color-black);
+  color: var(--color-white);
 
-  background-color: rgb(0, 0, 0);
-  color: white;
-
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  margin-top: 80px;
+  margin-left: 32px;
+  margin-right: 32px;
 }
 
 .LoginPage__form {
   display: flex;
   flex-direction: column;
 
-  padding: 2vh;
-  padding-left: 40px;
-  gap: 15px;
+  padding: 16px;
 
-  font-size: 15px;
+  gap: 16px;
 
-  overflow: hidden;
+  font-size: 14px;
 }
 
-.LoginPage__form p {
-  font-size: 20px;
-}
-
-.LoginPage__form input,
-.LoginPage__form__password input {
-  min-height: 36px;
-  width: calc(95% - 10px);
-
-  padding-left: 10px;
-
-  background-color: #000000;
-  color: white;
-
-  border: 1px solid rgb(48, 54, 58);
-  border-radius: 5px;
+.LoginPage__form header {
+  font-size: 18px;
+  margin-bottom: 16px;
 }
 
 .LoginPage__form__password {
   width: 100%;
-
   position: relative;
   display: flex;
   align-items: center;
 }
 
+.LoginPage__form-input {
+  width: 100%;
+  min-height: 36px;
+  padding-right: 40px;
+  padding-left: 12px;
+  
+  background-color: var(--color-black);
+  color: var(--color-white);
+
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+}
+
 .LoginPage__form__password-icon {
-  position: relative;
-  right: 30px;
+  position: absolute;
+  right: 10px;
+  font-size: 18px;
 
-  font-size: 20px;
-
-  background-color: rgb(0, 0, 0);
-  color: rgb(255, 255, 255);
+  background-color: var(--color-black);
+  color: var(--color-white);
 
   cursor: pointer;
 }
 
 .LoginPage__form__errors {
   min-height: 50px;
-  width: calc(95% - 6px);
 
   display: inline-flex;
   align-items: center;
   padding-left: 10px;
 
-  font-size: 17px !important;
+  font-size: 14px;
 
-  background-color: rgb(30, 33, 37);
+  background-color: var(--dark-grey);
 
-  border-width: 1px;
-  border-radius: 5px;
+  border-radius: var(--border-radius-xs);
 }
 
-.LoginPage__form__errors__icon {
+.LoginPage__form__errors-icon {
   min-height: 20px;
   width: 20px;
 
-  margin-right: 10px;
+  margin-right: 8px;
 }
 
 .LoginPage__form__buttons {
-  width: 96%;
-
   display: flex;
-  gap: 15px;
+  gap: 16px;
 }
 
-.LoginPage__form__buttons button {
-  height: 44px;
-  width: 50%;
+.LoginPage__form__button {
+  width: 100%;
+  height: 40px;
 
-  position: relative;
-
-  margin-top: 20px;
-  gap: 10px;
+  /* margin-top: 16px; */
+  gap: 8px;
   padding: 0 32px;
 
-  font-weight: bold;
+  font-weight: var(--font-weight-bold);
 
-  background-color: #ffffff;
-  color: #1c180d;
-
-  border: 1px solid #ffffff;
-  border-radius: 36px;
-
+  border-radius: var(--button-border-radius-lg);
   white-space: nowrap;
-  overflow: hidden;
-  text-decoration: none;
-  cursor: pointer;
 }
 
-.LoginPage__form__buttons a {
-  display: contents;
+.LoginPage__form__login-account-btn {
+  border: none;
+  background-color: var(--color-white);
+  color: var(--color-black);
 }
 
-#LoginPage__form__buttons__create__account {
-  background-color: black;
-  color: white;
+.LoginPage__form__login-account-btn:hover {
+  background-color: var(--color-accent);
 }
 
-#LoginPage__form__buttons__create__account:hover {
-  background-color: rgb(47, 47, 47);
+.LoginPage__form__create-account-btn {
+  border: 1px solid var(--color-white);
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.LoginPage__form__create-account-btn:hover {
+  background-color: var(--dark-grey);
 }
 
 @media screen and (max-width: 770px) {
   .LoginPage__aside {
     display: none;
   }
-  .LoginPage__form-container {
-    height: 100%;
+  .LoginPage__main {
+    /* height: 100vh; */
     width: 100%;
   }
 
   .LoginPage__form__buttons {
     flex-direction: column;
-    align-items: center;
-
-    gap: 0;
   }
 
   .LoginPage__form__buttons button {
     width: 100%;
-
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
   }
 }

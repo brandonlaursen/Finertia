@@ -18,7 +18,7 @@
   font-size: var(--font-lg);
   font-weight: var(--font-weight-bold);
 
-  color: var(--color-background-white);
+  color: var(--color-white);
 
   cursor: pointer;
   text-decoration: none;
@@ -49,9 +49,9 @@
   padding: var(--button-padding);
 
   height: var(--button-height);
-  width: 50px;
+  width: 110px;
 
-  color: var(--color-background-white);
+  color: var(--color-white);
 
   font-size: var(--font-sm);
   font-weight: var(--font-weight-norma);
@@ -71,18 +71,16 @@
 }
 
 .signup-button {
-  background-color: var(--color-background-white);
+  background-color: var(--color-white);
   color: black;
+  border: none;
 }
 
 .signup-button:hover {
   background-color: var(--color-accent);
 }
 
-
-
 @media (max-width: 768px) {
-
   .WelcomePageNavbar__logo {
     margin-right: auto;
   }

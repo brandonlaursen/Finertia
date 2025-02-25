@@ -4,12 +4,13 @@ import { MdRemoveRedEye } from "react-icons/md";
 
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, Navigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 
 import { login } from "../../../store/session";
 
 function LoginPage() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const sessionUser = useSelector((state) => state.session.user);
 
   const [credential, setCredential] = useState("");
@@ -21,7 +22,6 @@ function LoginPage() {
     setShowPassword(!showPassword);
   };
 
-  // ! Refactor to dynamically handle errors
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors({});
@@ -39,54 +39,62 @@ function LoginPage() {
 
   return (
     <div className="LoginPage">
-      <div className="LoginPage__aside"></div>
+      <aside className="LoginPage__aside" />
 
-      <div className="LoginPage__form-container">
+      <main className="LoginPage__main">
         <form onSubmit={handleSubmit} className="LoginPage__form">
-          <p>Log In to Finertia</p>
+          <header>Log In to Finertia</header>
           <label>Email</label>
           <input
             type="text"
             value={credential}
             onChange={(e) => setCredential(e.target.value.trim())}
             required
+             className="LoginPage__form-input"
           />
 
           <label>Password</label>
 
-          <div className="LoginPage__form__password">
+          <section className="LoginPage__form__password">
             <input
               type={showPassword ? "text" : "password"}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              className="LoginPage__form-input"
             />
             <MdRemoveRedEye
               className="LoginPage__form__password-icon"
               onClick={handlePasswordToggle}
             />
-          </div>
+          </section>
 
           {errors.credential && (
             <p className="LoginPage__form__errors">
-              <LuInfo className="LoginPage__form__errors__icon" />{" "}
+              <LuInfo className="LoginPage__form__errors-icon" />
               {errors.credential}
             </p>
           )}
 
-          <div className="LoginPage__form__buttons">
-            <button type="submit">Log In</button>
-            <Link to="/signup">
-              <button
-                type="button"
-                id="LoginPage__form__buttons__create__account"
-              >
-                Create Account
-              </button>
-            </Link>
-          </div>
+          <section className="LoginPage__form__buttons">
+            <button
+              type="submit"
+              className="LoginPage__form__login-account-btn LoginPage__form__button"
+          
+            >
+              Log In
+            </button>
+
+            <button
+              type="button"
+              className="LoginPage__form__create-account-btn LoginPage__form__button"
+              onClick={() => navigate('/signup')}
+            >
+              Create Account
+            </button>
+          </section>
         </form>
-      </div>
+      </main>
     </div>
   );
 }
