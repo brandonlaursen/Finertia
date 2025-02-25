@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import ReactApexChart from "react-apexcharts";
 import "./StockChart.css";
 
 function StockChart({ stock, selectedTimeFrame }) {
-  
   const {
     oneDayAggregates,
     oneWeekAggregates,
@@ -15,82 +14,90 @@ function StockChart({ stock, selectedTimeFrame }) {
 
   // const [currentPoint, setCurrentPoint] = useState(null);
 
-  const [options] = useState({
-    chart: {
-      type: "line",
-      height: 350,
-
-      // events: {
-      //   mouseMove: function (event, chartContext, opts) {
-      //     console.log(currentPoint);
-
-      //     setCurrentPoint({
-      //       value: chartContext.w.config.series[0].data[opts.dataPointIndex].y,
-      //     });
-      //   },
-      //   mouseLeave: function () {
-      //     setCurrentPoint(null);
-      //   },
-      // },
-      zoom: {
-        enabled: false,
-      },
-      tickAmount: 10,
-    },
-    xaxis: {
-      type: "datetime",
-      datetimeDiscrete: true,
-      labels: { show: false },
-      tickAmount: "dataPoints",
-      axisBorder: { show: false },
-      axisTicks: { show: false },
-      crosshairs: {
-        show: true,
-        position: "back",
-        stroke: {
-          color: "#b6b6b6",
-          width: 1,
-          dashArray: 0,
-        },
-      },
-
-      tooltip: {
-        enabled: false,
-      },
-    },
-    yaxis: {
-      datetimeDiscrete: true,
-      labels: { show: false },
-      axisBorder: { show: false },
-      axisTicks: { show: false },
-    },
-    colors: ["#00E396"],
-    stroke: {
-      width: 3,
-      curve: "straight",
-    },
-    markers: {
-      size: 0,
-    },
-    grid: {
-      show: false,
-    },
-    tooltip: {
-      x: {
-        formatter: (timestamp) => convertToEst(timestamp, selectedTimeFrame),
-      },
-      y: {
-        formatter: function (value) {
-          return `$` + value.toFixed(2);
-        },
-      },
-      marker: {
-        show: false,
-      },
-    },
-  });
-
   const [data, setData] = useState([]);
+
+  const relevantValues = data
+    .filter((point) => point.y > 0)
+    .map((point) => point.y);
+  const minValue = Math.min(...relevantValues);
+  const maxValue = Math.max(...relevantValues);
+  const range = maxValue - minValue;
+  const padding = Math.max(range * 0.1, 0.5);
+  const dynamicMin = minValue - padding;
+  const dynamicMax = maxValue + padding;
+
+  const avgValue =
+    relevantValues.reduce((sum, val) => sum + val, 0) / relevantValues.length;
+
+  // Use the average as your middle value
+  const middleValue = avgValue;
+
+  console.log({ dynamicMin, dynamicMax, middleValue });
+
+  const options = useMemo(
+    () => ({
+      chart: {
+        type: "line",
+        height: 350,
+        zoom: { enabled: false },
+        fill: {
+          type: "gradient",
+          gradient: {
+            shade: "light",
+            type: "horizontal",
+            shadeIntensity: 0.6,
+            opacityFrom: 1,
+            opacityTo: 1,
+          },
+        },
+      },
+      xaxis: {
+        type: "datetime",
+        datetimeDiscrete: true,
+        labels: { show: false },
+        tickAmount: "dataPoints",
+        axisBorder: { show: false },
+        axisTicks: { show: false },
+        crosshairs: {
+          show: true,
+          position: "back",
+          stroke: { color: "#b6b6b6", width: 1, dashArray: 0 },
+        },
+        tooltip: { enabled: false },
+      },
+      annotations: {
+        yaxis: [
+          {
+            y: middleValue,
+            borderColor: "grey",
+            borderWidth: 1,
+            strokeDashArray: "1, 15",
+          },
+        ],
+      },
+      yaxis: {
+        min: dynamicMin,
+        max: dynamicMax,
+        labels: { show: false },
+        axisBorder: { show: false },
+        axisTicks: { show: false },
+      },
+      colors: ["#00E396"],
+      stroke: { width: 3, curve: "straight" },
+      markers: { size: 0 },
+      grid: { show: false },
+      tooltip: {
+        x: {
+          formatter: (timestamp) => convertToEst(timestamp, selectedTimeFrame),
+        },
+        y: {
+          formatter: (value) => `$${value.toFixed(2)}`,
+        },
+        marker: { show: false },
+      },
+    }),
+    [dynamicMin, dynamicMax, middleValue, selectedTimeFrame]
+  );
 
   useEffect(() => {
     let aggregates;
@@ -139,7 +146,6 @@ function StockChart({ stock, selectedTimeFrame }) {
     const date = new Date(timestamp);
 
     const options1 = {
-      year: "numeric",
       month: "long",
       day: "numeric",
       hour: "numeric",
