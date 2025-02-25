@@ -14,6 +14,8 @@ router.get("/", async (req, res) => {
     include: [Stock],
   });
 
+  console.log(lists)
+
   return res.json(lists);
 });
 

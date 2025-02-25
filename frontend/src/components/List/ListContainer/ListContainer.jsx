@@ -28,11 +28,19 @@ function ListContainer({ className, navigate }) {
 
   const [selectedPopoverId, setSelectedPopoverId] = useState(null);
   const [toggleListIds, setToggleListIds] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    dispatch(fetchLists());
-    dispatch(fetchAllStocks());
+
+    async function fetchInfo(){
+      await dispatch(fetchLists());
+      await dispatch(fetchAllStocks());
+      setIsLoaded(true);
+
+    }
+fetchInfo();
   }, [dispatch]);
+
 
 
 
@@ -45,7 +53,7 @@ function ListContainer({ className, navigate }) {
               <span className="WatchList__title">Stocks</span>
             </div>
 
-            {sessionUser && <StocksOwned stocks={stocks} sessionUser={sessionUser}/>}
+            {isLoaded &&  <StocksOwned stocks={stocks} sessionUser={sessionUser}/>}
           </>
         )}
 

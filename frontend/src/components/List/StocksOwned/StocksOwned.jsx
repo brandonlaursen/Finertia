@@ -11,29 +11,33 @@ function StocksOwned({ sessionUser, stocks }) {
     stockSummary: { stocksOwned },
   } = sessionUser;
 
- const stocksOwnedArray = Object.values(stocksOwned);
+  const stocksOwnedArray = Object.values(stocksOwned);
+  console.log(stocks, "a---");
 
+ 
   return (
     <>
-      <div className="WatchListStocks-stocks-owned">
-        {stocksOwnedArray.length > 0 ? (
-          stocksOwnedArray.map((stock) => {
-            return (
-              <StocksOwnedItem
-                key={stock.id}
-                stock={stock}
-                navigate={navigate}
-                stocks={stocks}
-              />
-            );
-          })
-        ) : (
-          <div className="WatchListStocks-stocks-owned-empty">
-            Your portfolio is waiting to grow! 🚀 Start exploring stocks and
-            make your first investment today.
-          </div>
-        )}
-      </div>
+      {
+        <div className="WatchListStocks-stocks-owned">
+          {stocksOwnedArray.length > 0 ? (
+            stocksOwnedArray.map((stock) => {
+              return (
+                <StocksOwnedItem
+                  key={stock.id}
+                  stock={stock}
+                  navigate={navigate}
+                  stocks={stocks}
+                />
+              );
+            })
+          ) : (
+            <div className="WatchListStocks-stocks-owned-empty">
+              Your portfolio is waiting to grow! 🚀 Start exploring stocks and
+              make your first investment today.
+            </div>
+          )}
+        </div>
+      }
     </>
   );
 }

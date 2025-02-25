@@ -247,7 +247,7 @@ router.get("/:stockSymbol", async (req, res) => {
       fiveYearsAggregates,
     };
 
-    console.log(stockData.marketCap)
+   
     return res.json(stockData);
   } catch (error) {
     console.log(error);

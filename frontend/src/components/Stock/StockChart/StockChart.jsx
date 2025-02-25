@@ -34,8 +34,17 @@ function StockChart({ stock, selectedTimeFrame }) {
 
   console.log({ dynamicMin, dynamicMax, middleValue });
 
+  const series = [
+    {
+      name: "Price",
+      data,
+    },
+  ];
+
+
   const options = useMemo(
     () => ({
+
       chart: {
         type: "line",
         height: 350,
@@ -50,7 +59,9 @@ function StockChart({ stock, selectedTimeFrame }) {
             opacityTo: 1,
           },
         },
+
       },
+
       xaxis: {
         type: "datetime",
         datetimeDiscrete: true,
@@ -73,7 +84,9 @@ function StockChart({ stock, selectedTimeFrame }) {
             borderWidth: 1,
             strokeDashArray: "1, 15",
           },
+
         ],
+
       },
       yaxis: {
         min: dynamicMin,
@@ -81,8 +94,12 @@ function StockChart({ stock, selectedTimeFrame }) {
         labels: { show: false },
         axisBorder: { show: false },
         axisTicks: { show: false },
+
+
       },
+
       colors: ["#00E396"],
+
       stroke: { width: 3, curve: "straight" },
       markers: { size: 0 },
       grid: { show: false },
@@ -135,12 +152,6 @@ function StockChart({ stock, selectedTimeFrame }) {
     options,
   ]);
 
-  const series = [
-    {
-      name: "Price",
-      data,
-    },
-  ];
 
   function convertToEst(timestamp) {
     const date = new Date(timestamp);

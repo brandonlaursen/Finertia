@@ -9,3 +9,9 @@
   padding: 16px;
   font-size: 15px;
 }
+
+.WatchListStocks__container-graph{
+/* background-color: aqua; */
+/* width: 10px; */
+display: flex;
+}
