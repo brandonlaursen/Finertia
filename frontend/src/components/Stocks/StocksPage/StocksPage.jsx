@@ -9,8 +9,8 @@ import { useOutletContext, useNavigate } from "react-router-dom";
 import { fetchAllStocks, selectStocksArray } from "../../../../store/stocks";
 
 import ListContainer from "../../List/ListContainer";
-
 import StocksTable from "../StocksTable/StocksTable";
+import NotificationPopUp from "../../NotificationPopUp/NotificationPopUp";
 
 function StocksPage() {
   const navigate = useNavigate();
@@ -23,6 +23,10 @@ function StocksPage() {
   const [sortedStocks, setSortedStocks] = useState(stocks);
   const [sortCriteria, setSortCriteria] = useState("name");
   const [sortDirection, setSortDirection] = useState("asc");
+
+  const [notifications, setNotifications] = useState(false);
+  const [notificationMessage, setNotificationMessage] = useState([]);
+
 
   useEffect(() => {
     dispatch(fetchAllStocks());
@@ -121,6 +125,10 @@ function StocksPage() {
               handleSort={handleSort}
               sortedStocks={sortedStocks}
               navigate={navigate}
+              setNotifications={setNotifications}
+              setNotificationMessage={setNotificationMessage}
+              notifications={notifications}
+              notificationMessage={notificationMessage}
             />
 
             <div className="stocks__disclaimer">
@@ -140,6 +148,14 @@ function StocksPage() {
           navigate={navigate}
         />
       </div>
+      {notifications && (
+        <div className="NotificationPopsContainer">
+          <NotificationPopUp
+            message={notificationMessage}
+            setNotifications={setNotifications}
+          />
+        </div>
+      )}
     </div>
   );
 }

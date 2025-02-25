@@ -7,7 +7,12 @@ import { useModal } from "../../../context/Modal";
 
 import { formatNumber } from "../../../helpers/helpers";
 
-function StocksTableItem({ stock, navigate }) {
+function StocksTableItem({
+  stock,
+  navigate,
+  setNotifications,
+  setNotificationMessage,
+}) {
   const { setModalContent, setModalClass } = useModal();
 
   const { id, name, symbol, current_price, todays_change_percent, market_cap } =
@@ -38,7 +43,14 @@ function StocksTableItem({ stock, navigate }) {
           className="stocks__btn stocks__btn--add"
           onClick={(e) => {
             e.stopPropagation();
-            setModalContent(<AddToListModal stock={stock} create={true} />);
+            setModalContent(
+              <AddToListModal
+                stock={stock}
+                create={true}
+                setNotifications={setNotifications}
+                setNotificationMessage={setNotificationMessage}
+              />
+            );
             setModalClass({
               modal: "AddToListModal",
               modalBackground: "AddToListModal__background",

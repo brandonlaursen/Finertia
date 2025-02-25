@@ -3,7 +3,7 @@ import "./StocksTable.css";
 import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
 import StocksTableItem from "../StocksTableItem/StocksTableItem";
 
-function StocksTable({ stocks, handleSort, sortedStocks, navigate }) {
+function StocksTable({ stocks, handleSort, sortedStocks, navigate, setNotifications, setNotificationMessage }) {
   return (
     <table className="stocks__table">
       <thead>
@@ -24,6 +24,8 @@ function StocksTable({ stocks, handleSort, sortedStocks, navigate }) {
                 key={stock.id}
                 stock={stock}
                 navigate={navigate}
+                setNotifications={setNotifications}
+            setNotificationMessage={setNotificationMessage}
               />
             );
           })
