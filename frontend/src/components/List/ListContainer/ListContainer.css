@@ -30,6 +30,7 @@
   width: 30vw;
   max-width: 350px;
   min-width: 250px;
+  width: 350px;
 
   transition: width 0.1s smooth;
 
@@ -71,6 +72,7 @@
   flex-grow: 1;
 
   scrollbar-width: none;
+    width: 300px;
 }
 
 .WatchList__create-list-icon {
