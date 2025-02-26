@@ -48,39 +48,37 @@ function SearchBar() {
   }
 
   return (
-    <div className="search-bar-container">
-      <IoSearch id="search-icon" />
+    <div className="SearchBar">
+      <IoSearch id="SearchBar-icon" />
       <input
-        className="search-bar"
+        className="SearchBar-input"
         placeholder="Search"
         onFocus={() => setIsFocused(true)}
         onBlur={handleBlur}
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       ></input>
-      {isFocused && (
-        <ul className="search-results" ref={searchResultsRef}>
-          {searchResults.length > 0 &&
-            search.length > 0 &&
-            searchResults.map((result) => {
-              return (
-                <li
-                  key={result.id}
-                  onMouseDown={(e) => {
-                    e.stopPropagation(),
-                      navigate(`/stocks/${result.stockSymbol}`);
-                  }}
-                  className='results-li'
-                >
-                  <span className="stock-symbol">
-                    {highlightMatch(result.stockSymbol, search)}
-                  </span>
-                  <span className="stock-name">
-                    {highlightMatch(result.stockName, search)}
-                  </span>
-                </li>
-              );
-            })}
+      {isFocused && search.length > 0 && searchResults.length > 0 && (
+        <ul className="SearchBar-results" ref={searchResultsRef}>
+          <span className="SearchBar-results-header">Stocks</span>
+          {searchResults.map((result) => {
+            return (
+              <li
+                key={result.id}
+                onMouseDown={(e) => {
+                  e.stopPropagation(),
+                    navigate(`/stocks/${result.stockSymbol}`);
+                }}
+              >
+                <span className="SearchBar-results__stock-symbol">
+                  {highlightMatch(result.stockSymbol, search)}
+                </span>
+                <span className="SearchBar-results__stock-name">
+                  {highlightMatch(result.stockName, search)}
+                </span>
+              </li>
+            );
+          })}
         </ul>
       )}
     </div>
