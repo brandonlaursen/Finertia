@@ -115,7 +115,7 @@
 }
 
 .EditListModal__section__input:focus {
-  border: solid 1px rgb(36, 240, 172);
+  border: solid 1px var(--color-primary);
 }
 
 .EditListModal__section__buttons {
@@ -140,7 +140,7 @@
 
 .EditListModal__cancel-button {
   background-color: white;
-  border: solid 1px rgb(36, 240, 172);
+  border: solid 1px var(--color-primary);
 
   color: rgb(2, 215, 144);
 }

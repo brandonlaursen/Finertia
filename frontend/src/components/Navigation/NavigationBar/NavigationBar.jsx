@@ -3,7 +3,13 @@ import { FaSpaceShuttle } from "react-icons/fa";
 
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Link, useLocation, Outlet, Navigate, NavLink } from "react-router-dom";
+import {
+  useLocation,
+  Outlet,
+  Navigate,
+  NavLink,
+  useNavigate,
+} from "react-router-dom";
 
 import SearchBar from "../SearchBar/SearchBar";
 import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
@@ -19,13 +25,14 @@ function NavigationBar() {
   const sessionUser = useSelector(selectUser);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
       const header = document.querySelector(".stocks__header");
       if (header) {
         const offset = header.getBoundingClientRect().top;
-        setScrolled(offset <= 80);
+        setScrolled(offset <= 74);
       }
     };
 
@@ -38,7 +45,7 @@ function NavigationBar() {
   return (
     <>
       <nav className={`${routeClass} ${scrolled && "scrolled"}`}>
-        <NavLink className={`Navigation__logo__container`}>
+        <NavLink className={`Navigation__logo-container`}>
           <FaSpaceShuttle id="Navigation__logo" />
         </NavLink>
 
@@ -47,7 +54,12 @@ function NavigationBar() {
         <HamburgerMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
 
         <div className={`Navigation__links ${isMenuOpen && "show"}`}>
-          <Link to="/stocks">Home</Link>
+          <span
+            className="NavigationBar__home-btn"
+            onClick={() => navigate("/stocks")}
+          >
+            Home
+          </span>
           <AccountDropdown sessionUser={sessionUser} />
         </div>
       </nav>

@@ -42,7 +42,7 @@
 
 .WelcomePageNavbar__menu-item {
   height: var(--button-height);
-  width: 110px;
+  width: 100px;
 
   display: inline-flex;
   justify-content: center;

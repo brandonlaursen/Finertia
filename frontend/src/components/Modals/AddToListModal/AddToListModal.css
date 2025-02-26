@@ -157,7 +157,7 @@
 }
 
 .container-one___input:focus {
-  border: solid 1px rgb(36, 240, 172);
+  border: solid 1px var(--color-primary);
 }
 
 .container-one___input__buttons {
@@ -216,7 +216,6 @@
 .AddToListModal__checkbox-container {
   display: flex;
   align-items: center;
-
 }
 
 .checkbox-wrapper {
@@ -224,7 +223,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 
 .checkbox-wrapper input[type="checkbox"] {
@@ -295,5 +293,3 @@ input.checked {
 .AddToListModal__section__button:disabled {
   background-color: rgb(138, 138, 138);
 }
-
-

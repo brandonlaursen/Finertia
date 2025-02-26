@@ -259,7 +259,7 @@
 }
 
 .CreateList__section__input:focus {
-  border: solid 1px rgb(36, 240, 172);
+  border: solid 1px var(--color-primary);
 }
 
 .CreateList__section__buttons {
@@ -287,7 +287,7 @@
   color: rgb(2, 215, 144);
   background-color: white;
 
-  border: solid 1px rgb(36, 240, 172);
+  border: solid 1px var(--color-primary);
 }
 
 .CreateList__cancel-button:hover {
@@ -304,9 +304,6 @@
 .CreateList__create-button:hover {
   background-color: rgb(7, 196, 133);
 }
-
-
-
 
 .WatchListModal__close-button {
   height: 22px;

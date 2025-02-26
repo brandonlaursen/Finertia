@@ -11,12 +11,12 @@
 
   padding-top: 5px;
 
-  background-color: rgb(255, 255, 255);
+  background-color: var(--color-white);
 
   z-index: 2;
 }
 
-.Navigation__logo__container {
+.Navigation__logo-container {
   width: 80px;
 
   display: flex;
@@ -31,12 +31,13 @@
   width: 35px;
 
   cursor: pointer;
-  color: black;
+  color: var(--color-black);
+
   transition: color 0.3s ease-in-out;
 }
 
 #Navigation__logo:hover {
-  color: rgb(36, 240, 172);
+  color: var(--color-primary);
 }
 
 .Navigation__links {
@@ -48,23 +49,38 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+
   gap: 24px;
 
   z-index: 0;
+  padding-right: 10px;
 }
 
-.Navigation__links a {
-  font-size: 16px;
-  font-weight: bold;
+.NavigationBar__home-btn,
+.NavigationBar__account-btn {
+  font-size: 13px;
+  font-weight: 600;
 
-  color: rgb(0, 0, 0);
+  color: var(--color-black);
 
   text-decoration: none;
   cursor: pointer;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.NavigationBar__home-btn:hover,
+.AccountDropdown__span:hover {
+  color: var(--color-primary);
+}
+
+.AccountDropdown__span__active {
+  color: var(--color-primary);
 }
 
 .Navigation__links a:hover {
-  color: rgb(7, 222, 150);
+  color: var(--color-primary);
 }
 
 @media screen and (max-width: 1080px) {
@@ -87,12 +103,12 @@
     align-content: start;
     align-items: start;
 
-    background-color: rgb(255, 255, 255);
+    background-color: var(--color-white);
 
     border: solid rgb(205, 203, 203) 1px;
     border-top: none;
     border-right: none;
-    box-shadow: 0px 1px 1px rgb(152, 152, 152);
+    box-shadow: 0px 1px 1px var(--border-color);
   }
 
   #account-dropdown-text {

@@ -49,10 +49,15 @@ function AccountDropdown({ sessionUser }) {
   };
 
   return (
-    <span tabIndex={0} ref={accountDropdownRef} onClick={toggleAccountDropdown}>
+    <span
+      tabIndex={0}
+      ref={accountDropdownRef}
+      onClick={toggleAccountDropdown}
+      className="NavigationBar__account-btn"
+    >
       <span
         className={`AccountDropdown__span ${
-          isActive && "AccountDropdown__span__active" 
+          isActive && "AccountDropdown__span__active"
         }`}
         ref={accountSpanRef}
         onClick={() => setIsActive(!isActive)}
