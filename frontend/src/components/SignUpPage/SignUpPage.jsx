@@ -66,43 +66,38 @@ function SignUpPage() {
 
   return (
     <div className="SignUpPage">
-      <div className="SignUpPage__aside">
-        <Link className="SignUpPage__aside__logo" to="/welcome">
-          {" "}
+      <aside className="SignUpPage__aside">
+        <Link className="SignUpPage__aside-logo" to="/welcome">
           <FaSpaceShuttle />
           Finertia
         </Link>
 
-        <div className="SignUpPage__aside__title">
-          Create your login
-          <p></p>
-        </div>
+        <header className="SignUpPage__aside-header">Create your login</header>
 
-        <div className="SignUpPage__aside__description">
+        <sub className="SignUpPage__aside-subtext">
           We&apos;ll need your name, email address, and a unique password.
           You&apos;ll use this login to access Finertia next time.
-        </div>
+        </sub>
 
         <div className="SignUpPage__aside__image-container">
-          <div className="SignUpPage__aside__image"></div>
-          {/* <IoPlanetOutline className="SignUpPage__aside__image" /> */}
+          <figure className="SignUpPage__aside__image" />
         </div>
-      </div>
+      </aside>
 
-      <div className="SignUpPage__section">
-        <div className="SignUpPage__section__title">
+      <div className="SignUpPage__main">
+        <header className="SignUpPage__main-header">
           Enter your first and last name as they appear on your government ID.
-          You’ll use this login to access Robinhood next time.
-        </div>
+        </header>
 
-        <form onSubmit={handleSubmit} className="SignUpPage__section__form">
-          <div className="SignUpPage__form__section-one">
+        <form onSubmit={handleSubmit} className="SignUpPage__form">
+          <section className="SignUpPage__form__section-one">
             <input
               type="text"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
               required
               placeholder="First Name"
+              className="SignUpPage__form-input"
             />
 
             <input
@@ -111,16 +106,18 @@ function SignUpPage() {
               onChange={(e) => setLastName(e.target.value)}
               required
               placeholder="Last Name"
+              className="SignUpPage__form-input"
             />
-          </div>
+          </section>
 
-          <div className="SignUpPage__form__section-two">
+          <section className="SignUpPage__form__section-two">
             <input
               type="text"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
               placeholder="Email address"
+              className="SignUpPage__form-input"
             />
             <input
               type="text"
@@ -128,9 +125,10 @@ function SignUpPage() {
               onChange={(e) => setUsername(e.target.value)}
               required
               placeholder="Username"
+              className="SignUpPage__form-input"
             />
 
-            <div className="SignUpPage__form__section-three">
+            <div className="SignUpPage__form__password-container">
               <div className="SignUpPage__form__password">
                 <input
                   type={showPassword ? "text" : "password"}
@@ -138,6 +136,7 @@ function SignUpPage() {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                   placeholder="Password"
+                  className="SignUpPage__form-input"
                 />
                 <MdRemoveRedEye
                   className="SignUpPage__hide-icon"
@@ -152,6 +151,7 @@ function SignUpPage() {
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   required
                   placeholder="Confirm Password"
+                      className="SignUpPage__form-input"
                 />
                 <MdRemoveRedEye
                   className="SignUpPage__hide-icon"
@@ -175,7 +175,7 @@ function SignUpPage() {
             </div>
 
             <button type="submit">Sign Up</button>
-          </div>
+          </section>
         </form>
       </div>
     </div>

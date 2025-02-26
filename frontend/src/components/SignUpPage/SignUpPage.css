@@ -1,12 +1,13 @@
 .SignUpPage {
   width: 100%;
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
 
   display: flex;
   flex-direction: row;
 
-  background-color: rgb(0, 0, 0);
-  color: white;
+  background-color: var(--color-black);
+  color: var(--color-white);
 }
 
 .SignUpPage__aside {
@@ -15,142 +16,103 @@
   display: flex;
   flex-direction: column;
 
-  gap: 14px;
+  padding: 0px 64px 36px;
 
-  padding: 0 60px;
+  gap: var(--spacing-md);
 
-  box-shadow: 0 0 0 0.5px rgb(255, 255, 255);
-  /* box-shadow: 5px 0 10px rgba(255, 255, 255, 0.5); */
-
-
+  box-shadow: 0 0 0 0.5px var(--border-color);
 }
 
-.SignUpPage__aside__logo {
-  /* height: 150px; */
-
-  padding-top: 48px;
-  width: 100%;
-
+.SignUpPage__aside-logo {
   display: flex;
   align-items: center;
 
-  gap: 7px;
+  margin-bottom: 2rem;
+  margin-top: 40px;
+
+  gap: 8px;
 
   font-size: 24px;
   font-weight: bold;
 
-  color: white;
+  color: var(--color-white);
 
   text-decoration: none;
   cursor: pointer;
   transition: color 0.3s ease-in-out;
-  padding-bottom: 40px;
 }
 
-.SignUpPage__aside__logo:hover {
-  color: rgb(7, 222, 150);
+.SignUpPage__aside-logo:hover {
+  color: var(--color-primary);
 }
 
-.SignUpPage__aside__title {
-  /* height: 150px; */
-  width: 100%;
-
-  display: flex;
-  align-items: end;
-
-  font-size: 3em;
-  font-weight: bold;
-
-}
-
-.SignUpPage__aside__description {
-  /* height: 100px; */
-  width: 100%;
-
+.SignUpPage__aside-header {
   display: flex;
 
-  font-size: 17px;
+  font-size: 3rem;
+}
 
+.SignUpPage__aside-subtext {
+  display: flex;
   flex-wrap: wrap;
   word-wrap: break-word;
+
+  font-size: 14px;
+  line-height: 1.5;
+
   margin-top: 32px;
 }
 
 .SignUpPage__aside__image-container {
-
-  height: 60%;
   display: flex;
 
-  padding-top: 60px;
-
-
+  padding-top: 54px;
 }
 
 .SignUpPage__aside__image {
   height: 350px;
   width: 350px;
 
-
-  background-color: #000000;
-
   background-image: url("https://img.freepik.com/premium-vector/space-minimalist-simple-silhouette-vector-illustration_801978-39259.jpg?w=360");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
-
 }
 
-.SignUpPage__section {
+.SignUpPage__main {
   width: 50%;
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
 
-  padding: 0 60px;
+  padding: 128px 64px;
 }
 
-.SignUpPage__section__title {
-  height: 200px;
-
+.SignUpPage__main-header {
   display: flex;
-  align-items: flex-end;
-
-  padding-bottom: 1rem;
 
   font-size: 20px;
-}
+  font-weight: var(--font-weight-normal);
+  margin-bottom: 40px;
 
-.SignUpPage__section__form {
-  height: 100%;
+  line-height: 1.5;
 }
 
 .SignUpPage__form__section-one {
-  height: 100px;
-
   display: flex;
-  align-items: center;
-  align-content: center;
 
-  gap: 30px;
+  gap: 20px;
 }
 
-.SignUpPage__form__section-one input {
+.SignUpPage__form-input {
   height: 55px;
   width: 100%;
-
   padding-left: 10px;
-
-  font-size: 15px;
-
+  font-size: var(--font-base);
   background: transparent;
-
-  color: white;
-
-  border-style: solid;
-  border-color: rgb(48, 54, 58);
-  border-width: 1px;
+  color: var(--color-white);
+  border: 1px solid var(--border-color);
+  margin-bottom: 20px;
 }
 
 .SignUpPage__form__section-two {
@@ -158,63 +120,29 @@
 
   display: flex;
   flex-direction: column;
-
-  gap: 20px;
+  justify-content: center;
 }
 
-.SignUpPage__form__section-two input {
-  height: 55px;
-
-  padding-left: 10px;
-
-  font-size: 15px;
-
-  background: transparent;
-  color: white;
-
-  border-style: solid;
-  border-color: rgb(48, 54, 58);
-  border-width: 1px;
-}
-
-.SignUpPage__form__section-three {
+.SignUpPage__form__password-container {
   display: flex;
   flex-direction: column;
-
-  gap: 20px;
 }
 
 .SignUpPage__form__password {
-  width: 100%;
-
   position: relative;
   display: flex;
   align-items: center;
 }
 
-.SignUpPage__form__password input {
-  height: 55px;
-  width: 100%;
-
-  padding-left: 10px;
-  padding-right: 50px;
-
-  font-size: 15px;
-
-  background: transparent;
-  color: white;
-
-  border: 1px solid rgb(48, 54, 58);
-}
-
 .SignUpPage__hide-icon {
   position: absolute;
   right: 15px;
+  top: 15px;
 
   font-size: 24px;
 
   background-color: transparent;
-  color: rgb(255, 255, 255);
+  color: var(--button-border-white);
 
   cursor: pointer;
 }
@@ -234,7 +162,7 @@
   padding-left: 10px;
   gap: 0px;
 
-  font-size: 17px !important;
+  font-size: var(--font-base);
 
   background-color: rgb(30, 33, 37);
 
@@ -249,26 +177,25 @@
   margin-right: 10px;
 }
 
-.SignUpPage__section__form button {
-  height: 54px;
+.SignUpPage__form button {
+  height: 40px;
   width: 50%;
-  max-width: 250px;
+  min-width: 180px;
+  max-width: 220px;
 
   align-self: center;
 
-  font-weight: bold;
+  font-weight: var(--font-weight-bold);
 
-  background-color: #ffffff;
-  color: #1c180d;
+  background-color: var(--color-white);
+  color: var(--color-black);
 
-  border: 1px solid #ffffff;
-  border-radius: 36px;
-
-  cursor: pointer;
+  border: 1px solid var(--color-white);
+  border-radius: var(--button-border-radius-lg);
 }
 
-.SignUpPage__section__form button:hover {
-  color: rgb(61, 61, 61);
+.SignUpPage__form button:hover {
+  background-color: var(--color-accent);
 }
 
 input:focus {
@@ -276,56 +203,38 @@ input:focus {
   outline: none;
 }
 
-@media (max-width: 770px) {
-  .SignUpPage__hide-icon {
-    right: 10px;
-
-    font-size: 20px;
-  }
-}
 
 @media screen and (max-width: 770px) {
   .SignUpPage {
     width: 100%;
-    height: 100vh;
+    height: 100%;
 
     flex-direction: column;
-
-    /* padding-bottom: 30px; */
   }
 
   .SignUpPage__aside {
     width: 100%;
-
-    padding: 10px 20px;
-
-    padding-bottom: 24px;
+    padding: 0px 24px 24px;
 
     gap: 0px;
 
+    box-shadow: 0 1px 0 0 var(--border-color);
+    margin-bottom: 8px;
   }
 
-  .SignUpPage__aside__logo {
-    /* height: 10px; */
-
-    font-size: 18px;
-    padding-top: 10px;
-    padding-bottom: 16px;
-    /* background-color: rebeccapurple; */
+  .SignUpPage__aside-logo {
+    font-size: 20px;
+    margin-top: 14px;
   }
 
-  .SignUpPage__aside__title {
-    height: 50px;
-
-    font-size: 40px;
-
-
+  .SignUpPage__aside-header {
+    font-size: 32px;
+    font-weight: var(--font-weight-normal);
+    line-height: 32px;
   }
 
-  .SignUpPage__aside__description {
-
-    font-size: 16px;
-    line-height: 1.5;
+  .SignUpPage__aside-subtext {
+    font-size: 14px;
   }
 
   .SignUpPage__aside__image-container {
@@ -336,41 +245,18 @@ input:focus {
     display: none;
   }
 
-  .SignUpPage__section {
+  .SignUpPage__main {
     width: 100%;
-
-    display: flex;
-    padding: 24px 20px;
-  }
-
-  .SignUpPage__section__title {
-    padding-top: 44px;
-    height: 36px;
-    font-size: 16px;
-    line-height: 1.5;
-  }
-
-  .signup-page__instructions {
-    height: 100px;
-    width: 100%;
-
-    display: flex;
-    align-items: center;
-
-    font-size: 24px;
-  }
-}
-
-@media (max-width: 770px) and (max-height: 660px) {
-  .SignUpPage {
     height: 100%;
+
+    background-color: rgb(0, 0, 0);
+    padding: 16px 24px 40px;
   }
 
-  .SignUpPage__aside__description {
-    display: none;
-  }
+  .SignUpPage__main-header {
+    font-size: 14px;
 
-  .SignUpPage__section__form {
-    height: 100%;
+    font-weight: 100;
+
+    margin-bottom: 20px;
   }
-}
