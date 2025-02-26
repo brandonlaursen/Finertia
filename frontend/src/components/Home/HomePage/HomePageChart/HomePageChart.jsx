@@ -19,6 +19,7 @@ function HomePageChart({ stockSummary, selectedTimeFrame }) {
     }
   }, [fiveMinAggregates, oneHourUserAggregates, oneDayAggregates, selectedTimeFrame]);
 
+  console.log(data)
   // Compute dynamic values
   const { dynamicMin, dynamicMax, middleValue } = useMemo(() => {
     const relevantValues = data
