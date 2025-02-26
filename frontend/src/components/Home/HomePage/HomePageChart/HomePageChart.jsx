@@ -28,7 +28,7 @@ function HomePageChart({ stockSummary, selectedTimeFrame }) {
     const minValue = Math.min(...relevantValues);
     const maxValue = Math.max(...relevantValues);
     const range = maxValue - minValue;
-    const padding = Math.max(range * 0.1, 0.5);
+    const padding = Math.max(range * 1, 0.5);
     const dynamicMin = minValue - padding;
     const dynamicMax = maxValue + padding;
 

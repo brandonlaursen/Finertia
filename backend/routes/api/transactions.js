@@ -140,12 +140,16 @@ router.get("/stock-summary", async (req, res) => {
     processedTransactions
   );
 
+
   const mergedTransactionData = mergeTransactionAndAggregateData(
     processedTransactions,
     processedHistoricalData
   );
 
+  // console.log(mergedTransactionData);
+
   const mergedTransactionDataArray = Object.values(mergedTransactionData);
+
 
   const lastTransaction =
     mergedTransactionDataArray[mergedTransactionDataArray.length - 1];
@@ -178,7 +182,7 @@ router.get("/stock-summary", async (req, res) => {
 
   // Aggregate to hourly and daily snapshots.
   const oneHourUserAggregates = aggregatePoints(userHistoricalData, oneHourMs);
-
+  console.log(oneHourUserAggregates)
   const oneDayUserAggregates = aggregatePoints(userHistoricalData, oneDayMs);
 
   const userSummary = {

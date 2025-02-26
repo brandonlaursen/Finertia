@@ -94,10 +94,8 @@ function processTransactionSummary(userTransactions, accountTransactions) {
     summary.balance = balance;
     summary.investments = investments;
 
-    const stocksHoldingsCopy = {...stocksHoldings}
-
+    const stocksHoldingsCopy = JSON.parse(JSON.stringify(stocksHoldings))
     summary.stockSharesOwned = stocksHoldingsCopy;
-   
     processedTransactions[roundedTo5minInterval] = summary
 
   }
