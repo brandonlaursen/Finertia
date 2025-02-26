@@ -3,7 +3,7 @@
   justify-content: center;
 
   margin-top: 85px;
-  padding-left: 20px;
+  /* margin-left: 10px; */
 }
 
 .HomePage__body {
@@ -14,10 +14,9 @@
 }
 
 .HomePage__main {
-  width: 60vw;
-  max-width: 850px;
+  width: 70vw;
+  max-width: 900px;
   min-width: 400px;
-
 
   transition: width 0.3s smooth;
 
@@ -32,20 +31,21 @@
   display: flex;
   flex-direction: column;
 
-  padding-left: 10px;
-  /* padding-right: 10px; */
+  /* padding-left: 10px; */
+  padding-right: 10px;
 }
 
 .HomePage__main__title {
-  height: 33px;
+  height: 32px;
 
   display: flex;
 
   font-size: 30px;
-  font-weight: bold;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 12px;
 }
 
-.HomePage__main__subtitle {
+/* .HomePage__main__subtitle {
   height: 100px;
 
   display: flex;
@@ -53,15 +53,43 @@
 
   font-size: 40px;
   font-weight: bold;
-}
+} */
 
 .HomePage__main__user-info {
   height: 50px;
 
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  /* align-items: center; */
+  gap: 4px;
+}
 
-  font-size: 24px;
+.HomePage__investments {
+  font-size: 30px;
+  font-weight: var(--font-weight-bold);
+}
+
+.HomePage__percent-change {
+  font-weight: var(--font-weight-bold);
+  font-size: 14px;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  text-align: center;
+}
+
+.HomePage__triangleIconDown {
+  height: 28px;
+  width: 28px;
+
+  color: rgb(248, 124, 14);
+}
+
+.HomePage__triangleIconUp {
+  height: 28px;
+  width: 28px;
+
+  color: rgb(14, 248, 37);
 }
 
 .HomePage__main__buying-power {
@@ -140,7 +168,6 @@
   background-color: rgb(51, 51, 51);
 }
 
-
 /* Extra Large Screens (Desktops & TVs) */
 @media (min-width: 1440px) {
   /* Styles for large desktop screens */
@@ -153,7 +180,7 @@
 @media (max-width: 1280px) {
   /* Styles for medium-sized desktops */
   .HomePage__main {
-    max-width: 750px;
+    max-width: 700px;
   }
 }
 
@@ -161,7 +188,7 @@
 @media (max-width: 1024px) {
   /* Adjust layouts, reduce container sizes */
   .HomePage__main {
-    max-width: 700px;
+    max-width: 600px;
   }
 }
 
