@@ -42,7 +42,7 @@ function HomePage() {
               </div>
               <BuyingPowerDropDown sessionUser={sessionUser} />
             </div>
-            <div className="HomePage__main__subtitle">Welcome to Finertia</div>
+            {/* <div className="HomePage__main__subtitle">Welcome to Finertia</div> */}
           </div>
 
           <NewsFeed />

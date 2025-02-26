@@ -32,7 +32,7 @@
   display: flex;
   flex-direction: column;
 
-  /* padding-left: 10px; */
+  padding-left: 10px;
   /* padding-right: 10px; */
 }
 
@@ -76,7 +76,8 @@
   cursor: pointer;
 
   border-bottom: 1px solid var(--border-color);
-  border-top: 1px solid var(--border-color);
+  margin-bottom: 20px;
+  /* border-top: 1px solid var(--border-color); */
 }
 
 .HomePage__main__buying-power-span {
