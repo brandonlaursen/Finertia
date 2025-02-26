@@ -3,23 +3,37 @@ import ReactApexChart from "react-apexcharts";
 import "./HomePageChart.css";
 
 function HomePageChart({ stockSummary, selectedTimeFrame }) {
-  const { fiveMinAggregates, oneHourUserAggregates, oneDayAggregates } = stockSummary;
-  const [data, setData] = useState(fiveMinAggregates);
+  const {
+    oneDayFiveMinAggregates,
+    oneWeekOneHourAggregates,
+    oneMonthOneHourAggregates,
+    threeMonthOneDayAggregates,
+    oneYearOneDayAggregates,
+    fiveYearOneDayAggregates,
+  } = stockSummary;
+  const [data, setData] = useState(oneDayFiveMinAggregates);
 
   useEffect(() => {
     let aggregates;
-    if (selectedTimeFrame === "1D") aggregates = fiveMinAggregates;
-    if (selectedTimeFrame === "1W") aggregates = oneHourUserAggregates;
-    if (selectedTimeFrame === "1M") aggregates = oneHourUserAggregates;
-    if (selectedTimeFrame === "3M") aggregates = oneDayAggregates;
-    if (selectedTimeFrame === "1Y") aggregates = oneDayAggregates;
-    if (selectedTimeFrame === "5Y") aggregates = oneDayAggregates;
+    if (selectedTimeFrame === "1D") aggregates = oneDayFiveMinAggregates;
+    if (selectedTimeFrame === "1W") aggregates = oneWeekOneHourAggregates;
+    if (selectedTimeFrame === "1M") aggregates = oneMonthOneHourAggregates;
+    if (selectedTimeFrame === "3M") aggregates = threeMonthOneDayAggregates;
+    if (selectedTimeFrame === "1Y") aggregates = oneYearOneDayAggregates;
+    if (selectedTimeFrame === "5Y") aggregates = fiveYearOneDayAggregates;
     if (aggregates) {
       setData(aggregates);
     }
-  }, [fiveMinAggregates, oneHourUserAggregates, oneDayAggregates, selectedTimeFrame]);
+  }, [
+    oneDayFiveMinAggregates,
+    oneWeekOneHourAggregates,
+    oneMonthOneHourAggregates,
+    threeMonthOneDayAggregates,
+    oneYearOneDayAggregates,
+    fiveYearOneDayAggregates,
+    selectedTimeFrame,
+  ]);
 
-  console.log(data)
   // Compute dynamic values
   const { dynamicMin, dynamicMax, middleValue } = useMemo(() => {
     const relevantValues = data
@@ -41,70 +55,75 @@ function HomePageChart({ stockSummary, selectedTimeFrame }) {
   }, [data]);
 
   // Memoize chart options so they update only when dynamic values or selectedTimeFrame change
-  const options = useMemo(() => ({
-    grid: { show: false },
-    colors: ["#00E396"],
-    stroke: { width: 3, curve: "straight" },
-    fill: {
-      type: "gradient",
-      gradient: {
-        shade: "light",
-        type: "horizontal",
-        shadeIntensity: 0.6,
-        opacityFrom: 1,
-        opacityTo: 1,
+  const options = useMemo(
+    () => ({
+      grid: { show: false },
+      colors: ["#00E396"],
+      stroke: { width: 3, curve: "straight" },
+      fill: {
+        type: "gradient",
+        gradient: {
+          shade: "light",
+          type: "horizontal",
+          shadeIntensity: 0.6,
+          opacityFrom: 1,
+          opacityTo: 1,
+        },
       },
-    },
-    chart: {
-      type: "line",
-      height: 350,
-      zoom: { enabled: false },
-      sparkline: { enabled: true },
-      toolbar: { show: false },
-    },
-    xaxis: {
-      type: "datetime",
-      labels: { show: false },
-      axisTicks: { show: false, color: "#e0e0e0" },
-      axisBorder: { show: false, color: "#e0e0e0" },
-      crosshairs: {
-        show: true,
-        stroke: { color: "#b6b6b6", width: 1, dashArray: 0 },
+      chart: {
+        type: "line",
+        height: 350,
+        zoom: { enabled: false },
+        sparkline: { enabled: true },
+        toolbar: { show: false },
       },
-      tooltip: { enabled: false },
-    },
-    yaxis: {
-      min: dynamicMin,
-      max: dynamicMax,
-      labels: { show: false },
-      axisBorder: { show: false },
-      axisTicks: { show: false },
-    },
-    annotations: {
-      yaxis: [{
-        y: middleValue,
-        borderColor: "grey",
-        borderWidth: 1,
-        strokeDashArray: "1, 15",
-      }],
-    },
-    tooltip: {
-      x: {
-        formatter: (val) =>
-          new Date(val).toLocaleDateString("en-US", {
-            timeZone: "America/New_York",
-            month: "short",
-            day: "numeric",
-            hour: "numeric",
-            minute: "numeric",
-          }),
+      xaxis: {
+        type: "datetime",
+        labels: { show: false },
+        axisTicks: { show: false, color: "#e0e0e0" },
+        axisBorder: { show: false, color: "#e0e0e0" },
+        crosshairs: {
+          show: true,
+          stroke: { color: "#b6b6b6", width: 1, dashArray: 0 },
+        },
+        tooltip: { enabled: false },
       },
-      y: {
-        formatter: (value) => `$${value.toFixed(2)}`,
+      yaxis: {
+        min: dynamicMin,
+        max: dynamicMax,
+        labels: { show: false },
+        axisBorder: { show: false },
+        axisTicks: { show: false },
       },
-      marker: { show: false },
-    },
-  }), [dynamicMin, dynamicMax, middleValue]);
+      annotations: {
+        yaxis: [
+          {
+            y: middleValue,
+            borderColor: "grey",
+            borderWidth: 1,
+            strokeDashArray: "1, 15",
+          },
+        ],
+      },
+      tooltip: {
+        x: {
+          formatter: (val) =>
+            new Date(val).toLocaleDateString("en-US", {
+              timeZone: "America/New_York",
+              month: "short",
+              day: "numeric",
+              hour: "numeric",
+              minute: "numeric",
+            }),
+        },
+        y: {
+          formatter: (value) => `$${value.toFixed(2)}`,
+        },
+        marker: { show: false },
+      },
+    }),
+    [dynamicMin, dynamicMax, middleValue]
+  );
 
   const series = [
     {
