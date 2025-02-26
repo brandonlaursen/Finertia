@@ -161,15 +161,16 @@ router.get("/stock-summary", async (req, res) => {
     })
   );
 
+
   function aggregatePoints(points, bucketDurationMs) {
     const buckets = {};
     points.forEach((point) => {
       // Round down the timestamp to the start of the bucket.
-      const bucketKey =
-        Math.floor(point.x / bucketDurationMs) * bucketDurationMs;
-      // For each bucket, keep the point with the latest timestamp.
+      const bucketKey = Math.floor(point.x / bucketDurationMs) * bucketDurationMs;
+      // For each bucket, keep the point with the latest timestamp,
+      // but override its x value with the bucket key.
       if (!buckets[bucketKey] || point.x > buckets[bucketKey].x) {
-        buckets[bucketKey] = point;
+        buckets[bucketKey] = { ...point, x: bucketKey };
       }
     });
     // Return the aggregated points sorted by time.
@@ -180,9 +181,7 @@ router.get("/stock-summary", async (req, res) => {
   const oneHourMs = 60 * 60 * 1000;
   const oneDayMs = 24 * oneHourMs;
 
-  // Aggregate to hourly and daily snapshots.
   const oneHourUserAggregates = aggregatePoints(userHistoricalData, oneHourMs);
-  console.log(oneHourUserAggregates)
   const oneDayUserAggregates = aggregatePoints(userHistoricalData, oneDayMs);
 
   const userSummary = {
