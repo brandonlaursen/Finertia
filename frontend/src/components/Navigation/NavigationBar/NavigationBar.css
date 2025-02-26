@@ -22,8 +22,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
-  padding-left: 10px;
 }
 
 #Navigation__logo {
@@ -34,7 +32,8 @@
   color: var(--color-black);
 
   transition: color 0.3s ease-in-out;
-  margin-right: 8px;
+  margin-right: 16px;
+  margin-left: 16px;
 }
 
 #Navigation__logo:hover {
@@ -89,27 +88,39 @@
     width: 100%;
 
     display: none;
-    flex-direction: column;
+
+    padding: 10px;
+    gap: 0;
+
+    border-radius: 4px;
+
   }
 
   .Navigation__links.show {
-    height: 300px;
+
     width: 135px;
 
     position: absolute;
-    right: 0;
-    top: 85px;
+    right: 16px;
+    top: 65px;
 
     display: flex;
-    align-content: start;
-    align-items: start;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 16px 16px;
+    gap: 16px;
+
+
+
+
+
+
 
     background-color: var(--color-white);
+    background-color: aqua;
 
-    border: solid rgb(205, 203, 203) 1px;
-    border-top: none;
-    border-right: none;
-    box-shadow: 0px 1px 1px var(--border-color);
+    border: solid var(--border-color) 1px;
+
   }
 
   #account-dropdown-text {
@@ -117,7 +128,6 @@
   }
 
   .Navigation__links a {
-    padding: 10px;
-    text-align: center;
+
   }
 }

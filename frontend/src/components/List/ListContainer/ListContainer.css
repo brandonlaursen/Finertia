@@ -4,7 +4,6 @@
 
 .WatchList-Stocks-container {
   height: 86vh;
-  width: 300px;
 
   position: sticky;
   top: 86px;
@@ -21,11 +20,19 @@
   scrollbar-width: none;
 
   border-top: 1px solid #ddd;
-
 }
 
 .WatchList-HomePage-container {
-  width: 340px;
+  /* width: 340px; */
+  /* width: 30vw;
+  max-width: 350px; */
+
+  width: 30vw;
+  max-width: 350px;
+  min-width: 250px;
+
+  transition: width 0.1s smooth;
+
   height: 86vh;
 
   position: sticky;
@@ -53,15 +60,10 @@
 
   padding: 0 20px;
 
-
   font-weight: bold;
 
   border-bottom: 1px solid #ddd;
-
-
 }
-
-
 
 .WatchList__lists {
   position: relative;
@@ -74,8 +76,6 @@
 .WatchList__create-list-icon {
   cursor: pointer;
 }
-
-
 
 .WatchList__create-list-span {
   height: 24px;
@@ -96,7 +96,59 @@
   border-radius: 5px;
 }
 
-.WatchListStocks-stocks-owned{
-
+.WatchListStocks-stocks-owned {
   border-bottom: 1px solid #ddd;
+}
+
+/* Extra Large Screens (Desktops & TVs) */
+@media (min-width: 1440px) {
+  /* Styles for large desktop screens */
+  .WatchList-HomePage-container {
+    max-width: 350px;
+  }
+}
+
+/* Large Desktops */
+@media (max-width: 1280px) {
+  /* Styles for medium-sized desktops */
+  .WatchList-HomePage-container {
+    max-width: 300px;
+  }
+}
+
+/* Small Desktops & Large Tablets */
+@media (max-width: 1024px) {
+  /* Adjust layouts, reduce container sizes */
+  .WatchList-HomePage-container {
+    max-width: 280px;
+  }
+}
+
+/* Tablets (Portrait & Small Laptops) */
+@media (max-width: 768px) {
+  /* Stack columns, adjust text sizes, shrink margins */
+  .WatchList-HomePage-container {
+    width: 20vw;
+    max-width: 250px;
+  }
+}
+
+/* Large Phones (Landscape Mode) */
+@media (max-width: 700px) {
+  /* Reduce button sizes, make touch targets larger */
+  .WatchList-HomePage-container {
+    /* width: 90%;
+    max-width: none; */
+    display: none;
+  }
+}
+
+/* Most Mobile Phones (Portrait Mode) */
+@media (max-width: 480px) {
+  /* Full-width elements, simplify layouts */
+}
+
+/* Very Small Phones */
+@media (max-width: 360px) {
+  /* Reduce paddings/margins for ultra-small screens */
 }

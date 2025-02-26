@@ -16,6 +16,7 @@
   border-bottom: solid 1px rgb(230, 230, 230);
 
   cursor: pointer;
+
 }
 
 .NewsArticle__main {
@@ -24,6 +25,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding-right: 10px;
 }
 
 .NewsArticle__main span:first-child {
@@ -41,11 +43,11 @@
 }
 
 .NewsArticle__main span:nth-child(2) {
-  font-size: 18px;
+  font-size: 14px;
 }
 
 .NewsArticle__main span:nth-child(3) {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: bold;
 }
 
@@ -63,4 +65,17 @@
   object-fit: contain;
 
   border-radius: 4px;
+}
+
+
+@media (max-width: 700px) {
+  /* Reduce button sizes, make touch targets larger */
+  .NewsArticle__main span:nth-child(2) {
+    font-size: 12px;
+  }
+
+  .NewsArticle__main span:nth-child(3) {
+    font-size: 13px;
+    font-weight: bold;
+  }
 }

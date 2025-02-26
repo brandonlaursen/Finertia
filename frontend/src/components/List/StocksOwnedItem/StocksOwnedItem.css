@@ -1,5 +1,6 @@
 .StocksOwnedItem__container-subtitle{
-  font-size: 12px;
+  font-size: 11px;
+  word-wrap: break-word;
 
 }
 

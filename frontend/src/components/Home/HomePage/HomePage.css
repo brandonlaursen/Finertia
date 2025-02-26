@@ -3,32 +3,37 @@
   justify-content: center;
 
   margin-top: 85px;
+  padding-left: 20px;
 }
 
 .HomePage__body {
   display: flex;
   justify-content: center;
 
-  gap: 20px;
+  gap: 1vw;
 }
 
 .HomePage__main {
-  width: 950px;
+  width: 60vw;
+  max-width: 850px;
+  min-width: 400px;
+
+
+  transition: width 0.3s smooth;
 
   display: flex;
   flex-direction: column;
-  flex: 1;
 
   padding-top: 36px;
-  padding-right: 30px;
+  padding-right: 1vw;
 }
 
 .HomePage__main__section {
   display: flex;
   flex-direction: column;
 
-  padding-left: 10px;
-  padding-right: 10px;
+  /* padding-left: 10px; */
+  /* padding-right: 10px; */
 }
 
 .HomePage__main__title {
@@ -38,15 +43,6 @@
 
   font-size: 30px;
   font-weight: bold;
-}
-
-.HomePage__main__banner {
-  /* height: 270px; */
-
-  /* background-image: url("https://png.pngtree.com/png-clipart/20240512/original/pngtree-flying-space-shuttle-on-space-with-planets-and-asteroid-in-cartoon-png-image_15072578.png");
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat; */
 }
 
 .HomePage__main__subtitle {
@@ -68,10 +64,6 @@
   font-size: 24px;
 }
 
-
-
-
-
 .HomePage__main__buying-power {
   height: 75px;
 
@@ -83,8 +75,8 @@
 
   cursor: pointer;
 
-  border-bottom: 1px solid rgb(237, 237, 237);
-  border-top: 1px solid rgb(237, 237, 237);
+  border-bottom: 1px solid var(--border-color);
+  border-top: 1px solid var(--border-color);
 }
 
 .HomePage__main__buying-power-span {
@@ -103,7 +95,6 @@
 
   display: flex;
   justify-content: end;
-
 }
 
 .HomePage__main__dropdown-contents {
@@ -112,14 +103,11 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-
 }
 
 .dropdown-contents-text-container {
   height: 60%;
-  border-bottom: 2px solid rgb(237, 237, 237);
-
-
+  border-bottom: 2px solid var(--border-color);
 }
 
 .dropdown-contents-text {
@@ -127,19 +115,16 @@
   justify-content: space-between;
   height: 50%;
   align-items: center;
-
 }
 
-.dropdown-contents-text-button-container{
-
+.dropdown-contents-text-button-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 30%;
-
 }
 
-.dropdown-contents-text-button{
+.dropdown-contents-text-button {
   background-color: black;
   color: white;
   width: 50%;
@@ -150,6 +135,59 @@
   margin-top: 10px;
 }
 
-.dropdown-contents-text-button:hover{
+.dropdown-contents-text-button:hover {
   background-color: rgb(51, 51, 51);
+}
+
+
+/* Extra Large Screens (Desktops & TVs) */
+@media (min-width: 1440px) {
+  /* Styles for large desktop screens */
+  .HomePage__main {
+    max-width: 850px;
+  }
+}
+
+/* Large Desktops */
+@media (max-width: 1280px) {
+  /* Styles for medium-sized desktops */
+  .HomePage__main {
+    max-width: 750px;
+  }
+}
+
+/* Small Desktops & Large Tablets */
+@media (max-width: 1024px) {
+  /* Adjust layouts, reduce container sizes */
+  .HomePage__main {
+    max-width: 700px;
+  }
+}
+
+/* Tablets (Portrait & Small Laptops) */
+@media (max-width: 768px) {
+  /* Stack columns, adjust text sizes, shrink margins */
+  .HomePage__main {
+    width: 40vw;
+    max-width: 600px;
+  }
+}
+
+/* Large Phones (Landscape Mode) */
+@media (max-width: 700px) {
+  /* Reduce button sizes, make touch targets larger */
+  .HomePage__main {
+    width: 90%;
+    max-width: none;
+  }
+}
+
+/* Most Mobile Phones (Portrait Mode) */
+@media (max-width: 480px) {
+  /* Full-width elements, simplify layouts */
+}
+
+/* Very Small Phones */
+@media (max-width: 360px) {
+  /* Reduce paddings/margins for ultra-small screens */
 }
