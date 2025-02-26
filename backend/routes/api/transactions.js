@@ -81,6 +81,8 @@ router.post("/withdraw", async (req, res) => {
   });
 });
 
+
+
 router.get("/stock-transactions", async (req, res) => {
   const { id } = req.user;
 
@@ -224,7 +226,6 @@ router.get("/stock-summary", async (req, res) => {
   );
   const fiveYearOneDayAggregates = aggregatePoints(fiveYearData, oneDayMs);
 
-  // Now organize the results into an object:
   const aggregates = {
     oneDayFiveMinAggregates,
     oneWeekOneHourAggregates,
@@ -240,9 +241,7 @@ router.get("/stock-summary", async (req, res) => {
     totalInvestments: lastTransaction.totalInvestments,
     balance: lastTransaction.balance,
     stocksOwned: lastTransaction.stocksOwned,
-    // fiveMinAggregates: userHistoricalData,
-    // oneHourUserAggregates: oneHourUserAggregates,
-    // oneDayAggregates: oneDayUserAggregates,
+
     oneDayFiveMinAggregates,
     oneWeekOneHourAggregates,
     oneMonthOneHourAggregates,
