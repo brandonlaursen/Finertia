@@ -14,7 +14,8 @@
 }
 
 .HomePage__main {
-  width: 70vw;
+
+  width: 75vw;
   max-width: 900px;
   min-width: 400px;
 
@@ -31,7 +32,7 @@
   display: flex;
   flex-direction: column;
 
-  /* padding-left: 10px; */
+  padding-left: 10px;
   padding-right: 10px;
 }
 
@@ -40,9 +41,10 @@
 
   display: flex;
 
-  font-size: 30px;
+  font-size: 28px;
   font-weight: var(--font-weight-bold);
-  margin-bottom: 12px;
+
+  margin-bottom: 8px;
 }
 
 /* .HomePage__main__subtitle {
@@ -65,7 +67,7 @@
 }
 
 .HomePage__investments {
-  font-size: 30px;
+  font-size: 28px;
   font-weight: var(--font-weight-bold);
 }
 
@@ -106,6 +108,7 @@
   border-bottom: 1px solid var(--border-color);
   margin-bottom: 20px;
   /* border-top: 1px solid var(--border-color); */
+  font-size: 16px;
 }
 
 .HomePage__main__buying-power-span {
@@ -124,6 +127,8 @@
 
   display: flex;
   justify-content: end;
+  font-size: 14px;
+  font-weight: var(--font-weight-normal);
 }
 
 .HomePage__main__dropdown-contents {
@@ -157,22 +162,24 @@
   background-color: black;
   color: white;
   width: 50%;
-  height: 80%;
+  height: 40px;
   border-radius: 20px;
   border: none;
   cursor: pointer;
   margin-top: 10px;
+  font-size: 14px;
+  font-weight: var(--font-weight-bold);
 }
 
 .dropdown-contents-text-button:hover {
-  background-color: rgb(51, 51, 51);
+  background-color: var(--color-tertiary);
 }
 
 /* Extra Large Screens (Desktops & TVs) */
 @media (min-width: 1440px) {
   /* Styles for large desktop screens */
   .HomePage__main {
-    max-width: 850px;
+    max-width: 1100px;
   }
 }
 
