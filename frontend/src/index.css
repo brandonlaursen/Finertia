@@ -11,13 +11,13 @@ body {
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
 
-  /* -webkit-font-smoothing: antialiased; */
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   -webkit-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  /* line-height: 1.5; */
+
   font-size: 100%;
   scroll-behavior: smooth;
 }
@@ -71,6 +71,8 @@ button {
   --color-muted: #888;
   --color-lightgrey: rgb(231, 231, 231);
 
+  --color-highlight: rgba(245, 248, 250);
+
   /* Button Padding */
   --button-padding: 0 32px;
 
@@ -82,7 +84,8 @@ button {
 
   --button-height: 40px;
 
-  --border-color: rgb(48, 54, 58);
+  --border-color: rgb(227, 233, 237);
+  --border-color-2: rgb(48, 54, 58);
 
   --dark-grey: #1e2125;
 }
