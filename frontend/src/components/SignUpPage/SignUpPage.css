@@ -111,8 +111,9 @@
   font-size: var(--font-base);
   background: transparent;
   color: var(--color-white);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--border-color-2);
   margin-bottom: 20px;
+  outline:none;
 }
 
 .SignUpPage__form__section-two {

@@ -1,5 +1,3 @@
-import "./StocksOwnedItem.css";
-
 import TinyChart from "../TinyChart/TinyChart";
 
 function StocksOwnedItem({ stock, navigate, stocks }) {
@@ -12,37 +10,34 @@ function StocksOwnedItem({ stock, navigate, stocks }) {
   const { o, h, c } = stockInfo.day;
 
   return (
-    <div
-      className="WatchListStocks__container"
+    <article
+      className="StockListItem"
       key={stockInfo?.id}
       onClick={() => navigate(`/stocks/${stockInfo?.symbol}`)}
     >
-      <div className="WatchListStocks__container-title-shares">
-        <span className="WatchListStocks__container-title">
-          {stockInfo?.symbol}
+      <section className="StockListItem__details">
+        <span>{stockInfo?.symbol}</span>
+        <span className="StockListItem__details__shares">
+          {sharesOwned ? `${sharesOwned?.toFixed(5)} Shares` : ""}
         </span>
-        <span className="StocksOwnedItem__container-subtitle">
-          {sharesOwned?.toFixed(5) ? `${sharesOwned?.toFixed(5)} Shares` : ""}
-        </span>
-      </div>
+      </section>
 
       <TinyChart o={o} h={h} c={c} />
-      <span className="WatchListStocks__container-data">
-        <span className={`WatchListStocks__container-price`}>
-          ${stockInfo?.current_price.toFixed(2)}
-        </span>
+
+      <section className="StockListItem__stats">
+        <span>${stockInfo?.current_price.toFixed(2)}</span>
         <span
-          className={`WatchListStocks__container-percent ${
+          className={`${
             stockInfo?.todays_change_percent.toFixed(2) > 0
-              ? "WatchListStocks__percent-green"
-              : "WatchListStocks__percent-red"
+              ? "StockListItem__percent-change-green"
+              : "StockListItem__percent-change-red"
           }`}
         >
           {stockInfo?.todays_change_percent.toFixed(2) > 0 && "+"}
           {stockInfo?.todays_change_percent.toFixed(2)}%
         </span>
-      </span>
-    </div>
+      </section>
+    </article>
   );
 }
 

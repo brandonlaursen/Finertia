@@ -48,15 +48,15 @@ function TinyChart({ o, h, c }) {
   });
 
   return (
-    <span className="WatchListStocks__container-graph">
+    <section className="StockListItem__graph">
       <ReactApexChart
         options={options}
         series={series}
         type="line"
-        height={10}
-        width={80}
+        height={20}
+        width={70}
       />
-    </span>
+    </section>
   );
 }
 

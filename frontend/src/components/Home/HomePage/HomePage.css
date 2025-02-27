@@ -72,7 +72,7 @@
 
 .HomePage__percent-change {
   font-weight: var(--font-weight-bold);
-  font-size: 14px;
+  font-size: 13px;
   display: flex;
   gap: 4px;
   align-items: center;
@@ -90,7 +90,7 @@
   height: 28px;
   width: 28px;
 
-  color: rgb(14, 248, 37);
+  color: var(--percent-change-positive);
 }
 
 .HomePage__main__buying-power {
@@ -162,13 +162,13 @@
   background-color: black;
   color: white;
   width: 50%;
-  min-width: 150px;
+  min-width: 130px;
   height: 40px;
   border-radius: 20px;
   border: none;
   cursor: pointer;
   margin-top: 10px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: var(--font-weight-bold);
 }
 

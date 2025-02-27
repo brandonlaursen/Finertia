@@ -1,15 +1,25 @@
 .WatchListStocks {
-  height: auto;
-  width: auto;
 
-  display: flex;
-  flex-direction: column;
-
-  font-size: 14px;
+  background-color: antiquewhite;
 }
 
-.WatchListStocks__container {
-  height: 64px;
+
+.StockListItems {
+  border-bottom: 1px solid var(--border-color);
+
+}
+
+.StockListItems__empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.StockListItem {
+  height: 60px;
   width: 100%;
 
   display: flex;
@@ -22,58 +32,61 @@
   cursor: pointer;
 }
 
-.WatchListStocks__container:hover {
-  background-color: rgb(247, 251, 255);
+.StockListItem:hover {
+  background-color: var(--color-highlight);
 }
 
-.WatchListStocks__container-title {
-  width: 64px;
-
+.StockListItem__details {
   display: flex;
-  align-content: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  flex: 1;
+
+  gap: 8px;
 
   font-weight: bold;
   font-size: 12px;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  min-width: 80px;
 }
 
-.WatchListStocks__container-graph {
-  height: 100%;
- 
+.StockListItem__details__shares {
+  font-size: 11px;
+  font-weight: 500;
+}
 
-  flex: 1;
-  text-align: center;
+.StockListItem__graph {
+
+  display: flex;
   align-content: center;
   justify-content: center;
   align-items: center;
-
-
+  flex: 2;
 }
 
-.WatchListStocks__container-data {
-  height: 100%;
-  width: 64px;
+.StockListItem__stats {
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  gap: 8px;
-
-  font-size: 12px;
-}
-
-.WatchListStocks__percent-green {
-  color: rgb(44, 202, 4);
-}
-
-.WatchListStocks__percent-red {
-  color: rgb(255, 29, 4);
-}
-
-.WatchListStocks__container-title-shares {
-  display: flex;
-  flex-direction: column;
+  flex: 1;
 
   gap: 8px;
+
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.StockListItem__percent-change-green {
+  color: var(--percent-change-positive);
+}
+
+.StockListItem__percent-change-red {
+  color: var(--percent-change-negative);
 }

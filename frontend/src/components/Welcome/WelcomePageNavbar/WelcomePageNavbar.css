@@ -51,12 +51,12 @@
 
   padding: var(--button-padding);
 
-  font-weight: var(--font-weight-normal);
+
 
   color: var(--color-white);
 
   font-size: var(--font-sm);
-  font-weight: var(--font-weight-norma);
+  font-weight: var(--font-weight-normal);
 
   border: var(--button-border-white);
   border-radius: var(--button-border-radius-lg);

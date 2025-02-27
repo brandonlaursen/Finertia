@@ -2,8 +2,8 @@
   margin-top: 30px;
 }
 
-.StockWatchList__container {
-  width: 300px;
+.StockWatchList__container{
+  width: 30vw;
   height: auto;
 
   position: sticky;
@@ -14,6 +14,8 @@
   align-items: center;
 
   gap: 24px;
+
+
 }
 
 .StockWatchList__body {
@@ -28,7 +30,7 @@
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.StockWatchList__title {
+/* .StockWatchList__title {
   height: 50%;
 
   display: flex;
@@ -40,7 +42,7 @@
   font-size: 15px;
 
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
+} */
 
 .StockWatchList__text {
   height: 50%;

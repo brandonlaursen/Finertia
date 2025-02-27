@@ -15,7 +15,7 @@ function ListStocks({ toggleListIds, list, stocks, sessionUser }) {
   return (
     <>
       {isListOpen && (
-        <div className="WatchListStocks">
+        <div className="StockListItems">
           {Stocks &&
             Stocks.map((stock) => {
               return (

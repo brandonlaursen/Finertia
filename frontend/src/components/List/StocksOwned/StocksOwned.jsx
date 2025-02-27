@@ -1,4 +1,3 @@
-import "./StocksOwned.css";
 
 import { useNavigate } from "react-router-dom";
 
@@ -16,7 +15,7 @@ function StocksOwned({ sessionUser, stocks }) {
   return (
     <>
       {
-        <div className="WatchListStocks-stocks-owned">
+        <div className="StockListItems">
           {stocksOwnedArray.length > 0 ? (
             stocksOwnedArray.map((stock) => {
               return (
@@ -29,7 +28,7 @@ function StocksOwned({ sessionUser, stocks }) {
               );
             })
           ) : (
-            <div className="WatchListStocks-stocks-owned-empty">
+            <div className="StockListItems__empty">
               Your portfolio is waiting to grow! 🚀 Start exploring stocks and
               make your first investment today.
             </div>

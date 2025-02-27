@@ -50,15 +50,15 @@ fetchInfo();
         {location.pathname === "/" && (
           <>
             <div className="WatchList__header">
-              <span className="WatchList__title">Stocks</span>
+              <span>Stocks</span>
             </div>
 
             {isLoaded &&  <StocksOwned stocks={stocks} sessionUser={sessionUser}/>}
           </>
         )}
 
-        <div className="WatchList__header WatchList__header-lists">
-          <span className="WatchList__title">Lists</span>
+        <div className="WatchList__header">
+          <span >Lists</span>
           <span className="WatchList__create-list-span">
             <OpenModalButton
               modalComponent={<CreateListModal />}
