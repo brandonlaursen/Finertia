@@ -115,54 +115,55 @@ function CreateListModal() {
   }
 
   return (
-    <div className="CreateListModal__step-one">
+    <div className="ChooseListType">
       <div
-        className="CreateListModal__step-one__overlay"
+        className="ChooseListType__overlay"
         onClick={closeModal}
       />
 
-      <div className="CreateListModal__step-one__container">
-        <div className="CreateListModal__step-one__content">
-          <header className="CreateListModal__step-one__header">
-            <h1 className="CreateListModal__step-one__title">
+      <div className="ChooseListType__wrapper">
+
+        <main className="ChooseListType__container">
+          <header className="ChooseListType__header">
+            <h1 className="ChooseListType__title">
               Choose a list type
             </h1>
-            <button className="CreateListModal__step-one__close-button">
+            <button className="ChooseListType__close-button">
               <MdClose
-                className="CreateListModal__step-one__close-button-icon"
+                className="ChooseListType__close-button-icon"
                 onClick={closeModal}
               />
             </button>
           </header>
 
-          <section className="CreateListModal__step-one__options">
+          <section className="ChooseListType__options">
 
             <div
-              className="CreateListModal__step-one__option"
+              className="ChooseListType__option"
               onClick={() => setIsOpen(true)}
             >
-              <div className="CreateListModal__step-one__option__image CreateListModal__step-one__image-one" />
+              <div className="ChooseListType__option__image ChooseListType__image-one" />
 
-              <div className="CreateListModal__step-one__option__text">
-                <span className="CreateListModal__step-one__text__title">
+              <div className="ChooseListType__option__text">
+                <span className="ChooseListType__text__title">
                   Create Watch List
                 </span>
-                <span className="CreateListModal__step-one__text__sub-text">
+                <span className="ChooseListType__text__sub-text">
                   Keep an on investments youre interested in
                 </span>
               </div>
 
             </div>
 
-            <div className="CreateListModal__step-one__option">
+            <div className="ChooseListType__option">
 
-              <div className="CreateListModal__step-one__option__image CreateListModal__step-one__image-two" />
+              <div className="ChooseListType__option__image ChooseListType__image-two" />
 
-              <div className="CreateListModal__step-one__option__text">
-                <span className="CreateListModal__step-one__text__title">
+              <div className="ChooseListType__option__text">
+                <span className="ChooseListType__text__title">
                   Create Screener
                 </span>
-                <span className="CreateListModal__step-one__text__sub-text">
+                <span className="ChooseListType__text__sub-text">
                   Find your next trade with filters for price, volume, and other
                   indicators
                 </span>
@@ -173,12 +174,12 @@ function CreateListModal() {
           </section>
 
           <button
-            className="CreateListModal__step-one__back-button"
+            className="ChooseListType__back-button"
             onClick={closeModal}
           >
             Go back
           </button>
-        </div>
+        </main>
       </div>
     </div>
   );

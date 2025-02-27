@@ -1,4 +1,7 @@
-.CreateListModal__step-one {
+/* ========== Modal Positioning & Overlay ========== */
+
+/* Centers the modal on the page */
+.ChooseListType {
   position: fixed;
   top: 375px;
   right: 0;
@@ -11,7 +14,8 @@
   z-index: 100;
 }
 
-.CreateListModal__step-one__overlay {
+/* Background overlay behind the modal */
+.ChooseListType__overlay {
   position: fixed;
   top: 0;
   right: 0;
@@ -21,7 +25,10 @@
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-.CreateListModal__step-one__container {
+/* ========== Modal Container ========== */
+
+/* ChooseListType wrapper */
+.ChooseListType__wrapper {
   height: 400px;
   width: 420px;
   display: flex;
@@ -34,26 +41,31 @@
   border-radius: 4px;
 }
 
-.CreateListModal__step-one__content {
+/* Main ChooseListType container */
+.ChooseListType__container {
   display: flex;
   flex-direction: column;
-
   padding: 10px 20px;
 }
 
-.CreateListModal__step-one__header {
+/* ========== ChooseListType Header ========== */
+
+/* Header section containing the title and close button */
+.ChooseListType__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 6px;
 }
 
-.CreateListModal__step-one__title {
+/* ChooseListType title */
+.ChooseListType__title {
   font-size: 18px;
   font-weight: 600;
 }
 
-.CreateListModal__step-one__close-button {
+/* Close button container */
+.ChooseListType__close-button {
   height: 34px;
   width: 34px;
 
@@ -67,24 +79,31 @@
   outline: none;
 }
 
-.CreateListModal__step-one__close-button-icon {
+/* Close button icon */
+.ChooseListType__close-button-icon {
   height: 30px;
   width: 30px;
-
   cursor: pointer;
 }
 
-.CreateListModal__step-one__close-button:hover {
+/* Hover effect for the close button */
+.ChooseListType__close-button:hover {
   background-color: var(--light-background-hover);
   border-radius: 4px;
 }
 
-.CreateListModal__step-one__options {
+/* ========== Options Container ========== */
+
+/* Container for options (Watch List & Screener) */
+.ChooseListType__options {
   display: flex;
   gap: 10px;
 }
 
-.CreateListModal__step-one__option {
+/* ========== Option Boxes ========== */
+
+/* Each option box (Watch List & Screener) */
+.ChooseListType__option {
   height: 260px;
   width: 185px;
 
@@ -97,7 +116,8 @@
   cursor: pointer;
 }
 
-.CreateListModal__step-one__option__image {
+/* Image container for each option */
+.ChooseListType__option__image {
   height: 60%;
   width: 100%;
 
@@ -107,46 +127,52 @@
   border-top-right-radius: 4px;
 }
 
-.CreateListModal__step-one__image-one {
+/* Watch List image */
+.ChooseListType__image-one {
   background-image: url("https://img.freepik.com/premium-vector/bright-telescope-cartoon-vector-illustration-white-background_1322560-79848.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-.CreateListModal__step-one__image-two {
+/* Screener image */
+.ChooseListType__image-two {
   background-image: url("https://i.etsystatic.com/27713397/r/il/ba1b96/4493269889/il_1080xN.4493269889_lz2v.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-.CreateListModal__step-one__option__text {
-  height: 40%;
+/* ========== Option Text Styling ========== */
 
+/* Container for text inside each option */
+.ChooseListType__option__text {
+  height: 40%;
   display: flex;
   flex-direction: column;
-
   gap: 4px;
   padding: 16px 8px;
 }
 
-.CreateListModal__step-one__text__title {
+/* Option title (e.g., "Create Watch List", "Create Screener") */
+.ChooseListType__text__title {
   font-weight: bold;
   font-size: 14px;
 }
 
-.CreateListModal__step-one__text__sub-text {
+/* Option description text */
+.ChooseListType__text__sub-text {
   font-size: 12px;
 }
 
-.CreateListModal__step-one__back-button {
-  height: 40px;
+/* ========== Back Button ========== */
 
+/* Back button */
+.ChooseListType__back-button {
+  height: 40px;
   margin-top: 20px;
 
   font-weight: bold;
-
   color: white;
   background-color: black;
 
@@ -156,9 +182,14 @@
   border: none;
 }
 
-.CreateListModal__step-one__back-button:hover {
+/* Hover effect for the back button */
+.ChooseListType__back-button:hover {
   background-color: var(--dark-grey);
 }
+
+
+
+
 
 /* second modal */
 .CreateListModal__two {
