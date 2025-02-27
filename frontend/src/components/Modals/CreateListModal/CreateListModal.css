@@ -23,7 +23,9 @@
 
 .CreateListModal__step-one__container {
   height: 400px;
-  width: 400px;
+  width: 420px;
+  display: flex;
+  justify-content: center;
 
   position: absolute;
 
@@ -84,7 +86,7 @@
 
 .CreateListModal__step-one__option {
   height: 260px;
-  width: 175px;
+  width: 185px;
 
   display: flex;
   flex-direction: column;
@@ -126,7 +128,7 @@
   flex-direction: column;
 
   gap: 4px;
-  padding: 8px;
+  padding: 16px 8px;
 }
 
 .CreateListModal__step-one__text__title {
