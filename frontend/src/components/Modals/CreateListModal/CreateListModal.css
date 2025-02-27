@@ -79,17 +79,16 @@
   outline: none;
 }
 
-/* Close button icon */
-.ChooseListType__close-button-icon {
-  height: 30px;
-  width: 30px;
-  cursor: pointer;
-}
-
 /* Hover effect for the close button */
 .ChooseListType__close-button:hover {
   background-color: var(--light-background-hover);
   border-radius: 4px;
+}
+
+/* Close button icon */
+.ChooseListType__close-button-icon {
+  height: 30px;
+  width: 30px;
 }
 
 /* ========== Options Container ========== */
@@ -187,14 +186,10 @@
   background-color: var(--dark-grey);
 }
 
-
-
-
-
 /* second modal */
-.CreateListModal__two {
+.CreateList {
   position: fixed;
-  top: 255px;
+  top: 245px;
   right: 0;
   left: 0;
 
@@ -205,7 +200,7 @@
   z-index: 100;
 }
 
-.CreateListModal__two__background {
+.CreateList__overlay {
   position: fixed;
   top: 0;
   right: 0;
@@ -215,8 +210,8 @@
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-.CreateListModal__two__container {
-  height: 175px;
+.CreateList__container {
+  height: 165px;
   width: 420px;
 
   position: absolute;
@@ -228,22 +223,48 @@
 
   background-color: rgb(255, 255, 255);
 
-  border-radius: 5px;
+  border-radius: 4px;
 }
 
+/*  same as chooseListType */
 .CreateList__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .CreateList__header__title {
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 600;
 }
 
-.CreateList__section {
+.CreateList__close-button {
+  height: 34px;
+  width: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.CreateList__close-button:hover {
+  background-color: var(--light-background-hover);
+  border-radius: 4px;
+}
+
+.CreateList__close-button-icon {
+  height: 30px;
+  width: 30px;
+}
+/*  same as chooseListType */
+
+.CreateList__section__inputs {
   height: 50px;
 
   display: flex;
@@ -254,7 +275,7 @@
   gap: 8px;
 }
 
-.CreateList__section__emoji {
+.CreateList__section__emoji-button {
   height: 38px;
   width: 38px;
 
@@ -264,9 +285,8 @@
 
   background-color: rgb(255, 255, 255);
 
-  border: solid 1px rgb(232, 232, 232);
-  border-radius: 5px;
-  cursor: pointer;
+  border: solid 1px var(--border-color);
+  border-radius: 4px;
 }
 
 .emoji-picker-wrapper {
@@ -281,7 +301,7 @@
   z-index: 1000;
 }
 
-.CreateList__section__input {
+.CreateList__name-input {
   width: 80%;
   height: 36px;
 
@@ -291,13 +311,13 @@
 
   font-size: 12px;
 
-  background-color: aliceblue;
+  background-color: var(--color-highlight);
 
-  border-radius: 5px;
+  border-radius: 4px;
   border: none;
 }
 
-.CreateList__section__input:focus {
+.CreateList__name-input:focus {
   border: solid 1px var(--color-primary);
 }
 
@@ -315,55 +335,31 @@
 
   padding: 0 20px;
 
-  font-size: 12px;
-  font-weight: bold;
+  font-size: 13px;
+  font-weight: 700;
 
   border-radius: 16px;
   cursor: pointer;
 }
 
 .CreateList__cancel-button {
-  color: rgb(2, 215, 144);
+  color: var(--color-primary);
   background-color: white;
 
   border: solid 1px var(--color-primary);
 }
 
 .CreateList__cancel-button:hover {
-  background-color: rgb(211, 255, 240);
+  background-color: var(--button-hover-light-green);
 }
 
 .CreateList__create-button {
   color: white;
-  background-color: rgb(7, 222, 150);
+  background-color: var(--color-primary);
   min-width: 102px;
   border: none;
 }
 
 .CreateList__create-button:hover {
-  background-color: rgb(7, 196, 133);
-}
-
-.WatchListModal__close-button {
-  height: 22px;
-  width: 22px;
-
-  cursor: pointer;
-}
-
-.WatchListModal__close-button-span {
-  height: 30px;
-  width: 30px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-
-  cursor: pointer;
-}
-
-.WatchListModal__close-button-span:hover {
-  background-color: rgb(225, 225, 225);
-  border-radius: 5px;
+  background-color: var(--color-primary-hover);
 }

@@ -83,11 +83,11 @@ function HomePage() {
                   setSelectedTimeFrame={setSelectedTimeFrame}
                 />
               </div>
-              <BuyingPowerDropDown sessionUser={sessionUser} />
-            </div>
-            {/* <div className="HomePage__main__subtitle">Welcome to Finertia</div> */}
-          </div>
 
+            </div>
+       
+          </div>
+          <BuyingPowerDropDown sessionUser={sessionUser} />
           <NewsFeed />
         </div>
 

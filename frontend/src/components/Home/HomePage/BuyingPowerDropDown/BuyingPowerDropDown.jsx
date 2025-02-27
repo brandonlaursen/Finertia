@@ -13,7 +13,7 @@ function BuyingPowerDropDown({ sessionUser }) {
   const { balance } = sessionUser;
 
   return (
-    <>
+    <div className={`BuyingPowerDropDown ${dropDownVisible && 'BuyingPowerDropDown-highlight'}`}>
       <div
         className="HomePage__main__buying-power"
         onClick={() => setDropDownVisible(!dropDownVisible)}
@@ -57,7 +57,7 @@ function BuyingPowerDropDown({ sessionUser }) {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
 

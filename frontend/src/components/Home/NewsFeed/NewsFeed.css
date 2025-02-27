@@ -1,7 +1,14 @@
 .NewsFeed {
   width: 100%;
 
-  padding-left: 10px;
+
+
+    /* ! ONE */
+  padding-left: 16px;
+  padding-right: 16px;
+
+
+  margin-top: 20px;
 }
 
 .NewsFeed > span {
@@ -13,6 +20,8 @@
   font-weight: bold;
 
   border-bottom: solid 1px var(--border-color);
+  padding-right: 10px;
+
 }
 
 #NewsFeed__info-icon {
@@ -38,6 +47,7 @@
   gap: 5px;
 
   border-bottom: solid 1px var(--border-color);
+
 }
 
 .NewsFeed__categories button {

@@ -47,27 +47,27 @@ function CreateListModal() {
 
   if (isOpen) {
     return (
-      <div className="CreateListModal__two">
+      <div className="CreateList">
         <div
-          className="CreateListModal__two__background"
+          className="CreateList__overlay"
           onClick={closeModal}
         />
 
-        <div className="CreateListModal__two__container">
-          <div className="CreateList__header">
+        <main className="CreateList__container">
+          <header className="CreateList__header">
             <span className="CreateList__header__title">Create list</span>
-            <span className="WatchListModal__close-button-span">
+            <button className="CreateList__close-button">
               <MdClose
-                className="WatchListModal__close-button"
+                className="CreateList__close-button-icon"
                 onClick={closeModal}
               />
-            </span>
-          </div>
+            </button>
+          </header>
 
-          <div className="CreateList__section">
+          <section className="CreateList__section__inputs">
             <div>
               <button
-                className="CreateList__section__emoji"
+                className="CreateList__section__emoji-button"
                 onClick={() => setShowPicker(!showPicker)}
               >
                 {selectedEmoji}
@@ -80,13 +80,13 @@ function CreateListModal() {
             </div>
 
             <input
-              className="CreateList__section__input"
+              className="CreateList__name-input"
               type="text"
               placeholder="List Name"
               value={listName}
               onChange={(e) => setListName(e.target.value)}
             />
-          </div>
+          </section>
 
           <div className="CreateList__section__buttons">
             <button
@@ -109,7 +109,7 @@ function CreateListModal() {
               )}
             </button>
           </div>
-        </div>
+        </main>
       </div>
     );
   }

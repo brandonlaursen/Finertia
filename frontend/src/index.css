@@ -77,6 +77,8 @@ button {
   /* dark button hover */
   --dark-grey: #1e2125;
 
+  --button-hover-light-green: rgb(211, 255, 240);
+
   --color-text: #333;
   --color-muted: #888;
   --color-lightgrey: rgb(231, 231, 231);
