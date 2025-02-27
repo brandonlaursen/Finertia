@@ -15,7 +15,9 @@ function StocksTable({
     <table className="StocksTable">
       <thead className="StocksTable__head">
         <tr>
-          <th onClick={() => handleSort("name")}>Name</th>
+          <th onClick={() => handleSort("name")} className="StocksTable__name">
+            Name
+          </th>
           <th onClick={() => handleSort("symbol")}>Symbol</th>
           <th onClick={() => handleSort("current_price")}>Price</th>
           <th onClick={() => handleSort("todays_change_percent")}>Today</th>

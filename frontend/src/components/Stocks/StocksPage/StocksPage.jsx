@@ -145,7 +145,7 @@ function StocksPage() {
         </main>
 
         <ListContainer
-          className="WatchList-Stocks-container"
+          className="List_home-container"
           navigate={navigate}
         />
       </div>

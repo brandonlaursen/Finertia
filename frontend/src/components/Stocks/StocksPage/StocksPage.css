@@ -9,8 +9,6 @@
   flex-direction: column;
 
   margin-top: 80px; /* Adjusted for fixed navbar */
-
-
 }
 
 /* ========== Navigation Bar ========== */
@@ -66,14 +64,11 @@
   flex-direction: row;
   justify-content: center;
 
-  gap: 20px; /* Space between elements */
-
-
+  gap: 1vw;
 }
 
 /* Main stocks content section */
 .Stocks__main {
-
   display: flex;
   flex-direction: column;
 
@@ -81,7 +76,7 @@
   padding-bottom: 100px;
 
   width: 65vw;
-  max-width: 900px;
+  max-width: 800px;
   min-width: 400px;
 }
 
@@ -237,13 +232,11 @@
   line-height: 1.5;
 }
 
-
-
 /* Extra Large Screens (Desktops & TVs) */
 @media (min-width: 1440px) {
   /* Styles for large desktop screens */
   .Stocks__main {
-    max-width: 900px;
+    max-width: 800px;
   }
 }
 
@@ -251,8 +244,7 @@
 @media (max-width: 1280px) {
   /* Styles for medium-sized desktops */
   .Stocks__main {
-    max-width: 800px;
-
+    max-width: 650px;
   }
 }
 
@@ -260,14 +252,14 @@
 @media (max-width: 1024px) {
   /* Adjust layouts, reduce container sizes */
   .Stocks__main {
-    max-width: 800px;
+    max-width: 460px;
   }
 }
 
 @media (max-width: 830px) {
   /* Stack columns, adjust text sizes, shrink margins */
   .Stocks__main {
-    max-width: 500px;
+    max-width: 420px;
   }
 }
 
@@ -275,7 +267,7 @@
 @media (max-width: 768px) {
   /* Stack columns, adjust text sizes, shrink margins */
   .Stocks__main {
-
+    max-width: 300px;
   }
 }
 
@@ -283,7 +275,10 @@
 @media (max-width: 700px) {
   /* Reduce button sizes, make touch targets larger */
   .Stocks__main {
-
+    width: 75vw;
+    max-width: 800px;
+    margin: 0;
+    gap: 0;
   }
 }
 

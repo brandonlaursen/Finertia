@@ -23,6 +23,7 @@
 
   cursor: pointer;
   border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
 }
 
 .StocksTable__head th:hover {
@@ -31,11 +32,15 @@
 
 
 .StocksTable th:nth-of-type(1),
-.StocksTable td:nth-of-type(1) {
-  width: 200px;
+.StocksTable td:nth-of-type(1){
+  width: 20vw;
+
 
   text-align: left;
-}
+};
+
+
+
 
 .StockTableItem:hover {
   background-color: var(--color-highlight);
@@ -80,7 +85,7 @@
   height: 12px;
   width: 12px;
 
-  margin-left: 60px;
+  margin-left: 4vw;
 
   background: none;
 
