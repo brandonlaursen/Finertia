@@ -10,11 +10,11 @@ function NewsArticle({ news }) {
     const days = Math.floor(diff / (3600 * 24));
 
     if (days > 0) {
-      return `${days} day${days > 1 ? "s" : ""} ago`;
+      return `${days}d`;
     } else if (hours > 0) {
-      return `${hours} hour${hours > 1 ? "s" : ""} ago`;
+      return `${hours}h`;
     } else if (minutes > 0) {
-      return `${minutes} minute${minutes > 1 ? "s" : ""} ago`;
+      return `${minutes}m`;
     } else {
       return `Just now`;
     }
@@ -24,12 +24,16 @@ function NewsArticle({ news }) {
     <a href={news.url && news.url} className="NewsArticle-anchor">
       <div className="NewsArticle">
         <div className="NewsArticle__main">
-          <span>
+          <span className="NewsArticle__source">
             {news.source && news.source}
             <span className="NewsArticle__time">{timeAgo(news.datetime)}</span>
           </span>
-          <span>{news.headline && news.headline}</span>
-          <span>{news.category && news.category}</span>
+          <span className="NewsArticle__headline">
+            {news.headline && news.headline}
+          </span>
+          <span className="NewsArticle__category">
+            {news.category && news.category}
+          </span>
         </div>
 
         <div className="NewsArticle__image">

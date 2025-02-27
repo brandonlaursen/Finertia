@@ -12,7 +12,7 @@
   font-size: 20px;
   font-weight: bold;
 
-  border-bottom: solid 1px rgb(230, 230, 230);
+  border-bottom: solid 1px var(--border-color);
 }
 
 #NewsFeed__info-icon {
@@ -37,7 +37,7 @@
   padding-bottom: 25px;
   gap: 5px;
 
-  border-bottom: solid 1px rgb(230, 230, 230);
+  border-bottom: solid 1px var(--border-color);
 }
 
 .NewsFeed__categories button {
@@ -47,15 +47,17 @@
   display: flex;
   align-items: center;
 
-  padding: 10px;
+  padding: 12px;
   gap: 5px;
 
   background-color: #ffffff;
 
-  border: 1px solid #e6e6e6;
+  border: 1px solid var(--border-color);
   border-radius: 36px;
 
   cursor: pointer;
+
+  font-weight: var(--font-weight-bold);
 }
 
 .NewsFeed__categories button svg {
@@ -63,5 +65,5 @@
 }
 
 .NewsFeed__categories button:hover {
-  background-color: #eaeff2;
+  background-color: var(--color-highlight);
 }

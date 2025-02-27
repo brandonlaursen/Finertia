@@ -37,7 +37,7 @@ function NewsFeed() {
   return (
     <div className="NewsFeed">
       <span>
-        Read Market News
+        News
         <MdInfoOutline id="NewsFeed__info-icon" />
       </span>
 
