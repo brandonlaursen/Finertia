@@ -68,6 +68,8 @@ button {
   --percent-change-positive: rgb(44, 202, 4);
   --percent-change-negative: rgb(255, 29, 4);
 
+  --percent-change-orange: rgb(248, 124, 14);
+
   --color-white: #ffffff;
   --color-black: #000000;
 

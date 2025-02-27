@@ -14,13 +14,12 @@ function PortfolioStocks({ stockInvestments, stockSummary }) {
   const stockSymbols = Object.keys(stocks);
   const stockHoldings = [];
 
-  for(let stockSymbol in stocks){
-    const {sharesOwned, price} = stocks[stockSymbol];
+  for (let stockSymbol in stocks) {
+    const { sharesOwned, price } = stocks[stockSymbol];
     const total = (sharesOwned * price).toFixed(2);
 
     stockHoldings.push(Number(total));
   }
-
 
   const series = stockHoldings;
   const labels = stockSymbols;
@@ -92,7 +91,7 @@ function PortfolioStocks({ stockInvestments, stockSummary }) {
               {Object.values(stocks).map((stock) => {
                 return (
                   <tr
-                    className="InvestingPage__stock-row"
+                    className="InvestingPage__StockTableItem"
                     key={stock.stockId}
                     onClick={() => navigate(`/stocks/${stock?.symbol}`)}
                   >

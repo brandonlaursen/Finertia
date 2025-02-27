@@ -9,7 +9,7 @@ import { editListStocks } from "../../../../store/stocks";
 
 function ListPageStockTableItem({ stock, stocks, navigate, listId }) {
   const dispatch = useDispatch();
-  
+
   const { id, stockName, stockSymbol } = stock;
   const stockInfo = stocks[id];
 
@@ -22,7 +22,7 @@ function ListPageStockTableItem({ stock, stocks, navigate, listId }) {
 
   return (
     <tr
-      className="stock-row"
+      className="StockTableItem"
       onClick={() => navigate(`/stocks/${stockSymbol}`)}
     >
       <td>{stockName}</td>

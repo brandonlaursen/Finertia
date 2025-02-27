@@ -21,12 +21,12 @@ function StocksTableItem({
   return (
     <tr
       key={id}
-      className="stock-row"
+      className="StockTableItem"
       onClick={() => navigate(`/stocks/${symbol}`)}
     >
-      <td>{name}</td>
-      <td>{symbol}</td>
-      <td>${current_price.toFixed(2)}</td>
+      <td className='StocksTableItem__name' >{name}</td>
+      <td className='StocksTableItem__symbol'>{symbol}</td>
+      <td className='StocksTableItem__price'>${current_price.toFixed(2)}</td>
       <td>
         <span className="stocks-table-arrow-container">
           {todays_change_percent > 0 ? (

@@ -105,7 +105,7 @@ function ListPageStockTable({ list, listId, stocks, navigate }) {
               </div>
             )}
 
-            <tr className="stock-row"></tr>
+            <tr className="StockTableItem"></tr>
           </tbody>
         </table>
       )}

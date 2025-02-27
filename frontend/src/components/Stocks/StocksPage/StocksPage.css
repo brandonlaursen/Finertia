@@ -1,12 +1,21 @@
-.stocks {
+/* ========== Stocks Page Layout ========== */
+
+/* Main container for the Stocks page */
+.Stocks {
   height: 100vh;
-  min-height: 123vh;
+  min-height: 123vh; /* Ensures page takes up enough space */
 
   display: flex;
   flex-direction: column;
 
-  margin-top: 80px;
+  margin-top: 80px; /* Adjusted for fixed navbar */
+
+
 }
+
+/* ========== Navigation Bar ========== */
+
+/* Navbar for the Stocks page */
 .stocks-nav {
   height: 80px;
   width: 100%;
@@ -23,13 +32,18 @@
 
   background-color: var(--color-primary);
 
-  z-index: 2;
+  z-index: 2; /* Keeps it above other content */
 }
+
+/* Changes navbar background when scrolled */
 .scrolled {
   background-color: rgb(255, 255, 255);
 }
 
-.stocks__header {
+/* ========== Stocks Page Banner ========== */
+
+/* Banner section with background image */
+.Stocks__banner {
   height: 30%;
   max-height: 225px;
   width: 100%;
@@ -41,7 +55,10 @@
   background-position: 40%;
 }
 
-.stocks__body {
+/* ========== Main Content Layout ========== */
+
+/* Main container for stocks page content */
+.Stocks__container {
   height: 100vh;
 
   display: flex;
@@ -49,27 +66,36 @@
   flex-direction: row;
   justify-content: center;
 
-  gap: 20px;
+  gap: 20px; /* Space between elements */
+
+
 }
 
-.stocks__body-left {
-  width: 620px;
+/* Main stocks content section */
+.Stocks__main {
 
   display: flex;
   flex-direction: column;
 
-  margin-right: 6px;
+  margin-right: 8px;
   padding-bottom: 100px;
+
+  width: 65vw;
+  max-width: 900px;
+  min-width: 400px;
 }
 
-.stocks__section {
+/* Section wrapper for spacing */
+.Stocks__section {
   display: flex;
   justify-content: space-between;
-
   margin-top: 20px;
 }
 
-.stocks__section-header {
+/* ========== Header Section ========== */
+
+/* Header section containing stock title and menu */
+.Stocks__header {
   height: 100px;
   width: 60%;
 
@@ -77,38 +103,46 @@
   flex-direction: column;
   justify-content: center;
 
-  gap: 5px;
+  gap: 4px;
   margin-left: 0px;
 }
 
-.stock__hide--header {
+/* Smaller header version (hidden or collapsed) */
+.Stocks__hide--header {
   height: 58px;
 }
 
-.stocks__title {
-  font-size: 20px;
+/* Main stock title */
+.Stocks__title {
+  font-size: 18px;
   font-weight: bold;
 }
 
-.stocks__subtitle {
+/* Subtitle section containing extra details */
+.Stocks__subtitle {
   display: flex;
   align-items: center;
 
   gap: 2px;
   margin-top: 2px;
 
-  font-size: 14px;
-  color: #3e3e3e;
+  font-size: 13px;
+  color: var(--color-text);
+  font-weight: 500;
 }
 
+/* Green checkmark icon */
 .green-checkmark {
   height: 10px;
   width: 10px;
 
-  color: rgb(118, 215, 183);
+  color: var(--color-primary);
 }
 
-.stocks__actions {
+/* ========== Menu & Actions ========== */
+
+/* Menu container (settings, follow button) */
+.Stocks__menu {
   width: 40%;
 
   display: flex;
@@ -116,21 +150,24 @@
   justify-content: end;
   align-items: center;
 
-  gap: 17px;
+  gap: 16px;
 }
 
-.stocks__btn--settings {
+/* Settings icon */
+.Stocks__settings-icon {
   height: 20px;
   width: 20px;
 
   cursor: pointer;
 }
 
-.stocks__btn--settings:hover {
-  color: rgb(118, 215, 183);
+/* Hover effect for settings icon */
+.Stocks__settings-icon:hover {
+  color: var(--color-primary);
 }
 
-.stocks__btn--follow {
+/* Follow button */
+.Stocks__follow-button {
   height: 32px;
   width: 86px;
 
@@ -141,12 +178,12 @@
   text-align: center;
 
   font-weight: bold;
-  font-size: 11px;
+  font-size: 12px;
 
   background-color: #ffffff;
-  color: rgb(118, 215, 183);
+  color: var(--color-primary);
 
-  border: 1px solid rgb(118, 215, 183);
+  border: 1px solid var(--color-primary);
   border-radius: 36px;
 
   cursor: pointer;
@@ -154,23 +191,32 @@
   white-space: nowrap;
 }
 
-.stocks__btn--follow:hover {
-  background-color: rgb(228, 255, 246);
+/* Hover effect for follow button */
+.Stocks__follow-button:hover {
+  background-color: var(--button-hover-light-green);
 }
 
-.stocks__description {
+/* ========== Description & Table Section ========== */
+
+/* Stock description section */
+.Stocks__description {
   height: 40px;
+  font-size: 16px;
+  font-weight: 500;
 }
 
-.stock__hide--description {
+/* Hidden description */
+.Stocks__hide--description {
   display: none;
 }
 
-.stock__hide--description.fade-out {
+/* Faded out description */
+.Stocks__hide--description {
   opacity: 0;
 }
 
-.stocks__table-container {
+/* Stocks table container with scrolling */
+.Stocks__table-container {
   height: 90vh;
 
   margin-top: 8px;
@@ -179,117 +225,74 @@
   overflow-y: auto;
 }
 
-.stocks__table {
-  max-height: 600px;
-  height: auto;
-  width: 100%;
+/* ========== Disclaimer Section ========== */
 
-  border-collapse: collapse;
-  table-layout: fixed;
-}
-
-.stocks__table thead {
-  height: 40px;
-
-  position: sticky;
-  top: 0;
-
-  text-align: left;
-
-  font-size: 13px;
-
-  background-color: white;
-  color: rgb(130, 130, 130);
-
-  cursor: pointer;
-}
-
-.stocks__table thead th:hover {
-  color: rgb(118, 215, 183); /* Change text color on hover */
-}
-
-.stocks__table th,
-.stocks__table td {
-  border-bottom: 1px solid #ddd;
-}
-
-.stocks__table td {
-  cursor: pointer;
-}
-
-.stocks__table th:nth-of-type(1),
-.stocks__table td:nth-of-type(1) {
-  width: 130px;
-
-  text-align: left;
-
-  /* padding-right: 64px; */
-}
-
-.stock-row:hover {
-  background-color: rgb(242, 248, 250);
-}
-
-.stocks__table tbody tr {
-  height: 54px;
+/* Disclaimer text section */
+.Stocks__disclaimer {
+  display: flex;
+  align-items: start;
 
   font-size: 12px;
+  color: var(--color-light-text);
+  line-height: 1.5;
 }
 
-.stocks__table tbody tr td:first-child {
-  font-weight: bold;
+
+
+/* Extra Large Screens (Desktops & TVs) */
+@media (min-width: 1440px) {
+  /* Styles for large desktop screens */
+  .Stocks__main {
+    max-width: 900px;
+  }
 }
 
-.stocks__btn--add {
-  height: 12px;
-  width: 12px;
+/* Large Desktops */
+@media (max-width: 1280px) {
+  /* Styles for medium-sized desktops */
+  .Stocks__main {
+    max-width: 800px;
 
-  margin-left: 60px;
-
-  background: none;
-
-  border: none;
-  cursor: pointer;
+  }
 }
 
-.stocks__btn--add:hover {
-  color: rgb(63, 242, 186);
+/* Small Desktops & Large Tablets */
+@media (max-width: 1024px) {
+  /* Adjust layouts, reduce container sizes */
+  .Stocks__main {
+    max-width: 800px;
+  }
 }
 
-.stocks__disclaimer {
-  display: flex;
-  align-items: start;
-
-  font-size: 14px;
-  color: rgb(130, 130, 130);
+@media (max-width: 830px) {
+  /* Stack columns, adjust text sizes, shrink margins */
+  .Stocks__main {
+    max-width: 500px;
+  }
 }
 
-.stocks-table-arrow-container {
-  display: flex;
+/* Tablets (Portrait & Small Laptops) */
+@media (max-width: 768px) {
+  /* Stack columns, adjust text sizes, shrink margins */
+  .Stocks__main {
 
-  gap: 5px;
-  align-items: center;
+  }
 }
 
-.triangleIconDown {
-  height: 18px;
-  width: 18px;
+/* Large Phones (Landscape Mode) */
+@media (max-width: 700px) {
+  /* Reduce button sizes, make touch targets larger */
+  .Stocks__main {
 
-  color: rgb(248, 124, 14);
+  }
 }
 
-.triangleIconUp {
-  height: 18px;
-  width: 18px;
-
-  color: rgb(14, 248, 37);
+/* Most Mobile Phones (Portrait Mode) */
+@media (max-width: 480px) {
+  /* Full-width elements, simplify layouts */
 }
 
-.Stocks-loading-spinner {
-  height: 250px;
-  width: 620px;
-
-  display: flex;
-  justify-content: center;
-  align-items: start;
+/* Very Small Phones */
+@media (max-width: 360px) {
+  /* Reduce paddings/margins for ultra-small screens */
 }

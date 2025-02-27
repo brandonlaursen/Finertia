@@ -119,7 +119,6 @@
   font-weight: bold;
 }
 
-
 .InvestingPage__stocks__table {
   max-height: 600px;
   height: auto;
@@ -163,7 +162,7 @@
   padding-right: 24px;
 }
 
-.InvestingPage__stock-row:hover {
+.InvestingPage__StockTableItem:hover {
   background-color: #ddd;
 }
 
@@ -187,8 +186,7 @@
   cursor: pointer;
 }
 
-
-.InvestingPage__section-right__value-shares{
+.InvestingPage__section-right__value-shares {
   font-size: 14px;
   color: #494949;
 }

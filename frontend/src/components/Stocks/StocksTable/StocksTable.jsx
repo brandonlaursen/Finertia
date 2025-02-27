@@ -3,10 +3,17 @@ import "./StocksTable.css";
 import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
 import StocksTableItem from "../StocksTableItem/StocksTableItem";
 
-function StocksTable({ stocks, handleSort, sortedStocks, navigate, setNotifications, setNotificationMessage }) {
+function StocksTable({
+  stocks,
+  handleSort,
+  sortedStocks,
+  navigate,
+  setNotifications,
+  setNotificationMessage,
+}) {
   return (
-    <table className="stocks__table">
-      <thead>
+    <table className="StocksTable">
+      <thead className="StocksTable__head">
         <tr>
           <th onClick={() => handleSort("name")}>Name</th>
           <th onClick={() => handleSort("symbol")}>Symbol</th>
@@ -16,7 +23,7 @@ function StocksTable({ stocks, handleSort, sortedStocks, navigate, setNotificati
           <th></th>
         </tr>
       </thead>
-      <tbody className="stocks__table-body">
+      <tbody className="StocksTable__body">
         {stocks.length ? (
           sortedStocks.map((stock) => {
             return (
@@ -25,17 +32,17 @@ function StocksTable({ stocks, handleSort, sortedStocks, navigate, setNotificati
                 stock={stock}
                 navigate={navigate}
                 setNotifications={setNotifications}
-            setNotificationMessage={setNotificationMessage}
+                setNotificationMessage={setNotificationMessage}
               />
             );
           })
         ) : (
-          <div className="Stocks-loading-spinner">
+          <div className="Stocks__loading-spinner">
             <LoadingSpinner />
           </div>
         )}
 
-        <tr className="stock-row"></tr>
+        <tr className="StockTableItem"></tr>
       </tbody>
     </table>
   );

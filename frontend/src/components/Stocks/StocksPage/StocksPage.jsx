@@ -84,42 +84,43 @@ function StocksPage() {
   if (!stocks) return <h1>Loading</h1>;
 
   return (
-    <div className="stocks">
-      <div className="stocks__header"></div>
+    <div className="Stocks">
+      <div className="Stocks__banner"/>
 
-      <div className="stocks__body">
-        <div className="stocks__body-left">
-          <div className="stocks__section">
-            <div
-              className={`stocks__section-header ${
-                scrolled ? "stock__hide--header" : ""
+      <div className="Stocks__container">
+        <main className="Stocks__main">
+
+          <div className="Stocks__section">
+            <header
+              className={`Stocks__header ${
+                scrolled ? "Stocks__hide--header" : ""
               }`}
             >
-              <span className="stocks__title">Daily Movers</span>
-              <span className="stocks__subtitle">
+              <span className="Stocks__title">Daily Movers</span>
+              <span className="Stocks__subtitle">
                 <IoIosCheckmarkCircle className="green-checkmark" />
                 Finertia · {stocks.length} items
               </span>
-            </div>
+            </header>
 
-            <div className="stocks__actions">
-              <RiListSettingsLine className="stocks__btn--settings" />
+            <div className="Stocks__menu">
+              <RiListSettingsLine className="Stocks__settings-icon" />
 
-              <button className="stocks__btn stocks__btn--follow">
+              <button className="Stocks__follow-button">
                 Follow
               </button>
             </div>
           </div>
 
           <div
-            className={`stocks__description ${
-              scrolled ? "stock__hide--description" : ""
+            className={`Stocks__description ${
+              scrolled ? "Stocks__hide--description" : ""
             }`}
           >
             Explore some of the most popular stocks.
           </div>
 
-          <div className="stocks__table-container">
+          <div className="Stocks__table-container">
             <StocksTable
               stocks={stocks}
               handleSort={handleSort}
@@ -131,7 +132,7 @@ function StocksPage() {
               notificationMessage={notificationMessage}
             />
 
-            <div className="stocks__disclaimer">
+            <div className="Stocks__disclaimer">
               This list is based on data from one or more third party data
               providers. It is provided for informational purposes only by
               Finertia Financial, LLC., and is not investment advice or a
@@ -141,7 +142,7 @@ function StocksPage() {
               (ETP) and read the ETPs prospectus carefully before investing.
             </div>
           </div>
-        </div>
+        </main>
 
         <ListContainer
           className="WatchList-Stocks-container"
