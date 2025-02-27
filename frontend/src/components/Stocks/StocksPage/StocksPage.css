@@ -64,7 +64,7 @@
   flex-direction: row;
   justify-content: center;
 
-  gap: 1vw;
+
 }
 
 /* Main stocks content section */
@@ -78,6 +78,7 @@
   width: 65vw;
   max-width: 800px;
   min-width: 400px;
+  margin-right: 2vw;
 }
 
 /* Section wrapper for spacing */
@@ -275,7 +276,7 @@
 @media (max-width: 700px) {
   /* Reduce button sizes, make touch targets larger */
   .Stocks__main {
-    width: 75vw;
+    width: 85vw;
     max-width: 800px;
     margin: 0;
     gap: 0;
