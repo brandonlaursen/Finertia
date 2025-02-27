@@ -1,31 +1,32 @@
-.WatchList {
+/* ========== List Base Styles ========== */
+.List {
   margin-top: 30px;
 }
 
-.WatchList-HomePage-container {
+/* ========== List Home Container ========== */
+.List_home-container {
+  position: sticky;
+  top: 85px;
+
+
+  height: 86vh;
   width: 30vw;
   max-width: 300px;
   min-width: 250px;
 
   transition: width 0.1s smooth;
 
-  height: 86vh;
 
-  position: sticky;
-  top: 85px;
-
-  /* margin-right: 10px; */
   margin-left: 8px;
 
   background-color: rgb(255, 255, 255);
 
   border-radius: 4px;
   border: 1px solid var(--border-color);
-
-
 }
 
-.WatchList__header {
+/* ========== List Header ========== */
+.List__header {
   height: 50px;
   min-height: 50px;
 
@@ -42,11 +43,8 @@
   border-bottom: 1px solid var(--border-color);
 }
 
-
-
-
-
-.WatchList__create-list-span {
+/* ========== Create List Button ========== */
+.List__create-button {
   height: 24px;
   width: 24px;
 
@@ -55,32 +53,26 @@
   justify-content: center;
   text-align: center;
 
-  /* margin-right: 5px; */
-
-  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
 }
 
-.WatchList__create-list-icon {
-  cursor: pointer;
-  color:rgb(106, 114, 120);
-}
-
-
-
-.WatchList__lists {
-  position: relative;
-
-  flex-grow: 1;
-
-
-}
-
-
-
-
-.WatchList__create-list-span:hover {
-  background-color: rgb(237, 237, 237);
+/* Hover effect for create button */
+.List__create-button:hover {
+  background-color: var(--light-background-hover);
   border-radius: 4px;
+}
+
+/* Icon inside create button */
+.List__create-button-icon {
+  color: var(--color-icon-grey);
+}
+
+/* ========== Lists Container (Holds All Lists) ========== */
+.Lists__container {
+  position: relative;
+  flex-grow: 1;
 }
 
 /* Extra Large Screens (Desktops & TVs) */

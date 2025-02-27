@@ -1,4 +1,4 @@
-.CreateListModal__one {
+.CreateListModal__step-one {
   position: fixed;
   top: 375px;
   right: 0;
@@ -11,7 +11,7 @@
   z-index: 100;
 }
 
-.CreateListModal__one__background {
+.CreateListModal__step-one__overlay {
   position: fixed;
   top: 0;
   right: 0;
@@ -21,7 +21,7 @@
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-.CreateListModal__one__container {
+.CreateListModal__step-one__container {
   height: 400px;
   width: 400px;
 
@@ -29,112 +29,116 @@
 
   background-color: white;
 
-  border-radius: 5px;
+  border-radius: 4px;
 }
 
-.CreateListModal__one__contents {
+.CreateListModal__step-one__content {
   display: flex;
   flex-direction: column;
 
   padding: 10px 20px;
 }
 
-.CreateListModal__one__header {
+.CreateListModal__step-one__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 6px;
 }
 
-.CreateListModal__one__close-button {
-  height: 22px;
-  width: 22px;
-
-  cursor: pointer;
+.CreateListModal__step-one__title {
+  font-size: 18px;
+  font-weight: 600;
 }
 
-.CreateListModal__one__close-button-span {
-  height: 30px;
-  width: 30px;
+.CreateListModal__step-one__close-button {
+  height: 34px;
+  width: 34px;
 
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
 
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.CreateListModal__step-one__close-button-icon {
+  height: 30px;
+  width: 30px;
+
   cursor: pointer;
 }
 
-.CreateListModal__one__close-button-span:hover {
-  background-color: rgb(225, 225, 225);
-  border-radius: 5px;
+.CreateListModal__step-one__close-button:hover {
+  background-color: var(--light-background-hover);
+  border-radius: 4px;
 }
 
-.CreateListModal__one__title {
-  font-size: 18px;
-}
-
-.CreateListModal__one__section {
-  height: 260px;
-
+.CreateListModal__step-one__options {
   display: flex;
-  flex-direction: row;
   gap: 10px;
 }
 
-.CreateListModal__one__option {
+.CreateListModal__step-one__option {
   height: 260px;
   width: 175px;
 
   display: flex;
   flex-direction: column;
 
-  border: 1px solid rgb(234, 234, 234);
-  border-radius: 5px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
 
   cursor: pointer;
 }
 
-.CreateListModal__one__option__image {
+.CreateListModal__step-one__option__image {
   height: 60%;
   width: 100%;
 
   background-color: rgb(230, 255, 255);
 
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 }
 
-.CreateListModal__one__image-one {
+.CreateListModal__step-one__image-one {
   background-image: url("https://img.freepik.com/premium-vector/bright-telescope-cartoon-vector-illustration-white-background_1322560-79848.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-.CreateListModal__one__image-two {
+.CreateListModal__step-one__image-two {
   background-image: url("https://i.etsystatic.com/27713397/r/il/ba1b96/4493269889/il_1080xN.4493269889_lz2v.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-.CreateListModal__one__option__text {
+.CreateListModal__step-one__option__text {
   height: 40%;
 
   display: flex;
   flex-direction: column;
 
   gap: 4px;
-  padding: 16px 12px;
+  padding: 8px;
+}
 
+.CreateListModal__step-one__text__title {
+  font-weight: bold;
   font-size: 14px;
 }
 
-.CreateListModal__one__text__title {
-  font-weight: bold;
+.CreateListModal__step-one__text__sub-text {
+  font-size: 12px;
 }
 
-.CreateListModal__one__back-button {
+.CreateListModal__step-one__back-button {
   height: 40px;
 
   margin-top: 20px;
@@ -147,12 +151,14 @@
   border-radius: 20px;
 
   cursor: pointer;
+  border: none;
 }
 
-.CreateListModal__one__back-button:hover {
-  background-color: rgb(42, 42, 42);
+.CreateListModal__step-one__back-button:hover {
+  background-color: var(--dark-grey);
 }
 
+/* second modal */
 .CreateListModal__two {
   position: fixed;
   top: 255px;

@@ -40,13 +40,13 @@ function ListContainer({ className, navigate }) {
   }, [dispatch]);
 
   return (
-    <div className="WatchList">
-      <div className={className}>
+    <div className="List">
+      <main className={className}>
         {location.pathname === "/" && (
           <>
-            <div className="WatchList__header">
-              <span>Stocks</span>
-            </div>
+            <section className="List__header">
+              <header>Stocks</header>
+            </section>
 
             {isLoaded && (
               <StocksOwned stocks={stocks} sessionUser={sessionUser} />
@@ -54,23 +54,23 @@ function ListContainer({ className, navigate }) {
           </>
         )}
 
-        <div className="WatchList__header">
-          <span>Lists</span>
-          <span className="WatchList__create-list-span">
+        <section className="List__header">
+          <header>Lists</header>
+          <button className="List__create-button">
             <OpenModalButton
               modalComponent={<CreateListModal />}
-              className="WatchList__create-list-icon"
+              className="List__create-button-icon"
               Element={FaPlus}
               modalClass={{
-                modal: "CreateListModal__one",
-                modalBackground: "CreateListModal__one__background",
+                modal: "CreateListModal__step-one",
+                modalBackground: "CreateListModal__step-one__overlay",
                 modalContainer: "CreateListModal__one__container",
               }}
             />
-          </span>
-        </div>
+          </button>
+        </section>
 
-        <div className="WatchList__lists">
+        <section className="Lists__container">
           {lists &&
             lists.slice(0, 10).map((list) => {
               return (
@@ -99,8 +99,8 @@ function ListContainer({ className, navigate }) {
                 </>
               );
             })}
-        </div>
-      </div>
+        </section>
+      </main>
     </div>
   );
 }

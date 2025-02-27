@@ -115,49 +115,65 @@ function CreateListModal() {
   }
 
   return (
-    <div className="CreateListModal__one">
-      <div className="CreateListModal__one__background" onClick={closeModal} />
-      <div className="CreateListModal__one__container">
-        <div className="CreateListModal__one__contents">
-          <div className="CreateListModal__one__header">
-            <h1 className="CreateListModal__one__title">Choose a list type</h1>
-            <span className="CreateListModal__one__close-button-span">
+    <div className="CreateListModal__step-one">
+      <div
+        className="CreateListModal__step-one__overlay"
+        onClick={closeModal}
+      />
+
+      <div className="CreateListModal__step-one__container">
+        <div className="CreateListModal__step-one__content">
+          <header className="CreateListModal__step-one__header">
+            <h1 className="CreateListModal__step-one__title">
+              Choose a list type
+            </h1>
+            <button className="CreateListModal__step-one__close-button">
               <MdClose
-                className="CreateListModal__one__close-button"
+                className="CreateListModal__step-one__close-button-icon"
                 onClick={closeModal}
               />
-            </span>
-          </div>
+            </button>
+          </header>
 
-          <div className="CreateListModal__one__section">
+          <section className="CreateListModal__step-one__options">
+
             <div
-              className="CreateListModal__one__option"
+              className="CreateListModal__step-one__option"
               onClick={() => setIsOpen(true)}
             >
-              <div className="CreateListModal__one__option__image CreateListModal__one__image-one"></div>
-              <div className="CreateListModal__one__option__text">
-                <span className="CreateListModal__one__text__title">
-                  Create Watch list
-                </span>
+              <div className="CreateListModal__step-one__option__image CreateListModal__step-one__image-one" />
 
-                <span>Keep an on investments youre interested in</span>
+              <div className="CreateListModal__step-one__option__text">
+                <span className="CreateListModal__step-one__text__title">
+                  Create Watch List
+                </span>
+                <span className="CreateListModal__step-one__text__sub-text">
+                  Keep an on investments youre interested in
+                </span>
               </div>
+
             </div>
-            <div className="CreateListModal__one__option">
-              <div className="CreateListModal__one__option__image CreateListModal__one__image-two"></div>
-              <div className="CreateListModal__one__option__text">
-                <span className="CreateListModal__one__text__title">
+
+            <div className="CreateListModal__step-one__option">
+
+              <div className="CreateListModal__step-one__option__image CreateListModal__step-one__image-two" />
+
+              <div className="CreateListModal__step-one__option__text">
+                <span className="CreateListModal__step-one__text__title">
                   Create Screener
                 </span>
-                <span>
+                <span className="CreateListModal__step-one__text__sub-text">
                   Find your next trade with filters for price, volume, and other
                   indicators
                 </span>
               </div>
+
+
             </div>
-          </div>
+          </section>
+
           <button
-            className="CreateListModal__one__back-button"
+            className="CreateListModal__step-one__back-button"
             onClick={closeModal}
           >
             Go back

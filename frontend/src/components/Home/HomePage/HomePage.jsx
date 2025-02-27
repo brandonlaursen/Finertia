@@ -92,7 +92,7 @@ function HomePage() {
         </div>
 
         <ListContainer
-          className="WatchList-HomePage-container"
+          className="List_home-container"
           navigate={navigate}
         />
       </div>
