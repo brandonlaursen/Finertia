@@ -158,7 +158,10 @@ router.get("/stock-summary", async (req, res) => {
     })
   );
 
+
+
   const aggregates = gatherAggregates(userHistoricalData);
+  console.log(aggregates)
 
   const userSummary = {
     totalInvestments: lastTransaction.totalInvestments,
@@ -239,7 +242,6 @@ router.post("/trade/:stockId", async (req, res) => {
     ],
   });
 
-  console.log(recentTransaction);
 
   const userTransactions = await StockUserTransaction.findAll({
     where: { userId: id },

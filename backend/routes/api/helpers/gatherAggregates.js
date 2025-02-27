@@ -36,7 +36,7 @@ function gatherAggregates(userHistoricalData) {
 
   const mostRecentAggregate =
     oneDayFiveMinAggregates[oneDayFiveMinAggregates.length - 1];
-  console.log(mostRecentAggregate);
+
   // One Week (last 7 days) aggregated to 1-hour buckets:
   const oneWeekMs = 7 * oneDayMs;
   const oneWeekData = userHistoricalData.filter(
@@ -61,7 +61,6 @@ function gatherAggregates(userHistoricalData) {
     mostRecentAggregate,
   ];
 
-  // console.log(threeMonthOneDayAggregates)
 
   // One Year (last 365 days) aggregated to 1-day buckets:
   const oneYearMs = 365 * oneDayMs;
@@ -83,14 +82,7 @@ function gatherAggregates(userHistoricalData) {
     mostRecentAggregate,
   ];
 
-  console.log({
-    oneDayFiveMinAggregates,
-    oneWeekOneHourAggregates,
-    oneMonthOneHourAggregates,
-    threeMonthOneDayAggregates,
-    oneYearOneDayAggregates,
-    fiveYearOneDayAggregates,
-  });
+
 
   return {
     oneDayFiveMinAggregates,

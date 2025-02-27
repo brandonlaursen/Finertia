@@ -31,18 +31,13 @@ function ListContainer({ className, navigate }) {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-
-    async function fetchInfo(){
+    async function fetchInfo() {
       await dispatch(fetchLists());
       await dispatch(fetchAllStocks());
       setIsLoaded(true);
-
     }
-fetchInfo();
+    fetchInfo();
   }, [dispatch]);
-
-
-
 
   return (
     <div className="WatchList">
@@ -53,12 +48,14 @@ fetchInfo();
               <span>Stocks</span>
             </div>
 
-            {isLoaded &&  <StocksOwned stocks={stocks} sessionUser={sessionUser}/>}
+            {isLoaded && (
+              <StocksOwned stocks={stocks} sessionUser={sessionUser} />
+            )}
           </>
         )}
 
         <div className="WatchList__header">
-          <span >Lists</span>
+          <span>Lists</span>
           <span className="WatchList__create-list-span">
             <OpenModalButton
               modalComponent={<CreateListModal />}
@@ -79,19 +76,18 @@ fetchInfo();
               return (
                 <>
                   <ListItem
-                    list={list}
-                    selectedPopoverId={selectedPopoverId}
-                    setSelectedPopoverId={setSelectedPopoverId}
                     className="WatchList__lists__ListItem"
                     container="ListItem__container"
-                    icon="ListItem__icon"
-                    title="ListItem__title"
-                    popover={true}
+                    emoji="ListItem__emoji"
+                    name="ListItem__name"
+                    showActions={true}
+                    showHover={true}
+                    navigate={navigate}
+                    list={list}
                     toggleListIds={toggleListIds}
                     setToggleListIds={setToggleListIds}
-                    navigate={navigate}
-                    hover={true}
-
+                    selectedPopoverId={selectedPopoverId}
+                    setSelectedPopoverId={setSelectedPopoverId}
                   />
                   <ListStocks
                     toggleListIds={toggleListIds}

@@ -13,26 +13,26 @@ import DeleteListModal from "../../Modals/DeleteListModal";
 import { useModal } from "../../../context/Modal";
 
 function ListItem({
-  list,
-  selectedPopoverId,
-  setSelectedPopoverId,
   className,
   container,
-  icon,
-  title,
-  popover,
-  setToggleListIds,
-  toggleListIds,
+  emoji,
+  name,
+  showActions,
+  showHover,
   navigate,
-  hover
+  list,
+  toggleListIds,
+  setToggleListIds,
+  selectedPopoverId,
+  setSelectedPopoverId,
 }) {
   const { setModalContent, setModalClass } = useModal();
 
   const popoverRef = useRef(null);
-  const ellipsisRef = useRef(null);
+  const menuButtonRef = useRef(null);
 
   let isListOpen;
-  if (popover) {
+  if (showActions) {
     isListOpen = toggleListIds.includes(list.id);
   }
 
@@ -69,8 +69,8 @@ function ListItem({
       if (
         popoverRef.current &&
         !popoverRef.current.contains(e.target) &&
-        ellipsisRef.current &&
-        !ellipsisRef.current.contains(e.target)
+        menuButtonRef.current &&
+        !menuButtonRef.current.contains(e.target)
       ) {
         setSelectedPopoverId(null);
       }
@@ -84,33 +84,40 @@ function ListItem({
   }, [setSelectedPopoverId]);
 
   return (
-    <div onClick={() => navigate(`/lists/${list.id}`)} className={`ListItem ${className}`}>
+    <article
+      onClick={() => navigate(`/lists/${list.id}`)}
+      className={`ListItem ${className}`}
+    >
       <div className={container}>
-        <div className={`${hover && `ListItem__header-hover`}`}>
-          <span className={icon}>{list?.emoji}</span>
-          <span className={title}>{list?.name}</span>
-        </div>
+        <header
+          className={`ListItem__header ${
+            showHover && `ListItem__header-hover`
+          }`}
+        >
+          <span className={emoji}>{list?.emoji}</span>
+          <span className={name}>{list?.name}</span>
+        </header>
 
-        {popover && (
+        {showActions && (
           <>
-            <span className="arrow-container">
-              <span
-                className="ListItem__ellipsis"
+            <div className="ListItem__actions">
+              <button
+                className="ListItem__menu-button"
                 onClick={togglePopover}
-                ref={ellipsisRef}
+                ref={menuButtonRef}
               >
-                <IoEllipsisHorizontalSharp className="ListItem__ellipsis-icon" />
-              </span>
+                <IoEllipsisHorizontalSharp className="ListItem__menu-icon" />
+              </button>
               <IoIosArrowDown
                 onClick={toggleList}
                 className={`ListItem__arrow-icon ${isListOpen && "open"}`}
               />
-            </span>
+            </div>
 
             {isPopoverOpen && (
               <div className="ListItem__popover" ref={popoverRef}>
-                <span
-                  className="ListItem__button"
+                <button
+                  className="ListItem__popover__button"
                   onClick={(e) => {
                     e.stopPropagation();
                     setSelectedPopoverId(null);
@@ -122,21 +129,25 @@ function ListItem({
                     });
                   }}
                 >
-                  <IoSettings className="ListItem__button-icon" />
+                  <IoSettings className="ListItem__edit-icon" />
                   Edit
-                </span>
+                </button>
 
-                <span className="ListItem__button">
-                  <MdOutlineDragIndicator className="ListItem__button-icon" />
+                <button className="ListItem__popover__button">
+                  <MdOutlineDragIndicator className="ListItem__rearrange-icon" />
                   Rearrange
-                </span>
+                </button>
 
-                <span
-                  className="ListItem__button"
+                <button
+                  className="ListItem__popover__button"
                   onClick={(e) => {
                     e.stopPropagation();
                     setModalContent(
-                      <DeleteListModal listId={list.id} listName={list.name} navigate={navigate}/>
+                      <DeleteListModal
+                        listId={list.id}
+                        listName={list.name}
+                        navigate={navigate}
+                      />
                     );
                     setModalClass({
                       modal: "DeleteListModal",
@@ -145,15 +156,15 @@ function ListItem({
                     });
                   }}
                 >
-                  <TiDeleteOutline className="ListItem__button-icon" />
+                  <TiDeleteOutline className="ListItem__delete-icon" />
                   Delete
-                </span>
+                </button>
               </div>
             )}
           </>
         )}
       </div>
-    </div>
+    </article>
   );
 }
 

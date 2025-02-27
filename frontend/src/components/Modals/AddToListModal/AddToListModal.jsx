@@ -272,8 +272,8 @@ function AddToListModal({
                         list={list}
                         className="AddToListModal__list__ListItem"
                         container="AddToListModal__item__container"
-                        icon="AddToListModal__item__icon"
-                        title="AddToListModal__item__title"
+                        name="AddToListModal__item__icon"
+                        emoji="AddToListModal__item__title"
                         popover={false}
                         hover={false}
                       />

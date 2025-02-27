@@ -27,10 +27,9 @@ function HomePage() {
 
   const first = oneDayFiveMinAggregates[0].y;
   const last = oneDayFiveMinAggregates[oneDayFiveMinAggregates.length - 1].y;
-  console.log(first, last);
+
   const percentChange = (((last - first) / first) * 100).toFixed(2);
   const amountChange = (last - first).toFixed(2);
-  console.log(amountChange);
 
   return (
     <div className="HomePage">
