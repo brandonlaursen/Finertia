@@ -119,21 +119,19 @@ function TransferModal() {
           <span className="TransferModal__header-title">Transfer money</span>
         </div>
 
-        <div className="TransferModal__input-container">
+        <div>
           <div className="TransferModal__section">
             <span className={`TransferModal__amount-title`}>Amount</span>
 
             <div
-              className={`input-wrapper ${
-                showConfirmation && "TransferModalDisabled"
-              }`}
+              className={`input-wrapper ${showConfirmation && "InputDisabled"}`}
             >
               <span className="dollar-sign">$</span>
               <input
                 type="number"
                 pattern="[0-9]*"
                 className="amount-input"
-                value={amount}
+                value={amount || ""}
                 onChange={(e) => {
                   setAmount(e.target.value);
                 }}
@@ -348,13 +346,19 @@ function TransferModal() {
         <div className="TransferModal__section-footer">
           {showConfirmation ? (
             <>
-              {error && <span>{error}</span>}
-              <span className="TransferModal__footer-title">
-                {from === "Bank" &&
-                  `$${amount} will be withdrawn from Finertia Bank.`}
-                {from === "Individual" &&
-                  `$${amount} will be deposited into Finertia bank.`}
-              </span>
+              {error && (
+                <span className="TransferModal__section-footer-error">
+                  {error}
+                </span>
+              )}
+              {!error && (
+                <span className="TransferModal__footer-title footer-confirm">
+                  {from === "Bank" &&
+                    `$${amount} will be withdrawn from Finertia Bank.`}
+                  {from === "Individual" &&
+                    `$${amount} will be deposited into Finertia bank.`}
+                </span>
+              )}
 
               <button
                 className={`TransferModal__button ${
@@ -365,7 +369,7 @@ function TransferModal() {
                 {isLoading ? (
                   <span className="StockTransaction__spinner"></span>
                 ) : (
-                  `Transfer ${amount}`
+                  `Transfer $${amount}`
                 )}
               </button>
 
@@ -382,7 +386,9 @@ function TransferModal() {
             <>
               <span className="TransferModal__footer-container">
                 <span className="TransferModal__footer-title">
-                  Daily deposit limit: $150,000
+                  {from === "Bank" && `    Daily deposit limit: No limits`}
+                  {from === "Individual" &&
+                    `$${sessionUser.balance} available`}
                   <span className="TransferModal__question-mark-container">
                     <RiQuestionLine className="TransferModal__question-mark" />
                   </span>

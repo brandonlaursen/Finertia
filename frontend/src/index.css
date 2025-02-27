@@ -64,18 +64,34 @@ button {
   --color-primary-hover: rgb(7, 239, 162);
   --color-secondary: #ca63fc;
   --color-tertiary: rgb(22, 7, 40);
-  --color-accent: #e0e0e0;
+
+
   --color-white: #ffffff;
   --color-black: #000000;
+
+
+  /* /light button hover */
+  --color-accent: #e0e0e0;
+
+    /* dark button hover */
+  --dark-grey: #1e2125;
+
   --color-text: #333;
   --color-muted: #888;
   --color-lightgrey: rgb(231, 231, 231);
 
+  --color-light-text: rgb(106, 114, 120);
+
+  /* disabled button */
+  --color-disabled: rgb(180, 189, 194);
+
+  /* light blue highlight */
   --color-highlight: rgba(245, 248, 250);
 
   /* Button Padding */
   --button-padding: 0 32px;
 
+  --button-hover-lg: rgb(244, 244, 244);
   --button-border-white: 1px solid #fff;
   --button-border-dark: 1px solid #000000;
 
@@ -87,7 +103,7 @@ button {
   --border-color: rgb(227, 233, 237);
   --border-color-2: rgb(48, 54, 58);
 
-  --dark-grey: #1e2125;
+
 }
 
 .dark-mode {
