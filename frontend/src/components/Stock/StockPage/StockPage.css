@@ -2,8 +2,6 @@
 
 /* Main container for the stock page */
 .StockPage {
-  height: 100%;
-
   display: flex;
   justify-content: center;
   margin-top: 85px;
