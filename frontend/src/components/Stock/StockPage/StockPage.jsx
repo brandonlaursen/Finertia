@@ -4,15 +4,15 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
+import LoadingSpinner from "../../LoadingSpinner";
 import StockHeader from "../StockHeader/StockHeader";
-import SelectTimeFrame from "../SelectTimeFrame/SelectTimeFrame";
+import SelectTimeFrame from "../SelectTimeFrame";
 import StockChart from "../StockChart";
 import StockInfo from "../StockInfo";
 import StockNews from "../StockNews";
-import StockTradeSidebar from "../StockTradeBar";
+import StockTradeSidebar from "../StockTradeSideBar";
 
-import NotificationPopUp from "../../NotificationPopUp/NotificationPopUp";
+import NotificationPopUp from "../../NotificationPopUp";
 
 import { fetchStock } from "../../../../store/stocks";
 

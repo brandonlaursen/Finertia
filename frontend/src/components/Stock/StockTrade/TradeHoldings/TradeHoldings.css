@@ -1,0 +1,35 @@
+/* ========== Trade Holdings ========== */
+/* Main container for displaying the user's trade holdings */
+.TradeHoldings {
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 20px;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  border-radius: 4px;
+}
+
+/* ========== Holdings Display ========== */
+/* Container for holding balance and actions */
+.TradeHoldings__holdings {
+  display: flex;
+  gap: 4px;
+}
+
+/* ========== Sell All Button ========== */
+/* Button to allow users to sell all their holdings */
+.TradeHoldings__holdings__sell-all-button {
+  color: #33d187;
+  font-weight: bold;
+
+
+  background: none;
+  border: none;
+  outline: none;
+}

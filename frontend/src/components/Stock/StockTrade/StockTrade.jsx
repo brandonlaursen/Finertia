@@ -8,13 +8,13 @@ import TradeAmount from "./TradeAmount/TradeAmount";
 import TradeSummary from "./TradeSummary/TradeSummary";
 import TradeReview from "./TradeReview/TradeReview";
 
-import StockTransactionFooter from "./StockTransactionFooter/StockTransactionFooter";
+import TradeHoldings from "./TradeHoldings/TradeHoldings";
 
 import { selectUser } from "../../../../store/session";
 
 import { fetchStockTransactions } from "../../../../store/transactions";
 
-// StockTrade
+
 function StockTrade({ stock, setNotifications, setNotificationMessage }) {
   const dispatch = useDispatch();
 
@@ -270,9 +270,7 @@ function StockTrade({ stock, setNotifications, setNotificationMessage }) {
         setSharesToTrade={setSharesToTrade}
         setTradeAmount={setTradeAmount}
       />
-
-      {/*  TradeHoldings */}
-      <StockTransactionFooter
+      <TradeHoldings
         transactionType={transactionType}
         balance={balance}
         buyIn={buyIn}

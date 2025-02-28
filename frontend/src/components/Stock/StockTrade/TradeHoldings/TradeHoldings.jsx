@@ -1,6 +1,6 @@
-import "./StockTransactionFooter.css";
+import "./TradeHoldings.css";
 
-function StockTransactionFooter({
+function TradeHoldings({
   transactionType,
   balance,
   buyIn,
@@ -9,11 +9,11 @@ function StockTransactionFooter({
   handleSellAll,
 }) {
   return (
-    <div className="StockTransaction_footer">
+    <div className="TradeHoldings">
       {transactionType === "buy" ? (
         ` $${balance.toFixed(2)} buying power available`
       ) : (
-        <div className="StockTransaction_footer-sell">
+        <div className="TradeHoldings__holdings">
           {buyIn === "Dollars" ? (
             <span>{`$${(Number(sharesOwned) * price).toFixed(
               2
@@ -24,16 +24,16 @@ function StockTransactionFooter({
             } Available`}</span>
           )}
           -
-          <span
-            className="StockTransaction_footer-text"
+          <button
+            className="TradeHoldings__holdings__sell-all-button"
             onClick={handleSellAll}
           >
             Sell All
-          </span>
+          </button>
         </div>
       )}
     </div>
   );
 }
 
-export default StockTransactionFooter;
+export default TradeHoldings;
