@@ -30,7 +30,7 @@
 /* ChooseListType wrapper */
 .ChooseListType__wrapper {
   height: 400px;
-  width: 420px;
+  width: 450px;
   display: flex;
   justify-content: center;
 
@@ -104,7 +104,7 @@
 /* Each option box (Watch List & Screener) */
 .ChooseListType__option {
   height: 260px;
-  width: 185px;
+  width: 195px;
 
   display: flex;
   flex-direction: column;
@@ -124,6 +124,7 @@
 
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
+  border-bottom: solid 1px var(--border-color);
 }
 
 /* Watch List image */
@@ -150,7 +151,7 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  padding: 16px 8px;
+  padding: 16px 16px;
 }
 
 /* Option title (e.g., "Create Watch List", "Create Screener") */
@@ -162,6 +163,7 @@
 /* Option description text */
 .ChooseListType__text__sub-text {
   font-size: 12px;
+  font-weight: 500;
 }
 
 /* ========== Back Button ========== */
@@ -289,10 +291,10 @@
   border-radius: 4px;
 }
 
-.emoji-picker-wrapper {
+.CreateList__emoji-picker-wrapper{
   position: absolute;
   top: 105px;
-  right: 345px;
+  right: 200px;
 
   background: white;
 

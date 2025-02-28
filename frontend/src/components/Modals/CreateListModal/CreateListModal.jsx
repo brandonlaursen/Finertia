@@ -73,7 +73,7 @@ function CreateListModal() {
                 {selectedEmoji}
               </button>
               {showPicker && (
-                <div className="emoji-picker-wrapper">
+                <div className="CreateList__emoji-picker-wrapper">
                   <EmojiPicker onEmojiClick={handleEmojiClick} />
                 </div>
               )}

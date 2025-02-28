@@ -93,7 +93,10 @@ function ListEdit({ list, listId, navigate }) {
         </button>
         {showEmojiPicker && (
           <div className="ListEdit__emoji-picker-wrapper">
-            <EmojiPicker onEmojiClick={handleListEmojiChange} />
+            <EmojiPicker
+              onEmojiClick={handleListEmojiChange}
+              style={{ width: "500px" }}
+            />
           </div>
         )}
       </section>
@@ -116,15 +119,11 @@ function ListEdit({ list, listId, navigate }) {
             onClick={handleDeleteList}
           >
             <TiDeleteOutline className="ListEdit__delete-icon" />
-            <span className="ListEdit__delete-text">
-              Delete {list?.name}
-            </span>
+            <span className="ListEdit__delete-text">Delete {list?.name}</span>
           </div>
         )}
       </section>
-      <span className="ListEdit__subtitle">
-        {list?.Stocks?.length} items
-      </span>
+      <span className="ListEdit__subtitle">{list?.Stocks?.length} items</span>
     </div>
   );
 }

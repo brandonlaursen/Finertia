@@ -45,6 +45,7 @@ function AddToListModal({ stock, setNotifications, setNotificationMessage }) {
 
   const [selectedEmoji, setSelectedEmoji] = useState("💡");
 
+  console.log(isVisible, showPicker);
   useEffect(() => {
     dispatch(fetchLists());
   }, [dispatch]);
@@ -155,7 +156,10 @@ function AddToListModal({ stock, setNotifications, setNotificationMessage }) {
       <div className="AddToListModal">
         {showPicker && (
           <div className="AddToListModal__emoji-wrapper">
-            <EmojiPicker onEmojiClick={handleEmojiClick} />
+            <EmojiPicker
+              onEmojiClick={handleEmojiClick}
+              style={{ width: "500px" }}
+            />
           </div>
         )}
         <div className="AddToListModal__overlay" onClick={closeModal} />
@@ -240,10 +244,7 @@ function AddToListModal({ stock, setNotifications, setNotificationMessage }) {
               {lists &&
                 lists.slice(0, 10).map((list) => {
                   return (
-                    <div
-                      key={list.id}
-                      className="AddToListModal__list"
-                    >
+                    <div key={list.id} className="AddToListModal__list">
                       <div className="AddToListModal__list-wrapper">
                         <input
                           type="checkbox"

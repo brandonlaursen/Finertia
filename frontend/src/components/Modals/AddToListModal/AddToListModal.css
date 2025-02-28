@@ -2,8 +2,8 @@
 /* Modal container and overlay */
 .AddToListModal {
   position: fixed;
-  top: 400px;
-  /* bottom: 0; */
+  top: 0;
+  bottom: 0;
   right: 0;
   left: 0;
   display: flex;
@@ -321,4 +321,13 @@ input.checked {
   font-size: 15px;
   font-weight: 500;
   color: black;
+}
+
+
+.AddToListModal__emoji-wrapper{
+  position: relative;
+  /* left: 10px; */
+  right: 150px;
+  top:100px;
+
 }

@@ -11,7 +11,6 @@ import { useModal } from "../../../context/Modal";
 import { editList } from "../../../../store/lists";
 
 function EditListModal({ list }) {
-
   const { closeModal } = useModal();
 
   const dispatch = useDispatch();
@@ -71,8 +70,11 @@ function EditListModal({ list }) {
                 {selectedEmoji}
               </button>
               {showPicker && (
-                <div className="emoji-picker-wrapper">
-                  <EmojiPicker onEmojiClick={handleEmojiClick} />
+                <div className="EditListModal__emoji-picker-wrapper">
+                  <EmojiPicker
+                    onEmojiClick={handleEmojiClick}
+                    style={{ width: "500px" }}
+                  />
                 </div>
               )}
             </div>
@@ -92,11 +94,11 @@ function EditListModal({ list }) {
                 "
               onClick={handleSubmit}
             >
-                {isLoading ? (
-              <span className="StockTransaction__spinner"></span>
-            ) : (
-              "Save"
-            )}
+              {isLoading ? (
+                <span className="StockTransaction__spinner"></span>
+              ) : (
+                "Save"
+              )}
             </button>
           </div>
         </div>

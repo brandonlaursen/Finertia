@@ -158,3 +158,11 @@
 .EditListModal__create-button:hover {
   background-color: rgb(7, 196, 133);
 }
+
+
+.EditListModal__emoji-picker-wrapper{
+  position: absolute;
+  top: 105px;
+  right: 120px;
+
+}
