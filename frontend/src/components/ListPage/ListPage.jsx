@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 
 import ListContainer from "../List/ListContainer";
-import ListPageEdit from "./ListPageEdit";
+import ListEdit from "./ListEdit";
 import ListPageStockTable from "./ListPageStockTable/ListPageStockTable";
 
 import { fetchAllStocks } from "../../../store/stocks";
@@ -34,7 +34,7 @@ function ListPage() {
       <div className="ListPage__container">
         <main className="ListPage__main">
           <section className="ListPage__section">
-            <ListPageEdit list={list} listId={listId} navigate={navigate} />
+            <ListEdit list={list} listId={listId} navigate={navigate} />
           </section>
 
           <ListPageStockTable list={list} listId={listId} stocks={stocks} navigate={navigate}/>

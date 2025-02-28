@@ -1,7 +1,7 @@
-/* ========== List Page Edit ========== */
+/* ========== List Edit ========== */
 
 /* Emoji button for selecting an emoji */
-.ListPageEdit__emoji-button {
+.ListEdit__emoji-button {
   height: 64px;
   width: 64px;
   font-size: 48px;
@@ -14,12 +14,12 @@
 }
 
 /* Change background color when hovered */
-.ListPageEdit__emoji-button:hover {
+.ListEdit__emoji-button:hover {
   background-color: var(--color-highlight);
 }
 
 /* Wrapper for the emoji picker dropdown */
-.ListPageEdit__emoji-picker-wrapper {
+.ListEdit__emoji-picker-wrapper {
   position: absolute;
   z-index: 1000;
   border-radius: 4px;
@@ -27,7 +27,7 @@
 }
 
 /* Container for the list name input field */
-.ListPageEdit__name {
+.ListEdit__name {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -35,7 +35,7 @@
 }
 
 /* Input field for editing the list name */
-.ListPageEdit__name-input {
+.ListEdit__name-input {
   width: 90%;
   height: 48px;
   padding: 0 8px;
@@ -49,18 +49,18 @@
 }
 
 /* Change background when hovered */
-.ListPageEdit__name-input:hover {
+.ListEdit__name-input:hover {
   background-color: var(--color-highlight);
 }
 
 /* Change border and background color when focused */
-.ListPageEdit__name-input:focus {
+.ListEdit__name-input:focus {
   border: 2px solid red;
   background-color: #ffffff;
 }
 
 /* Button for opening the menu (three-dot menu or options) */
-.ListPageEdit__menu-button {
+.ListEdit__menu-button {
   height: 18px;
   width: 20px;
   cursor: pointer;
@@ -68,12 +68,12 @@
 }
 
 /* Change color on hover */
-.ListPageEdit__menu-button:hover {
+.ListEdit__menu-button:hover {
   color: rgb(132, 235, 49);
 }
 
 /* Subtitle text below the list name */
-.ListPageEdit__subtitle {
+.ListEdit__subtitle {
   display: flex;
   align-items: center;
   margin-left: 12px;
@@ -83,7 +83,7 @@
 }
 
 /* Popover that appears when the delete button is clicked */
-.ListPageEdit__delete-popover {
+.ListEdit__delete-popover {
   position: absolute;
   right: -20px;
   top: 40px;
@@ -104,11 +104,11 @@
 }
 
 /* Change color when hovered */
-.ListPageEdit__delete-popover:hover {
+.ListEdit__delete-popover:hover {
   color: rgb(55, 225, 33);
 }
 
 /* Icon inside the delete popover */
-.ListPageEdit__delete-icon {
+.ListEdit__delete-icon {
   font-size: 20px;
 }

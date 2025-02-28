@@ -1,4 +1,4 @@
-import "./ListPageEdit.css";
+import "./ListEdit.css";
 import { IoEllipsisHorizontalSharp } from "react-icons/io5";
 import { TiDeleteOutline } from "react-icons/ti";
 
@@ -10,7 +10,7 @@ import EmojiPicker from "emoji-picker-react";
 
 import { editList, deleteList } from "../../../../store/lists";
 
-function ListPageEdit({ list, listId, navigate }) {
+function ListEdit({ list, listId, navigate }) {
   const dispatch = useDispatch();
   const location = useLocation();
 
@@ -81,10 +81,10 @@ function ListPageEdit({ list, listId, navigate }) {
   };
 
   return (
-    <div className="ListPageEdit">
+    <div className="ListEdit">
       <section>
         <button
-          className="ListPageEdit__emoji-button"
+          className="ListEdit__emoji-button"
           onClick={() => {
             setShowEmojiPicker(!showEmojiPicker);
           }}
@@ -92,41 +92,41 @@ function ListPageEdit({ list, listId, navigate }) {
           {selectedUpdatedEmoji}
         </button>
         {showEmojiPicker && (
-          <div className="ListPageEdit__emoji-picker-wrapper">
+          <div className="ListEdit__emoji-picker-wrapper">
             <EmojiPicker onEmojiClick={handleListEmojiChange} />
           </div>
         )}
       </section>
-      <section className="ListPageEdit__name">
+      <section className="ListEdit__name">
         <input
           value={updatedListName}
-          className="ListPageEdit__name-input"
+          className="ListEdit__name-input"
           onChange={handleListNameChange}
         />
         <IoEllipsisHorizontalSharp
-          className="ListPageEdit__menu-button"
+          className="ListEdit__menu-button"
           onClick={(e) => {
             e.stopPropagation(), setShowDeletePopover(!showDeletePopover);
           }}
         />
         {showDeletePopover && (
           <div
-            className="ListPageEdit__delete-popover"
+            className="ListEdit__delete-popover"
             ref={popoverRef}
             onClick={handleDeleteList}
           >
-            <TiDeleteOutline className="ListPageEdit__delete-icon" />
-            <span className="ListPageEdit__delete-text">
+            <TiDeleteOutline className="ListEdit__delete-icon" />
+            <span className="ListEdit__delete-text">
               Delete {list?.name}
             </span>
           </div>
         )}
       </section>
-      <span className="ListPageEdit__subtitle">
+      <span className="ListEdit__subtitle">
         {list?.Stocks?.length} items
       </span>
     </div>
   );
 }
 
-export default ListPageEdit;
+export default ListEdit;
