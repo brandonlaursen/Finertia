@@ -1,23 +1,23 @@
 import "./TradeAmountDropdown.css";
 import { GrFormCheckmark } from "react-icons/gr";
 
-function TradeAmountDropdown({ buyIn, setBuyIn, clearReview }) {
+function TradeAmountDropdown({ tradeUnit, setTradeUnit, clearReview }) {
   return (
     <div className="TradeAmountDropdown">
       <section
         className={`TradeAmountDropdown__option ${
-          buyIn === "Dollars" && "TradeAmountDropdown__option--hover"
+          tradeUnit === "Dollars" && "TradeAmountDropdown__option--hover"
         }`}
       >
         <div className="TradeAmountDropdown__check-mark">
-          {buyIn === "Dollars" && (
+          {tradeUnit === "Dollars" && (
             <GrFormCheckmark className="TradeAmountDropdown__check-mark-icon" />
           )}
         </div>
 
         <span
           onClick={() => {
-            setBuyIn("Dollars"), clearReview();
+            setTradeUnit("Dollars"), clearReview();
           }}
         >
           Dollars
@@ -25,18 +25,18 @@ function TradeAmountDropdown({ buyIn, setBuyIn, clearReview }) {
       </section>
       <section
         className={`TradeAmountDropdown__option ${
-          buyIn === "Shares" && "TradeAmountDropdown__option--hover"
+          tradeUnit === "Shares" && "TradeAmountDropdown__option--hover"
         }`}
       >
         <div className="TradeAmountDropdown__check-mark">
-          {buyIn === "Shares" && (
+          {tradeUnit === "Shares" && (
             <GrFormCheckmark className="TradeAmountDropdown__check-mark-icon" />
           )}
         </div>
 
         <span
           onClick={() => {
-            setBuyIn("Shares"), clearReview();
+            setTradeUnit("Shares"), clearReview();
           }}
         >
           Shares

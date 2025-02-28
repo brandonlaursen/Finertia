@@ -2,10 +2,10 @@ import "./TradeSummary.css";
 import { MdInfoOutline } from "react-icons/md";
 
 function TradeSummary({
-  buyIn,
-  estimatedShares,
-  transactionType,
-  estimatedCost,
+  tradeUnit,
+  tradeType,
+  tradeCostEstimate,
+  tradeSharesEstimate,
   showReview,
   errors,
   message,
@@ -13,23 +13,23 @@ function TradeSummary({
   return (
     <>
       <div className="TradeSummary">
-        {buyIn === "Dollars" ? (
+        {tradeUnit === "Dollars" ? (
           <>
-            <span>Est.Quantity</span>
+            <span>Estimated Quantity</span>
             <span className="TradeSummary__estimate">
-              {Number(estimatedShares).toFixed(5)}
+              {Number(tradeSharesEstimate).toFixed(5)}
             </span>
           </>
         ) : (
           <>
-            {transactionType === "buy" ? (
+            {tradeType === "buy" ? (
               <span>Estimated Cost</span>
             ) : (
               <span>Estimated Credit</span>
             )}
 
             <span className="TradeSummary__estimate">
-              ${Number(estimatedCost).toFixed(2)}
+              ${Number(tradeCostEstimate).toFixed(2)}
             </span>
           </>
         )}

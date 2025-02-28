@@ -7,15 +7,15 @@ import { useState, useRef, useEffect } from "react";
 import TradeAmountTypeDropdown from "../TradeAmountDropdown";
 
 function TradeAmount({
-  transactionType,
-  setBuyIn,
-  buyIn,
-  clearReview,
-  tradeAmount,
-  handleTradeAmountChange,
-  sharesToTrade,
-  handleTradeSharesChange,
   price,
+  tradeUnit,
+  setTradeUnit,
+  tradeType,
+  tradeAmount,
+  sharesToTrade,
+  clearReview,
+  setSharesToTrade,
+  setTradeAmount,
 }) {
   const buyInRef = useRef(null);
 
@@ -35,6 +35,22 @@ function TradeAmount({
     };
   }, []);
 
+  function handleSharesToTradeChange(e) {
+    const value = e.target.value;
+    const amount = Number(value);
+    clearReview();
+    setSharesToTrade(amount);
+    setTradeAmount("");
+  }
+
+  function handleTradeAmountChange(e) {
+    const value = e.target.value;
+    const amount = Number(value);
+    clearReview();
+    setTradeAmount(amount);
+    setSharesToTrade("");
+  }
+
   return (
     <div className="TradeAmount">
       <section className="TradeAmount__section">
@@ -47,16 +63,14 @@ function TradeAmount({
 
         <div className="TradeAmount__option">
           <div className="TradeAmount__select">
-            <span>
-              {transactionType === "buy" ? "Buy Order" : "Sell Order"}
-            </span>
+            <span>{tradeType === "buy" ? "Buy Order" : "Sell Order"}</span>
           </div>
         </div>
       </section>
 
       <section className="TradeAmount__section">
         <header className="TradeAmount__header">
-          <span>{transactionType === "buy" ? "Buy In" : "Sell In"}</span>
+          <span>{tradeType === "buy" ? "Buy In" : "Sell In"}</span>
         </header>
 
         <div className="TradeAmount__option">
@@ -69,13 +83,13 @@ function TradeAmount({
             }}
             ref={buyInRef}
           >
-            <span>{buyIn}</span>
+            <span>{tradeUnit}</span>
             <TiArrowUnsorted />
           </div>
           {isBuyDropdownOpen && (
             <TradeAmountTypeDropdown
-              buyIn={buyIn}
-              setBuyIn={setBuyIn}
+              tradeUnit={tradeUnit}
+              setTradeUnit={setTradeUnit}
               clearReview={clearReview}
             />
           )}
@@ -83,7 +97,7 @@ function TradeAmount({
       </section>
 
       <section className="TradeAmount__section">
-        {buyIn === "Dollars" ? (
+        {tradeUnit === "Dollars" ? (
           <>
             <header className="TradeAmount__header">
               <span>Amount</span>
@@ -113,14 +127,14 @@ function TradeAmount({
                 value={sharesToTrade || ""}
                 placeholder="0"
                 className="TradeAmount__input"
-                onChange={handleTradeSharesChange}
+                onChange={handleSharesToTradeChange}
               />
             </div>
           </>
         )}
       </section>
 
-      {buyIn === "Shares" && (
+      {tradeUnit === "Shares" && (
         <div className="TradeAmount__amount">
           <span className="TradeAmount__amount-title">Market Price</span>
           <span>${price.toFixed(2)}</span>

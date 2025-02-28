@@ -10,20 +10,27 @@ import TransferModal from "../../../Modals/TransferModal";
 import { useModal } from "../../../../context/Modal";
 
 function TradeReview({
-  buyIn,
-  estimatedShares,
-  transactionType,
-  showReview,
-  errors,
-  handleStockTransaction,
-  clearReview,
-  price,
   stock,
+  balance,
+  sharesOwned,
+  price,
+  tradeUnit,
+  tradeType,
+  tradeAmount,
+  setTradeAmount,
   sharesToTrade,
+  setSharesToTrade,
+  tradeCostEstimate,
+  tradeSharesEstimate,
+  handleStockTrade,
+  showReview,
+  setShowReview,
+  clearReview,
+  errors,
+  setErrors,
+  setMessage,
   setNotifications,
   setNotificationMessage,
-  setSharesToTrade,
-  setTradeAmount,
 }) {
   const dispatch = useDispatch();
   const { setModalContent, setModalClass } = useModal();
@@ -41,18 +48,33 @@ function TradeReview({
     clearReview();
   }
 
-  async function handleSubmitDelay() {
+  async function handleStockTradeReview() {
     setIsLoading(true);
     await new Promise((resolve) => setTimeout(resolve, 500));
     setIsLoading(false);
-    handleStockTransaction();
+    handleStockTrade({
+      stock,
+      balance,
+      sharesOwned,
+      tradeUnit,
+      tradeType,
+      tradeAmount,
+      sharesToTrade,
+      tradeCostEstimate,
+      tradeSharesEstimate,
+      showReview,
+      setShowReview,
+      errors,
+      setErrors,
+      setMessage,
+    });
   }
 
-  async function handleSubmitOrder() {
+  async function handleExecuteStockTrade() {
     if (errors) return;
 
     const numberOfShares =
-      buyIn === "Dollars" ? estimatedShares : sharesToTrade;
+      tradeUnit === "Dollars" ? tradeSharesEstimate : sharesToTrade;
 
     const transaction = {
       stockId: stock.id,
@@ -60,7 +82,7 @@ function TradeReview({
       stockName: stock.name,
       stockPrice: price,
       quantity: Number(numberOfShares).toFixed(5),
-      transactionType,
+      tradeType,
     };
 
     dispatch(executeStockTrade(transaction));
@@ -70,11 +92,11 @@ function TradeReview({
     await new Promise((resolve) => setTimeout(resolve, 1500));
     setIsLoading(false);
 
-    if (transactionType === "buy") {
+    if (tradeType === "buy") {
       setNotificationMessage([
         `Successfully bought ${transaction.quantity} shares of ${stock.name}`,
       ]);
-    } else if (transactionType === "sell") {
+    } else if (tradeType === "sell") {
       setNotificationMessage([
         `Successfully sold ${transaction.quantity} shares of ${stock.name}`,
       ]);
@@ -98,21 +120,12 @@ function TradeReview({
     <div className="TradeReview">
       {showReview && errors && (
         <>
-          {transactionType === "buy" &&
-            errors[0] === "Not Enough Buying Power" && (
-              <button
-                className="TradeReview__button"
-                onClick={handleDeposit}
-              >
-                Make Deposit
-              </button>
-            )}
-          <button
-            className="TradeReview__button"
-            onClick={() => {
-              clearReview();
-            }}
-          >
+          {tradeType === "buy" && errors[0] === "Not Enough Buying Power" && (
+            <button className="TradeReview__button" onClick={handleDeposit}>
+              Make Deposit
+            </button>
+          )}
+          <button className="TradeReview__button" onClick={clearReview}>
             Dismiss
           </button>
         </>
@@ -122,7 +135,7 @@ function TradeReview({
         <div className="TradeReview__confirmation">
           <button
             className="TradeReview__button"
-            onClick={handleSubmitOrder}
+            onClick={handleExecuteStockTrade}
             disabled={isLoading}
           >
             {isLoading ? (
@@ -131,12 +144,7 @@ function TradeReview({
               "Submit Order"
             )}
           </button>
-          <button
-            className="TradeReview__button"
-            onClick={() => {
-              clearReview();
-            }}
-          >
+          <button className="TradeReview__button" onClick={clearReview}>
             Cancel
           </button>
         </div>
@@ -145,7 +153,7 @@ function TradeReview({
       {!showReview && (
         <button
           className="TradeReview__button"
-          onClick={handleSubmitDelay}
+          onClick={handleStockTradeReview}
           disabled={isLoading}
         >
           {isLoading ? (

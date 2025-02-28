@@ -2,30 +2,34 @@ import "./TradeType.css";
 
 function TradeType({
   stock,
-  transactionType,
-  handleTransactionType,
+  tradeType,
+  setTradeType,
+  setSharesToTrade,
+  setTradeAmount,
   clearReview,
 }) {
+  const handleTradeTypeChange = (type) => {
+    setTradeType(type);
+    setSharesToTrade("");
+    setTradeAmount("");
+    clearReview();
+  };
+
   return (
     <header className="TradeType">
       <div
         className={`TradeType_select  ${
-          transactionType === "buy" && "TradeType--selected"
+          tradeType === "buy" && "TradeType--selected"
         }`}
-        onClick={() => {
-          handleTransactionType("buy"), clearReview();
-        }}
+        onClick={() => handleTradeTypeChange("buy")}
       >
         Buy {stock.symbol}
       </div>
       <div
         className={`TradeType_select  ${
-          transactionType === "sell" && "TradeType--selected"
+          tradeType === "sell" && "TradeType--selected"
         }`}
-        onClick={() => {
-          handleTransactionType("sell");
-          clearReview();
-        }}
+        onClick={() => handleTradeTypeChange("sell")}
       >
         Sell {stock.symbol}
       </div>

@@ -24,7 +24,7 @@
   justify-content: center;
   align-items: start;
   padding-left: 20px;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 /* Title inside the error message */
@@ -38,7 +38,7 @@
 
 /* Error icon inside the message */
 .TradeSummary__error-icon {
-  font-size: 13px;
+  font-size: 12px;
   color: black;
 }
 
@@ -46,8 +46,12 @@
 .TradeSummary__error-message {
   margin-left: 18px;
   margin-top: 4px;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
+  width: 220px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
 
 /* ========== Trade Summary Messages ========== */
@@ -66,4 +70,11 @@
   padding-right: 20px;
   font-size: 13px;
   font-weight: 500;
+
+  font-size: 12px;
+  font-weight: 500;
+  width: 250px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
