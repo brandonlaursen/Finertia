@@ -76,7 +76,7 @@ function ListContainer({ className, navigate }) {
               return (
                 <>
                   <ListItem
-                    className="WatchList__lists__ListItem"
+                    className="WatchList__ListItem"
                     container="ListItem__container"
                     emoji="ListItem__emoji"
                     name="ListItem__name"

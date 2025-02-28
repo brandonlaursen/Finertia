@@ -99,6 +99,9 @@ button {
   /* icon grey background hover */
   --light-background-hover: rgb(237, 237, 237);
 
+  --light-orange-button: rgb(254, 237, 230);
+  --dark-orange-button: rgb(255, 118, 58);
+
   /* Button Padding */
   --button-padding: 0 32px;
 

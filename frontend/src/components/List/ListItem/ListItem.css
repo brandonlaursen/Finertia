@@ -203,55 +203,14 @@
   width: 16px;
 }
 
-/* ========== Add To List Modal ========== */
-/* Container inside the add-to-list modal */
-.AddToListModal__item__container {
-  width: 100%;
-  height: 64px;
-
-  position: relative;
-
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* Icon inside the add-to-list modal */
-.AddToListModal__item__icon {
-  height: 60px;
-  width: 45px;
-
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-
-  margin-right: 10px;
-
-  font-size: 24px;
-
-  background-color: rgb(234, 243, 248);
-
-  border-radius: 5px;
-}
-
-/* Title inside the add-to-list modal */
-.AddToListModal__item__title {
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  font-size: 16px;
-
-  color: black;
-}
 
 /* Watch List Page  */
-.WatchList__lists__ListItem {
+.WatchList__ListItem {
   height: 55px;
 }
 
-.WatchList__lists__ListItem:hover {
+.WatchList__ListItem:hover {
   background-color: rgb(247, 251, 255);
 }
+
+

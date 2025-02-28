@@ -20,11 +20,7 @@ import {
 import { selectUser } from "../../../../store/session";
 import { editListStocks } from "../../../../store/stocks";
 
-function AddToListModal({
-  stock,
-  setNotifications,
-  setNotificationMessage
-}) {
+function AddToListModal({ stock, setNotifications, setNotificationMessage }) {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
 
@@ -76,16 +72,14 @@ function AddToListModal({
     await new Promise((resolve) => setTimeout(resolve, 500));
     setIsLoading(false);
 
-
     const { removedFromIds } = await dispatch(
       editListStocks(checkedItems, stock)
     );
 
-
-    const addedListIds = []
-    for(let key in checkedItems){
-      if(checkedItems[key] && !stock.listIds.includes(Number(key))){
-       addedListIds.push(key);
+    const addedListIds = [];
+    for (let key in checkedItems) {
+      if (checkedItems[key] && !stock.listIds.includes(Number(key))) {
+        addedListIds.push(key);
       }
     }
 
@@ -111,7 +105,7 @@ function AddToListModal({
     closeModal();
 
     setNotificationMessage([newMessage]);
-    if(newMessage.length <= 0) {
+    if (newMessage.length <= 0) {
       return;
     }
 
@@ -125,7 +119,6 @@ function AddToListModal({
     });
     setNotifications(false);
     setNotificationMessage([]);
-
   }
 
   const handleCreateList = async (e) => {
@@ -161,56 +154,53 @@ function AddToListModal({
     <>
       <div className="AddToListModal">
         {showPicker && (
-          <div className="container-one__wrapper">
+          <div className="AddToListModal__emoji-wrapper">
             <EmojiPicker onEmojiClick={handleEmojiClick} />
           </div>
         )}
-        <div className="AddToListModal__background" onClick={closeModal} />
+        <div className="AddToListModal__overlay" onClick={closeModal} />
 
         <div className="AddToListModal__container">
-          <div className="AddToListModal__contents">
-            <div className="AddToListModal__header">
-              <span className="AddToListModal__title">Add to List</span>
-              <span className="AddToListModal__close-button-span">
-                <MdClose
-                  className="AddToListModal__close-button"
-                  onClick={closeModal}
-                />
-              </span>
-            </div>
-          </div>
+          <header className="AddToListModal__header">
+            <span className="AddToListModal__title">Add to List</span>
+            <button className="AddToListModal__close-button">
+              <MdClose
+                className="AddToListModal__close-button-icon"
+                onClick={closeModal}
+              />
+            </button>
+          </header>
 
           <div>
-            <div className="AddToListModal__section">
+            <div className="AddToListModal__create-section">
               <div
-                className={`AddToListModal__section__create-container
-               ${!isVisible ? "AddToListModal__padding" : ""}
+                className={`AddToListModal__create-container
               `}
               >
                 {isVisible ? (
-                  <div className="AddToListModal__create-list-container">
-                    <div className="AddToListModal__create-list-container-one">
+                  <div className="AddToListModal__create-form">
+                    <section className="AddToListModal__create-form__input-section">
                       <button
-                        className="container-one__emoji"
+                        className="AddToListModal__create-form__emoji-button"
                         onClick={() => setShowPicker(!showPicker)}
                       >
                         {selectedEmoji}
                       </button>
 
                       <input
-                        className="container-one___input"
+                        className="AddToListModal__create-form__input"
                         type="text"
                         placeholder="List Name"
                         value={listName}
                         onChange={(e) => setListName(e.target.value)}
                         required
                       />
-                    </div>
+                    </section>
 
-                    <div className="container-one___input__buttons">
+                    <section className="AddToListModal__create-form__buttons">
                       <button
-                        className="container-one___input__button
-                  CreateList__cancel-button"
+                        className="AddToListModal__create-form__button
+                  AddToListModal__cancel-button"
                         onClick={() => {
                           setIsVisible(false),
                             setListName(""),
@@ -220,9 +210,8 @@ function AddToListModal({
                         Cancel
                       </button>
                       <button
-                        className="container-one___input__button
-                  CreateList__create-button
-                  "
+                        className="AddToListModal__create-form__button
+               AddToListModal__create-button"
                         onClick={handleCreateList}
                       >
                         {isLoadingCreate ? (
@@ -231,15 +220,15 @@ function AddToListModal({
                           "Create List"
                         )}
                       </button>
-                    </div>
+                    </section>
                   </div>
                 ) : (
                   <>
-                    <span className="AddToListModal__section__create-icon">
-                      <FiPlus className="AddToListModal__plus-icon" />
+                    <span className="AddToListModal__create-list-toggle">
+                      <FiPlus className="AddToListModal__create-list-toggle__icon" />
                     </span>
                     <span
-                      className="AddToListModal__section__create-title"
+                      className="AddToListModal__create-list-toggle__title"
                       onClick={() => setIsVisible(true)}
                     >
                       Create New List
@@ -253,9 +242,9 @@ function AddToListModal({
                   return (
                     <div
                       key={list.id}
-                      className="AddToListModal__checkbox-container"
+                      className="AddToListModal__list"
                     >
-                      <div className="checkbox-wrapper">
+                      <div className="AddToListModal__list-wrapper">
                         <input
                           type="checkbox"
                           id={list.id}
@@ -264,16 +253,16 @@ function AddToListModal({
                           className={checkedItems[list.id] ? "checked" : ""}
                         />
                         {checkedItems[list.id] && (
-                          <IoIosCheckmark className="checkbox-icon" />
+                          <IoIosCheckmark className="AddToListModal__checkbox-icon" />
                         )}
                       </div>
 
                       <ListItem
                         list={list}
-                        className="AddToListModal__list__ListItem"
+                        className="AddToListModal__ListItem"
                         container="AddToListModal__item__container"
-                        name="AddToListModal__item__icon"
-                        emoji="AddToListModal__item__title"
+                        name="AddToListModal__item__title"
+                        emoji="AddToListModal__item__icon"
                         popover={false}
                         hover={false}
                       />
@@ -283,9 +272,9 @@ function AddToListModal({
             </div>
           </div>
 
-          <div className="AddToListModal__section__buttons">
+          <footer className="AddToListModal__footer">
             <button
-              className="AddToListModal__section__button
+              className="AddToListModal__footer__button
                 AddToListModal__create-button
                 "
               onClick={handleSubmit}
@@ -297,7 +286,7 @@ function AddToListModal({
                 "Save Changes"
               )}
             </button>
-          </div>
+          </footer>
         </div>
       </div>
     </>
