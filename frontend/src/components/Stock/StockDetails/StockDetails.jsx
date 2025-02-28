@@ -26,7 +26,7 @@ function StockDetails({ stock }) {
   return (
     <div className="StockDetails">
       <section className="StockDetails__about">
-        <header className="StockDetails__about-header">About</header>
+        <header className="StockDetails__header">About</header>
         <p
           className="StockDetails__about-description"
           style={{
@@ -43,30 +43,31 @@ function StockDetails({ stock }) {
         </button>
       </section>
 
-
-      <section className="company-info-container">
-        <div className="company-info-item">
-          <span className="info-label">CEO</span>
-          <span className="info-value">-</span>
+      <section className="StockDetails__company-info">
+        <div className="StockDetails__company-info-item">
+          <span className="StockDetails__company-info__label">CEO</span>
+          <span>-</span>
         </div>
-        <div className="company-info-item">
-          <span className="info-label">Employees</span>
-          <span className="info-value">{formatNumber(totalEmployees)}</span>
+        <div className="StockDetails__company-info-item">
+          <span className="StockDetails__company-info__label">Employees</span>
+          <span>{formatNumber(totalEmployees)}</span>
         </div>
-        <div className="company-info-item">
-          <span className="info-label">Headquarters</span>
-          <span className="info-value"> {address},</span>
+        <div className="StockDetails__company-info-item">
+          <span className="StockDetails__company-info__label">
+            Headquarters
+          </span>
+          <span> {address}</span>
         </div>
-        <div className="company-info-item">
-          <span className="info-label">Industry</span>
-          <span className="info-value"> {industry}</span>
+        <div className="StockDetails__company-info-item">
+          <span className="StockDetails__company-info__label">Industry</span>
+          <span> {industry}</span>
         </div>
       </section>
 
       <header className="StockDetails__header">Key statistics</header>
 
-      <div className="statistics-container">
-        <section className="statistics-column">
+      <div className="StockDetails__statistics">
+        <section className="StockDetails__statistics-column">
           <div>
             <span>Market cap</span>
             <span> {marketCap === 0 ? "-" : formatNumber(marketCap)}</span>
@@ -75,14 +76,14 @@ function StockDetails({ stock }) {
             <span>High today</span>
             <span>${high}</span>
           </div>
-          section
+
           <div>
             <span>52 Week high</span>
             <span>-</span>
           </div>
         </section>
 
-        <section className="statistics-column">
+        <section className="StockDetails__statistics-column">
           <div>
             <span>Price-Earnings ratio</span>
             <span>-</span>
@@ -97,7 +98,7 @@ function StockDetails({ stock }) {
           </div>
         </section>
 
-        <section className="statistics-column">
+        <section className="StockDetails__statistics-column">
           <div>
             <span>Dividend yield</span>
             <span>-</span>
@@ -108,7 +109,7 @@ function StockDetails({ stock }) {
           </div>
         </section>
 
-        <section className="statistics-column">
+        <section className="StockDetails__statistics-column">
           <div>
             <span>Average volume</span>
             <span>-</span>
