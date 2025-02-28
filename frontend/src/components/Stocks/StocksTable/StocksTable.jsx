@@ -12,6 +12,7 @@ function StocksTable({
   navigate,
   setNotifications,
   setNotificationMessage,
+  listId = null,
 }) {
   const stocksData = useMemo(() => {
     if (!listStocks) return stocks;
@@ -52,6 +53,8 @@ function StocksTable({
                 navigate={navigate}
                 setNotifications={setNotifications}
                 setNotificationMessage={setNotificationMessage}
+                listStocks={listStocks}
+                listId={listId}
               />
             );
           })}

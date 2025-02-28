@@ -47,7 +47,6 @@
 
   cursor: pointer;
   border-bottom: 1px solid var(--border-color);
-
 }
 
 .StockTableItem:hover {
@@ -82,26 +81,20 @@
 
   color: var(--percent-change-positive);
 }
-.stocks__btn--add {
-  height: 12px;
-  width: 12px;
 
-
-  /* margin-left: 7vw; */
-  /* text-align: right; */
+.StockTableItem__button {
+  height: 14px;
+  width: 14px;
   float: right;
   margin-right: 16px;
-
-  background: none;
-
-  border: none;
-  cursor: pointer;
   color: var(--color-icon-grey);
+  cursor: pointer;
 }
 
-.stocks__btn--add:hover {
+.StockTableItem__button:hover {
   color: var(--color-primary);
 }
+
 
 /* ========== Loading Spinner ========== */
 
