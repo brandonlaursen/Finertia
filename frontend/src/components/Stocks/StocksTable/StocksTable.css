@@ -30,17 +30,12 @@
   color: var(--color-primary); /* Change text color on hover */
 }
 
-
 .StocksTable th:nth-of-type(1),
-.StocksTable td:nth-of-type(1){
+.StocksTable td:nth-of-type(1) {
   /* width: 20vw; */
 
-
   text-align: left;
-};
-
-
-
+}
 
 .StockTableItem:hover {
   background-color: var(--color-highlight);
@@ -56,14 +51,17 @@
   border-bottom: 1px solid var(--border-color);
 }
 
+.StockTableItem:hover {
+  background-color: var(--color-highlight);
+}
+
 .StocksTableItem__name {
   font-weight: bold;
 
-padding-right: 16px;
+  padding-right: 16px;
   word-wrap: break-word;
   text-overflow: ellipsis;
 }
-
 
 .stocks-table-arrow-container {
   display: flex;
@@ -101,7 +99,6 @@ padding-right: 16px;
 .stocks__btn--add:hover {
   color: var(--color-primary);
 }
-
 
 /* ========== Loading Spinner ========== */
 
