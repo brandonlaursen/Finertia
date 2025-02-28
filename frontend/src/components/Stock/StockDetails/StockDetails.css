@@ -1,94 +1,95 @@
+/* ========== Stock Details Container ========== */
+/* Main container for stock details */
 .StockDetails {
   height: auto;
-
   display: flex;
   flex-direction: column;
   margin-top: 20px;
 }
 
+/* ========== Section Headers ========== */
+/* Styling for section headers like "About", "Key Statistics" */
 .StockDetails__header {
   padding-bottom: 20px;
-
   font-size: 24px;
   font-weight: bold;
-
   border-bottom: solid 1px var(--border-color);
 }
 
+/* ========== About Section ========== */
+/* Controls the appearance and transition of the stock description */
 .StockDetails__about-description {
   margin-top: 20px;
   font-size: 14px;
   line-height: 1.5;
   font-weight: 500;
   overflow: hidden;
-  transition: max-height 0.3s ease-in-out;
+  transition: max-height 0.3s ease-in-out; /* Smooth expand/collapse effect */
 }
 
+/* "Show More" button styling */
 .StockDetails__show-more-button {
   font-weight: bold;
-
   color: rgb(7, 222, 150);
-
   background: none;
   border: none;
   outline: none;
-
   padding: 0;
+  cursor: pointer; /* Ensures it looks clickable */
 }
 
+/* ========== Company Info Section ========== */
+/* Container for company-related details */
 .StockDetails__company-info {
   height: 100px;
-
   display: flex;
   align-items: start;
   justify-content: space-between;
   padding-top: 32px;
-
   font-size: 13px;
 }
 
+/* Individual company info item (CEO, Employees, Headquarters, Industry) */
 .StockDetails__company-info-item {
   width: 150px;
-
   display: flex;
   flex-direction: column;
-
-  gap: 8px;
+  gap: 8px; /* Space between label and value */
 }
 
+/* Label styling for company info */
 .StockDetails__company-info__label {
   font-weight: bold;
 }
 
+/* ========== Key Statistics Section ========== */
+/* Main container for stock statistics */
 .StockDetails__statistics {
   height: 200px;
-
   display: flex;
   align-items: start;
   justify-content: space-between;
-
   margin-top: 20px;
-
   font-size: 13px;
-
   border-bottom: solid 1px var(--border-color);
 }
 
+/* Column layout for statistics section */
 .StockDetails__statistics-column {
   display: flex;
   flex-direction: column;
-
   gap: 16px;
 }
 
+/* Individual stat item (Market Cap, High Today, etc.) */
 .StockDetails__statistics-column div {
   display: flex;
   flex-direction: column;
-
   gap: 8px;
-  width: 150px;
+  width: 150px; /* Keeps it aligned with company info */
 }
 
+/* Styling for the first span inside each stat item (Label) */
 .StockDetails__statistics-column span:first-child {
   font-weight: bold;
 }

@@ -38,7 +38,6 @@
   padding: 32px;
 }
 
-
 /* add for home page */
 .StockPage__main-time-frame-container {
   height: 35px;
@@ -80,106 +79,4 @@
   right: 0;
 
   background-color: rgb(7, 222, 150);
-}
-
-
-
-.stocks-news-container {
-  height: 300px;
-}
-
-
-.news-title {
-  margin-top: 12px;
-  padding-bottom: 20px;
-
-  font-size: 24px;
-  font-weight: bold;
-
-  border-bottom: solid 1px rgb(234, 234, 234);
-}
-
-.news-container {
-  height: 150px;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-
-  margin-top: 20px;
-
-  color: black;
-}
-
-.text-container {
-  display: flex;
-  flex-direction: column;
-
-  gap: 10px;
-}
-
-.news-header {
-  display: flex;
-
-  gap: 5px;
-}
-
-.news-header span:nth-child(2),
-.news-sub-text {
-  color: #717171;
-}
-
-.news-main-text,
-.news-sub-text {
-  display: block;
-}
-
-.news-image {
-  height: 100%;
-}
-
-.news-image img {
-  height: 130px;
-  width: 200px;
-
-  object-fit: cover;
-}
-
-.news-main-text {
-  font-weight: bold;
-}
-
-.news-text {
-  display: flex;
-  flex-direction: column;
-
-  gap: 8px;
-}
-
-.stock-news-container a {
-  text-decoration: none;
-}
-
-.news-sub-text {
-  width: 75%;
-
-  font-size: 14px;
-
-  color: #464646;
-}
-
-.loading-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  padding-top: 280px;
-
-  z-index: 9999;
 }
