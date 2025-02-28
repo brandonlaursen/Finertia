@@ -17,16 +17,14 @@
 }
 
 .ListPage__main {
-  width: 620px;
+  width: 55vw;
 
   display: flex;
-  min-height: 100vh;
+
   flex-direction: column;
-  padding-bottom: 100px;
 }
 
 .ListPage__section {
-
   display: flex;
 
   margin-top: 32px;
@@ -35,12 +33,8 @@
   /* gap: 8px; */
   flex-direction: column;
   height: 140px;
-  /* padding-left: 4px; */
+  margin-bottom: 24px;
 }
-
-
-
-
 
 /* stock table */
 .ListPage__delete {
@@ -56,19 +50,25 @@
 }
 
 .ListPage__delete:hover {
-color: rgb(74, 241, 127);
+  color: rgb(74, 241, 127);
 }
 
 .ListPage__no-stocks {
-  height: 140px;
+  height: 100px;
+
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 8px;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .ListPage__no-stocks-text {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 18px;
+}
+
+.ListPage__no-stocks-subtext {
+  font-weight: 500;
+  font-size: 13px;
 }

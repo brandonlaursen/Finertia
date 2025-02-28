@@ -1,16 +1,32 @@
 import "./StocksTable.css";
 
-import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
+import { useMemo } from "react";
+
 import StocksTableItem from "../StocksTableItem/StocksTableItem";
+import LoadingSpinner from "../../LoadingSpinner";
 
 function StocksTable({
   stocks,
+  listStocks = null,
   handleSort,
-  sortedStocks,
   navigate,
   setNotifications,
   setNotificationMessage,
 }) {
+  const stocksData = useMemo(() => {
+    if (!listStocks) return stocks;
+
+    return listStocks.map((stock) => ({
+      id: stock.id,
+      name: stock.stockName,
+      symbol: stock.stockSymbol,
+      current_price: stocks[stock.id]?.current_price ?? 0,
+      todays_change_percent: stocks[stock.id]?.todays_change_percent ?? 0,
+      market_cap: stocks[stock.id]?.market_cap ?? 0,
+    }));
+  }, [listStocks, stocks]);
+  console.log(stocksData);
+
   return (
     <table className="StocksTable">
       <thead className="StocksTable__head">
@@ -25,9 +41,10 @@ function StocksTable({
           <th></th>
         </tr>
       </thead>
-      <tbody className="StocksTable__body">
-        {stocks.length ? (
-          sortedStocks.map((stock) => {
+
+      {stocksData.length ? (
+        <tbody className="StocksTable__body">
+          {stocksData.map((stock) => {
             return (
               <StocksTableItem
                 key={stock.id}
@@ -37,15 +54,15 @@ function StocksTable({
                 setNotificationMessage={setNotificationMessage}
               />
             );
-          })
-        ) : (
-          <div className="Stocks__loading-spinner">
-            <LoadingSpinner />
-          </div>
-        )}
+          })}
 
-        <tr className="StockTableItem"></tr>
-      </tbody>
+          {!listStocks && <tr className="StockTableItem"></tr>}
+        </tbody>
+      ) : (
+        <div className="Stocks-loading-spinner">
+          <LoadingSpinner />
+        </div>
+      )}
     </table>
   );
 }

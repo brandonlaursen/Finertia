@@ -9,6 +9,7 @@
   flex-direction: column;
 
   margin-top: 80px; /* Adjusted for fixed navbar */
+
 }
 
 /* ========== Navigation Bar ========== */
@@ -79,6 +80,7 @@
   max-width: 800px;
   min-width: 400px;
   margin-right: 2vw;
+
 }
 
 /* Section wrapper for spacing */
@@ -101,11 +103,14 @@
 
   gap: 4px;
   margin-left: 0px;
+  margin-left: 8px;
+
 }
 
 /* Smaller header version (hidden or collapsed) */
 .Stocks__hide--header {
   height: 58px;
+
 }
 
 /* Main stock title */
@@ -199,6 +204,7 @@
   height: 40px;
   font-size: 16px;
   font-weight: 500;
+  margin-left: 8px;
 }
 
 /* Hidden description */
