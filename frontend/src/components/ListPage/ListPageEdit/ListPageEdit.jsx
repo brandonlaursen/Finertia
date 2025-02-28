@@ -16,62 +16,64 @@ function ListPageEdit({ list, listId, navigate }) {
 
   const popoverRef = useRef(null);
 
-  const [selectedEmoji, setSelectedEmoji] = useState(list?.emoji || "");
-  const [showPicker, setShowPicker] = useState(false);
-  const [listName, setListName] = useState("");
-  const [deletePopover, setDeletePopover] = useState(false);
+  const [selectedUpdatedEmoji, setSelectedUpdatedEmoji] = useState(
+    list?.emoji || ""
+  );
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const [updatedListName, setUpdatedListName] = useState("");
+  const [showDeletePopover, setShowDeletePopover] = useState(false);
 
   useEffect(() => {
     if (list) {
-      setSelectedEmoji(list.emoji);
-      setListName(list.name);
+      setSelectedUpdatedEmoji(list.emoji);
+      setUpdatedListName(list.name);
     }
   }, [list]);
 
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (popoverRef.current && !popoverRef.current.contains(e.target)) {
-        setDeletePopover(false);
+        setShowDeletePopover(false);
       }
     };
 
-    if (deletePopover) {
+    if (showDeletePopover) {
       document.addEventListener("click", handleClickOutside);
     }
 
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, [deletePopover]);
+  }, [showDeletePopover]);
 
-  const handleListName = async (e) => {
+  const handleListNameChange = async (e) => {
     const newName = e.target.value;
-    setListName(newName);
+    setUpdatedListName(newName);
 
     const editedList = {
       stockListId: list.id,
       name: newName,
-      emoji: selectedEmoji,
+      emoji: selectedUpdatedEmoji,
     };
 
     await dispatch(editList(editedList));
   };
 
-  const handleEmojiClick = async (emojiData) => {
+  const handleListEmojiChange = async (emojiData) => {
     const newEmoji = emojiData.emoji;
-    setSelectedEmoji(newEmoji);
+    setSelectedUpdatedEmoji(newEmoji);
     const editedList = {
       stockListId: list.id,
-      name: listName,
+      name: updatedListName,
       emoji: newEmoji,
     };
 
     await dispatch(editList(editedList));
 
-    setShowPicker(false);
+    setShowEmojiPicker(false);
   };
 
-  const handleDelete = async () => {
+  const handleDeleteList = async () => {
     await dispatch(deleteList(listId));
     if (location.pathname.includes(listId)) {
       navigate("/");
@@ -79,47 +81,51 @@ function ListPageEdit({ list, listId, navigate }) {
   };
 
   return (
-    <>
-      <div>
+    <div className="ListPageEdit">
+      <section>
         <button
-          className="ListPage__section__emoji"
+          className="ListPageEdit__emoji-button"
           onClick={() => {
-            setShowPicker(!showPicker);
+            setShowEmojiPicker(!showEmojiPicker);
           }}
         >
-          {selectedEmoji}
+          {selectedUpdatedEmoji}
         </button>
-        {showPicker && (
-          <div className="ListPage__emoji-picker-wrapper">
-            <EmojiPicker onEmojiClick={handleEmojiClick} />
+        {showEmojiPicker && (
+          <div className="ListPageEdit__emoji-picker-wrapper">
+            <EmojiPicker onEmojiClick={handleListEmojiChange} />
           </div>
         )}
-      </div>
-      <div className="ListPage__list-edit">
+      </section>
+      <section className="ListPageEdit__name">
         <input
-          value={listName}
-          className="ListPage__list-name-input"
-          onChange={handleListName}
+          value={updatedListName}
+          className="ListPageEdit__name-input"
+          onChange={handleListNameChange}
         />
         <IoEllipsisHorizontalSharp
-          className="ListPage__list-name-ellipsis"
+          className="ListPageEdit__menu-button"
           onClick={(e) => {
-            e.stopPropagation(), setDeletePopover(!deletePopover);
+            e.stopPropagation(), setShowDeletePopover(!showDeletePopover);
           }}
         />
-        {deletePopover && (
+        {showDeletePopover && (
           <div
-            className="ListPage_delete-popover"
+            className="ListPageEdit__delete-popover"
             ref={popoverRef}
-            onClick={handleDelete}
+            onClick={handleDeleteList}
           >
-            <TiDeleteOutline className="ListPage__delete-icon" />
-            <span className="ListPage__delete-text">Delete {list?.name}</span>
+            <TiDeleteOutline className="ListPageEdit__delete-icon" />
+            <span className="ListPageEdit__delete-text">
+              Delete {list?.name}
+            </span>
           </div>
         )}
-      </div>
-      <span className="ListPage__subtitle">{list?.Stocks?.length} items</span>
-    </>
+      </section>
+      <span className="ListPageEdit__subtitle">
+        {list?.Stocks?.length} items
+      </span>
+    </div>
   );
 }
 

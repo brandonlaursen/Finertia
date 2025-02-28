@@ -31,14 +31,14 @@ function ListPage() {
 
   return (
     <div className="ListPage">
-      <div className="ListPage__body">
-        <div className="ListPage__body-left">
-          <div className="ListPage__section">
+      <div className="ListPage__container">
+        <main className="ListPage__main">
+          <section className="ListPage__section">
             <ListPageEdit list={list} listId={listId} navigate={navigate} />
-          </div>
+          </section>
 
           <ListPageStockTable list={list} listId={listId} stocks={stocks} navigate={navigate}/>
-        </div>
+        </main>
 
         <ListContainer
           className="WatchList-HomePage-container"

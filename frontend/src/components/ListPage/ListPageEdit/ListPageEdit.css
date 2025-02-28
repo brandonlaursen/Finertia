@@ -1,0 +1,114 @@
+/* ========== List Page Edit ========== */
+
+/* Emoji button for selecting an emoji */
+.ListPageEdit__emoji-button {
+  height: 64px;
+  width: 64px;
+  font-size: 48px;
+  cursor: pointer;
+  background-color: white;
+  border: none;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  margin-left: 8px;
+}
+
+/* Change background color when hovered */
+.ListPageEdit__emoji-button:hover {
+  background-color: var(--color-highlight);
+}
+
+/* Wrapper for the emoji picker dropdown */
+.ListPageEdit__emoji-picker-wrapper {
+  position: absolute;
+  z-index: 1000;
+  border-radius: 4px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Container for the list name input field */
+.ListPageEdit__name {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+/* Input field for editing the list name */
+.ListPageEdit__name-input {
+  width: 90%;
+  height: 48px;
+  padding: 0 8px;
+  border-radius: 4px;
+  font-size: 24px;
+  font-weight: 500;
+  outline: none;
+  border: none;
+  border: 2px solid rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+/* Change background when hovered */
+.ListPageEdit__name-input:hover {
+  background-color: var(--color-highlight);
+}
+
+/* Change border and background color when focused */
+.ListPageEdit__name-input:focus {
+  border: 2px solid red;
+  background-color: #ffffff;
+}
+
+/* Button for opening the menu (three-dot menu or options) */
+.ListPageEdit__menu-button {
+  height: 18px;
+  width: 20px;
+  cursor: pointer;
+  color: var(--color-icon-grey);
+}
+
+/* Change color on hover */
+.ListPageEdit__menu-button:hover {
+  color: rgb(132, 235, 49);
+}
+
+/* Subtitle text below the list name */
+.ListPageEdit__subtitle {
+  display: flex;
+  align-items: center;
+  margin-left: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-light-text);
+}
+
+/* Popover that appears when the delete button is clicked */
+.ListPageEdit__delete-popover {
+  position: absolute;
+  right: -20px;
+  top: 40px;
+  height: 60px;
+  width: 160px;
+  background-color: #ffffff;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  gap: 4px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px;
+  font-weight: bold;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* Change color when hovered */
+.ListPageEdit__delete-popover:hover {
+  color: rgb(55, 225, 33);
+}
+
+/* Icon inside the delete popover */
+.ListPageEdit__delete-icon {
+  font-size: 20px;
+}
