@@ -5,8 +5,9 @@ import { useSelector, useDispatch } from "react-redux";
 
 import TradeType from "./TradeType";
 import TradeAmount from "./TradeAmount/TradeAmount";
+import TradeSummary from "./TradeSummary/TradeSummary";
+import TradeReview from "./TradeReview/TradeReview";
 
-import StockTradeEstimate from "./StockTradeEstimate/StockTradeEstimate";
 import StockTransactionFooter from "./StockTransactionFooter/StockTransactionFooter";
 
 import { selectUser } from "../../../../store/session";
@@ -136,7 +137,7 @@ function StockTrade({ stock, setNotifications, setNotificationMessage }) {
       if (buyIn === "Shares") {
         if (Number(sharesToTrade).toFixed(5) < 0.000001) {
           setErrors([
-            `Not Enough Shares Available`,
+            `Minimum Shares Amount`,
             `Enter at least 0.000001 shares`,
           ]);
           return;
@@ -229,11 +230,7 @@ function StockTrade({ stock, setNotifications, setNotificationMessage }) {
         handleTradeSharesChange={handleTradeSharesChange}
       />
 
-      {/*
-    TradeDetails
-    TradeReview
-*/}
-      <StockTradeEstimate
+      <TradeSummary
         buyIn={buyIn}
         estimatedShares={estimatedShares}
         transactionType={transactionType}
@@ -244,6 +241,25 @@ function StockTrade({ stock, setNotifications, setNotificationMessage }) {
         setErrors={setErrors}
         handleStockTransaction={handleStockTransaction}
         message={message}
+        setMessage={setMessage}
+        clearReview={clearReview}
+        price={price}
+        stock={stock}
+        sharesToTrade={sharesToTrade}
+        setNotifications={setNotifications}
+        setNotificationMessage={setNotificationMessage}
+        setSharesToTrade={setSharesToTrade}
+        setTradeAmount={setTradeAmount}
+      />
+      <TradeReview
+        buyIn={buyIn}
+        estimatedShares={estimatedShares}
+        transactionType={transactionType}
+        showReview={showReview}
+        setShowReview={setShowReview}
+        errors={errors}
+        setErrors={setErrors}
+        handleStockTransaction={handleStockTransaction}
         setMessage={setMessage}
         clearReview={clearReview}
         price={price}

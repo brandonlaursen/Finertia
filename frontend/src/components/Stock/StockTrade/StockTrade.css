@@ -15,55 +15,6 @@
 
 
 
-
-
-
-.StockTransaction__estimate {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 20px;
-
-  font-size: 11px;
-  font-weight: 700;
-}
-
-.StockTransaction__button-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 16px;
-  gap: 8px;
-
-  border-bottom: 1px solid var(--border-color);
-}
-
-.StockTransaction__button {
-  width: 90%;
-  height: 36px;
-
-  font-size: 12px;
-  font-weight: bold;
-
-  background-color: rgb(0, 200, 5);
-  color: white;
-
-  border-radius: 20px;
-  border: none;
-
-  cursor: pointer;
-}
-
-.StockTransaction__button:hover {
-  background-color: rgb(2, 180, 5);
-}
-
-.StockTransaction__estimate-amount {
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-
 .StockTransaction_footer-sell {
   display: flex;
 
@@ -84,63 +35,10 @@
   align-items: center;
 }
 
-.StockTradeEstimate__errors {
-  height: 64px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: start;
-  padding-left: 20px;
-  font-size: 14px;
-}
 
-.StockTradeEstimate__error {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 4px;
-  font-weight: bold;
-}
 
-.StockTradeEstimate__error-subtext {
-  margin-left: 18px;
-  margin-top: 4px;
-}
 
-.StockTransaction__spinner {
-  width: 16px;
-  height: 16px;
-  border: 2px solid white;
-  border-top: 2px solid transparent;
-  border-radius: 50%;
-  animation: spin 0.6s linear infinite;
-  display: inline-block;
-}
 
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.StockTransaction__confirm-container {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  gap: 8px;
-}
-
-.StockTradeEstimate__message {
-  /* background-color: var(  --color-primary); */
-  padding-right: 20px;
-}
-
-.StockTradeEstimate__error-icon {
-  font-size: 14px;
-  color: black;
-}
 
 .StockTransaction_footer {
   height: 50px;

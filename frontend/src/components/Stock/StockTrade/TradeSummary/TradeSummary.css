@@ -1,0 +1,69 @@
+/* ========== Trade Summary ========== */
+/* Main container for the trade summary */
+.TradeSummary {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* Estimated quantity or cost display */
+.TradeSummary__estimate {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* ========== Trade Summary Errors ========== */
+/* Container for displaying errors */
+.TradeSummary__errors {
+  height: 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  padding-left: 20px;
+  font-size: 13px;
+}
+
+/* Title inside the error message */
+.TradeSummary__title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  font-weight: bold;
+}
+
+/* Error icon inside the message */
+.TradeSummary__error-icon {
+  font-size: 13px;
+  color: black;
+}
+
+/* Error message text */
+.TradeSummary__error-message {
+  margin-left: 18px;
+  margin-top: 4px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* ========== Trade Summary Messages ========== */
+/* Container for general messages */
+.TradeSummary__messages {
+  height: 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  padding-left: 20px;
+}
+
+/* Message text */
+.TradeSummary__message {
+  padding-right: 20px;
+  font-size: 13px;
+  font-weight: 500;
+}

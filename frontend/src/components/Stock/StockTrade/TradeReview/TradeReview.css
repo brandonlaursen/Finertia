@@ -1,0 +1,55 @@
+.TradeReview {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  gap: 8px;
+
+  border-bottom: 1px solid var(--border-color);
+}
+
+.TradeReview__button {
+  width: 90%;
+  height: 36px;
+
+  font-size: 12px;
+  font-weight: bold;
+
+  background-color: rgb(0, 200, 5);
+  color: white;
+
+  border-radius: 20px;
+  border: none;
+
+  cursor: pointer;
+}
+
+.TradeReview__button:hover {
+  background-color: rgb(2, 180, 5);
+}
+
+.TradeReview__confirmation {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.TradeReview__spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid white;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
