@@ -1,4 +1,3 @@
-
 .DeleteListModal {
   position: fixed;
   top: 255px;
@@ -10,7 +9,7 @@
   z-index: 100;
 }
 
-.DeleteListModal__background {
+.DeleteListModal__overlay {
   position: fixed;
   top: 0;
   right: 0;
@@ -22,106 +21,95 @@
 .DeleteListModal__container {
   position: absolute;
 
-  height: 175px;
-  width: 400px;
+  height: 165px;
+  width: 420px;
 
   background-color: rgb(255, 255, 255);
 
-  border-radius: 5px;
+  border-radius: 4px;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding:0px 20px;
-
+  padding: 0px 20px;
 }
 
+.DeleteListModal__section {
+  display: flex;
+  padding-bottom: 10px;
+  font-size: 13px;
+  font-weight: 500;
 
+  height: 40px;
+}
 
 .DeleteListModal__header {
   display: flex;
-  justify-content: space-between;
+  width: 100%;
 
-  /* padding-right: 20px; */
+  align-items: center;
+  justify-content: space-between;
 }
+
+.DeleteListModal__title {
+  font-size: 16px;
+  font-weight: bold;
+  word-wrap: break-word;
+}
+
 
 
 .DeleteListModal__close-button {
-  height: 22px;
-  width: 22px;
-  cursor: pointer;
-
-}
-
-.DeleteListModal__close-button-span{
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
 
-  height: 30px;
-  width: 30px;
+  height: 34px;
+  width: 34px;
+
   cursor: pointer;
 }
 
-.DeleteListModal__close-button-span:hover {
-  background-color: rgb(225, 225, 225);
-  border-radius: 5px;
+.DeleteListModal__close-button:hover {
+  background-color: var(--light-background-hover);
+  border-radius: 4px;
 }
 
-.DeleteListModal__title {
-  font-size: 18px;
-  font-weight: bold;
-  display: flex;
-  flex-direction: column;
-}
-
-
-
-
-.DeleteListModal__section {
-
-  display: flex;
-  align-items: end;
-  gap: 8px;
-  padding-bottom: 10px;
-  font-size:14px;
-
-  height: 40px;
+.DeleteListModal__close-button-icon {
+  height: 24px;
+  width: 24px;
 }
 
 
 
 
 
-.DeleteListModal__section__buttons{
+.DeleteListModal__section__buttons {
   display: flex;
   justify-content: center;
-  gap:8px;
+  gap: 8px;
   /* margin-right: 28px; */
   /* padding-left: 16px; */
   /* padding-right: 26px; */
-  padding-top: 10px;
 }
 
-.DeleteListModal__section__button{
-  height: 36px;
+.DeleteListModal__section__button {
+  height: 40px;
   width: 100%;
-  border-radius: 16px;
+  border-radius: 32px;
   padding: 0 20px;
   font-size: 12px;
   font-weight: bold;
   cursor: pointer;
 }
 
-
-.DeleteListModal__delete-button{
-  background-color: rgb(255,80,1);
-  color:white;
+.DeleteListModal__delete-button {
+  background-color: rgb(255, 80, 1);
+  color: white;
   border: none;
-
 }
 
-.DeleteListModal__delete-button:hover{
+.DeleteListModal__delete-button:hover {
   background-color: rgb(214, 68, 1);
 }

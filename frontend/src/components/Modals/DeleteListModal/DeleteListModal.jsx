@@ -1,7 +1,6 @@
 import "./DeleteListModal.css";
 import { MdClose } from "react-icons/md";
 
-
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
@@ -19,7 +18,7 @@ function DeleteListModal({ listId, listName, navigate }) {
     e.preventDefault();
 
     setIsLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    await new Promise((resolve) => setTimeout(resolve, 1500));
     setIsLoading(false);
 
     await dispatch(deleteList(listId));
@@ -31,28 +30,28 @@ function DeleteListModal({ listId, listName, navigate }) {
 
   return (
     <div className="DeleteListModal">
-      <div className="DeleteListModal__background" onClick={closeModal} />
+      <div className="DeleteListModal__overlay" onClick={closeModal} />
 
       <div className="DeleteListModal__container">
-        <div className="DeleteListModal__contents">
-          <div className="DeleteListModal__header">
+        <section className="DeleteListModal__section">
+          <header className="DeleteListModal__header">
             <span className="DeleteListModal__title">
               Are you sure you want to delete
-              <span>{`"${listName}"?`}</span>
+              <span>{` "${listName}"?`}</span>
             </span>
-            <span className="DeleteListModal__close-button-span">
+            <button className="DeleteListModal__close-button">
               <MdClose
-                className="DeleteListModal__close-button"
+                className="DeleteListModal__close-button-icon"
                 onClick={closeModal}
               />
-            </span>
-          </div>
-        </div>
+            </button>
+          </header>
+        </section>
 
-        <div>
-          <div className="DeleteListModal__section">
+        <section>
+          <span className="DeleteListModal__section">
             If you delete this list and its 0 items, it’ll be gone forever!
-          </div>
+          </span>
           <div className="DeleteListModal__section__buttons">
             <button
               className="DeleteListModal__section__button
@@ -61,14 +60,15 @@ function DeleteListModal({ listId, listName, navigate }) {
               onClick={handleSubmit}
             >
               {isLoading ? (
-              <span className="StockTransaction__spinner"></span>
-            ) : (
-              ` Delete ${listName}`
-            )}
-
+                <span className="StockTransaction__spinner"></span>
+              ) : (
+                ` Delete ${listName}`
+              )}
             </button>
           </div>
-        </div>
+        </section>
+
+
       </div>
     </div>
   );
