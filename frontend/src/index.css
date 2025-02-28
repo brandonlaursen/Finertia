@@ -59,26 +59,34 @@ button {
   --font-weight-normal: 500;
   --font-weight-bold: 700;
 
-  /* Colors */
-  --color-primary: #07de96;
-  --color-primary-hover: rgb(7, 239, 162);
-  --color-secondary: #ca63fc;
-  --color-tertiary: rgb(22, 7, 40);
-
-  --percent-change-positive: rgb(44, 202, 4);
-  --percent-change-negative: rgb(255, 29, 4);
-
-  --percent-change-orange: rgb(248, 124, 14);
-
+  /* backgrounds */
   --color-white: #ffffff;
   --color-black: #000000;
 
+  /* Colors */
+  --color-primary: #07de96;
+  --color-primary-hover: rgb(7, 239, 162);
+
+  --color-secondary: #ca63fc;
+  --color-tertiary: rgb(22, 7, 40);
+
+  /*  percent change */
+  --percent-change-positive: rgb(44, 202, 4);
+  --percent-change-negative: rgb(255, 29, 4);
+
+  /* icons percent change */
+  --percent-change-orange: rgb(248, 124, 14);
+
+  /* dark green button-hover rgb(2,180,5)*/
+  /* dark green button rgb(0, 200, 5);*/
+
+
   /* /light button hover */
   --color-accent: #e0e0e0;
-
   /* dark button hover */
   --dark-grey: #1e2125;
 
+  /* Light green hover */
   --button-hover-light-green: rgb(211, 255, 240);
 
   --color-text: #333;

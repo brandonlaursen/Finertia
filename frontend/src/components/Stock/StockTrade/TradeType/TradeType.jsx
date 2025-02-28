@@ -1,16 +1,16 @@
-import "./StockTransactionHeader.css";
+import "./TradeType.css";
 
-function StockTransactionHeader({
+function TradeType({
   stock,
   transactionType,
   handleTransactionType,
   clearReview,
 }) {
   return (
-    <div className="StockTransaction__header">
+    <header className="TradeType">
       <div
-        className={`StockTransaction__header-buy  ${
-          transactionType === "buy" && "StockTransaction__header-selected"
+        className={`TradeType_select  ${
+          transactionType === "buy" && "TradeType--selected"
         }`}
         onClick={() => {
           handleTransactionType("buy"), clearReview();
@@ -19,8 +19,8 @@ function StockTransactionHeader({
         Buy {stock.symbol}
       </div>
       <div
-        className={`StockTransaction__header-buy  ${
-          transactionType === "sell" && "StockTransaction__header-selected"
+        className={`TradeType_select  ${
+          transactionType === "sell" && "TradeType--selected"
         }`}
         onClick={() => {
           handleTransactionType("sell");
@@ -29,8 +29,8 @@ function StockTransactionHeader({
       >
         Sell {stock.symbol}
       </div>
-    </div>
+    </header>
   );
 }
 
-export default StockTransactionHeader;
+export default TradeType;

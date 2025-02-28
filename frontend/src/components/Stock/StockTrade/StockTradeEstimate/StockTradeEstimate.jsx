@@ -102,6 +102,7 @@ function StockTradeEstimate({
 
   return (
     <>
+  {/* Transaction summary */}
       <div className="StockTransaction__estimate">
         {buyIn === "Dollars" ? (
           <>
@@ -145,6 +146,7 @@ function StockTradeEstimate({
         </>
       )}
 
+{/* Trade Confirmation */}
       <div className="StockTransaction__button-container">
         {showReview && errors && (
           <>

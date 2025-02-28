@@ -1,0 +1,59 @@
+.TradeAmountDropdown {
+  width: 127px;
+  height: 88px;
+
+  position: absolute;
+  top: 36px;
+  left: -1px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: rgb(255, 255, 255);
+
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+}
+
+.TradeAmountDropdown__option {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  padding: 8px 0px;
+  align-items: center;
+
+  cursor: default;
+  z-index: 20;
+
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.TradeAmountDropdown__option--hover {
+  background-color: var(--color-highlight);
+}
+
+.TradeAmountDropdown__option:hover {
+  background-color: var(--color-highlight);
+}
+
+
+
+.TradeAmountDropdown__check-mark {
+  height: 75%;
+  width: 20px;
+
+  display: flex;
+  justify-content: center;
+
+  margin-left: 10px;
+
+  margin-right: 4px;
+}
+
+.TradeAmountDropdown__check-mark-icon {
+  height: 22px;
+  width: 22px;
+}

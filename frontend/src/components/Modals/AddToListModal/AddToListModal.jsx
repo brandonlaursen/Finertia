@@ -261,8 +261,8 @@ function AddToListModal({ stock, setNotifications, setNotificationMessage }) {
                         list={list}
                         className="AddToListModal__ListItem"
                         container="AddToListModal__item__container"
-                        name="AddToListModal__item__title"
-                        emoji="AddToListModal__item__icon"
+                        name="AddToListModal__item__name"
+                        emoji="AddToListModal__item__emoji"
                         popover={false}
                         hover={false}
                       />

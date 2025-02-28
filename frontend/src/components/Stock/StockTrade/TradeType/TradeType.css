@@ -1,0 +1,39 @@
+/* ========== Trade Type Selector ========== */
+/* Container for the trade type (Buy/Sell) selection */
+.TradeType {
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+  padding: 0 20px;
+
+  border-bottom: 1px solid var(--border-color);
+  font-weight: bold;
+  font-size: 13px;
+}
+
+/* ========== Trade Type Options ========== */
+/* Individual trade type option (e.g., Buy, Sell) */
+.TradeType_select {
+  height: 100%;
+  width: auto;
+
+  display: flex;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+/* Hover effect for trade type options */
+.TradeType_select:hover {
+  color: rgb(0, 200, 5);
+}
+
+/* ========== Selected Trade Type Styling ========== */
+/* Styling for the active/selected trade type option */
+.TradeType--selected {
+  box-shadow: 0 2px 0 var(--color-primary);
+  color: rgb(0, 200, 5);
+}

@@ -10,7 +10,7 @@ import SelectTimeFrame from "../SelectTimeFrame/SelectTimeFrame";
 import StockChart from "../StockChart";
 import StockInfo from "../StockInfo";
 import StockNews from "../StockNews";
-import StockWatchList from "../StockWatchList";
+import StockTradeSidebar from "../StockTradeBar";
 
 import NotificationPopUp from "../../NotificationPopUp/NotificationPopUp";
 
@@ -63,7 +63,7 @@ function StockPage() {
               <StockNews stockNews={stock.news} />
             </div>
 
-            <StockWatchList
+            <StockTradeSidebar
               stock={stock}
               setNotifications={setNotifications}
               setNotificationMessage={setNotificationMessage}

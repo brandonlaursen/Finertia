@@ -1,12 +1,11 @@
-import "./StockTransaction.css";
+import "./StockTrade.css";
 
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import StockTransactionHeader from "./StockTransactionHeader";
-import BuyIn from "./BuyIn";
-import OrderType from "./OrderType/OrderType";
-import StockTransactionOrder from "./StockTransactionOrder";
+import TradeType from "./TradeType";
+import TradeAmount from "./TradeAmount/TradeAmount";
+
 import StockTradeEstimate from "./StockTradeEstimate/StockTradeEstimate";
 import StockTransactionFooter from "./StockTransactionFooter/StockTransactionFooter";
 
@@ -14,13 +13,14 @@ import { selectUser } from "../../../../store/session";
 
 import { fetchStockTransactions } from "../../../../store/transactions";
 
-function StockTransaction({ stock, setNotifications, setNotificationMessage  }) {
+// StockTrade
+function StockTrade({ stock, setNotifications, setNotificationMessage }) {
   const dispatch = useDispatch();
 
   const sessionUser = useSelector(selectUser);
 
   const stockSummary = sessionUser.stockSummary.stocksOwned[stock.symbol];
-  
+
   const sharesOwned = stockSummary?.sharesOwned || 0;
   const { price } = stock;
   const { balance } = sessionUser.stockSummary;
@@ -29,11 +29,9 @@ function StockTransaction({ stock, setNotifications, setNotificationMessage  }) 
   const [errors, setErrors] = useState(null);
   const [message, setMessage] = useState(null);
 
-
-
-
   // Type of transaction - buy or sell
   const [transactionType, setTransactionType] = useState("buy");
+
   // Type of buy in - Dollars or Shares
   const [buyIn, setBuyIn] = useState("Dollars");
 
@@ -47,7 +45,6 @@ function StockTransaction({ stock, setNotifications, setNotificationMessage  }) 
   // Estimated cost of the trade transaction
   const [estimatedCost, setEstimatedCost] = useState("");
 
-  // get users transactions with current stock
   useEffect(() => {
     dispatch(fetchStockTransactions());
   }, [dispatch]);
@@ -70,7 +67,7 @@ function StockTransaction({ stock, setNotifications, setNotificationMessage  }) 
     const amount = Number(value);
     clearReview();
     setTradeAmount(amount);
-    setSharesToTrade('');
+    setSharesToTrade("");
   }
 
   function handleTradeSharesChange(e) {
@@ -78,20 +75,17 @@ function StockTransaction({ stock, setNotifications, setNotificationMessage  }) 
     const amount = Number(value);
     clearReview();
     setSharesToTrade(amount);
-    setTradeAmount('');
+    setTradeAmount("");
   }
 
   const handleTransactionType = (type) => {
     setTransactionType(type);
-    setSharesToTrade('');
-    setTradeAmount('');
+    setSharesToTrade("");
+    setTradeAmount("");
   };
 
   async function handleStockTransaction() {
     setShowReview(!showReview);
-
-    // * Determine the number of shares based on buy-in type
-    // const numberOfShares = buyIn === "Dollars" ? estimatedShares : sharesToTrade;
 
     if (transactionType === "buy") {
       if (buyIn === "Dollars") {
@@ -215,34 +209,30 @@ function StockTransaction({ stock, setNotifications, setNotificationMessage  }) 
   }
 
   return (
-    <div className="StockTransaction">
-      <StockTransactionHeader
+    <div className="StockTrade">
+      <TradeType
         stock={stock}
         transactionType={transactionType}
         handleTransactionType={handleTransactionType}
         clearReview={clearReview}
       />
 
-      <div className="StockTransaction__body">
-        <OrderType transactionType={transactionType} />
+      <TradeAmount
+        transactionType={transactionType}
+        buyIn={buyIn}
+        setBuyIn={setBuyIn}
+        clearReview={clearReview}
+        price={price}
+        tradeAmount={tradeAmount}
+        handleTradeAmountChange={handleTradeAmountChange}
+        sharesToTrade={sharesToTrade}
+        handleTradeSharesChange={handleTradeSharesChange}
+      />
 
-        <BuyIn
-          transactionType={transactionType}
-          buyIn={buyIn}
-          setBuyIn={setBuyIn}
-          clearReview={clearReview}
-        />
-
-        <StockTransactionOrder
-          price={price}
-          buyIn={buyIn}
-          tradeAmount={tradeAmount}
-          handleTradeAmountChange={handleTradeAmountChange}
-          sharesToTrade={sharesToTrade}
-          handleTradeSharesChange={handleTradeSharesChange}
-        />
-      </div>
-
+      {/*
+    TradeDetails
+    TradeReview
+*/}
       <StockTradeEstimate
         buyIn={buyIn}
         estimatedShares={estimatedShares}
@@ -265,6 +255,7 @@ function StockTransaction({ stock, setNotifications, setNotificationMessage  }) 
         setTradeAmount={setTradeAmount}
       />
 
+      {/*  TradeHoldings */}
       <StockTransactionFooter
         transactionType={transactionType}
         balance={balance}
@@ -273,10 +264,8 @@ function StockTransaction({ stock, setNotifications, setNotificationMessage  }) 
         price={price}
         handleSellAll={handleSellAll}
       />
-
-
     </div>
   );
 }
 
-export default StockTransaction;
+export default StockTrade;

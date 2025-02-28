@@ -1,0 +1,132 @@
+/* ========== Trade Amount ========== */
+/* Main container for the Trade Amount section */
+.TradeAmount {
+  height: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px 20px;
+  font-size: 13px;
+}
+
+/* ========== Order Type ========== */
+/* Container for each section inside Trade Amount */
+.TradeAmount__section {
+  width: 100%;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Header styling for order type */
+.TradeAmount__header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+/* Subtext styling (additional descriptions) */
+.TradeAmount__subtext {
+  color: rgb(127, 127, 127);
+  display: flex;
+}
+
+/* Info icon next to subtext */
+.TradeAmount__info-icon {
+  height: 12px;
+  width: 12px;
+  margin-left: 4px;
+}
+
+/* ========== Order Type Selection ========== */
+/* Wrapper for the order type selection */
+.TradeAmount__option {
+  height: 32px;
+  width: 50%;
+  position: relative;
+  display: flex;
+  border-radius: 4px;
+}
+
+/* Dropdown selector for choosing order type */
+.TradeAmount__select {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  cursor: normal;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+/* ========== Trade Input Section ========== */
+/* Container for the input field where users enter amount */
+.TradeAmount__input-container {
+  height: 32px;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
+  padding-right: 8px;
+  margin-left: auto;
+  margin-bottom: 4px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+/* Highlight border when input is focused */
+.TradeAmount__input-container:focus-within {
+  border: 2px solid var(--color-primary);
+}
+
+/* Dollar sign inside the input field */
+.TradeAmount__dollar-sign {
+  font-size: 11px;
+}
+
+/* Input field for entering trade amount */
+.TradeAmount__input {
+  width: 100%;
+  text-align: right;
+  border: none;
+  outline: none;
+}
+
+/* Removes spin buttons from number input */
+.TradeAmount__input::-webkit-outer-spin-button,
+.TradeAmount__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* ========== Amount Display Section ========== */
+/* Container for displaying trade amount */
+.TradeAmount__amount {
+  height: 24px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Title styling for displayed trade amount */
+.TradeAmount__amount-title {
+  color: rgb(44, 183, 118);
+}
+
+/* ========== Divider Line ========== */
+/* Horizontal divider line */
+.StockTransaction__line {
+  width: 100%;
+  height: 1px;
+  background-color: var(--border-color);
+  margin-bottom: 6px;
+}
