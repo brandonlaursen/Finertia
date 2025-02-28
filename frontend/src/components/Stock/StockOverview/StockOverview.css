@@ -1,14 +1,24 @@
+/* ========== Stock Overview Container ========== */
+
+/* Main container for stock details */
 .StockOverview {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
+
+/* ========== Stock Name & Price ========== */
+
+/* Stock name and price styling */
 .StockOverview__name,
 .StockOverview__price {
   font-size: 30px;
   font-weight: 500;
 }
 
+/* ========== Stock Change Section ========== */
+
+/* Container for price change & market hours */
 .StockOverview__section {
   display: flex;
   flex-direction: row;
@@ -19,24 +29,33 @@
   font-weight: bold;
 }
 
+/* Positive price change */
 .StockOverview__change {
   color: var(--percent-change-positive);
 }
 
+/* ========== Market Hours & Date Info ========== */
+
+/* Market hours styling */
 .StockOverview__market-hours {
   font-size: 12px;
   font-weight: bold;
   margin-top: 4px;
 }
 
-.StockOverview__day{
+/* Stock trading day indicator */
+.StockOverview__day {
   font-weight: 500;
 }
 
+/* ========== Color Indicators ========== */
+
+/* Negative price movement */
 .negative {
   color: var(--percent-change-negative);
 }
 
+/* Positive price movement */
 .positive {
   color: var(--percent-change-positive);
 }

@@ -1,0 +1,53 @@
+/* ========== Time Frame Selection Bar ========== */
+
+/* Container for the time frame selector */
+.SelectTimeFrame {
+  height: 35px;
+  width: 100%;
+
+  position: relative;
+  display: flex;
+  flex-direction: row;
+
+  gap: 20px;
+  padding-top: 4px;
+
+  cursor: pointer;
+  border-bottom: solid 1px var(--border-color);
+}
+
+/* ========== Time Frame Options ========== */
+
+/* Individual time frame option */
+.SelectTimeFrame span {
+  padding: 0 4px;
+  position: relative;
+
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Hover effect for time frame option */
+.SelectTimeFrame span:hover {
+  color: rgb(7, 222, 150);
+}
+
+/* ========== Selected Time Frame ========== */
+
+/* Active time frame option */
+.SelectTimeFrame span.SelectTimeFrame--selected {
+  color: rgb(7, 222, 150);
+}
+
+/* Underline effect for selected time frame */
+.SelectTimeFrame span.SelectTimeFrame--selected::after {
+  height: 2px;
+
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+
+  background-color: rgb(7, 222, 150);
+}

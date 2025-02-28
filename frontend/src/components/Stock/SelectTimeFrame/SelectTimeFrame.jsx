@@ -1,17 +1,14 @@
 import "./SelectTimeFrame.css";
 
 function SelectTimeFrame({ selectedTimeFrame, setSelectedTimeFrame }) {
-  const handleClick = (value) => {
-    setSelectedTimeFrame(value);
-  };
 
   return (
-    <div className="StockPage__main-time-frame-container">
+    <div className="SelectTimeFrame">
       {["1D", "1W", "1M", "3M", "1Y", "5Y"].map((timeFrame) => (
         <span
           key={timeFrame}
-          onClick={() => handleClick(timeFrame)}
-          className={selectedTimeFrame === timeFrame && "selected"}
+          onClick={() => setSelectedTimeFrame(timeFrame)}
+          className={selectedTimeFrame === timeFrame && "SelectTimeFrame--selected"}
         >
           {timeFrame}
         </span>

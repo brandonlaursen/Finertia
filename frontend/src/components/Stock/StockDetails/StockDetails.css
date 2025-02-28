@@ -1,0 +1,107 @@
+.StockDetails {
+  height: auto;
+
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+
+.StockDetails__about-header {
+  padding-bottom: 20px;
+
+  font-size: 20px;
+  font-weight: bold;
+
+  border-bottom: solid 1px var(--border-color);
+}
+
+.StockDetails__about-description {
+  margin-top: 20px;
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 500;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.StockDetails__show-more-button {
+
+  font-weight: bold;
+
+  color: rgb(7, 222, 150);
+
+  background: none;
+  border: none;
+  outline: none;
+
+  padding: 0;
+}
+
+.company-info-container {
+  height: 100px;
+
+  padding-top: 32px;
+  display: flex;
+  /* justify-content: flex-start; */
+  align-items: start;
+  /* align-items: center; */
+  gap: 130px;
+
+  font-size: 14px;
+}
+
+.company-info-item {
+  display: flex;
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+.info-label {
+  font-weight: bold;
+}
+
+.statistics-container {
+  height: 200px;
+
+  display: flex;
+  justify-content: space-between;
+
+  gap: 20px;
+  margin-top: 20px;
+
+  border-bottom: solid 1px var(--border-color);
+}
+
+.statistics-column {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.statistics-column div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  gap: 8px;
+}
+
+.statistics-column span {
+  font-size: 14px;
+}
+
+.statistics-column span:first-child {
+  color: #000000;
+  font-weight: bold;
+}
+
+.statistics-column span:last-child {
+  color: #000;
+}
+
+.stocks-news-container {
+  height: 300px;
+}

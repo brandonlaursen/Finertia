@@ -5,7 +5,7 @@ import { useMemo } from "react";
 import ReactApexChart from "react-apexcharts";
 
 
-function convertToEst(timestamp) {
+function convertTimestampToEST(timestamp) {
   const date = new Date(timestamp);
 
   const options1 = {
@@ -136,7 +136,7 @@ function StockChart({ stock, selectedTimeFrame }) {
       grid: { show: false },
       tooltip: {
         x: {
-          formatter: (timestamp) => convertToEst(timestamp, selectedTimeFrame),
+          formatter: (timestamp) => convertTimestampToEST(timestamp, selectedTimeFrame),
         },
         y: {
           formatter: (value) => `$${value.toFixed(2)}`,

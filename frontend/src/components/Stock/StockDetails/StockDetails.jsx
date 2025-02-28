@@ -1,5 +1,7 @@
-import "./StockInfo.css";
-function StockInfo({ stock }) {
+import "./StockDetails.css";
+import { useState } from "react";
+
+function StockDetails({ stock }) {
   const {
     description,
     totalEmployees,
@@ -11,7 +13,9 @@ function StockInfo({ stock }) {
     open,
     volume,
   } = stock;
-  
+
+  const [showMoreStockDetails, setShowMoreStockDetails] = useState(false);
+
   function formatNumber(num) {
     if (num >= 1e12) return (num / 1e12).toFixed(2) + "T";
     if (num >= 1e9) return (num / 1e9).toFixed(2) + "B";
@@ -20,12 +24,27 @@ function StockInfo({ stock }) {
   }
 
   return (
-    <div className="StockPage__info-container">
-      <span className="aboutTitle">About</span>
-      <span className="companyDescription">{description}</span>
-      <span className="showMoreLink">Show More</span>
+    <div className="StockDetails">
+      <section className="StockDetails__about">
+        <header className="StockDetails__about-header">About</header>
+        <p
+          className="StockDetails__about-description"
+          style={{
+            maxHeight: showMoreStockDetails ? "200px" : "42px",
+          }}
+        >
+          {description}
+        </p>
+        <button
+          className="StockDetails__show-more-button"
+          onClick={() => setShowMoreStockDetails(!showMoreStockDetails)}
+        >
+          {showMoreStockDetails ? "Show Less" : "Show More"}
+        </button>
+      </section>
 
-      <div className="company-info-container">
+
+      <section className="company-info-container">
         <div className="company-info-item">
           <span className="info-label">CEO</span>
           <span className="info-value">-</span>
@@ -42,11 +61,12 @@ function StockInfo({ stock }) {
           <span className="info-label">Industry</span>
           <span className="info-value"> {industry}</span>
         </div>
-      </div>
+      </section>
 
-      <span className="key-statistics">Key statistics</span>
+      <header className="StockDetails__header">Key statistics</header>
+
       <div className="statistics-container">
-        <div className="statistics-column">
+        <section className="statistics-column">
           <div>
             <span>Market cap</span>
             <span> {marketCap === 0 ? "-" : formatNumber(marketCap)}</span>
@@ -55,13 +75,14 @@ function StockInfo({ stock }) {
             <span>High today</span>
             <span>${high}</span>
           </div>
+          section
           <div>
             <span>52 Week high</span>
             <span>-</span>
           </div>
-        </div>
+        </section>
 
-        <div className="statistics-column">
+        <section className="statistics-column">
           <div>
             <span>Price-Earnings ratio</span>
             <span>-</span>
@@ -74,9 +95,9 @@ function StockInfo({ stock }) {
             <span>52 Week low</span>
             <span>-</span>
           </div>
-        </div>
+        </section>
 
-        <div className="statistics-column">
+        <section className="statistics-column">
           <div>
             <span>Dividend yield</span>
             <span>-</span>
@@ -85,9 +106,9 @@ function StockInfo({ stock }) {
             <span>Open price</span>
             <span>${open}</span>
           </div>
-        </div>
+        </section>
 
-        <div className="statistics-column">
+        <section className="statistics-column">
           <div>
             <span>Average volume</span>
             <span>-</span>
@@ -96,10 +117,10 @@ function StockInfo({ stock }) {
             <span>Volume</span>
             <span> {formatNumber(volume)}</span>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   );
 }
 
-export default StockInfo;
+export default StockDetails;

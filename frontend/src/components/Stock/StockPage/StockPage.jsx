@@ -8,10 +8,9 @@ import LoadingSpinner from "../../LoadingSpinner";
 import StockOverview from "../StockOverview/StockOverview";
 import SelectTimeFrame from "../SelectTimeFrame";
 import StockChart from "../StockChart";
-import StockInfo from "../StockInfo";
+import StockDetails from "../StockDetails";
 import StockNews from "../StockNews";
 import StockTradeSidebar from "../StockTradeSideBar";
-
 import NotificationPopUp from "../../NotificationPopUp";
 
 import { fetchStock } from "../../../../store/stocks";
@@ -59,7 +58,7 @@ function StockPage() {
                 selectedTimeFrame={selectedTimeFrame}
                 setSelectedTimeFrame={setSelectedTimeFrame}
               />
-              <StockInfo stock={stock} />
+              <StockDetails stock={stock} />
               <StockNews stockNews={stock.news} />
             </main>
 
