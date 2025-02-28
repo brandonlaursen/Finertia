@@ -64,7 +64,6 @@ function ProfilePage() {
 
   const total = stockSummary.totalInvestments + stockSummary.balance;
 
-
   return (
     <div className="ProfilePage">
       <div className="ProfilePage__container">
@@ -142,7 +141,7 @@ function ProfilePage() {
 
         <div className="ProfilePage__total">
           <span className="ProfilePage__total__balance">
-            ${stockSummary.balance.toFixed(2)}
+            ${stockSummary?.balance?.toFixed(2)}
           </span>
           Total in Finertia
         </div>
@@ -160,11 +159,15 @@ function ProfilePage() {
               <span className="ProfilePage__investments__details__value-text">
                 Total Individual value
               </span>
-              ${total.toFixed(2)}
+              <span className="ProfilePage__investments__details__value-subtext">
+                {" "}
+                ${total.toFixed(2)}
+              </span>
             </div>
 
             <div className="ProfilePage__investments__details__value ProfilePage__investments__details__subtext">
-              <span>Individual holdings</span>${stockSummary.totalInvestments.toFixed(2)}
+              <span>Individual holdings</span>$
+              {stockSummary.totalInvestments.toFixed(2)}
             </div>
 
             <div className="ProfilePage__investments__details__value ProfilePage__investments__details__subtext">

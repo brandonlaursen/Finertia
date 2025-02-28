@@ -23,7 +23,7 @@
 }
 
 .EditProfileModal__container {
-  height: 400px;
+  height: 420px;
   width: 400px;
 
   position: absolute;
@@ -53,19 +53,12 @@
 }
 
 .EditProfileModal__section {
-  height: 320px;
+  /* height: 320px; */
 
   display: flex;
   flex-direction: column;
 
   gap: 8px;
-}
-
-.EditProfileModal__close-button {
-  height: 22px;
-  width: 22px;
-
-  cursor: pointer;
 }
 
 .EditProfileModal__close-button-span {
@@ -78,6 +71,19 @@
   text-align: center;
 
   cursor: pointer;
+
+  border-radius: 4px;
+}
+
+.EditProfileModal__close-button-span:hover {
+  background-color: var(--light-background-hover);
+}
+
+.EditProfileModal__close-button {
+  height: 22px;
+  width: 22px;
+
+  cursor: pointer;
 }
 
 .EditProfileModal___user__image {
@@ -88,7 +94,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 .EditProfileModal___user__profile-pic {
@@ -99,8 +104,6 @@
 
   border-radius: 50%;
 }
-
-
 
 .EditProfileModal___user__plus-icon {
   height: 20px;
@@ -129,12 +132,18 @@
 }
 
 .EditProfileModal__user__info-input {
-  height: 26px;
+  height: 32px;
 
-  background-color: aliceblue;
+  background-color: var(--color-highlight);
 
   border: none;
-  border-radius: 1px;
+  border-radius: 4px;
+  padding-left: 8px;
+}
+
+
+.EditProfileModal__user__info-input:focus {
+  border: solid 1px var(--color-primary);
 }
 
 .EditProfileModal__section__theme {
@@ -163,7 +172,7 @@
   height: 48px;
   width: 48px;
 
-  background-color: aliceblue;
+  background-color: var(--color-highlight);
 
   border-radius: 50%;
   cursor: pointer;
@@ -185,6 +194,6 @@
   color: white;
 
   border: none;
-  border-radius: 20px;
+  border-radius: 32px;
   cursor: pointer;
 }
