@@ -5,7 +5,6 @@
   border-collapse: collapse;
   table-layout: fixed;
   margin-left: 8px;
-
 }
 
 .StocksTable__head {
@@ -33,7 +32,6 @@
 
 .StocksTable th:nth-of-type(1),
 .StocksTable td:nth-of-type(1) {
-
   text-align: left;
 }
 
@@ -49,6 +47,7 @@
 
   cursor: pointer;
   border-bottom: 1px solid var(--border-color);
+
 }
 
 .StockTableItem:hover {
@@ -87,7 +86,11 @@
   height: 12px;
   width: 12px;
 
-  margin-left: 4vw;
+
+  /* margin-left: 7vw; */
+  /* text-align: right; */
+  float: right;
+  margin-right: 16px;
 
   background: none;
 

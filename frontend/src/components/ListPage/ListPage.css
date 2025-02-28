@@ -18,6 +18,7 @@
 
 .ListPage__main {
   width: 55vw;
+  min-width: 400px;
 
   display: flex;
 
