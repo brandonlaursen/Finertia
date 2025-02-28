@@ -1,6 +1,25 @@
-import { useEffect, useState, useMemo } from "react";
-import ReactApexChart from "react-apexcharts";
 import "./StockChart.css";
+
+import { useMemo } from "react";
+
+import ReactApexChart from "react-apexcharts";
+
+
+function convertToEst(timestamp) {
+  const date = new Date(timestamp);
+
+  const options1 = {
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    timeZone: "America/New_York",
+  };
+
+  const dateTimeFormat = new Intl.DateTimeFormat("en-US", options1);
+
+  return dateTimeFormat.format(date);
+}
 
 function StockChart({ stock, selectedTimeFrame }) {
   const {
@@ -12,32 +31,53 @@ function StockChart({ stock, selectedTimeFrame }) {
     fiveYearsAggregates,
   } = stock;
 
-  // const [currentPoint, setCurrentPoint] = useState(null);
+  const data = useMemo(() => {
+    const aggregatesMap = {
+      "1D": oneDayAggregates,
+      "1W": oneWeekAggregates,
+      "1M": oneMonthAggregates,
+      "3M": threeMonthsAggregates,
+      "1Y": oneYearAggregates,
+      "5Y": fiveYearsAggregates,
+    };
 
-  const [data, setData] = useState([]);
+    return aggregatesMap[selectedTimeFrame] || [];
+  }, [
+    selectedTimeFrame,
+    oneDayAggregates,
+    oneWeekAggregates,
+    oneMonthAggregates,
+    threeMonthsAggregates,
+    oneYearAggregates,
+    fiveYearsAggregates,
+  ]);
 
-  const relevantValues = data
-    .filter((point) => point.y > 0)
-    .map((point) => point.y);
-  const minValue = Math.min(...relevantValues);
-  const maxValue = Math.max(...relevantValues);
-  const range = maxValue - minValue;
-  const padding = Math.max(range * 0.1, 0.5);
-  const dynamicMin = minValue - padding;
-  const dynamicMax = maxValue + padding;
+  const { dynamicMin, dynamicMax, middleValue } = useMemo(() => {
+    if (!data || data.length === 0) {
+      return { dynamicMin: 0, dynamicMax: 0, middleValue: 0 };
+    }
 
-  const avgValue =
-    relevantValues.reduce((sum, val) => sum + val, 0) / relevantValues.length;
+    const dataPoints = data
+      .filter((point) => point.y > 0)
+      .map((point) => point.y);
 
-  // Use the average as your middle value
-  const middleValue = avgValue;
+    if (dataPoints.length === 0) {
+      return { dynamicMin: 0, dynamicMax: 0, middleValue: 0 };
+    }
 
-  const series = [
-    {
-      name: "Price",
-      data,
-    },
-  ];
+    const minValue = Math.min(...dataPoints);
+    const maxValue = Math.max(...dataPoints);
+    const range = maxValue - minValue;
+    const padding = Math.max(range * 0.1, 0.5);
+
+    const dynamicMin = minValue - padding;
+    const dynamicMax = maxValue + padding;
+
+    const avgValue =
+      dataPoints.reduce((sum, val) => sum + val, 0) / dataPoints.length;
+
+    return { dynamicMin, dynamicMax, middleValue: avgValue };
+  }, [data]);
 
   const options = useMemo(
     () => ({
@@ -107,57 +147,14 @@ function StockChart({ stock, selectedTimeFrame }) {
     [dynamicMin, dynamicMax, middleValue, selectedTimeFrame]
   );
 
-  useEffect(() => {
-    let aggregates;
+  const series = [
+    {
+      name: "Price",
+      data,
+    },
+  ];
 
-    if (selectedTimeFrame === "1D") {
-      aggregates = oneDayAggregates;
-    }
-    if (selectedTimeFrame === "1W") {
-      aggregates = oneWeekAggregates;
-    }
-    if (selectedTimeFrame === "1M") {
-      aggregates = oneMonthAggregates;
-    }
-    if (selectedTimeFrame === "3M") {
-      aggregates = threeMonthsAggregates;
-    }
-    if (selectedTimeFrame === "1Y") {
-      aggregates = oneYearAggregates;
-    }
-    if (selectedTimeFrame === "5Y") {
-      aggregates = fiveYearsAggregates;
-    }
 
-    if (aggregates) {
-      setData(aggregates);
-    }
-  }, [
-    selectedTimeFrame,
-    oneDayAggregates,
-    oneWeekAggregates,
-    oneMonthAggregates,
-    threeMonthsAggregates,
-    oneYearAggregates,
-    fiveYearsAggregates,
-    options,
-  ]);
-
-  function convertToEst(timestamp) {
-    const date = new Date(timestamp);
-
-    const options1 = {
-      month: "long",
-      day: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-      timeZone: "America/New_York",
-    };
-
-    const dateTimeFormat = new Intl.DateTimeFormat("en-US", options1);
-
-    return dateTimeFormat.format(date);
-  }
 
   return (
     <div>

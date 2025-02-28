@@ -36,15 +36,17 @@
   padding-right: 16px;
 }
 
+
+
 .HomePage__main__title {
-  height: 32px;
+  /* height: 3px; */
 
   display: flex;
 
   font-size: 28px;
-  font-weight: var(--font-weight-bold);
+  font-weight: 500;
 
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 /* .HomePage__main__subtitle {
@@ -63,12 +65,12 @@
   display: flex;
   flex-direction: column;
   /* align-items: center; */
-  gap: 4px;
+  /* gap: 4px; */
 }
 
 .HomePage__investments {
-  font-size: 28px;
-  font-weight: var(--font-weight-bold);
+  font-size: 30px;
+  font-weight: 500;
 }
 
 .HomePage__percent-change {
@@ -78,6 +80,10 @@
   gap: 4px;
   align-items: center;
   text-align: center;
+}
+
+.HomePage__day{
+  font-weight: 500;
 }
 
 .HomePage__triangleIconDown {

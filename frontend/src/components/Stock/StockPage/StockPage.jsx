@@ -51,8 +51,8 @@ function StockPage() {
         {isLoading ? (
           <LoadingSpinner />
         ) : (
-          <div className="StockPage__body">
-            <div className="StockPage__body__main">
+          <div className="StockPage__layout">
+            <main className="StockPage__main">
               <StockOverview stock={stock} />
               <StockChart selectedTimeFrame={selectedTimeFrame} stock={stock} />
               <SelectTimeFrame
@@ -61,7 +61,7 @@ function StockPage() {
               />
               <StockInfo stock={stock} />
               <StockNews stockNews={stock.news} />
-            </div>
+            </main>
 
             <StockTradeSidebar
               stock={stock}

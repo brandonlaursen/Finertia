@@ -70,7 +70,7 @@ function HomePage() {
                   >
                     {`(${percentChange}%) `}
                   </span>
-                  <span> Today</span>
+                  <span className="HomePage__day"> Today</span>
                 </span>
               </div>
               <div className="HomePage__main__chart-container">
@@ -85,7 +85,7 @@ function HomePage() {
               </div>
 
             </div>
-       
+
           </div>
           <BuyingPowerDropDown sessionUser={sessionUser} />
           <NewsFeed />
