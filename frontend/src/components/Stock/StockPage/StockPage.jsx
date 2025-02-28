@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import LoadingSpinner from "../../LoadingSpinner";
-import StockHeader from "../StockHeader/StockHeader";
+import StockOverview from "../StockOverview/StockOverview";
 import SelectTimeFrame from "../SelectTimeFrame";
 import StockChart from "../StockChart";
 import StockInfo from "../StockInfo";
@@ -53,7 +53,7 @@ function StockPage() {
         ) : (
           <div className="StockPage__body">
             <div className="StockPage__body__main">
-              <StockHeader stock={stock} />
+              <StockOverview stock={stock} />
               <StockChart selectedTimeFrame={selectedTimeFrame} stock={stock} />
               <SelectTimeFrame
                 selectedTimeFrame={selectedTimeFrame}

@@ -1,6 +1,6 @@
-import "./StockHeader.css";
+import "./StockOverview.css";
 
-function StockHeader({ stock }) {
+function StockOverview({ stock }) {
   const {
     name,
     price,
@@ -12,12 +12,13 @@ function StockHeader({ stock }) {
   } = stock;
 
   return (
-    <>
-      <span className="StockPage__main-name">{name}</span>
-      <span className="StockPage__main-price">${price.toFixed(2)}</span>
-      <span className="StockPage__main-StockPage__main-price-change-today">
+    <div className="StockOverview">
+      <header className="StockOverview__name">{name}</header>
+      <span className="StockOverview__price">${price.toFixed(2)}</span>
+
+      <section className="StockOverview__section">
         <span
-          className={`StockPage__main-price-change ${
+          className={`StockOverview__change ${
             regular_trading_change < 0
               ? "negative"
               : regular_trading_change > 0
@@ -29,7 +30,7 @@ function StockHeader({ stock }) {
         </span>
 
         <span
-          className={`StockPage__main-price-change  ${
+          className={`StockOverview__change  ${
             regular_trading_change_percent < 0
               ? "negative"
               : regular_trading_change_percent > 0
@@ -39,12 +40,13 @@ function StockHeader({ stock }) {
         >
           {`(${regular_trading_change_percent?.toFixed(2)}%)`}
         </span>
-        <span>Today</span>
-      </span>
+        <span className="StockOverview__day">Today</span>
+      </section>
+
       {market_status === "closed" ? (
-        <span className="StockPage__main-price-change-today">
+        <section className="StockOverview__section">
           <span
-            className={`StockPage__main-price-change  ${
+            className={`StockOverview__change  ${
               late_trading_change < 0
                 ? "negative"
                 : late_trading_change > 0
@@ -55,15 +57,15 @@ function StockHeader({ stock }) {
             {`$${late_trading_change}
     (${late_trading_change_percent?.toFixed(2)}%)`}
           </span>
-          <span>Overnight</span>
-        </span>
+          <span className="StockOverview__market-hours">Overnight</span>
+        </section>
       ) : (
-        <span className="StockPage__main-price-change-overnight">
+        <section className="StockOverview__market-hours">
           24 Hour Market
-        </span>
+        </section>
       )}
-    </>
+    </div>
   );
 }
 
-export default StockHeader;
+export default StockOverview;

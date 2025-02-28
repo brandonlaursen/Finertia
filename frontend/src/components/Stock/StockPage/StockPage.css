@@ -16,7 +16,7 @@
   gap: 20px;
   padding: 0 5%;
 }
-
+/*  */
 .StockPage__body__main {
   height: 100%;
   max-width: 1000px;
@@ -29,36 +29,6 @@
   padding: 32px;
 }
 
-.StockPage__main-name,
-.StockPage__main-price {
-  font-size: 30px;
-  font-weight: bold;
-}
-
-.StockPage__main-price-change-today {
-  display: flex;
-  flex-direction: row;
-
-  gap: 7px;
-
-  font-size: 14px;
-}
-
-.StockPage__main-price-change {
-  color: var(--percent-change-positive);
-}
-
-.negative {
-  color: var(--percent-change-negative);
-}
-
-.positive {
-  color: var(--percent-change-positive);
-}
-
-.StockPage__main-price-change-overnight {
-  font-weight: bold;
-}
 
 .StockPage__main-time-frame-container {
   height: 35px;

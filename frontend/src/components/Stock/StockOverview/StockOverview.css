@@ -1,0 +1,42 @@
+.StockOverview {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.StockOverview__name,
+.StockOverview__price {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.StockOverview__section {
+  display: flex;
+  flex-direction: row;
+
+  gap: 7px;
+
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.StockOverview__change {
+  color: var(--percent-change-positive);
+}
+
+.StockOverview__market-hours {
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 4px;
+}
+
+.StockOverview__day{
+  font-weight: 500;
+}
+
+.negative {
+  color: var(--percent-change-negative);
+}
+
+.positive {
+  color: var(--percent-change-positive);
+}
