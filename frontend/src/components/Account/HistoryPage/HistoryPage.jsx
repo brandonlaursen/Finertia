@@ -52,8 +52,8 @@ function HistoryPage() {
                   key={i}
                 >
                   <div className="TransfersPage__completed-contents">
-                    <span className="TransfersPage__completed-transactions-title">{`${transaction.stockSymbol} ${transaction.transactionType}`}</span>
-                    <span className="TransfersPage__completed-transactions-date">
+                    <span className="HistoryPage__completed-transactions-title">{`${transaction.stockSymbol} ${transaction.transactionType}`}</span>
+                    <span className="HistoryPage__completed-transactions-date">
                       {new Date(transaction.purchaseDate).toLocaleString(
                         "en-US",
                         {
@@ -76,12 +76,12 @@ function HistoryPage() {
                   key={i}
                 >
                   <div className="TransfersPage__completed-contents">
-                    <span className="TransfersPage__completed-transactions-title">
+                    <span className="HistoryPage__completed-transactions-title">
                       {transaction.transactionType === "deposit"
                         ? `Deposit from Finertia Bank into individual`
                         : `Withdraw from individual to Finertia Bank`}
                     </span>
-                    <span className="TransfersPage__completed-transactions-date">
+                    <span className="HistoryPage__completed-transactions-date">
                       {new Date(transaction.transactionDate).toLocaleString(
                         "en-US",
                         {

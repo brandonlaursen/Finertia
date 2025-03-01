@@ -29,7 +29,7 @@ function EditProfileModal({ sessionUser }) {
     e.preventDefault();
 
     setIsLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    await new Promise((resolve) => setTimeout(resolve, 1500));
     setIsLoading(false);
 
     const editedProfile = {
@@ -73,7 +73,7 @@ function EditProfileModal({ sessionUser }) {
             />
           </span>
         </div>
-   
+
         <div className="EditProfileModal__section">
           <div className="EditProfileModal___user__image">
             {preview ||

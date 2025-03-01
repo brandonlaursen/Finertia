@@ -17,7 +17,7 @@
   justify-content: center;
   flex: 1;
 
-  gap: 20px;
+  gap: 1vw;
   padding: 0 5%;
 }
 
@@ -27,13 +27,14 @@
 .StockPage__main {
   height: 100%;
   max-width: 1000px;
+  width: 65vw;
 
   display: flex;
   flex-direction: column;
   flex: 1;
 
   gap: 8px;
-  padding: 32px;
+  padding: 16px 32px;
 }
 
 /* add for home page */
@@ -77,4 +78,66 @@
   right: 0;
 
   background-color: rgb(7, 222, 150);
+}
+
+
+/* Extra Large Screens (Desktops & TVs) */
+@media (min-width: 1440px) {
+  /* Styles for large desktop screens */
+  .StockPage__main {
+    max-width: 900px;
+  }
+}
+
+/* Large Desktops */
+@media (max-width: 1280px) {
+  /* Styles for medium-sized desktops */
+  .StockPage__main {
+    max-width: 800px;
+  }
+}
+
+/* Small Desktops & Large Tablets */
+@media (max-width: 1024px) {
+  /* Adjust layouts, reduce container sizes */
+  .StockPage__main {
+    max-width: 700px;
+  }
+}
+
+@media (max-width: 830px) {
+  /* Stack columns, adjust text sizes, shrink margins */
+  .StockPage__main {
+    max-width: 550px;
+    /* padding: 16px 16px; */
+    padding-right: 0;
+  }
+}
+
+/* Tablets (Portrait & Small Laptops) */
+@media (max-width: 768px) {
+  /* Stack columns, adjust text sizes, shrink margins */
+  .StockPage__main {
+    /* width: 55vw; */
+    max-width: 450px;
+  }
+}
+
+/* Large Phones (Landscape Mode) */
+@media (max-width: 700px) {
+  /* Reduce button sizes, make touch targets larger */
+  .StockPage__main {
+    width: 90%;
+    max-width: none;
+  }
+}
+
+/* Most Mobile Phones (Portrait Mode) */
+@media (max-width: 480px) {
+  /* Full-width elements, simplify layouts */
+}
+
+/* Very Small Phones */
+@media (max-width: 360px) {
+  /* Reduce paddings/margins for ultra-small screens */
 }

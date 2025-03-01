@@ -62,8 +62,9 @@ function ProfilePage() {
     handleFileUpload(file);
   };
 
+  console.log(stockSummary);
   const total = stockSummary.totalInvestments + stockSummary.balance;
-
+  console.log(total);
   return (
     <div className="ProfilePage">
       <div className="ProfilePage__container">
@@ -161,7 +162,7 @@ function ProfilePage() {
               </span>
               <span className="ProfilePage__investments__details__value-subtext">
                 {" "}
-                ${total.toFixed(2)}
+                ${total ? total.toFixed(2) : ""}
               </span>
             </div>
 

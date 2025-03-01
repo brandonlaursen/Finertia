@@ -7,7 +7,7 @@
 }
 
 .SettingsLayout__aside {
-  height: 200px;
+  height: 300px;
   width: 25%;
 
   display: flex;
@@ -16,7 +16,9 @@
   gap: 20px;
   margin-top: 30px;
 
-  font-size: 14px;
+  font-size: 12px;
+  font-weight: 500;
+
 }
 
 .SettingsLayout__aside__section {
@@ -28,7 +30,7 @@
 
 .SettingsLayout__aside__title {
   height: 30px;
-  width: 160px;
+  width: 180px;
 
   color: rgb(106, 106, 106);
 

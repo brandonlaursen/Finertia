@@ -10,7 +10,10 @@
 /* ========== Stock Name & Price ========== */
 
 /* Stock name and price styling */
-.StockOverview__name,
+.StockOverview__name{
+  font-size: 30px;
+  font-weight: 700;
+}
 .StockOverview__price {
   font-size: 30px;
   font-weight: 500;

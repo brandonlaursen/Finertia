@@ -57,7 +57,7 @@ export const login = (user) => async (dispatch) => {
     const response = await csrfFetch("/api/transactions/stock-summary");
     const data = await response.json();
 
-    dispatch(setUser(userInfo.user, data.stockSummary));
+    dispatch(setUser(userInfo.user, data));
   }
 };
 
@@ -97,8 +97,8 @@ export const editUser = (user) => async (dispatch) => {
   if (userInfo.user) {
     const response = await csrfFetch("/api/transactions/stock-summary");
     const data = await response.json();
-
-    dispatch(setUser(userInfo.user, data.stockSummary, userInfo.profilePic));
+    console.log('==>',data)
+    dispatch(setUser(userInfo.user, data, userInfo.profilePic));
   }
 };
 

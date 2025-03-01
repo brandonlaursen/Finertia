@@ -5,7 +5,8 @@
   display: flex;
   flex-direction: column;
 
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: 500;
   margin-bottom: 100px;
 }
 
@@ -22,7 +23,7 @@
 
   align-content: center;
 
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
   padding-left: 20px;
 }
@@ -54,24 +55,30 @@
 }
 
 .border-bottom {
-  border-bottom: 1px solid rgb(231, 231, 231);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .border-top-bottom {
-  border-top: 1px solid rgb(232, 232, 232);
-  border-bottom: 1px solid rgb(231, 231, 231);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .SecurityPage_border-link {
-  border-bottom: 1px solid rgb(232, 232, 232);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .SecurityPage_border {
-  border-top: 1px solid rgb(232, 232, 232);
+  border-top: 1px solid var(--border-color);
 }
 
 .SecurityPage__link:hover {
-  background-color: rgb(243, 243, 243);
+  background-color: var(--light-background-hover);
+  background-color: var(--color-highlight);
+  box-shadow:
+  /* Top */ 0px 0px 0px 0px var(--color-highlight),
+  /* Left */ -24px 0px 0px 0px var(--color-highlight),
+  /* Right */ 24px 0px 0px 0px var(--color-highlight);
+  cursor: pointer;
 }
 
 .SecurityPage_border-link:hover {
@@ -101,8 +108,8 @@
 }
 
 .SecurityPage_border-password {
-  border: 1px solid rgb(232, 232, 232);
-  border-radius: 5px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
 }
 
 .SecurityPage__editContainer {
@@ -116,7 +123,7 @@
   padding-left: 20px;
   padding-right: 20px;
 
-  border-radius: 5px;
+  border-radius: 4px;
 }
 
 .SecurityPage_input-container {
@@ -125,8 +132,6 @@
   margin-bottom: 8px;
   align-items: center;
   justify-content: space-between;
-
-
 }
 
 .SecurityPage_input-label {
@@ -140,7 +145,7 @@
   width: 300px;
   padding: 8px;
   font-size: 13px;
-  border: 1px solid #aaaaaa;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
 }
 
@@ -198,13 +203,12 @@
   cursor: pointer;
 }
 
-
-.SecurityPage_section{
+.SecurityPage_section {
   display: flex;
   flex-direction: column;
 }
 
-.SecurityPage-errors{
+.SecurityPage-errors {
   text-align: start;
   width: 48%;
   align-self: flex-end;
@@ -212,6 +216,6 @@
   color: rgb(236, 125, 46);
 }
 
-.error-border{
+.error-border {
   border: 1px solid rgb(236, 125, 46);
 }

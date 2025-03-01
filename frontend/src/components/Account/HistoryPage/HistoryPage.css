@@ -18,12 +18,23 @@
   height: 40px;
   width: 100%;
 
-  font-size: 14px;
+  font-size: 13px;
 
-  border-radius: 5px;
+  border-radius: 4px;
 }
 
 .HistoryPage__invest-section {
   height: 200px;
   background-color: aqua;
+}
+
+
+.HistoryPage__completed-transactions-title{
+  font-weight: bold;
+  font-size: 13px;
+}
+
+
+.HistoryPage__completed-transactions-date{
+  font-size: 13px;
 }

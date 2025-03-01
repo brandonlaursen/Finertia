@@ -4,7 +4,7 @@ import { GoTriangleUp } from "react-icons/go";
 
 import { selectUser } from "../../../../store/session";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -15,21 +15,34 @@ import NewsFeed from "../NewsFeed";
 
 import SelectTimeFrame from "../../Stock/SelectTimeFrame/SelectTimeFrame";
 
+import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
+
 function HomePage() {
   const navigate = useNavigate();
   const sessionUser = useSelector(selectUser);
 
+  console.log(sessionUser)
   const { stockSummary } = sessionUser;
 
   const [selectedTimeFrame, setSelectedTimeFrame] = useState("1D");
 
   const { oneDayFiveMinAggregates } = stockSummary;
 
-  const first = oneDayFiveMinAggregates[0].y;
-  const last = oneDayFiveMinAggregates[oneDayFiveMinAggregates.length - 1].y;
+  const { percentChange, amountChange } = useMemo(() => {
+    if (!oneDayFiveMinAggregates || oneDayFiveMinAggregates.length < 2) {
+      return { percentChange: "0.00", amountChange: "0.00" }; // Handle edge cases
+    }
 
-  const percentChange = (((last - first) / first) * 100).toFixed(2);
-  const amountChange = (last - first).toFixed(2);
+    const first = oneDayFiveMinAggregates[0].y;
+    const last = oneDayFiveMinAggregates[oneDayFiveMinAggregates.length - 1].y;
+
+    return {
+      percentChange: (((last - first) / first) * 100).toFixed(2),
+      amountChange: (last - first).toFixed(2),
+    };
+  }, [oneDayFiveMinAggregates]);
+
+
 
   return (
     <div className="HomePage">
@@ -40,7 +53,7 @@ function HomePage() {
             <div className="HomePage__main__banner">
               <div className="HomePage__main__user-info">
                 <span className={`HomePage__investments`}>
-                  ${stockSummary.totalInvestments}
+                  ${stockSummary?.totalInvestments}
                 </span>
                 <span className={`HomePage__percent-change`}>
                   {percentChange > 0 ? (
@@ -83,18 +96,13 @@ function HomePage() {
                   setSelectedTimeFrame={setSelectedTimeFrame}
                 />
               </div>
-
             </div>
-
           </div>
           <BuyingPowerDropDown sessionUser={sessionUser} />
           <NewsFeed />
         </div>
 
-        <ListContainer
-          className="List_home-container"
-          navigate={navigate}
-        />
+        <ListContainer className="List_home-container" navigate={navigate} />
       </div>
     </div>
   );
