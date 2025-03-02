@@ -1,73 +1,69 @@
+/* ========== Buying Power Dropdown ========== */
+
+/* Main container for the Buying Power Dropdown */
 .BuyingPowerDropDown {
   padding-left: 16px;
   padding-right: 16px;
-
   margin-top: 2px;
-
   border-radius: 4px;
 }
 
+/* Highlight state for the dropdown container */
 .BuyingPowerDropDown--highlight {
   box-shadow: 0px 4px 10px rgba(61, 61, 61, 0.1);
 }
 
+/* Toggle button for opening/closing the dropdown */
 .BuyingPowerDropDown__toggle {
   height: 75px;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   padding-right: 16px;
-
   font-size: 14px;
   font-weight: bold;
-
   border-bottom: 1px solid var(--border-color);
   cursor: pointer;
 }
 
+/* Container for displaying balance information */
 .BuyingPowerDropDown__balance {
   height: 100%;
   width: 100px;
-
   display: flex;
   justify-content: end;
   align-items: center;
-
   gap: 8px;
 }
 
+/* Dropdown content container */
 .BuyingPowerDropDown__dropdown {
   height: 170px;
-
   display: flex;
   justify-content: end;
-
   padding: 10px;
   padding-right: 16px;
-
   margin-bottom: 8px;
-
   font-size: 14px;
   font-weight: var(--font-weight-normal);
 }
 
+/* Main section within the dropdown */
 .BuyingPowerDropDown__dropdown-main {
   height: 100%;
   width: 50%;
-
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 }
 
-.BuyingPowerDropDown__summary{
+/* Summary area of the dropdown */
+.BuyingPowerDropDown__summary {
   height: 60%;
-
   border-bottom: 2px solid var(--border-color);
 }
 
+/* Text container within the summary */
 .BuyingPowerDropDown__summary-text {
   height: 50%;
   display: flex;
@@ -75,33 +71,30 @@
   align-items: center;
 }
 
+/* Container for the button in the dropdown */
 .BuyingPowerDropDown__button-container {
   height: 30%;
-
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+/* Styled button within the dropdown */
 .BuyingPowerDropDown__button {
   height: 40px;
   width: 50%;
   min-width: 130px;
-
   margin-top: 10px;
-
   font-size: 13px;
   font-weight: var(--font-weight-bold);
-
   background-color: black;
   color: white;
-
   border: none;
   border-radius: 20px;
-
   cursor: pointer;
 }
 
+/* Hover state for the button */
 .BuyingPowerDropDown__button:hover {
   background-color: var(--dark-grey);
 }
