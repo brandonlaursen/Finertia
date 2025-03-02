@@ -1,15 +1,19 @@
+/* ========== Welcome Page ========== */
+
+/* Main container for the Welcome Page */
 .WelcomePage {
   display: flex;
   flex-direction: column;
   justify-content: center;
-
   background-color: #000000;
 }
 
+/* ========== Hero Section ========== */
+
+/* Main section of the page */
 .WelcomePage__section {
   height: 70vmax;
   height: 630px;
-
   width: 100%;
 
   display: flex;
@@ -19,15 +23,16 @@
   padding: 0 32px;
 }
 
+/* Hero banner with background image */
 .WelcomePage__hero {
   flex-direction: column;
-
   background-image: url("https://i.makeagif.com/media/4-24-2017/xzMHOc.gif");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
+/* Title within the hero section */
 .WelcomePage__hero-title {
   display: flex;
   align-items: center;
@@ -35,188 +40,179 @@
 
   font-size: clamp(16px, 5vw, 2rem);
   font-weight: var(--font-weight-bold);
-
   color: var(--color-primary);
 
   gap: var(--spacing-sm);
 }
 
+/* Highlight text in the hero section */
 .WelcomePage__hero-highlight {
   width: 60%;
-
   display: flex;
   flex-direction: column;
   text-align: center;
-
   font-size: clamp(16px, 4vw, 32px);
 }
 
+/* Styling for the heading inside the hero highlight */
 .WelcomePage__hero-highlight > h1 {
   color: var(--color-accent);
 }
 
+/* Hero section button */
 .WelcomePage__hero-button {
   box-sizing: border-box;
-
   height: var(--button-height);
-
   padding: var(--button-padding);
-
   font-weight: var(--font-weight-bold);
-
   background-color: var(--color-white);
-
   border-radius: var(--button-border-radius-lg);
-
   border: none;
   text-decoration: none;
   white-space: nowrap;
 }
 
+/* Button hover effect */
 .WelcomePage__hero-button:hover {
   background-color: var(--color-accent);
 }
 
+/* ========== Features Section ========== */
+
+/* Container for the features section */
 .WelcomePage__features {
   color: var(--color-white);
-
   background-color: var(--color-tertiary);
 }
 
+/* Image within the features section */
 .WelcomePage__features-image {
   width: 400px;
   height: 400px;
-
   background-image: url("https://img.freepik.com/premium-photo/astronaut-sitting-computer-desk-with-computer-monitor-monitor-screen-generative-ai_902846-103881.jpg");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
 
+/* Content container inside the features section */
 .WelcomePage__features-contents {
   display: flex;
   flex-direction: column;
-
   padding: 32px 32px;
   gap: var(--spacing-sm);
 }
 
+/* Header inside the features section */
 .WelcomePage__features-contents__header {
-  font-size: 32px;
   font-size: clamp(16px, 3vw, 2rem);
-
   color: var(--color-accent);
 }
 
+/* Sub-header in the features section */
 .WelcomePage__features-contents__sub-header {
   margin-bottom: var(--spacing-sm);
-
-  font-size: 40px;
   font-size: clamp(18px, 4vw, 2rem);
 }
 
+/* Description text inside the features section */
 .WelcomePage__features-contents__text {
   margin-bottom: var(--spacing-sm);
-
-  font-size: 18px;
   font-size: clamp(14px, 1vw, 2rem);
 }
 
+/* Additional information or disclosure text */
 .WelcomePage__features-contents__disclosure {
   display: flex;
   align-items: center;
   gap: 8px;
-
   font-size: 14px;
-
   color: var(--color-accent);
 }
 
+/* Information icon within the disclosure */
 .WelcomePage__features-contents__info-icon {
   font-size: 14px;
-
   color: var(--color-accent);
 }
 
+/* Button inside the features section */
 .WelcomePage__features-content__button {
   min-height: 40px;
   width: 140px;
-
   margin-top: 32px;
-
   font-weight: var(--font-weight-bold);
-
   background-color: var(--color-primary);
   color: var(--color-black);
-
   border: none;
   border-radius: var(--button-border-radius-lg);
-
   text-decoration: none;
   white-space: nowrap;
 }
 
+/* Button hover effect */
 .WelcomePage__features-content__button:hover {
   background-color: var(--color-primary-hover);
 }
 
+/* ========== Join Section ========== */
+
+/* Section encouraging users to join */
 .WelcomePage__join {
   flex-direction: column;
   gap: var(--spacing-xl);
-
   background-color: rgb(13, 15, 21);
 }
 
+/* Image inside the Join section */
 .WelcomePage__join__image {
   height: 350px;
   width: 450px;
-
   background-image: url("https://www.shutterstock.com/image-vector/astronaut-sitting-on-planet-saturn-600nw-1989572933.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
+/* Header inside the Join section */
 .WelcomePage__join__header {
   color: var(--color-accent);
-
   font-size: clamp(24px, 3vw, 2rem);
 }
 
+/* Join section button */
 .WelcomePage__join__button {
   min-height: 40px;
   width: 140px;
-
   font-weight: var(--font-weight-bold);
-
   background-color: var(--color-primary);
   color: var(--color-black);
-
   border: none;
   border-radius: var(--button-border-radius-lg);
-
   text-decoration: none;
   white-space: nowrap;
 }
 
+/* Button hover effect */
 .WelcomePage__join__button:hover {
   background-color: var(--color-primary-hover);
 }
 
+/* ========== Footer Section ========== */
+
+/* Footer container */
 .WelcomePage__footer {
   text-align: center;
-
   padding: 1.5rem;
-
   color: rgb(0, 0, 0);
-
   font-size: 1.5rem;
-
   background-color: var(--color-primary);
 }
 
-@media (max-width: 768px) {
+/* ========== Responsive Design ========== */
 
+@media (max-width: 768px) {
+  /* Adjust layout for smaller screens */
   .WelcomePage__features {
     flex-direction: column-reverse;
   }

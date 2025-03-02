@@ -9,12 +9,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
 import NewsArticle from "../NewsArticle";
-import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
+import LoadingSpinner from "../LoadingSpinner";
 
 import {
   fetchStockNews,
   fetchStockNewsByCategory,
-} from "../../../../store/stocks";
+} from "../../../store/stocks";
 
 function NewsFeed() {
   const dispatch = useDispatch();

@@ -2,35 +2,30 @@ import "./HomePage.css";
 import { GoTriangleDown } from "react-icons/go";
 import { GoTriangleUp } from "react-icons/go";
 
-import { selectUser } from "../../../../store/session";
-
 import { useState, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-import BuyingPowerDropDown from "./BuyingPowerDropDown";
-import ListContainer from "../../List/ListContainer";
 import HomePageChart from "./HomePageChart/HomePageChart";
-import NewsFeed from "../NewsFeed";
+import SelectTimeFrame from "../../components/Stock/SelectTimeFrame";
+import BuyingPowerDropDown from "./BuyingPowerDropDown";
+import NewsFeed from "../../components/NewsFeed";
+import ListContainer from "../../components/List/ListContainer";
 
-import SelectTimeFrame from "../../Stock/SelectTimeFrame/SelectTimeFrame";
-
-import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
+import { selectUser } from "../../../store/session";
 
 function HomePage() {
   const navigate = useNavigate();
   const sessionUser = useSelector(selectUser);
 
-  console.log(sessionUser)
-  const { stockSummary } = sessionUser;
-
   const [selectedTimeFrame, setSelectedTimeFrame] = useState("1D");
 
+  const { stockSummary } = sessionUser;
   const { oneDayFiveMinAggregates } = stockSummary;
 
   const { percentChange, amountChange } = useMemo(() => {
     if (!oneDayFiveMinAggregates || oneDayFiveMinAggregates.length < 2) {
-      return { percentChange: "0.00", amountChange: "0.00" }; // Handle edge cases
+      return { percentChange: "0.00", amountChange: "0.00" };
     }
 
     const first = oneDayFiveMinAggregates[0].y;
@@ -41,8 +36,6 @@ function HomePage() {
       amountChange: (last - first).toFixed(2),
     };
   }, [oneDayFiveMinAggregates]);
-
-
 
   return (
     <div className="HomePage">

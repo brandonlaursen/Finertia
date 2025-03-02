@@ -5,9 +5,9 @@ import { FaSpaceShuttle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import WelcomePageNavbar from "../WelcomePageNavbar";
+import WelcomePageNavbar from "./WelcomePageNavbar";
 
-import { selectUser } from "../../../../store/session";
+import { selectUser } from "../../../store/session";
 
 function WelcomePage() {
   const sessionUser = useSelector(selectUser);
@@ -16,7 +16,7 @@ function WelcomePage() {
     <div className="WelcomePage">
       <WelcomePageNavbar />
 
-      <section className="WelcomePage__hero WelcomePage__section ">
+      <section className="WelcomePage__section WelcomePage__hero">
         <div className="WelcomePage__hero-title">
           <FaSpaceShuttle />
           <span>Finertia Investing</span>
@@ -35,7 +35,7 @@ function WelcomePage() {
         </div>
       </section>
 
-      <section className="WelcomePage__features WelcomePage__section ">
+      <section className="WelcomePage__section WelcomePage__features">
         <figure className="WelcomePage__features-image" />
 
         <div className="WelcomePage__features-contents">
@@ -59,7 +59,7 @@ function WelcomePage() {
       </section>
 
       <section className="WelcomePage__join WelcomePage__section ">
-        <figure className="WelcomePage__join__image"/>
+        <figure className="WelcomePage__join__image" />
         <header className="WelcomePage__join__header">
           Join a new generation of investors.
         </header>

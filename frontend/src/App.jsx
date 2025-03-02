@@ -4,11 +4,11 @@ import { useDispatch } from "react-redux";
 
 import { restoreUser } from "../store/session";
 
-import WelcomePage from "./components/Welcome/WelcomePage";
-import LoginPage from "./components/LoginPage";
+import WelcomePage from "./pages/WelcomePage";
+import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./components/SignUpPage";
 import Navigation from "./components/Navigation/NavigationBar";
-import HomePage from "./components/Home/HomePage";
+import HomePage from "./pages/HomePage";
 import StocksPage from "./components/Stocks/StocksPage";
 import Stock from "./components/Stock/StockPage/StockPage";
 import ProfilePage from "./components/Profile";
@@ -27,7 +27,6 @@ function Layout() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    
     const loadUser = async () => {
       await dispatch(restoreUser());
       setIsLoaded(true);

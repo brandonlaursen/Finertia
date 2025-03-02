@@ -50,7 +50,7 @@ function LoginPage() {
             value={credential}
             onChange={(e) => setCredential(e.target.value.trim())}
             required
-             className="LoginPage__form-input"
+            className="LoginPage__form-input"
           />
 
           <label>Password</label>
@@ -80,7 +80,6 @@ function LoginPage() {
             <button
               type="submit"
               className="LoginPage__form__login-account-btn LoginPage__form__button"
-          
             >
               Log In
             </button>
@@ -88,7 +87,7 @@ function LoginPage() {
             <button
               type="button"
               className="LoginPage__form__create-account-btn LoginPage__form__button"
-              onClick={() => navigate('/signup')}
+              onClick={() => navigate("/signup")}
             >
               Create Account
             </button>
