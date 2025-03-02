@@ -4,7 +4,6 @@ import { useMemo } from "react";
 
 import ReactApexChart from "react-apexcharts";
 
-
 function convertTimestampToEST(timestamp) {
   const date = new Date(timestamp);
 
@@ -21,7 +20,7 @@ function convertTimestampToEST(timestamp) {
   return dateTimeFormat.format(date);
 }
 
-function StockChart({ stock, selectedTimeFrame }) {
+function StockChart({ stockData, selectedTimeFrame }) {
   const {
     oneDayAggregates,
     oneWeekAggregates,
@@ -29,7 +28,7 @@ function StockChart({ stock, selectedTimeFrame }) {
     threeMonthsAggregates,
     oneYearAggregates,
     fiveYearsAggregates,
-  } = stock;
+  } = stockData;
 
   const data = useMemo(() => {
     const aggregatesMap = {
@@ -136,7 +135,8 @@ function StockChart({ stock, selectedTimeFrame }) {
       grid: { show: false },
       tooltip: {
         x: {
-          formatter: (timestamp) => convertTimestampToEST(timestamp, selectedTimeFrame),
+          formatter: (timestamp) =>
+            convertTimestampToEST(timestamp, selectedTimeFrame),
         },
         y: {
           formatter: (value) => `$${value.toFixed(2)}`,
@@ -153,8 +153,6 @@ function StockChart({ stock, selectedTimeFrame }) {
       data,
     },
   ];
-
-
 
   return (
     <div>

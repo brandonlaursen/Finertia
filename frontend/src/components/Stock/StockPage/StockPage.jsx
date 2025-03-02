@@ -53,7 +53,7 @@ function StockPage() {
           <div className="StockPage__layout">
             <main className="StockPage__main">
               <StockOverview stock={stock} />
-              <StockChart selectedTimeFrame={selectedTimeFrame} stock={stock} />
+              <StockChart selectedTimeFrame={selectedTimeFrame} stockData={stock} />
               <SelectTimeFrame
                 selectedTimeFrame={selectedTimeFrame}
                 setSelectedTimeFrame={setSelectedTimeFrame}

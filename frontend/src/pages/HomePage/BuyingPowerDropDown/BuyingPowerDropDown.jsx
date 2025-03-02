@@ -5,6 +5,7 @@ import { FaAngleDown } from "react-icons/fa6";
 import { useState } from "react";
 
 import TransferModal from "../../../components/Modals/TransferModal";
+
 import { useModal } from "../../../context/Modal";
 
 function BuyingPowerDropDown({ sessionUser }) {
@@ -15,7 +16,7 @@ function BuyingPowerDropDown({ sessionUser }) {
   const { balance } = sessionUser;
 
   return (
-    <section
+    <div
       className={`BuyingPowerDropDown ${
         isDropDownVisible && "BuyingPowerDropDown--highlight"
       }`}
@@ -32,7 +33,7 @@ function BuyingPowerDropDown({ sessionUser }) {
       </div>
 
       {isDropDownVisible && (
-        <section className="BuyingPowerDropDown__dropdown">
+        <div className="BuyingPowerDropDown__dropdown">
           <main className="BuyingPowerDropDown__dropdown-main">
             <section className="BuyingPowerDropDown__summary">
               <div className="BuyingPowerDropDown__summary-text">
@@ -62,9 +63,9 @@ function BuyingPowerDropDown({ sessionUser }) {
               </button>
             </section>
           </main>
-        </section>
+        </div>
       )}
-    </section>
+    </div>
   );
 }
 

@@ -32,6 +32,7 @@ function HomePageOverview({ stockSummary }) {
         <span className="HomePageOverview__total-investments">
           ${stockSummary?.totalInvestments}
         </span>
+
         <span className="HomePageOverview__portfolio-amount-change">
           {portfolioPercentChange > 0 ? (
             <GoTriangleUp className="HomePageOverview__portfolio-amount-change--positive" />
@@ -49,6 +50,7 @@ function HomePageOverview({ stockSummary }) {
           >
             ${portfolioAmountChange}
           </span>
+
           <span
             className={`${
               portfolioPercentChange < 0
@@ -60,6 +62,7 @@ function HomePageOverview({ stockSummary }) {
           >
             {`(${portfolioPercentChange}%) `}
           </span>
+
           <span className="HomePageOverview__subtext"> Today</span>
         </span>
       </main>

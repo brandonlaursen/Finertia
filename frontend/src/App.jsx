@@ -6,7 +6,8 @@ import { restoreUser } from "../store/session";
 
 import WelcomePage from "./pages/WelcomePage";
 import LoginPage from "./pages/LoginPage";
-import SignUpPage from "./components/SignUpPage";
+import SignUpPage from "./pages/SignUpPage";
+
 import Navigation from "./components/Navigation/NavigationBar";
 import HomePage from "./pages/HomePage";
 import StocksPage from "./components/Stocks/StocksPage";

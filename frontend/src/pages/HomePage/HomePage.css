@@ -1,47 +1,33 @@
+/* ========== Home Page ========== */
+
+/* HomePage container styles */
 .HomePage {
   display: flex;
   justify-content: center;
 
   margin-top: 85px;
 
-}
-
-.HomePage__body {
-  display: flex;
-  justify-content: center;
-
   gap: 1vw;
-  background-color: aliceblue;
 }
 
+/* HomePage main content area styles */
 .HomePage__main {
   width: 65vw;
   max-width: 900px;
   min-width: 400px;
-
-  transition: width 0.3s smooth;
 
   display: flex;
   flex-direction: column;
 
   padding-top: 36px;
 
-  background-color: bisque;
-}
-
-.HomePage__main__section {
-  display: flex;
-  flex-direction: column;
-
-  /* ! ONE */
-  padding-left: 16px;
-  padding-right: 16px;
+  
+  transition: width 0.3s smooth;
 }
 
 
 
-
-
+/* ========== Media Queries ========== */
 
 /* Extra Large Screens (Desktops & TVs) */
 @media (min-width: 1440px) {
