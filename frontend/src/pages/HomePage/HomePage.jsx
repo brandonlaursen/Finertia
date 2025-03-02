@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import HomePageOverview from "./HomePageOverview";
-import StockChart from "../StockPage/StockChart";
+import StockChart from "../../components/StockChart";
 import SelectTimeFrame from "../../components/SelectTimeFrame";
 import BuyingPowerDropDown from "./BuyingPowerDropDown";
 import HomePageNewsFeed from "./HomePageNewsFeed";

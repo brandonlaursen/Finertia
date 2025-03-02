@@ -12,15 +12,15 @@ import Navigation from "./components/Navigation/NavigationBar";
 import HomePage from "./pages/HomePage";
 import StocksPage from "./components/Stocks/StocksPage";
 import StockPage from "./pages/StockPage";
-import ProfilePage from "./components/Profile";
-import Account from "./components/Account/AccountLayout";
-import InvestingPage from "./components/Account/InvestingPage/InvestingPage";
-import TransfersPage from "./components/Account/TransfersPage/TransfersPage";
-import HistoryPage from "./components/Account/HistoryPage/HistoryPage";
-import HelpPage from "./components/Account/HelpPage";
-import SettingsPage from "./components/Account/Settings/SettingsLayout/SettingsLayout";
-import SecurityPage from "./components/Account/Settings/SecurityPage";
-import AppearancePage from "./components/Account/Settings/AppearancePage";
+import ProfilePage from "./components/ProfilePage";
+import Account from "./components/AccountPage/AccountLayout";
+import InvestingPage from "./components/AccountPage/InvestingPage/InvestingPage";
+import TransfersPage from "./components/AccountPage/TransfersPage/TransfersPage";
+import HistoryPage from "./components/AccountPage/HistoryPage/HistoryPage";
+import HelpPage from "./components/AccountPage/HelpPage";
+import SettingsPage from "./components/AccountPage/Settings/SettingsLayout/SettingsLayout";
+import SecurityPage from "./components/AccountPage/Settings/SecurityPage";
+import AppearancePage from "./components/AccountPage/Settings/AppearancePage";
 import ListPage from "./pages/ListPage";
 
 function Layout() {

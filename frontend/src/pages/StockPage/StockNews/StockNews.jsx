@@ -22,39 +22,37 @@ function StockNews({ stockNews }) {
   }
 
   return (
-    <>
-      <header className="StockNews__header">News</header>
+    <div className="StockNews">
+      <h2 className="StockNews__header">News</h2>
       <section className="StockNews__articles">
         {stockNews &&
           stockNews.map((news) => {
             return (
               <a href={news.article_url} key={news.id}>
-                <div className="StockNews__article">
+                <article className="StockNews__article">
                   <div className="StockNews__article-main">
-                    <section className="StockNews__article-author">
+                    <header className="StockNews__article-author">
                       <span>
                         {news.author}
                         <span className="StockNews__article-time">
                           {timeAgo(news.published_utc)}
                         </span>
                       </span>
-                    </section>
-                    <section className="StockNews__article-title">
-                      {news.title}
-                    </section>
-                    <section className="StockNews__article-contents">
+                    </header>
+                    <h2 className="StockNews__article-title">{news.title}</h2>
+                    <span className="StockNews__article-contents">
                       {news.description}
-                    </section>
+                    </span>
                   </div>
-                  <section className="StockNews__article-image">
+                  <figure className="StockNews__article-image">
                     {news.image_url && <img src={news.image_url} />}
-                  </section>
-                </div>
+                  </figure>
+                </article>
               </a>
             );
           })}
       </section>
-    </>
+    </div>
   );
 }
 

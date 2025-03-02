@@ -8,7 +8,7 @@ import { TbArrowMergeRight } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
-import HomePageNewsArticle from "../HomePageNewsArticle";
+import HomePageNewsArticle from "./HomePageNewsArticle";
 import LoadingSpinner from "../../../components/LoadingSpinner";
 
 import {

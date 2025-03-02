@@ -55,13 +55,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 6px;
+  margin-bottom: 16px;
 }
 
 /* ChooseListType title */
 .ChooseListType__title {
   font-size: 18px;
   font-weight: 600;
+
 }
 
 /* Close button container */

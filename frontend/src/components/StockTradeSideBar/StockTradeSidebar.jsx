@@ -1,10 +1,10 @@
 import "./StockTradeSidebar.css";
 import { IoIosCheckmark } from "react-icons/io";
 
-import StockTrade from "../StockTrade";
-import AddToListModal from "../../../components/Modals/AddToListModal";
+import StockTrade from "./StockTrade/StockTrade";
+import AddToListModal from "../Modals/AddToListModal";
 
-import { useModal } from "../../../context/Modal";
+import { useModal } from "../../context/Modal";
 
 function StockTradeSidebar({
   stock,
