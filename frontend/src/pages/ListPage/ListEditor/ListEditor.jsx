@@ -1,4 +1,4 @@
-import "./ListEdit.css";
+import "./ListEditor.css";
 import { IoEllipsisHorizontalSharp } from "react-icons/io5";
 import { TiDeleteOutline } from "react-icons/ti";
 
@@ -10,18 +10,19 @@ import EmojiPicker from "emoji-picker-react";
 
 import { editList, deleteList } from "../../../../store/lists";
 
-function ListEdit({ list, listId, navigate }) {
+function ListEditor({ list, listId, navigate }) {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  const popoverRef = useRef(null);
+  const menuRef = useRef(null);
 
+  const [showMenu, setShowMenu] = useState(false);
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+
+  const [updatedListName, setUpdatedListName] = useState("");
   const [selectedUpdatedEmoji, setSelectedUpdatedEmoji] = useState(
     list?.emoji || ""
   );
-  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
-  const [updatedListName, setUpdatedListName] = useState("");
-  const [showDeletePopover, setShowDeletePopover] = useState(false);
 
   useEffect(() => {
     if (list) {
@@ -32,27 +33,27 @@ function ListEdit({ list, listId, navigate }) {
 
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (popoverRef.current && !popoverRef.current.contains(e.target)) {
-        setShowDeletePopover(false);
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setShowMenu(false);
       }
     };
 
-    if (showDeletePopover) {
+    if (showMenu) {
       document.addEventListener("click", handleClickOutside);
     }
 
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, [showDeletePopover]);
+  }, [showMenu]);
 
   const handleListNameChange = async (e) => {
-    const newName = e.target.value;
-    setUpdatedListName(newName);
+    const newListName = e.target.value;
+    setUpdatedListName(newListName);
 
     const editedList = {
       stockListId: list.id,
-      name: newName,
+      name: newListName,
       emoji: selectedUpdatedEmoji,
     };
 
@@ -60,12 +61,12 @@ function ListEdit({ list, listId, navigate }) {
   };
 
   const handleListEmojiChange = async (emojiData) => {
-    const newEmoji = emojiData.emoji;
-    setSelectedUpdatedEmoji(newEmoji);
+    const newListEmoji = emojiData.emoji;
+    setSelectedUpdatedEmoji(newListEmoji);
     const editedList = {
       stockListId: list.id,
       name: updatedListName,
-      emoji: newEmoji,
+      emoji: newListEmoji,
     };
 
     await dispatch(editList(editedList));
@@ -81,10 +82,10 @@ function ListEdit({ list, listId, navigate }) {
   };
 
   return (
-    <div className="ListEdit">
+    <div className="ListEditor">
       <section>
         <button
-          className="ListEdit__emoji-button"
+          className="ListEditor__emoji-button"
           onClick={() => {
             setShowEmojiPicker(!showEmojiPicker);
           }}
@@ -92,7 +93,7 @@ function ListEdit({ list, listId, navigate }) {
           {selectedUpdatedEmoji}
         </button>
         {showEmojiPicker && (
-          <div className="ListEdit__emoji-picker-wrapper">
+          <div className="ListEditor__emoji-picker-wrapper">
             <EmojiPicker
               onEmojiClick={handleListEmojiChange}
               style={{ width: "500px" }}
@@ -100,32 +101,34 @@ function ListEdit({ list, listId, navigate }) {
           </div>
         )}
       </section>
-      <section className="ListEdit__name">
+
+      <section className="ListEditor__name">
         <input
           value={updatedListName}
-          className="ListEdit__name-input"
+          className="ListEditor__name-input"
           onChange={handleListNameChange}
         />
         <IoEllipsisHorizontalSharp
-          className="ListEdit__menu-button"
+          className="ListEditor__menu-button"
           onClick={(e) => {
-            e.stopPropagation(), setShowDeletePopover(!showDeletePopover);
+            e.stopPropagation(), setShowMenu(!showMenu);
           }}
         />
-        {showDeletePopover && (
+        {showMenu && (
           <div
-            className="ListEdit__delete-popover"
-            ref={popoverRef}
+            className="ListEditor__delete-popover"
+            ref={menuRef}
             onClick={handleDeleteList}
           >
-            <TiDeleteOutline className="ListEdit__delete-icon" />
-            <span className="ListEdit__delete-text">Delete {list?.name}</span>
+            <TiDeleteOutline className="ListEditor__delete-icon" />
+            <span className="ListEditor__delete-text">Delete {list?.name}</span>
           </div>
         )}
       </section>
-      <span className="ListEdit__subtitle">{list?.Stocks?.length} items</span>
+
+      <span className="ListEditor__subtitle">{list?.Stocks?.length} items</span>
     </div>
   );
 }
 
-export default ListEdit;
+export default ListEditor;

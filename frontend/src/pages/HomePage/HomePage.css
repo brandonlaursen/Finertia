@@ -1,30 +1,28 @@
 /* ========== Home Page ========== */
 
-/* HomePage container styles */
 .HomePage {
   display: flex;
   justify-content: center;
 
+  /* ! unify media queries */
   margin-top: 85px;
-
   gap: 1vw;
 }
 
 /* HomePage main content area styles */
 .HomePage__main {
+  /* ! unify media queries */
   width: 65vw;
-  max-width: 900px;
   min-width: 400px;
+  max-width: 900px;
 
   display: flex;
   flex-direction: column;
 
-  padding-top: 36px;
+  margin-top: 30px;
 
-  
   transition: width 0.3s smooth;
 }
-
 
 
 /* ========== Media Queries ========== */

@@ -25,12 +25,10 @@ function HomePage() {
     <div className="HomePage">
       <main className="HomePage__main">
         <HomePageOverview stockSummary={stockSummary} />
-
         <StockChart
           stockData={stockSummary}
           selectedTimeFrame={selectedTimeFrame}
         />
-
         <SelectTimeFrame
           selectedTimeFrame={selectedTimeFrame}
           setSelectedTimeFrame={setSelectedTimeFrame}
@@ -39,9 +37,7 @@ function HomePage() {
         <NewsFeed />
       </main>
 
-      <aside className="HomePage__aside">
-        <ListContainer className="List_home-container" navigate={navigate} />
-      </aside>
+      <ListContainer className="List_home-container" navigate={navigate} />
     </div>
   );
 }

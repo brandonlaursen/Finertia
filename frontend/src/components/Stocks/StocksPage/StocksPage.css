@@ -217,15 +217,6 @@
   opacity: 0;
 }
 
-/* Stocks table container with scrolling */
-.Stocks__table-container {
-  height: 90vh;
-
-  margin-top: 8px;
-
-  scrollbar-width: none;
-  overflow-y: auto;
-}
 
 /* ========== Disclaimer Section ========== */
 

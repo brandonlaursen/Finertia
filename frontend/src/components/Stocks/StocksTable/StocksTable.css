@@ -1,10 +1,14 @@
 .StocksTable {
   max-height: 600px;
   height: auto;
-  width: 100%;
+  /* width: 100%; */
   border-collapse: collapse;
   table-layout: fixed;
   margin-left: 8px;
+  margin-top: 8px;
+
+  scrollbar-width: none;
+  overflow-y: auto;
 }
 
 .StocksTable__head {

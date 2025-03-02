@@ -4,15 +4,15 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 
-import ListContainer from "../List/ListContainer";
-import ListEdit from "./ListEdit";
+import ListContainer from "../../components/List/ListContainer";
+import StocksTable from "../../components/Stocks/StocksTable/StocksTable";
+
+import ListEditor from "./ListEditor";
 
 import { fetchAllStocks } from "../../../store/stocks";
 import { fetchLists } from "../../../store/lists";
 
 import { selectListById } from "../../../store/lists";
-
-import StocksTable from "../Stocks/StocksTable/StocksTable";
 
 function ListPage() {
   const { listId } = useParams();
@@ -49,42 +49,35 @@ function ListPage() {
 
   return (
     <div className="ListPage">
-      <div className="ListPage__container">
-        <main className="ListPage__main">
-          <section className="ListPage__section">
-            <ListEdit list={list} listId={listId} navigate={navigate} />
-          </section>
+      <main className="ListPage__main">
+        <ListEditor list={list} listId={listId} navigate={navigate} />
+        {list.Stocks.length > 0 ? (
+          <StocksTable
+            stocks={stocks}
+            // handleSort={handleSort}
+            // sortedStocks={sortedStocks}
+            listStocks={list.Stocks}
+            navigate={navigate}
+            list={list}
+            listId={listId}
+            setNotifications={setNotifications}
+            setNotificationMessage={setNotificationMessage}
+            notifications={notifications}
+            notificationMessage={notificationMessage}
+          />
+        ) : (
+          <div className="ListPage__no-stocks-container">
+            <span className="ListPage__no-stocks-container-text">
+              Feels a little empty in here...
+            </span>
+            <span className="ListPage__no-stocks-container-subtext">
+              Search for companies to add and stay up to date.
+            </span>
+          </div>
+        )}
+      </main>
 
-          {list.Stocks.length > 0 ? (
-            <div className="Stocks__table-container">
-              <StocksTable
-                stocks={stocks}
-                // handleSort={handleSort}
-                // sortedStocks={sortedStocks}
-                listStocks={list.Stocks}
-                navigate={navigate}
-                list={list}
-                listId={listId}
-                setNotifications={setNotifications}
-                setNotificationMessage={setNotificationMessage}
-                notifications={notifications}
-                notificationMessage={notificationMessage}
-              />
-            </div>
-          ) : (
-            <div className="ListPage__no-stocks">
-              <span className="ListPage__no-stocks-text">
-                Feels a little empty in here...
-              </span>
-              <span className="ListPage__no-stocks-subtext">
-                Search for companies to add and stay up to date.
-              </span>
-            </div>
-          )}
-        </main>
-
-        <ListContainer className="List_home-container" navigate={navigate} />
-      </div>
+      <ListContainer className="List_home-container" navigate={navigate} />
     </div>
   );
 }

@@ -1,75 +1,47 @@
+/* ========== List Page ========== */
+
 .ListPage {
-  height: 100vh;
-  min-height: 123vh;
-
   display: flex;
-  flex-direction: column;
-
-  margin-top: 85px;
-}
-
-.ListPage__container {
-  display: flex;
-  flex-grow: 1;
   justify-content: center;
 
-  gap: 60px;
+  /* ! unify media queries */
+  margin-top: 85px;
+  gap: 1vw;
 }
 
+/* List Page main content area styles */
 .ListPage__main {
-  width: 55vw;
+  /* ! unify media queries */
+  width: 65vw;
   min-width: 400px;
 
   display: flex;
-
   flex-direction: column;
+
+  margin-top: 30px;
+
+  transition: width 0.3s smooth;
 }
 
-.ListPage__section {
-  display: flex;
 
-  margin-top: 32px;
-
-  display: flex;
-  /* gap: 8px; */
-  flex-direction: column;
-  height: 140px;
-  margin-bottom: 24px;
-}
-
-/* stock table */
-.ListPage__delete {
-  height: 14px;
-  width: 14px;
-
-  margin-left: 60px;
-
-  background: none;
-
-  border: none;
-  cursor: pointer;
-}
-
-.ListPage__delete:hover {
-  color: rgb(74, 241, 127);
-}
-
-.ListPage__no-stocks {
+/* List Page No stocks - no table */
+.ListPage__no-stocks-container {
   height: 100px;
 
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
   gap: 16px;
 }
 
-.ListPage__no-stocks-text {
+.ListPage__no-stocks-container-text {
   font-weight: bold;
   font-size: 18px;
 }
 
-.ListPage__no-stocks-subtext {
+.ListPage__no-stocks-container-subtext {
   font-weight: 500;
   font-size: 13px;
 }

@@ -40,7 +40,7 @@ function ListContainer({ className, navigate }) {
   }, [dispatch]);
 
   return (
-    <div className="List">
+    <aside className="List">
       <main className={className}>
         {location.pathname === "/" && (
           <>
@@ -101,7 +101,7 @@ function ListContainer({ className, navigate }) {
             })}
         </section>
       </main>
-    </div>
+    </aside>
   );
 }
 

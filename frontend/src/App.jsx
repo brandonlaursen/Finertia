@@ -21,7 +21,7 @@ import HelpPage from "./components/Account/HelpPage";
 import SettingsPage from "./components/Account/Settings/SettingsLayout/SettingsLayout";
 import SecurityPage from "./components/Account/Settings/SecurityPage";
 import AppearancePage from "./components/Account/Settings/AppearancePage";
-import ListPage from "./components/ListPage/ListPage";
+import ListPage from "./pages/ListPage";
 
 function Layout() {
   const dispatch = useDispatch();
