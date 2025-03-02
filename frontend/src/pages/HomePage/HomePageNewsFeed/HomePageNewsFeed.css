@@ -1,50 +1,48 @@
-.NewsFeed {
+.HomePageNewsFeed {
   width: 100%;
 
 
-  margin-top: 20px;
 }
 
-.NewsFeed > span {
+.HomePageNewsFeed > h2 {
   display: block;
 
-  padding-bottom: 20px;
+  margin-top: 24px;
+  padding-bottom: 24px;
 
   font-size: 20px;
   font-weight: bold;
 
   border-bottom: solid 1px var(--border-color);
-  padding-right: 10px;
 
 }
 
-#NewsFeed__info-icon {
+.HomePageNewsFeed__info-icon {
   height: 15px;
   width: 15px;
 
-  margin-left: 5px;
+  margin-left: 4px;
 
   color: rgb(75, 75, 75);
 
   cursor: pointer;
 }
 
-.NewsFeed__categories {
+.HomePageNewsFeed__categories {
   height: 50px;
   width: 100%;
 
   display: flex;
   align-items: center;
 
-  margin-top: 25px;
-  padding-bottom: 25px;
-  gap: 5px;
+  margin-top: 24px;
+  padding-bottom: 24px;
+  gap: 6px;
 
   border-bottom: solid 1px var(--border-color);
-
 }
 
-.NewsFeed__categories button {
+.HomePageNewsFeed__categories button {
   height: 40px;
   width: auto;
 
@@ -52,22 +50,20 @@
   align-items: center;
 
   padding: 12px;
-  gap: 5px;
+  gap: 4px;
 
   background-color: #ffffff;
 
   border: 1px solid var(--border-color);
   border-radius: 36px;
 
-  cursor: pointer;
-
   font-weight: var(--font-weight-bold);
 }
 
-.NewsFeed__categories button svg {
+.HomePageNewsFeed__categories button svg {
   font-size: 15px;
 }
 
-.NewsFeed__categories button:hover {
+.HomePageNewsFeed__categories button:hover {
   background-color: var(--color-highlight);
 }

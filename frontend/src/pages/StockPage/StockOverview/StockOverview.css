@@ -13,6 +13,8 @@
 .StockOverview__name{
   font-size: 30px;
   font-weight: 700;
+  margin: 0;
+
 }
 .StockOverview__price {
   font-size: 30px;
@@ -25,8 +27,9 @@
 .StockOverview__section {
   display: flex;
   flex-direction: row;
+  align-items: center;
 
-  gap: 7px;
+  gap: 8px;
 
   font-size: 12px;
   font-weight: bold;
@@ -41,9 +44,11 @@
 
 /* Market hours styling */
 .StockOverview__market-hours {
+  margin-top: 4px;
+  
   font-size: 12px;
   font-weight: bold;
-  margin-top: 4px;
+
 }
 
 /* Stock trading day indicator */
@@ -61,4 +66,17 @@
 /* Positive price movement */
 .positive {
   color: var(--percent-change-positive);
+}
+
+
+/* ========== Loading Spinner ========== */
+
+/* Stock Page Loading Spinner */
+.StockPage__loading-spinner{
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top:100px;
+  left:0;
+  right:0;
 }

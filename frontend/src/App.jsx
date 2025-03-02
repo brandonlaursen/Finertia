@@ -11,7 +11,7 @@ import SignUpPage from "./pages/SignUpPage";
 import Navigation from "./components/Navigation/NavigationBar";
 import HomePage from "./pages/HomePage";
 import StocksPage from "./components/Stocks/StocksPage";
-import Stock from "./components/Stock/StockPage/StockPage";
+import StockPage from "./pages/StockPage";
 import ProfilePage from "./components/Profile";
 import Account from "./components/Account/AccountLayout";
 import InvestingPage from "./components/Account/InvestingPage/InvestingPage";
@@ -70,7 +70,7 @@ const router = createBrowserRouter([
           },
           {
             path: "stocks/:stockSymbol",
-            element: <Stock />,
+            element: <StockPage />,
           },
           {
             path: "lists/:listId",

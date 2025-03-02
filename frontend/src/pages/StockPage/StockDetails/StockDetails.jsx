@@ -26,7 +26,7 @@ function StockDetails({ stock }) {
   return (
     <div className="StockDetails">
       <section className="StockDetails__about">
-        <header className="StockDetails__header">About</header>
+        <h1 className="StockDetails__header">About</h1>
         <p
           className="StockDetails__about-description"
           style={{

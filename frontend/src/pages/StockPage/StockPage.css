@@ -1,84 +1,31 @@
-/* ========== Stock Page Layout ========== */
+/* ========== Stock Page ========== */
 
 /* Main container for the stock page */
 .StockPage {
   display: flex;
   justify-content: center;
+
+    /* ! unify media queries */
   margin-top: 85px;
-
-  color: black;
+  gap: 1.5vw;
 }
 
-/* ========== Stock Page Layout ========== */
-
-/* Layout wrapper that centers content and manages spacing */
-.StockPage__layout {
-  display: flex;
-  justify-content: center;
-  flex: 1;
-
-  gap: 1vw;
-  padding: 0 5%;
-}
-
-/* ========== Stock Page Main Content ========== */
-
-/* Main content area for the stock page (chart, info, etc.) */
+/* Stock Page main content area styles */
 .StockPage__main {
-  height: 100%;
-  max-width: 1000px;
+
+  /* ! unify media queries */
   width: 65vw;
+  min-width: 400px;
+  max-width: 900px;
 
   display: flex;
   flex-direction: column;
-  flex: 1;
 
-  gap: 8px;
-  padding: 16px 32px;
+  margin-top: 30px;
+
+  transition: width 0.3s smooth;
 }
 
-/* add for home page */
-.StockPage__main-time-frame-container {
-  height: 35px;
-  width: 100%;
-
-  position: relative;
-  display: flex;
-  flex-direction: row;
-
-  gap: 16px;
-  padding-top: 6px;
-
-  cursor: pointer;
-  border-bottom: solid 1px var(--border-color);
-}
-
-.StockPage__main-time-frame-container span {
-  padding: 0 5px;
-  position: relative;
-
-  font-weight: bold;
-}
-
-.StockPage__main-time-frame-container span:hover {
-  color: rgb(7, 222, 150);
-}
-
-.StockPage__main-time-frame-container span.selected {
-  color: rgb(7, 222, 150); /* Color when selected */
-}
-
-.StockPage__main-time-frame-container span.selected::after {
-  height: 2px;
-
-  content: "";
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  right: 0;
-
-  background-color: rgb(7, 222, 150);
-}
 
 
 /* Extra Large Screens (Desktops & TVs) */

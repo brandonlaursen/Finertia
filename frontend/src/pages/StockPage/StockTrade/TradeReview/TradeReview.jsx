@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 
 import { executeStockTrade } from "../../../../../store/transactions";
 
-import TransferModal from "../../../Modals/TransferModal";
+import TransferModal from "../../../../components/Modals/TransferModal";
 
 import { useModal } from "../../../../context/Modal";
 

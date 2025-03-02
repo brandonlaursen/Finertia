@@ -68,7 +68,7 @@ router.get("/:stockId/:stockSymbol/update-database", async (req, res, next) => {
     }
     return response.json();
   }
-  
+
   try {
     const { stockId, stockSymbol } = req.params;
     console.log("Stock ID:", stockId, "Stock Symbol:", stockSymbol);
@@ -130,19 +130,6 @@ router.get("/:stockId/:stockSymbol/update-database", async (req, res, next) => {
 });
 
 
-// ! come back to
-// const latestTimestamp = await StockPriceTimestamp.findOne({
-//   where: {
-//     stockId: stock.id,
-//   },
-//   order: [["timestamp", "DESC"]],
-//   limit: 1,
-// });
-// * fetch data after latest timestamp stored in db
-// ? could store date in db as unix
-// const latestDate = new Date(latestTimestamp.timestamp);
-// const latestDateInUnix = latestDate.getTime();
-// const oneHourLater = latestDateInUnix + 3600000;
 router.get("/:stockSymbol", async (req, res) => {
   const { stockSymbol } = req.params;
 
@@ -224,6 +211,11 @@ router.get("/:stockSymbol", async (req, res) => {
       oneDayDataResponse.json(),
       oneWeekDataResponse.json(),
     ]);
+
+  
+    if(oneDayData.resultsCount === 0) {
+      oneDayData = oneWeekData;
+    }
 
     const oneDayAggregates = oneDayData.results.map((aggregate) => ({
       x: aggregate.t,

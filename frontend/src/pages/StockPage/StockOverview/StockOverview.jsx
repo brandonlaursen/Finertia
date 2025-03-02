@@ -13,32 +13,25 @@ function StockOverview({ stock }) {
 
   return (
     <div className="StockOverview">
-      <header className="StockOverview__name">{name}</header>
+      <h1 className="StockOverview__name">{name}</h1>
       <span className="StockOverview__price">${price.toFixed(2)}</span>
 
       <section className="StockOverview__section">
         <span
           className={`StockOverview__change ${
-            regular_trading_change < 0
-              ? "negative"
-              : regular_trading_change > 0
-              ? "positive"
-              : ""
+            regular_trading_change < 0 ? "negative" : regular_trading_change > 0
           }`}
         >
           ${regular_trading_change}
-        </span>
-
-        <span
-          className={`StockOverview__change  ${
-            regular_trading_change_percent < 0
-              ? "negative"
-              : regular_trading_change_percent > 0
-              ? "positive"
-              : ""
-          }`}
-        >
-          {`(${regular_trading_change_percent?.toFixed(2)}%)`}
+          <span
+            className={`StockOverview__change ${
+              regular_trading_change_percent < 0
+                ? "negative"
+                : regular_trading_change_percent > 0
+            }`}
+          >
+            {` (${regular_trading_change_percent?.toFixed(2)}%)`}
+          </span>
         </span>
         <span className="StockOverview__day">Today</span>
       </section>
@@ -47,15 +40,12 @@ function StockOverview({ stock }) {
         <section className="StockOverview__section">
           <span
             className={`StockOverview__change  ${
-              late_trading_change < 0
-                ? "negative"
-                : late_trading_change > 0
-                ? "positive"
-                : ""
+              late_trading_change < 0 ? "negative" : late_trading_change > 0
             }`}
           >
-            {`$${late_trading_change}
-    (${late_trading_change_percent?.toFixed(2)}%)`}
+            {`$${late_trading_change} (${late_trading_change_percent?.toFixed(
+              2
+            )}%)`}
           </span>
           <span className="StockOverview__market-hours">Overnight</span>
         </section>

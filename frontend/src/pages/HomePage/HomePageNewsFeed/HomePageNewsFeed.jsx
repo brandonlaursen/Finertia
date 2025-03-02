@@ -1,4 +1,4 @@
-import "./NewsFeed.css";
+import "./HomePageNewsFeed.css";
 import { MdInfoOutline } from "react-icons/md";
 import { FaBitcoin } from "react-icons/fa";
 import { TbPlaneTilt } from "react-icons/tb";
@@ -8,15 +8,15 @@ import { TbArrowMergeRight } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
-import NewsArticle from "../NewsArticle";
-import LoadingSpinner from "../LoadingSpinner";
+import HomePageNewsArticle from "../HomePageNewsArticle";
+import LoadingSpinner from "../../../components/LoadingSpinner";
 
 import {
   fetchStockNews,
   fetchStockNewsByCategory,
-} from "../../../store/stocks";
+} from "../../../../store/stocks";
 
-function NewsFeed() {
+function HomePageNewsFeed() {
   const dispatch = useDispatch();
   const stockNews = useSelector((state) => state.stocks.news);
 
@@ -35,19 +35,18 @@ function NewsFeed() {
   }
 
   return (
-    <div className="NewsFeed">
-      <span>
+    <div className="HomePageNewsFeed">
+      <h2>
         News
-        <MdInfoOutline id="NewsFeed__info-icon" />
-      </span>
+        <MdInfoOutline className="HomePageNewsFeed__info-icon" />
+      </h2>
 
-      <div className="NewsFeed__categories">
+      <div className="HomePageNewsFeed__categories">
         <button onClick={chooseCategory} value="General">
           <FaRegListAlt />
           General
         </button>
         <button onClick={chooseCategory} value="forex">
-          {" "}
           <TbPlaneTilt />
           Forex
         </button>
@@ -63,10 +62,10 @@ function NewsFeed() {
 
       {stockNews &&
         stockNews.map((news) => {
-          return <NewsArticle news={news} key={news.id} />;
+          return <HomePageNewsArticle news={news} key={news.id} />;
         })}
     </div>
   );
 }
 
-export default NewsFeed;
+export default HomePageNewsFeed;
