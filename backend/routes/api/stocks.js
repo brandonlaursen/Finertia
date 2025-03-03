@@ -58,60 +58,53 @@ router.get("/news/:category", async (req, res) => {
     res.status(500).json({ error: "Failed to fetch market news" });
   }
 });
-
-router.get("/:stockId/:stockSymbol/update-database", async (req, res, next) => {
-  async function fetchIntervalData(url) {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`Failed to fetch data: ${response.statusText}`);
-    }
-    return response.json();
-  }
-
+const updateDatabaseMiddleware = async (req, res, next) => {
   try {
-    const { stockId, stockSymbol } = req.params;
-    console.log("Stock ID:", stockId, "Stock Symbol:", stockSymbol);
+    const { stockSymbol } = req.params;
 
-    // Query the latest timestamp for this stock.
+    // Find the stock first to get its ID
+    const stock = await Stock.findOne({
+      where: { stockSymbol }
+    });
+
+    if (!stock) {
+      return res.status(500).json({ message: "Stock not found" });
+    }
+
+    // Get latest timestamp
     const latestRecord = await StockPriceTimestamp.findOne({
-      where: { stockId },
+      where: { stockId: stock.id },
       order: [["timestamp", "DESC"]],
     });
 
-    // If no record exists, you might default to a past date (e.g., 0)
     const latestDateUnix = latestRecord
       ? new Date(latestRecord.timestamp).getTime()
       : 0;
 
-    console.log("Latest Timestamp (Unix):", latestDateUnix);
     const nowUnix = Date.now();
-
     const apiKey = process.env.STOCK_API_KEY2;
-    const oneHourUrl = `https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/1/hour/${latestDateUnix}/${nowUnix}?adjusted=true&sort=asc&apiKey=${apiKey}`;
-    const oneDayUrl = `https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/1/day/${latestDateUnix}/${nowUnix}?adjusted=true&sort=asc&apiKey=${apiKey}`;
 
-    // Fetch both interval datasets concurrently.
+    // Fetch data from Polygon.io
     const [oneHourDataObj, oneDayDataObj] = await Promise.all([
-      fetchIntervalData(oneHourUrl),
-      fetchIntervalData(oneDayUrl),
+      fetch(`https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/1/hour/${latestDateUnix}/${nowUnix}?adjusted=true&sort=asc&apiKey=${apiKey}`).then(res => res.json()),
+      fetch(`https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/1/day/${latestDateUnix}/${nowUnix}?adjusted=true&sort=asc&apiKey=${apiKey}`).then(res => res.json())
     ]);
 
-    // Map API results to our database format.
+    // Map and upsert data
     const oneHourData = (oneHourDataObj.results || []).map((agg) => ({
-      stockId: +stockId,
+      stockId: stock.id,
       timestamp: agg.t,
       price: agg.c,
       interval: "1H",
     }));
 
     const oneDayData = (oneDayDataObj.results || []).map((agg) => ({
-      stockId: +stockId,
+      stockId: stock.id,
       timestamp: agg.t,
       price: agg.c,
       interval: "1D",
     }));
 
-    // Upsert both sets using bulkCreate.
     await Promise.all([
       StockPriceTimestamp.bulkCreate(oneHourData, {
         updateOnDuplicate: ["price"],
@@ -121,14 +114,15 @@ router.get("/:stockId/:stockSymbol/update-database", async (req, res, next) => {
       }),
     ]);
 
-    return res.json({ message: "Database updated successfully." });
+    // Add stock to request object for the next middleware/route handler
+    req.stock = stock;
+    next();
   } catch (error) {
     console.error("Error updating database:", error);
     next(error);
   }
-});
-
-router.get("/:stockSymbol", async (req, res) => {
+};
+router.get("/:stockSymbol",updateDatabaseMiddleware, async (req, res) => {
   const { stockSymbol } = req.params;
 
   const stock = await Stock.findOne({
