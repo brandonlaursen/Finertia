@@ -3,12 +3,12 @@ import "./InvestingPage.css";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { selectUser } from "../../../../store/session";
-import { fetchStockTransactions } from "../../../../store/transactions";
-
 import PortfolioTotal from "./PortfolioTotal";
 import PortfolioStocks from "./PortfolioStocks";
-import LoadingSpinner from "../../LoadingSpinner";
+import LoadingSpinner from "../../components/LoadingSpinner";
+
+import { selectUser } from "../../../store/session";
+import { fetchStockTransactions } from "../../../store/transactions";
 
 function InvestingPage() {
   const dispatch = useDispatch();
@@ -22,8 +22,6 @@ function InvestingPage() {
 
   const balancePercentage = (balance / total) * 100;
   const stockPercentage = (stockInvestments / total) * 100;
-
-
 
   useEffect(() => {
     dispatch(fetchStockTransactions());

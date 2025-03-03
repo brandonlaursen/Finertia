@@ -1,3 +1,4 @@
+import './StocksTableItem.css';
 import { GoTriangleDown } from "react-icons/go";
 import { GoTriangleUp } from "react-icons/go";
 import { FaPlus } from "react-icons/fa6";

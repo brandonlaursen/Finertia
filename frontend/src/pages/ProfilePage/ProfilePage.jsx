@@ -11,7 +11,7 @@ import { selectUser, editUser } from "../../../store/session";
 
 import { useModal } from "../../context/Modal";
 
-import EditProfileModal from "../Modals/EditProfileModal/EditProfileModal";
+import EditProfileModal from "../../components/Modals/EditProfileModal/EditProfileModal";
 
 const DEFAULT_IMAGE =
   "https://finertia.s3.amazonaws.com/public/1739990232538.png";

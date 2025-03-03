@@ -29,7 +29,7 @@ function NavigationBar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const header = document.querySelector(".Stocks__banner");
+      const header = document.querySelector(".StocksPage__banner");
       if (header) {
         const offset = header.getBoundingClientRect().top;
         setScrolled(offset <= 74);

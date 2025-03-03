@@ -95,7 +95,7 @@
   /* Adjust layouts, reduce container sizes */
   .List_home-container {
     /* width: 20vw; */
-    max-width: 280px;
+    max-width: 200px;
   }
 }
 

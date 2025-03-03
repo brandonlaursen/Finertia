@@ -131,3 +131,31 @@
 
   }
 }
+
+
+/* ========== Navigation Bar ========== */
+
+/* Navbar for the Stocks page */
+.stocks-nav {
+  height: 80px;
+  width: 100%;
+
+  position: fixed;
+  top: 0;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+
+  padding-top: 5px;
+
+  background-color: var(--color-primary);
+
+  z-index: 2; /* Keeps it above other content */
+}
+
+/* Changes navbar background when scrolled */
+.scrolled {
+  background-color: rgb(255, 255, 255);
+}

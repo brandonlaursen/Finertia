@@ -1,51 +1,18 @@
 /* ========== Stocks Page Layout ========== */
 
 /* Main container for the Stocks page */
-.Stocks {
-  height: 100vh;
-  min-height: 123vh; /* Ensures page takes up enough space */
-
+.StocksPage {
   display: flex;
   flex-direction: column;
 
-  margin-top: 80px; /* Adjusted for fixed navbar */
-
-}
-
-/* ========== Navigation Bar ========== */
-
-/* Navbar for the Stocks page */
-.stocks-nav {
-  height: 80px;
-  width: 100%;
-
-  position: fixed;
-  top: 0;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-content: center;
-
-  padding-top: 5px;
-
-  background-color: var(--color-primary);
-
-  z-index: 2; /* Keeps it above other content */
-}
-
-/* Changes navbar background when scrolled */
-.scrolled {
-  background-color: rgb(255, 255, 255);
+  margin-top: 80px;
 }
 
 /* ========== Stocks Page Banner ========== */
 
 /* Banner section with background image */
-.Stocks__banner {
-  height: 30%;
-  max-height: 225px;
-  width: 100%;
+.StocksPage__banner {
+  height: 160px;
 
   background-color: var(--color-primary);
   background-image: url("https://png.pngtree.com/png-vector/20230728/ourmid/pngtree-boost-clipart-cartoon-rocket-ship-traveling-into-the-space-vector-png-image_6796486.png");
@@ -57,34 +24,31 @@
 /* ========== Main Content Layout ========== */
 
 /* Main container for stocks page content */
-.Stocks__container {
-  height: 100vh;
+.StocksPage__container {
 
   display: flex;
-  flex-grow: 1;
-  flex-direction: row;
   justify-content: center;
 
-
+  gap: 1.5vw;
 }
 
 /* Main stocks content section */
-.Stocks__main {
+.StocksPage__main {
+
+  /* ! unify media queries */
+  width: 65vw;
+  min-width: 400px;
+  max-width: 900px;
+
   display: flex;
   flex-direction: column;
 
-  margin-right: 8px;
-  padding-bottom: 100px;
-
-  width: 65vw;
-  max-width: 800px;
-  min-width: 400px;
-  margin-right: 2vw;
+  transition: width 0.3s smooth;
 
 }
 
 /* Section wrapper for spacing */
-.Stocks__section {
+.StocksPage__section {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
@@ -93,7 +57,7 @@
 /* ========== Header Section ========== */
 
 /* Header section containing stock title and menu */
-.Stocks__header {
+.StocksPage__header {
   height: 100px;
   width: 60%;
 
@@ -102,30 +66,26 @@
   justify-content: center;
 
   gap: 4px;
-  margin-left: 0px;
-  margin-left: 8px;
-
+  /* margin-left: 8px; */
 }
 
 /* Smaller header version (hidden or collapsed) */
-.Stocks__hide--header {
+.StocksPage__hide--header {
   height: 58px;
-
 }
 
 /* Main stock title */
-.Stocks__title {
+.StocksPage__title {
   font-size: 18px;
   font-weight: bold;
 }
 
 /* Subtitle section containing extra details */
-.Stocks__subtitle {
+.StocksPage__subtitle {
   display: flex;
   align-items: center;
 
   gap: 2px;
-  margin-top: 2px;
 
   font-size: 13px;
   color: var(--color-text);
@@ -133,7 +93,7 @@
 }
 
 /* Green checkmark icon */
-.green-checkmark {
+.StocksPage__check-mark-icon {
   height: 10px;
   width: 10px;
 
@@ -143,8 +103,7 @@
 /* ========== Menu & Actions ========== */
 
 /* Menu container (settings, follow button) */
-.Stocks__menu {
-  width: 40%;
+.StocksPage__menu {
 
   display: flex;
   flex-direction: row;
@@ -155,7 +114,7 @@
 }
 
 /* Settings icon */
-.Stocks__settings-icon {
+.StocksPage__settings-icon {
   height: 20px;
   width: 20px;
 
@@ -163,12 +122,12 @@
 }
 
 /* Hover effect for settings icon */
-.Stocks__settings-icon:hover {
+.StocksPage__settings-icon:hover {
   color: var(--color-primary);
 }
 
 /* Follow button */
-.Stocks__follow-button {
+.StocksPage__follow-button {
   height: 32px;
   width: 86px;
 
@@ -193,47 +152,49 @@
 }
 
 /* Hover effect for follow button */
-.Stocks__follow-button:hover {
+.StocksPage__follow-button:hover {
   background-color: var(--button-hover-light-green);
 }
 
 /* ========== Description & Table Section ========== */
 
 /* Stock description section */
-.Stocks__description {
-  height: 40px;
-  font-size: 16px;
+.StocksPage__description {
+  font-size: 15px;
   font-weight: 500;
-  margin-left: 8px;
+  /* margin-left: 8px; */
 }
 
 /* Hidden description */
-.Stocks__hide--description {
+.StocksPage__hide--description {
   display: none;
 }
 
 /* Faded out description */
-.Stocks__hide--description {
+.StocksPage__hide--description {
   opacity: 0;
 }
-
 
 /* ========== Disclaimer Section ========== */
 
 /* Disclaimer text section */
-.Stocks__disclaimer {
+.StocksPage__disclaimer {
   display: flex;
   align-items: start;
 
   font-size: 12px;
   color: var(--color-light-text);
   line-height: 1.5;
+
+  margin-top: 16px;
+  margin-bottom: 140px;
 }
+
 
 /* Extra Large Screens (Desktops & TVs) */
 @media (min-width: 1440px) {
   /* Styles for large desktop screens */
-  .Stocks__main {
+  .StocksPage__main {
     max-width: 800px;
   }
 }
@@ -241,7 +202,7 @@
 /* Large Desktops */
 @media (max-width: 1280px) {
   /* Styles for medium-sized desktops */
-  .Stocks__main {
+  .StocksPage__main {
     max-width: 650px;
   }
 }
@@ -249,14 +210,14 @@
 /* Small Desktops & Large Tablets */
 @media (max-width: 1024px) {
   /* Adjust layouts, reduce container sizes */
-  .Stocks__main {
+  .StocksPage__main {
     max-width: 460px;
   }
 }
 
 @media (max-width: 830px) {
   /* Stack columns, adjust text sizes, shrink margins */
-  .Stocks__main {
+  .StocksPage__main {
     max-width: 420px;
   }
 }
@@ -264,7 +225,7 @@
 /* Tablets (Portrait & Small Laptops) */
 @media (max-width: 768px) {
   /* Stack columns, adjust text sizes, shrink margins */
-  .Stocks__main {
+  .StocksPage__main {
     max-width: 300px;
   }
 }
@@ -272,7 +233,7 @@
 /* Large Phones (Landscape Mode) */
 @media (max-width: 700px) {
   /* Reduce button sizes, make touch targets larger */
-  .Stocks__main {
+  .StocksPage__main {
     width: 85vw;
     max-width: 800px;
     margin: 0;

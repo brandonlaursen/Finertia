@@ -3,7 +3,7 @@ import "./AccountLayout.css";
 import { Outlet, useLocation, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import { selectUser } from "../../../../store/session";
+import { selectUser } from "../../../store/session";
 
 function AccountLayout() {
   const location = useLocation();

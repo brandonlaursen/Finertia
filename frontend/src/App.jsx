@@ -7,21 +7,20 @@ import { restoreUser } from "../store/session";
 import WelcomePage from "./pages/WelcomePage";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
-
 import Navigation from "./components/Navigation/NavigationBar";
 import HomePage from "./pages/HomePage";
-import StocksPage from "./components/Stocks/StocksPage";
+import StocksPage from "./components/StocksPage/StocksPage";
 import StockPage from "./pages/StockPage";
-import ProfilePage from "./components/ProfilePage";
-import Account from "./components/AccountPage/AccountLayout";
-import InvestingPage from "./components/AccountPage/InvestingPage/InvestingPage";
-import TransfersPage from "./components/AccountPage/TransfersPage/TransfersPage";
-import HistoryPage from "./components/AccountPage/HistoryPage/HistoryPage";
-import HelpPage from "./components/AccountPage/HelpPage";
-import SettingsPage from "./components/AccountPage/Settings/SettingsLayout/SettingsLayout";
-import SecurityPage from "./components/AccountPage/Settings/SecurityPage";
-import AppearancePage from "./components/AccountPage/Settings/AppearancePage";
 import ListPage from "./pages/ListPage";
+import ProfilePage from "./pages/ProfilePage";
+import AccountLayout from "./layouts/AccountLayout/AccountLayout";
+import InvestingPage from "./pages/InvestingPage/InvestingPage";
+import TransfersPage from "./pages/TransfersPage/TransfersPage";
+import HistoryPage from "./pages/HistoryPage/HistoryPage";
+import HelpPage from "./pages/HelpPage";
+import SettingsLayout from "./layouts/SettingsLayout";
+import SecurityPage from "./pages/SecurityPage";
+import AppearancePage from "./pages/AppearancePage";
 
 function Layout() {
   const dispatch = useDispatch();
@@ -82,7 +81,7 @@ const router = createBrowserRouter([
           },
           {
             path: "account",
-            element: <Account />,
+            element: <AccountLayout />,
             children: [
               {
                 path: "investing",
@@ -103,7 +102,7 @@ const router = createBrowserRouter([
 
               {
                 path: "settings",
-                element: <SettingsPage />,
+                element: <SettingsLayout />,
                 children: [
                   {
                     path: "security",

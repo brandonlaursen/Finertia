@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 
 import ListContainer from "../../components/List/ListContainer";
-import StocksTable from "../../components/Stocks/StocksTable/StocksTable";
+import StocksTable from "../../components/StocksPage/StocksTable/StocksTable";
 
 import ListEditor from "./ListEditor";
 

@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import {
   fetchAccountTransactions,
   fetchStockTransactions,
-} from "../../../../store/transactions";
+} from "../../../store/transactions";
 
 function HistoryPage() {
   const dispatch = useDispatch();

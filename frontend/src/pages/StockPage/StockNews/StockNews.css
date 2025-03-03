@@ -18,8 +18,8 @@
   flex-direction: column;
   justify-content: space-evenly;
 
-  margin-top: 32px;
-  gap: 64px;
+  margin-top: 16px;
+  gap: 32px;
 }
 
 
@@ -39,7 +39,7 @@
   background-color: var(--color-highlight);
 
   cursor: pointer;
-  outline: 32px solid var(--color-highlight);
+  outline: 16px solid var(--color-highlight);
 }
 
 .StockNews__article-main {

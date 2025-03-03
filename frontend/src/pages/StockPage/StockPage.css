@@ -8,13 +8,10 @@
     /* ! unify media queries */
   margin-top: 85px;
   gap: 1.5vw;
-
-
 }
 
 /* Stock Page main content area styles */
 .StockPage__main {
-
   /* ! unify media queries */
   width: 65vw;
   min-width: 400px;
@@ -24,7 +21,7 @@
   flex-direction: column;
 
   margin-top: 30px;
-  margin-right: 8px;
+
 
   transition: width 0.3s smooth;
 }

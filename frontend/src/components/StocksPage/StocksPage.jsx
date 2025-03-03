@@ -6,11 +6,12 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useOutletContext, useNavigate } from "react-router-dom";
 
-import { fetchAllStocks, selectStocksArray } from "../../../../store/stocks";
+import { fetchAllStocks, selectStocksArray } from "../../../store/stocks";
 
-import ListContainer from "../../List/ListContainer";
-import StocksTable from "../StocksTable/StocksTable";
-import NotificationPopUp from "../../NotificationPopUp/NotificationPopUp";
+import ListContainer from "../List/ListContainer";
+import StocksTable from "./StocksTable/StocksTable";
+import NotificationPopUp from "../NotificationPopUp/NotificationPopUp";
+import LoadingSpinner from "../LoadingSpinner";
 
 function StocksPage() {
   const navigate = useNavigate();
@@ -26,7 +27,6 @@ function StocksPage() {
 
   const [notifications, setNotifications] = useState(false);
   const [notificationMessage, setNotificationMessage] = useState([]);
-
 
   useEffect(() => {
     dispatch(fetchAllStocks());
@@ -81,46 +81,43 @@ function StocksPage() {
     setSortCriteria(criteria);
   };
 
-  if (!stocks) return <h1>Loading</h1>;
+  if (!stocks) return <LoadingSpinner />;
 
   return (
-    <div className="Stocks">
-      <div className="Stocks__banner"/>
+    <div className="StocksPage">
+      <div className="StocksPage__banner" />
 
-      <div className="Stocks__container">
-        <main className="Stocks__main">
-
-          <div className="Stocks__section">
+      {/* home page equivalent */}
+      <div className="StocksPage__container">
+        <main className="StocksPage__main">
+          <section className="StocksPage__section">
             <header
-              className={`Stocks__header ${
-                scrolled ? "Stocks__hide--header" : ""
+              className={`StocksPage__header ${
+                scrolled ? "StocksPage__hide--header" : ""
               }`}
             >
-              <span className="Stocks__title">Daily Movers</span>
-              <span className="Stocks__subtitle">
-                <IoIosCheckmarkCircle className="green-checkmark" />
+              <span className="StocksPage__title">Daily Movers</span>
+              <span className="StocksPage__subtitle">
+                <IoIosCheckmarkCircle className="StocksPage__check-mark-icon" />
                 Finertia · {stocks.length} items
               </span>
             </header>
 
-            <div className="Stocks__menu">
-              <RiListSettingsLine className="Stocks__settings-icon" />
+            <div className="StocksPage__menu">
+              <RiListSettingsLine className="StocksPage__settings-icon" />
 
-              <button className="Stocks__follow-button">
-                Follow
-              </button>
+              <button className="StocksPage__follow-button">Follow</button>
             </div>
-          </div>
+          </section>
 
-          <div
-            className={`Stocks__description ${
-              scrolled ? "Stocks__hide--description" : ""
+          <section
+            className={`StocksPage__description ${
+              scrolled ? "StocksPage__hide--description" : ""
             }`}
           >
             Explore some of the most popular stocks.
-          </div>
+          </section>
 
-          <div className="Stocks__table-container">
             <StocksTable
               stocks={stocks}
               handleSort={handleSort}
@@ -132,7 +129,7 @@ function StocksPage() {
               notificationMessage={notificationMessage}
             />
 
-            <div className="Stocks__disclaimer">
+            <div className="StocksPage__disclaimer">
               This list is based on data from one or more third party data
               providers. It is provided for informational purposes only by
               Finertia Financial, LLC., and is not investment advice or a
@@ -141,22 +138,19 @@ function StocksPage() {
               objectives and unique risk profile of any Exchange Traded Products
               (ETP) and read the ETPs prospectus carefully before investing.
             </div>
-          </div>
+    
         </main>
 
-        <ListContainer
-          className="List_home-container"
-          navigate={navigate}
-        />
+        <ListContainer className="List_home-container" navigate={navigate} />
+        {notifications && (
+          <div className="NotificationPopsContainer">
+            <NotificationPopUp
+              message={notificationMessage}
+              setNotifications={setNotifications}
+            />
+          </div>
+        )}
       </div>
-      {notifications && (
-        <div className="NotificationPopsContainer">
-          <NotificationPopUp
-            message={notificationMessage}
-            setNotifications={setNotifications}
-          />
-        </div>
-      )}
     </div>
   );
 }

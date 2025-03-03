@@ -4,9 +4,9 @@ import { MdRemoveRedEye } from "react-icons/md";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import NotificationPopUp from "../../../NotificationPopUp/NotificationPopUp";
+import NotificationPopUp from "../../components/NotificationPopUp";
 
-import { logout, editPassword } from "../../../../../store/session";
+import { logout, editPassword } from "../../../store/session";
 
 function SecurityPage() {
   const dispatch = useDispatch();
@@ -31,8 +31,6 @@ function SecurityPage() {
   const [notifications, setNotifications] = useState(false);
   const [notificationMessage, setNotificationMessage] = useState("");
 
-
-
   const handleSave = async () => {
     setIsLoading(true);
     await new Promise((resolve) => setTimeout(resolve, 500));
@@ -40,7 +38,6 @@ function SecurityPage() {
 
     if (!isDirty) setIsDirty(true);
 
- 
     if (
       currentPassword.length === 0 ||
       newPassword.length === 0 ||
