@@ -81,7 +81,7 @@ export const restoreUser = () => async (dispatch) => {
   return response;
 };
 
-export const editUser = (user) => async (dispatch) => {
+export const editUser = (user) => async (dispatch, getState) => {
   const { username, image } = user;
   const formData = new FormData();
 
@@ -95,10 +95,8 @@ export const editUser = (user) => async (dispatch) => {
   const userInfo = await response.json();
 
   if (userInfo.user) {
-    const response = await csrfFetch("/api/transactions/stock-summary");
-    const data = await response.json();
-    console.log('==>',data)
-    dispatch(setUser(userInfo.user, data, userInfo.profilePic));
+    const currentState = getState();
+    dispatch(setUser(userInfo.user, currentState.session.user.stockSummary));
   }
 };
 
@@ -145,7 +143,10 @@ const sessionReducer = (state = initialState, action) => {
         user: {
           ...state.user,
           balance: action.updatedBalance,
-          stockSummary: { ...state.user.stockSummary, balance: action.updatedBalance },
+          stockSummary: {
+            ...state.user.stockSummary,
+            balance: action.updatedBalance,
+          },
         },
       };
     case ADD_STOCK_TRANSACTION:
