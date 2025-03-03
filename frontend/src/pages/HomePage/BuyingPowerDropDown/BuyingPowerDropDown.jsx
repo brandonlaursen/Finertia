@@ -4,7 +4,7 @@ import { FaAngleDown } from "react-icons/fa6";
 
 import { useState } from "react";
 
-import TransferModal from "../../../components/Modals/TransferModal";
+import TransferModal from '../../../modals/TransferModal';
 
 import { useModal } from "../../../context/Modal";
 

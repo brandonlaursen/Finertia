@@ -6,9 +6,8 @@ import { GrFormCheckmark } from "react-icons/gr";
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { depositFunds, withdrawFunds } from "../../../../store/transactions";
-
-import { useModal } from "../../../context/Modal";
+import { depositFunds, withdrawFunds } from "../../../store/transactions";
+import { useModal } from "../../context/Modal";
 
 function TransferModal() {
   const { closeModal } = useModal();

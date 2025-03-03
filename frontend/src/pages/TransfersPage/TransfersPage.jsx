@@ -6,12 +6,11 @@ import { RiQuestionLine } from "react-icons/ri";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import TransferModal from "../../components/Modals/TransferModal";
+import TransferModal from "../../modals/TransferModal";
 
 import { fetchAccountTransactions } from "../../../store/transactions";
 
 import { useModal } from "../../context/Modal";
-
 
 function TransfersPage() {
   const { setModalContent, setModalClass } = useModal();

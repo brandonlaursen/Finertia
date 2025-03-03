@@ -2,8 +2,8 @@ import "./StocksTable.css";
 
 import { useMemo } from "react";
 
-import StocksTableItem from "../StocksTableItem/StocksTableItem";
-import LoadingSpinner from "../../LoadingSpinner";
+import StocksTableItem from "./StocksTableItem/StocksTableItem";
+import LoadingSpinner from "../LoadingSpinner";
 
 function StocksTable({
   stocks,
@@ -14,6 +14,7 @@ function StocksTable({
   setNotificationMessage,
   listId = null,
 }) {
+  
   const stocksData = useMemo(() => {
     if (!listStocks) return stocks;
 
@@ -26,7 +27,7 @@ function StocksTable({
       market_cap: stocks[stock.id]?.market_cap ?? 0,
     }));
   }, [listStocks, stocks]);
-  console.log(stocksData);
+
 
   return (
     <table className="StocksTable">

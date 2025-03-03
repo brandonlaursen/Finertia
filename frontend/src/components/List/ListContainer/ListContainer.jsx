@@ -9,12 +9,12 @@ import { fetchLists, selectListsArray } from "../../../../store/lists";
 import { fetchAllStocks } from "../../../../store/stocks";
 import { selectUser } from "../../../../store/session";
 
-import OpenModalButton from "../../OpenModalButton";
-import CreateListModal from "../../Modals/CreateListModal";
-
 import ListItem from "../ListItem";
 import ListStocks from "../ListStocks/ListStocks";
 import StocksOwned from "../StocksOwned/StocksOwned";
+import OpenModalButton from "../../OpenModalButton";
+
+import CreateListModal from "../../../modals/CreateListModal";
 
 import { selectStocksObject } from "../../../../store/stocks";
 

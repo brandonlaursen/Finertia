@@ -7,8 +7,11 @@ import { IoIosArrowDown } from "react-icons/io";
 
 import { useRef, useEffect } from "react";
 
-import EditListModal from "../../Modals/EditListModal";
-import DeleteListModal from "../../Modals/DeleteListModal";
+// import EditListModal from "../../modals/EditListModal";
+// import DeleteListModal from "../../modals/DeleteListModal";
+// import EditListModal from '../../modals/EditListModal';
+import DeleteListModal from '../../../modals/DeleteListModal';
+import EditListModal from "../../../modals/EditListModal";
 
 import { useModal } from "../../../context/Modal";
 

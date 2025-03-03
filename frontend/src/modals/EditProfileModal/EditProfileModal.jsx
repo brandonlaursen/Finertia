@@ -3,11 +3,12 @@ import { MdClose } from "react-icons/md";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { FiPlusCircle } from "react-icons/fi";
 
-import { useModal } from "../../../context/Modal";
 import { useDispatch } from "react-redux";
 import { useState, useRef } from "react";
 
-import { editUser } from "../../../../store/session";
+import { editUser } from "../../../store/session";
+
+import { useModal } from "../../context/Modal";
 
 function EditProfileModal({ sessionUser }) {
   const { closeModal } = useModal();

@@ -7,8 +7,8 @@ import EmojiPicker from "emoji-picker-react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { useModal } from "../../../context/Modal";
-import { editList } from "../../../../store/lists";
+import { useModal } from "../../context/Modal";
+import { editList } from "../../../store/lists";
 
 function EditListModal({ list }) {
   const { closeModal } = useModal();

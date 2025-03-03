@@ -5,10 +5,9 @@ import EmojiPicker from "emoji-picker-react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { useModal } from "../../../context/Modal";
-
-import { createList } from "../../../../store/lists";
-import { selectUser } from "../../../../store/session";
+import { useModal } from "../../context/Modal";
+import { createList } from "../../../store/lists";
+import { selectUser } from "../../../store/session";
 
 function CreateListModal() {
   const { closeModal } = useModal();
@@ -48,10 +47,7 @@ function CreateListModal() {
   if (isOpen) {
     return (
       <div className="CreateList">
-        <div
-          className="CreateList__overlay"
-          onClick={closeModal}
-        />
+        <div className="CreateList__overlay" onClick={closeModal} />
 
         <main className="CreateList__container">
           <header className="CreateList__header">
@@ -116,18 +112,12 @@ function CreateListModal() {
 
   return (
     <div className="ChooseListType">
-      <div
-        className="ChooseListType__overlay"
-        onClick={closeModal}
-      />
+      <div className="ChooseListType__overlay" onClick={closeModal} />
 
       <div className="ChooseListType__wrapper">
-
         <main className="ChooseListType__container">
           <header className="ChooseListType__header">
-            <h1 className="ChooseListType__title">
-              Choose a list type
-            </h1>
+            <h1 className="ChooseListType__title">Choose a list type</h1>
             <button className="ChooseListType__close-button">
               <MdClose
                 className="ChooseListType__close-button-icon"
@@ -137,7 +127,6 @@ function CreateListModal() {
           </header>
 
           <section className="ChooseListType__options">
-
             <div
               className="ChooseListType__option"
               onClick={() => setIsOpen(true)}
@@ -152,11 +141,9 @@ function CreateListModal() {
                   Keep an on investments youre interested in
                 </span>
               </div>
-
             </div>
 
             <div className="ChooseListType__option">
-
               <div className="ChooseListType__option__image ChooseListType__image-two" />
 
               <div className="ChooseListType__option__text">
@@ -168,15 +155,10 @@ function CreateListModal() {
                   indicators
                 </span>
               </div>
-
-
             </div>
           </section>
 
-          <button
-            className="ChooseListType__back-button"
-            onClick={closeModal}
-          >
+          <button className="ChooseListType__back-button" onClick={closeModal}>
             Go back
           </button>
         </main>

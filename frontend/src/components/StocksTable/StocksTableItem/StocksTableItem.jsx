@@ -1,4 +1,4 @@
-import './StocksTableItem.css';
+import "./StocksTableItem.css";
 import { GoTriangleDown } from "react-icons/go";
 import { GoTriangleUp } from "react-icons/go";
 import { FaPlus } from "react-icons/fa6";
@@ -6,7 +6,8 @@ import { MdClose } from "react-icons/md";
 
 import { useDispatch } from "react-redux";
 
-import AddToListModal from "../../Modals/AddToListModal";
+import AddToListModal from "../../../modals/AddToListModal/AddToListModal";
+
 import { useModal } from "../../../context/Modal";
 
 import { editListStocks } from "../../../../store/stocks";

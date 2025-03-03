@@ -4,21 +4,21 @@ import { useDispatch } from "react-redux";
 
 import { restoreUser } from "../store/session";
 
+import Navigation from "./components/Navigation/NavigationBar";
+import AccountLayout from "./layouts/AccountLayout/AccountLayout";
+import SettingsLayout from "./layouts/SettingsLayout";
 import WelcomePage from "./pages/WelcomePage";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
-import Navigation from "./components/Navigation/NavigationBar";
 import HomePage from "./pages/HomePage";
-import StocksPage from "./components/StocksPage/StocksPage";
+import StocksPage from "./pages/StocksPage";
 import StockPage from "./pages/StockPage";
 import ListPage from "./pages/ListPage";
 import ProfilePage from "./pages/ProfilePage";
-import AccountLayout from "./layouts/AccountLayout/AccountLayout";
 import InvestingPage from "./pages/InvestingPage/InvestingPage";
 import TransfersPage from "./pages/TransfersPage/TransfersPage";
 import HistoryPage from "./pages/HistoryPage/HistoryPage";
 import HelpPage from "./pages/HelpPage";
-import SettingsLayout from "./layouts/SettingsLayout";
 import SecurityPage from "./pages/SecurityPage";
 import AppearancePage from "./pages/AppearancePage";
 

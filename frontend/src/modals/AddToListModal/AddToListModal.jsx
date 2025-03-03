@@ -7,18 +7,13 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import EmojiPicker from "emoji-picker-react";
 
-import { useModal } from "../../../context/Modal";
+import ListItem from "../../components/List/ListItem";
 
-import ListItem from "../../List/ListItem";
+import { fetchLists, selectListsArray, createList } from "../../../store/lists";
+import { selectUser } from "../../../store/session";
+import { editListStocks } from "../../../store/stocks";
 
-import {
-  fetchLists,
-  selectListsArray,
-  createList,
-} from "../../../../store/lists";
-
-import { selectUser } from "../../../../store/session";
-import { editListStocks } from "../../../../store/stocks";
+import { useModal } from "../../context/Modal";
 
 function AddToListModal({ stock, setNotifications, setNotificationMessage }) {
   const dispatch = useDispatch();

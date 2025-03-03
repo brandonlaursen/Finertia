@@ -8,10 +8,10 @@ import { useOutletContext, useNavigate } from "react-router-dom";
 
 import { fetchAllStocks, selectStocksArray } from "../../../store/stocks";
 
-import ListContainer from "../List/ListContainer";
-import StocksTable from "./StocksTable/StocksTable";
-import NotificationPopUp from "../NotificationPopUp/NotificationPopUp";
-import LoadingSpinner from "../LoadingSpinner";
+import ListContainer from "../../components/List/ListContainer";
+import StocksTable from "../../components/StocksTable";
+import NotificationPopUp from "../../components/NotificationPopUp/NotificationPopUp";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
 function StocksPage() {
   const navigate = useNavigate();
@@ -118,27 +118,26 @@ function StocksPage() {
             Explore some of the most popular stocks.
           </section>
 
-            <StocksTable
-              stocks={stocks}
-              handleSort={handleSort}
-              sortedStocks={sortedStocks}
-              navigate={navigate}
-              setNotifications={setNotifications}
-              setNotificationMessage={setNotificationMessage}
-              notifications={notifications}
-              notificationMessage={notificationMessage}
-            />
+          <StocksTable
+            stocks={stocks}
+            handleSort={handleSort}
+            sortedStocks={sortedStocks}
+            navigate={navigate}
+            setNotifications={setNotifications}
+            setNotificationMessage={setNotificationMessage}
+            notifications={notifications}
+            notificationMessage={notificationMessage}
+          />
 
-            <div className="StocksPage__disclaimer">
-              This list is based on data from one or more third party data
-              providers. It is provided for informational purposes only by
-              Finertia Financial, LLC., and is not investment advice or a
-              recommendation. Investors should consider the characteristics of
-              any security they consider purchasing, including the investment
-              objectives and unique risk profile of any Exchange Traded Products
-              (ETP) and read the ETPs prospectus carefully before investing.
-            </div>
-    
+          <div className="StocksPage__disclaimer">
+            This list is based on data from one or more third party data
+            providers. It is provided for informational purposes only by
+            Finertia Financial, LLC., and is not investment advice or a
+            recommendation. Investors should consider the characteristics of any
+            security they consider purchasing, including the investment
+            objectives and unique risk profile of any Exchange Traded Products
+            (ETP) and read the ETPs prospectus carefully before investing.
+          </div>
         </main>
 
         <ListContainer className="List_home-container" navigate={navigate} />

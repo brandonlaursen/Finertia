@@ -4,9 +4,8 @@ import { MdClose } from "react-icons/md";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { useModal } from "../../../context/Modal";
-
-import { deleteList } from "../../../../store/lists";
+import { useModal } from "../../context/Modal";
+import { deleteList } from "../../../store/lists";
 
 function DeleteListModal({ listId, listName, navigate }) {
   const { closeModal } = useModal();
@@ -67,8 +66,6 @@ function DeleteListModal({ listId, listName, navigate }) {
             </button>
           </div>
         </section>
-
-
       </div>
     </div>
   );

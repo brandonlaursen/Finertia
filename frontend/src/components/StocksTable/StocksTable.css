@@ -32,7 +32,7 @@
 }
 
 .StocksTable__head th:hover {
-  color: var(--color-primary); /* Change text color on hover */
+  color: var(--color-primary); 
 }
 
 .StocksTable th:nth-of-type(1),
