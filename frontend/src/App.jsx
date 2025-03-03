@@ -4,9 +4,10 @@ import { useDispatch } from "react-redux";
 
 import { restoreUser } from "../store/session";
 
-import Navigation from "./components/Navigation/NavigationBar";
-import AccountLayout from "./layouts/AccountLayout/AccountLayout";
+import HomeLayout from "./layouts/HomeLayout";
+import AccountLayout from "./layouts/AccountLayout";
 import SettingsLayout from "./layouts/SettingsLayout";
+
 import WelcomePage from "./pages/WelcomePage";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
@@ -15,9 +16,9 @@ import StocksPage from "./pages/StocksPage";
 import StockPage from "./pages/StockPage";
 import ListPage from "./pages/ListPage";
 import ProfilePage from "./pages/ProfilePage";
-import InvestingPage from "./pages/InvestingPage/InvestingPage";
-import TransfersPage from "./pages/TransfersPage/TransfersPage";
-import HistoryPage from "./pages/HistoryPage/HistoryPage";
+import InvestingPage from "./pages/InvestingPage";
+import TransfersPage from "./pages/TransfersPage";
+import HistoryPage from "./pages/HistoryPage";
 import HelpPage from "./pages/HelpPage";
 import SecurityPage from "./pages/SecurityPage";
 import AppearancePage from "./pages/AppearancePage";
@@ -56,7 +57,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/",
-        element: <Navigation />,
+        element: <HomeLayout />,
         children: [
           {
             index: true,

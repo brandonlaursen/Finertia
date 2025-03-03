@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 import HomePageOverview from "./HomePageOverview";
 import StockChart from "../../components/StockChart";
-import SelectTimeFrame from "../../components/SelectTimeFrame";
+import SelectTimeFrame from "../../components/TimeFrameSelector";
 import BuyingPowerDropDown from "./BuyingPowerDropDown";
 import HomePageNewsFeed from "./HomePageNewsFeed";
 import ListSideBar from "../../components/ListSideBar";
@@ -37,7 +37,7 @@ function HomePage() {
         <HomePageNewsFeed />
       </main>
 
-      <ListSideBar  navigate={navigate} />
+      <ListSideBar navigate={navigate} />
     </div>
   );
 }

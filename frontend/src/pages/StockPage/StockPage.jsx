@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import StockOverview from "./StockOverview";
 import StockChart from "../../components/StockChart";
-import SelectTimeFrame from "../../components/SelectTimeFrame";
+import SelectTimeFrame from "../../components/TimeFrameSelector";
 import StockDetails from "./StockDetails";
 import StockNews from "./StockNews";
 
