@@ -20,8 +20,23 @@
   border: 1px solid var(--border-color);
 }
 
-.ListSideBar__loading-spinner {
-  display: flex;
-  justify-content: center;
-  width: 20vw;
+
+
+.ListSideBar__loading{
+  position: sticky;
+  top: 85px;
+
+  height: 86vh;
+  width: 30vw;
+  max-width: 300px;
+  min-width: 250px;
+
+  transition: width 0.1s smooth;
+
+  margin-top: 30px;
+  margin-left: 8px;
+  margin-right: 8px;
+
+  background-color: rgb(255, 255, 255);
+  border-radius: 4px;
 }

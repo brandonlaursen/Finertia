@@ -19,8 +19,8 @@ function PortfolioStocks({ sessionUser, stocks }) {
         <span>Stocks</span>
       </header>
 
-      {
-        <div className="PortfolioStocks__container">
+
+        <section className="PortfolioStocks__container">
           {stocksOwnedArray.length > 0 ? (
             stocksOwnedArray.map((stock) => {
               return (
@@ -38,8 +38,8 @@ function PortfolioStocks({ sessionUser, stocks }) {
               make your first investment today.
             </div>
           )}
-        </div>
-      }
+        </section>
+
     </div>
   );
 }

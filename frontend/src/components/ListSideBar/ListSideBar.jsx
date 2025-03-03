@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 
 import PortfolioStocks from "./PortfolioStocks/PortfolioStocks";
-import LoadingSpinner from "../LoadingSpinner";
 import Lists from "./Lists/Lists";
 
 import { fetchLists, selectListsArray } from "../../../store/lists";
@@ -58,13 +57,7 @@ function ListSideBar({ navigate }) {
     );
   }
 
-  if (!isLoaded) {
-    return (
-      <div className="ListSideBar__loading-spinner">
-        <LoadingSpinner />
-      </div>
-    );
-  }
+  if (!isLoaded) return <div className="ListSideBar__loading" />;
 
   return (
     <aside className="ListSideBar">

@@ -30,34 +30,37 @@ function Lists({ navigate, sessionUser, stocks, lists }) {
           />
         </button>
       </header>
-      <section className="Lists__container">
-        {lists &&
-          lists.slice(0, 10).map((list) => (
-            <div key={list.id}>
-              <ListItem
-                list={list}
-                className="Lists__ListItem"
-                container="ListItem__container"
-                emoji="ListItem__emoji"
-                name="ListItem__name"
-                showActions={true}
-                showHover={true}
-                navigate={navigate}
-                expandedListIds={expandedListIds}
-                setExpandedListIds={setExpandedListIds}
-                activeListId={activeListId}
-                setActiveListId={setActiveListId}
-              />
-              <ListStocks
-                expandedListIds={expandedListIds}
-                setExpandedListIds={setExpandedListIds}
-                list={list}
-                stocks={stocks}
-                sessionUser={sessionUser}
-              />
-            </div>
-          ))}
-      </section>
+
+
+        <section className="Lists__container">
+          {lists &&
+            lists.slice(0, 10).map((list) => (
+              <div key={list.id}>
+                <ListItem
+                  list={list}
+                  className="Lists__ListItem"
+                  container="ListItem__container"
+                  emoji="ListItem__emoji"
+                  name="ListItem__name"
+                  showActions={true}
+                  showHover={true}
+                  navigate={navigate}
+                  expandedListIds={expandedListIds}
+                  setExpandedListIds={setExpandedListIds}
+                  activeListId={activeListId}
+                  setActiveListId={setActiveListId}
+                />
+                <ListStocks
+                  expandedListIds={expandedListIds}
+                  setExpandedListIds={setExpandedListIds}
+                  list={list}
+                  stocks={stocks}
+                  sessionUser={sessionUser}
+                />
+              </div>
+            ))}
+        </section>
+
     </div>
   );
 }

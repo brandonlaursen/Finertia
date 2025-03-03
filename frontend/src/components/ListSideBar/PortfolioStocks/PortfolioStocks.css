@@ -31,3 +31,11 @@
 .ListStocks {
   border-bottom: 1px solid var(--border-color);
 }
+
+.PortfolioStocks__loading-spinner{
+  height: 100px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

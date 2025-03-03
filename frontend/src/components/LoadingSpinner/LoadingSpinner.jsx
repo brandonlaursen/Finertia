@@ -1,9 +1,9 @@
 import "./LoadingSpinner.css";
-import { FaSpinner } from "react-icons/fa6";
+import { ImSpinner8 } from "react-icons/im";
 
 
 function LoadingSpinner() {
-  return <FaSpinner className="spinner"  />
+  return <ImSpinner8 className="spinner"  />
 }
 
 export default LoadingSpinner;
