@@ -1,0 +1,33 @@
+.PortfolioStocks__header {
+  height: 50px;
+  min-height: 50px;
+
+  display: flex;
+  flex-shrink: 0;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 20px;
+
+  font-weight: bold;
+  font-size: 14px;
+
+  border-bottom: 1px solid var(--border-color);
+}
+
+.PortfolioStocks__container {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.PortfolioStocks__empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.ListStocks {
+  border-bottom: 1px solid var(--border-color);
+}

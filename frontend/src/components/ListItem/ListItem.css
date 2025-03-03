@@ -6,6 +6,16 @@
 
   text-decoration: none;
   cursor: pointer;
+
+}
+
+/* Lists Side Bar Styling Only  */
+.Lists__ListItem {
+  height: 55px;
+}
+
+.Lists__ListItem:hover {
+  background-color: rgb(247, 251, 255);
 }
 
 /* ========== List Item Container ========== */
@@ -62,14 +72,4 @@
   font-weight: 500;
 
   color: black;
-}
-
-
-/* Watch List Page  */
-.WatchList__ListItem {
-  height: 55px;
-}
-
-.WatchList__ListItem:hover {
-  background-color: rgb(247, 251, 255);
 }

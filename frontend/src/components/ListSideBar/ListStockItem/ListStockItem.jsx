@@ -1,7 +1,9 @@
-import TinyChart from "../TinyChart/TinyChart";
+import './ListStockItem.css'
+
+import TinyChart from "../../TinyChart/TinyChart";
 
 
-function StockItem({ stock, stocks, navigate }) {
+function ListStockItem({ stock, stocks, navigate }) {
   const { symbol = stock.stockSymbol, sharesOwned } = stock;
 
   const stockInfo = Object.values(stocks).find(
@@ -13,26 +15,26 @@ function StockItem({ stock, stocks, navigate }) {
 
   return (
     <article
-      className="StockListItem"
+      className="ListStockItem"
       key={id}
       onClick={() => navigate(`/stocks/${symbol}`)}
     >
-      <section className="StockListItem__details">
+      <section className="ListStockItem__details">
         <span>{symbol}</span>
-        <span className="StockListItem__details__shares">
+        <span className="ListStockItem__details__shares">
           {sharesOwned ? `${sharesOwned?.toFixed(5)} Shares` : ""}
         </span>
       </section>
 
       <TinyChart o={o} h={h} c={c} />
 
-      <section className="StockListItem__stats">
+      <section className="ListStockItem__stats">
         <span> ${current_price.toFixed(2)}</span>
         <span
           className={`${
             todays_change_percent.toFixed(2) > 0
-              ? "StockListItem__percent-change-green"
-              : "StockListItem__percent-change-red"
+              ? "ListStockItem__percent-change-green"
+              : "ListStockItem__percent-change-red"
           }`}
         >
           {todays_change_percent.toFixed(2) > 0 && "+"}
@@ -43,4 +45,4 @@ function StockItem({ stock, stocks, navigate }) {
   );
 }
 
-export default StockItem;
+export default ListStockItem;

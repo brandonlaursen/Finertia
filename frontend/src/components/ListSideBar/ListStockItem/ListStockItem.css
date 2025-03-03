@@ -1,0 +1,69 @@
+.ListStockItem {
+  height: 60px;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  cursor: pointer;
+
+  padding: 0 20px;
+}
+
+.ListStockItem:hover {
+  background-color: var(--color-highlight);
+}
+
+.ListStockItem__details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  flex: 0;
+
+  gap: 8px;
+
+  font-weight: bold;
+  font-size: 12px;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  min-width: 80px;
+}
+
+.ListStockItem__details__shares {
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.ListStockItem__graph {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.ListStockItem__stats {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+
+  flex: 0;
+
+  gap: 8px;
+
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.ListStockItem__percent-change-green {
+  color: var(--percent-change-positive);
+}
+
+.ListStockItem__percent-change-red {
+  color: var(--percent-change-negative);
+}

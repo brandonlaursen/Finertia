@@ -2,7 +2,7 @@ import "./ListStocks.css";
 
 import { useNavigate } from "react-router-dom";
 
-import StockItem from "../StockItem/StockItem";
+import ListStockItem from "../ListStockItem/ListStockItem";
 
 function ListStocks({ expandedListIds, list, stocks, sessionUser }) {
   const navigate = useNavigate();
@@ -16,11 +16,11 @@ function ListStocks({ expandedListIds, list, stocks, sessionUser }) {
   return (
     <>
       {isListOpen && (
-        <div className="StockListItems">
+        <div className="ListStocks">
           {Stocks &&
             Stocks.map((stock) => {
               return (
-                <StockItem
+                <ListStockItem
                   key={stock.id}
                   stock={stock}
                   stocks={stocks}

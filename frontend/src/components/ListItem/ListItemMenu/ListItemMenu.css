@@ -1,5 +1,5 @@
-/* ========== Popover (Dropdown) Styles ========== */
-/* Popover container */
+/* ========== Menu (Dropdown) Styles ========== */
+/* Menu container */
 .ListItemMenu {
   height: 100px;
   width: 150px;
@@ -22,8 +22,8 @@
   z-index: 100;
 }
 
-/* ========== Popover Buttons ========== */
-/* Buttons inside the popover */
+/* ========== Menu Buttons ========== */
+/* Buttons inside the Menu */
 .ListItemMenu__button {
   display: flex;
   height: 100%;
@@ -55,7 +55,7 @@
 }
 
 /* ========== List Item Icons ========== */
-/* Icons used inside popover (edit, rearrange, delete) */
+/* Icons used inside Menu (edit, rearrange, delete) */
 .ListItemMenu__edit-icon,
 .ListItemMenu__rearrange-icon,
 .ListItemMenu__delete-icon {

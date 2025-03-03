@@ -1,0 +1,53 @@
+/* ========== List Header ========== */
+/* Header section containing title and create button */
+.Lists__header {
+  height: 50px;
+  min-height: 50px;
+
+  display: flex;
+  flex-shrink: 0;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 20px;
+
+  font-weight: bold;
+  font-size: 14px;
+
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* ========== Create List Button ========== */
+/* Button for creating new lists */
+.Lists__create-button {
+  height: 24px;
+  width: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  background: none;
+  border: none;
+  outline: none;
+}
+
+/* Hover effect for create button */
+.Lists__create-button:hover {
+  background-color: var(--light-background-hover);
+  border-radius: 4px;
+}
+
+/* Icon styling inside create button */
+.Lists__create-button {
+  color: var(--color-icon-grey);
+}
+
+/* ========== Lists Container (Holds All Lists) ========== */
+/* Container for the scrollable list of items */
+.Lists__container {
+  position: relative;
+}
+
+/* ========== Responsive Design Breakpoints ========== */

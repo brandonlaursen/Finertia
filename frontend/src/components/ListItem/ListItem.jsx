@@ -1,6 +1,6 @@
 import "./ListItem.css";
 
-import ListItemActions from "../ListItemActions/ListItemActions";
+import ListItemActions from "./ListItemActions";
 
 function ListItem({
   list,

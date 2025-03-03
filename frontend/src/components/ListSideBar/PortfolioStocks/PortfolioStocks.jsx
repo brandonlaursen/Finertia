@@ -1,10 +1,10 @@
+import "./PortfolioStocks.css";
 
 import { useNavigate } from "react-router-dom";
 
-import StockItem from "../StockItem/StockItem";
+import ListStockItem from "../ListStockItem/ListStockItem";
 
-
-function StocksOwned({ sessionUser, stocks }) {
+function PortfolioStocks({ sessionUser, stocks }) {
   const navigate = useNavigate();
 
   const {
@@ -14,13 +14,17 @@ function StocksOwned({ sessionUser, stocks }) {
   const stocksOwnedArray = Object.values(stocksOwned);
 
   return (
-    <>
+    <div className="PortfolioStocks">
+      <header className="PortfolioStocks__header">
+        <span>Stocks</span>
+      </header>
+
       {
-        <div className="StockListItems">
+        <div className="PortfolioStocks__container">
           {stocksOwnedArray.length > 0 ? (
             stocksOwnedArray.map((stock) => {
               return (
-                <StockItem
+                <ListStockItem
                   key={stock.id}
                   stock={stock}
                   navigate={navigate}
@@ -29,15 +33,15 @@ function StocksOwned({ sessionUser, stocks }) {
               );
             })
           ) : (
-            <div className="StockListItems__empty">
+            <div className="PortfolioStocks__empty">
               Your portfolio is waiting to grow! 🚀 Start exploring stocks and
               make your first investment today.
             </div>
           )}
         </div>
       }
-    </>
+    </div>
   );
 }
 
-export default StocksOwned;
+export default PortfolioStocks;
