@@ -1,6 +1,7 @@
 import "./ListStocks.css";
 
 import { useNavigate } from "react-router-dom";
+
 import StockItem from "../StockItem/StockItem";
 
 function ListStocks({ toggleListIds, list, stocks, sessionUser }) {

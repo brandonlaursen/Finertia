@@ -1,7 +1,8 @@
 
 import { useNavigate } from "react-router-dom";
 
-import StocksOwnedItem from "../StocksOwnedItem/StocksOwnedItem";
+import StockItem from "../StockItem/StockItem";
+
 
 function StocksOwned({ sessionUser, stocks }) {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ function StocksOwned({ sessionUser, stocks }) {
           {stocksOwnedArray.length > 0 ? (
             stocksOwnedArray.map((stock) => {
               return (
-                <StocksOwnedItem
+                <StockItem
                   key={stock.id}
                   stock={stock}
                   navigate={navigate}
