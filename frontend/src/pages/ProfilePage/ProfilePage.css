@@ -1,5 +1,5 @@
 .ProfilePage {
-  height: 100vh;
+
   width: 65%;
   min-width: 600px;
 
@@ -8,19 +8,14 @@
   align-content: center;
 
   margin: 120px auto 0;
-  padding: 20px;
+
 
   color: rgb(0, 0, 0);
 
   margin-bottom: 120px;
 }
 
-.ProfilePage__container {
-  height: 100vh;
 
-  display: flex;
-  flex-direction: column;
-}
 
 .ProfilePage__user {
   height: 100px;

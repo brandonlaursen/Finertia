@@ -77,7 +77,6 @@ router.put("/update-password", async (req, res, next) => {
     !dbUser ||
     !bcrypt.compareSync(currentPassword, dbUser.hashedPassword.toString())
   ) {
-
     const err = new Error("Password is incorrect");
 
     return res.json({ err, errorMessage: err.message });
@@ -88,7 +87,6 @@ router.put("/update-password", async (req, res, next) => {
   await dbUser.update({
     hashedPassword: hashedPassword,
   });
-
 
   const safeUser = {
     id: user.id,
@@ -109,9 +107,7 @@ router.put("/update-password", async (req, res, next) => {
 
 // * Get logged in user info
 router.get("/", async (req, res) => {
-
   const { user } = req;
-
 
   if (user) {
     const safeUser = {
@@ -136,15 +132,25 @@ router.put("/", singleMulterUpload("image"), async (req, res) => {
 
   const { username: newUsername } = req.body;
 
-  let profileImageUrl = req.file
-    ? await singleFileUpload({ file: req.file, public: true })
-    : null;
-
-
-  if (!profileImageUrl) {
-    profileImageUrl =
-      "https://finertia.s3.amazonaws.com/public/1739990232538.png";
+  if (req.file) {
+    // If a new file is uploaded, use it
+    profileImageUrl = await singleFileUpload({ file: req.file, public: true });
+  } else if (
+    req.body.image ===
+    "https://finertia.s3.amazonaws.com/public/1739990232538.png"
+  ) {
+    // If the default URL is sent, use it
+    profileImageUrl = req.body.image;
+  } else {
+    // If no image is sent, keep the existing profile picture
+    profileImageUrl = userInfo.profilePic;
   }
+
+  // console.log('====>',profileImageUrl);
+  // if (!profileImageUrl) {
+  //   profileImageUrl =
+  //     "https://finertia.s3.amazonaws.com/public/1739990232538.png";
+  // }
 
   const user = await User.findByPk(userInfo.id);
 

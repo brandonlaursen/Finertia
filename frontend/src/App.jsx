@@ -43,15 +43,21 @@ function ProtectedRoute({ children }) {
 function Layout() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const sessionUser = useSelector((state) => state.session.user);
 
   useEffect(() => {
     const loadUser = async () => {
-      await dispatch(restoreUser());
+      // Only restore if there's no user in the store
+
+      if (!sessionUser) {
+        console.log("Restoring user");
+        await dispatch(restoreUser());
+      }
       setIsLoaded(true);
     };
 
     loadUser();
-  }, [dispatch]);
+  }, [dispatch, sessionUser]);
 
   return <>{isLoaded && <Outlet />}</>;
 }

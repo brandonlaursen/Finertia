@@ -22,20 +22,21 @@ function EditProfileModal({ sessionUser }) {
   const [image, setImage] = useState(sessionUser.profilePic);
 
   const [preview, setPreview] = useState(false);
-  const [previewImage, setPreviewImage] = useState(
-    "https://finertia.s3.amazonaws.com/public/1739990232538.png"
-  );
+  const [previewImage, setPreviewImage] = useState(null);
+
+  const DEFAULT_IMAGE =
+    "https://finertia.s3.amazonaws.com/public/1739990232538.png";
 
   async function handleSubmit(e) {
     e.preventDefault();
 
     setIsLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     setIsLoading(false);
 
     const editedProfile = {
       username: userName,
-      image,
+      ...(image instanceof File || image === DEFAULT_IMAGE ? { image } : {}),
     };
 
     await dispatch(editUser(editedProfile));
@@ -50,13 +51,19 @@ function EditProfileModal({ sessionUser }) {
     const file = e.target.files[0];
     if (file) {
       setImage(file);
-
+      setPreview(true);
       const reader = new FileReader();
       reader.onloadend = () => {
         setPreviewImage(reader.result);
       };
       reader.readAsDataURL(file);
     }
+  };
+
+  const handleResetImage = () => {
+    setImage(DEFAULT_IMAGE);
+    setPreviewImage(DEFAULT_IMAGE);
+    setPreview(true);
   };
 
   return (
@@ -77,16 +84,13 @@ function EditProfileModal({ sessionUser }) {
 
         <div className="EditProfileModal__section">
           <div className="EditProfileModal___user__image">
-            {preview ||
-            sessionUser.profilePic ===
-              "https://finertia.s3.amazonaws.com/public/1739990232538.png" ? (
+            {preview ? (
               <>
                 <img
-                  src={previewImage}
+                  src={previewImage || DEFAULT_IMAGE}
                   alt="User Profile"
                   className="EditProfileModal___user__profile-pic"
                 />
-
                 <FiPlusCircle
                   className="EditProfileModal___user__plus-icon"
                   onClick={handleIconClick}
@@ -99,12 +103,18 @@ function EditProfileModal({ sessionUser }) {
                   alt="User Profile"
                   className="EditProfileModal___user__profile-pic"
                 />
-                <IoCloseCircleOutline
-                  className="EditProfileModal___user__plus-icon"
-                  onClick={() => {
-                    setPreview(true);
-                  }}
-                />
+                {image !== DEFAULT_IMAGE && (
+                  <IoCloseCircleOutline
+                    className="EditProfileModal___user__plus-icon"
+                    onClick={handleResetImage}
+                  />
+                )}
+                {image === DEFAULT_IMAGE && (
+                  <FiPlusCircle
+                    className="EditProfileModal___user__plus-icon"
+                    onClick={handleIconClick}
+                  />
+                )}
               </>
             )}
 
@@ -113,6 +123,7 @@ function EditProfileModal({ sessionUser }) {
               ref={fileInputRef}
               onChange={updateFile}
               style={{ display: "none" }}
+              accept="image/*"
             />
           </div>
 
