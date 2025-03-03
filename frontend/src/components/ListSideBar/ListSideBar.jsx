@@ -1,24 +1,24 @@
-import "./ListContainer.css";
+import "./ListSideBar.css";
 import { FaPlus } from "react-icons/fa6";
 
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 
-import { fetchLists, selectListsArray } from "../../../../store/lists";
-import { fetchAllStocks } from "../../../../store/stocks";
-import { selectUser } from "../../../../store/session";
+import { fetchLists, selectListsArray } from "../../../store/lists";
+import { fetchAllStocks } from "../../../store/stocks";
+import { selectUser } from "../../../store/session";
 
-import ListItem from "../ListItem";
-import ListStocks from "../ListStocks/ListStocks";
-import StocksOwned from "../StocksOwned/StocksOwned";
-import OpenModalButton from "../../OpenModalButton";
+import ListItem from "./ListItem";
+import ListStocks from "./ListStocks/ListStocks";
+import StocksOwned from "./StocksOwned/StocksOwned";
+import OpenModalButton from "../OpenModalButton";
 
-import CreateListModal from "../../../modals/CreateListModal";
+import CreateListModal from "../../modals/CreateListModal";
 
-import { selectStocksObject } from "../../../../store/stocks";
+import { selectStocksObject } from "../../../store/stocks";
 
-function ListContainer({ className, navigate }) {
+function ListSideBar({ className, navigate }) {
   const dispatch = useDispatch();
   const location = useLocation();
 
@@ -40,11 +40,11 @@ function ListContainer({ className, navigate }) {
   }, [dispatch]);
 
   return (
-    <aside className="List">
+    <aside className="ListSideBar">
       <main className={className}>
         {location.pathname === "/" && (
           <>
-            <section className="List__header">
+            <section className="ListSideBar__header">
               <header>Stocks</header>
             </section>
 
@@ -54,12 +54,12 @@ function ListContainer({ className, navigate }) {
           </>
         )}
 
-        <section className="List__header">
+        <section className="ListSideBar__header">
           <header>Lists</header>
-          <button className="List__create-button">
+          <button className="ListSideBar__create-button">
             <OpenModalButton
               modalComponent={<CreateListModal />}
-              className="List__create-button-icon"
+              className="ListSideBar__create-button-icon"
               Element={FaPlus}
               modalClass={{
                 modal: "CreateListModal__step-one",
@@ -70,7 +70,7 @@ function ListContainer({ className, navigate }) {
           </button>
         </section>
 
-        <section className="Lists__container">
+        <section className="ListSideBar__container">
           {lists &&
             lists.slice(0, 10).map((list) => {
               return (
@@ -105,4 +105,4 @@ function ListContainer({ className, navigate }) {
   );
 }
 
-export default ListContainer;
+export default ListSideBar;

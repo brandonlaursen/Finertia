@@ -21,9 +21,10 @@
   height: 50px;
   width: 800px;
   display: flex;
-  align-items: center;
+
   border: 1px solid rgb(219, 219, 219);
-  font-size: 16px;
+  font-size: 15px;
+  font-weight: 600;
   justify-content: space-between;
 }
 
@@ -33,14 +34,19 @@
 
 .NotificationPopUp-view {
   display: flex;
+
   gap: 8px;
   align-items: center;
 }
 
 .NotificationPopUp-icon {
-  font-size: 20px;
+  font-size: 16px;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 4px;
+
+  height: 28px;
+  width: 28px;
+
 }
 
 .NotificationPopUp-icon:hover {

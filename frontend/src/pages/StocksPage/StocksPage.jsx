@@ -8,7 +8,7 @@ import { useOutletContext, useNavigate } from "react-router-dom";
 
 import { fetchAllStocks, selectStocksArray } from "../../../store/stocks";
 
-import ListContainer from "../../components/List/ListContainer";
+import ListSideBar from "../../components/ListSideBar";
 import StocksTable from "../../components/StocksTable";
 import NotificationPopUp from "../../components/NotificationPopUp/NotificationPopUp";
 import LoadingSpinner from "../../components/LoadingSpinner";
@@ -87,7 +87,6 @@ function StocksPage() {
     <div className="StocksPage">
       <div className="StocksPage__banner" />
 
-      {/* home page equivalent */}
       <div className="StocksPage__container">
         <main className="StocksPage__main">
           <section className="StocksPage__section">
@@ -140,7 +139,7 @@ function StocksPage() {
           </div>
         </main>
 
-        <ListContainer className="List_home-container" navigate={navigate} />
+        <ListSideBar navigate={navigate} />
         {notifications && (
           <div className="NotificationPopsContainer">
             <NotificationPopUp

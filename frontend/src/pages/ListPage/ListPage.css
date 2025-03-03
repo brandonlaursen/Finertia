@@ -1,12 +1,17 @@
 /* ========== List Page ========== */
 
 .ListPage {
+  height: 100vh;
   display: flex;
   justify-content: center;
 
   /* ! unify media queries */
-  margin-top: 85px;
+  margin-top: 80px;
   gap: 1.5vw;
+}
+
+.ListPage__padding {
+  padding-left: 8px;
 }
 
 /* List Page main content area styles */
@@ -23,7 +28,6 @@
 
   transition: width 0.3s smooth;
 }
-
 
 /* List Page No stocks - no table */
 .ListPage__no-stocks-container {

@@ -9,7 +9,7 @@ import StockChart from "../../components/StockChart";
 import SelectTimeFrame from "../../components/SelectTimeFrame";
 import BuyingPowerDropDown from "./BuyingPowerDropDown";
 import HomePageNewsFeed from "./HomePageNewsFeed";
-import ListContainer from "../../components/List/ListContainer";
+import ListSideBar from "../../components/ListSideBar";
 
 import { selectUser } from "../../../store/session";
 
@@ -37,7 +37,7 @@ function HomePage() {
         <HomePageNewsFeed />
       </main>
 
-      <ListContainer className="List_home-container" navigate={navigate} />
+      <ListSideBar  navigate={navigate} />
     </div>
   );
 }

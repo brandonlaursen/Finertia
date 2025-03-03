@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import EmojiPicker from "emoji-picker-react";
 
-import ListItem from "../../components/List/ListItem";
+import ListItem from "../../components/ListSideBar/ListItem";
 
 import { fetchLists, selectListsArray, createList } from "../../../store/lists";
 import { selectUser } from "../../../store/session";
