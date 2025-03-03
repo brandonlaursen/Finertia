@@ -25,7 +25,7 @@
   align-items: center;
 
   border: 1px solid rgb(219, 219, 219);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   justify-content: space-between;
 }
@@ -42,12 +42,12 @@
 }
 
 .NotificationPopUp-icon {
-  font-size: 16px;
+  font-size: 15px;
   cursor: pointer;
   border-radius: 4px;
 
-  height: 28px;
-  width: 28px;
+  height: 24px;
+  width: 24px;
 
 }
 

@@ -139,7 +139,11 @@ function StocksPage() {
           </div>
         </main>
 
-        <ListSideBar navigate={navigate} />
+        <ListSideBar
+          navigate={navigate}
+          setNotifications={setNotifications}
+          setNotificationMessage={setNotificationMessage}
+        />
         {notifications && (
           <div className="NotificationPopsContainer">
             <NotificationPopUp

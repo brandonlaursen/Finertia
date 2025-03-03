@@ -58,6 +58,18 @@ function StocksTableItem({
 
               const id = Number(listId);
               await dispatch(editListStocks({ [id]: false }, stock));
+
+              setNotificationMessage([`Successfully removed ${name} from list`]);
+              setNotifications(true);
+
+              await new Promise((resolve) => {
+                setTimeout(() => {
+                  setNotifications(false);
+                  resolve();
+                }, 10000);
+              });
+
+              setNotificationMessage([]);
             }}
           />
         ) : (

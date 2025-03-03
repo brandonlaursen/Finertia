@@ -13,7 +13,7 @@ import { fetchAllStocks } from "../../../store/stocks";
 import { fetchLists } from "../../../store/lists";
 
 import { selectListById } from "../../../store/lists";
-
+import NotificationPopUp from "../../components/NotificationPopUp";
 function ListPage() {
   const { listId } = useParams();
 
@@ -79,7 +79,19 @@ function ListPage() {
         </div>
       </main>
 
-      <ListSideBar navigate={navigate} />
+      <ListSideBar
+        navigate={navigate}
+        setNotifications={setNotifications}
+        setNotificationMessage={setNotificationMessage}
+      />
+      {notifications && (
+        <div className="NotificationPopsContainer">
+          <NotificationPopUp
+            message={notificationMessage}
+            setNotifications={setNotifications}
+          />
+        </div>
+      )}
     </div>
   );
 }
