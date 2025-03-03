@@ -16,13 +16,21 @@ async function handleStockTrade({
 }) {
   setShowReview(!showReview);
 
+  // Convert all numeric values to numbers and handle precision consistently
+  const MIN_SHARES = 0.000001;
+  const MIN_DOLLARS = 1;
+  const sharesOwnedNum = Number(sharesOwned);
+  const sharesToTradeNum = Number(sharesToTrade);
+  const tradeAmountNum = Number(tradeAmount);
+  const tradeSharesEstimateNum = Number(tradeSharesEstimate);
+
   if (tradeType === "buy") {
     if (tradeUnit === "Dollars") {
-      if (tradeAmount < 1) {
+      if (tradeAmountNum < MIN_DOLLARS) {
         setErrors([`Minimum Dollar Amount`, `Enter at least $1.00`]);
         return;
       }
-      if (tradeAmount > balance) {
+      if (tradeAmountNum > balance) {
         setErrors([
           `Not Enough Buying Power`,
           `Edit your order or make a deposit in your individual account to continue.`,
@@ -32,7 +40,7 @@ async function handleStockTrade({
     }
 
     if (tradeUnit === "Shares") {
-      if (Number(sharesToTrade).toFixed(5) < 0.000001) {
+      if (sharesToTradeNum < MIN_SHARES) {
         setErrors([`Minimum Shares Amount`, `Enter at least 0.000001 shares`]);
         return;
       }
@@ -48,23 +56,23 @@ async function handleStockTrade({
 
   if (tradeType === "sell") {
     if (tradeUnit === "Dollars") {
-      if (tradeAmount < 1) {
+      if (tradeAmountNum < MIN_DOLLARS) {
         setErrors([`Minimum Dollar Amount`, `Enter at least $1.00`]);
         return;
       }
 
-      if (sharesOwned.toFixed(5) < Number(tradeSharesEstimate).toFixed(5)) {
+      if (sharesOwnedNum < tradeSharesEstimateNum) {
         setErrors([`Not Enough Shares Available`, ``]);
         return;
       }
     }
 
     if (tradeUnit === "Shares") {
-      if (Number(sharesToTrade).toFixed(5) < 0.000001) {
+      if (sharesToTradeNum < MIN_SHARES) {
         setErrors([`Minimum Shares Amount`, `Enter at least 0.000001 shares`]);
         return;
       }
-      if (sharesOwned.toFixed(5) < Number(sharesToTrade).toFixed(5)) {
+      if (sharesOwnedNum < sharesToTradeNum) {
         setErrors([`Not Enough Shares Available`, ``]);
         return;
       }
@@ -75,9 +83,9 @@ async function handleStockTrade({
     if (tradeType === "buy") {
       if (tradeUnit === "Shares") {
         setMessage(
-          `You are placing a market order to buy ${Number(
-            sharesToTrade
-          ).toFixed(5)} shares of ${
+          `You are placing a market order to buy ${sharesToTradeNum.toFixed(
+            5
+          )} shares of ${
             stock.name
           } at an estimated cost of $${tradeCostEstimate.toFixed(2)}`
         );
@@ -85,11 +93,11 @@ async function handleStockTrade({
       }
       if (tradeUnit === "Dollars") {
         setMessage(
-          `You are placing a market order to buy ${Number(
-            tradeSharesEstimate
-          ).toFixed(5)} shares of ${
+          `You are placing a market order to buy ${tradeSharesEstimateNum.toFixed(
+            5
+          )} shares of ${
             stock.name
-          } at an estimated cost of $${tradeAmount.toFixed(2)}`
+          } at an estimated cost of $${tradeAmountNum.toFixed(2)}`
         );
         return;
       }
@@ -97,7 +105,7 @@ async function handleStockTrade({
     if (tradeType === "sell") {
       if (tradeUnit === "Shares") {
         setMessage(
-          `You are selling ${Number(sharesToTrade).toFixed(
+          `You are selling ${sharesToTradeNum.toFixed(
             5
           )} shares at the current market price. The estimated credit for this order is $${tradeCostEstimate.toFixed(
             2
@@ -107,9 +115,9 @@ async function handleStockTrade({
       }
       if (tradeUnit === "Dollars") {
         setMessage(
-          `You are selling ${Number(tradeSharesEstimate).toFixed(
+          `You are selling ${tradeSharesEstimateNum.toFixed(
             5
-          )} shares at the current market price. The estimated credit for this order is $${tradeAmount.toFixed(
+          )} shares at the current market price. The estimated credit for this order is $${tradeAmountNum.toFixed(
             2
           )}`
         );
