@@ -62,35 +62,35 @@ function ProfilePageUserInfo() {
   };
 
   return (
-    <div className="ProfilePage__user">
-      <section className="ProfilePage__user__image">
+    <div className="ProfilePageUserInfo">
+      <section className="ProfilePageUserInfo__profile-pic-container">
         {isLoading ? (
           <div>
             <img
               src={profilePic}
               alt="User Profile"
-              className={`EditProfileModal___user__profile-pic ${
-                isLoading && "profile-blur"
+              className={`ProfilePageUserInfo__profile-pic ${
+                isLoading && "ProfilePageUserInfo--profile-blur"
               }`}
             />
-            <PiSpinner className="ProfilePage__spinner" />
+            <PiSpinner className="ProfilePageUserInfo__spinner" />
           </div>
         ) : (
           <img
             src={profilePic}
             alt="User Profile"
-            className="EditProfileModal___user__profile-pic"
+            className="ProfilePageUserInfo__profile-pic"
           />
         )}
 
         {profilePic !== DEFAULT_IMAGE ? (
           <IoCloseCircleOutline
-            className="ProfilePage__user__plus-icon"
+            className="ProfilePageUserInfo__plus-icon"
             onClick={handleRemoveImage}
           />
         ) : (
           <FiPlusCircle
-            className="ProfilePage__user__plus-icon"
+            className="ProfilePageUserInfo__plus-icon"
             onClick={handleIconClick}
           />
         )}
@@ -103,21 +103,21 @@ function ProfilePageUserInfo() {
         />
       </section>
 
-      <section className="ProfilePage__user__information">
-        <div className="ProfilePage__user__information__name">
+      <section className="ProfilePageUserInfo__information">
+        <div className="ProfilePageUserInfo__information__name">
           {`${sessionUser.firstName} ${sessionUser.lastName}`}
         </div>
         <div>
-          <span className="ProfilePage__user__information__username">
+          <span className="ProfilePageUserInfo__information__username">
             @{sessionUser.username}
           </span>
           ·
-          <span className="ProfilePage__user__information__join-date">
+          <span className="ProfilePageUserInfo__information__join-date">
             {`Joined ${sessionUser.joinDate.split("-")[0]}`}
           </span>
         </div>
         <span
-          className="ProfilePage__user__information__edit"
+          className="ProfilePageUserInfo__information__edit"
           onClick={(e) => {
             e.stopPropagation();
             e.preventDefault();

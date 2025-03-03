@@ -1,0 +1,108 @@
+
+.ProfilePageUserInfo {
+  height: 100px;
+
+  display: flex;
+
+  margin-bottom: 20px;
+}
+
+.ProfilePageUserInfo__profile-pic-container {
+  height: 100px;
+  width: 90px;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.ProfilePageUserInfo__profile-pic {
+  height: 72px;
+  width: 72px;
+  border-radius: 50%;
+
+  color: rgb(180, 189, 194);
+}
+
+.ProfilePageUserInfo__spinner {
+  position: absolute;
+  left: 24px;
+  top: 36px;
+
+  width: 24px;
+  height: 24px;
+
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
+  color: rgb(0, 15, 179);
+}
+
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+.ProfilePageUserInfo--profile-blur {
+  filter: blur(1px);
+}
+
+
+.ProfilePageUserInfo__plus-icon {
+  height: 20px;
+  width: 20px;
+
+  position: absolute;
+  top: 70px;
+  right: 20px;
+
+  background-color: white;
+
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+
+
+.ProfilePageUserInfo__information {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.ProfilePageUserInfo__information__name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.ProfilePageUserInfo__information__username {
+  margin-right: 4px;
+
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.ProfilePageUserInfo__information__join-date {
+  margin-left: 4px;
+  font-size: 14px;
+  font-weight: 500;
+
+  color: var(--color-light-text);
+}
+
+.ProfilePageUserInfo__information__edit {
+  font-size: 12px;
+  font-weight: bold;
+
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: black;
+  text-underline-offset: 4px;
+
+  cursor: pointer;
+}
