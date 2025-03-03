@@ -13,7 +13,7 @@ function BuyingPowerDropDown({ sessionUser }) {
 
   const [isDropDownVisible, setDropDownIsVisible] = useState(false);
 
-  const { balance } = sessionUser;
+  const { balance } = sessionUser.stockSummary;
 
   return (
     <div
@@ -27,7 +27,7 @@ function BuyingPowerDropDown({ sessionUser }) {
       >
         <span>Buying Power</span>
         <span className="BuyingPowerDropDown__balance">
-          ${balance}
+          ${balance.toFixed(2)}
           {isDropDownVisible ? <FaAngleUp /> : <FaAngleDown />}
         </span>
       </div>
@@ -38,11 +38,11 @@ function BuyingPowerDropDown({ sessionUser }) {
             <section className="BuyingPowerDropDown__summary">
               <div className="BuyingPowerDropDown__summary-text">
                 <span>Individual Cash</span>
-                <span>${balance}</span>
+                <span>${balance.toFixed(2)}</span>
               </div>
               <div className="BuyingPowerDropDown__summary-text">
                 <span>Total</span>
-                <span>${balance}</span>
+                <span>${balance.toFixed(2)}</span>
               </div>
             </section>
 

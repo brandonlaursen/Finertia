@@ -6,6 +6,7 @@ const {
   StockUserTransaction,
   Stock,
 } = require("../../db/models");
+const { sequelize } = require("../../db/models");
 
 const processTransactionSummary = require("./helpers/processTransactionSummary.js");
 const processHistoricalData = require("./helpers/processHistoricalData.js");
@@ -117,160 +118,221 @@ router.get("/stock-transactions", async (req, res) => {
 });
 
 router.get("/stock-summary", async (req, res) => {
+  console.log('GETTING STOCK SUMMARY');
   const { id } = req.user;
 
-  const [userTransactions, accountTransactions] = await Promise.all([
-    StockUserTransaction.findAll({
-      where: { userId: id },
-      include: [
-        { model: Stock, attributes: ["id", "stockSymbol", "stockName"] },
-      ],
-      order: [["purchaseDate", "ASC"]],
-    }),
-    UserTransaction.findAll({
-      where: { userId: id },
-    }),
-  ]);
+  // Start a transaction to ensure data consistency
+  const t = await sequelize.transaction();
 
-  const processedTransactions = processTransactionSummary(
-    userTransactions,
-    accountTransactions
-  );
+  try {
+    // Fetch all transactions within the same transaction
+    const [userTransactions, accountTransactions] = await Promise.all([
+      StockUserTransaction.findAll({
+        where: { userId: id },
+        include: [
+          { model: Stock, attributes: ["id", "stockSymbol", "stockName"] },
+        ],
+        order: [["purchaseDate", "DESC"]],
+        transaction: t,
+      }),
+      UserTransaction.findAll({
+        where: { userId: id },
+        order: [["transactionDate", "DESC"]],
+        transaction: t,
+      }),
+    ]);
 
-  const processedHistoricalData = await processHistoricalData(
-    processedTransactions
-  );
+    // Process transactions with the latest data
+    const processedTransactions = processTransactionSummary(
+      userTransactions,
+      accountTransactions
+    );
 
-  const mergedTransactionData = mergeTransactionAndAggregateData(
-    processedTransactions,
-    processedHistoricalData
-  );
+    const processedHistoricalData = await processHistoricalData(
+      processedTransactions
+    );
 
-  const mergedTransactionDataArray = Object.values(mergedTransactionData);
+    const mergedTransactionData = mergeTransactionAndAggregateData(
+      processedTransactions,
+      processedHistoricalData
+    );
 
-  const lastTransaction =
-    mergedTransactionDataArray[mergedTransactionDataArray.length - 1];
+    const mergedTransactionDataArray = Object.values(mergedTransactionData);
+    const lastTransaction =
+      mergedTransactionDataArray[mergedTransactionDataArray.length - 1];
 
-  const userHistoricalData = Object.values(mergedTransactionData).map(
-    (data) => ({
-      x: data.timestamp,
-      y: data.totalInvestments,
-    })
-  );
+    const userHistoricalData = Object.values(mergedTransactionData).map(
+      (data) => ({
+        x: data.timestamp,
+        y: data.totalInvestments,
+      })
+    );
+
+    const aggregates = gatherAggregates(userHistoricalData);
 
 
 
-  const aggregates = gatherAggregates(userHistoricalData);
-  console.log(aggregates)
+    console.log('LAST TRANSACTION', lastTransaction)
+    // Commit the transaction
+    await t.commit();
 
-  const userSummary = {
-    totalInvestments: lastTransaction.totalInvestments,
-    balance: lastTransaction.balance,
-    stocksOwned: lastTransaction.stocksOwned,
-    ...aggregates,
-  };
+    const userSummary = {
+      totalInvestments: lastTransaction.totalInvestments,
+      balance: lastTransaction.balance,
+      stocksOwned: lastTransaction.stocksOwned,
+      ...aggregates,
+    };
 
-  return res.json(userSummary);
+    return res.json(userSummary);
+  } catch (error) {
+    // Rollback the transaction if anything goes wrong
+    await t.rollback();
+    console.error("Stock summary error:", error);
+    return res.status(500).json({
+      message: "An error occurred while fetching stock summary",
+      error: error.message,
+    });
+  }
 });
 
 router.post("/trade/:stockId", async (req, res) => {
   const { id, balance } = req.user;
+    console.log('POSTING TRANSACTION')
 
   const {
     stockId,
     stockPrice,
     quantity,
-    transactionType,
+    tradeType: transactionType,
     stockName,
     stockSymbol,
   } = req.body;
 
-  const user = await User.findByPk(id);
+  // Start a transaction to ensure data consistency
+  const t = await sequelize.transaction();
 
-  // Constants
-  const MULTIPLIER_100000 = 100000;
-  const MULTIPLIER_100 = 100;
+  try {
+    const user = await User.findByPk(id);
 
-  // Round price and quantity
-  const roundedPrice =
-    Math.round(Number(stockPrice) * MULTIPLIER_100) / MULTIPLIER_100;
-  const roundedQuantity =
-    Math.round(Number(quantity) * MULTIPLIER_100000) / MULTIPLIER_100000;
+    // Constants
+    const MULTIPLIER_100000 = 100000;
+    const MULTIPLIER_100 = 100;
 
-  // Calculate amount (price * quantity)
-  const amount = roundedPrice * roundedQuantity;
+    // Round price and quantity
+    const roundedPrice =
+      Math.round(Number(stockPrice) * MULTIPLIER_100) / MULTIPLIER_100;
+    const roundedQuantity =
+      Math.round(Number(quantity) * MULTIPLIER_100000) / MULTIPLIER_100000;
 
-  // Round the amount to 2 decimal places (since it's a currency value)
-  const roundedAmount = Math.round(amount * MULTIPLIER_100) / MULTIPLIER_100;
+    // Calculate amount (price * quantity)
+    const amount = roundedPrice * roundedQuantity;
 
-  let newBalance;
-  if (transactionType === "buy") {
-    newBalance = balance - roundedAmount;
-  } else if (transactionType === "sell") {
-    newBalance = balance + roundedAmount;
-  }
+    // Round the amount to 2 decimal places (since it's a currency value)
+    const roundedAmount = Math.round(amount * MULTIPLIER_100) / MULTIPLIER_100;
 
-  newBalance = Math.round(newBalance * MULTIPLIER_100) / MULTIPLIER_100;
+    let newBalance;
+    if (transactionType === "buy") {
+      newBalance = balance - roundedAmount;
+    } else if (transactionType === "sell") {
+      newBalance = balance + roundedAmount;
+    }
 
-  const transaction = await StockUserTransaction.create({
-    userId: id,
-    stockId,
-    transactionType,
-    quantity,
-    stockName,
-    stockSymbol,
-    purchasePrice: roundedAmount,
-    purchaseDate: new Date(),
-  });
+    newBalance = Math.round(newBalance * MULTIPLIER_100) / MULTIPLIER_100;
 
-  await user.update({
-    balance: newBalance,
-  });
-
-  // pass rounded amount to front end to add to totalInvestments
-  // pass newBalance for balance
-  // add stocksOwned to
-
-  const recentTransaction = await StockUserTransaction.findOne({
-    where: { userId: id },
-    order: [["purchaseDate", "DESC"]], // change to 'createdAt' if that's your timestamp field
-    include: [
+    // Create the transaction within our transaction block
+    const transaction = await StockUserTransaction.create(
       {
-        model: Stock,
-        attributes: ["id", "stockSymbol", "stockName"],
+        userId: id,
+        stockId,
+        transactionType,
+        quantity,
+        stockName,
+        stockSymbol,
+        purchasePrice: roundedAmount,
+        purchaseDate: new Date(),
       },
-    ],
-  });
+      { transaction: t }
+    );
+
+    // Update user balance within the same transaction
+    await user.update(
+      {
+        balance: newBalance,
+      },
+      { transaction: t }
+    );
+
+    // Fetch updated transaction data within the same transaction
+    const userTransactions = await StockUserTransaction.findAll({
+      where: { userId: id },
+      include: [
+        { model: Stock, attributes: ["id", "stockSymbol", "stockName"] },
+      ],
+      order: [["purchaseDate", "DESC"]],
+      transaction: t,
+    });
+
+    // Calculate aggregates with the latest transaction included
+    const processedTransactions = processTransactionSummary(
+      userTransactions,
+      await UserTransaction.findAll({
+        where: { userId: id },
+        transaction: t,
+      })
+    );
+
+    const processedHistoricalData = await processHistoricalData(
+      processedTransactions
+    );
+
+    const mergedTransactionData = mergeTransactionAndAggregateData(
+      processedTransactions,
+      processedHistoricalData
+    );
+
+    const mergedTransactionDataArray = Object.values(mergedTransactionData);
+    const lastTransaction =
+      mergedTransactionDataArray[mergedTransactionDataArray.length - 1];
+    // console.log("---->", lastTransaction);
+    const userHistoricalData = Object.values(mergedTransactionData).map(
+      (data) => ({
+        x: data.timestamp,
+        y: data.totalInvestments,
+      })
+    );
 
 
-  const userTransactions = await StockUserTransaction.findAll({
-    where: { userId: id },
-    include: [{ model: Stock, attributes: ["id", "stockSymbol", "stockName"] }],
-  });
+    const aggregates = gatherAggregates(userHistoricalData);
 
-  // user balances is updated
-  // newBalance - we have
-  // totalInvestments we can ignore
-  // stocksOwned is updated
+    console.log('LAST TRANSACTION', lastTransaction)
+    // Commit the transaction
+    await t.commit();
 
-  const safeUser = {
-    id: req.user.id,
-    email: req.user.email,
-    username: req.user.username,
-    balance: req.user.balance,
-    profilePic: req.user.profilePic,
-    firstName: req.user.firstName,
-    lastName: req.user.lastName,
-    joinDate: req.user.createdAt,
-  };
+    const safeUser = {
+      id: req.user.id,
+      email: req.user.email,
+      username: req.user.username,
+      balance: newBalance,
+      profilePic: req.user.profilePic,
+      firstName: req.user.firstName,
+      lastName: req.user.lastName,
+      joinDate: req.user.createdAt,
+    };
 
-  return res.json({
-    // transaction,
-    // balance: newBalance,
-    // stockSummary,
-    user: safeUser,
-    message: `successfully retrieved transactions for user with id of ${id}`,
-  });
+    return res.json({
+      user: safeUser,
+      aggregates,
+      message: `successfully processed trade for user with id of ${id}`,
+    });
+  } catch (error) {
+    // Rollback the transaction if anything goes wrong
+    await t.rollback();
+    console.error("Trade error:", error);
+    return res.status(500).json({
+      message: "An error occurred while processing the trade",
+      error: error.message,
+    });
+  }
 });
 
 // * Get users transactions

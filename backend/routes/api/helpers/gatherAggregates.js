@@ -24,61 +24,60 @@ function gatherAggregates(userHistoricalData) {
   const now = Date.now();
   const todayMidnightTimestamp = new Date().setHours(0, 0, 0, 0);
 
-  // For each timeframe, first filter the points to include only data older than today (before midnight)
-  // and within the desired timeframe.
-
-  // One Day (last 24 hours) aggregated to 5-minute buckets:
-  const oneDayData = userHistoricalData.filter(
-    (point) => point.x >= now - oneDayMs && point.x <= now
+  // Get the most recent data point
+  const mostRecentPoint = userHistoricalData.reduce((latest, current) =>
+    current.x > latest.x ? current : latest
   );
 
-  const oneDayAggregates = aggregatePoints(oneDayData, 5 * 60 * 1000);
+  // For each timeframe, first filter the points to include only data within the desired timeframe.
+  // Include the most recent point in all timeframes to ensure latest data is always shown.
 
-  const mostRecentAggregate = oneDayAggregates[oneDayAggregates.length - 1];
+  // One Day (last 24 hours) aggregated to 5-minute buckets:
+  const oneDayData = [
+    ...userHistoricalData.filter((point) => point.x >= now - oneDayMs),
+    mostRecentPoint,
+  ];
+  const oneDayAggregates = aggregatePoints(oneDayData, 5 * 60 * 1000);
 
   // One Week (last 7 days) aggregated to 1-hour buckets:
   const oneWeekMs = 7 * oneDayMs;
-  const oneWeekData = userHistoricalData.filter(
-    (point) => point.x >= now - oneWeekMs && point.x <= now
-  );
+  const oneWeekData = [
+    ...userHistoricalData.filter((point) => point.x >= now - oneWeekMs),
+    mostRecentPoint,
+  ];
   const oneWeekAggregates = aggregatePoints(oneWeekData, oneHourMs);
 
   // One Month (last 30 days) aggregated to 1-hour buckets:
   const oneMonthMs = 30 * oneDayMs;
-  const oneMonthData = userHistoricalData.filter(
-    (point) => point.x >= now - oneMonthMs && point.x <= now
-  );
+  const oneMonthData = [
+    ...userHistoricalData.filter((point) => point.x >= now - oneMonthMs),
+    mostRecentPoint,
+  ];
   const oneMonthAggregates = aggregatePoints(oneMonthData, oneHourMs);
 
   // Three Months (last 90 days) aggregated to 1-day buckets:
   const threeMonthMs = 90 * oneDayMs;
-  const threeMonthData = userHistoricalData.filter(
-    (point) => point.x >= now - threeMonthMs && point.x <= now
-  );
-  const threeMonthsAggregates = [
-    ...aggregatePoints(threeMonthData, oneDayMs),
-    mostRecentAggregate,
+  const threeMonthData = [
+    ...userHistoricalData.filter((point) => point.x >= now - threeMonthMs),
+    mostRecentPoint,
   ];
+  const threeMonthsAggregates = aggregatePoints(threeMonthData, oneDayMs);
 
   // One Year (last 365 days) aggregated to 1-day buckets:
   const oneYearMs = 365 * oneDayMs;
-  const oneYearData = userHistoricalData.filter(
-    (point) => point.x >= now - oneYearMs && point.x < todayMidnightTimestamp
-  );
-  const oneYearAggregates = [
-    ...aggregatePoints(oneYearData, oneDayMs),
-    mostRecentAggregate,
+  const oneYearData = [
+    ...userHistoricalData.filter((point) => point.x >= now - oneYearMs),
+    mostRecentPoint,
   ];
+  const oneYearAggregates = aggregatePoints(oneYearData, oneDayMs);
 
   // Five Years (last 5 years) aggregated to 1-day buckets:
   const fiveYearMs = 5 * oneYearMs;
-  const fiveYearData = userHistoricalData.filter(
-    (point) => point.x >= now - fiveYearMs && point.x < todayMidnightTimestamp
-  );
-  const fiveYearsAggregates = [
-    ...aggregatePoints(fiveYearData, oneDayMs),
-    mostRecentAggregate,
+  const fiveYearData = [
+    ...userHistoricalData.filter((point) => point.x >= now - fiveYearMs),
+    mostRecentPoint,
   ];
+  const fiveYearsAggregates = aggregatePoints(fiveYearData, oneDayMs);
 
   return {
     oneDayAggregates,

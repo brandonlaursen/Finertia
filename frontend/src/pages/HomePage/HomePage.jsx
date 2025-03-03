@@ -21,6 +21,7 @@ function HomePage() {
 
   const { stockSummary } = sessionUser;
 
+
   return (
     <div className="HomePage">
       <main className="HomePage__main">

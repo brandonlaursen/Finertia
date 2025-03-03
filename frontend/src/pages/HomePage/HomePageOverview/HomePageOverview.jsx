@@ -5,16 +5,16 @@ import { GoTriangleUp } from "react-icons/go";
 import { useMemo } from "react";
 
 function HomePageOverview({ stockSummary }) {
-  const { oneDayFiveMinAggregates } = stockSummary;
+  const { oneDayAggregates } = stockSummary;
 
   const { portfolioPercentChange, portfolioAmountChange } = useMemo(() => {
-    if (!oneDayFiveMinAggregates || oneDayFiveMinAggregates.length < 2) {
+    if (!oneDayAggregates || oneDayAggregates.length < 2) {
       return { portfolioPercentChange: "0.00", portfolioAmountChange: "0.00" };
     }
 
-    const firstAggregate = oneDayFiveMinAggregates[0].y;
+    const firstAggregate = oneDayAggregates[0].y;
     const lastAggregate =
-      oneDayFiveMinAggregates[oneDayFiveMinAggregates.length - 1].y;
+      oneDayAggregates[oneDayAggregates.length - 1].y;
 
     return {
       portfolioPercentChange: (
@@ -23,7 +23,9 @@ function HomePageOverview({ stockSummary }) {
       ).toFixed(2),
       portfolioAmountChange: (lastAggregate - firstAggregate).toFixed(2),
     };
-  }, [oneDayFiveMinAggregates]);
+  }, [oneDayAggregates]);
+
+
 
   return (
     <div className="HomePageOverview">

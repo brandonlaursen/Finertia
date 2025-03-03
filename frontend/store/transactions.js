@@ -75,18 +75,37 @@ export const fetchStockTransactions = () => async (dispatch) => {
 export const executeStockTrade = (transaction) => async (dispatch) => {
   const { stockId } = transaction;
 
-  const response = await csrfFetch(`/api/transactions/trade/${stockId}`, {
-    method: "POST",
-    body: JSON.stringify(transaction),
-  });
+  try {
+    // Execute the trade
+    const response = await csrfFetch(`/api/transactions/trade/${stockId}`, {
+      method: "POST",
+      body: JSON.stringify(transaction),
+    });
 
-  const { user } = await response.json();
+    const { user } = await response.json();
 
-  if (user) {
-    const response = await csrfFetch("/api/transactions/stock-summary");
-    const stockSummary = await response.json();
+    if (user) {
+      // Fetch the latest stock summary
+      const summaryResponse = await csrfFetch(
+        "/api/transactions/stock-summary"
+      );
+      const stockSummary = await summaryResponse.json();
 
-    dispatch(setUser(user, stockSummary));
+      // Fetch the latest stock transactions
+      const transactionsResponse = await csrfFetch(
+        "/api/transactions/stock-transactions"
+      );
+      const { transactions } = await transactionsResponse.json();
+
+      // Update all relevant state
+      dispatch(setUser(user, stockSummary));
+      dispatch(setStockTransactions(transactions));
+
+      return { success: true, user, stockSummary, transactions };
+    }
+  } catch (error) {
+    console.error("Error executing trade:", error);
+    return { success: false, error: error.message };
   }
 };
 

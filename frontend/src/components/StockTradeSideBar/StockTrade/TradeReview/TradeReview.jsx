@@ -85,35 +85,43 @@ function TradeReview({
       tradeType,
     };
 
-    dispatch(executeStockTrade(transaction));
-    clearReview();
-
     setIsLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsLoading(false);
+    try {
+      const result = await dispatch(executeStockTrade(transaction));
 
-    if (tradeType === "buy") {
-      setNotificationMessage([
-        `Successfully bought ${transaction.quantity} shares of ${stock.name}`,
-      ]);
-    } else if (tradeType === "sell") {
-      setNotificationMessage([
-        `Successfully sold ${transaction.quantity} shares of ${stock.name}`,
-      ]);
+      if (result.success) {
+        clearReview();
+
+        // Show success notification
+        if (tradeType === "buy") {
+          setNotificationMessage([
+            `Successfully bought ${transaction.quantity} shares of ${stock.name}`,
+          ]);
+        } else if (tradeType === "sell") {
+          setNotificationMessage([
+            `Successfully sold ${transaction.quantity} shares of ${stock.name}`,
+          ]);
+        }
+
+        // Reset form
+        setTradeAmount("");
+        setSharesToTrade("");
+        setNotifications(true);
+
+        // Hide notification after 10 seconds
+        setTimeout(() => {
+          setNotifications(false);
+          setNotificationMessage([]);
+        }, 10000);
+      } else {
+        setErrors(["Failed to execute trade. Please try again."]);
+      }
+    } catch (error) {
+      setErrors(["An error occurred while executing the trade."]);
+      console.error("Trade execution error:", error);
+    } finally {
+      setIsLoading(false);
     }
-
-    setTradeAmount(0);
-    setSharesToTrade(0);
-
-    setNotifications(true);
-
-    await new Promise((resolve) => {
-      setTimeout(() => {
-        setNotifications(false);
-        resolve();
-      }, 10000);
-    });
-    setNotificationMessage([]);
   }
 
   return (
