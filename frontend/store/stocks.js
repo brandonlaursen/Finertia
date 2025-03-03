@@ -44,13 +44,18 @@ export const fetchAllStocks = () => async (dispatch) => {
 };
 
 export const fetchStock = (stockSymbol) => async (dispatch) => {
-  const response = await csrfFetch(`/api/stocks/${stockSymbol}`);
+  try {
+    const response = await csrfFetch(`/api/stocks/${stockSymbol}`);
 
-  if (response.ok) {
+    if (!response.ok) {
+      throw new Error("Stock not found");
+    }
+
     const data = await response.json();
-
-
     dispatch(setCurrentStock(data));
+  } catch (error) {
+    console.error("Error fetching stock:", error);
+    throw error;
   }
 };
 
@@ -74,7 +79,6 @@ export const fetchStockNewsByCategory = (category) => async (dispatch) => {
 };
 
 export const editListStocks = (stockListsIdsObj, stock) => async (dispatch) => {
-
   const response = await csrfFetch("/api/lists/update-stock-lists", {
     method: "POST",
     body: JSON.stringify({
@@ -89,7 +93,10 @@ export const editListStocks = (stockListsIdsObj, stock) => async (dispatch) => {
     dispatch(
       updateListStocks(data.stock, data.updatedListIds, data.removedFromIds)
     );
-    return { updatedListIds:data.updatedListIds, removedFromIds: data.removedFromIds };
+    return {
+      updatedListIds: data.updatedListIds,
+      removedFromIds: data.removedFromIds,
+    };
   }
 };
 

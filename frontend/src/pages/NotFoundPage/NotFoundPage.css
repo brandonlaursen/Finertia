@@ -1,0 +1,165 @@
+.NotFoundPage {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-color);
+  padding: 2rem;
+}
+
+.NotFoundPage__container {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  max-width: 1000px;
+  width: 100%;
+  border-radius: 16px;
+  padding: 3rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.NotFoundPage__content {
+  flex: 1;
+}
+
+.NotFoundPage__content h1 {
+  font-size: 8rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin: 0;
+  line-height: 1;
+  animation: pulse 2s infinite;
+}
+
+.NotFoundPage__content h2 {
+  font-size: 2rem;
+  color: var(--text-color);
+  margin: 1rem 0;
+}
+
+.NotFoundPage__content p {
+  color: var(--text-color-secondary);
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.NotFoundPage__actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.NotFoundPage__button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+
+}
+
+.NotFoundPage__button:not(.secondary) {
+  background-color: #007bff;
+  color: rgb(255, 255, 255);
+}
+
+.NotFoundPage__button.secondary {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1px solid black
+}
+
+.NotFoundPage__button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.NotFoundPage__illustration {
+  flex: 1;
+  position: relative;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(184, 184, 184);
+
+  background-image: url("https://cdn.dribbble.com/userupload/22984346/file/original-f3af67df05948241aefdd35c91bae538.gif");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.NotFoundPage__circle {
+  width: 200px;
+  height: 200px;
+  border: 4px solid var(--primary-color);
+  border-radius: 50%;
+  position: relative;
+  animation: rotate 10s linear infinite;
+}
+
+.NotFoundPage__line {
+  position: absolute;
+  width: 100px;
+  height: 4px;
+  transform-origin: left center;
+}
+
+.NotFoundPage__line:nth-child(2) {
+  transform: rotate(45deg);
+  top: 50%;
+  left: 50%;
+}
+
+.NotFoundPage__line:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 50%;
+  left: 50%;
+}
+
+.NotFoundPage__line:nth-child(4) {
+  transform: rotate(90deg);
+  top: 50%;
+  left: 50%;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .NotFoundPage__container {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .NotFoundPage__actions {
+    justify-content: center;
+  }
+
+  .NotFoundPage__illustration {
+    height: 200px;
+  }
+
+  .NotFoundPage__circle {
+    width: 150px;
+    height: 150px;
+  }
+}

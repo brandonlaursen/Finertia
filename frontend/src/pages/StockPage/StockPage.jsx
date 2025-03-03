@@ -1,7 +1,7 @@
 import "./StockPage.css";
 
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import StockOverview from "./StockOverview";
@@ -19,8 +19,10 @@ import { fetchStock } from "../../../store/stocks";
 function StockPage() {
   const dispatch = useDispatch();
   const { stockSymbol } = useParams();
-
+  const navigate = useNavigate();
   const stock = useSelector((state) => state.stocks.currentStock);
+
+  const [error, setError] = useState(null);
 
   const [notifications, setNotifications] = useState(false);
   const [notificationMessage, setNotificationMessage] = useState([]);
@@ -32,7 +34,12 @@ function StockPage() {
     let isMounted = true;
 
     async function fetchData() {
-      await dispatch(fetchStock(stockSymbol));
+      try {
+        await dispatch(fetchStock(stockSymbol));
+      } catch (err) {
+        setError("Stock not found");
+      }
+
       if (isMounted) {
         setIsLoading(false);
       }
@@ -44,6 +51,16 @@ function StockPage() {
       isMounted = false;
     };
   }, [stockSymbol, dispatch, isLoading]);
+
+  if (error) {
+    return (
+      <div className="StockPage__stock-not-found">
+        <h2>Stock Not Found</h2>
+        <p>The stock symbol {`"${stockSymbol}"`} not found.</p>
+        <button onClick={() => navigate("/")}>Return to Home</button>
+      </div>
+    );
+  }
 
   if (isLoading)
     return (

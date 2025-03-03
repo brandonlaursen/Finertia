@@ -60,7 +60,6 @@ router.get("/news/:category", async (req, res) => {
 });
 
 router.get("/:stockId/:stockSymbol/update-database", async (req, res, next) => {
-
   async function fetchIntervalData(url) {
     const response = await fetch(url);
     if (!response.ok) {
@@ -129,20 +128,23 @@ router.get("/:stockId/:stockSymbol/update-database", async (req, res, next) => {
   }
 });
 
-
 router.get("/:stockSymbol", async (req, res) => {
   const { stockSymbol } = req.params;
+
+  const stock = await Stock.findOne({
+    where: { stockSymbol },
+    include: [StockList, StockPriceTimestamp],
+  });
+
+  if (!stock) {
+    return res.status(500).json({ message: "Stock not found" });
+  }
 
   try {
     const currentTime = Date.now();
     const todaysDate = getDate();
     const oneDayAway = getDate(1);
     const oneWeekAway = getDate(7);
-
-    const stock = await Stock.findOne({
-      where: { stockSymbol },
-      include: [StockList, StockPriceTimestamp],
-    });
 
     const [stockSnapshotResponse, stockNewsResponse] = await Promise.all([
       fetch(
@@ -212,8 +214,7 @@ router.get("/:stockSymbol", async (req, res) => {
       oneWeekDataResponse.json(),
     ]);
 
-  
-    if(oneDayData.resultsCount === 0) {
+    if (oneDayData.resultsCount === 0) {
       oneDayData = oneWeekData;
     }
 

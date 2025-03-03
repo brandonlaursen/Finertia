@@ -1,8 +1,14 @@
 import { useState, useEffect } from "react";
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Outlet,
+  Navigate,
+} from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import { restoreUser } from "../store/session";
+import { selectUser } from "../store/session";
 
 import HomeLayout from "./layouts/HomeLayout";
 import AccountLayout from "./layouts/AccountLayout";
@@ -22,6 +28,17 @@ import HistoryPage from "./pages/HistoryPage";
 import HelpPage from "./pages/HelpPage";
 import SecurityPage from "./pages/SecurityPage";
 import AppearancePage from "./pages/AppearancePage";
+import NotFoundPage from "./pages/NotFoundPage";
+
+function ProtectedRoute({ children }) {
+  const sessionUser = useSelector(selectUser);
+
+  if (!sessionUser) {
+    return <Navigate to="/welcome" replace />;
+  }
+
+  return children;
+}
 
 function Layout() {
   const dispatch = useDispatch();
@@ -57,14 +74,17 @@ const router = createBrowserRouter([
       },
       {
         path: "/",
-        element: <HomeLayout />,
+        element: (
+          <ProtectedRoute>
+            <HomeLayout />
+          </ProtectedRoute>
+        ),
         children: [
           {
             index: true,
             element: <HomePage />,
           },
           {
-            index: true,
             path: "stocks",
             element: <StocksPage />,
           },
@@ -100,7 +120,6 @@ const router = createBrowserRouter([
                 path: "help",
                 element: <HelpPage />,
               },
-
               {
                 path: "settings",
                 element: <SettingsLayout />,
@@ -118,6 +137,10 @@ const router = createBrowserRouter([
             ],
           },
         ],
+      },
+      {
+        path: "*",
+        element: <NotFoundPage />,
       },
     ],
   },
