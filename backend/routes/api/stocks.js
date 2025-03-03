@@ -58,11 +58,12 @@ router.get("/news/:category", async (req, res) => {
     res.status(500).json({ error: "Failed to fetch market news" });
   }
 });
+
+
 const updateDatabaseMiddleware = async (req, res, next) => {
   try {
     const { stockSymbol } = req.params;
 
-    // Find the stock first to get its ID
     const stock = await Stock.findOne({
       where: { stockSymbol }
     });
@@ -71,7 +72,6 @@ const updateDatabaseMiddleware = async (req, res, next) => {
       return res.status(500).json({ message: "Stock not found" });
     }
 
-    // Get latest timestamp
     const latestRecord = await StockPriceTimestamp.findOne({
       where: { stockId: stock.id },
       order: [["timestamp", "DESC"]],
@@ -84,13 +84,13 @@ const updateDatabaseMiddleware = async (req, res, next) => {
     const nowUnix = Date.now();
     const apiKey = process.env.STOCK_API_KEY2;
 
-    // Fetch data from Polygon.io
+
     const [oneHourDataObj, oneDayDataObj] = await Promise.all([
       fetch(`https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/1/hour/${latestDateUnix}/${nowUnix}?adjusted=true&sort=asc&apiKey=${apiKey}`).then(res => res.json()),
       fetch(`https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/1/day/${latestDateUnix}/${nowUnix}?adjusted=true&sort=asc&apiKey=${apiKey}`).then(res => res.json())
     ]);
 
-    // Map and upsert data
+
     const oneHourData = (oneHourDataObj.results || []).map((agg) => ({
       stockId: stock.id,
       timestamp: agg.t,
@@ -114,7 +114,6 @@ const updateDatabaseMiddleware = async (req, res, next) => {
       }),
     ]);
 
-    // Add stock to request object for the next middleware/route handler
     req.stock = stock;
     next();
   } catch (error) {

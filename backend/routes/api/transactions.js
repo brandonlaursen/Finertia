@@ -11,7 +11,6 @@ const { sequelize } = require("../../db/models");
 const processTransactionSummary = require("./helpers/processTransactionSummary.js");
 const processHistoricalData = require("./helpers/processHistoricalData.js");
 const mergeTransactionAndAggregateData = require("./helpers/mergeTransactionAndAggregateData.js");
-const { getDate } = require("./helpers/getDate.js");
 const gatherAggregates = require("./helpers/gatherAggregates.js");
 
 router.post("/deposit", async (req, res) => {
@@ -118,14 +117,12 @@ router.get("/stock-transactions", async (req, res) => {
 });
 
 router.get("/stock-summary", async (req, res) => {
-  console.log('GETTING STOCK SUMMARY');
+  console.log("GETTING STOCK SUMMARY");
   const { id } = req.user;
 
-  // Start a transaction to ensure data consistency
   const t = await sequelize.transaction();
 
   try {
-    // Fetch all transactions within the same transaction
     const [userTransactions, accountTransactions] = await Promise.all([
       StockUserTransaction.findAll({
         where: { userId: id },
@@ -142,7 +139,6 @@ router.get("/stock-summary", async (req, res) => {
       }),
     ]);
 
-    // Process transactions with the latest data
     const processedTransactions = processTransactionSummary(
       userTransactions,
       accountTransactions
@@ -170,10 +166,6 @@ router.get("/stock-summary", async (req, res) => {
 
     const aggregates = gatherAggregates(userHistoricalData);
 
-
-
-    console.log('LAST TRANSACTION', lastTransaction)
-    // Commit the transaction
     await t.commit();
 
     const userSummary = {
@@ -185,7 +177,6 @@ router.get("/stock-summary", async (req, res) => {
 
     return res.json(userSummary);
   } catch (error) {
-    // Rollback the transaction if anything goes wrong
     await t.rollback();
     console.error("Stock summary error:", error);
     return res.status(500).json({
@@ -197,7 +188,6 @@ router.get("/stock-summary", async (req, res) => {
 
 router.post("/trade/:stockId", async (req, res) => {
   const { id, balance } = req.user;
-    console.log('POSTING TRANSACTION')
 
   const {
     stockId,
@@ -208,27 +198,29 @@ router.post("/trade/:stockId", async (req, res) => {
     stockSymbol,
   } = req.body;
 
-  // Start a transaction to ensure data consistency
   const t = await sequelize.transaction();
 
   try {
     const user = await User.findByPk(id);
 
-    // Constants
     const MULTIPLIER_100000 = 100000;
     const MULTIPLIER_100 = 100;
 
-    // Round price and quantity
     const roundedPrice =
       Math.round(Number(stockPrice) * MULTIPLIER_100) / MULTIPLIER_100;
     const roundedQuantity =
       Math.round(Number(quantity) * MULTIPLIER_100000) / MULTIPLIER_100000;
 
-    // Calculate amount (price * quantity)
     const amount = roundedPrice * roundedQuantity;
 
-    // Round the amount to 2 decimal places (since it's a currency value)
     const roundedAmount = Math.round(amount * MULTIPLIER_100) / MULTIPLIER_100;
+
+    // Check if user has enough balance for buy
+    if (transactionType === "buy" && balance < roundedAmount) {
+      return res.status(400).json({
+        message: "Insufficient funds for this transaction",
+      });
+    }
 
     let newBalance;
     if (transactionType === "buy") {
@@ -239,8 +231,7 @@ router.post("/trade/:stockId", async (req, res) => {
 
     newBalance = Math.round(newBalance * MULTIPLIER_100) / MULTIPLIER_100;
 
-    // Create the transaction within our transaction block
-    const transaction = await StockUserTransaction.create(
+    await StockUserTransaction.create(
       {
         userId: id,
         stockId,
@@ -291,9 +282,7 @@ router.post("/trade/:stockId", async (req, res) => {
     );
 
     const mergedTransactionDataArray = Object.values(mergedTransactionData);
-    const lastTransaction =
-      mergedTransactionDataArray[mergedTransactionDataArray.length - 1];
-    // console.log("---->", lastTransaction);
+
     const userHistoricalData = Object.values(mergedTransactionData).map(
       (data) => ({
         x: data.timestamp,
@@ -301,11 +290,8 @@ router.post("/trade/:stockId", async (req, res) => {
       })
     );
 
-
     const aggregates = gatherAggregates(userHistoricalData);
 
-    console.log('LAST TRANSACTION', lastTransaction)
-    // Commit the transaction
     await t.commit();
 
     const safeUser = {
