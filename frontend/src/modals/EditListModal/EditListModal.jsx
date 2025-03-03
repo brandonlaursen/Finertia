@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { editList } from "../../../store/lists";
 
-function EditListModal({ list }) {
+function EditListModal({ list, setNotifications, setNotificationMessage }) {
   const { closeModal } = useModal();
 
   const dispatch = useDispatch();
@@ -41,6 +41,18 @@ function EditListModal({ list }) {
 
     await dispatch(editList(editedList));
     closeModal();
+
+    setNotificationMessage([`Successfully edited list ${listName}`]);
+    setNotifications(true);
+
+    await new Promise((resolve) => {
+      setTimeout(() => {
+        setNotifications(false);
+        resolve();
+      }, 10000);
+    });
+
+    setNotificationMessage([]); 
   }
 
   return (

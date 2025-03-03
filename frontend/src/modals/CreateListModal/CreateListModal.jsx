@@ -9,7 +9,7 @@ import { useModal } from "../../context/Modal";
 import { createList } from "../../../store/lists";
 import { selectUser } from "../../../store/session";
 
-function CreateListModal() {
+function CreateListModal({ setNotifications, setNotificationMessage }) {
   const { closeModal } = useModal();
   const dispatch = useDispatch();
   const sessionUser = useSelector(selectUser);
@@ -42,6 +42,18 @@ function CreateListModal() {
 
     await dispatch(createList(newList));
     closeModal();
+
+    setNotificationMessage([`Successfully created list ${listName}`]);
+    setNotifications(true);
+
+    await new Promise((resolve) => {
+      setTimeout(() => {
+        setNotifications(false);
+        resolve();
+      }, 10000);
+    });
+
+    setNotificationMessage([]);     
   }
 
   if (isOpen) {

@@ -9,7 +9,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { depositFunds, withdrawFunds } from "../../../store/transactions";
 import { useModal } from "../../context/Modal";
 
-function TransferModal() {
+function TransferModal(
+  {setNotifications,
+  setNotificationMessage,}
+) {
+
+
   const { closeModal } = useModal();
   const dispatch = useDispatch();
 
@@ -84,7 +89,21 @@ function TransferModal() {
 
       await dispatch(withdrawFunds(Number(amount)));
     }
+
     closeModal();
+
+    setNotificationMessage([`Successfully transferred $${amount} to ${to}`]);
+    setNotifications(true);
+
+    await new Promise((resolve) => {
+      setTimeout(() => {
+        setNotifications(false);
+        resolve();
+      }, 10000);
+    });
+
+    setNotifications(false);
+    setNotificationMessage([]);
   }
 
   const toggleDropdown = (dropdown) => {
@@ -386,8 +405,7 @@ function TransferModal() {
               <span className="TransferModal__footer-container">
                 <span className="TransferModal__footer-title">
                   {from === "Bank" && `    Daily deposit limit: No limits`}
-                  {from === "Individual" &&
-                    `$${sessionUser.balance} available`}
+                  {from === "Individual" && `$${sessionUser.balance} available`}
                   <span className="TransferModal__question-mark-container">
                     <RiQuestionLine className="TransferModal__question-mark" />
                   </span>

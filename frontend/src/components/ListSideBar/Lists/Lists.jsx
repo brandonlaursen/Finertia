@@ -9,7 +9,14 @@ import ListStocks from "../ListStocks/ListStocks";
 import OpenModalButton from "../../OpenModalButton";
 import CreateListModal from "../../../modals/CreateListModal";
 
-function Lists({ navigate, sessionUser, stocks, lists }) {
+function Lists({
+  navigate,
+  sessionUser,
+  stocks,
+  lists,
+  setNotifications,
+  setNotificationMessage,
+}) {
   const [activeListId, setActiveListId] = useState(null);
   const [expandedListIds, setExpandedListIds] = useState([]);
 
@@ -19,7 +26,12 @@ function Lists({ navigate, sessionUser, stocks, lists }) {
         <span>Lists</span>
         <button className="Lists__create-button">
           <OpenModalButton
-            modalComponent={<CreateListModal />}
+            modalComponent={
+              <CreateListModal
+                setNotifications={setNotifications}
+                setNotificationMessage={setNotificationMessage}
+              />
+            }
             className="Lists__create-button-icon"
             Element={FaPlus}
             modalClass={{
@@ -31,36 +43,36 @@ function Lists({ navigate, sessionUser, stocks, lists }) {
         </button>
       </header>
 
-
-        <section className="Lists__container">
-          {lists &&
-            lists.slice(0, 10).map((list) => (
-              <div key={list.id}>
-                <ListItem
-                  list={list}
-                  className="Lists__ListItem"
-                  container="ListItem__container"
-                  emoji="ListItem__emoji"
-                  name="ListItem__name"
-                  showActions={true}
-                  showHover={true}
-                  navigate={navigate}
-                  expandedListIds={expandedListIds}
-                  setExpandedListIds={setExpandedListIds}
-                  activeListId={activeListId}
-                  setActiveListId={setActiveListId}
-                />
-                <ListStocks
-                  expandedListIds={expandedListIds}
-                  setExpandedListIds={setExpandedListIds}
-                  list={list}
-                  stocks={stocks}
-                  sessionUser={sessionUser}
-                />
-              </div>
-            ))}
-        </section>
-
+      <section className="Lists__container">
+        {lists &&
+          lists.slice(0, 10).map((list) => (
+            <div key={list.id}>
+              <ListItem
+                list={list}
+                className="Lists__ListItem"
+                container="ListItem__container"
+                emoji="ListItem__emoji"
+                name="ListItem__name"
+                showActions={true}
+                showHover={true}
+                navigate={navigate}
+                expandedListIds={expandedListIds}
+                setExpandedListIds={setExpandedListIds}
+                activeListId={activeListId}
+                setActiveListId={setActiveListId}
+                setNotifications={setNotifications}
+                setNotificationMessage={setNotificationMessage}
+              />
+              <ListStocks
+                expandedListIds={expandedListIds}
+                setExpandedListIds={setExpandedListIds}
+                list={list}
+                stocks={stocks}
+                sessionUser={sessionUser}
+              />
+            </div>
+          ))}
+      </section>
     </div>
   );
 }

@@ -4,11 +4,17 @@ import { FaAngleDown } from "react-icons/fa6";
 
 import { useState } from "react";
 
-import TransferModal from '../../../modals/TransferModal';
+import TransferModal from "../../../modals/TransferModal";
 
 import { useModal } from "../../../context/Modal";
 
-function BuyingPowerDropDown({ sessionUser }) {
+function BuyingPowerDropDown({
+  sessionUser,
+  setNotifications,
+  setNotificationMessage,
+  notifications,
+  notificationMessage,
+}) {
   const { setModalContent, setModalClass } = useModal();
 
   const [isDropDownVisible, setDropDownIsVisible] = useState(false);
@@ -51,7 +57,14 @@ function BuyingPowerDropDown({ sessionUser }) {
                 className="BuyingPowerDropDown__button"
                 onClick={(e) => {
                   e.stopPropagation();
-                  setModalContent(<TransferModal />);
+                  setModalContent(
+                    <TransferModal
+                      setNotifications={setNotifications}
+                      setNotificationMessage={setNotificationMessage}
+                      notifications={notifications}
+                      notificationMessage={notificationMessage}
+                    />
+                  );
                   setModalClass({
                     modal: "TransferModal",
                     modalBackground: "TransferModal__background",

@@ -11,7 +11,7 @@ import { fetchLists, selectListsArray } from "../../../store/lists";
 import { fetchAllStocks, selectStocksObject } from "../../../store/stocks";
 import { selectUser } from "../../../store/session";
 
-function ListSideBar({ navigate }) {
+function ListSideBar({ navigate, setNotifications, setNotificationMessage }) {
   const dispatch = useDispatch();
   const location = useLocation();
 
@@ -70,6 +70,8 @@ function ListSideBar({ navigate }) {
         stocks={stocks}
         navigate={navigate}
         sessionUser={sessionUser}
+        setNotifications={setNotifications}
+        setNotificationMessage={setNotificationMessage}
       />
     </aside>
   );

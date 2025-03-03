@@ -7,7 +7,13 @@ import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { deleteList } from "../../../store/lists";
 
-function DeleteListModal({ listId, listName, navigate }) {
+function DeleteListModal({
+  listId,
+  listName,
+  navigate,
+  setNotifications,
+  setNotificationMessage,
+}) {
   const { closeModal } = useModal();
   const dispatch = useDispatch();
 
@@ -25,6 +31,18 @@ function DeleteListModal({ listId, listName, navigate }) {
       navigate("/");
     }
     closeModal();
+
+    setNotificationMessage([`Successfully deleted list ${listName}`]);
+    setNotifications(true);
+
+    await new Promise((resolve) => {
+      setTimeout(() => {
+        setNotifications(false);
+        resolve();
+      }, 10000);
+    });
+
+    setNotificationMessage([]);
   }
 
   return (

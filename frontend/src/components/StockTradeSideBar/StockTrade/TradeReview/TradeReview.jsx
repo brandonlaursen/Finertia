@@ -39,7 +39,12 @@ function TradeReview({
 
   function handleDeposit(e) {
     e.stopPropagation();
-    setModalContent(<TransferModal />);
+    setModalContent(
+      <TransferModal
+        setNotifications={setNotifications}
+        setNotificationMessage={setNotificationMessage}
+      />
+    );
     setModalClass({
       modal: "TransferModal",
       modalBackground: "TransferModal__background",

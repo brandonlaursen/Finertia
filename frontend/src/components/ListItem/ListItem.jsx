@@ -15,6 +15,8 @@ function ListItem({
   activeListId,
   setActiveListId,
   navigate,
+  setNotifications,
+  setNotificationMessage,
 }) {
   const isCurrentList = activeListId === list.id;
 
@@ -42,6 +44,8 @@ function ListItem({
             expandedListIds={expandedListIds}
             setExpandedListIds={setExpandedListIds}
             navigate={navigate}
+            setNotifications={setNotifications}
+            setNotificationMessage={setNotificationMessage}
           />
         )}
       </div>

@@ -16,6 +16,8 @@ function ListItemMenu({
   setActiveListId,
   listMenuButtonRef,
   navigate,
+  setNotifications,
+  setNotificationMessage,
 }) {
   const { setModalContent, setModalClass } = useModal();
 
@@ -49,7 +51,13 @@ function ListItemMenu({
             onClick={(e) => {
               e.stopPropagation();
               setActiveListId(null);
-              setModalContent(<EditListModal list={list} />);
+              setModalContent(
+                <EditListModal
+                  list={list}
+                  setNotifications={setNotifications}
+                  setNotificationMessage={setNotificationMessage}
+                />
+              );
               setModalClass({
                 modal: "EditListModal",
                 modalBackground: "EditListModal__background",
@@ -75,6 +83,8 @@ function ListItemMenu({
                   listId={list.id}
                   listName={list.name}
                   navigate={navigate}
+                  setNotifications={setNotifications}
+                  setNotificationMessage={setNotificationMessage}
                 />
               );
               setModalClass({

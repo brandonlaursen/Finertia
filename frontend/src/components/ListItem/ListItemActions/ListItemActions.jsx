@@ -13,6 +13,8 @@ function ListItemActions({
   expandedListIds,
   setExpandedListIds,
   navigate,
+  setNotifications,
+  setNotificationMessage,
 }) {
   const listMenuButtonRef = useRef(null);
 
@@ -69,6 +71,8 @@ function ListItemActions({
         setActiveListId={setActiveListId}
         listMenuButtonRef={listMenuButtonRef}
         navigate={navigate}
+        setNotifications={setNotifications}
+        setNotificationMessage={setNotificationMessage}
       />
     </>
   );
