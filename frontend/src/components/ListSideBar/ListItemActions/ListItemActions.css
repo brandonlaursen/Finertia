@@ -1,0 +1,73 @@
+
+/* ========== List Item Actions (Ellipsis & Arrow) ========== */
+.ListItemActions {
+  display: flex;
+  align-items: center;
+
+  margin-right: 6px;
+}
+
+/* ========== Menu Button (Ellipsis) ========== */
+.ListItemActions__menu-button {
+  height: 24px;
+  width: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-right: 14px;
+
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  border-radius: 4px;
+
+  background: none;
+  border: none;
+  outline: none;
+}
+
+/* Remove focus outline on click */
+.ListItemActions__menu-button:active,
+.ListItemActions__menu-button:focus {
+  outline: none;
+  color: inherit;
+  background-color: inherit;
+}
+
+/* Show background on hover */
+.ListItemActions__menu-button:hover {
+  background-color: rgb(237, 237, 237);
+
+  opacity: 1;
+}
+
+/* Show the menu button when hovering over the container */
+.ListItemActions__container:hover .ListItemActions__menu-button {
+  opacity: 1;
+}
+
+/* ========== Menu & Arrow Icons ========== */
+/* Icon inside the menu button */
+
+.ListItemActions__menu-icon {
+  color: var(--color-icon-grey);
+}
+
+/* Arrow icon for expanding/collapsing */
+.ListItemActions__arrow-icon {
+  font-size: 20px;
+  transition: transform 0.3s ease;
+  color: var(--color-icon-grey);
+}
+
+/* Rotate arrow when list is open */
+.ListItemActions__arrow-icon.open {
+  transform: rotate(180deg);
+}
+
+/* Change color on hover */
+.ListItemActions__arrow-icon:hover {
+  color: var(--color-primary);
+}

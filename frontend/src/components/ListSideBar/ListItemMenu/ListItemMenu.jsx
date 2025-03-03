@@ -19,13 +19,13 @@ function ListItemMenu({
 }) {
   const { setModalContent, setModalClass } = useModal();
 
-  const listMenuRef = useRef(null);
+  const listItemMenuRef = useRef(null);
 
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (
-        listMenuRef.current &&
-        !listMenuRef.current.contains(e.target) &&
+        listItemMenuRef.current &&
+        !listItemMenuRef.current.contains(e.target) &&
         listMenuButtonRef.current &&
         !listMenuButtonRef.current.contains(e.target)
       ) {
@@ -43,9 +43,9 @@ function ListItemMenu({
   return (
     <>
       {isCurrentList && (
-        <div className="ListItem__popover" ref={listMenuRef}>
+        <div className="ListItemMenu" ref={listItemMenuRef}>
           <button
-            className="ListItem__popover__button"
+            className="ListItemMenu__button"
             onClick={(e) => {
               e.stopPropagation();
               setActiveListId(null);
@@ -57,17 +57,17 @@ function ListItemMenu({
               });
             }}
           >
-            <IoSettings className="ListItem__edit-icon" />
+            <IoSettings className="ListItemMenu__edit-icon" />
             Edit
           </button>
 
-          <button className="ListItem__popover__button">
-            <MdOutlineDragIndicator className="ListItem__rearrange-icon" />
+          <button className="ListItemMenu__button">
+            <MdOutlineDragIndicator className="ListItemMenu__rearrange-icon" />
             Rearrange
           </button>
 
           <button
-            className="ListItem__popover__button"
+            className="ListItemMenu__button"
             onClick={(e) => {
               e.stopPropagation();
               setModalContent(
@@ -84,7 +84,7 @@ function ListItemMenu({
               });
             }}
           >
-            <TiDeleteOutline className="ListItem__delete-icon" />
+            <TiDeleteOutline className="ListItemMenu__delete-icon" />
             Delete
           </button>
         </div>

@@ -13,7 +13,7 @@ function ListItemActions({
   showActions,
   expandedListIds,
   setExpandedListIds,
-  navigate
+  navigate,
 }) {
   const listMenuButtonRef = useRef(null);
 
@@ -50,26 +50,26 @@ function ListItemActions({
 
   return (
     <>
-      <div className="ListItem__actions">
+      <div className="ListItemActions">
         <button
-          className="ListItem__menu-button"
+          className="ListItemActions__menu-button"
           onClick={toggleMenu}
           ref={listMenuButtonRef}
         >
-          <IoEllipsisHorizontalSharp className="ListItem__menu-icon" />
+          <IoEllipsisHorizontalSharp className="ListItemActions__menu-icon" />
         </button>
         <IoIosArrowDown
           onClick={expandList}
-          className={`ListItem__arrow-icon ${isListOpen && "open"}`}
+          className={`ListItemActions__arrow-icon ${isListOpen && "open"}`}
         />
       </div>
 
       <ListItemMenu
+        list={list}
         isCurrentList={isCurrentList}
         setActiveListId={setActiveListId}
-        list={list}
-        navigate={navigate}
         listMenuButtonRef={listMenuButtonRef}
+        navigate={navigate}
       />
     </>
   );
