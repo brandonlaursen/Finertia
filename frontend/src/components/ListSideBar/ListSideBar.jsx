@@ -5,18 +5,16 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 
-import { fetchLists, selectListsArray } from "../../../store/lists";
-import { fetchAllStocks } from "../../../store/stocks";
-import { selectUser } from "../../../store/session";
-
 import ListItem from "./ListItem";
 import ListStocks from "./ListStocks/ListStocks";
 import StocksOwned from "./StocksOwned/StocksOwned";
 import OpenModalButton from "../OpenModalButton";
-
+import LoadingSpinner from "../LoadingSpinner";
 import CreateListModal from "../../modals/CreateListModal";
 
-import { selectStocksObject } from "../../../store/stocks";
+import { fetchLists, selectListsArray } from "../../../store/lists";
+import { fetchAllStocks, selectStocksObject } from "../../../store/stocks";
+import { selectUser } from "../../../store/session";
 
 function ListSideBar({ className, navigate }) {
   const dispatch = useDispatch();
@@ -26,18 +24,53 @@ function ListSideBar({ className, navigate }) {
   const stocks = useSelector(selectStocksObject);
   const sessionUser = useSelector(selectUser);
 
-  const [selectedPopoverId, setSelectedPopoverId] = useState(null);
-  const [toggleListIds, setToggleListIds] = useState([]);
+  const [activeListId, setActiveListId] = useState(null);
+  const [expandedListIds, setExpandedListIds] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
+    let isMounted = true;
+
     async function fetchInfo() {
-      await dispatch(fetchLists());
-      await dispatch(fetchAllStocks());
-      setIsLoaded(true);
+      try {
+        await dispatch(fetchLists());
+        await dispatch(fetchAllStocks());
+
+        if (isMounted) {
+          setIsLoaded(true);
+        }
+      } catch (err) {
+        if (isMounted) {
+          setError(err.message);
+          console.error("Error fetching data:", err);
+        }
+      }
     }
+
     fetchInfo();
+    return () => {
+      isMounted = false;
+    };
   }, [dispatch]);
+
+  if (error) {
+    return (
+      <aside className="ListSideBar">
+        <div className="ListSideBar__error">
+          Error loading data. Please try again later.
+        </div>
+      </aside>
+    );
+  }
+
+  if (!isLoaded) {
+    return (
+      <div className="ListSideBar__loading-spinner">
+        <LoadingSpinner />
+      </div>
+    );
+  }
 
   return (
     <aside className="ListSideBar">
@@ -48,9 +81,7 @@ function ListSideBar({ className, navigate }) {
               <header>Stocks</header>
             </section>
 
-            {isLoaded && (
-              <StocksOwned stocks={stocks} sessionUser={sessionUser} />
-            )}
+            <StocksOwned stocks={stocks} sessionUser={sessionUser} />
           </>
         )}
 
@@ -72,33 +103,31 @@ function ListSideBar({ className, navigate }) {
 
         <section className="ListSideBar__container">
           {lists &&
-            lists.slice(0, 10).map((list) => {
-              return (
-                <>
-                  <ListItem
-                    className="WatchList__ListItem"
-                    container="ListItem__container"
-                    emoji="ListItem__emoji"
-                    name="ListItem__name"
-                    showActions={true}
-                    showHover={true}
-                    navigate={navigate}
-                    list={list}
-                    toggleListIds={toggleListIds}
-                    setToggleListIds={setToggleListIds}
-                    selectedPopoverId={selectedPopoverId}
-                    setSelectedPopoverId={setSelectedPopoverId}
-                  />
-                  <ListStocks
-                    toggleListIds={toggleListIds}
-                    setToggleListIds={setToggleListIds}
-                    list={list}
-                    stocks={stocks}
-                    sessionUser={sessionUser}
-                  />
-                </>
-              );
-            })}
+            lists.slice(0, 10).map((list) => (
+              <div key={list.id}>
+                <ListItem
+                  list={list}
+                  className="WatchList__ListItem"
+                  container="ListItem__container"
+                  emoji="ListItem__emoji"
+                  name="ListItem__name"
+                  showActions={true}
+                  showHover={true}
+                  navigate={navigate}
+                  expandedListIds={expandedListIds}
+                  setExpandedListIds={setExpandedListIds}
+                  activeListId={activeListId}
+                  setActiveListId={setActiveListId}
+                />
+                <ListStocks
+                  expandedListIds={expandedListIds}
+                  setExpandedListIds={setExpandedListIds}
+                  list={list}
+                  stocks={stocks}
+                  sessionUser={sessionUser}
+                />
+              </div>
+            ))}
         </section>
       </main>
     </aside>

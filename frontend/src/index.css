@@ -70,17 +70,17 @@ button {
   --color-white: #ffffff;
   --color-black: #000000;
 
-  /* Colors */
+  /* Accent Colors */
   --color-primary: #07de96;
   --color-primary-hover: rgb(7, 239, 162);
 
   --color-secondary: #ca63fc;
   --color-tertiary: rgb(22, 7, 40);
 
-  /*  percent change */
+
+  /*  Icon Colors */
   --percent-change-positive: rgb(44, 202, 4);
   --percent-change-negative: rgb(255, 29, 4);
-
   /* icons percent change */
   --percent-change-orange: rgb(248, 124, 14);
 

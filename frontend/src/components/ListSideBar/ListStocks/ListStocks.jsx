@@ -4,10 +4,10 @@ import { useNavigate } from "react-router-dom";
 
 import StockItem from "../StockItem/StockItem";
 
-function ListStocks({ toggleListIds, list, stocks, sessionUser }) {
+function ListStocks({ expandedListIds, list, stocks, sessionUser }) {
   const navigate = useNavigate();
 
-  const isListOpen = toggleListIds.includes(list.id);
+  const isListOpen = expandedListIds.includes(list.id);
 
   const { Stocks } = list;
 

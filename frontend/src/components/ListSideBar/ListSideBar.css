@@ -1,5 +1,5 @@
-
 /* ========== List Home Container ========== */
+/* Main sidebar container that stays fixed while scrolling */
 .ListSideBar {
   position: sticky;
   top: 85px;
@@ -16,12 +16,12 @@
   margin-right: 8px;
 
   background-color: rgb(255, 255, 255);
-
   border-radius: 4px;
   border: 1px solid var(--border-color);
 }
 
 /* ========== List Header ========== */
+/* Header section containing title and create button */
 .ListSideBar__header {
   height: 50px;
   min-height: 50px;
@@ -40,6 +40,7 @@
 }
 
 /* ========== Create List Button ========== */
+/* Button for creating new lists */
 .ListSideBar__create-button {
   height: 24px;
   width: 24px;
@@ -60,76 +61,22 @@
   border-radius: 4px;
 }
 
-/* Icon inside create button */
+/* Icon styling inside create button */
 .ListSideBar__create-button {
   color: var(--color-icon-grey);
 }
 
 /* ========== Lists Container (Holds All Lists) ========== */
+/* Container for the scrollable list of items */
 .ListSideBar__container {
   position: relative;
-  flex-grow: 1;
 }
 
-/* Extra Large Screens (Desktops & TVs) */
-@media (min-width: 1440px) {
-  /* Styles for large desktop screens */
-  .List_home-container {
-    max-width: 300px;
-  }
+.ListSideBar__loading-spinner {
+  display: flex;
+  justify-content: center;
+  width: 20vw;
+  background-color: antiquewhite;
 }
 
-/* Large Desktops */
-@media (max-width: 1280px) {
-  /* Styles for medium-sized desktops */
-  .List_home-container {
-    max-width: 280px;
-  }
-}
-
-/* Small Desktops & Large Tablets */
-@media (max-width: 1024px) {
-  /* Adjust layouts, reduce container sizes */
-  .List_home-container {
-    /* width: 20vw; */
-    max-width: 200px;
-  }
-}
-
-/* Tablets (Portrait & Small Laptops) */
-@media (max-width: 830px) {
-  /* Stack columns, adjust text sizes, shrink margins */
-  .List_home-container {
-    margin-left: 0px;
-    max-width: 250px;
-  }
-}
-
-/* Tablets (Portrait & Small Laptops) */
-@media (max-width: 768px) {
-  /* Stack columns, adjust text sizes, shrink margins */
-  .List_home-container {
-    /* width: 20vw;  */
-    max-width: 250px;
-  }
-}
-
-/* Large Phones (Landscape Mode) */
-@media (max-width: 700px) {
-  /* Reduce button sizes, make touch targets larger */
-  .List_home-container {
-    /* width: 90%;
-    max-width: none; */
-    display: none;
-  }
-}
-
-/* Most Mobile Phones (Portrait Mode) */
-@media (max-width: 480px) {
-  /* Full-width elements, simplify layouts */
-}
-
-/* Very Small Phones */
-@media (max-width: 360px) {
-  /* Reduce paddings/margins for ultra-small screens */
-}
+/* ========== Responsive Design Breakpoints ========== */
