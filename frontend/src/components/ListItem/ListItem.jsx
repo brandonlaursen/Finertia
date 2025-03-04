@@ -19,6 +19,7 @@ function ListItem({
   navigate,
   setNotifications,
   setNotificationMessage,
+  showItems = false,
 }) {
   const isCurrentList = activeListId === list.id;
 
@@ -36,9 +37,12 @@ function ListItem({
           <span className={emoji}>{list?.emoji}</span>
           <div className="ListItem__name-container">
             <span className={name}>{list?.name}</span>
-            <span className="ListItem__item-count">
-              {list?.stockIds?.length || 0} {list?.stockIds?.length === 1 ? "item" : "items"}
-            </span>
+            {showItems && (
+              <span className="ListItem__item-count">
+                {list?.Stocks?.length || 0}{" "}
+                {list?.Stocks?.length === 1 ? "item" : "items"}
+              </span>
+            )}
           </div>
         </header>
 
