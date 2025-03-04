@@ -205,7 +205,7 @@ input.checked {
 /* Create Button */
 .AddToListModal__save-button {
   color: white;
-  background-color: rgb(2, 200, 5);
+  background-color: var(--button-green);
   border: none;
   -webkit-font-smoothing: subpixel-antialiased;
 
@@ -213,7 +213,7 @@ input.checked {
 
 /* Create Button Hover */
 .AddToListModal__save-button:hover {
-  background-color: rgb(0, 180, 5, 1);
+  background-color: var(--button-green-hover);
 }
 
 /* Disabled Button */
@@ -247,6 +247,6 @@ input.checked {
   align-items: center;
   font-size: 14px;
   font-weight: 500;
-  
+
   color: black;
 }

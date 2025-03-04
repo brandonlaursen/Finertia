@@ -174,9 +174,6 @@ Close Button Icon
   /* dark button hover */
   --dark-grey: #1e2125;
 
-  /* Light green hover */
-  --button-hover-light-green: rgb(211, 255, 240);
-
   --color-text: #333;
   --color-muted: #888;
   --color-lightgrey: rgb(231, 231, 231);
@@ -213,6 +210,67 @@ Close Button Icon
   /* Button Colors */
   --button-green: rgb(0, 200, 5);
   --button-green-hover: rgb(0, 180, 5, 1);
+  --button-light-green: rgb(211, 255, 240);
+
+  /* Light green hover */
+  --button-hover-light-green: rgb(223, 255, 230);
+
+  /*
+  Font sizes
+  - input: 13px
+  - button: 12px - bold
+  - title: 14px - 600 font-weight
+  - text: 13px - 500
+  - sub text: 11px - 500
+  */
+  /* ===== Font Sizes ===== */
+  --font-size-title: 14px;
+  --font-size-input: 13px;
+  --font-size-text: 13px;
+  --font-size-button: 12px;
+  --font-size-subtext: 11px;
+
+
+  /* ===== Colors ===== */
+  /* Background Colors */
+  --background-color-light: rgb(255, 255, 255);
+  --background-color-dark: rgb(0, 0, 0);
+
+  /* Text Colors */
+  --text-color-light: rgb(0, 0, 0);
+  --text-color-dark: rgb(255, 255, 255);
+
+  /* Border Colors */
+  --border-color-light: rgb(232, 232, 232);
+  --border-color-dark: rgb(48, 54, 58);
+
+  /* Icon Colors */
+  --color-positive: rgb(44, 202, 4);
+  --color-negative: rgb(255, 29, 4);
+  --color-orange: rgb(248, 124, 14);
+
+  /* Highlight Colors */
+  --highlight-lightblue: rgb(245, 248, 250);
+  --hover-lightgrey: rgb(237, 237, 237);
+
+  /* Button Colors */
+  --button-orange: rgb(255, 118, 58);
+  --button-light-orange: rgb(252, 222, 208);
+
+  --button-green: rgb(0, 200, 5);
+  --button-green-hover: rgb(0, 180, 5, 1);
+  --button-light-green: rgb(211, 255, 240);
+
+  /* Theme Colors */
+  --theme-color-teal: #07de96;
+  --theme-color-teal-hover: rgb(7, 239, 162);
+
+  --theme-color-purple: #ca63fc;
+  --theme-color-blue: #007bff;
+  --theme-color-red: #dc3545;
+  --theme-color-yellow: #f0ad4e;
+  --theme-color-green: #28a745;
+
 
   /* Large Buttons */
   /* -webkit-font-smoothing: subpixel-antialiased; */

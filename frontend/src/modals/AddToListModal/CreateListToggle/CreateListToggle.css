@@ -88,7 +88,7 @@
   width: 46px;
 
   background-color: rgb(255, 255, 255);
-  
+
   border: solid 1px var(--border-color);
   border-radius: 4px;
   cursor: pointer;
@@ -113,7 +113,7 @@
 }
 
 .AddToListModal__create-form__input:focus {
-  border: solid 1px var(--color-primary);
+  border: solid 1px var( --button-green);
 }
 
 /* Form Buttons */
@@ -139,9 +139,9 @@
 
 /* Cancel and Create Buttons */
 .AddToListModal__cancel-button {
-  color: var(--color-primary);
+  color: var( --button-green);
   background-color: white;
-  border: solid 1px var(--color-primary);
+  border: solid 1px var( --button-green);
 }
 
 .AddToListModal__cancel-button:hover {
@@ -150,13 +150,13 @@
 
 .AddToListModal__create-button {
   color: white;
-  background-color: var(--color-primary);
+  background-color: var( --button-green);;
   min-width: 102px;
   border: none;
 }
 
 .AddToListModal__create-button:hover {
-  background-color: var(--color-primary-hover);
+  background-color: var(--button-green-hover);
 }
 
 /* ========= Create New List Toggle ========= */
