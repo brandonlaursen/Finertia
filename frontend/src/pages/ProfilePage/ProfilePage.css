@@ -1,6 +1,6 @@
 .ProfilePage {
-
-  width: 65%;
+  height: 100vh;
+  width: 65vw;
   min-width: 600px;
 
   display: flex;
@@ -9,14 +9,10 @@
 
   margin: 120px auto 0;
 
-
   color: rgb(0, 0, 0);
 
   margin-bottom: 120px;
 }
-
-
-
 
 .ProfilePage__total {
   height: 100px;
@@ -24,18 +20,15 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* gap: 10px; */
 
   font-size: 13px;
   font-weight: 500;
   margin-bottom: 24px;
 }
 
-.ProfilePage__total__line {
-  width: 26px;
-  height: 5px;
-
-  background-color: rgb(55, 55, 55);
+.ProfilePage__total__balance {
+  font-size: 28px;
+  font-weight: 500;
 }
 
 .ProfilePage__investments {
@@ -56,7 +49,7 @@
   gap: 4px;
   padding-bottom: 16px;
 
-  border-bottom: solid 1px rgb(230, 230, 230);
+  border-bottom: solid 1px var(--border-color);
 }
 
 .ProfilePage__investments__header__text {
@@ -124,7 +117,7 @@
   font-weight: 700;
 }
 
-.ProfilePage__overview__contents {
+.ProfilePage__overview__buttons {
   height: 100px;
 
   display: flex;
@@ -234,17 +227,10 @@
   color: var(--color-light-text);
 }
 
-.ProfilePage__disclaimer__show-more {
+.ProfilePage__disclaimer-show-more {
   align-self: self-start;
 
   color: black;
 
   font-weight: bold;
 }
-
-.ProfilePage__total__balance {
-  font-size: 28px;
-  font-weight: 500;
-}
-
-

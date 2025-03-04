@@ -84,6 +84,13 @@ button {
   /* icons percent change */
   --percent-change-orange: rgb(248, 124, 14);
 
+
+    /* Border Colors */
+    /* Light */
+    --border-color: rgb(227, 233, 237);
+    /* Dark */
+    --border-color-2: rgb(48, 54, 58);
+
   /* dark green button-hover rgb(2,180,5)*/
   /* dark green button rgb(0, 200, 5);*/
 
@@ -129,11 +136,7 @@ button {
 
   --button-height: 40px;
 
-  /* /light */
-  --border-color: rgb(227, 233, 237);
 
-  /* dark */
-  --border-color-2: rgb(48, 54, 58);
 }
 
 .dark-mode {

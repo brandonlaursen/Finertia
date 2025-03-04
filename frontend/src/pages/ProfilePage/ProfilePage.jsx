@@ -18,21 +18,20 @@ function ProfilePage() {
     <div className="ProfilePage">
       <ProfilePageUserInfo />
 
-      {/* Profile Page Investments */}
-      <div className="ProfilePage__total">
+      <section className="ProfilePage__total">
         <span className="ProfilePage__total__balance">
           ${stockSummary?.balance?.toFixed(2)}
         </span>
         Total in Finertia
-      </div>
+      </section>
 
-      <div className="ProfilePage__investments">
-        <div className="ProfilePage__investments__header">
+      <section className="ProfilePage__investments">
+        <header className="ProfilePage__investments__header">
           <span className="ProfilePage__investments__header__text">
             Individual Investing
           </span>
           <LuInfo className="ProfilePage__investments__header__info-icon" />
-        </div>
+        </header>
 
         <div className="ProfilePage__investments__details">
           <div className="ProfilePage__investments__details__value">
@@ -54,28 +53,28 @@ function ProfilePage() {
             <span>Individual cash</span>${stockSummary.balance.toFixed(2)}
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className="ProfilePage__overview">
-        <div className="ProfilePage__overview__title">Overview</div>
+      <section className="ProfilePage__overview">
+        <header className="ProfilePage__overview__title">Overview</header>
 
-        <div className="ProfilePage__overview__contents">
-          <div className="ProfilePage__overview__button">
+        <div className="ProfilePage__overview__buttons">
+          <button className="ProfilePage__overview__button">
             <span>Stocks</span>
             <span className="ProfilePage__overview__percentage">100%</span>
-          </div>
-          <div className="ProfilePage__overview__button">
+          </button>
+          <button className="ProfilePage__overview__button">
             <span>ETFs</span>
             <span className="ProfilePage__overview__percentage">0%</span>
-          </div>
-          <div className="ProfilePage__overview__button">
+          </button>
+          <button className="ProfilePage__overview__button">
             <span>Options</span>
             <span className="ProfilePage__overview__percentage">0%</span>
-          </div>
-          <div className="ProfilePage__overview__button">
+          </button>
+          <button className="ProfilePage__overview__button">
             <span>Crypto</span>
             <span className="ProfilePage__overview__percentage">0%</span>
-          </div>
+          </button>
         </div>
 
         <div className="ProfilePage__overview__description">
@@ -84,9 +83,9 @@ function ProfilePage() {
           </span>
           <span className="ProfilePage__description__subtext">Learn More</span>
         </div>
-      </div>
+      </section>
 
-      <div className="ProfilePage__buttons">
+      <section className="ProfilePage__buttons">
         <div>Business</div>
         <div>Consumer Goods</div>
         <div>Energy & Water</div>
@@ -95,9 +94,9 @@ function ProfilePage() {
         <div>Hospitality</div>
         <div>Manufacturing & Materials</div>
         <div>Tech, Media, & Telecom</div>
-      </div>
+      </section>
 
-      <div className="ProfilePage__disclaimer">
+      <section className="ProfilePage__disclaimer">
         <span>
           All investing involves risk, including the loss of principal.
           Brokerage Holdings include securities and related products offered by
@@ -107,8 +106,8 @@ function ProfilePage() {
           Finertias broker-dealer and are therefore not subject to the same
           regulatory protections as those offered by Finertia Financial...
         </span>
-        <span className="ProfilePage__disclaimer__show-more">Show More</span>
-      </div>
+        <span className="ProfilePage__disclaimer-show-more">Show More</span>
+      </section>
     </div>
   );
 }
