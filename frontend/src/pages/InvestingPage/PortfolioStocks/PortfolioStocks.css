@@ -1,0 +1,66 @@
+.PortfolioStocks__title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.PortfolioStocks__stock-table {
+  max-height: 600px;
+  height: auto;
+  width: 100%;
+
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.PortfolioStocks__table-item:hover {
+  box-shadow:
+  /* Top */ 0px 0px 0px 0px var(--color-highlight),
+    /* Left */ -16px 0px 0px 0px var(--color-highlight),
+    /* Right */ 16px 0px 0px 0px var(--color-highlight);
+  background-color: var(--color-highlight);
+}
+
+.PortfolioStocks__stock-table thead {
+  height: 40px;
+
+  text-align: left;
+
+  font-size: 13px;
+
+  color: rgb(130, 130, 130);
+
+  cursor: pointer;
+}
+
+.PortfolioStocks__stock-table thead th:hover {
+  color: rgb(118, 215, 183);
+}
+
+.PortfolioStocks__stock-table th,
+.PortfolioStocks__stock-table td {
+  width: 100%;
+
+  border-bottom: 1px solid var(--light-background-hover);
+}
+
+.PortfolioStocks__stock-table td {
+  cursor: pointer;
+}
+
+.PortfolioStocks__stock-table th:nth-of-type(1),
+.PortfolioStocks__stock-table td:nth-of-type(1) {
+  text-align: left;
+
+  padding-right: 24px;
+  width: 150px;
+}
+
+.PortfolioStocks__stock-table tbody tr {
+  height: 60px;
+
+  font-size: 12px;
+}
+
+.PortfolioStocks__stock-table tbody tr td:first-child {
+  font-weight: bold;
+}

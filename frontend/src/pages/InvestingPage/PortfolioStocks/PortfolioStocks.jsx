@@ -1,4 +1,4 @@
-import "../InvestingPage.css";
+import "./PortfolioStocks.css";
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -70,14 +70,14 @@ function PortfolioStocks({ stockInvestments, stockSummary }) {
   });
 
   return (
-    <>
-      <div className="InvestingPage__stock-section">
-        <span className="InvestingPage__stock-section__title">Stocks</span>
-      </div>
+    <div className="PortfolioStocks">
+      <header className="InvestingPage__header">
+        <span className="PortfolioStocks__title">Stocks</span>
+      </header>
 
-      <div className="InvestingPage__section">
-        <div className="InvestingPage__section-left">
-          <table className="InvestingPage__stocks__table">
+      <main className="InvestingPage__main">
+
+          <table className="PortfolioStocks__stock-table">
             <thead>
               <tr>
                 <th>Name</th>
@@ -87,11 +87,11 @@ function PortfolioStocks({ stockInvestments, stockSummary }) {
                 <th>Average Cost</th>
               </tr>
             </thead>
-            <tbody className="InvestingPage__stocks__table-body">
+            <tbody>
               {Object.values(stocks).map((stock) => {
                 return (
                   <tr
-                    className="InvestingPage__StockTableItem"
+                    className="PortfolioStocks__table-item"
                     key={stock.stockId}
                     onClick={() => navigate(`/stocks/${stock?.symbol}`)}
                   >
@@ -105,16 +105,16 @@ function PortfolioStocks({ stockInvestments, stockSummary }) {
               })}
             </tbody>
           </table>
-        </div>
+  
 
-        <div className="InvestingPage__section-right">
+        <section className="InvestingPage__chart-container">
           <ReactApexChart
             options={options}
             series={series}
             type="donut"
             height={options.chart.height}
           />
-          <span className="InvestingPage__section-right__value">
+          <span className="InvestingPage__chart-container-value">
             {currentPoint ? (
               <>
                 <span>{currentPoint.label}</span>
@@ -127,9 +127,9 @@ function PortfolioStocks({ stockInvestments, stockSummary }) {
               </>
             )}
           </span>
-        </div>
-      </div>
-    </>
+        </section>
+      </main>
+    </div>
   );
 }
 

@@ -1,4 +1,4 @@
-import "../InvestingPage.css";
+import "./PortfolioTotal.css";
 
 import { useState } from "react";
 import ReactApexChart from "react-apexcharts";
@@ -64,52 +64,52 @@ function PortfolioTotal({
   });
 
   return (
-    <>
-      <div className="InvestingPage__portfolio-section">
-        <span className="InvestingPage__portfolio-title">
+    <div className="PortfolioTotal">
+      <header className="InvestingPage__header">
+        <span className="PortfolioTotal__title">
           Total Portfolio value
         </span>
-        <span className="InvestingPage__portfolio-value">
+        <span className="PortfolioTotal__value">
           ${total.toFixed(2)}
         </span>
-      </div>
+      </header>
 
-      <div className="InvestingPage__section">
-        <div className="InvestingPage__section-left">
-          <div className="InvestingPage__section-left__main">
-            <span className="InvestingPage__section-left__main-title">
+      <main className="InvestingPage__main">
+        <section className="InvestingPage__section">
+
+          <div className="PortfolioTotal__section">
+            <span className="PortfolioTotal__section-title">
               Stocks
             </span>
-            <div className="InvestingPage__section-left__main-value-container">
-              <span className="InvestingPage__section-left__main-value">
+            <div className="PortfolioTotal__section-value-container">
+              <span className="PortfolioTotal__section-value">
                 {stockPercentage.toFixed(2)}%
               </span>
               <span>${stockInvestments.toFixed(2)}</span>
             </div>
           </div>
 
-          <div className="InvestingPage__section-left__main">
-            <span className="InvestingPage__section-left__main-title">
+          <div className="PortfolioTotal__section">
+            <span className="PortfolioTotal__section-title">
               Individual cash
             </span>
-            <div className="InvestingPage__section-left__main-value-container">
-              <span className="InvestingPage__section-left__main-value">
-
+            <div className="PortfolioTotal__section-value-container">
+              <span className="PortfolioTotal__section-value">
                 {balancePercentage.toFixed(2)}%
               </span>
               <span>${balance.toFixed(2)}</span>
             </div>
           </div>
-        </div>
+        </section>
 
-        <div className="InvestingPage__section-right">
+        <section className="InvestingPage__chart-container">
           <ReactApexChart
             options={options}
             series={series}
             type="donut"
             height={options.chart.height}
           />
-          <span className="InvestingPage__section-right__value">
+          <span className="InvestingPage__chart-container-value">
             {currentPoint ? (
               <>
                 <span>{currentPoint.label}</span>
@@ -122,9 +122,9 @@ function PortfolioTotal({
               </>
             )}
           </span>
-        </div>
-      </div>
-    </>
+        </section>
+      </main>
+    </div>
   );
 }
 

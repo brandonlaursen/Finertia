@@ -1,42 +1,30 @@
 .InvestingPage {
-  height: 100%;
-  width: 900px;
+
+  width: 65vw;
 
   display: flex;
   flex-direction: column;
 
   margin: 0px auto 0;
-  margin-bottom: 200px;
-}
-
-.InvestingPage__body {
-  height: auto;
-
+  margin-bottom: 120px;
   margin-top: 30px;
-  margin-bottom: 100px;
+
+  
   font-size: 13px;
   font-weight: 500;
 }
 
-.InvestingPage__portfolio-section {
-  height: 90px;
+.InvestingPage__header {
+  /* height: 90px; */
 
   display: flex;
   flex-direction: column;
 
   gap: 8px;
+  margin-bottom: 16px;
 }
 
-.InvestingPage__portfolio-title {
-  font-size: 14px;
-}
-
-.InvestingPage__portfolio-value {
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.InvestingPage__section {
+.InvestingPage__main {
   height: 250px;
 
   display: flex;
@@ -44,52 +32,8 @@
   gap: 4px;
 }
 
-.InvestingPage__section-left {
-  width: 100%;
-}
-
-.InvestingPage__section-left > *:last-child {
-  border-bottom: 1px solid var(--border-color);
-}
-
-.InvestingPage__section-left__main {
-  height: 60px;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  border-top: 1px solid var(--border-color);
-  cursor: pointer;
-}
-
-.InvestingPage__section-left__main:hover {
-  box-shadow:
-  /* Top */ 0px 0px 0px 0px var(--color-highlight),
-  /* Left */ -16px 0px 0px 0px var(--color-highlight),
-  /* Right */ 16px 0px 0px 0px var(--color-highlight);
-  background-color: var(--color-highlight);
-}
-
-.InvestingPage__section-left__main-title {
-  font-weight: bold;
-  font-size: 13px;
-}
-
-.InvestingPage__section-left__main-value-container {
-  display: flex;
-
-  gap: 20px;
-  padding-right: 48px;
-
-  font-size: 13px;
-}
-
-.InvestingPage__section-left__main-value {
-  color: rgb(152, 152, 152);
-}
-
-.InvestingPage__section-right {
+/* Chart Container */
+.InvestingPage__chart-container {
   width: 30%;
 
   display: flex;
@@ -97,7 +41,7 @@
   justify-content: center;
 }
 
-.InvestingPage__section-right__value {
+.InvestingPage__chart-container-value {
   position: absolute;
 
   height: 50px;
@@ -109,97 +53,4 @@
   justify-content: center;
 
   gap: 4px;
-}
-
-.InvestingPage__stock-section {
-  height: 50px;
-
-  display: flex;
-  flex-direction: column;
-
-  gap: 8px;
-}
-
-.InvestingPage__stock-section__title {
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.InvestingPage__stocks__table {
-  max-height: 600px;
-  height: auto;
-  width: 100%;
-
-  border-collapse: collapse;
-  table-layout: fixed;
-}
-
-.InvestingPage__stocks__table thead {
-  height: 40px;
-
-  text-align: left;
-
-  font-size: 13px;
-
-  color: rgb(130, 130, 130);
-
-  cursor: pointer;
-}
-
-.InvestingPage__stocks__table thead th:hover {
-  color: rgb(118, 215, 183);
-}
-
-.InvestingPage__stocks__table th,
-.InvestingPage__stocks__table td {
-  width: 100%;
-
-  border-bottom: 1px solid var(--light-background-hover);
-}
-
-.InvestingPage__stocks__table td {
-  cursor: pointer;
-}
-
-.InvestingPage__stocks__table th:nth-of-type(1),
-.InvestingPage__stocks__table td:nth-of-type(1) {
-  text-align: left;
-
-  padding-right: 24px;
-  width: 150px;
-}
-
-.InvestingPage__StockTableItem:hover {
-  /* background-color: var(--light-background-hover); */
-  box-shadow:
-  /* Top */ 0px 0px 0px 0px var(--color-highlight),
-  /* Left */ -16px 0px 0px 0px var(--color-highlight),
-  /* Right */ 16px 0px 0px 0px var(--color-highlight);
-  background-color: var(--color-highlight);
-
-}
-
-.InvestingPage__stocks__table tbody tr {
-  height: 60px;
-
-  font-size: 12px;
-}
-
-.InvestingPage__stocks__table tbody tr td:first-child {
-  font-weight: bold;
-}
-
-.InvestingPage__stocks-table-arrow-container {
-  display: flex;
-
-  gap: 5px;
-}
-
-.apexcharts-canvas {
-  cursor: pointer;
-}
-
-.InvestingPage__section-right__value-shares {
-  font-size: 13px;
-  color: #494949;
 }

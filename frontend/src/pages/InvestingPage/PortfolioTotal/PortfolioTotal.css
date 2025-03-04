@@ -1,0 +1,53 @@
+.PortfolioTotal__title {
+  font-size: 14px;
+}
+
+.PortfolioTotal__value {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.InvestingPage__section {
+  width: 100%;
+}
+
+.InvestingPage__section > *:last-child {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.PortfolioTotal__section {
+  height: 60px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-top: 1px solid var(--border-color);
+  cursor: pointer;
+}
+
+.PortfolioTotal__section:hover {
+  box-shadow:
+  /* Top */ 0px 0px 0px 0px var(--color-highlight),
+    /* Left */ -16px 0px 0px 0px var(--color-highlight),
+    /* Right */ 16px 0px 0px 0px var(--color-highlight);
+  background-color: var(--color-highlight);
+}
+
+.PortfolioTotal__section-title {
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.PortfolioTotal__section-value-container {
+  display: flex;
+
+  gap: 20px;
+  padding-right: 48px;
+
+  font-size: 13px;
+}
+
+.PortfolioTotal__section-value {
+  color: rgb(152, 152, 152);
+}

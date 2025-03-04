@@ -30,23 +30,19 @@ function InvestingPage() {
   if (stockInvestments.length < 0) return <LoadingSpinner />;
   return (
     <div className="InvestingPage">
-      <div>
-        <div className="InvestingPage__body">
-          <PortfolioTotal
-            total={total}
-            stockPercentage={stockPercentage}
-            stockInvestments={stockInvestments}
-            balancePercentage={balancePercentage}
-            balance={balance}
-          />
+        <PortfolioTotal
+          total={total}
+          stockPercentage={stockPercentage}
+          stockInvestments={stockInvestments}
+          balancePercentage={balancePercentage}
+          balance={balance}
+        />
 
-          <PortfolioStocks
-            stockSummary={stockSummary}
-            stockInvestments={stockInvestments}
-            balance={balance}
-          />
-        </div>
-      </div>
+        <PortfolioStocks
+          stockSummary={stockSummary}
+          stockInvestments={stockInvestments}
+          balance={balance}
+        />
     </div>
   );
 }
