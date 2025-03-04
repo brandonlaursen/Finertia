@@ -83,6 +83,7 @@ function ListPage() {
         navigate={navigate}
         setNotifications={setNotifications}
         setNotificationMessage={setNotificationMessage}
+        showDropdown={false}
       />
       {notifications && (
         <div className="NotificationPopsContainer">

@@ -11,7 +11,12 @@ import { fetchLists, selectListsArray } from "../../../store/lists";
 import { fetchAllStocks, selectStocksObject } from "../../../store/stocks";
 import { selectUser } from "../../../store/session";
 
-function ListSideBar({ navigate, setNotifications, setNotificationMessage }) {
+function ListSideBar({
+  navigate,
+  setNotifications,
+  setNotificationMessage,
+  showDropdown = true,
+}) {
   const dispatch = useDispatch();
   const location = useLocation();
 
@@ -72,6 +77,7 @@ function ListSideBar({ navigate, setNotifications, setNotificationMessage }) {
         sessionUser={sessionUser}
         setNotifications={setNotifications}
         setNotificationMessage={setNotificationMessage}
+        showDropdown={showDropdown}
       />
     </aside>
   );

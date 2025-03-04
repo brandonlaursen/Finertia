@@ -16,6 +16,7 @@ function Lists({
   lists,
   setNotifications,
   setNotificationMessage,
+  showDropdown
 }) {
   const [activeListId, setActiveListId] = useState(null);
   const [expandedListIds, setExpandedListIds] = useState([]);
@@ -62,6 +63,7 @@ function Lists({
                 setActiveListId={setActiveListId}
                 setNotifications={setNotifications}
                 setNotificationMessage={setNotificationMessage}
+                showDropdown={showDropdown}
               />
               <ListStocks
                 expandedListIds={expandedListIds}

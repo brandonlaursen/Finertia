@@ -18,6 +18,7 @@ function ListItem({
   setNotifications,
   setNotificationMessage,
   showItems = false,
+  showDropdown
 }) {
   const isCurrentList = activeListId === list.id;
 
@@ -50,6 +51,7 @@ function ListItem({
             isCurrentList={isCurrentList}
             setActiveListId={setActiveListId}
             showActions={showActions}
+            showDropdown={showDropdown}
             expandedListIds={expandedListIds}
             setExpandedListIds={setExpandedListIds}
             navigate={navigate}

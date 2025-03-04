@@ -10,6 +10,7 @@ function ListItemActions({
   isCurrentList,
   setActiveListId,
   showActions,
+  showDropdown,
   expandedListIds,
   setExpandedListIds,
   navigate,
@@ -59,10 +60,12 @@ function ListItemActions({
         >
           <IoEllipsisHorizontalSharp className="ListItemActions__menu-icon" />
         </button>
-        <IoIosArrowDown
-          onClick={expandList}
-          className={`ListItemActions__arrow-icon ${isListOpen && "open"}`}
-        />
+        {showDropdown && (
+          <IoIosArrowDown
+            onClick={expandList}
+            className={`ListItemActions__arrow-icon ${isListOpen && "open"}`}
+          />
+        )}
       </div>
 
       <ListItemMenu
