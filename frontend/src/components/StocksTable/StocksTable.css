@@ -99,3 +99,16 @@
   text-align: center;
   padding: 2rem;
 }
+
+.StocksTable__skeleton-row {
+  height: 60px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.StocksTable__skeleton-row td {
+  vertical-align: middle;
+}
+
+.StocksTable__skeleton-row .Skeleton {
+  border-radius: 4px;
+}

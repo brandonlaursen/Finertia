@@ -3,7 +3,7 @@ import { useMemo, useState } from "react";
 import { FaSort, FaSortUp, FaSortDown } from "react-icons/fa";
 
 import StocksTableItem from "./StocksTableItem/StocksTableItem";
-import LoadingSpinner from "../LoadingSpinner";
+import Skeleton from "../Skeleton";
 
 function StocksTable({
   stocks,
@@ -12,7 +12,10 @@ function StocksTable({
   setNotifications,
   setNotificationMessage,
   listId = null,
+  // isLoading = false,
 }) {
+  const [isLoading, setIsLoading] = useState(true);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [stocksPerPage] = useState(10);
   const [sortConfig, setSortConfig] = useState({
@@ -75,6 +78,11 @@ function StocksTable({
     );
   };
 
+  // Simulate loading state
+  setTimeout(() => {
+    setIsLoading(false);
+  }, 1500);
+
   return (
     <div className="StocksTable__container">
       <table className="StocksTable">
@@ -99,7 +107,17 @@ function StocksTable({
           </tr>
         </thead>
 
-        {currentStocks.length ? (
+        {isLoading ? (
+          <tbody className="StocksTable__body">
+            {[...Array(5)].map((_, index) => (
+              <tr key={index} className="StocksTable__skeleton-row">
+                <td colSpan="6">
+                  <Skeleton width="100%" height="40px" />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        ) : (
           <tbody className="StocksTable__body">
             {currentStocks.map((stock) => {
               return (
@@ -113,14 +131,6 @@ function StocksTable({
                 />
               );
             })}
-          </tbody>
-        ) : (
-          <tbody className="StocksTable__body">
-            <tr>
-              <td colSpan="6" className="StocksTable__no-data">
-                <LoadingSpinner />
-              </td>
-            </tr>
           </tbody>
         )}
       </table>

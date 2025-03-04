@@ -29,7 +29,7 @@ function HomePage() {
   // Simulate loading state
   setTimeout(() => {
     setIsLoading(false);
-  }, 2000);
+  }, 1500);
 
   return (
     <div className="HomePage">

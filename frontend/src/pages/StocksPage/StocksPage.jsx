@@ -81,7 +81,7 @@ function StocksPage() {
     setSortCriteria(criteria);
   };
 
-  if (!stocks) return <LoadingSpinner />;
+  // if (!stocks) return <LoadingSpinner />;
 
   return (
     <div className="StocksPage">
