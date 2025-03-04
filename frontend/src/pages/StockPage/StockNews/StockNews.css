@@ -1,4 +1,4 @@
-.StockNews{
+.StockNews {
   margin-top: 24px;
   margin-bottom: 140px;
 }
@@ -13,7 +13,6 @@
 }
 
 .StockNews__articles {
-
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -21,8 +20,6 @@
   margin-top: 16px;
   gap: 32px;
 }
-
-
 
 .StockNews__article {
   height: 140px;
@@ -32,7 +29,6 @@
   justify-content: space-between;
 
   position: relative;
-
 }
 
 .StockNews__article:hover {
@@ -93,5 +89,39 @@
   width: 200px;
 
   object-fit: cover;
+}
 
+.StockNews__pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding: 1rem;
+}
+
+.StockNews__pagination-button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  background-color: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  font-weight: 600;
+}
+
+.StockNews__pagination-button:hover:not(:disabled) {
+  background-color: #f5f5f5;
+}
+
+.StockNews__pagination-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.StockNews__pagination-info {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #666;
 }
