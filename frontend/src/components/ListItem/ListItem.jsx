@@ -1,6 +1,4 @@
 import "./ListItem.css";
-import { MdDelete } from "react-icons/md";
-import { FiEdit2 } from "react-icons/fi";
 
 import ListItemActions from "./ListItemActions";
 
