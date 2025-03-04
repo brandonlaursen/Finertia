@@ -13,24 +13,27 @@
 
 .StocksTable__head {
   height: 40px;
-
   position: sticky;
   top: 0;
-
   text-align: left;
-
   font-size: 13px;
   font-weight: 600;
-
   background-color: white;
   color: var(--color-light-text);
-
   cursor: pointer;
   border-bottom: 1px solid var(--border-color);
   white-space: nowrap;
 }
 
-.StocksTable__head th:hover {
+.StocksTable__sort-icon {
+  font-size: 0.8rem;
+  color: #999;
+  transition: all 0.2s ease;
+  vertical-align: middle;
+  margin-left: 4px;
+}
+
+.StocksTable__sort-icon--active {
   color: var(--color-primary);
 }
 
