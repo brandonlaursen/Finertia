@@ -1,31 +1,19 @@
 import "./TransfersPage.css";
-import { FaMoneyBill } from "react-icons/fa";
-import { IoIosArrowForward } from "react-icons/io";
 import { RiQuestionLine } from "react-icons/ri";
 
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
-import TransferModal from "../../modals/TransferModal";
-
-import { fetchAccountTransactions } from "../../../store/transactions";
-
+import TransferMoney from "./TransferMoney";
 import CompletedTransfers from "./CompletedTransfers";
 
-import { useModal } from "../../context/Modal";
+import { selectUser } from "../../../store/session";
 
 function TransfersPage() {
-  const { setModalContent, setModalClass } = useModal();
-  const dispatch = useDispatch();
 
-  const sessionUser = useSelector((state) => state.session.user);
+  const sessionUser = useSelector(selectUser);
   const transactions = useSelector(
     (state) => state.transactions.accountTransactions
   );
-
-  useEffect(() => {
-    dispatch(fetchAccountTransactions());
-  }, [dispatch]);
 
   return (
     <div className="TransfersPage">
@@ -36,35 +24,7 @@ function TransfersPage() {
         </span>
       </header>
 
-      <section className="TransfersPage__section">
-        <div
-          className="TransferPage__transfer-link"
-          onClick={(e) => {
-            e.stopPropagation();
-            setModalContent(<TransferModal />);
-            setModalClass({
-              modal: "TransferModal",
-              modalBackground: "TransferModal__background",
-              modalContainer: "TransferModal__container",
-            });
-          }}
-        >
-          <div className="TransferPage__transfer__money-icon-container">
-            <FaMoneyBill className="TransfersPage__money-icon" />
-          </div>
-          <div className="TransferPage__transfer-link__text-container">
-            <span className="TransferPage__transfer-link__title">
-              Transfer Money
-            </span>
-            <span className="TransfersPage__transfer-link__subtitle">
-              Transfer Money between your bank and your Finertia Account
-            </span>
-          </div>
-          <div className="TransfersPage__arrow-container">
-            <IoIosArrowForward className="TransfersPage__arrow-icon" />
-          </div>
-        </div>
-      </section>
+      <TransferMoney />
 
       <section className="TransfersPage__section">
         <div className="TransfersPage__transfer-container">

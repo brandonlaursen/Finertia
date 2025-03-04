@@ -1,9 +1,22 @@
 import "./CompletedTransfers.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+import { useDispatch } from "react-redux";
+import { fetchAccountTransactions } from "../../../../store/transactions";
 
 function CompletedTransfers({ transactions }) {
+  const dispatch = useDispatch();
+
   const [currentPage, setCurrentPage] = useState(1);
   const [transfersPerPage] = useState(5);
+
+
+
+  useEffect(() => {
+    dispatch(fetchAccountTransactions());
+  }, [dispatch]);
+
+
 
   const sortedTransactions = transactions.sort((a, b) => {
     const dateA = a.transactionDate ? new Date(a.transactionDate) : new Date(0);

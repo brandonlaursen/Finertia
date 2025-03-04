@@ -4,8 +4,8 @@
 
   display: flex;
   flex-direction: column;
-
   margin: 0px auto 0;
+  
   margin-bottom: 100px;
 }
 
@@ -29,89 +29,7 @@
   font-weight: 500;
 }
 
-/* Section */
 
-.TransferPage__transfer-link {
-  height: 80px;
-  /* width: 70%; */
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  gap: 4px;
-
-  border-bottom: 1px solid var(--light-background-hover);
-  cursor: pointer;
-}
-
-.TransferPage__transfer-link:hover {
-  box-shadow:
-    /* Top (or no shadow for top in this case) */ 0px 0px 0px 0px
-      var(--color-highlight),
-    /* Left */ -16px 0px 0px 0px var(--color-highlight),
-    /* Right */ 16px 0px 0px 0px var(--color-highlight);
-  background-color: var(--color-highlight);
-}
-
-.TransferPage__transfer__money-icon-container {
-  height: 42px;
-  width: 42px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background-color: rgb(0, 0, 0);
-
-  border-radius: 50%;
-}
-
-.TransfersPage__money-icon {
-  height: 24px;
-  width: 24px;
-
-  color: white;
-}
-
-.TransferPage__transfer-link__text-container {
-  display: flex;
-  flex-direction: column;
-
-  margin-left: 10px;
-  gap: 4px;
-}
-
-.TransferPage__transfer-link__title {
-  font-size: 16px;
-  font-weight: 600;
-}
-.TransfersPage__transfer-link__subtitle {
-  font-size: 13px;
-  font-weight: 500;
-
-  color: rgb(85, 85, 85);
-}
-
-.TransfersPage__arrow-container {
-  height: 50px;
-  width: 50px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  margin-left: auto;
-}
-
-.TransfersPage__arrow-icon {
-  height: 18px;
-  width: 18px;
-
-  color: var(--color-icon-grey);
-}
-
-/*  */
 
 .TransfersPage__transfer-container {
   margin-top: 30px;
@@ -159,13 +77,3 @@
 
   color: rgb(85, 85, 85);
 }
-
-
-
-
-
-
-
-
-
-
