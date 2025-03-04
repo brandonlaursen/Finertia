@@ -133,7 +133,7 @@ function AddToListModal({ stock, setNotifications, setNotificationMessage }) {
 
       <main className="AddToListModal__main">
         <header className="AddToListModal__header">
-          <span className="AddToListModal__title">Add to List</span>
+          <span className="AddToListModal__title">{`Add ${stock.symbol} to List`}</span>
           <button className="AddToListModal__close-button">
             <MdClose
               className="AddToListModal__close-button-icon"
