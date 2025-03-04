@@ -52,7 +52,7 @@ function EditListModal({ list, setNotifications, setNotificationMessage }) {
       }, 10000);
     });
 
-    setNotificationMessage([]); 
+    setNotificationMessage([]);
   }
 
   return (
@@ -63,12 +63,12 @@ function EditListModal({ list, setNotifications, setNotificationMessage }) {
         <div className="EditListModal__contents">
           <div className="EditListModal__header">
             <span className="EditListModal__title">Edit List</span>
-            <span className="EditListModal__close-button-span">
+            <button className="EditListModal__close-button-span">
               <MdClose
                 className="EditListModal__close-button"
                 onClick={closeModal}
               />
-            </span>
+            </button>
           </div>
         </div>
 
@@ -85,7 +85,7 @@ function EditListModal({ list, setNotifications, setNotificationMessage }) {
                 <div className="EditListModal__emoji-picker-wrapper">
                   <EmojiPicker
                     onEmojiClick={handleEmojiClick}
-                    style={{ width: "500px" }}
+                    // style={{ width: "500px" }}
                   />
                 </div>
               )}

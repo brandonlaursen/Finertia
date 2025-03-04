@@ -230,11 +230,13 @@ Close Button Icon
   --font-size-button: 12px;
   --font-size-subtext: 11px;
 
-
   /* ===== Colors ===== */
   /* Background Colors */
   --background-color-light: rgb(255, 255, 255);
   --background-color-dark: rgb(0, 0, 0);
+
+  /* For a modal */
+  --background-color-darkgrey: rgb(30,33,37);
 
   /* Text Colors */
   --text-color-light: rgb(0, 0, 0);
@@ -251,7 +253,10 @@ Close Button Icon
 
   /* Highlight Colors */
   --highlight-lightblue: rgb(245, 248, 250);
+  --highlight-darkgrey: rgb(48, 54, 58);
+
   --hover-lightgrey: rgb(237, 237, 237);
+  --hover-black: #1e2125;
 
   /* Button Colors */
   --button-orange: rgb(255, 118, 58);
@@ -270,7 +275,6 @@ Close Button Icon
   --theme-color-red: #dc3545;
   --theme-color-yellow: #f0ad4e;
   --theme-color-green: #28a745;
-
 
   /* Large Buttons */
   /* -webkit-font-smoothing: subpixel-antialiased; */

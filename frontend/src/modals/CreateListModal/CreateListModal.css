@@ -3,15 +3,16 @@
 /* Centers the modal on the page */
 .ChooseListType {
   position: fixed;
-  top: 375px;
-  right: 0;
-  left: 0;
+  top: 350px;
+  left: 50%;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
   z-index: 100;
+
+  color: var(--text-color-light);
 }
 
 /* Background overlay behind the modal */
@@ -29,15 +30,15 @@
 
 /* ChooseListType wrapper */
 .ChooseListType__wrapper {
+  position: absolute;
+
   height: 400px;
   width: 450px;
+
   display: flex;
   justify-content: center;
 
-  position: absolute;
-
-  background-color: white;
-
+  background-color: var(--background-color-light);
   border-radius: 4px;
 }
 
@@ -45,7 +46,8 @@
 .ChooseListType__container {
   display: flex;
   flex-direction: column;
-  padding: 10px 20px;
+
+  padding: 16px 24px;
 }
 
 /* ========== ChooseListType Header ========== */
@@ -55,14 +57,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+
+  margin-bottom: 12px;
 }
 
 /* ChooseListType title */
 .ChooseListType__title {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
-
 }
 
 /* Close button container */
@@ -72,12 +74,6 @@
 
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-
-  background: none;
-  border: none;
-  outline: none;
 }
 
 /* Hover effect for the close button */
@@ -88,8 +84,8 @@
 
 /* Close button icon */
 .ChooseListType__close-button-icon {
-  height: 30px;
-  width: 30px;
+  height: 32px;
+  width: 32px;
 }
 
 /* ========== Options Container ========== */
@@ -97,7 +93,7 @@
 /* Container for options (Watch List & Screener) */
 .ChooseListType__options {
   display: flex;
-  gap: 10px;
+  gap: 8px;
 }
 
 /* ========== Option Boxes ========== */
@@ -110,7 +106,7 @@
   display: flex;
   flex-direction: column;
 
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--border-color-light);
   border-radius: 4px;
 
   cursor: pointer;
@@ -123,9 +119,9 @@
 
   background-color: rgb(230, 255, 255);
 
+  border-bottom: solid 1px var(--border-color-light);
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-  border-bottom: solid 1px var(--border-color);
 }
 
 /* Watch List image */
@@ -157,13 +153,13 @@
 
 /* Option title (e.g., "Create Watch List", "Create Screener") */
 .ChooseListType__text__title {
-  font-weight: bold;
   font-size: 14px;
+  font-weight: bold;
 }
 
 /* Option description text */
 .ChooseListType__text__sub-text {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 500;
 }
 
@@ -175,32 +171,30 @@
   margin-top: 20px;
 
   font-weight: bold;
-  color: white;
-  background-color: black;
+  color: var(--background-color-light);
+  background-color: var(--background-color-dark);
 
-  border-radius: 20px;
-
-  cursor: pointer;
-  border: none;
+  font-size: 12px;
+  border-radius: 44px;
 }
 
 /* Hover effect for the back button */
 .ChooseListType__back-button:hover {
-  background-color: var(--dark-grey);
+  background-color: var(--hover-black);
 }
 
 /* second modal */
 .CreateList {
   position: fixed;
-  top: 245px;
-  right: 0;
-  left: 0;
+  top: 240px;
+  left: 50%;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
   z-index: 100;
+  color: var(--text-color-light);
 }
 
 .CreateList__overlay {
@@ -214,17 +208,17 @@
 }
 
 .CreateList__container {
-  height: 165px;
-  width: 420px;
+  height: 180px;
+  width: 450px;
 
   position: absolute;
 
   display: flex;
   flex-direction: column;
 
-  padding: 20px 20px;
+  padding: 16px 24px;
 
-  background-color: rgb(255, 255, 255);
+  background-color: var(--background-color-light);
 
   border-radius: 4px;
 }
@@ -234,11 +228,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 6px;
+
+  margin-bottom: 12px;
 }
 
 .CreateList__header__title {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
 }
 
@@ -248,12 +243,8 @@
 
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
 
-  background: none;
-  border: none;
-  outline: none;
+
 }
 
 .CreateList__close-button:hover {
@@ -262,10 +253,9 @@
 }
 
 .CreateList__close-button-icon {
-  height: 30px;
-  width: 30px;
+  height: 32px;
+  width: 32px;
 }
-/*  same as chooseListType */
 
 .CreateList__section__inputs {
   height: 50px;
@@ -286,20 +276,23 @@
   justify-content: center;
   align-items: center;
 
-  background-color: rgb(255, 255, 255);
+  background-color: var(--background-color-light);
 
-  border: solid 1px var(--border-color);
+  border: solid 1px var(--border-color-light);
+
   border-radius: 4px;
 }
 
-.CreateList__emoji-picker-wrapper{
+.CreateList__emoji-picker-wrapper {
   position: absolute;
-  top: 105px;
-  right: 200px;
+  top: 115px;
+  right: 220px;
 
-  background: white;
+  /* height: 400px; */
 
-  border-radius: 8px;
+  background: var(--background-color-light);
+
+  border-radius: 4px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   z-index: 1000;
 }
@@ -314,14 +307,14 @@
 
   font-size: 12px;
 
-  background-color: var(--color-highlight);
+  background-color: var(--highlight-lightblue);
 
   border-radius: 4px;
   border: none;
 }
 
 .CreateList__name-input:focus {
-  border: solid 1px var(--color-primary);
+  border: solid 1px var(--button-green);
 }
 
 .CreateList__section__buttons {
@@ -338,18 +331,18 @@
 
   padding: 0 20px;
 
-  font-size: 13px;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: bold;
 
-  border-radius: 16px;
+  border-radius: 44px;
   cursor: pointer;
+  -webkit-font-smoothing: subpixel-antialiased;
 }
 
 .CreateList__cancel-button {
-  color: var(--color-primary);
+  color: var( --button-green);
   background-color: white;
-
-  border: solid 1px var(--color-primary);
+  border: solid 1px var( --button-green);
 }
 
 .CreateList__cancel-button:hover {
@@ -357,12 +350,12 @@
 }
 
 .CreateList__create-button {
-  color: white;
-  background-color: var(--color-primary);
+  color: var(--background-color-light);
+  background-color: var(--button-green);
   min-width: 102px;
   border: none;
 }
 
 .CreateList__create-button:hover {
-  background-color: var(--color-primary-hover);
+  background-color: var(--button-green-hover);
 }
