@@ -1,6 +1,6 @@
 .HelpPage {
   height: 100%;
-  width: 900px;
+  width: 65vw;
 
   display: flex;
   flex-direction: column;
@@ -31,26 +31,23 @@
   vertical-align: middle;
   align-items: center;
 
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .HelpPage__info-icon {
   height: 20px;
   width: 20px;
 
-  margin-right: 3px;
+  margin-right: 4px;
 }
 
-.HelpPage__support-section {
-  height: 200px;
-}
 
 .HelpPage__support-section__title {
   height: 40px;
 
   margin-top: 20px;
 
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
 
   border-bottom: solid 1px var(--border-color);
@@ -71,7 +68,8 @@
   align-items: center;
   gap: 10px;
 
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: 500;
 
   border-bottom: solid 1px var(--border-color);
 }

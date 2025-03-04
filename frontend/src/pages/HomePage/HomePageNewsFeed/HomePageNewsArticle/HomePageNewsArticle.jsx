@@ -1,6 +1,6 @@
 import "./HomePageNewsArticle.css";
 
-function HomePageNewsArticle({ news }) {
+function HomePageNewsArticle({ article }) {
   function timeAgo(timestamp) {
     const now = Date.now() / 1000;
     const diff = now - timestamp;
@@ -21,25 +21,28 @@ function HomePageNewsArticle({ news }) {
   }
 
   return (
-    <a href={news.url && news.url} className="HomePageNewsArticle__anchor">
+    <a
+      href={article.url && article.url}
+      className="HomePageNewsArticle__anchor"
+    >
       <article className="HomePageNewsArticle">
         <section className="HomePageNewsArticle__main">
           <span className="HomePageNewsArticle__source">
-            {news.source && news.source}
+            {article.source && article.source}
             <time className="HomePageNewsArticle__time">
-              {timeAgo(news.datetime)}
+              {timeAgo(article.datetime)}
             </time>
           </span>
           <h2 className="HomePageNewsArticle__headline">
-            {news.headline && news.headline}
+            {article.headline && article.headline}
           </h2>
           <small className="HomePageNewsArticle__category">
-            {news.category && news.category}
+            {article.category && article.category}
           </small>
         </section>
 
         <figure className="HomePageNewsArticle__image">
-          <img src={news.image && news.image} />
+          <img src={article.image && article.image} />
         </figure>
       </article>
     </a>
