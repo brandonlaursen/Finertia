@@ -27,7 +27,10 @@ function HomePage() {
   return (
     <div className="HomePage">
       <main className="HomePage__main">
-        <HomePageOverview stockSummary={stockSummary} />
+        <HomePageOverview
+          stockData={stockSummary}
+          selectedTimeFrame={selectedTimeFrame}
+        />
         <StockChart
           stockData={stockSummary}
           selectedTimeFrame={selectedTimeFrame}

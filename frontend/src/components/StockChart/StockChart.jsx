@@ -4,23 +4,26 @@ import { useMemo } from "react";
 
 import ReactApexChart from "react-apexcharts";
 
-function convertTimestampToEST(timestamp) {
-  const date = new Date(timestamp);
 
-  const options1 = {
-    month: "long",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    timeZone: "America/New_York",
-  };
-
-  const dateTimeFormat = new Intl.DateTimeFormat("en-US", options1);
-
-  return dateTimeFormat.format(date);
-}
 
 function StockChart({ stockData, selectedTimeFrame }) {
+
+  function convertTimestampToEST(timestamp, selectedTimeFrame) {
+    const date = new Date(timestamp);
+    console.log(selectedTimeFrame)
+    const options1 = {
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      timeZone: "America/New_York",
+    };
+
+    const dateTimeFormat = new Intl.DateTimeFormat("en-US", options1);
+
+    return dateTimeFormat.format(date);
+  }
+  
   const {
     oneDayAggregates,
     oneWeekAggregates,
