@@ -32,7 +32,12 @@ function ListItem({
           }`}
         >
           <span className={emoji}>{list?.emoji}</span>
-          <span className={name}>{list?.name}</span>
+          <div className="ListItem__name-container">
+            <span className={name}>{list?.name}</span>
+            <span className="ListItem__item-count">
+              {list?.Stocks?.length || 0} items
+            </span>
+          </div>
         </header>
 
         {showActions && (

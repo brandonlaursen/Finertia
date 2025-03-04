@@ -6,7 +6,6 @@
 
   text-decoration: none;
   cursor: pointer;
-
 }
 
 /* Lists Side Bar Styling Only  */
@@ -21,13 +20,10 @@
 /* ========== List Item Container ========== */
 .ListItem__container {
   width: 100%;
-
   position: relative;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   gap: 10px;
   padding: 0 16px;
 }
@@ -36,6 +32,9 @@
 .ListItem__header {
   border-radius: 4px;
   padding: 4px;
+  display: flex;
+  align-items: center;
+
 }
 
 /* Hover effect for header */
@@ -48,28 +47,37 @@
 .ListItem__emoji {
   height: 35px;
   width: 27px;
-
   display: inline-flex;
   justify-content: center;
   align-items: center;
-
   margin-right: 10px;
-
   font-size: 13px;
-
   background-color: rgb(234, 243, 248);
-
   border-radius: 4px;
 }
 
 /* Stock/list name inside the list item */
 .ListItem__name {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-
+  display: block;
   font-size: 13px;
   font-weight: 500;
-
   color: black;
+  text-align: left;
+
+}
+
+.ListItem__name-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: left;
+  text-align: left;
+
+}
+
+.ListItem__item-count {
+  font-size: 11px;
+  color: var(--color-light-text);
+  font-weight: 400;
+  text-align: left;
 }
