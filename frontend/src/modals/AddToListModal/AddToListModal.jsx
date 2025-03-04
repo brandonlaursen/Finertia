@@ -182,6 +182,9 @@ function AddToListModal({ stock, setNotifications, setNotificationMessage }) {
 
           <div>
             <div className="AddToListModal__create-section">
+              {isVisible && (
+                <div className="AddToListModal__list-overlay active" />
+              )}
               <div
                 className={`AddToListModal__create-container
               `}
@@ -223,6 +226,7 @@ function AddToListModal({ stock, setNotifications, setNotificationMessage }) {
                           className="AddToListModal__create-form__button
                             AddToListModal__create-button"
                           onClick={handleCreateList}
+                          disabled={!listName.trim()}
                         >
                           {isLoadingCreate ? (
                             <span className="StockTransaction__spinner"></span>
@@ -251,7 +255,12 @@ function AddToListModal({ stock, setNotifications, setNotificationMessage }) {
               {lists &&
                 lists.slice(0, 10).map((list) => {
                   return (
-                    <div key={list.id} className="AddToListModal__list">
+                    <div
+                      key={list.id}
+                      className={`AddToListModal__list ${
+                        isVisible ? "disabled" : ""
+                      }`}
+                    >
                       <div className="AddToListModal__list-wrapper">
                         <input
                           type="checkbox"
@@ -259,6 +268,7 @@ function AddToListModal({ stock, setNotifications, setNotificationMessage }) {
                           checked={!!checkedItems[list.id]}
                           onChange={() => handleCheckboxChange(list.id)}
                           className={checkedItems[list.id] ? "checked" : ""}
+                          disabled={isVisible}
                         />
                         {checkedItems[list.id] && (
                           <IoIosCheckmark className="AddToListModal__checkbox-icon" />
@@ -286,7 +296,10 @@ function AddToListModal({ stock, setNotifications, setNotificationMessage }) {
                 AddToListModal__create-button
                 "
               onClick={handleSubmit}
-              disabled={!Object.keys(checkedItems).length}
+              disabled={
+                !Object.keys(checkedItems).length ||
+                (isVisible && !listName.trim())
+              }
             >
               {isLoading ? (
                 <span className="StockTransaction__spinner"></span>

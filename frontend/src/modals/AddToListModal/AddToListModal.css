@@ -78,6 +78,35 @@
   margin-bottom: 10px;
   overflow: auto;
   height: 330px;
+  position: relative;
+}
+
+.AddToListModal__list-overlay {
+  position: absolute;
+  top: 100px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.AddToListModal__list-overlay.active {
+  pointer-events: auto;
+}
+
+.AddToListModal__list {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  /* padding-left: 36px; */
+}
+
+.AddToListModal__list.disabled {
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 /* Create New List Button */
@@ -89,6 +118,8 @@
   width: 100%;
   height: 80px;
   cursor: pointer;
+  z-index: 20;
+  /* padding-left: 36px; */
 }
 
 .AddToListModal__create-list-toggle,
@@ -110,6 +141,7 @@
   z-index: 20;
   margin-top: 8px;
   animation: dropdown 0.3s ease-out;
+  background-color: white;
 }
 
 .AddToListModal__create-form.exit {
@@ -247,11 +279,6 @@
 }
 
 /* ========== List Checkbox Section ========== */
-.AddToListModal__list {
-  display: flex;
-  align-items: center;
-}
-
 .AddToListModal__list-wrapper {
   position: relative;
   display: flex;
@@ -327,8 +354,8 @@ input.checked {
 }
 
 .AddToListModal__item__container {
-  /* background-color: aqua; */
   padding-bottom: 4px;
+  padding-left: 0;
 }
 /* ========== List Item Icons ========== */
 .AddToListModal__item__emoji {
@@ -345,7 +372,6 @@ input.checked {
 
 /* ========== List Item Title ========== */
 .AddToListModal__item__name {
-
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -363,4 +389,8 @@ input.checked {
 
 .AddToListModal__create-form-container {
   width: 100%;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  position: relative;
+  z-index: 20;
 }

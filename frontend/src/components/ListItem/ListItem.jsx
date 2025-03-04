@@ -1,4 +1,6 @@
 import "./ListItem.css";
+import { MdDelete } from "react-icons/md";
+import { FiEdit2 } from "react-icons/fi";
 
 import ListItemActions from "./ListItemActions";
 
@@ -25,7 +27,7 @@ function ListItem({
       onClick={() => navigate(`/lists/${list.id}`)}
       className={`ListItem ${className}`}
     >
-      <div className={container}>
+      <div className={`ListItem__container ${container}`}>
         <header
           className={`ListItem__header ${
             showHover && `ListItem__header-hover`
@@ -35,7 +37,7 @@ function ListItem({
           <div className="ListItem__name-container">
             <span className={name}>{list?.name}</span>
             <span className="ListItem__item-count">
-              {list?.Stocks?.length || 0} items
+              {list?.stockIds?.length || 0} {list?.stockIds?.length === 1 ? "item" : "items"}
             </span>
           </div>
         </header>
