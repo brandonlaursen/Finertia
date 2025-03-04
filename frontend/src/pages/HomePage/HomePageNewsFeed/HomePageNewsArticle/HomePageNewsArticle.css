@@ -25,7 +25,7 @@
 }
 
 .HomePageNewsArticle__source {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: bold;
 }
 
@@ -39,13 +39,13 @@
 }
 
 .HomePageNewsArticle__headline {
-  font-size: clamp(12px, 1.5vw, 14px);
+  font-size: clamp(12px, 1.5vw, 13px);
 
   font-weight: var(--font-weight-normal);
 }
 
 .HomePageNewsArticle__category {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: bold;
 }
 

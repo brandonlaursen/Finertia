@@ -5,7 +5,7 @@
 
 /* Toggle button for opening/closing the dropdown */
 .BuyingPowerDropDown__toggle {
-  height: 75px;
+  height: 65px;
   display: flex;
   justify-content: space-between;
   align-items: center;
