@@ -22,7 +22,7 @@ function StockOverview({ stock }) {
             regular_trading_change < 0 ? "negative" : regular_trading_change > 0
           }`}
         >
-          ${regular_trading_change}
+          {regular_trading_change < 0 ? "" : "+"}${regular_trading_change}
           <span
             className={`StockOverview__change ${
               regular_trading_change_percent < 0
@@ -30,7 +30,7 @@ function StockOverview({ stock }) {
                 : regular_trading_change_percent > 0
             }`}
           >
-            {` (${regular_trading_change_percent?.toFixed(2)}%)`}
+            {` (${regular_trading_change_percent < 0 ? "" : "+"}${regular_trading_change_percent?.toFixed(2)}%)`}
           </span>
         </span>
         <span className="StockOverview__day">Today</span>

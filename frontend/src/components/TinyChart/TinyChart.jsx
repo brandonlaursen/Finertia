@@ -4,8 +4,7 @@ import ReactApexChart from "react-apexcharts";
 import { useState } from "react";
 
 function TinyChart({ o, h, c }) {
-
-  const mediumValue = (o + h + c) / 3
+  const mediumValue = (o + h + c) / 3;
 
   const data = [
     { x: 1, y: o },
@@ -36,9 +35,9 @@ function TinyChart({ o, h, c }) {
       yaxis: [
         {
           y: mediumValue,
-          borderColor: "grey",
-          borderWidth: 0.5,
-          strokeDashArray: "1, 1",
+          borderColor: "var(--border-color)",
+          borderWidth: 1,
+          strokeDashArray: "1, 15",
         },
       ],
     },

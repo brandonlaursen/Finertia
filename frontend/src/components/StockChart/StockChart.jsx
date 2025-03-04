@@ -139,7 +139,7 @@ function StockChart({ stockData, selectedTimeFrame }) {
         crosshairs: {
           show: true,
           position: "back",
-          stroke: { color: "#b6b6b6", width: 1, dashArray: 0 },
+          stroke: { color: "var(--border-color)", width: 1, dashArray: 0 },
         },
         tooltip: { enabled: false },
       },
@@ -147,7 +147,7 @@ function StockChart({ stockData, selectedTimeFrame }) {
         yaxis: [
           {
             y: middleValue,
-            borderColor: "grey",
+            borderColor: "var(--border-color)",
             borderWidth: 1,
             strokeDashArray: "1, 15",
           },

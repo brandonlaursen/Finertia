@@ -67,6 +67,19 @@
 }
 
 
+/* ========== Loading Spinner ========== */
+
+/* Stock Page Loading Spinner */
+.StockPage__loading-spinner{
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top:100px;
+  bottom:0;
+  left:0;
+  right:0;
+}
+
 
 
 /* Extra Large Screens (Desktops & TVs) */

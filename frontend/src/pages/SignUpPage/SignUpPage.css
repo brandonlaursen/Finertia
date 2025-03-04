@@ -105,15 +105,11 @@
 }
 
 .SignUpPage__form-input {
-  height: 55px;
   width: 100%;
-  padding-left: 10px;
-  font-size: var(--font-base);
-  background: transparent;
-  color: var(--color-white);
-  border: 1px solid var(--border-color-2);
+  padding: 12px;
+  border: 1px solid var(--border-color);
   margin-bottom: 20px;
-  outline:none;
+  outline: none;
 }
 
 .SignUpPage__form__section-two {
@@ -204,7 +200,6 @@ input:focus {
   outline: none;
 }
 
-
 @media screen and (max-width: 770px) {
   .SignUpPage {
     width: 100%;
@@ -266,8 +261,7 @@ input:focus {
     font-size: 14px;
   }
 
-  .SignUpPage__form button{
+  .SignUpPage__form button {
     margin-top: 8px;
   }
-
 }
