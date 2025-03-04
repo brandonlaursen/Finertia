@@ -16,6 +16,14 @@
   cursor: pointer;
 }
 
+.BuyingPowerDropDown__toggle:hover {
+  background-color: var(--color-highlight);
+  box-shadow:
+  /* Top */ 0px 0px 0px 0px var(--color-highlight),
+    /* Left */ -24px 0px 0px 0px var(--color-highlight),
+    /* Right */ 24px 0px 0px 0px var(--color-highlight);
+}
+
 /* Container for displaying balance information */
 .BuyingPowerDropDown__balance {
   height: 100%;
@@ -84,7 +92,13 @@
   cursor: pointer;
 }
 
-/* Hover state for the button */
-.BuyingPowerDropDown__button:hover {
-  background-color: var(--dark-grey);
+.BuyingPowerDropDown__arrow-icon {
+  font-size: 16px;
+
+  transition: transform 0.3s ease;
+}
+
+/* Rotate arrow when list is open */
+.BuyingPowerDropDown__arrow-icon.open {
+  transform: rotate(180deg);
 }

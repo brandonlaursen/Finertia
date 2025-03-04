@@ -1,5 +1,4 @@
 import "./BuyingPowerDropDown.css";
-import { FaAngleUp } from "react-icons/fa6";
 import { FaAngleDown } from "react-icons/fa6";
 
 import { useState } from "react";
@@ -34,7 +33,11 @@ function BuyingPowerDropDown({
         <span>Buying Power</span>
         <span className="BuyingPowerDropDown__balance">
           ${balance.toFixed(2)}
-          {isDropDownVisible ? <FaAngleUp /> : <FaAngleDown />}
+          <FaAngleDown
+            className={`BuyingPowerDropDown__arrow-icon ${
+              isDropDownVisible && "open"
+            }`}
+          />
         </span>
       </div>
 
