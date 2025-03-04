@@ -11,18 +11,19 @@ body {
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
 
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  -webkit-text-size-adjust: 100%;
-  -moz-text-size-adjust: 100%;
-  text-size-adjust: 100%;
+  /* -webkit-font-smoothing: antialiased; */
+  /* -moz-osx-font-smoothing: grayscale; */
+  /* text-rendering: optimizeLegibility; */
+  /* -webkit-text-size-adjust: 100%; */
+  /* -moz-text-size-adjust: 100%; */
+  /* text-size-adjust: 100%; */
 
   font-size: 100%;
   scroll-behavior: smooth;
 }
 
-h1, h2{
+h1,
+h2 {
   margin: 0;
 }
 
@@ -45,7 +46,83 @@ button {
   background: none;
   border: none;
   outline: none;
+  -webkit-font-smoothing: subpixel-antialiased;
 }
+
+/*
+
+Overlay
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+
+Emojis
+
+
+Modals
+  position: fixed;
+  top: 0;
+   bottom: 15%;
+  left: 0;
+  right: 0;
+
+  height: 468px;
+  width: 364px;
+
+  display: flex;
+  flex-direction: column;
+  padding: 16px 24px;
+
+  border-radius: 4px;
+
+Modal Header
+  margin-bottom: 16px;
+
+Modal title
+  font-size: 16px;
+  font-weight: 600;
+
+Modal text
+  font-size: 14px;
+  font-weight: 500;
+
+Modal subtext
+
+
+
+Large Button
+  padding: 0 20px;
+  height: 38px;
+  width: 100%;
+  font-size: 13px;
+  font-weight: bold;
+  border-radius: 44px;
+
+color:   background-color:  rgb(0, 200, 5);
+  ---button-green:rgb(0, 200, 5);
+  var(--button-green);
+color:hover background-color: rgb(0, 180, 5, 1);
+
+Close Button container
+  height: 34px;
+  width: 34px;
+
+  display: flex;
+  align-items: center;
+
+Close Button container hover
+  background-color: var(--light-background-hover);
+  border-radius: 4px;
+
+Close Button Icon
+  height: 32px;
+  width: 32px;
+}
+
+*/
 
 /* var(); */
 :root {
@@ -77,23 +154,20 @@ button {
   --color-secondary: #ca63fc;
   --color-tertiary: rgb(22, 7, 40);
 
-
   /*  Icon Colors */
   --percent-change-positive: rgb(44, 202, 4);
   --percent-change-negative: rgb(255, 29, 4);
   /* icons percent change */
   --percent-change-orange: rgb(248, 124, 14);
 
-
-    /* Border Colors */
-    /* Light */
-    --border-color: rgb(227, 233, 237);
-    /* Dark */
-    --border-color-2: rgb(48, 54, 58);
+  /* Border Colors */
+  /* Light */
+  --border-color: rgb(227, 233, 237);
+  /* Dark */
+  --border-color-2: rgb(48, 54, 58);
 
   /* dark green button-hover rgb(2,180,5)*/
   /* dark green button rgb(0, 200, 5);*/
-
 
   /* /light button hover */
   --color-accent: #e0e0e0;
@@ -136,7 +210,53 @@ button {
 
   --button-height: 40px;
 
+  /* Button Colors */
+  --button-green: rgb(0, 200, 5);
+  --button-green-hover: rgb(0, 180, 5, 1);
 
+  /* Large Buttons */
+  /* -webkit-font-smoothing: subpixel-antialiased; */
+  --button-large-height: 40px;
+  --button-large-width: 100%;
+  --button-large-font-size: 12px;
+  --button-large-font-weight: bold;
+  --button-large-border-radius: 44px;
+
+  /* Small Buttons */
+  --button-small-padding: 0 20px;
+  --button-small-height: 32px;
+  --button-small-width: 100%;
+  --button-small-font-size: 12px;
+  --button-small-font-weight: bold;
+  --button-small-border-radius: 44px;
+
+  /* Close Button Container */
+  --close-button-height: 34px;
+  --close-button-width: 34px;
+  --close-button-border-radius: 4px;
+  --close-button-hover: rgb(237, 237, 237);
+  --close-button-border-radius: 4px;
+
+  /* Close Button Icon */
+  --close-button-icon-height: 32px;
+  --close-button-icon-width: 32px;
+
+  /* Modal Positioning */
+  --modal-position-top: 0;
+  --modal-position-bottom: 15%;
+  --modal-position-left: 0;
+  --modal-position-right: 0;
+
+  /* Modal Container */
+  --modal-container-height: 468px;
+  --modal-container-width: 364px;
+  --modal-container-padding: 16px 24px;
+
+  /* Modal Font Sizes */
+  --modal-font-size-title: 16px;
+  --modal-font-size-text: 14px;
+  --modal-font-weight-title: 600;
+  --modal-font-weight-text: 500;
 }
 
 .dark-mode {

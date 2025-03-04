@@ -1,0 +1,207 @@
+/* Create New List Button */
+.AddToListModal__create-container {
+  position: relative;
+  z-index: 20;
+
+  width: 100%;
+  height: 80px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  margin-bottom: 8px;
+
+  cursor: pointer;
+}
+
+.AddToListModal__create-form-container {
+  position: relative;
+
+  width: 100%;
+
+  margin-bottom: 20px;
+  margin-top: 20px;
+
+  z-index: 20;
+}
+
+.AddToListModal__create-form {
+  height: 100px;
+  width: 100%;
+  z-index: 20;
+
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 8px;
+
+  background-color: white;
+
+  animation: dropdown 0.3s ease-out;
+}
+
+.AddToListModal__create-form.exit {
+  animation: slideUp 0.3s ease-out forwards;
+}
+
+@keyframes dropdown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+.AddToListModal__create-form__input-section {
+  position: relative;
+
+  height: 60px;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Emoji Picker Button */
+.AddToListModal__create-form__emoji-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 42px;
+  width: 46px;
+
+  background-color: rgb(255, 255, 255);
+  
+  border: solid 1px var(--border-color);
+  border-radius: 4px;
+  cursor: pointer;
+
+  font-size: 20px;
+}
+
+/* List Name Input */
+.AddToListModal__create-form__input {
+  box-sizing: border-box;
+  padding: 2px 15px;
+  width: 90%;
+  height: 42px;
+  margin-right: 1px;
+  font-size: 13px;
+
+  background-color: var(--color-highlight);
+
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  border: none;
+}
+
+.AddToListModal__create-form__input:focus {
+  border: solid 1px var(--color-primary);
+}
+
+/* Form Buttons */
+.AddToListModal__create-form__buttons {
+  display: flex;
+  justify-content: end;
+  gap: 8px;
+  margin-right: 1px;
+}
+
+.AddToListModal__create-form__button {
+  padding: 0 20px;
+  height: 32px;
+
+  font-size: 12px;
+  font-weight: bold;
+
+  border-radius: 44px;
+
+  cursor: pointer;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+/* Cancel and Create Buttons */
+.AddToListModal__cancel-button {
+  color: var(--color-primary);
+  background-color: white;
+  border: solid 1px var(--color-primary);
+}
+
+.AddToListModal__cancel-button:hover {
+  background-color: var(--button-hover-light-green);
+}
+
+.AddToListModal__create-button {
+  color: white;
+  background-color: var(--color-primary);
+  min-width: 102px;
+  border: none;
+}
+
+.AddToListModal__create-button:hover {
+  background-color: var(--color-primary-hover);
+}
+
+/* ========= Create New List Toggle ========= */
+
+/* Create New List Toggle Container */
+.AddToListModal__create-list-toggle-container {
+  display: flex;
+  /* margin-bottom: 8px; */
+}
+
+.AddToListModal__create-list-toggle {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  margin-left: 36px;
+  height: 60px;
+  width: 48px;
+  font-size: 24px;
+  background-color: rgb(254, 237, 230);
+  border-radius: 4px;
+}
+
+.AddToListModal__create-list-toggle__title {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: black;
+}
+
+/* Create New List Toggle */
+.AddToListModal__create-list-toggle,
+.AddToListModal__create-list-toggle__title {
+  transition: transform 0.3s ease-out;
+}
+
+/* Create New List Toggle exit */
+.AddToListModal__create-form.exit ~ .AddToListModal__create-list-toggle,
+.AddToListModal__create-form.exit ~ .AddToListModal__create-list-toggle__title {
+  transform: translateY(-100%);
+}
+
+/* Create New List Toggle Icon */
+.AddToListModal__create-list-toggle__icon {
+  color: rgb(255, 118, 58);
+}
