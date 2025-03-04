@@ -1,8 +1,8 @@
 .DeleteListModal {
   position: fixed;
-  top: 255px;
-  right: 0;
-  left: 0;
+  top: 230px;
+  left: 50%;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,8 +21,8 @@
 .DeleteListModal__container {
   position: absolute;
 
-  height: 165px;
-  width: 430px;
+  height: 160px;
+  width: 400px;
   word-wrap: break-word;
 
   background-color: rgb(255, 255, 255);
@@ -31,34 +31,32 @@
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 0px 20px;
+
+  padding: 16px 24px;
 }
 
 .DeleteListModal__section {
   display: flex;
-  padding-bottom: 10px;
-  font-size: 13px;
+  /* padding-bottom: 10px; */
+  font-size: 12px;
   font-weight: 500;
 
-  height: 40px;
+  /* height: 40px; */
+  /* margin-bottom: 12px; */
 }
 
 .DeleteListModal__header {
   display: flex;
-  width: 100%;
-
-  align-items: center;
   justify-content: space-between;
+
 }
 
 .DeleteListModal__title {
   font-size: 16px;
   font-weight: bold;
   word-wrap: break-word;
+  margin-bottom: 12px;
 }
-
-
 
 .DeleteListModal__close-button {
   display: flex;
@@ -78,27 +76,22 @@
 }
 
 .DeleteListModal__close-button-icon {
-  height: 24px;
-  width: 24px;
+  height: 34px;
+  width: 34px;
 }
-
-
-
-
 
 .DeleteListModal__section__buttons {
   display: flex;
   justify-content: center;
   gap: 8px;
-  /* margin-right: 28px; */
-  /* padding-left: 16px; */
-  /* padding-right: 26px; */
+
+  margin-top: 24px;
 }
 
 .DeleteListModal__section__button {
   height: 40px;
   width: 100%;
-  border-radius: 32px;
+  border-radius: 44px;
   padding: 0 20px;
   font-size: 12px;
   font-weight: bold;
@@ -106,15 +99,14 @@
 }
 
 .DeleteListModal__delete-button {
-  background-color: rgb(255, 80, 1);
+  background-color: var(--button-orange);
   color: white;
   border: none;
 }
 
 .DeleteListModal__delete-button:hover {
-  background-color: rgb(214, 68, 1);
+  background-color: var(--button-orange-hover);
 }
-
 
 .StockTransaction__spinner {
   width: 16px;

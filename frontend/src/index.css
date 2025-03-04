@@ -259,7 +259,8 @@ Close Button Icon
   --hover-black: #1e2125;
 
   /* Button Colors */
-  --button-orange: rgb(255, 118, 58);
+  --button-orange: rgb(255, 80, 1);
+  --button-orange-hover: rgb(214, 68, 1);
   --button-light-orange: rgb(252, 222, 208);
 
   --button-green: rgb(0, 200, 5);
