@@ -9,12 +9,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
 import HomePageNewsArticle from "./HomePageNewsArticle";
-import LoadingSpinner from "../../../components/LoadingSpinner";
 
 import {
   fetchStockNews,
   fetchStockNewsByCategory,
 } from "../../../../store/stocks";
+
+import Skeleton from "../../../components/Skeleton";
 
 function HomePageNewsFeed() {
   const dispatch = useDispatch();
@@ -33,7 +34,11 @@ function HomePageNewsFeed() {
   };
 
   if (!stockNews) {
-    return <LoadingSpinner />;
+    return (
+      <div className="HomePage__skeleton-news">
+        <Skeleton height="400px" />
+      </div>
+    );
   }
 
   // Calculate pagination

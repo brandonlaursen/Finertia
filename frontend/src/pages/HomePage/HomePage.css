@@ -24,6 +24,35 @@
   transition: width 0.3s smooth;
 }
 
+.HomePage__skeleton-overview {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.HomePage__skeleton-stats {
+  display: flex;
+  gap: 20px;
+}
+
+.HomePage__skeleton-chart {
+  margin-bottom: 32px;
+}
+
+.HomePage__skeleton-timeframe {
+  margin-bottom: 32px;
+}
+
+.HomePage__skeleton-buying-power {
+  margin-bottom: 32px;
+}
+
+.HomePage__skeleton-news {
+  margin-bottom: 32px;
+  margin-top: 32px;
+  border-radius: 4px;
+}
 
 /* ========== Media Queries ========== */
 
