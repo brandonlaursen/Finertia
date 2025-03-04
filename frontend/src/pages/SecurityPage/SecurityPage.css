@@ -1,6 +1,6 @@
 .SecurityPage {
   height: 100%;
-  width: 90%;
+  width: 65vw;
 
   display: flex;
   flex-direction: column;
@@ -54,23 +54,6 @@
   margin-right: 20px;
 }
 
-.border-bottom {
-  border-bottom: 1px solid var(--border-color);
-}
-
-.border-top-bottom {
-  border-top: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
-}
-
-.SecurityPage_border-link {
-  border-bottom: 1px solid var(--border-color);
-}
-
-.SecurityPage_border {
-  border-top: 1px solid var(--border-color);
-}
-
 .SecurityPage__link:hover {
   background-color: var(--light-background-hover);
   background-color: var(--color-highlight);
@@ -81,9 +64,16 @@
   cursor: pointer;
 }
 
-.SecurityPage_border-link:hover {
-  background-color: white;
+
+
+.SecurityPage_border {
+  border-top: 1px solid var(--border-color);
 }
+
+.border-bottom {
+  border-bottom: 1px solid var(--border-color);
+}
+
 
 .SecurityPage__logout {
   align-self: end;
@@ -101,121 +91,4 @@
 
 .SecurityPage__logout-span:hover {
   color: rgb(7, 222, 150);
-}
-
-.SecurityPage__link-password {
-  /* */
-}
-
-.SecurityPage_border-password {
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-}
-
-.SecurityPage__editContainer {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-
-  width: 100%;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
-
-  border-radius: 4px;
-}
-
-.SecurityPage_input-container {
-  display: flex;
-
-  margin-bottom: 8px;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.SecurityPage_input-label {
-  margin-right: 10px;
-  font-weight: bold;
-  text-align: right;
-  font-size: 13px;
-}
-
-.SecurityPage_input-field {
-  width: 300px;
-  padding: 8px;
-  font-size: 13px;
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-}
-
-.SecurityPage_input-field:focus {
-  border: 1px solid #38e850;
-}
-
-.SecurityPage_button-container {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-top: 8px;
-}
-
-.SecurityPage_cancel-button,
-.SecurityPage_save-button {
-  padding: 10px 20px;
-  font-size: 12px;
-  font-weight: bold;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  width: 120px;
-}
-
-.SecurityPage_cancel-button {
-  background-color: #ffffff;
-  border: 1px solid #38e850;
-  color: #38e850;
-  cursor: pointer;
-}
-
-.SecurityPage_save-button {
-  background-color: #38e850;
-  color: white;
-}
-
-.SecurityPage_cancel-button:hover {
-  background-color: #ace8b2;
-}
-
-.SecurityPage_save-button:hover {
-  background-color: rgb(140, 215, 144);
-}
-
-.SecurityPage__hide-icon {
-  position: absolute;
-  right: 28px;
-
-  font-size: 16px;
-
-  background-color: transparent;
-  color: rgb(0, 0, 0);
-
-  cursor: pointer;
-}
-
-.SecurityPage_section {
-  display: flex;
-  flex-direction: column;
-}
-
-.SecurityPage-errors {
-  text-align: start;
-  width: 48%;
-  align-self: flex-end;
-  margin-bottom: 8px;
-  color: rgb(236, 125, 46);
-}
-
-.error-border {
-  border: 1px solid rgb(236, 125, 46);
 }

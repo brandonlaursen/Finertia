@@ -11,75 +11,73 @@ function AccountLayout() {
 
   return (
     <div className="AccountLayout">
-      <div className="AccountLayout__body">
-        <div className="AccountLayout__main">
-          <span className="AccountLayout__username">{`${sessionUser.firstName} ${sessionUser.lastName}`}</span>
-          <div className="AccountLayout__section">
-            <Link
-              to="/account/investing"
-              className={`
+      <div className="AccountLayout__main">
+        <span className="AccountLayout__username">{`${sessionUser.firstName} ${sessionUser.lastName}`}</span>
+        <div className="AccountLayout__section">
+          <Link
+            to="/account/investing"
+            className={`
                   AccountLayout__select
                 ${
                   location.pathname === "/account/investing" &&
                   "AccountLayout__selected"
                 }
                 `}
-            >
-              Investing
-            </Link>
+          >
+            Investing
+          </Link>
 
-            <Link
-              to="/account/transfers"
-              className={`
+          <Link
+            to="/account/transfers"
+            className={`
                   AccountLayout__select
                 ${
                   location.pathname === "/account/transfers" &&
                   "AccountLayout__selected"
                 }
                 `}
-            >
-              Transfers
-            </Link>
+          >
+            Transfers
+          </Link>
 
-            <Link
-              to="/account/history"
-              className={`
+          <Link
+            to="/account/history"
+            className={`
                   AccountLayout__select
                 ${
                   location.pathname === "/account/history" &&
                   "AccountLayout__selected"
                 }
                 `}
-            >
-              History
-            </Link>
+          >
+            History
+          </Link>
 
-            <Link
-              to="/account/settings/security"
-              className={`
+          <Link
+            to="/account/settings/security"
+            className={`
                   AccountLayout__select
                 ${
                   location.pathname.includes("settings") &&
                   "AccountLayout__selected"
                 }
                 `}
-            >
-              Settings
-            </Link>
+          >
+            Settings
+          </Link>
 
-            <Link
-              to="/account/help"
-              className={`
+          <Link
+            to="/account/help"
+            className={`
                   AccountLayout__select
                 ${
                   location.pathname === "/account/help" &&
                   "AccountLayout__selected"
                 }
                 `}
-            >
-              Help
-            </Link>
-          </div>
+          >
+            Help
+          </Link>
         </div>
       </div>
 

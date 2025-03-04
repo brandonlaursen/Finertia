@@ -7,15 +7,15 @@ function SettingsLayout() {
 
   return (
     <div className="SettingsLayout">
-      <div className="SettingsLayout__aside">
-        <div className="SettingsLayout__aside__section">
-          <span className="SettingsLayout__aside__title">
+      <aside className="SettingsLayout__aside">
+        <section className="SettingsLayout__section">
+          <span className="SettingsLayout__title">
             Account details and options
           </span>
           <Link
             to="/account/settings/security"
             className={`
-       SettingsLayout__aside__subtitle
+       SettingsLayout__subtitle
         ${
           location.pathname === "/account/settings/security" &&
           "settings-highlight-security"
@@ -23,13 +23,13 @@ function SettingsLayout() {
           >
             Security and privacy
           </Link>
-        </div>
-        <div className="SettingsLayout__aside__section">
-          <span className="SettingsLayout__aside__title">App preferences</span>
+        </section>
+        <section className="SettingsLayout__section">
+          <span className="SettingsLayout__title">App preferences</span>
           <Link
             to="/account/settings/appearance"
             className={`
-        SettingsLayout__aside__subtitle
+        SettingsLayout__subtitle
         ${
           location.pathname === "/account/settings/appearance" &&
           "settings-highlight-appearance"
@@ -37,8 +37,8 @@ function SettingsLayout() {
           >
             App appearance
           </Link>
-        </div>
-      </div>
+        </section>
+      </aside>
 
       <Outlet />
     </div>
