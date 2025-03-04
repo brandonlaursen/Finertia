@@ -11,7 +11,7 @@
 
 /* Stock name and price styling */
 .StockOverview__name{
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 700;
   margin: 0;
 
@@ -44,6 +44,7 @@
 
 /* Market hours styling */
 .StockOverview__market-hours {
+  min-height: 16px;
   margin-top: 4px;
 
   font-size: 12px;
@@ -67,5 +68,3 @@
 .positive {
   color: var(--percent-change-positive);
 }
-
-

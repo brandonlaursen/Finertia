@@ -27,11 +27,15 @@
 /* Portfolio amount change styling */
 .HomePageOverview__portfolio-amount-change {
   display: flex;
-  gap: 4px;
+  /* gap: 4px; */
   align-items: center;
   text-align: center;
   font-weight: var(--font-weight-bold);
-  font-size: 13px;
+  font-size: 12px;
+}
+
+.HomePageOverview__portfolio-amount-change span {
+  margin-right: 4px;
 }
 
 /* Modifier: negative portfolio amount change */

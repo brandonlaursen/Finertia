@@ -72,7 +72,10 @@ function StockPage() {
   return (
     <div className="StockPage">
       <main className="StockPage__main">
-        <StockOverview stock={stock} />
+        <StockOverview
+        stock={stock}
+        selectedTimeFrame={selectedTimeFrame}
+        />
         <StockChart selectedTimeFrame={selectedTimeFrame} stockData={stock} />
         <SelectTimeFrame
           selectedTimeFrame={selectedTimeFrame}

@@ -5,7 +5,6 @@ import { GoTriangleUp } from "react-icons/go";
 import { useMemo } from "react";
 
 function HomePageOverview({ stockData, selectedTimeFrame }) {
-
   const {
     oneDayAggregates,
     oneWeekAggregates,
@@ -35,7 +34,6 @@ function HomePageOverview({ stockData, selectedTimeFrame }) {
     oneYearAggregates,
     fiveYearsAggregates,
   ]);
-
 
   const { portfolioPercentChange, portfolioAmountChange } = useMemo(() => {
     if (!data || data.length < 2) {
@@ -77,6 +75,11 @@ function HomePageOverview({ stockData, selectedTimeFrame }) {
                 : ""
             }`}
           >
+            {portfolioAmountChange < 0
+              ? "-"
+              : portfolioAmountChange > 0
+              ? "+"
+              : ""}
             ${portfolioAmountChange}
           </span>
 
@@ -89,7 +92,13 @@ function HomePageOverview({ stockData, selectedTimeFrame }) {
                 : ""
             }`}
           >
-            {`(${portfolioPercentChange}%) `}
+            {`(${
+              portfolioPercentChange < 0
+                ? "-"
+                : portfolioPercentChange > 0
+                ? "+"
+                : ""
+            }${portfolioPercentChange}%) `}
           </span>
 
           <span className="HomePageOverview__subtext">

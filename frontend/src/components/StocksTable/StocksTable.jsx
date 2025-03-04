@@ -12,7 +12,6 @@ function StocksTable({
   setNotifications,
   setNotificationMessage,
   listId = null,
-  // isLoading = false,
 }) {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -128,6 +127,7 @@ function StocksTable({
                   setNotifications={setNotifications}
                   setNotificationMessage={setNotificationMessage}
                   listId={listId}
+                  listStocks={listStocks}
                 />
               );
             })}
