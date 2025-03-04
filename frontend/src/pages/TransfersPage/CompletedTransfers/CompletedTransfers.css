@@ -47,3 +47,38 @@
 .CompletedTransfers__amount {
   font-weight: bold;
 }
+
+.CompletedTransfers__pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding: 1rem;
+}
+
+.CompletedTransfers__pagination-button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  background-color: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  font-weight: 600;
+}
+
+.CompletedTransfers__pagination-button:hover:not(:disabled) {
+  background-color: #f5f5f5;
+}
+
+.CompletedTransfers__pagination-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.CompletedTransfers__pagination-info {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #666;
+}

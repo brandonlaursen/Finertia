@@ -10,7 +10,6 @@ import TransferModal from "../../modals/TransferModal";
 
 import { fetchAccountTransactions } from "../../../store/transactions";
 
-
 import CompletedTransfers from "./CompletedTransfers";
 
 import { useModal } from "../../context/Modal";
@@ -23,8 +22,6 @@ function TransfersPage() {
   const transactions = useSelector(
     (state) => state.transactions.accountTransactions
   );
-
-
 
   useEffect(() => {
     dispatch(fetchAccountTransactions());
@@ -56,7 +53,9 @@ function TransfersPage() {
             <FaMoneyBill className="TransfersPage__money-icon" />
           </div>
           <div className="TransferPage__transfer-link__text-container">
-            <span className="TransferPage__transfer-link__title">Transfer Money</span>
+            <span className="TransferPage__transfer-link__title">
+              Transfer Money
+            </span>
             <span className="TransfersPage__transfer-link__subtitle">
               Transfer Money between your bank and your Finertia Account
             </span>
@@ -69,9 +68,7 @@ function TransfersPage() {
 
       <section className="TransfersPage__section">
         <div className="TransfersPage__transfer-container">
-          <span className="TransfersPage__title">
-            Available to withdraw
-          </span>
+          <span className="TransfersPage__title">Available to withdraw</span>
           <span className="TransfersPage__subtext">
             Exclusions may apply, depending on your account type and activity.
           </span>
