@@ -253,7 +253,7 @@ Close Button Icon
 
   /* Highlight Colors */
   --highlight-lightblue: rgb(245, 248, 250);
-  --highlight-darkgrey: rgb(48, 54, 58);
+  --highlight-darkgrey: #444444;
 
   --hover-lightgrey: rgb(237, 237, 237);
   --hover-black: #1e2125;

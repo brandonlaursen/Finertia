@@ -12,19 +12,18 @@
 }
 
 .NotificationPopUp {
-
   background-color: #333;
   color: #fff;
+
   padding: 12px 24px;
   border-radius: 8px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); */
 
   height: 50px;
   width: 800px;
   display: flex;
   align-items: center;
 
-  border: 1px solid rgb(219, 219, 219);
   font-size: 14px;
   font-weight: 600;
   justify-content: space-between;
@@ -39,10 +38,13 @@
 
   gap: 8px;
   align-items: center;
+
+  height: 34px;
+  width: 34px;
 }
 
-.NotificationPopUp-icon {
-  font-size: 15px;
+/* .NotificationPopUp-icon {
+  font-size: 14px;
   cursor: pointer;
   border-radius: 4px;
 
@@ -52,5 +54,25 @@
 }
 
 .NotificationPopUp-icon:hover {
-  background-color: #676767;
+  background-color: #535353;
+} */
+
+.NotificationPopUp-close-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 34px;
+  width: 34px;
+}
+
+.NotificationPopUp-close-button:hover {
+  background-color: var(--highlight-darkgrey);
+  border-radius: 4px;
+}
+
+.NotificationPopUp-close-icon {
+  color: var(--text-color-dark);
+  height: 34px;
+  width: 34px;
 }
