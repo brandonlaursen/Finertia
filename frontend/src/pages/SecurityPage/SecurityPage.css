@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
 
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   margin-bottom: 100px;
 }
@@ -15,7 +15,7 @@
   flex-direction: column;
 
   gap: 10px;
-  padding-top: 30px;
+  padding-top: 20px;
 }
 
 .SecurityPage__content__title {
@@ -33,7 +33,7 @@
 
   align-content: center;
 
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   padding-left: 20px;
 }
 
@@ -82,7 +82,7 @@
 }
 
 .SecurityPage__logout-span {
-  color: rgb(198, 156, 194);
+  color: rgb(7, 222, 150);
 
   font-weight: bold;
 
