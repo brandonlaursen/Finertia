@@ -25,13 +25,13 @@ function TradeHoldings({
           {tradeUnit === "Dollars" ? (
             <span>{`$${(Number(sharesOwned) * price).toFixed(
               2
-            )} Available`}</span>
+            )} Available - `}</span>
           ) : (
             <span>{`${Number(sharesOwned).toFixed(5)} Share${
               Math.round(sharesOwned) > 1 ? "s" : ""
-            } Available`}</span>
+            } Available - `}</span>
           )}
-          -
+
           <button
             className="TradeHoldings__holdings__sell-all-button"
             onClick={handleSellAllShares}

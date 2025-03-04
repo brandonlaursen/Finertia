@@ -88,11 +88,11 @@
 }
 
 .ProfilePage__investments__details__value-subtext {
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .ProfilePage__investments__details__subtext {
-  font-size: 13px;
+  font-size: 12px;
 
   color: rgb(165, 165, 165);
 }
@@ -169,13 +169,13 @@
 }
 
 .ProfilePage__description__text {
-  font-size: 13px;
+  font-size: 12px;
 
   color: rgb(124, 124, 124);
 }
 
 .ProfilePage__description__subtext {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: bold;
 }
 
@@ -208,7 +208,7 @@
 }
 
 .ProfilePage__buttons div:hover {
-  background-color: rgb(242, 253, 254);
+  background-color: var(--color-highlight);
 }
 
 .ProfilePage__disclaimer {
@@ -222,7 +222,8 @@
   gap: 10px;
   padding-top: 80px;
 
-  font-size: 13px;
+  font-size: 11px;
+  line-height: 1.5;
 
   color: var(--color-light-text);
 }

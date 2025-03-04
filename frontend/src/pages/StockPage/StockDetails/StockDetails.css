@@ -24,7 +24,7 @@
 .StockDetails__about-description {
   margin-top: 20px;
 
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.5;
   font-weight: 500;
 
@@ -54,6 +54,7 @@
   padding-top: 32px;
 
   font-size: 13px;
+  font-weight: 500;
 }
 
 /* Individual company info item (CEO, Employees, Headquarters, Industry) */

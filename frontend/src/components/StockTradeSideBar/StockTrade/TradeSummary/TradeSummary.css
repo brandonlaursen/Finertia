@@ -6,7 +6,7 @@
   padding: 0 20px;
 
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 /* Estimated quantity or cost display */
@@ -68,8 +68,7 @@
 /* Message text */
 .TradeSummary__message {
   padding-right: 20px;
-  font-size: 13px;
-  font-weight: 500;
+
 
   font-size: 12px;
   font-weight: 500;

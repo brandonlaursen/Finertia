@@ -19,18 +19,15 @@
 /* Container for holding balance and actions */
 .TradeHoldings__holdings {
   display: flex;
-  gap: 4px;
+  /* gap: 4px; */
 
 }
 
 /* ========== Sell All Button ========== */
 /* Button to allow users to sell all their holdings */
 .TradeHoldings__holdings__sell-all-button {
-  color: #33d187;
+  color: var(--button-green);
   font-weight: bold;
+  font-size: 11px;
 
-
-  background: none;
-  border: none;
-  outline: none;
 }

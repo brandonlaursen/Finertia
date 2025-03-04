@@ -3,7 +3,7 @@
   width: 270px;
 
   position: absolute;
-  right: 32px;
+  right:24px;
   top: 56px;
 
   display: flex;
@@ -20,7 +20,7 @@
   content: "";
   position: absolute;
   top: 54px;
-  right: 42px;
+  right: 36px;
 
   background-color: var(--color-primary);
 }
