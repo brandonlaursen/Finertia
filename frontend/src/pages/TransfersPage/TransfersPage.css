@@ -9,53 +9,49 @@
   margin-bottom: 100px;
 }
 
-.TransfersPage__section {
-  height: auto;
-
-  margin-top: 30px;
-}
-
-.TransfersPage__transfer-container {
+.TransfersPage__header {
   height: 72px;
 
   display: flex;
   flex-direction: column;
 
   gap: 8px;
+  margin-top: 30px;
 }
 
-.TransfersPage__transfer-title,
-.TransfersPage__completed-transfer-section-title {
-  font-size: 22px;
-  font-weight: 500;
+.TransfersPage__title {
+  font-size: 20px;
+  font-weight: 600;
 }
 
-.TransfersPage__transfer-subtext {
+.TransfersPage__subtext {
   font-size: 13px;
   font-weight: 500;
 }
-.TransfersPage__transfer-subtext span {
-  font-weight: bold;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 4px;
-}
-.TransfersPage__invest-section {
-  height: 120px;
-}
+
+/* Section */
 
 .TransferPage__transfer-link {
-  height: 90px;
-  width: 70%;
+  height: 80px;
+  /* width: 70%; */
 
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Ensures the '>' stays on the far right */
+  justify-content: space-between;
 
   gap: 4px;
 
   border-bottom: 1px solid var(--light-background-hover);
   cursor: pointer;
+}
+
+.TransferPage__transfer-link:hover {
+  box-shadow:
+    /* Top (or no shadow for top in this case) */ 0px 0px 0px 0px
+      var(--color-highlight),
+    /* Left */ -16px 0px 0px 0px var(--color-highlight),
+    /* Right */ 16px 0px 0px 0px var(--color-highlight);
+  background-color: var(--color-highlight);
 }
 
 .TransferPage__transfer__money-icon-container {
@@ -78,7 +74,7 @@
   color: white;
 }
 
-.TransfersPage__text {
+.TransferPage__transfer-link__text-container {
   display: flex;
   flex-direction: column;
 
@@ -86,7 +82,11 @@
   gap: 4px;
 }
 
-.TransfersPage__subtitle {
+.TransferPage__transfer-link__title {
+  font-size: 16px;
+  font-weight: 600;
+}
+.TransfersPage__transfer-link__subtitle {
   font-size: 13px;
   font-weight: 500;
 
@@ -111,22 +111,44 @@
   color: var(--color-icon-grey);
 }
 
+/*  */
+
+.TransfersPage__transfer-container {
+  margin-top: 30px;
+
+  height: 72px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.TransfersPage__transfer-subtext span {
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
 .TransfersPage__withdraw-section {
-  height: 90px;
+  height: 80px;
 
   display: flex;
   flex-direction: column;
 
   gap: 4px;
 }
-.TransfersPage__title{
-  font-weight: 500;
-}
 
 .TransfersPage__withdraw-section-title {
   color: rgb(85, 85, 85);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
+}
+
+.TransfersPage__withdraw-section-amount {
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .TransfersPage__question-mark-icon {
@@ -138,54 +160,12 @@
   color: rgb(85, 85, 85);
 }
 
-.TransfersPage__completed-transfer-section {
-  overflow: auto;
-  scrollbar-width: none;
-}
 
-.TransfersPage__completed-transfer-section-title {
-  height: 40px;
 
-  font-size: 22px;
-  font-weight: 500;
 
-  border-bottom: 1px solid var(--border-color);
-}
 
-.TransfersPage__completed-transactions-container {
-  height: 80px;
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 
-  border-bottom: 1px solid var(--border-color);
 
-  cursor: pointer;
-}
 
-.TransfersPage__completed-contents {
-  display: flex;
-  flex-direction: column;
 
-  gap: 4px;
-}
-
-.TransfersPage__completed-transactions:hover {
-  background-color: rgb(238, 238, 238);
-}
-
-.TransfersPage__completed-transactions-title {
-  font-weight: 700;
-  font-size: 14px;
-}
-
-.TransfersPage__completed-transactions-date {
-  font-size: 13px;
-}
-
-.TransfersPage__completed-transactions-amount {
-  margin-right: 20px;
-
-  font-weight: bold;
-}

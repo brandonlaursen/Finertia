@@ -1,0 +1,49 @@
+.CompletedTransfers__title {
+  font-size: 20px;
+  font-weight: 600;
+
+  height: 40px;
+
+  border-bottom: 1px solid var(--border-color);
+}
+
+.CompletedTransfers__transfer {
+  height: 80px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-bottom: 1px solid var(--border-color);
+
+  cursor: pointer;
+}
+
+.CompletedTransfers__transfer:hover {
+  box-shadow:
+    /* Top (or no shadow for top in this case) */ 0px 0px 0px 0px
+      var(--color-highlight),
+    /* Left */ -16px 0px 0px 0px var(--color-highlight),
+    /* Right */ 16px 0px 0px 0px var(--color-highlight);
+  background-color: var(--color-highlight);
+}
+
+.CompletedTransfers__message-container {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.CompletedTransfers__message {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.CompletedTransfers__date {
+  font-size: 13px;
+}
+
+.CompletedTransfers__amount {
+  font-weight: bold;
+}
