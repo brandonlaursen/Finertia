@@ -56,11 +56,13 @@ function HistoryPage() {
       {currentTransactions.length > 0 && (
         <>
           {currentTransactions.map((transaction, i) => {
+               console.log(transaction);
             if (transaction.stockId) {
+
               return (
                 <article className="HistoryPage__transfer" key={i}>
                   <div className="HistoryPage__message-container">
-                    <span className="HistoryPage__message">{`${transaction.stockSymbol} ${transaction.transactionType}`}</span>
+                    <span className="HistoryPage__message">{`${transaction.stockSymbol} Market ${transaction.transactionType}`}</span>
                     <time className="HistoryPage__date">
                       {new Date(transaction.purchaseDate).toLocaleString(
                         "en-US",
@@ -83,8 +85,8 @@ function HistoryPage() {
                   <div className="HistoryPage__message-container">
                     <span className="HistoryPage__message">
                       {transaction.transactionType === "deposit"
-                        ? `Deposit from Finertia Bank into individual`
-                        : `Withdraw from individual to Finertia Bank`}
+                        ? `Deposit to Individual from Finertia Bank`
+                        : `Withdrawal from Individual to Finertia Bank`}
                     </span>
                     <time className="HistoryPage__date">
                       {new Date(transaction.transactionDate).toLocaleString(
