@@ -46,6 +46,7 @@
 
 .CompletedTransfers__amount {
   font-weight: bold;
+  font-size: 13px;
 }
 
 .CompletedTransfers__pagination {

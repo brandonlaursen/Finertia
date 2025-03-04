@@ -1,4 +1,5 @@
 import "./HistoryPage.css";
+import { useState } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
@@ -10,6 +11,8 @@ import {
 
 function HistoryPage() {
   const dispatch = useDispatch();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [transactionsPerPage] = useState(10);
 
   const transactions = useSelector((state) => state.transactions);
 
@@ -34,26 +37,31 @@ function HistoryPage() {
     return dateB - dateA;
   });
 
+  const indexOfLastTransaction = currentPage * transactionsPerPage;
+  const indexOfFirstTransaction = indexOfLastTransaction - transactionsPerPage;
+  const currentTransactions = sortedTransactions.slice(
+    indexOfFirstTransaction,
+    indexOfLastTransaction
+  );
+  const totalPages = Math.ceil(sortedTransactions.length / transactionsPerPage);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
   return (
     <div className="HistoryPage">
-      <div className="HistoryPage__section"></div>
+      <header className="HistoryPage__title">Transaction History</header>
 
-      <div className="TransfersPage__completed-transfer-section">
-        <div className="TransfersPage__completed-transfer-section-title">
-          Completed Transfers
-        </div>
-
-        {sortedTransactions.length > 0 &&
-          sortedTransactions.slice(0, 10).map((transaction, i) => {
+      {currentTransactions.length > 0 && (
+        <>
+          {currentTransactions.map((transaction, i) => {
             if (transaction.stockId) {
               return (
-                <div
-                  className="TransfersPage__completed-transactions-container"
-                  key={i}
-                >
-                  <div className="TransfersPage__completed-contents">
-                    <span className="HistoryPage__completed-transactions-title">{`${transaction.stockSymbol} ${transaction.transactionType}`}</span>
-                    <span className="HistoryPage__completed-transactions-date">
+                <article className="HistoryPage__transfer" key={i}>
+                  <div className="HistoryPage__message-container">
+                    <span className="HistoryPage__message">{`${transaction.stockSymbol} ${transaction.transactionType}`}</span>
+                    <time className="HistoryPage__date">
                       {new Date(transaction.purchaseDate).toLocaleString(
                         "en-US",
                         {
@@ -62,26 +70,23 @@ function HistoryPage() {
                           day: "numeric",
                         }
                       )}
-                    </span>
+                    </time>
                   </div>
-                  <div className="TransfersPage__completed-transactions-amount">
+                  <div className="HistoryPage__amount">
                     ${transaction.purchasePrice.toFixed(2)}
                   </div>
-                </div>
+                </article>
               );
             } else {
               return (
-                <div
-                  className="TransfersPage__completed-transactions-container"
-                  key={i}
-                >
-                  <div className="TransfersPage__completed-contents">
-                    <span className="HistoryPage__completed-transactions-title">
+                <article className="HistoryPage__transfer" key={i}>
+                  <div className="HistoryPage__message-container">
+                    <span className="HistoryPage__message">
                       {transaction.transactionType === "deposit"
                         ? `Deposit from Finertia Bank into individual`
                         : `Withdraw from individual to Finertia Bank`}
                     </span>
-                    <span className="HistoryPage__completed-transactions-date">
+                    <time className="HistoryPage__date">
                       {new Date(transaction.transactionDate).toLocaleString(
                         "en-US",
                         {
@@ -90,17 +95,40 @@ function HistoryPage() {
                           day: "numeric",
                         }
                       )}
-                    </span>
+                    </time>
                   </div>
-                  <div className="TransfersPage__completed-transactions-amount">
+                  <div className="HistoryPage__amount">
                     {transaction.transactionType === "deposit" ? "+" : "-"} $
                     {transaction.amount}
                   </div>
-                </div>
+                </article>
               );
             }
           })}
-      </div>
+
+          {totalPages > 1 && (
+            <div className="HistoryPage__pagination">
+              <button
+                onClick={() => handlePageChange(currentPage - 1)}
+                disabled={currentPage === 1}
+                className="HistoryPage__pagination-button"
+              >
+                Previous
+              </button>
+              <span className="HistoryPage__pagination-info">
+                Page {currentPage} of {totalPages}
+              </span>
+              <button
+                onClick={() => handlePageChange(currentPage + 1)}
+                disabled={currentPage === totalPages}
+                className="HistoryPage__pagination-button"
+              >
+                Next
+              </button>
+            </div>
+          )}
+        </>
+      )}
     </div>
   );
 }
