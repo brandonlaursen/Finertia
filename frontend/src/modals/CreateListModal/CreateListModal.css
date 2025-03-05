@@ -12,7 +12,7 @@
 
   z-index: 100;
 
-  color: var(--text-color-light);
+  color: var(--text-color);
 }
 
 /* Background overlay behind the modal */
@@ -38,7 +38,7 @@
   display: flex;
   justify-content: center;
 
-  background-color: var(--background-color-light);
+  background-color: var(--modal-background);
   border-radius: 4px;
 }
 
@@ -78,7 +78,7 @@
 
 /* Hover effect for the close button */
 .ChooseListType__close-button:hover {
-  background-color: var(--light-background-hover);
+  background-color: var(--icon-hover-color);
   border-radius: 4px;
 }
 
@@ -86,6 +86,8 @@
 .ChooseListType__close-button-icon {
   height: 32px;
   width: 32px;
+
+  color: var(--icon-color);
 }
 
 /* ========== Options Container ========== */
@@ -106,7 +108,7 @@
   display: flex;
   flex-direction: column;
 
-  border: 1px solid var(--border-color-light);
+  border: 1px solid var(--border-color);
   border-radius: 4px;
 
   cursor: pointer;
@@ -117,9 +119,9 @@
   height: 60%;
   width: 100%;
 
-  background-color: rgb(230, 255, 255);
+  background-color: var(--background-color);
 
-  border-bottom: solid 1px var(--border-color-light);
+  border-bottom: solid 1px var(--border-color);
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 }
@@ -171,8 +173,8 @@
   margin-top: 20px;
 
   font-weight: bold;
-  color: var(--background-color-light);
-  background-color: var(--background-color-dark);
+  color: var(--background-color);
+  background-color: var(--button-primary);
 
   font-size: 12px;
   border-radius: 44px;
@@ -180,7 +182,7 @@
 
 /* Hover effect for the back button */
 .ChooseListType__back-button:hover {
-  background-color: var(--hover-black);
+  background-color: var(--button-hover-primary);
 }
 
 /* second modal */
@@ -243,8 +245,6 @@
 
   display: flex;
   align-items: center;
-
-
 }
 
 .CreateList__close-button:hover {
@@ -340,9 +340,9 @@
 }
 
 .CreateList__cancel-button {
-  color: var( --button-green);
+  color: var(--button-green);
   background-color: white;
-  border: solid 1px var( --button-green);
+  border: solid 1px var(--button-green);
 }
 
 .CreateList__cancel-button:hover {
