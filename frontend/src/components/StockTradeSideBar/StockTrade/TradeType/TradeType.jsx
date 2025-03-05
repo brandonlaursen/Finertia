@@ -18,26 +18,26 @@ function TradeType({
 
   return (
     <header className="TradeType">
-      {!reviewingTrade && (
+      {(!reviewingTrade || tradeType === "buy") && (
         <div
           className={`TradeType_select ${
             tradeType === "buy" && "TradeType--selected"
-          }`}
+          } ${reviewingTrade ? "TradeType--disabled" : ""}`}
           onClick={() => handleTradeTypeChange("buy")}
         >
           Buy {stock.symbol}
         </div>
       )}
-      <div
-        className={`TradeType_select ${
-          tradeType === "sell" && "TradeType--selected"
-        } ${
-          reviewingTrade && tradeType === "buy" ? "TradeType--disabled" : ""
-        }`}
-        onClick={() => handleTradeTypeChange("sell")}
-      >
-        Sell {stock.symbol}
-      </div>
+      {(!reviewingTrade || tradeType === "sell") && (
+        <div
+          className={`TradeType_select ${
+            tradeType === "sell" && "TradeType--selected"
+          } ${reviewingTrade ? "TradeType--disabled" : ""}`}
+          onClick={() => handleTradeTypeChange("sell")}
+        >
+          Sell {stock.symbol}
+        </div>
+      )}
     </header>
   );
 }

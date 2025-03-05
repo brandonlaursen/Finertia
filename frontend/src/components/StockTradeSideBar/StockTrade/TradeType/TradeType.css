@@ -2,22 +2,23 @@
 /* Container for the trade type (Buy/Sell) selection */
 .TradeType {
   height: 50px;
-
   display: flex;
   align-items: center;
-
   gap: 12px;
   padding: 0 20px;
-
   border-bottom: 1px solid var(--border-color);
   font-weight: bold;
   font-size: 13px;
 }
 
 .TradeType--disabled {
-  /* opacity: 0.7; */
   cursor: not-allowed;
   pointer-events: none;
+  color: var(--text-color) !important;
+}
+
+.TradeType--disabled.TradeType--selected {
+  box-shadow: none !important;
 }
 
 /* ========== Trade Type Options ========== */
@@ -25,10 +26,8 @@
 .TradeType_select {
   height: 100%;
   width: auto;
-
   display: flex;
   align-items: center;
-
   cursor: pointer;
 }
 
