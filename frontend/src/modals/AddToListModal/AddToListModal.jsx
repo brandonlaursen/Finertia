@@ -1,5 +1,4 @@
 import "./AddToListModal.css";
-import { MdClose } from "react-icons/md";
 import { IoIosCheckmark } from "react-icons/io";
 
 import { useEffect, useState } from "react";
@@ -8,6 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import EmojiPicker from "emoji-picker-react";
 import ListItem from "../../components/ListItem";
 import CreateListToggle from "./CreateListToggle";
+import ModalHeader from "../../components/ModalHeader/ModalHeader";
 
 import { fetchLists, selectListsArray } from "../../../store/lists";
 import { selectUser } from "../../../store/session";
@@ -132,15 +132,9 @@ function AddToListModal({ stock, setNotifications, setNotificationMessage }) {
       <div className="AddToListModal__overlay" onClick={closeModal} />
 
       <main className="AddToListModal__main">
-        <header className="AddToListModal__header">
-          <span className="AddToListModal__title">{`Add ${stock.symbol} to List`}</span>
-          <button className="AddToListModal__close-button">
-            <MdClose
-              className="AddToListModal__close-button-icon"
-              onClick={closeModal}
-            />
-          </button>
-        </header>
+        <ModalHeader
+          closeModal={closeModal}
+        >{`Add ${stock.symbol} to List`}</ModalHeader>
 
         <section className="AddToListModal__section">
           {isVisible && <div className="AddToListModal__list-overlay active" />}

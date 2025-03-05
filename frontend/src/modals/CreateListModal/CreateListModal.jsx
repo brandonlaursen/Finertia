@@ -1,5 +1,4 @@
 import "./CreateListModal.css";
-import { MdClose } from "react-icons/md";
 import EmojiPicker from "emoji-picker-react";
 
 import { useState } from "react";
@@ -8,6 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { createList } from "../../../store/lists";
 import { selectUser } from "../../../store/session";
+
+import ModalHeader from "../../components/ModalHeader/ModalHeader";
 
 function CreateListModal({ setNotifications, setNotificationMessage }) {
   const { closeModal } = useModal();
@@ -62,15 +63,7 @@ function CreateListModal({ setNotifications, setNotificationMessage }) {
         <div className="CreateList__overlay" onClick={closeModal} />
 
         <main className="CreateList__container">
-          <header className="CreateList__header">
-            <span className="CreateList__header__title">Create list</span>
-            <button className="CreateList__close-button">
-              <MdClose
-                className="CreateList__close-button-icon"
-                onClick={closeModal}
-              />
-            </button>
-          </header>
+          <ModalHeader closeModal={closeModal}>Create list</ModalHeader>
 
           <section className="CreateList__section__inputs">
             <div>
@@ -128,15 +121,7 @@ function CreateListModal({ setNotifications, setNotificationMessage }) {
 
       <div className="ChooseListType__wrapper">
         <main className="ChooseListType__container">
-          <header className="ChooseListType__header">
-            <h1 className="ChooseListType__title">Choose a list type</h1>
-            <button className="ChooseListType__close-button">
-              <MdClose
-                className="ChooseListType__close-button-icon"
-                onClick={closeModal}
-              />
-            </button>
-          </header>
+          <ModalHeader closeModal={closeModal}>Choose a list type</ModalHeader>
 
           <section className="ChooseListType__options">
             <div

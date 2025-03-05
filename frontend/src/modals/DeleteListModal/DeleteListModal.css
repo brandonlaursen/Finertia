@@ -59,27 +59,7 @@
   margin-top: 6px;
 }
 
-.DeleteListModal__close-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
 
-  height: 34px;
-  width: 34px;
-
-  cursor: pointer;
-}
-
-.DeleteListModal__close-button:hover {
-  background-color: var(--light-background-hover);
-  border-radius: 4px;
-}
-
-.DeleteListModal__close-button-icon {
-  height: 34px;
-  width: 34px;
-}
 
 .DeleteListModal__section__buttons {
   display: flex;

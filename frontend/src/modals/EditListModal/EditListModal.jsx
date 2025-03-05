@@ -1,11 +1,11 @@
 import "./EditListModal.css";
 
-import { MdClose } from "react-icons/md";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 import EmojiPicker from "emoji-picker-react";
 
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import ModalHeader from "../../components/ModalHeader/ModalHeader";
 
 import { useModal } from "../../context/Modal";
 import { editList } from "../../../store/lists";
@@ -61,15 +61,7 @@ function EditListModal({ list, setNotifications, setNotificationMessage }) {
 
       <div className="EditListModal__container">
         <div className="EditListModal__contents">
-          <div className="EditListModal__header">
-            <span className="EditListModal__title">Edit List</span>
-            <button className="EditListModal__close-button-span">
-              <MdClose
-                className="EditListModal__close-button"
-                onClick={closeModal}
-              />
-            </button>
-          </div>
+          <ModalHeader closeModal={closeModal}>Edit List</ModalHeader>
         </div>
 
         <div>

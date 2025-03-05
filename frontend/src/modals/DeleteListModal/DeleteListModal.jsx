@@ -1,11 +1,13 @@
 import "./DeleteListModal.css";
-import { MdClose } from "react-icons/md";
 
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { useModal } from "../../context/Modal";
 import { deleteList } from "../../../store/lists";
+
+import ModalHeader from "../../components/ModalHeader/ModalHeader";
+
 
 function DeleteListModal({
   listId,
@@ -51,18 +53,9 @@ function DeleteListModal({
 
       <div className="DeleteListModal__container">
         <section className="DeleteListModal__section">
-          <header className="DeleteListModal__header">
-            <span className="DeleteListModal__title">
-              Are you sure you want to delete
-              <span>{` "${listName}"?`}</span>
-            </span>
-            <button className="DeleteListModal__close-button">
-              <MdClose
-                className="DeleteListModal__close-button-icon"
-                onClick={closeModal}
-              />
-            </button>
-          </header>
+          <ModalHeader closeModal={closeModal}>
+            Are you sure you want to delete<span>{` "${listName}"?`}</span>
+          </ModalHeader>
         </section>
 
         <section>

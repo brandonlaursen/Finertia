@@ -3,7 +3,7 @@
 /* Centers the modal on the page */
 .ChooseListType {
   position: fixed;
-  top: 350px;
+  top: 349px;
   left: 50%;
 
   display: flex;
@@ -33,7 +33,7 @@
   position: absolute;
 
   /* height: 404px; */
-  width: 420px;
+  width: 430px;
 
   display: flex;
   justify-content: center;
@@ -67,29 +67,6 @@
   font-weight: 600;
 }
 
-/* Close button container */
-.ChooseListType__close-button {
-  height: 34px;
-  width: 34px;
-
-  display: flex;
-  align-items: center;
-}
-
-/* Hover effect for the close button */
-.ChooseListType__close-button:hover {
-  background-color: var(--list-menu-button-hover);
-  border-radius: 4px;
-}
-
-/* Close button icon */
-.ChooseListType__close-button-icon {
-  height: 32px;
-  width: 32px;
-
-  color: var(--icon-color);
-}
-
 /* ========== Options Container ========== */
 
 /* Container for options (Watch List & Screener) */
@@ -102,7 +79,7 @@
 
 /* Each option box (Watch List & Screener) */
 .ChooseListType__option {
-  height: 230px;
+  height: 260px;
   width: 188px;
 
   display: flex;

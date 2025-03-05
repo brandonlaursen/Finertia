@@ -1,13 +1,13 @@
 import "./EditProfileModal.css";
-import { MdClose } from "react-icons/md";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { FiPlusCircle } from "react-icons/fi";
 
 import { useDispatch } from "react-redux";
 import { useState, useRef } from "react";
 
-import { editUser } from "../../../store/session";
+import ModalHeader from "../../components/ModalHeader/ModalHeader";
 
+import { editUser } from "../../../store/session";
 import { useModal } from "../../context/Modal";
 
 function EditProfileModal({ sessionUser }) {
@@ -70,17 +70,7 @@ function EditProfileModal({ sessionUser }) {
     <div className="EditProfileModal">
       <div className="EditProfileModal__background" onClick={closeModal}></div>
       <div className="EditProfileModal__container">
-        <div className="EditProfileModal__header">
-          <span className="EditProfileModal__header__title">Edit Profile</span>
-          <span className="EditProfileModal__close-button-span">
-            <MdClose
-              className="EditProfileModal__close-button"
-              onClick={() => {
-                closeModal();
-              }}
-            />
-          </span>
-        </div>
+        <ModalHeader closeModal={closeModal}>Edit Profile</ModalHeader>
 
         <div className="EditProfileModal__section">
           <div className="EditProfileModal___user__image">

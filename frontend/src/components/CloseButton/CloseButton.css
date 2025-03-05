@@ -1,0 +1,22 @@
+/* Close button container */
+.CloseButton__container {
+  height: 34px;
+  width: 34px;
+
+  display: flex;
+  align-items: center;
+}
+
+/* Hover effect for the close button */
+.CloseButton__container:hover {
+  background-color: var(--list-menu-button-hover);
+  border-radius: 4px;
+}
+
+/* Close button icon */
+.CloseButton__icon {
+  height: 32px;
+  width: 32px;
+
+  color: var(--icon-color);
+}
