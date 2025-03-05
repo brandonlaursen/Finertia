@@ -9,8 +9,7 @@ import { createList } from "../../../../store/lists";
 import EmojiPicker from "emoji-picker-react";
 
 function CreateListToggle({
-  showPicker,
-  setShowPicker,
+
   setIsVisible,
   isVisible,
   selectedEmoji,
@@ -22,6 +21,7 @@ function CreateListToggle({
 }) {
   const dispatch = useDispatch();
 
+  const [showPicker, setShowPicker] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
   const [isLoadingCreate, setIsLoadingCreate] = useState(false);
 

@@ -32,7 +32,7 @@ function AddToListModal({ stock, setNotifications, setNotificationMessage }) {
   const [isLoading, setIsLoading] = useState(false);
   const [checkedItems, setCheckedItems] = useState(checkedList);
   const [isVisible, setIsVisible] = useState(false);
-  const [showPicker, setShowPicker] = useState(false);
+
   const [newListId, setNewListId] = useState(null);
   const [listName, setListName] = useState("");
   const [selectedEmoji, setSelectedEmoji] = useState("💡");
@@ -50,11 +50,6 @@ function AddToListModal({ stock, setNotifications, setNotificationMessage }) {
 
       return updatedItems;
     });
-  };
-
-  const handleEmojiClick = (emojiData) => {
-    setSelectedEmoji(emojiData.emoji);
-    setShowPicker(false);
   };
 
   async function handleSubmit(e) {
@@ -121,14 +116,6 @@ function AddToListModal({ stock, setNotifications, setNotificationMessage }) {
 
   return (
     <div className="AddToListModal">
-      {/* {showPicker && (
-        <div className="AddToListModal__emoji-wrapper">
-          <EmojiPicker
-            onEmojiClick={handleEmojiClick}
-            style={{ width: "500px" }}
-          />
-        </div>
-      )} */}
       <div className="AddToListModal__overlay" onClick={closeModal} />
 
       <main className="AddToListModal__main">
@@ -139,8 +126,6 @@ function AddToListModal({ stock, setNotifications, setNotificationMessage }) {
         <section className="AddToListModal__section">
           {isVisible && <div className="AddToListModal__list-overlay active" />}
           <CreateListToggle
-            showPicker={showPicker}
-            setShowPicker={setShowPicker}
             isVisible={isVisible}
             setIsVisible={setIsVisible}
             selectedEmoji={selectedEmoji}
