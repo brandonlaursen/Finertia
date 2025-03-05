@@ -60,9 +60,9 @@ function EditListModal({ list, setNotifications, setNotificationMessage }) {
       <ModalOverlay closeModal={closeModal} />
 
       <div className="EditListModal__container">
-        <div className="EditListModal__contents">
+  
           <ModalHeader closeModal={closeModal}>Edit List</ModalHeader>
-        </div>
+
 
         <div>
           <div className="EditListModal__section">

@@ -49,34 +49,30 @@ function DeleteListModal({
 
   return (
     <div className="DeleteListModal">
-       <ModalOverlay closeModal={closeModal} />
+      <ModalOverlay closeModal={closeModal} />
 
       <div className="DeleteListModal__container">
-        <section className="DeleteListModal__section">
-          <ModalHeader closeModal={closeModal}>
-            Are you sure you want to delete<span>{` "${listName}"?`}</span>
-          </ModalHeader>
-        </section>
+        <ModalHeader closeModal={closeModal}>
+          Are you sure you want to delete<span>{` "${listName}"?`}</span>
+        </ModalHeader>
 
-        <section>
-          <span className="DeleteListModal__section">
-            If you delete this list and its 0 items, it’ll be gone forever!
-          </span>
-          <div className="DeleteListModal__section__buttons">
-            <button
-              className="DeleteListModal__section__button
+        <span className="DeleteListModal__section">
+          If you delete this list and its 0 items, it’ll be gone forever!
+        </span>
+        <div className="DeleteListModal__section__buttons">
+          <button
+            className="DeleteListModal__section__button
               DeleteListModal__delete-button
               "
-              onClick={handleSubmit}
-            >
-              {isLoading ? (
-                <span className="StockTransaction__spinner"></span>
-              ) : (
-                ` Delete ${listName}`
-              )}
-            </button>
-          </div>
-        </section>
+            onClick={handleSubmit}
+          >
+            {isLoading ? (
+              <span className="StockTransaction__spinner"></span>
+            ) : (
+              ` Delete ${listName}`
+            )}
+          </button>
+        </div>
       </div>
     </div>
   );
