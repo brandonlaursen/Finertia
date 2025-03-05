@@ -53,7 +53,7 @@ function CreateListModal({ setNotifications, setNotificationMessage }) {
       }, 10000);
     });
 
-    setNotificationMessage([]);     
+    setNotificationMessage([]);
   }
 
   if (isOpen) {
@@ -147,7 +147,7 @@ function CreateListModal({ setNotifications, setNotificationMessage }) {
 
               <div className="ChooseListType__option__text">
                 <span className="ChooseListType__text__title">
-                  Create Watch List
+                  Create watchlist
                 </span>
                 <span className="ChooseListType__text__sub-text">
                   Keep an on investments youre interested in

@@ -32,8 +32,8 @@
 .ChooseListType__wrapper {
   position: absolute;
 
-  height: 400px;
-  width: 450px;
+  height: 404px;
+  width: 420px;
 
   display: flex;
   justify-content: center;
@@ -78,7 +78,7 @@
 
 /* Hover effect for the close button */
 .ChooseListType__close-button:hover {
-  background-color: var(--icon-hover-color);
+  background-color: var(--list-menu-button-hover);
   border-radius: 4px;
 }
 
@@ -103,7 +103,7 @@
 /* Each option box (Watch List & Screener) */
 .ChooseListType__option {
   height: 260px;
-  width: 195px;
+  width: 188px;
 
   display: flex;
   flex-direction: column;
@@ -116,7 +116,7 @@
 
 /* Image container for each option */
 .ChooseListType__option__image {
-  height: 60%;
+  height: 57%;
   width: 100%;
 
   background-color: var(--background-color);
@@ -155,14 +155,14 @@
 
 /* Option title (e.g., "Create Watch List", "Create Screener") */
 .ChooseListType__text__title {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: bold;
 }
 
 /* Option description text */
 .ChooseListType__text__sub-text {
-  font-size: 11px;
-  font-weight: 500;
+  font-size: 12px;
+  /* font-weight: 500; */
 }
 
 /* ========== Back Button ========== */
