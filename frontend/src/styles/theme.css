@@ -67,7 +67,7 @@
   /* Background Colors */
   --background-color-light: rgb(255, 255, 255);
   --background-color-dark: rgb(0, 0, 0);
-  --background-color-darkgrey: rgb(30,33,37);
+  --background-color-darkgrey: rgb(30, 33, 37);
   --color-highlight: rgba(245, 248, 250);
 
   /* Hover Colors */
@@ -119,33 +119,32 @@
 
 .dark-mode {
   --background-color: #000000;
-  --background-color-secondary: rgb(30,33,37);
+  --background-color-secondary: rgb(30, 33, 37);
   --text-color: #ffffff;
-  --secondary-text-color: rgb(140,155,161);
+  --secondary-text-color: rgb(140, 155, 161);
   --border-color: rgb(48, 54, 58);
-  --icon-color: rgb(145,159,166);
+  --icon-color: rgb(145, 159, 166);
 
   /* background when hovering over icons */
-  --icon-hover-color: rgb(51,51,51);
+  --icon-hover-color: rgb(51, 51, 51);
 
   /* hovering over links */
-  --highlight-color: rgb(30,33,37);
+  --highlight-color: rgb(30, 33, 37);
 
-
+  --button-hover-primary: #e0e0e0;
 }
 
 .light-mode {
   --background-color: #ffffff;
   --background-color-secondary: rgb(255, 255, 255);
   --text-color: #000000;
-  --secondary-text-color: rgb(207,209,211);
+  --secondary-text-color: rgb(207, 209, 211);
   --border-color: rgb(227, 233, 237);
   --icon-color: rgb(106, 114, 120);
 
-   /* background when hovering over icons */
-  --icon-hover-color: rgb(255,255,255);
+  /* background when hovering over icons */
+  --icon-hover-color: rgb(255, 255, 255);
 
   /* hovering over links */
-  --highlight-color:  rgb(237, 237, 237);
-
+  --highlight-color: rgb(237, 237, 237);
 }

@@ -47,11 +47,11 @@ function BuyingPowerDropDown({
             <section className="BuyingPowerDropDown__summary">
               <div className="BuyingPowerDropDown__summary-text">
                 <span>Individual Cash</span>
-                <span>${balance.toFixed(2)}</span>
+                <span className="BuyingPowerDropDown__summary-value">${balance.toFixed(2)}</span>
               </div>
               <div className="BuyingPowerDropDown__summary-text">
                 <span>Total</span>
-                <span>${balance.toFixed(2)}</span>
+                <span className="BuyingPowerDropDown__summary-value">${balance.toFixed(2)}</span>
               </div>
             </section>
 

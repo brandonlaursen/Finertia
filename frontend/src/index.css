@@ -294,9 +294,11 @@ Close Button Icon
 
   /* background when hovering over icons */
   --icon-hover-color: rgb(255, 255, 255);
+  --icon-highlight-color: rgb(237, 237, 237);
 
   /* hovering over links */
-  --highlight-color: rgb(237, 237, 237);
+  --highlight-color: rgba(245, 248, 250);
+  --button-hover-primary: #1e2125;
 
 
    /*

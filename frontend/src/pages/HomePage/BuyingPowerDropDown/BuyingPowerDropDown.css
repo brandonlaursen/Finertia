@@ -1,49 +1,59 @@
 /* ========== Buying Power Dropdown ========== */
 
-/* Highlight state for the dropdown container */
-/* .BuyingPowerDropDown--highlight {} */
+.BuyingPowerDropDown--highlight {
+  background-color: var(--highlight-color);
+  box-shadow:
+  /* Top */ 0px 0px 0px 0px var(--highlight-color),
+    /* Left */ -24px 0px 0px 0px var(--highlight-color),
+    /* Right */ 24px 0px 0px 0px var(--highlight-color);
+}
 
 /* Toggle button for opening/closing the dropdown */
 .BuyingPowerDropDown__toggle {
   height: 65px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-right: 16px;
-  font-size: 14px;
-  font-weight: bold;
+
+  font-size: var(--font-size-large);
+  font-weight: var(--font-weight-bold);
+
   border-bottom: 1px solid var(--border-color);
+
   cursor: pointer;
-  
 }
 
 .BuyingPowerDropDown__toggle:hover {
-  background-color: var(--color-highlight);
+  background-color: var(--highlight-color);
   box-shadow:
-  /* Top */ 0px 0px 0px 0px var(--color-highlight),
-    /* Left */ -24px 0px 0px 0px var(--color-highlight),
-    /* Right */ 24px 0px 0px 0px var(--color-highlight);
+  /* Top */ 0px 0px 0px 0px var(--highlight-color),
+    /* Left */ -24px 0px 0px 0px var(--highlight-color),
+    /* Right */ 24px 0px 0px 0px var(--highlight-color);
 }
 
 /* Container for displaying balance information */
 .BuyingPowerDropDown__balance {
   height: 100%;
   width: 100px;
+
   display: flex;
   justify-content: end;
   align-items: center;
+
   gap: 8px;
 }
 
 /* Dropdown content container */
 .BuyingPowerDropDown__dropdown {
   height: 170px;
+
   display: flex;
   justify-content: end;
-  padding: 10px;
-  padding-right: 16px;
-  margin-bottom: 8px;
-  font-size: 14px;
+
+  padding: 12px 0;
+
+  font-size: var(--font-size-large);
   font-weight: var(--font-weight-normal);
 }
 
@@ -51,6 +61,7 @@
 .BuyingPowerDropDown__dropdown-main {
   height: 100%;
   width: 50%;
+
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -59,20 +70,30 @@
 /* Summary area of the dropdown */
 .BuyingPowerDropDown__summary {
   height: 60%;
+
   border-bottom: 2px solid var(--border-color);
 }
 
 /* Text container within the summary */
 .BuyingPowerDropDown__summary-text {
   height: 50%;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  font-size: var(--font-size-small);
+}
+
+.BuyingPowerDropDown__summary-value{
+    font-size: var(--font-size-large);
+  font-weight: var(--font-weight-bold);
 }
 
 /* Container for the button in the dropdown */
 .BuyingPowerDropDown__button-container {
   height: 30%;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -83,14 +104,21 @@
   height: 40px;
   width: 50%;
   min-width: 130px;
+
   margin-top: 10px;
-  font-size: 13px;
+
+  font-size: var(--font-size-button);
   font-weight: var(--font-weight-bold);
-  background-color: black;
-  color: white;
+
+  background-color: var(--text-color);
+  color: var(--background-color);
+
   border: none;
-  border-radius: 20px;
-  cursor: pointer;
+  border-radius: 44px;
+}
+
+.BuyingPowerDropDown__button:hover {
+  background-color: var(--button-hover-primary);
 }
 
 .BuyingPowerDropDown__arrow-icon {
