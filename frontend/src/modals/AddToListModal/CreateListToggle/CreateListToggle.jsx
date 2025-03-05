@@ -64,17 +64,17 @@ function CreateListToggle({
 
   return (
     <div
-      className={`AddToListModal__create-container
+      className={`CreateListToggle__container
 `}
     >
       {isVisible ? (
-        <div className="AddToListModal__create-form-container">
+        <div className="CreateListToggle__form-container">
           <div
-            className={`AddToListModal__create-form ${isExiting ? "exit" : ""}`}
+            className={`CreateListToggle__form ${isExiting ? "exit" : ""}`}
           >
-            <section className="AddToListModal__create-form__input-section">
+            <section className="CreateListToggle__form-input-container">
               <button
-                className="AddToListModal__create-form__emoji-button"
+                className="CreateListToggle__emoji-button"
                 onClick={() => setShowPicker(!showPicker)}
               >
                 {selectedEmoji}
@@ -88,7 +88,7 @@ function CreateListToggle({
                 </div>
               )}
               <input
-                className="AddToListModal__create-form__input"
+                className="CreateListToggle__form-input"
                 type="text"
                 placeholder="List Name"
                 value={listName}
@@ -97,17 +97,17 @@ function CreateListToggle({
               />
             </section>
 
-            <section className="AddToListModal__create-form__buttons">
+            <section className="CreateListToggle__form-buttons">
               <button
-                className="AddToListModal__create-form__button
-              AddToListModal__cancel-button"
+                className="CreateListToggle__form-button
+              CreateListToggle__cancel-button"
                 onClick={handleCancel}
               >
                 Cancel
               </button>
               <button
-                className="AddToListModal__create-form__button
-              AddToListModal__create-button"
+                className="CreateListToggle__form-button
+              CreateListToggle__create-button"
                 onClick={handleCreateList}
                 disabled={!listName.trim()}
               >
@@ -121,12 +121,12 @@ function CreateListToggle({
           </div>
         </div>
       ) : (
-        <div className="AddToListModal__create-list-toggle-container">
-          <span className="AddToListModal__create-list-toggle">
-            <FiPlus className="AddToListModal__create-list-toggle__icon" />
+        <div className="CreateListToggle__toggle">
+          <span className="CreateListToggle__toggle-container">
+            <FiPlus className="CreateListToggle__toggle-icon" />
           </span>
           <span
-            className="AddToListModal__create-list-toggle__title"
+            className="CreateListToggle__toggle-title"
             onClick={() => setIsVisible(true)}
           >
             Create New List

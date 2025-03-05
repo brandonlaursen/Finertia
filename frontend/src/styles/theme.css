@@ -161,6 +161,9 @@
 
   --button-primary-inverted: #000000;
   --button-hover-primary-inverted: #1e2125;
+
+  --green-button:rgb(0, 200, 5);
+  --green-button-light-hover:rgb(2, 88, 5);
 }
 
 .light-mode {

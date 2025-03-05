@@ -293,7 +293,6 @@ Close Button Icon
   --disabled-overlay-color: rgba(255, 255, 255, 0.7);
   --disabled-button-color: rgb(180, 189, 194);
 
-
   --highlight-color: rgba(245, 248, 250);
 
   --icon-color: rgb(106, 114, 120);
@@ -317,6 +316,20 @@ Close Button Icon
 
   --button-primary-inverted: #ffffff;
   --button-hover-primary-inverted: #e0e0e0;
+  /*
+  --button-green: rgb(0, 200, 5);
+  --button-green-hover: rgb(0, 180, 5, 1);
+  --button-light-green: rgb(211, 255, 240); */
+  --green-button: rgb(0, 200, 5);
+  --green-button-hover: rgb(0, 180, 5, 1);
+  --green-button-light-hover: rgb(223, 255, 230);
+
+  --orange-button: rgb(255, 80, 1);
+  --orange-button-hover: rgb(214, 68, 1);
+  --orange-button-light-hover: rgb(252, 222, 208);
+
+
+
 
   /*
   Font sizes

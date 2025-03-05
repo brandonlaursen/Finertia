@@ -19,7 +19,7 @@
 .AddToListModal__main {
   position: absolute;
 
-  height: 468px;
+  height: 470px;
   width: 364px;
 
   display: flex;
@@ -72,7 +72,8 @@
   display: flex;
   justify-content: center;
   gap: 8px;
-  padding-top: 10px;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 
 /* Modal Footer Button */
@@ -104,6 +105,3 @@
 .AddToListModal__footer__button:disabled {
   background-color: var(--disabled-button-color);
 }
-
-
-

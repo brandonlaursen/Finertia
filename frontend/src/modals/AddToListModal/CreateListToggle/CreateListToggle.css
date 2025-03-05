@@ -1,5 +1,5 @@
-/* Create New List Button */
-.AddToListModal__create-container {
+/* ========== Create Toggle Container ========== */
+.CreateListToggle__container {
   position: relative;
   z-index: 20;
 
@@ -15,7 +15,8 @@
   cursor: pointer;
 }
 
-.AddToListModal__create-form-container {
+/* ========== Create List Form Container ========== */
+.CreateListToggle__form-container {
   position: relative;
 
   width: 100%;
@@ -24,10 +25,12 @@
   margin-top: 20px;
 
   z-index: 20;
-}
 
-.AddToListModal__create-form {
-  height: 100px;
+
+}
+/* Create List Form */
+.CreateListToggle__form {
+  height: 90px;
   width: 100%;
   z-index: 20;
 
@@ -36,15 +39,18 @@
 
   margin-top: 8px;
 
-  background-color: var( --modal-background);
+  background-color: var(--modal-background);
 
-  animation: dropdown 0.3s ease-out;
+  animation: dropdown 0.4s ease-out;
+
 }
 
-.AddToListModal__create-form.exit {
-  animation: slideUp 0.3s ease-out forwards;
+/* Create List Form Exit */
+.CreateListToggle__form.exit {
+  animation: slideUp 0.4s ease-out forwards;
 }
 
+/* Create List Form Dropdown Animations */
 @keyframes dropdown {
   from {
     transform: translateY(-100%);
@@ -56,6 +62,7 @@
   }
 }
 
+/* Create List Form Slide Up Animation */
 @keyframes slideUp {
   from {
     transform: translateY(0);
@@ -67,68 +74,85 @@
   }
 }
 
-.AddToListModal__create-form__input-section {
+/* ========== Create List Form Input Container ========== */
+.CreateListToggle__form-input-container {
   position: relative;
+
   height: 60px;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
   gap: 8px;
 }
 
-/* Emoji Picker Button */
-.AddToListModal__create-form__emoji-button {
+/* Create List Form Emoji Picker Button */
+.CreateListToggle__emoji-button {
   position: relative;
+
+  height: 42px;
+  width: 46px;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 42px;
-  width: 46px;
+
+  font-size: 20px;
+
   background-color: var(--highlight-color);
   border: solid 1px var(--border-color);
   border-radius: 4px;
+
   cursor: pointer;
-  font-size: 20px;
+
   z-index: 1001;
 }
 
+/* Create List Emoji Picker Wrapper */
 .CreateListToggle__emoji-wrapper {
   position: fixed;
-  z-index: 1000;
   top: 490px;
   left: 40%;
+
+  z-index: 1000;
   transform: translate(-50%, -50%);
 }
 
-/* List Name Input */
-.AddToListModal__create-form__input {
-  box-sizing: border-box;
-  padding: 2px 15px;
+/* Create List Name Input */
+.CreateListToggle__form-input {
   width: 90%;
   height: 42px;
+
+  padding: 2px 15px;
   margin-right: 1px;
+
   font-size: 13px;
 
-  background-color: var(--color-highlight);
+  background-color: var(--modal-emoji-icons);
+  color: var(--text-color);
 
+  border: none;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
-  border: none;
 }
 
-.AddToListModal__create-form__input:focus {
+.CreateListToggle__form-input:focus {
   border: solid 1px var(--button-green);
+  background-color: var(--modal-background);
 }
 
-/* Form Buttons */
-.AddToListModal__create-form__buttons {
+/* Create List Form Buttons Container */
+.CreateListToggle__form-buttons {
   display: flex;
   justify-content: end;
   gap: 8px;
+
   margin-right: 1px;
 }
 
-.AddToListModal__create-form__button {
+/* Create List Form Buttons */
+.CreateListToggle__form-button {
   padding: 0 20px;
   height: 32px;
 
@@ -141,70 +165,83 @@
   -webkit-font-smoothing: subpixel-antialiased;
 }
 
-/* Cancel and Create Buttons */
-.AddToListModal__cancel-button {
+/* Create List Form Cancel Button */
+.CreateListToggle__cancel-button {
   color: var(--button-green);
-  background-color: white;
+  background-color: var(--modal-background);
+
   border: solid 1px var(--button-green);
 }
 
-.AddToListModal__cancel-button:hover {
-  background-color: var(--button-hover-light-green);
+/* Create List Form Cancel Button Hover */
+.CreateListToggle__cancel-button:hover {
+  background-color: var(--green-button-light-hover);
 }
 
-.AddToListModal__create-button {
-  color: white;
+/* Create List Form Create Button */
+.CreateListToggle__create-button {
+  color: var(--background-color);
   background-color: var(--button-green);
+
   min-width: 102px;
   border: none;
 }
 
-.AddToListModal__create-button:hover {
-  background-color: var(--button-green-hover);
+/* Create List Form Create Button Hover */
+.CreateListToggle__create-button:hover {
+  background-color: var(--green-button-hover);
 }
 
 /* ========= Create New List Toggle ========= */
 
 /* Create New List Toggle Container */
-.AddToListModal__create-list-toggle-container {
+.CreateListToggle__toggle {
   display: flex;
-  /* margin-bottom: 8px; */
 }
 
-.AddToListModal__create-list-toggle {
+.CreateListToggle__toggle-container {
+  height: 60px;
+  width: 48px;
+
   display: inline-flex;
   justify-content: center;
   align-items: center;
   margin-right: 10px;
-  margin-left: 40px;
-  height: 60px;
-  width: 48px;
+  margin-left: 41px;
+  margin-bottom: 4px;
+
   font-size: 24px;
-  background-color: rgb(254, 237, 230);
+
+  background-color: var(--green-button-light-hover);
+  color: var(--green-button);
+
   border-radius: 4px;
+
 }
 
-.AddToListModal__create-list-toggle__title {
+.CreateListToggle__toggle-title {
   display: inline-flex;
   justify-content: center;
   align-items: center;
+
   font-size: 14px;
   font-weight: 500;
+
   color: var(--text-color);
 }
 
 /* Create New List Toggle */
-.AddToListModal__create-list-toggle,
-.AddToListModal__create-list-toggle__title {
+.CreateListToggle__toggle-container,
+.CreateListToggle__toggle-title {
   transition: transform 0.3s ease-out;
 }
 
 /* Create New List Toggle exit */
-.AddToListModal__create-form.exit ~ .AddToListModal__create-list-toggle,
-.AddToListModal__create-form.exit ~ .AddToListModal__create-list-toggle__title {
+.CreateListToggle__form-container.exit ~ .CreateListToggle__toggle-container,
+.CreateListToggle__form-container.exit ~ .CreateListToggle__toggle-title {
   transform: translateY(-100%);
 }
 /* Create New List Toggle Icon */
-.AddToListModal__create-list-toggle__icon {
-  color: rgb(255, 118, 58);
+.CreateListToggle__toggle-icon {
+  color: var(--green-button);
 }

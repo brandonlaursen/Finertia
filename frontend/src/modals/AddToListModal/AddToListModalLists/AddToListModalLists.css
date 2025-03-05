@@ -32,7 +32,7 @@
   justify-content: center;
   margin-right: 13px;
 
-  border: 0.2em solid rgb(255, 118, 58);
+  border: 0.2em solid var(--green-button);
 
   outline: none;
   cursor: pointer;
@@ -45,7 +45,7 @@
 input.checked {
   position: relative;
 
-  background-color: rgb(255, 118, 58);
+  background-color: var(--green-button);
 }
 
 /* Checkbox Icon */
@@ -67,7 +67,7 @@ input.checked {
 
 /* ========== List Item Container ========== */
 .AddToListModalLists__item {
-  padding-bottom: 4px;
+  padding-bottom: 8px;
   padding-left: 0;
 }
 
