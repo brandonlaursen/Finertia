@@ -1,7 +1,6 @@
 import "./CreateListToggle.css";
 
 import { FiPlus } from "react-icons/fi";
-import { Theme } from 'emoji-picker-react';
 
 import { useState } from "react";
 import { useDispatch } from "react-redux";

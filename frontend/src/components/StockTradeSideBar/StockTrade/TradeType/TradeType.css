@@ -34,6 +34,6 @@
 /* ========== Selected Trade Type Styling ========== */
 /* Styling for the active/selected trade type option */
 .TradeType--selected {
-  box-shadow: 0 2px 0 var(--color-primary);
-  color: rgb(0, 200, 5);
+  box-shadow: 0 2px 0 var(--button-green);
+  color: var(--button-green);
 }

@@ -6,14 +6,10 @@
 
   cursor: pointer;
   border-bottom: 1px solid var(--border-color);
-
-
 }
 
-
-
 .StockTableItem:hover {
-  background-color: var(--color-highlight);
+  background-color: var(--highlight-color);
 }
 
 .StocksTableItem__name {
@@ -45,13 +41,12 @@
   color: var(--percent-change-positive);
 }
 
-
 .StockTableItem__button {
   height: 14px;
   width: 14px;
   float: right;
   margin-right: 16px;
-  color: var(--color-icon-grey);
+  color: var(--icon-color);
   cursor: pointer;
 }
 

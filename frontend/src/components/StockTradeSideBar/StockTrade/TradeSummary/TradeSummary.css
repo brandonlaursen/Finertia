@@ -39,7 +39,7 @@
 /* Error icon inside the message */
 .TradeSummary__error-icon {
   font-size: 12px;
-  color: black;
+  color: var(--secondary-text-color);
 }
 
 /* Error message text */

@@ -25,7 +25,6 @@
 
 /* Main container for stocks page content */
 .StocksPage__container {
-
   display: flex;
   justify-content: center;
 
@@ -34,7 +33,6 @@
 
 /* Main stocks content section */
 .StocksPage__main {
-
   /* ! unify media queries */
   width: 65vw;
   min-width: 400px;
@@ -44,7 +42,6 @@
   flex-direction: column;
 
   transition: width 0.3s smooth;
-
 }
 
 /* Section wrapper for spacing */
@@ -88,7 +85,7 @@
   gap: 2px;
 
   font-size: 13px;
-  color: var(--color-text);
+  color: var(--secondary-text-color);
   font-weight: 500;
 }
 
@@ -104,7 +101,6 @@
 
 /* Menu container (settings, follow button) */
 .StocksPage__menu {
-
   display: flex;
   flex-direction: row;
   justify-content: end;
@@ -140,11 +136,11 @@
   font-weight: bold;
   font-size: 12px;
 
-  background-color: #ffffff;
-  color: var(--color-primary);
+  color: var(--background-color);
+  background-color: var(--button-green);
 
-  border: 1px solid var(--color-primary);
-  border-radius: 36px;
+
+  border-radius: 44px;
 
   cursor: pointer;
   text-decoration: none;
@@ -153,7 +149,7 @@
 
 /* Hover effect for follow button */
 .StocksPage__follow-button:hover {
-  background-color: var(--button-hover-light-green);
+  background-color: var(--green-button-hover);
 }
 
 /* ========== Description & Table Section ========== */
@@ -189,7 +185,6 @@
   margin-top: 16px;
   margin-bottom: 140px;
 }
-
 
 /* Extra Large Screens (Desktops & TVs) */
 @media (min-width: 1440px) {

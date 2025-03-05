@@ -30,7 +30,7 @@
 
 /* Subtext styling (additional descriptions) */
 .TradeAmount__subtext {
-  color: rgb(127, 127, 127);
+  color: var(--secondary-text-color);
   display: flex;
 }
 
@@ -83,7 +83,7 @@
 
 /* Highlight border when input is focused */
 .TradeAmount__input-container:focus-within {
-  border: 2px solid var(--color-primary);
+  border: 1px solid var(--green-button);
 }
 
 /* Dollar sign inside the input field */
@@ -97,6 +97,8 @@
   text-align: right;
   border: none;
   outline: none;
+  color: var(--text-color);
+  background-color: var(--modal-background);
 }
 
 /* Removes spin buttons from number input */
@@ -117,11 +119,6 @@
   font-weight: bold;
 }
 
-/* Title styling for displayed trade amount */
-.TradeAmount__amount-title {
-  color: rgb(44, 183, 118);
-}
-
 /* ========== Divider Line ========== */
 /* Horizontal divider line */
 .StockTransaction__line {
@@ -129,4 +126,9 @@
   height: 1px;
   background-color: var(--border-color);
   margin-bottom: 6px;
+}
+
+.buyInDropDownBorder {
+  border: solid 1px var(--button-green);
+  background-color: var(--modal-background);
 }
