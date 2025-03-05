@@ -19,7 +19,7 @@ function TradeHoldings({
   return (
     <div className="TradeHoldings">
       {tradeType === "buy" ? (
-        ` $${balance.toFixed(2)} buying power available`
+        ` $${balance.toFixed(2)} buying power available.`
       ) : (
         <div className="TradeHoldings__holdings">
           {tradeUnit === "Dollars" ? (

@@ -133,12 +133,12 @@ function TradeReview({
     <div className="TradeReview">
       {showReview && errors && (
         <>
-          {tradeType === "buy" && errors[0] === "Not Enough Buying Power" && (
-            <button className="TradeReview__button" onClick={handleDeposit}>
+          {tradeType === "buy" && errors[0] === "Not Enough Buying Power." && (
+            <button className="TradeReview__button TradeReview__deposit-button" onClick={handleDeposit}>
               Make Deposit
             </button>
           )}
-          <button className="TradeReview__button" onClick={clearReview}>
+          <button className="TradeReview__button TradeReview__dismiss-button" onClick={clearReview}>
             Dismiss
           </button>
         </>
@@ -165,7 +165,7 @@ function TradeReview({
 
       {!showReview && (
         <button
-          className="TradeReview__button"
+          className="TradeReview__button TradeReview__review-button"
           onClick={handleStockTradeReview}
           disabled={isLoading}
         >

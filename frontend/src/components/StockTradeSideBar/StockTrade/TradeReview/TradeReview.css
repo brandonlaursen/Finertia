@@ -6,7 +6,7 @@
   justify-content: center;
   align-items: center;
   padding: 16px;
-  gap: 8px;
+  gap: 10px;
 
   border-bottom: 1px solid var(--border-color);
 }
@@ -15,22 +15,44 @@
 /* Primary button for confirming the trade review */
 .TradeReview__button {
   width: 95%;
-  height: 36px;
+  height: 38px;
 
   font-size: 12px;
   font-weight: bold;
-
-  background-color: var(--button-green);
-  color: var(--background-color);
 
   border-radius: 44px;
   border: none;
 
   cursor: pointer;
+  margin-bottom: 4px;
 }
 
-/* Hover effect for the review button */
-.TradeReview__button:hover {
+.TradeReview__deposit-button {
+  background-color: var(--button-green);
+  color: var(--background-color);
+}
+
+.TradeReview__deposit-button:hover {
+  background-color: var(--button-green-hover);
+}
+
+.TradeReview__dismiss-button {
+  color: var(--button-green);
+  background-color: var(--modal-background);
+
+  border: solid 1px var(--button-green);
+}
+
+.TradeReview__dismiss-button:hover {
+  background-color: var(--green-button-light-hover);
+}
+
+.TradeReview__review-button {
+  background-color: var(--button-green);
+  color: var(--background-color);
+}
+
+.TradeReview__review-button:hover {
   background-color: var(--button-green-hover);
 }
 
@@ -45,7 +67,6 @@
   gap: 8px;
 
   font-size: 12px;
-
 }
 
 /* ========== Loading Spinner ========== */
@@ -53,11 +74,14 @@
 .TradeReview__spinner {
   width: 16px;
   height: 16px;
+
+  display: inline-block;
+
   border: 2px solid var(--background-color);
   border-top: 2px solid transparent;
   border-radius: 50%;
+
   animation: spin 0.6s linear infinite;
-  display: inline-block;
 }
 
 /* Keyframes for the spinner rotation */
