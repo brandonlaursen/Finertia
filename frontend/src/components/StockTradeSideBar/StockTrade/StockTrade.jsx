@@ -30,6 +30,8 @@ function StockTrade({ stock, setNotifications, setNotificationMessage }) {
   const [errors, setErrors] = useState(null);
   const [messages, setMessages] = useState(null);
 
+  const [reviewingTrade, setReviewingTrade] = useState(false);
+
   // Buy or Sell
   const [tradeType, setTradeType] = useState("buy");
 
@@ -62,6 +64,7 @@ function StockTrade({ stock, setNotifications, setNotificationMessage }) {
     setShowReview(false);
     setErrors(null);
     setMessages(null);
+    setReviewingTrade(false);
   }
 
   const stockTradeProps = {
@@ -89,6 +92,8 @@ function StockTrade({ stock, setNotifications, setNotificationMessage }) {
     setMessages,
     setNotifications,
     setNotificationMessage,
+    reviewingTrade,
+    setReviewingTrade,
   };
 
   const tradeComponents = [

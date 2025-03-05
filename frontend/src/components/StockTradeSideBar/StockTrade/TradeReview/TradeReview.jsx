@@ -31,6 +31,7 @@ function TradeReview({
   setMessages,
   setNotifications,
   setNotificationMessage,
+  setReviewingTrade
 }) {
   const dispatch = useDispatch();
   const { setModalContent, setModalClass } = useModal();
@@ -54,6 +55,7 @@ function TradeReview({
   }
 
   async function handleStockTradeReview() {
+    setReviewingTrade(true);
     setIsLoading(true);
     await new Promise((resolve) => setTimeout(resolve, 500));
     setIsLoading(false);
@@ -118,6 +120,7 @@ function TradeReview({
           setNotifications(false);
           setNotificationMessage([]);
         }, 5000);
+        setReviewingTrade(false);
       } else {
         setErrors(["Failed to execute trade. Please try again."]);
       }
