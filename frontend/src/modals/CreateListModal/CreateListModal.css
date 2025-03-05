@@ -3,7 +3,7 @@
 /* Centers the modal on the page */
 .ChooseListType {
   position: fixed;
-  top: 349px;
+  top: 348px;
   left: 50%;
 
   display: flex;
@@ -15,24 +15,12 @@
   color: var(--text-color);
 }
 
-/* Background overlay behind the modal */
-.ChooseListType__overlay {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-
-  background-color: rgba(0, 0, 0, 0.7);
-}
-
 /* ========== Modal Container ========== */
 
 /* ChooseListType wrapper */
 .ChooseListType__wrapper {
   position: absolute;
 
-  /* height: 404px; */
   width: 430px;
 
   display: flex;
@@ -48,23 +36,6 @@
   flex-direction: column;
 
   padding: 16px 24px;
-}
-
-/* ========== ChooseListType Header ========== */
-
-/* Header section containing the title and close button */
-.ChooseListType__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  margin-bottom: 12px;
-}
-
-/* ChooseListType title */
-.ChooseListType__title {
-  font-size: 16px;
-  font-weight: 600;
 }
 
 /* ========== Options Container ========== */
@@ -86,7 +57,7 @@
   flex-direction: column;
 
   border: 1px solid var(--border-color);
-  border-radius: 4px;
+  border-radius: 2px;
 
   cursor: pointer;
 }
@@ -99,8 +70,8 @@
   background-color: var(--background-color);
 
   border-bottom: solid 1px var(--border-color);
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
 }
 
 /* Watch List image */
@@ -147,7 +118,8 @@
 /* Back button */
 .ChooseListType__back-button {
   height: 40px;
-  margin-top: 20px;
+  margin-top: 24px;
+  margin-bottom: 8px;
 
   font-weight: bold;
   color: var(--background-color);
@@ -165,7 +137,7 @@
 /* second modal */
 .CreateList {
   position: fixed;
-  top: 240px;
+  top: 234px;
   left: 50%;
 
   display: flex;
@@ -173,7 +145,7 @@
   align-items: center;
 
   z-index: 100;
-  color: var(--text-color-light);
+
 }
 
 .CreateList__overlay {
@@ -187,8 +159,8 @@
 }
 
 .CreateList__container {
-  height: 180px;
-  width: 450px;
+  height: 170px;
+  width: 430px;
 
   position: absolute;
 
@@ -197,45 +169,14 @@
 
   padding: 16px 24px;
 
-  background-color: var(--background-color-light);
+  background-color: var(--modal-background);
+  /* padding-bottom: 24px; */
 
   border-radius: 4px;
-}
-
-/*  same as chooseListType */
-.CreateList__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  margin-bottom: 12px;
-}
-
-.CreateList__header__title {
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.CreateList__close-button {
-  height: 34px;
-  width: 34px;
-
-  display: flex;
-  align-items: center;
-}
-
-.CreateList__close-button:hover {
-  background-color: var(--light-background-hover);
-  border-radius: 4px;
-}
-
-.CreateList__close-button-icon {
-  height: 32px;
-  width: 32px;
 }
 
 .CreateList__section__inputs {
-  height: 50px;
+  /* height: 50px; */
 
   display: flex;
   align-items: end;
@@ -243,6 +184,7 @@
   padding-left: 16px;
   margin-bottom: 10px;
   gap: 8px;
+
 }
 
 .CreateList__section__emoji-button {
@@ -253,21 +195,16 @@
   justify-content: center;
   align-items: center;
 
-  background-color: var(--background-color-light);
-
-  border: solid 1px var(--border-color-light);
+  background-color: var(--highlight-color);
+  border: solid 1px var(--border-color);
 
   border-radius: 4px;
 }
 
 .CreateList__emoji-picker-wrapper {
   position: absolute;
-  top: 115px;
-  right: 220px;
-
-  /* height: 400px; */
-
-  background: var(--background-color-light);
+  top: 105px;
+  right: 200px;
 
   border-radius: 4px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
@@ -278,13 +215,13 @@
   width: 80%;
   height: 36px;
 
-  box-sizing: border-box;
 
   padding: 2px 15px;
 
   font-size: 12px;
 
-  background-color: var(--highlight-lightblue);
+  color: var(--text-color);
+  background-color: var(--modal-emoji-icons);
 
   border-radius: 4px;
   border: none;
@@ -292,6 +229,7 @@
 
 .CreateList__name-input:focus {
   border: solid 1px var(--button-green);
+  background-color: var(--modal-background);
 }
 
 .CreateList__section__buttons {
@@ -318,21 +256,23 @@
 
 .CreateList__cancel-button {
   color: var(--button-green);
-  background-color: white;
+  background-color: var(--modal-background);
+
   border: solid 1px var(--button-green);
 }
 
 .CreateList__cancel-button:hover {
-  background-color: var(--button-hover-light-green);
+  background-color: var(--green-button-light-hover);
 }
 
 .CreateList__create-button {
-  color: var(--background-color-light);
+  color: var(--background-color);
   background-color: var(--button-green);
+
   min-width: 102px;
   border: none;
 }
 
 .CreateList__create-button:hover {
-  background-color: var(--button-green-hover);
+  background-color: var(--green-button-hover);
 }

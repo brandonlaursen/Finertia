@@ -4,7 +4,7 @@
 
   margin: auto;
 
-  color: black;
+  color: var(--text-color);
 
   animation: spin 1s linear infinite;
 }
