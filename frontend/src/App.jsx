@@ -47,8 +47,6 @@ function Layout() {
 
   useEffect(() => {
     const loadUser = async () => {
-      // Only restore if there's no user in the store
-
       if (!sessionUser) {
         console.log("Restoring user");
         await dispatch(restoreUser());

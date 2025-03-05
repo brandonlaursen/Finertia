@@ -188,12 +188,14 @@ function StockChart({ stockData, selectedTimeFrame }) {
   ];
 
   return (
-    <ReactApexChart
-      options={options}
-      series={series}
-      type="line"
-      height={options.chart.height}
-    />
+    <div className="StockChart">
+      <ReactApexChart
+        options={options}
+        series={series}
+        type="line"
+        height={options.chart.height}
+      />
+    </div>
   );
 }
 

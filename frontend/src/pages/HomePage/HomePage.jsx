@@ -26,7 +26,7 @@ function HomePage() {
 
   const { stockSummary } = sessionUser;
 
-  // Simulate loading state
+
   setTimeout(() => {
     setIsLoading(false);
   }, 1500);
@@ -38,20 +38,10 @@ function HomePage() {
           <>
             <div className="HomePage__skeleton-overview">
               <Skeleton height="60px" />
-              {/* <div className="HomePage__skeleton-stats">
-                <Skeleton height="40px" width="200px" />
-                <Skeleton height="40px" width="200px" />
-              </div> */}
             </div>
             <div className="HomePage__skeleton-chart">
               <Skeleton height="350px" />
             </div>
-            {/* <div className="HomePage__skeleton-timeframe">
-              <Skeleton height="40px" width="300px" />
-            </div> */}
-            {/* <div className="HomePage__skeleton-buying-power">
-              <Skeleton height="40px" width="200px" />
-            </div> */}
             <div className="HomePage__skeleton-news">
               <Skeleton height="400px" />
             </div>

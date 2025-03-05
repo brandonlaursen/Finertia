@@ -8,7 +8,7 @@
   font-weight: 600;
   margin: 0;
   margin-bottom: 4px;
-
+  color: var(--text-color);
 }
 
 /* HomePageOverview summary container styling */
