@@ -285,21 +285,25 @@ Close Button Icon
   --background-color-secondary: rgb(255, 255, 255);
   --text-color: #000000;
   --secondary-text-color: rgb(152, 152, 152);
-  --border-color: rgb(227, 233, 237);
-  --icon-color: rgb(106, 114, 120);
 
-  /* background when hovering over icons */
-  --icon-hover-color: rgb(255, 255, 255);
-  --icon-highlight-color: rgb(237, 237, 237);
+  --border-color: rgb(227, 233, 237);
+
+  --highlight-color: rgba(245, 248, 250);
+
+  --icon-color: rgb(106, 114, 120);
+  --icon-hover-color: rgb(242, 241, 241);
+
+  --list-item-hover: rgb(239, 239, 239);
 
   --search-results: #ffffff;
   --search-results-hover: rgba(245, 248, 250);
 
-  --account-dropdown:#ffffff;
-  --account-dropdown-hover: rgba(245, 248, 250);
+  --list-menu-button: #ffffff;
+  --list-menu-button-hover: rgba(245, 248, 250);
 
-  /* hovering over links */
-  --highlight-color: rgba(245, 248, 250);
+
+  --account-dropdown: #ffffff;
+  --account-dropdown-hover: rgba(245, 248, 250);
 
   --button-primary: #000000;
   --button-hover-primary: #1e2125;

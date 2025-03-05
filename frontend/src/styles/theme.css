@@ -120,24 +120,27 @@
 .dark-mode {
   --background-color: #000000;
   --background-color-secondary: rgb(30, 33, 37);
+
   --text-color: #ffffff;
   --secondary-text-color: rgb(140, 155, 161);
-  --border-color: rgb(48, 54, 58);
-  --icon-color: rgb(145, 159, 166);
 
-  /* background when hovering over icons */
-  --icon-hover-color: rgb(51, 51, 51);
+  --border-color: rgb(48, 54, 58);
+
+  --highlight-color: rgb(30, 33, 37);
+
+  --icon-color: rgb(145, 159, 166);
+  --icon-hover-color: rgb(24, 24, 24);
+
+  --list-item-hover: rgb(22, 22, 24);
+
+  --list-menu-button: rgb(30, 33, 37);
+  --list-menu-button-hover: rgb(48, 54, 58);
 
   --search-results: rgb(30, 33, 37);
   --search-results-hover: rgb(48, 54, 58);
 
   --account-dropdown: rgb(30, 33, 37);
   --account-dropdown-hover: rgb(48, 54, 58);
-
-  /*  */
-
-  /* hovering over links */
-  --highlight-color: rgb(30, 33, 37);
 
   --button-primary: #ffffff;
   --button-hover-primary: #e0e0e0;

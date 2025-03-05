@@ -12,7 +12,7 @@
   flex-direction: column;
   justify-content: space-evenly;
 
-  background: white;
+  background-color: var(--list-menu-button);
 
   border: 1px solid var(--border-color);
   border-radius: 4px;
@@ -34,13 +34,13 @@
   padding-left: 10px;
 
   font-weight: bold;
-  font-size: 12px;
+  font-size: 11px;
 
-  color: black;
+  color: var(--text-color);
 
   text-decoration: underline;
   text-decoration-thickness: 1px;
-  text-decoration-color: black;
+  text-decoration-color: var(--text-color);
   text-underline-offset: 3px;
 
   background: none;
@@ -51,7 +51,7 @@
 
 /* Change background on hover */
 .ListItemMenu__button:hover {
-  background-color: var(--color-highlight);
+  background-color: var(--list-menu-button-hover);
 }
 
 /* ========== List Item Icons ========== */
@@ -59,6 +59,6 @@
 .ListItemMenu__edit-icon,
 .ListItemMenu__rearrange-icon,
 .ListItemMenu__delete-icon {
-  height: 16px;
-  width: 16px;
+  height: 14px;
+  width: 14px;
 }

@@ -12,7 +12,7 @@
 }
 
 .ListStockItem:hover {
-  background-color: var(--color-highlight);
+  background-color: var(--highlight-color);
 }
 
 .ListStockItem__details {

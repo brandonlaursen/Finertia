@@ -14,7 +14,7 @@
 }
 
 .Lists__ListItem:hover {
-  background-color: rgb(247, 251, 255);
+  background-color: var(--highlight-color);
 }
 
 /* ========== List Item Container ========== */
@@ -25,21 +25,20 @@
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  padding: 0 16px;
+  padding: 0 12px;
 }
 
 /* ========== List Item Header ========== */
 .ListItem__header {
   border-radius: 4px;
-  padding: 4px;
+  padding: 4px 8px;
   display: flex;
   align-items: center;
-
 }
 
 /* Hover effect for header */
 .ListItem__header-hover:hover {
-  background-color: var(--light-background-hover);
+  background-color: var(--list-item-hover);
 }
 
 /* ========== List Item Emoji & Name ========== */
@@ -52,18 +51,17 @@
   align-items: center;
   margin-right: 10px;
   font-size: 13px;
-  background-color: rgb(234, 243, 248);
+  background-color: var(--highlight-color);
   border-radius: 4px;
 }
 
 /* Stock/list name inside the list item */
 .ListItem__name {
   display: block;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
-  color: black;
+  color: var(--text-color);
   text-align: left;
-
 }
 
 .ListItem__name-container {
@@ -72,7 +70,6 @@
   gap: 2px;
   text-align: left;
   text-align: left;
-
 }
 
 .ListItem__item-count {

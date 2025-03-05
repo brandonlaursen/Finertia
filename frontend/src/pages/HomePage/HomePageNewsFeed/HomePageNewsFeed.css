@@ -12,10 +12,10 @@
 }
 
 .HomePageNewsFeed__info-icon {
-  height: 13px;
-  width: 13px;
+  height: 15px;
+  width: 15px;
 
-  margin-left: 4px;
+  margin-left: 7px;
 
   color: var(--icon-color);
   cursor: pointer;

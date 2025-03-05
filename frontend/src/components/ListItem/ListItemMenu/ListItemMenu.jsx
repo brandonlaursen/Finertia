@@ -66,7 +66,7 @@ function ListItemMenu({
             }}
           >
             <IoSettings className="ListItemMenu__edit-icon" />
-            Edit
+            Edit list
           </button>
 
           <button className="ListItemMenu__button">

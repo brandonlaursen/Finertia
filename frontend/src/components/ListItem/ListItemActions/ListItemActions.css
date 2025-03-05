@@ -1,31 +1,27 @@
-
 /* ========== List Item Actions (Ellipsis & Arrow) ========== */
 .ListItemActions {
   display: flex;
   align-items: center;
 
-  margin-right: 6px;
+  margin-right: 10px;
 }
 
 /* ========== Menu Button (Ellipsis) ========== */
 .ListItemActions__menu-button {
-  height: 24px;
-  width: 24px;
+  height: 30px;
+  width: 30px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   margin-right: 14px;
+  color: var(--icon-color);
 
   cursor: pointer;
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
   border-radius: 4px;
-
-  background: none;
-  border: none;
-  outline: none;
 }
 
 /* Remove focus outline on click */
@@ -38,7 +34,7 @@
 
 /* Show background on hover */
 .ListItemActions__menu-button:hover {
-  background-color: rgb(237, 237, 237);
+  background-color: var(--icon-hover-color);
 
   opacity: 1;
 }
@@ -57,7 +53,7 @@
 
 /* Arrow icon for expanding/collapsing */
 .ListItemActions__arrow-icon {
-  font-size: 20px;
+  font-size: 18px;
   transition: transform 0.3s ease;
   color: var(--color-icon-grey);
 }
