@@ -1,13 +1,14 @@
 /* ========== Home Page Overview ========== */
 
-
 /* HomePageOverview title styling */
 .HomePageOverview__title {
   display: flex;
-  font-size: 28px;
-  font-weight: 600;
-  margin: 0;
+
   margin-bottom: 4px;
+
+  font-size: var(--font-size-extra-large);
+  font-weight: var(--font-weight-bold);
+
   color: var(--text-color);
 }
 
@@ -20,18 +21,18 @@
 
 /* Total investments text styling */
 .HomePageOverview__total-investments {
-  font-size: 30px;
-  font-weight: 500;
+  font-size: var(--font-size-extra-large);
+  font-weight: var(--font-weight-normal);
 }
 
 /* Portfolio amount change styling */
 .HomePageOverview__portfolio-amount-change {
   display: flex;
-  /* gap: 4px; */
+
   align-items: center;
-  text-align: center;
+
   font-weight: var(--font-weight-bold);
-  font-size: 12px;
+  font-size: var(--font-size-small);
 }
 
 .HomePageOverview__portfolio-amount-change span {
@@ -42,17 +43,19 @@
 .HomePageOverview__portfolio-amount-change--negative {
   height: 24px;
   width: 24px;
-  color: rgb(248, 124, 14);
+
+  color: var(--percent-color-negative);
 }
 
 /* Modifier: positive portfolio amount change */
 .HomePageOverview__portfolio-amount-change--positive {
   height: 24px;
   width: 24px;
+
   color: var(--percent-change-positive);
 }
 
 /* Subtext styling */
 .HomePageOverview__subtext {
-  font-weight: 500;
+  font-weight: var(--font-weight-normal);
 }

@@ -5,40 +5,46 @@
   top: 85px;
 
   height: 86vh;
-  width: 30vw;
-  max-width: 300px;
-  min-width: 250px;
+  width: clamp(250px, 30vw, 300px);
 
   transition: width 0.1s smooth;
 
-  margin-top: 30px;
-  margin-left: 8px;
-  margin-right: 8px;
+  margin-top: var(--margin-top-container);
 
-  background-color: rgb(255, 255, 255);
-  border-radius: 4px;
   border: 1px solid var(--border-color);
+  border-radius: 4px;
+
   overflow-y: auto;
   scrollbar-width: none;
 }
 
-
-
-.ListSideBar__loading{
+/* ====== Loading ====== */
+.ListSideBar__loading {
   position: sticky;
   top: 85px;
 
   height: 86vh;
-  width: 30vw;
-  max-width: 300px;
-  min-width: 250px;
+  width: clamp(250px, 30vw, 300px);
 
   transition: width 0.1s smooth;
 
-  margin-top: 30px;
-  margin-left: 8px;
-  margin-right: 8px;
-
-  background-color: rgb(255, 255, 255);
+  border: 1px solid var(--border-color);
   border-radius: 4px;
+}
+
+/* ====== Media Queries ====== */
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+  /* styles for medium devices */
+  .ListSideBar {
+    display: none;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) {
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
 }

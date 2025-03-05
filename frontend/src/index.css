@@ -1,27 +1,18 @@
 html,
 body {
+  height: 100%;
+  width: 100%;
   padding: 0;
   margin: 0;
-  max-width: 100%;
-  min-height: 100vh;
-  /* height: auto; */
   position: relative;
   display: block;
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
-  font-size: 16px;
-
-  /* -webkit-font-smoothing: antialiased; */
-  /* -moz-osx-font-smoothing: grayscale; */
-  /* text-rendering: optimizeLegibility; */
-  /* -webkit-text-size-adjust: 100%; */
-  /* -moz-text-size-adjust: 100%; */
-  /* text-size-adjust: 100%; */
-
-  font-size: 100%;
   scroll-behavior: smooth;
 
-  background-color: var(--background-color-light);
+  font-size: 16px;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 h1,
@@ -128,26 +119,7 @@ Close Button Icon
 
 /* var(); */
 :root {
-  /* Spacing */
-  --spacing-xs: 4px;
-  --spacing-sm: 8px;
-  --spacing-md: 16px;
-  --spacing-lg: 24px;
-  --spacing-xl: 32px;
 
-  /* Typography */
-  --font-base: 16px;
-  --font-sm: 14px;
-  --font-lg: 20px;
-  --font-xl: 24px;
-  --font-family-sans: "Montserrat", sans-serif;
-  --line-height: 1.5;
-  --font-weight-normal: 500;
-  --font-weight-bold: 700;
-
-  /* backgrounds */
-  --color-white: #ffffff;
-  --color-black: #000000;
 
   /* Accent Colors */
   --color-primary: #07de96;
@@ -217,20 +189,7 @@ Close Button Icon
   /* Light green hover */
   --button-hover-light-green: rgb(223, 255, 230);
 
-  /*
-  Font sizes
-  - input: 13px
-  - button: 12px - bold
-  - title: 14px - 600 font-weight
-  - text: 13px - 500
-  - sub text: 11px - 500
-  */
-  /* ===== Font Sizes ===== */
-  --font-size-title: 14px;
-  --font-size-input: 13px;
-  --font-size-text: 13px;
-  --font-size-button: 12px;
-  --font-size-subtext: 11px;
+
 
   /* ===== Colors ===== */
   /* Background Colors */
@@ -238,7 +197,7 @@ Close Button Icon
   --background-color-dark: rgb(0, 0, 0);
 
   /* For a modal */
-  --background-color-darkgrey: rgb(30,33,37);
+  --background-color-darkgrey: rgb(30, 33, 37);
 
   /* Text Colors */
   --text-color-light: rgb(0, 0, 0);
@@ -322,10 +281,66 @@ Close Button Icon
   --modal-font-size-text: 14px;
   --modal-font-weight-title: 600;
   --modal-font-weight-text: 500;
+
+  /* ==================== Finalized Styles ==================== */
+
+  /* Light Mode Colors */
+  --background-color: #ffffff;
+  --background-color-secondary: rgb(255, 255, 255);
+  --text-color: #000000;
+  --secondary-text-color: rgb(207, 209, 211);
+  --border-color: rgb(227, 233, 237);
+  --icon-color: rgb(106, 114, 120);
+
+  /* background when hovering over icons */
+  --icon-hover-color: rgb(255, 255, 255);
+
+  /* hovering over links */
+  --highlight-color: rgb(237, 237, 237);
+
+
+   /*
+  Font sizes
+  - input: 13px
+  - button: 12px - bold
+  - title: 14px - 600 font-weight
+  - text: 13px - 500
+  - sub text: 11px - 500
+  */
+  /* ===== Font Sizes ===== */
+  --font-size-title: 14px;
+  --font-size-input: 13px;
+  --font-size-text: 13px;
+  --font-size-button: 12px;
+  --font-size-subtext: 11px;
+
+  --base-font-size: 16;
+  --font-size-extra-large: 1.7rem;
+  --font-size-large: calc(14 / var(--base-font-size) * 1rem);
+  --font-size-medium: calc(13 / var(--base-font-size) * 1rem);
+  --font-size-small: calc(12 / var(--base-font-size) * 1rem);
+  --font-size-extra-small: calc(11 / var(--base-font-size) * 1rem);
+
+  --font-weight-bold: 700;
+  --font-weight-normal: 500;
+
+  /* Margins */
+  --margin-top-page: 80px;
+  --margin-bottom-page: 10vh;
+
+  --margin-top-container: 30px;
+
+
+  /* Percent Color */
+  --percent-color-positive: rgb(44, 202, 4);
+  --percent-color-negative: rgb(255, 29, 4);
+  --percent-color-orange: rgb(248, 124, 14);
 }
 
-.dark-mode {
-  --background-color: #121212;
-  --text-color: #e0e0e0;
-  --primary-color: #bb86fc;
-}
+/*
+  /* -webkit-font-smoothing: antialiased; */
+/* -moz-osx-font-smoothing: grayscale; */
+/* text-rendering: optimizeLegibility; */
+/* -webkit-text-size-adjust: 100%; */
+/* -moz-text-size-adjust: 100%; */
+/* text-size-adjust: 100%; */

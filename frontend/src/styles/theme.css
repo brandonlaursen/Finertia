@@ -118,7 +118,7 @@
 }
 
 .dark-mode {
-  --background-color: #121212;
+  --background-color: #000000;
   --background-color-secondary: rgb(30,33,37);
   --text-color: #ffffff;
   --secondary-text-color: rgb(140,155,161);
@@ -130,10 +130,6 @@
 
   /* hovering over links */
   --highlight-color: rgb(30,33,37);
-
-
-
-
 
 
 }
@@ -151,7 +147,5 @@
 
   /* hovering over links */
   --highlight-color:  rgb(237, 237, 237);
-
-
 
 }
