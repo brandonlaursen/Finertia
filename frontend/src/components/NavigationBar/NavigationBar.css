@@ -9,9 +9,9 @@
   flex-direction: row;
   justify-content: space-between;
 
-  padding-top: 5px;
+  padding-top: 4px;
 
-  background-color: var(--color-white);
+  background-color: var(--background-color);
 
   z-index: 2;
 }
@@ -29,9 +29,10 @@
   width: 35px;
 
   cursor: pointer;
-  color: var(--color-black);
+  color: var(--text-color);
 
   transition: color 0.3s ease-in-out;
+
   margin-right: 16px;
   margin-left: 16px;
 }
@@ -61,7 +62,7 @@
   font-size: 13px;
   font-weight: 600;
 
-  color: var(--color-black);
+  color: var(--text-color);
 
   text-decoration: none;
   cursor: pointer;
@@ -93,11 +94,9 @@
     gap: 0;
 
     border-radius: 4px;
-
   }
 
   .Navigation__links.show {
-
     width: 135px;
 
     position: absolute;
@@ -110,26 +109,15 @@
     padding: 16px 16px;
     gap: 16px;
 
-
-
-
-
-
-
-    background-color: var(--color-white);
-    background-color: aqua;
+    color: var(--text-color);
 
     border: solid var(--border-color) 1px;
-
   }
 
   #account-dropdown-text {
     padding: 10px;
   }
-
-
 }
-
 
 /* ========== Navigation Bar ========== */
 
@@ -146,14 +134,14 @@
   justify-content: space-between;
   align-content: center;
 
-  padding-top: 5px;
+  padding-top: 4px;
 
   background-color: var(--color-primary);
 
-  z-index: 2; /* Keeps it above other content */
+  z-index: 2;
 }
 
 /* Changes navbar background when scrolled */
 .scrolled {
-  background-color: rgb(255, 255, 255);
+  background-color: var(--background-color);
 }

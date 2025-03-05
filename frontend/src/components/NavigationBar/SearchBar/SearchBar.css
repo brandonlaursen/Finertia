@@ -14,7 +14,7 @@
   height: 20px;
   width: 20px;
 
-  color: var(--color-muted);
+  color: var(--icon-color);
 
   transform: translateY(-50%);
   pointer-events: none;
@@ -29,6 +29,9 @@
 
   font-size: 12px;
 
+  background-color: var(--background-color);
+  color: var(--text-color);
+
   border: solid var(--border-color) 1px;
   border-radius: 4px;
   outline: none;
@@ -41,6 +44,7 @@
   border-bottom: solid var(--border-color) 1px;
 
   outline: none;
+  background-color: var(--search-results);
 }
 
 .SearchBar-results {
@@ -56,8 +60,9 @@
   font-size: 12px;
   font-weight: 500;
 
-  background-color: rgb(255, 255, 255);
-  color: black;
+  background-color: var(--search-results);
+
+  color: var(--text-color);
 
   border-top: none;
   border-bottom-right-radius: 4px;
@@ -77,6 +82,7 @@
 .SearchBar-results:focus {
   border: none;
   outline: none;
+  background-color: var(--search-results);
 }
 
 .SearchBar-results-header {
@@ -84,7 +90,7 @@
   height: 34px;
   width: 100%;
   padding: 8px 16px;
-  color: var(--color-text);
+  color: var(--text-color);
   font-weight: bold;
   font-size: 12px;
 }
@@ -99,7 +105,7 @@
 }
 
 .SearchBar li:hover {
-  background-color: var(--color-highlight);
+  background-color: var(--search-results-hover);
 }
 
 .highlight {

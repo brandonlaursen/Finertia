@@ -292,6 +292,12 @@ Close Button Icon
   --icon-hover-color: rgb(255, 255, 255);
   --icon-highlight-color: rgb(237, 237, 237);
 
+  --search-results: #ffffff;
+  --search-results-hover: rgba(245, 248, 250);
+
+  --account-dropdown:#ffffff;
+  --account-dropdown-hover: rgba(245, 248, 250);
+
   /* hovering over links */
   --highlight-color: rgba(245, 248, 250);
 
