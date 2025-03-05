@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { createList } from "../../../../store/lists";
+import EmojiPicker from "emoji-picker-react";
 
 function CreateListToggle({
   showPicker,
@@ -23,6 +24,11 @@ function CreateListToggle({
 
   const [isExiting, setIsExiting] = useState(false);
   const [isLoadingCreate, setIsLoadingCreate] = useState(false);
+
+  const handleEmojiClick = (emojiData) => {
+    setSelectedEmoji(emojiData.emoji);
+    setShowPicker(false);
+  };
 
   const handleCancel = () => {
     setIsExiting(true);
@@ -74,7 +80,14 @@ function CreateListToggle({
               >
                 {selectedEmoji}
               </button>
-
+              {showPicker && (
+                <div className="CreateListToggle__emoji-wrapper">
+                  <EmojiPicker
+                    onEmojiClick={handleEmojiClick}
+                    style={{ width: "500px" }}
+                  />
+                </div>
+              )}
               <input
                 className="AddToListModal__create-form__input"
                 type="text"

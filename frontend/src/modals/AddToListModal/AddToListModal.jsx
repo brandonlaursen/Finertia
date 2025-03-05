@@ -121,14 +121,14 @@ function AddToListModal({ stock, setNotifications, setNotificationMessage }) {
 
   return (
     <div className="AddToListModal">
-      {showPicker && (
+      {/* {showPicker && (
         <div className="AddToListModal__emoji-wrapper">
           <EmojiPicker
             onEmojiClick={handleEmojiClick}
             style={{ width: "500px" }}
           />
         </div>
-      )}
+      )} */}
       <div className="AddToListModal__overlay" onClick={closeModal} />
 
       <main className="AddToListModal__main">

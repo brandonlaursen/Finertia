@@ -69,31 +69,37 @@
 
 .AddToListModal__create-form__input-section {
   position: relative;
-
   height: 60px;
-
   display: flex;
-
   justify-content: center;
   align-items: center;
   gap: 8px;
 }
 
+
+
 /* Emoji Picker Button */
 .AddToListModal__create-form__emoji-button {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 42px;
   width: 46px;
-
   background-color: rgb(255, 255, 255);
-
   border: solid 1px var(--border-color);
   border-radius: 4px;
   cursor: pointer;
-
   font-size: 20px;
+  z-index: 1001;
+}
+
+.CreateListToggle__emoji-wrapper {
+  position: fixed;
+  z-index: 1000;
+  top: 490px;
+  left: 40%;
+  transform: translate(-50%, -50%);
 }
 
 /* List Name Input */
@@ -113,7 +119,7 @@
 }
 
 .AddToListModal__create-form__input:focus {
-  border: solid 1px var( --button-green);
+  border: solid 1px var(--button-green);
 }
 
 /* Form Buttons */
@@ -139,9 +145,9 @@
 
 /* Cancel and Create Buttons */
 .AddToListModal__cancel-button {
-  color: var( --button-green);
+  color: var(--button-green);
   background-color: white;
-  border: solid 1px var( --button-green);
+  border: solid 1px var(--button-green);
 }
 
 .AddToListModal__cancel-button:hover {
@@ -150,7 +156,7 @@
 
 .AddToListModal__create-button {
   color: white;
-  background-color: var( --button-green);;
+  background-color: var(--button-green);
   min-width: 102px;
   border: none;
 }
