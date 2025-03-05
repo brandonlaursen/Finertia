@@ -56,6 +56,26 @@
   background-color: var(--button-green-hover);
 }
 
+.TradeReview__submit-button {
+  background-color: var(--button-green);
+  color: var(--background-color);
+}
+
+.TradeReview__submit-button:hover {
+  background-color: var(--button-green-hover);
+}
+
+.TradeReview__cancel-button {
+  color: var(--button-green);
+  background-color: var(--modal-background);
+
+  border: solid 1px var(--button-green);
+}
+
+.TradeReview__cancel-button:hover {
+  background-color: var(--green-button-light-hover);
+}
+
 /* ========== Review Confirmation Section ========== */
 /* Container for confirmation messages after submitting a trade */
 .TradeReview__confirmation {

@@ -150,7 +150,7 @@ function TradeReview({
       {showReview && !errors && (
         <div className="TradeReview__confirmation">
           <button
-            className="TradeReview__button"
+            className="TradeReview__button TradeReview__submit-button"
             onClick={handleExecuteStockTrade}
             disabled={isLoading}
           >
@@ -160,7 +160,7 @@ function TradeReview({
               "Submit Order"
             )}
           </button>
-          <button className="TradeReview__button" onClick={clearReview}>
+          <button className="TradeReview__button TradeReview__cancel-button" onClick={clearReview}>
             Cancel
           </button>
         </div>
