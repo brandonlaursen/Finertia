@@ -14,18 +14,16 @@ import { fetchLists } from "../../../store/lists";
 
 import { selectListById } from "../../../store/lists";
 import NotificationPopUp from "../../components/NotificationPopUp";
+
 function ListPage() {
   const { listId } = useParams();
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const stocks = useSelector((state) => state.stocks.allStocks);
-
   const list = useSelector((state) => selectListById(state, listId));
 
   const [isLoading, setIsLoading] = useState(true);
-
   const [notifications, setNotifications] = useState(false);
   const [notificationMessage, setNotificationMessage] = useState([]);
 
@@ -33,12 +31,17 @@ function ListPage() {
     let isMounted = true;
 
     async function fetchData() {
-      await dispatch(fetchLists());
-      await dispatch(fetchAllStocks());
-      if (isMounted) {
-        setIsLoading(false);
+      try {
+        await dispatch(fetchLists());
+        await dispatch(fetchAllStocks());
+        if (isMounted) {
+          setIsLoading(false);
+        }
+      } catch (err) {
+        console.error("Error fetching data:", err);
       }
     }
+
     fetchData();
     return () => {
       isMounted = false;
@@ -46,6 +49,15 @@ function ListPage() {
   }, [dispatch]);
 
   if (isLoading) return <h1>Loading</h1>;
+
+  if (!list) {
+    return (
+      <div className="StockPage__stock-not-found">
+        <h2>List Not Found</h2>
+        <button onClick={() => navigate("/")}>Return to Home</button>
+      </div>
+    );
+  }
 
   return (
     <div className="ListPage">
@@ -55,8 +67,6 @@ function ListPage() {
           {list.Stocks.length > 0 ? (
             <StocksTable
               stocks={stocks}
-              // handleSort={handleSort}
-              // sortedStocks={sortedStocks}
               listStocks={list.Stocks}
               navigate={navigate}
               list={list}
