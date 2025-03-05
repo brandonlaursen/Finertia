@@ -7,7 +7,7 @@ import { useModal } from "../../context/Modal";
 import { deleteList } from "../../../store/lists";
 
 import ModalHeader from "../../components/ModalHeader/ModalHeader";
-
+import ModalOverlay from "../../components/ModalOverlay/ModalOverlay";
 
 function DeleteListModal({
   listId,
@@ -49,7 +49,7 @@ function DeleteListModal({
 
   return (
     <div className="DeleteListModal">
-      <div className="DeleteListModal__overlay" onClick={closeModal} />
+       <ModalOverlay closeModal={closeModal} />
 
       <div className="DeleteListModal__container">
         <section className="DeleteListModal__section">

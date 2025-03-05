@@ -9,6 +9,8 @@ import { createList } from "../../../store/lists";
 import { selectUser } from "../../../store/session";
 
 import ModalHeader from "../../components/ModalHeader/ModalHeader";
+import ModalOverlay from "../../components/ModalOverlay/ModalOverlay";
+
 
 function CreateListModal({ setNotifications, setNotificationMessage }) {
   const { closeModal } = useModal();
@@ -60,7 +62,7 @@ function CreateListModal({ setNotifications, setNotificationMessage }) {
   if (isOpen) {
     return (
       <div className="CreateList">
-        <div className="CreateList__overlay" onClick={closeModal} />
+    <ModalOverlay closeModal={closeModal} />
 
         <main className="CreateList__container">
           <ModalHeader closeModal={closeModal}>Create list</ModalHeader>
@@ -117,7 +119,7 @@ function CreateListModal({ setNotifications, setNotificationMessage }) {
 
   return (
     <div className="ChooseListType">
-      <div className="ChooseListType__overlay" onClick={closeModal} />
+       <ModalOverlay closeModal={closeModal} />
 
       <div className="ChooseListType__wrapper">
         <main className="ChooseListType__container">

@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import EmojiPicker from "emoji-picker-react";
 
 import ModalHeader from "../../components/ModalHeader/ModalHeader";
-
+import ModalOverlay from "../../components/ModalOverlay/ModalOverlay";
 import { useModal } from "../../context/Modal";
 import { editList } from "../../../store/lists";
 
@@ -57,7 +57,7 @@ function EditListModal({ list, setNotifications, setNotificationMessage }) {
 
   return (
     <div className="EditListModal">
-      <div className="EditListModal__background" onClick={closeModal} />
+      <ModalOverlay closeModal={closeModal} />
 
       <div className="EditListModal__container">
         <div className="EditListModal__contents">

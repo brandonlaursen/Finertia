@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { useState, useRef } from "react";
 
 import ModalHeader from "../../components/ModalHeader/ModalHeader";
-
+import ModalOverlay from "../../components/ModalOverlay/ModalOverlay";
 import { editUser } from "../../../store/session";
 import { useModal } from "../../context/Modal";
 
@@ -68,7 +68,7 @@ function EditProfileModal({ sessionUser }) {
 
   return (
     <div className="EditProfileModal">
-      <div className="EditProfileModal__background" onClick={closeModal}></div>
+       <ModalOverlay closeModal={closeModal} />
       <div className="EditProfileModal__container">
         <ModalHeader closeModal={closeModal}>Edit Profile</ModalHeader>
 

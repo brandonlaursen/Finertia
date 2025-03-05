@@ -4,7 +4,6 @@ import { IoIosCheckmark } from "react-icons/io";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import EmojiPicker from "emoji-picker-react";
 import ListItem from "../../components/ListItem";
 import CreateListToggle from "./CreateListToggle";
 import ModalHeader from "../../components/ModalHeader/ModalHeader";
@@ -12,6 +11,8 @@ import ModalHeader from "../../components/ModalHeader/ModalHeader";
 import { fetchLists, selectListsArray } from "../../../store/lists";
 import { selectUser } from "../../../store/session";
 import { editListStocks } from "../../../store/stocks";
+
+import ModalOverlay from "../../components/ModalOverlay/ModalOverlay";
 
 import { useModal } from "../../context/Modal";
 
@@ -116,7 +117,7 @@ function AddToListModal({ stock, setNotifications, setNotificationMessage }) {
 
   return (
     <div className="AddToListModal">
-      <div className="AddToListModal__overlay" onClick={closeModal} />
+      <ModalOverlay closeModal={closeModal} />
 
       <main className="AddToListModal__main">
         <ModalHeader
