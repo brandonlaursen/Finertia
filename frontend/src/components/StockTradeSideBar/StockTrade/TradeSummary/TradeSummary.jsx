@@ -8,7 +8,7 @@ function TradeSummary({
   tradeSharesEstimate,
   showReview,
   errors,
-  message,
+  messages,
 }) {
   return (
     <>
@@ -45,9 +45,13 @@ function TradeSummary({
               <span className="TradeSummary__error-message">{errors[1]}</span>
             </div>
           )}
-          {message && (
-            <div className="TradeSummary__messages">
-              <span className="TradeSummary__message">{message}</span>
+          {messages && (
+            <div className="TradeSummary__errors">
+              <span className="TradeSummary__title">
+                <MdInfoOutline className="TradeSummary__error-icon" />
+                {messages[0]}
+              </span>
+              <span className="TradeSummary__error-message">{messages[1]}</span>
             </div>
           )}
         </>

@@ -5,27 +5,22 @@
   display: flex;
   justify-content: center;
 
-    /* ! unify media queries */
-  margin-top: 80px;
-  gap: 1.5vw;
+  gap: 3vw;
+  margin-top: var(--margin-top-page);
+  margin-bottom: var(--margin-bottom-page);
 }
 
 /* Stock Page main content area styles */
 .StockPage__main {
-  /* ! unify media queries */
-  width: 65vw;
-  min-width: 400px;
-  max-width: 900px;
+  width: clamp(400px, 60vw, 1000px);
 
   display: flex;
   flex-direction: column;
 
-  margin-top: 30px;
-
+  margin-top: var(--margin-top-container);
 
   transition: width 0.3s smooth;
 }
-
 
 .StockPage__stock-not-found {
   display: flex;
@@ -36,7 +31,6 @@
   padding: 2rem;
   text-align: center;
   border-radius: 8px;
-
 }
 
 .StockPage__stock-not-found h2 {
@@ -66,79 +60,31 @@
   background-color: #0056b3;
 }
 
-
 /* ========== Loading Spinner ========== */
 
 /* Stock Page Loading Spinner */
-.StockPage__loading-spinner{
+.StockPage__loading-spinner {
   display: flex;
   justify-content: center;
   position: absolute;
-  top:100px;
-  bottom:0;
-  left:0;
-  right:0;
+  top: 100px;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
-
-
-/* Extra Large Screens (Desktops & TVs) */
-@media (min-width: 1440px) {
-  /* Styles for large desktop screens */
-  .StockPage__main {
-    max-width: 900px;
-  }
-}
-
-/* Large Desktops */
-@media (max-width: 1280px) {
-  /* Styles for medium-sized desktops */
-  .StockPage__main {
-    max-width: 800px;
-  }
-}
-
-/* Small Desktops & Large Tablets */
-@media (max-width: 1024px) {
-  /* Adjust layouts, reduce container sizes */
-  .StockPage__main {
-    max-width: 700px;
-  }
-}
-
-@media (max-width: 830px) {
-  /* Stack columns, adjust text sizes, shrink margins */
-  .StockPage__main {
-    max-width: 550px;
-    /* padding: 16px 16px; */
-    padding-right: 0;
-  }
-}
-
-/* Tablets (Portrait & Small Laptops) */
+/* ====== Media Queries ====== */
+/* Medium devices (tablets, 768px and up) */
 @media (max-width: 768px) {
-  /* Stack columns, adjust text sizes, shrink margins */
   .StockPage__main {
-    /* width: 55vw; */
-    max-width: 450px;
+    width: 90vw;
   }
 }
 
-/* Large Phones (Landscape Mode) */
-@media (max-width: 700px) {
-  /* Reduce button sizes, make touch targets larger */
-  .StockPage__main {
-    width: 90%;
-    max-width: none;
-  }
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) {
 }
 
-/* Most Mobile Phones (Portrait Mode) */
-@media (max-width: 480px) {
-  /* Full-width elements, simplify layouts */
-}
-
-/* Very Small Phones */
-@media (max-width: 360px) {
-  /* Reduce paddings/margins for ultra-small screens */
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
 }

@@ -1,20 +1,18 @@
 /* ========== Home Page ========== */
 /* Home Page Container */
 .HomePage {
-
   display: flex;
   justify-content: center;
 
   gap: 3vw;
-
   margin-top: var(--margin-top-page);
   margin-bottom: var(--margin-bottom-page);
-  margin-bottom: 15vh;
+
 }
 
 /* HomePage main content area styles */
 .HomePage__main {
-  width: clamp(400px, 50vw, 1000px);
+  width: clamp(400px, 60vw, 1000px);
 
   display: flex;
   flex-direction: column;

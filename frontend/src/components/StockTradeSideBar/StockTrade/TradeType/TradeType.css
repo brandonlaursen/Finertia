@@ -28,7 +28,7 @@
 
 /* Hover effect for trade type options */
 .TradeType_select:hover {
-  color: rgb(0, 200, 5);
+  color: var(--button-green);
 }
 
 /* ========== Selected Trade Type Styling ========== */

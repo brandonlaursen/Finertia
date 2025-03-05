@@ -1,12 +1,11 @@
 /* ========== Trade Amount ========== */
 /* Main container for the Trade Amount section */
 .TradeAmount {
-  height: auto;
   display: flex;
   align-items: center;
   flex-direction: column;
+
   padding: 10px 20px;
-  font-size: 13px;
 }
 
 /* ========== Order Type ========== */
@@ -14,7 +13,9 @@
 .TradeAmount__section {
   width: 100%;
   height: 48px;
+
   display: flex;
+
   align-items: center;
   justify-content: space-between;
 }
@@ -23,7 +24,9 @@
 .TradeAmount__header {
   display: flex;
   flex-direction: column;
+
   gap: 4px;
+
   font-size: 11px;
   font-weight: 500;
 }
@@ -36,17 +39,20 @@
 
 /* Info icon next to subtext */
 .TradeAmount__info-icon {
-  height: 12px;
-  width: 12px;
+  height: 15px;
+  width: 15px;
   margin-left: 4px;
+  color: var(--secondary-text-color);
 }
 
 /* ========== Order Type Selection ========== */
 /* Wrapper for the order type selection */
 .TradeAmount__option {
+  position: relative;
+
   height: 32px;
   width: 50%;
-  position: relative;
+
   display: flex;
   border-radius: 4px;
 }
@@ -55,15 +61,20 @@
 .TradeAmount__select {
   width: 100%;
   height: 100%;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   padding: 0 8px;
-  border-radius: 4px;
-  border: 1px solid var(--border-color);
-  cursor: normal;
+
   font-size: 11px;
   font-weight: 500;
+
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+
+  cursor: normal;
 }
 
 /* ========== Trade Input Section ========== */
@@ -71,12 +82,16 @@
 .TradeAmount__input-container {
   height: 32px;
   width: 50%;
+
   display: flex;
   align-items: center;
+
   padding-left: 5px;
   padding-right: 8px;
+
   margin-left: auto;
   margin-bottom: 4px;
+
   border: 1px solid var(--border-color);
   border-radius: 4px;
 }
@@ -95,8 +110,7 @@
 .TradeAmount__input {
   width: 100%;
   text-align: right;
-  border: none;
-  outline: none;
+
   color: var(--text-color);
   background-color: var(--modal-background);
 }
@@ -113,10 +127,23 @@
 .TradeAmount__amount {
   height: 24px;
   width: 100%;
+
   display: flex;
   justify-content: space-between;
+
   margin-top: 10px;
-  font-weight: bold;
+}
+
+.TradeAmount__amount-title {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--green-button);
+}
+
+.TradeAmount__amount-value {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-color);
 }
 
 /* ========== Divider Line ========== */
@@ -124,8 +151,11 @@
 .StockTransaction__line {
   width: 100%;
   height: 1px;
+
+  margin-bottom: 8px;
+  margin-top: 8px;
+
   background-color: var(--border-color);
-  margin-bottom: 6px;
 }
 
 .buyInDropDownBorder {

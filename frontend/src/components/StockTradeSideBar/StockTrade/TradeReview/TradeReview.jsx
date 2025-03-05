@@ -28,7 +28,7 @@ function TradeReview({
   clearReview,
   errors,
   setErrors,
-  setMessage,
+  setMessages,
   setNotifications,
   setNotificationMessage,
 }) {
@@ -71,7 +71,7 @@ function TradeReview({
       setShowReview,
       errors,
       setErrors,
-      setMessage,
+      setMessages,
     });
   }
 
@@ -100,11 +100,11 @@ function TradeReview({
         // Show success notification
         if (tradeType === "buy") {
           setNotificationMessage([
-            `Successfully bought ${transaction.quantity} shares of ${stock.name}`,
+            `Successfully bought ${transaction.quantity} shares of ${stock.name}.`,
           ]);
         } else if (tradeType === "sell") {
           setNotificationMessage([
-            `Successfully sold ${transaction.quantity} shares of ${stock.name}`,
+            `Successfully sold ${transaction.quantity} shares of ${stock.name}.`,
           ]);
         }
 
@@ -117,7 +117,7 @@ function TradeReview({
         setTimeout(() => {
           setNotifications(false);
           setNotificationMessage([]);
-        }, 10000);
+        }, 5000);
       } else {
         setErrors(["Failed to execute trade. Please try again."]);
       }

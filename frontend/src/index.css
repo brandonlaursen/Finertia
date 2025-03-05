@@ -14,7 +14,10 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
 }
-
+input {
+  border: none;
+  outline: none;
+}
 h1,
 h2 {
   margin: 0;
@@ -395,7 +398,6 @@ Close Button Icon
   --epr-active-skin-tone-indicator-border-color: var(--modal-background);
   --epr-active-skin-hover-color: var(--green-button);
   --epr-category-icon-active-color: var(--modal-emoji-icons);
-
 }
 
 /* The scrollbar track */

@@ -2,7 +2,7 @@
 
 /* Main container for the Stock Trade Sidebar */
 .StockTradeSidebar {
-  margin-top: 30px;
+  margin-top: var(--margin-top-container);
 }
 
 /* Sticky container that holds all the trade actions */
@@ -10,18 +10,14 @@
   position: sticky;
   top: 85px;
 
-  min-width: 274px;
-  max-width: 295px;
-  width: 20vw;
+  width: clamp(250px, 30vw, 300px);
 
   display: flex;
   flex-direction: column;
   align-items: center;
 
   gap: 24px;
- 
 }
-
 
 /* ========== Add to List Button ========== */
 
@@ -59,11 +55,19 @@
   width: 20px;
 }
 
-@media (max-width: 830px) {
-  /* Stack columns, adjust text sizes, shrink margins */
-  .StockTradeSidebar__main {
-    /* max-width: 50px; */
-    /* padding: 16px 16px; */
-    padding-right: 0;
+/* ====== Media Queries ====== */
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+  /* styles for medium devices */
+  .StockTradeSidebar {
+    display: none;
   }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) {
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
 }

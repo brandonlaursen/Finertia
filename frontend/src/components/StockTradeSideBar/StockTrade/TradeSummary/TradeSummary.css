@@ -12,19 +12,22 @@
 /* Estimated quantity or cost display */
 .TradeSummary__estimate {
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 /* ========== Trade Summary Errors ========== */
 /* Container for displaying errors */
 .TradeSummary__errors {
-  height: 64px;
+  /* height: 64px; */
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: start;
   padding-left: 20px;
+
   font-size: 12px;
+  margin-top:16px;
 }
 
 /* Title inside the error message */
@@ -32,23 +35,30 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
   gap: 4px;
+
   font-weight: bold;
+  margin-bottom: 4px;
 }
 
 /* Error icon inside the message */
 .TradeSummary__error-icon {
-  font-size: 12px;
+  font-size: 16px;
   color: var(--secondary-text-color);
 }
 
 /* Error message text */
 .TradeSummary__error-message {
-  margin-left: 18px;
-  margin-top: 4px;
-  font-size: 12px;
-  font-weight: 500;
   width: 220px;
+
+  margin-left: 20px;
+  margin-top: 4px;
+
+  font-size: 11px;
+  /* font-weight: 500; */
+  line-height: 1.4;
+
   word-wrap: break-word;
   overflow-wrap: break-word;
   white-space: normal;
@@ -57,22 +67,24 @@
 /* ========== Trade Summary Messages ========== */
 /* Container for general messages */
 .TradeSummary__messages {
-  height: 64px;
+  /* height: 64px; */
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: start;
+
   padding-left: 20px;
 }
 
 /* Message text */
 .TradeSummary__message {
   padding-right: 20px;
-
-
-  font-size: 12px;
+  padding-left: 20px;
+  font-size: 11px;
   font-weight: 500;
   width: 250px;
+
   word-wrap: break-word;
   overflow-wrap: break-word;
   white-space: normal;

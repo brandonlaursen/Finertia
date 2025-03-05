@@ -137,7 +137,7 @@ function TradeAmount({
       {tradeUnit === "Shares" && (
         <div className="TradeAmount__amount">
           <span className="TradeAmount__amount-title">Market Price</span>
-          <span>${price.toFixed(2)}</span>
+          <span className="TradeAmount__amount-value">${price.toFixed(2)}</span>
         </div>
       )}
       <div className="StockTransaction__line" />
