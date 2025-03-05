@@ -1,6 +1,7 @@
 /* ========== Home Page ========== */
 /* Home Page Container */
 .HomePage {
+
   display: flex;
   justify-content: center;
 
@@ -8,6 +9,7 @@
 
   margin-top: var(--margin-top-page);
   margin-bottom: var(--margin-bottom-page);
+  margin-bottom: 15vh;
 }
 
 /* HomePage main content area styles */
@@ -29,7 +31,8 @@
   flex-direction: column;
 
   gap: 3vw;
-  margin-bottom: var(--margin-bottom-container);
+  /* margin-bottom: var(--margin-bottom-container); */
+  margin-bottom: 16px
 }
 
 .HomePage__skeleton-stats {
@@ -38,20 +41,20 @@
 }
 
 .HomePage__skeleton-chart {
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 }
 
 .HomePage__skeleton-timeframe {
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 }
 
 .HomePage__skeleton-buying-power {
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 }
 
 .HomePage__skeleton-news {
   margin-bottom: 32px;
-  margin-top: 32px;
+
   border-radius: 4px;
 }
 

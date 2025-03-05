@@ -85,8 +85,8 @@
   font-size: var(--font-size-small);
 }
 
-.BuyingPowerDropDown__summary-value{
-    font-size: var(--font-size-large);
+.BuyingPowerDropDown__summary-value {
+  font-size: var(--font-size-large);
   font-weight: var(--font-weight-bold);
 }
 
@@ -110,7 +110,7 @@
   font-size: var(--font-size-button);
   font-weight: var(--font-weight-bold);
 
-  background-color: var(--text-color);
+  background-color: var(--button-primary);
   color: var(--background-color);
 
   border: none;

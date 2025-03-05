@@ -119,8 +119,6 @@ Close Button Icon
 
 /* var(); */
 :root {
-
-
   /* Accent Colors */
   --color-primary: #07de96;
   --color-primary-hover: rgb(7, 239, 162);
@@ -188,8 +186,6 @@ Close Button Icon
 
   /* Light green hover */
   --button-hover-light-green: rgb(223, 255, 230);
-
-
 
   /* ===== Colors ===== */
   /* Background Colors */
@@ -288,7 +284,7 @@ Close Button Icon
   --background-color: #ffffff;
   --background-color-secondary: rgb(255, 255, 255);
   --text-color: #000000;
-  --secondary-text-color: rgb(207, 209, 211);
+  --secondary-text-color: rgb(152, 152, 152);
   --border-color: rgb(227, 233, 237);
   --icon-color: rgb(106, 114, 120);
 
@@ -298,10 +294,14 @@ Close Button Icon
 
   /* hovering over links */
   --highlight-color: rgba(245, 248, 250);
+
+  --button-primary: #000000;
   --button-hover-primary: #1e2125;
 
+  --button-primary-inverted: #ffffff;
+  --button-hover-primary-inverted: #e0e0e0;
 
-   /*
+  /*
   Font sizes
   - input: 13px
   - button: 12px - bold
@@ -331,7 +331,6 @@ Close Button Icon
   --margin-bottom-page: 10vh;
 
   --margin-top-container: 30px;
-
 
   /* Percent Color */
   --percent-color-positive: rgb(44, 202, 4);

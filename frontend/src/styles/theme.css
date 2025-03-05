@@ -131,7 +131,11 @@
   /* hovering over links */
   --highlight-color: rgb(30, 33, 37);
 
+  --button-primary: #ffffff;
   --button-hover-primary: #e0e0e0;
+
+  --button-primary-inverted: #000000;
+  --button-hover-primary-inverted: #1e2125;
 }
 
 .light-mode {
