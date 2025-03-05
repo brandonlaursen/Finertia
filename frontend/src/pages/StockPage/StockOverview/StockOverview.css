@@ -10,11 +10,10 @@
 /* ========== Stock Name & Price ========== */
 
 /* Stock name and price styling */
-.StockOverview__name{
+.StockOverview__name {
   font-size: 28px;
   font-weight: 700;
   margin: 0;
-
 }
 .StockOverview__price {
   font-size: 30px;
@@ -49,7 +48,6 @@
 
   font-size: 12px;
   font-weight: bold;
-
 }
 
 /* Stock trading day indicator */
@@ -61,7 +59,7 @@
 
 /* Negative price movement */
 .negative {
-  color: var(--percent-change-negative);
+  color: var(--color-negative-orange);
 }
 
 /* Positive price movement */

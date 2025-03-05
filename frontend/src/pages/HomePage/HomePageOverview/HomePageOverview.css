@@ -44,7 +44,7 @@
   height: 24px;
   width: 24px;
 
-  color: var(--percent-color-negative);
+  color: var(--color-negative-orange);
 }
 
 /* Modifier: positive portfolio amount change */

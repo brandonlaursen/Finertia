@@ -39,7 +39,7 @@
 
   font-weight: bold;
 
-  color: rgb(7, 222, 150);
+  color: var(--green-button);
 }
 
 /* ========== Company Info Section ========== */
