@@ -26,7 +26,7 @@
   flex-direction: column;
   padding: 16px 24px;
 
-  background-color: var(--background-color);
+  background-color: var(--modal-background);
 
   border-radius: 4px;
 }
@@ -54,76 +54,17 @@
   right: 0;
   bottom: 0;
 
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: var(--disabled-overlay-color);
 
   pointer-events: none;
 }
 
-/* Create New List Overlay active */
+/* ========== Create New List Overlay active ========== */
 .AddToListModal__list-overlay.active {
   pointer-events: auto;
 }
 
-/* Create New List */
-.AddToListModal__list {
-  position: relative;
 
-  display: flex;
-  align-items: center;
-
-  z-index: 5;
-}
-
-/* Create New List disabled */
-.AddToListModal__list.disabled {
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-/* ========== List Item Section ========== */
-.AddToListModal__list-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Checkbox Styling */
-.AddToListModal__list-wrapper input[type="checkbox"] {
-  -webkit-appearance: none;
-  appearance: none;
-
-  width: 16px;
-  height: 16px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  margin-right: 13px;
-  border: 0.2em solid rgb(255, 118, 58);
-  outline: none;
-  cursor: pointer;
-}
-
-/* Checked Checkbox */
-input.checked {
-  background-color: rgb(255, 118, 58);
-  position: relative;
-}
-
-/* Checkbox Icon */
-.AddToListModal__checkbox-icon {
-  position: absolute;
-  color: white;
-  font-size: 24px;
-  pointer-events: none;
-  text-align: center;
-  align-self: center;
-  top: 50%;
-  left: 37%;
-  transform: translate(-50%, -50%);
-}
 
 /* ========== Modal Footer ========== */
 /* Modal Footer */
@@ -148,7 +89,7 @@ input.checked {
 
 /* Create Button */
 .AddToListModal__save-button {
-  color: white;
+  color: var(--background-color);
   background-color: var(--button-green);
   border: none;
   -webkit-font-smoothing: subpixel-antialiased;
@@ -161,35 +102,8 @@ input.checked {
 
 /* Disabled Button */
 .AddToListModal__footer__button:disabled {
-  background-color: var(--color-disabled);
+  background-color: var(--disabled-button-color);
 }
 
-/* List Item Container */
-.AddToListModal__item__container {
-  padding-bottom: 4px;
-  padding-left: 0;
-}
 
-/* ========== List Item Icons ========== */
-.AddToListModal__item__emoji {
-  height: 60px;
-  width: 48px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 10px;
-  font-size: 20px;
-  background-color: var(--color-highlight);
-  border-radius: 4px;
-}
 
-/* ========== List Item Title ========== */
-.AddToListModal__item__name {
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 14px;
-  font-weight: 500;
-
-  color: var(--text-color);
-}

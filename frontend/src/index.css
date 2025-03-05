@@ -280,15 +280,19 @@ Close Button Icon
 
   /* ==================== Finalized Styles ==================== */
 
-
-
   /* Light Mode Colors */
   --background-color: #ffffff;
   --background-color-secondary: rgb(255, 255, 255);
   --text-color: #000000;
   --secondary-text-color: rgb(152, 152, 152);
 
+  --modal-background: rgb(255, 255, 255);
+  --modal-emoji-icons: rgba(245, 248, 250);
+
   --border-color: rgb(227, 233, 237);
+  --disabled-overlay-color: rgba(255, 255, 255, 0.7);
+  --disabled-button-color: rgb(180, 189, 194);
+
 
   --highlight-color: rgba(245, 248, 250);
 
@@ -360,7 +364,6 @@ Close Button Icon
 /* text-size-adjust: 100%; */
 
 /* Global scrollbar styles */
-
 
 /* The scrollbar track */
 ::-webkit-scrollbar-track {

@@ -78,7 +78,7 @@
 
 .ListItem__item-count {
   font-size: 11px;
-  color: var(--color-light-text);
+  color: var(--secondary-text-color);
   font-weight: 500;
   text-align: left;
 }

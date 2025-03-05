@@ -39,7 +39,7 @@
 }
 
 .TransferModal__background {
-  background-color: white;
+  background-color: var(--background-color);
 }
 
 .TransferModal__header {

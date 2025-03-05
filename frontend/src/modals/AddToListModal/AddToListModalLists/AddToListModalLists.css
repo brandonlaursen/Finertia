@@ -1,0 +1,100 @@
+/* ============ Add To List Modal Lists Container ============ */
+.AddToListModalLists {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  z-index: 5;
+}
+
+/* Add To List Modal Lists Container Disabled */
+.AddToListModalLists.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Checkbox Container */
+.AddToListModalLists__checkbox-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Checkbox Styling */
+.AddToListModalLists__checkbox-container input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 13px;
+
+  border: 0.2em solid rgb(255, 118, 58);
+
+  outline: none;
+  cursor: pointer;
+
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Checked Checkbox */
+input.checked {
+  position: relative;
+
+  background-color: rgb(255, 118, 58);
+}
+
+/* Checkbox Icon */
+.AddToListModalLists__checkbox-icon {
+  position: absolute;
+  top: 50%;
+  left: 37%;
+
+  text-align: center;
+  align-self: center;
+
+  font-size: 24px;
+  color: var(--background-color);
+
+  pointer-events: none;
+
+  transform: translate(-50%, -50%);
+}
+
+/* ========== List Item Container ========== */
+.AddToListModalLists__item {
+  padding-bottom: 4px;
+  padding-left: 0;
+}
+
+/* ========== List Item Emoji ========== */
+.AddToListModalLists__item-emoji {
+  height: 60px;
+  width: 48px;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+
+  font-size: 20px;
+
+  background-color: var(--modal-emoji-icons);
+  border-radius: 4px;
+}
+
+/* ========== List Item Name ========== */
+.AddToListModalLists__item-name {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  color: var(--text-color);
+}

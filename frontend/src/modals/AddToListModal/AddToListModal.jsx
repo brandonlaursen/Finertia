@@ -1,5 +1,4 @@
 import "./AddToListModal.css";
-import { IoIosCheckmark } from "react-icons/io";
 
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -7,8 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import ModalHeader from "../../components/ModalHeader/ModalHeader";
 import ModalOverlay from "../../components/ModalOverlay/ModalOverlay";
 import CreateListToggle from "./CreateListToggle";
-
-import ListItem from "../../components/ListItem";
+import AddToListModalLists from "./AddToListModalLists";
 
 import { fetchLists, selectListsArray } from "../../../store/lists";
 import { selectUser } from "../../../store/session";
@@ -41,17 +39,6 @@ function AddToListModal({ stock, setNotifications, setNotificationMessage }) {
   useEffect(() => {
     dispatch(fetchLists());
   }, [dispatch]);
-
-  const handleCheckboxChange = (id) => {
-    setCheckedItems((prev) => {
-      const updatedItems = { ...prev };
-
-      if (updatedItems[id]) updatedItems[id] = false;
-      else updatedItems[id] = true;
-
-      return updatedItems;
-    });
-  };
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -137,42 +124,12 @@ function AddToListModal({ stock, setNotifications, setNotificationMessage }) {
             setListName={setListName}
           />
 
-          {lists &&
-            lists.slice(0, 10).map((list) => {
-              return (
-                <article
-                  key={list.id}
-                  className={`AddToListModal__list ${
-                    isVisible ? "disabled" : ""
-                  }`}
-                >
-                  <div className="AddToListModal__list-wrapper">
-                    <input
-                      type="checkbox"
-                      id={list.id}
-                      checked={!!checkedItems[list.id]}
-                      onChange={() => handleCheckboxChange(list.id)}
-                      className={checkedItems[list.id] ? "checked" : ""}
-                      disabled={isVisible}
-                    />
-                    {checkedItems[list.id] && (
-                      <IoIosCheckmark className="AddToListModal__checkbox-icon" />
-                    )}
-                  </div>
-
-                  <ListItem
-                    list={list}
-                    className="AddToListModal__ListItem"
-                    container="AddToListModal__item__container"
-                    name="AddToListModal__item__name"
-                    emoji="AddToListModal__item__emoji"
-                    showActions={false}
-                    showHover={false}
-                    showItems={true}
-                  />
-                </article>
-              );
-            })}
+          <AddToListModalLists
+            lists={lists}
+            checkedItems={checkedItems}
+            isVisible={isVisible}
+            setCheckedItems={setCheckedItems}
+          />
         </section>
 
         <footer className="AddToListModal__footer">
