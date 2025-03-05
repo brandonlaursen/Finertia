@@ -117,6 +117,7 @@
 
   z-index: 1000;
   transform: translate(-50%, -50%);
+  background-color: var(--modal-background) !important;
 }
 
 /* Create List Name Input */

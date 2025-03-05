@@ -328,9 +328,6 @@ Close Button Icon
   --orange-button-hover: rgb(214, 68, 1);
   --orange-button-light-hover: rgb(252, 222, 208);
 
-
-
-
   /*
   Font sizes
   - input: 13px
@@ -377,6 +374,29 @@ Close Button Icon
 /* text-size-adjust: 100%; */
 
 /* Global scrollbar styles */
+
+:root .EmojiPickerReact {
+  /* Skin Tone Picker */
+
+  --epr-bg-color: var(--modal-background);
+  --epr-highlight-color: var(--green-button);
+
+  --epr-category-label-text-color: var(--epr-text-color);
+  --epr-category-label-bg-color: var(--modal-background);
+  --epr-focus-bg-color: var(--icon-hover-color);
+  --epr-text-color: var(--text-color);
+  --epr-picker-border-color: var(--border-color);
+  --epr-search-border-color: var(--green-button);
+  --epr-search-input-bg-color: var(--modal-emoji-icons);
+  --epr-search-input-bg-color-active: var(--modal-background);
+  --epr-search-input-text-color: var(--text-color);
+
+  --epr-skin-tone-picker-menu-color: var(--modal-background);
+  --epr-active-skin-tone-indicator-border-color: var(--modal-background);
+  --epr-active-skin-hover-color: var(--green-button);
+  --epr-category-icon-active-color: var(--modal-emoji-icons);
+
+}
 
 /* The scrollbar track */
 ::-webkit-scrollbar-track {

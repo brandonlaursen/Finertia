@@ -1,6 +1,7 @@
 import "./CreateListToggle.css";
 
 import { FiPlus } from "react-icons/fi";
+import { Theme } from 'emoji-picker-react';
 
 import { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -83,7 +84,8 @@ function CreateListToggle({
                 <div className="CreateListToggle__emoji-wrapper">
                   <EmojiPicker
                     onEmojiClick={handleEmojiClick}
-                    style={{ width: "500px" }}
+                    style={{ width: "500px"}}
+
                   />
                 </div>
               )}

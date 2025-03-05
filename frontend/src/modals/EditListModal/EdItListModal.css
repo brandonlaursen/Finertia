@@ -23,7 +23,6 @@
   height: 182px;
   width: 440px;
 
-
   background-color: var(--modal-background);
 
   border-radius: 4px;
@@ -32,27 +31,20 @@
   flex-direction: column;
 
   padding: 16px 24px;
-
 }
 
-
-
 .EditListModal__section {
-
   padding-left: 16px;
   margin-bottom: 12px;
   display: flex;
   align-items: end;
 
   gap: 8px;
-
 }
 
 .EditListModal__section__emoji {
   height: 38px;
   width: 38px;
-
-
 
   display: flex;
   justify-content: center;
@@ -62,7 +54,6 @@
   border: solid 1px var(--border-color);
 
   border-radius: 4px;
-
 }
 
 .EditListModal__emoji-picker-wrapper {
@@ -71,9 +62,7 @@
   right: 200px;
 }
 
-
 .EditListModal__section__input {
-
   color: var(--text-color);
   background-color: var(--modal-emoji-icons);
   width: 80%;
@@ -111,7 +100,6 @@
   cursor: pointer;
 }
 
-
 .EditListModal__create-button {
   background-color: var(--button-green);
   color: var(--background-color);
@@ -121,3 +109,4 @@
 .EditListModal__create-button:hover {
   background-color: var(--green-button-hover);
 }
+
