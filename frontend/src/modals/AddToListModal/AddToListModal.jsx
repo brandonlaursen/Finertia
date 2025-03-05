@@ -4,15 +4,15 @@ import { IoIosCheckmark } from "react-icons/io";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import ListItem from "../../components/ListItem";
-import CreateListToggle from "./CreateListToggle";
 import ModalHeader from "../../components/ModalHeader/ModalHeader";
+import ModalOverlay from "../../components/ModalOverlay/ModalOverlay";
+import CreateListToggle from "./CreateListToggle";
+
+import ListItem from "../../components/ListItem";
 
 import { fetchLists, selectListsArray } from "../../../store/lists";
 import { selectUser } from "../../../store/session";
 import { editListStocks } from "../../../store/stocks";
-
-import ModalOverlay from "../../components/ModalOverlay/ModalOverlay";
 
 import { useModal } from "../../context/Modal";
 

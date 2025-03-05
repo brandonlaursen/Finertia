@@ -13,16 +13,6 @@
 
   color: var(--text-color-light);
 }
-/* ========= Emoji Wrapper ========= */
-.AddToListModal__emoji-wrapper {
-  z-index: 1000;
-  position: relative;
-
-  right: 142px;
-  top: 100px;
-}
-
-
 
 /* ========= Modal Container ========= */
 /* Modal Main */
@@ -36,45 +26,9 @@
   flex-direction: column;
   padding: 16px 24px;
 
-  background-color: rgb(255, 255, 255);
+  background-color: var(--background-color);
+
   border-radius: 4px;
-}
-
-/* ========= Modal Header ========= */
-/* Modal Header */
-.AddToListModal__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  margin-bottom: 12px;
-}
-
-/* Modal Title */
-.AddToListModal__title {
-  font-size: 16px;
-  font-weight: 600;
-}
-
-/* Close Button */
-.AddToListModal__close-button {
-  height: 34px;
-  width: 34px;
-
-  display: flex;
-  align-items: center;
-}
-
-/* Close Button hover */
-.AddToListModal__close-button:hover {
-  background-color: var(--light-background-hover);
-  border-radius: 4px;
-}
-
-/* Close Button Icon */
-.AddToListModal__close-button-icon {
-  height: 32px;
-  width: 32px;
 }
 
 /* ========== Create New List Section ========== */
@@ -150,7 +104,6 @@
   border: 0.2em solid rgb(255, 118, 58);
   outline: none;
   cursor: pointer;
-
 }
 
 /* Checked Checkbox */
@@ -199,7 +152,6 @@ input.checked {
   background-color: var(--button-green);
   border: none;
   -webkit-font-smoothing: subpixel-antialiased;
-
 }
 
 /* Create Button Hover */
@@ -239,5 +191,5 @@ input.checked {
   font-size: 14px;
   font-weight: 500;
 
-  color: black;
+  color: var(--text-color);
 }

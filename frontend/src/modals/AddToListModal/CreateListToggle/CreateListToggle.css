@@ -13,6 +13,7 @@
   margin-bottom: 8px;
 
   cursor: pointer;
+
 }
 
 .AddToListModal__create-form-container {
@@ -75,8 +76,6 @@
   align-items: center;
   gap: 8px;
 }
-
-
 
 /* Emoji Picker Button */
 .AddToListModal__create-form__emoji-button {
@@ -192,7 +191,7 @@
   align-items: center;
   font-size: 14px;
   font-weight: 500;
-  color: black;
+  color: var(--text-color);
 }
 
 /* Create New List Toggle */
@@ -206,7 +205,6 @@
 .AddToListModal__create-form.exit ~ .AddToListModal__create-list-toggle__title {
   transform: translateY(-100%);
 }
-
 /* Create New List Toggle Icon */
 .AddToListModal__create-list-toggle__icon {
   color: rgb(255, 118, 58);

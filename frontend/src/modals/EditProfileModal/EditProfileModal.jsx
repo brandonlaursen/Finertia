@@ -68,11 +68,11 @@ function EditProfileModal({ sessionUser }) {
 
   return (
     <div className="EditProfileModal">
-       <ModalOverlay closeModal={closeModal} />
+      <ModalOverlay closeModal={closeModal} />
       <div className="EditProfileModal__container">
         <ModalHeader closeModal={closeModal}>Edit Profile</ModalHeader>
 
-        <div className="EditProfileModal__section">
+        <section className="EditProfileModal__section">
           <div className="EditProfileModal___user__image">
             {preview ? (
               <>
@@ -153,7 +153,7 @@ function EditProfileModal({ sessionUser }) {
               )}
             </button>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   );

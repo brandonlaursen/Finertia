@@ -118,6 +118,10 @@
 }
 
 .dark-mode {
+  --scrollbar-track-color: rgb(44,44,44);
+  --scrollbar-thumb-color: rgb(107,107,107);
+  --scrollbar-thumb-hover-color: rgb(83, 83, 83);
+
   --background-color: #000000;
   --background-color-secondary: rgb(30, 33, 37);
 
@@ -160,6 +164,11 @@
   --secondary-text-color: rgb(207, 209, 211);
   --border-color: rgb(227, 233, 237);
   --icon-color: rgb(106, 114, 120);
+
+  /* Scrollbar Colors */
+  --scrollbar-track-color: #f0f0f0;
+  --scrollbar-thumb-color: #888;
+  --scrollbar-thumb-hover-color: #555;
 
   /* background when hovering over icons */
   --icon-hover-color: rgb(255, 255, 255);

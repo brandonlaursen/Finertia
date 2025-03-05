@@ -9,7 +9,6 @@ import { createList } from "../../../../store/lists";
 import EmojiPicker from "emoji-picker-react";
 
 function CreateListToggle({
-
   setIsVisible,
   isVisible,
   selectedEmoji,

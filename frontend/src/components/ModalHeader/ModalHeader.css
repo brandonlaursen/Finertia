@@ -1,7 +1,7 @@
 .ModalHeader__header {
   display: flex;
   justify-content: space-between;
-  
+
   margin-bottom: 12px;
 }
 
@@ -11,4 +11,5 @@
   font-weight: bold;
 
   word-wrap: break-word;
+  color: var(--text-color);
 }

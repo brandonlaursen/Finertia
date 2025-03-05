@@ -6,6 +6,7 @@
 
   text-decoration: none;
   cursor: pointer;
+
 }
 
 /* Lists Side Bar Styling Only  */
@@ -26,6 +27,8 @@
   justify-content: space-between;
   gap: 10px;
   padding: 0 12px;
+
+  color: var(--text-color);
 }
 
 /* ========== List Item Header ========== */
@@ -34,6 +37,7 @@
   padding: 4px 8px;
   display: flex;
   align-items: center;
+
 }
 
 /* Hover effect for header */
@@ -60,7 +64,7 @@
   display: block;
   font-size: 12px;
   font-weight: 500;
-  color: var(--text-color);
+
   text-align: left;
 }
 
