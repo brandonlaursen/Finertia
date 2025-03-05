@@ -36,7 +36,7 @@
 
 .PortfolioTotal__section-title {
   font-weight: bold;
-  font-size: 13px;
+  font-size: 11px;
 }
 
 .PortfolioTotal__section-value-container {
@@ -45,7 +45,7 @@
   gap: 20px;
   padding-right: 48px;
 
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .PortfolioTotal__section-value {

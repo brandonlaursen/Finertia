@@ -21,7 +21,7 @@
 .DeleteListModal__container {
   position: absolute;
 
-  height: 160px;
+  height: 170px;
   width: 400px;
   word-wrap: break-word;
 
@@ -56,6 +56,7 @@
   font-weight: bold;
   word-wrap: break-word;
   margin-bottom: 12px;
+  margin-top: 6px;
 }
 
 .DeleteListModal__close-button {

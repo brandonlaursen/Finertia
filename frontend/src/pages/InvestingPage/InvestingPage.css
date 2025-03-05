@@ -10,7 +10,7 @@
   margin-top: 30px;
 
 
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
 }
 
@@ -43,6 +43,9 @@
 
 .InvestingPage__chart-container-value {
   position: absolute;
+
+  font-size: 13px;
+  font-weight: 500;
 
   height: 50px;
   width: 150px;

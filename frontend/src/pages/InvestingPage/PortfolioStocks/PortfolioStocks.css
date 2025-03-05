@@ -25,7 +25,7 @@
 
   text-align: left;
 
-  font-size: 13px;
+  font-size: 12px;
 
   color: rgb(130, 130, 130);
 
@@ -58,7 +58,7 @@
 .PortfolioStocks__stock-table tbody tr {
   height: 60px;
 
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .PortfolioStocks__stock-table tbody tr td:first-child {

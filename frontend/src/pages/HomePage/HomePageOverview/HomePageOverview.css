@@ -5,7 +5,7 @@
 .HomePageOverview__title {
   display: flex;
   font-size: 28px;
-  font-weight: 700;
+  font-weight: 600;
   margin: 0;
   margin-bottom: 4px;
 
@@ -40,15 +40,15 @@
 
 /* Modifier: negative portfolio amount change */
 .HomePageOverview__portfolio-amount-change--negative {
-  height: 28px;
-  width: 28px;
+  height: 24px;
+  width: 24px;
   color: rgb(248, 124, 14);
 }
 
 /* Modifier: positive portfolio amount change */
 .HomePageOverview__portfolio-amount-change--positive {
-  height: 28px;
-  width: 28px;
+  height: 24px;
+  width: 24px;
   color: var(--percent-change-positive);
 }
 

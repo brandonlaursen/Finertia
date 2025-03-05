@@ -76,7 +76,7 @@ function HomePageOverview({ stockData, selectedTimeFrame }) {
             }`}
           >
             {portfolioAmountChange < 0
-              ? "-"
+              ? ""
               : portfolioAmountChange > 0
               ? "+"
               : ""}
@@ -94,7 +94,7 @@ function HomePageOverview({ stockData, selectedTimeFrame }) {
           >
             {`(${
               portfolioPercentChange < 0
-                ? "-"
+                ? ""
                 : portfolioPercentChange > 0
                 ? "+"
                 : ""
