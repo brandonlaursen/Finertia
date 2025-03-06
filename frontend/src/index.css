@@ -175,6 +175,7 @@ button {
   --color-background: #ffffff; /* Background color for pages */
   --color-surface: #ffffff; /* Surface color for cards and modals */
   --color-surface-secondary: rgba(245, 248, 250); /* Light grey background */
+  --color-background-inverse: #000000;
 
   /* * Overlay */
   --disabled-overlay-color: rgba(255, 255, 255, 0.5);
@@ -187,6 +188,7 @@ button {
   /* * Text Colors */
   --color-text-primary: #000000; /* Main text color */
   --color-text-secondary: rgb(152, 152, 152); /* Secondary text color */
+  --color-text-inverse: #ffffff;
 
   /* * Hover Colors */
   --color-hover: rgba(245, 248, 250);

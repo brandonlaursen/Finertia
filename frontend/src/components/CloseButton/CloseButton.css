@@ -9,7 +9,7 @@
 
 /* Hover effect for the close button */
 .CloseButton__container:hover {
-  background-color: var(--list-menu-button-hover);
+  background-color: var(--icon-color-hover);
   border-radius: 4px;
 }
 

@@ -40,6 +40,7 @@
   text-decoration-thickness: 1px;
   text-decoration-color: var(--color-text-primary);
   text-underline-offset: 3px;
+  cursor: default;
 }
 
 /* Change background on hover */
