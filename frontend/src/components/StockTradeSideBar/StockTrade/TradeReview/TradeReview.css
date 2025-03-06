@@ -28,52 +28,52 @@
 }
 
 .TradeReview__deposit-button {
-  background-color: var(--button-green);
-  color: var(--background-color);
+  background-color: var(--button-primary);
+  color: var(--color-background);
 }
 
 .TradeReview__deposit-button:hover {
-  background-color: var(--button-green-hover);
+  background-color: var(--button-primary-hover);
 }
 
 .TradeReview__dismiss-button {
-  color: var(--button-green);
-  background-color: var(--modal-background);
+  color: var(--button-primary);
+  background-color: var(--color-surface);
 
-  border: solid 1px var(--button-green);
+  border: solid 1px var(--button-primary);
 }
 
 .TradeReview__dismiss-button:hover {
-  background-color: var(--green-button-light-hover);
+  background-color: var(--button-primary-hover-light);
 }
 
 .TradeReview__review-button {
-  background-color: var(--button-green);
-  color: var(--background-color);
+  background-color: var(--button-primary);
+  color: var(--color-background);
 }
 
 .TradeReview__review-button:hover {
-  background-color: var(--button-green-hover);
+  background-color: rgb(0, 180, 5, 1);
 }
 
 .TradeReview__submit-button {
-  background-color: var(--button-green);
-  color: var(--background-color);
+  background-color: var(--button-primary);
+  color: var(--color-background);
 }
 
 .TradeReview__submit-button:hover {
-  background-color: var(--button-green-hover);
+  background-color: var(--button-primary-hover);
 }
 
 .TradeReview__cancel-button {
-  color: var(--button-green);
-  background-color: var(--modal-background);
+  color: var(--button-primary);
+  background-color: var(--color-surface);
 
-  border: solid 1px var(--button-green);
+  border: solid 1px var(--button-primary);
 }
 
 .TradeReview__cancel-button:hover {
-  background-color: var(--green-button-light-hover);
+  background-color: var(--button-primary-hover-light);
 }
 
 /* ========== Review Confirmation Section ========== */
@@ -97,7 +97,7 @@
 
   display: inline-block;
 
-  border: 2px solid var(--background-color);
+  border: 2px solid var(--color-background);
   border-top: 2px solid transparent;
   border-radius: 50%;
 

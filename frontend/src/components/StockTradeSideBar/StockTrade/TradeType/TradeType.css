@@ -14,7 +14,7 @@
 .TradeType--disabled {
   cursor: not-allowed;
   pointer-events: none;
-  color: var(--text-color) !important;
+  color: var(--color-text-primary) !important;
 }
 
 .TradeType--disabled.TradeType--selected {
@@ -33,12 +33,12 @@
 
 /* Hover effect for trade type options */
 .TradeType_select:not(.TradeType--disabled):hover {
-  color: var(--button-green);
+  color: var(--theme-primary-color);
 }
 
 /* ========== Selected Trade Type Styling ========== */
 /* Styling for the active/selected trade type option */
 .TradeType--selected {
-  box-shadow: 0 2px 0 var(--button-green);
-  color: var(--button-green);
+  box-shadow: 0 2px 0 var(--theme-primary-color);
+  color: var(--theme-primary-color);
 }

@@ -33,10 +33,10 @@
 .HistoryPage__transfer:hover {
   box-shadow:
     /* Top (or no shadow for top in this case) */ 0px 0px 0px 0px
-      var(--highlight-color),
-    /* Left */ -16px 0px 0px 0px var(--highlight-color),
-    /* Right */ 16px 0px 0px 0px var(--highlight-color);
-  background-color: var(--highlight-color);
+      var(--color-hover),
+    /* Left */ -16px 0px 0px 0px var(--color-hover),
+    /* Right */ 16px 0px 0px 0px var(--color-hover);
+  background-color: var(--color-hover);
 }
 
 .HistoryPage__message-container {
@@ -74,7 +74,7 @@
   border: 1px solid var(--border-color);
   border-radius: 4px;
   background-color: var(--button-primary-inverted);
-  color: var(--text-color);
+  color: var(--color-text-primary);
   cursor: pointer;
   font-size: 0.9rem;
   transition: all 0.2s ease;
@@ -82,7 +82,7 @@
 }
 
 .HistoryPage__pagination-button:hover:not(:disabled) {
-  background-color: var(--highlight-color);
+  background-color: var(--color-hover);
 }
 
 .HistoryPage__pagination-button:disabled {
@@ -93,5 +93,5 @@
 .HistoryPage__pagination-info {
   font-size: 0.9rem;
   font-weight: 500;
-  color: var(--secondary-text-color);
+  color: var(--color-text-secondary);
 }

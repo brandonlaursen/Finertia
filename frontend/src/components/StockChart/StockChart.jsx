@@ -161,7 +161,7 @@ function StockChart({ stockData, selectedTimeFrame }) {
         axisTicks: { show: false },
       },
 
-      colors: ["var(--button-green)"],
+      colors: ["var( --theme-primary-color)"],
 
       stroke: { width: 3, curve: "straight" },
       markers: { size: 0 },

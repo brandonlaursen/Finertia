@@ -21,7 +21,7 @@
   top: 54px;
   right: 36px;
 
-  background-color: var(--button-green);
+  background-color: var(--theme-primary-color);
 }
 
 .AccountDropdown__user {
@@ -71,7 +71,7 @@
   text-decoration: none;
   cursor: pointer;
 
-  color: var(--text-color);
+  color: var(--color-text-primary);
 }
 
 .AccountDropdown__logout {
@@ -82,7 +82,7 @@
   padding-left: 16px;
 
   background-color: var(--account-dropdown);
-  color: var(--text-color);
+  color: var(--color-text-primary);
 
   border-left: 1px solid var(--border-color);
   border-right: 1px solid var(--border-color);
@@ -107,12 +107,12 @@
 
 .AccountDropdown__logout:hover {
   background-color: var(--account-dropdown-hover);
-  color: var(--text-color);
+  color: var(--color-text-primary);
 }
 
 .AccountDropdown__links a:hover {
   background-color: var(--account-dropdown-hover);
-  color: var(--text-color);
+  color: var(--color-text-primary);
 }
 
 .AccountDropdown__icon {

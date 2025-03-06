@@ -29,7 +29,6 @@
   font-weight: 500;
 }
 
-
 .TransfersPage__transfer-container {
   margin-top: 30px;
 
@@ -58,7 +57,7 @@
 }
 
 .TransfersPage__withdraw-section-title {
-  color: var(--secondary-text-color);
+  color: var(--color-text-secondary);
   font-size: 13px;
   font-weight: 500;
 }
@@ -74,5 +73,5 @@
 
   margin-left: 2px;
 
-  color: var(--secondary-text-color);
-}
+  color: var(--color-text-secondary);
+}--color-text-secondary

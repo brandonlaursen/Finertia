@@ -32,7 +32,7 @@
   border-bottom: 1px solid var(--border-color);
 }
 
-.PortfolioStocks__loading-spinner{
+.PortfolioStocks__loading-spinner {
   height: 100px;
 
   display: flex;

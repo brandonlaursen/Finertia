@@ -1,146 +1,11 @@
-:root {
-  /* Spacing */
-  --spacing-xs: 4px;
-  --spacing-sm: 8px;
-  --spacing-md: 16px;
-  --spacing-lg: 24px;
-  --spacing-xl: 32px;
-
-  /* Typography */
-  --font-base: 16px;
-  --font-sm: 14px;
-  --font-lg: 20px;
-  --font-xl: 24px;
-  --font-family-sans: "Montserrat", sans-serif;
-  --line-height: 1.5;
-  --font-weight-normal: 500;
-  --font-weight-bold: 700;
-
-  /* Font Sizes */
-  --font-size-title: 14px;
-  --font-size-input: 13px;
-  --font-size-text: 13px;
-  --font-size-button: 12px;
-  --font-size-subtext: 11px;
-
-  /* Base Colors */
-  --color-white: #ffffff;
-  --color-black: #000000;
-  --color-text: #333;
-  --color-muted: #888;
-  --color-lightgrey: rgb(231, 231, 231);
-  --color-light-text: rgb(106, 114, 120);
-
-  /* Accent Colors */
-  --color-primary: #07de96;
-  --color-primary-hover: rgb(7, 239, 162);
-  --color-secondary: #ca63fc;
-  --color-tertiary: rgb(22, 7, 40);
-
-  /* Status Colors */
-  --percent-change-positive: rgb(44, 202, 4);
-  --percent-change-negative: rgb(255, 29, 4);
-  --percent-change-orange: rgb(248, 124, 14);
-
-  /* Border Colors */
-  --border-color: rgb(227, 233, 237);
-  --border-color-2: rgb(48, 54, 58);
-
-  /* Button Colors */
-  --button-green: rgb(0, 200, 5);
-  --button-green-hover: rgb(0, 180, 5, 1);
-  --button-light-green: rgb(211, 255, 240);
-  --button-hover-light-green: rgb(223, 255, 230);
-  --button-orange: rgb(255, 80, 1);
-  --button-orange-hover: rgb(214, 68, 1);
-  --button-light-orange: rgb(252, 222, 208);
-
-  /* Theme Colors */
-  --theme-color-teal: #07de96;
-  --theme-color-teal-hover: rgb(7, 239, 162);
-  --theme-color-purple: #ca63fc;
-  --theme-color-blue: #007bff;
-  --theme-color-red: #dc3545;
-  --theme-color-yellow: #f0ad4e;
-  --theme-color-green: #28a745;
-
-  /* Background Colors */
-  --background-color-light: rgb(255, 255, 255);
-  --background-color-dark: rgb(0, 0, 0);
-  --background-color-darkgrey: rgb(30, 33, 37);
-  --color-highlight: rgba(245, 248, 250);
-
-  /* Hover Colors */
-  --hover-lightgrey: rgb(237, 237, 237);
-  --hover-black: #1e2125;
-  --color-accent: #e0e0e0;
-  --dark-grey: #1e2125;
-
-  /* Button Styles */
-  --button-padding: 0 32px;
-  --button-height: 40px;
-  --button-large-height: 40px;
-  --button-large-width: 100%;
-  --button-large-font-size: 12px;
-  --button-large-font-weight: bold;
-  --button-large-border-radius: 44px;
-  --button-small-padding: 0 20px;
-  --button-small-height: 32px;
-  --button-small-width: 100%;
-  --button-small-font-size: 12px;
-  --button-small-font-weight: bold;
-  --button-small-border-radius: 44px;
-
-  /* Border Radius */
-  --border-radius-xs: 5px;
-  --button-border-radius-lg: 36px;
-
-  /* Modal Styles */
-  --modal-position-top: 0;
-  --modal-position-bottom: 15%;
-  --modal-position-left: 0;
-  --modal-position-right: 0;
-  --modal-container-height: 468px;
-  --modal-container-width: 364px;
-  --modal-container-padding: 16px 24px;
-  --modal-font-size-title: 16px;
-  --modal-font-size-text: 14px;
-  --modal-font-weight-title: 600;
-  --modal-font-weight-text: 500;
-
-  /* Close Button */
-  --close-button-height: 34px;
-  --close-button-width: 34px;
-  --close-button-border-radius: 4px;
-  --close-button-hover: rgb(237, 237, 237);
-  --close-button-icon-height: 32px;
-  --close-button-icon-width: 32px;
-}
-
 .dark-mode {
-  --scrollbar-track-color: rgb(44, 44, 44);
-  --scrollbar-thumb-color: rgb(107, 107, 107);
-  --scrollbar-thumb-hover-color: rgb(83, 83, 83);
-
-  --background-color: #000000;
-  --background-color-secondary: rgb(30, 33, 37);
-
-  --text-color: #ffffff;
-  --secondary-text-color: rgb(140, 155, 161);
-
   --disabled-button-color: rgb(98, 108, 112);
-  --disabled-overlay-color: rgb(30,33,37, .7);
-
-  --border-color: rgb(48, 54, 58);
-
-  --highlight-color: rgb(30, 33, 37);
+  --disabled-overlay-color: rgb(30, 33, 37, 0.7);
 
   --icon-color: rgb(145, 159, 166);
   --icon-hover-color: rgb(24, 24, 24);
 
-  --list-item-hover: rgb(22, 22, 24);
-
-  --modal-background: rgb(30, 33, 37);
+  --color-hover-secondary: rgb(22, 22, 24);
 
   --list-menu-button-hover: rgb(48, 54, 58);
 
@@ -148,12 +13,11 @@
   --list-menu-button-hover: rgb(48, 54, 58);
 
   --search-results: rgb(30, 33, 37);
-  --search-results-hover: rgb(48, 54, 58);
+  --color-hover-secondary: rgb(48, 54, 58);
 
   --account-dropdown: rgb(30, 33, 37);
   --account-dropdown-hover: rgb(48, 54, 58);
 
-  --modal-background: rgb(30, 33, 37);
   --modal-emoji-icons: rgb(48, 54, 58);
 
   --button-primary: #ffffff;
@@ -162,28 +26,66 @@
   --button-primary-inverted: #000000;
   --button-hover-primary-inverted: #1e2125;
 
-  --green-button:rgb(0, 200, 5);
-  --green-button-light-hover:rgb(2, 88, 5);
+  --green-button: rgb(0, 200, 5);
+  --green-button-light-hover: rgb(2, 88, 5);
 
-  --notification-background: rgb(30, 33, 37);
-}
+  /* FINISHED STYLES BELOW */
 
-.light-mode {
-  --background-color: #ffffff;
-  --background-color-secondary: rgb(255, 255, 255);
-  --text-color: #000000;
-  --secondary-text-color: rgb(207, 209, 211);
-  --border-color: rgb(227, 233, 237);
-  --icon-color: rgb(106, 114, 120);
+  /* DARK MODE */
+
+  /* Background Colors */
+  --color-background: #000000; /* Background color for pages */
+  --color-surface: rgb(30, 33, 37); /* Surface color for cards and modals */
+  --color-surface-secondary: rgb(48, 54, 58); /* Light grey background */
+
+  /* Border Colors */
+  --border-color: rgb(48, 54, 58); /* For borders, dividers, etc. */
+
+  /* Text Colors */
+  --color-text-primary: #ffffff; /* Main text color */
+  --color-text-secondary: rgb(140, 155, 161); /* Secondary text color */
+
+  /* Hover Colors */
+  --color-hover: rgb(30, 33, 37);
+  --color-hover-secondary-light: rgb(48, 54, 58);
+  --color-hover-secondary-dark: rgb(22, 22, 24);
 
   /* Scrollbar Colors */
-  --scrollbar-track-color: #f0f0f0;
-  --scrollbar-thumb-color: #888;
-  --scrollbar-thumb-hover-color: #555;
+  --scrollbar-track-color: rgb(44, 44, 44);
+  --scrollbar-thumb-color: rgb(107, 107, 107);
+  --scrollbar-thumb-hover-color: rgb(83, 83, 83);
 
-  /* background when hovering over icons */
-  --icon-hover-color: rgb(255, 255, 255);
+  /* ========= Default Theme ========= */
+  /* Theme: Primary */
+  --theme-primary-color: rgb(0, 200, 5);
+  --theme-primary-hover: rgb(0, 180, 5, 1);
+  --theme-primary-hover-light: rgb(2, 88, 5);
 
-  /* hovering over links */
-  --highlight-color: rgb(237, 237, 237);
+  /* Theme: Secondary */
+  --theme-secondary-color: rgb(255, 80, 1);
+  --theme-secondary-hover: rgb(231, 91, 27, 0.9);
+  --theme-secondary-hover-light: rgb(83, 43, 28);
+
+  /* Button Colors */
+  /* Primary Buttons */
+  --button-primary: var(--theme-primary-color);
+  --button-primary-hover: var(--theme-primary-hover);
+  --button-primary-hover-light: var(--theme-primary-hover-light);
+
+  /* Secondary Buttons */
+  --button-secondary: var(--theme-secondary-color);
+  --button-secondary-hover: var(--theme-secondary-hover);
+  --button-secondary-hover-light: var(--theme-secondary-hover-light);
+}
+
+.theme-green {
+  --theme-primary-color: rgb(0, 200, 5);
+  --theme-color-green-hover: rgb(0, 180, 5, 1);
+  --theme-color-green-hover-transparent: rgb(223, 255, 230);
+}
+
+.theme-orange {
+  --theme-primary-color: rgb(255, 80, 1);
+  --theme-primary-hover: rgb(231, 91, 27, 0.9);
+  --theme-primary-hover-light: rgb(255, 239, 232);
 }

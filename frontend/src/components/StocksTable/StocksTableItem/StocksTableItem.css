@@ -9,7 +9,7 @@
 }
 
 .StockTableItem:hover {
-  background-color: var(--highlight-color);
+  background-color: var(--color-hover);
 }
 
 .StocksTableItem__name {
@@ -51,5 +51,5 @@
 }
 
 .StockTableItem__button:hover {
-  color: var(--button-green);
+  color: var(--theme-primary-color);
 }

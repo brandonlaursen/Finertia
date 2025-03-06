@@ -10,11 +10,11 @@
 }
 
 .HomePageNewsArticle:hover {
-  background-color: var(--highlight-color);
+  background-color: var(--color-hover);
   box-shadow:
-  /* Top */ 0px 0px 0px 0px var(--highlight-color),
-    /* Left */ -24px 0px 0px 0px var(--highlight-color),
-    /* Right */ 24px 0px 0px 0px var(--highlight-color);
+  /* Top */ 0px 0px 0px 0px var(--color-hover),
+    /* Left */ -24px 0px 0px 0px var(--color-hover),
+    /* Right */ 24px 0px 0px 0px var(--color-hover);
   cursor: pointer;
 }
 
@@ -35,7 +35,7 @@
   font-style: italic;
   font-size: 12px;
 
-  color: var(--secondary-text-color);
+  color: var(--color-text-secondary);
 }
 
 .HomePageNewsArticle__headline {

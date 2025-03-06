@@ -8,7 +8,6 @@
   height: 65px;
   display: flex;
   align-items: center;
-
 }
 
 .HomePageNewsFeed__info-icon {
@@ -42,8 +41,8 @@
   padding: 12px;
   gap: 4px;
 
-  background-color: var(--background-color);
-  color: var(--text-color);
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
 
   border: 1px solid var(--border-color);
   border-radius: 44px;
@@ -57,7 +56,7 @@
 }
 
 .HomePageNewsFeed__categories button:hover {
-  background-color: var(--highlight-color);
+  background-color: var(--color-hover);
 }
 
 .HomePageNewsFeed__articles {
@@ -82,7 +81,7 @@
   border-radius: 4px;
 
   background-color: var(--button-primary-inverted);
-  color: var(--text-color);
+  color: var(--color-text-primary);
   cursor: pointer;
   font-size: 0.9rem;
   transition: all 0.2s ease;
@@ -90,7 +89,7 @@
 }
 
 .HomePageNewsFeed__pagination-button:hover:not(:disabled) {
-  background-color: var(--highlight-color);
+  background-color: var(--color-hover);
 }
 
 .HomePageNewsFeed__pagination-button:disabled {
@@ -101,6 +100,5 @@
 .HomePageNewsFeed__pagination-info {
   font-size: 0.9rem;
   font-weight: 500;
-  color: var(--secondary-text-color);
-
+  color: var(--color-text-secondary);
 }

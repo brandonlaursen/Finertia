@@ -65,5 +65,5 @@
 
 /* Change color on hover */
 .ListItemActions__arrow-icon:hover {
-  color: var(--button-green);
+  color: var(--theme-primary-color);
 }

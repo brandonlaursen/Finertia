@@ -55,15 +55,13 @@
 }
 
 .SecurityPage__link:hover {
-  background-color: var(--highlight-color);
+  background-color: var(--color-hover);
   box-shadow:
-  /* Top */ 0px 0px 0px 0px var(--highlight-color),
-  /* Left */ -24px 0px 0px 0px var(--highlight-color),
-  /* Right */ 24px 0px 0px 0px var(--highlight-color);
+  /* Top */ 0px 0px 0px 0px var(--color-hover),
+    /* Left */ -24px 0px 0px 0px var(--color-hover),
+    /* Right */ 24px 0px 0px 0px var(--color-hover);
   cursor: pointer;
 }
-
-
 
 .SecurityPage_border {
   border-top: 1px solid var(--border-color);
@@ -73,7 +71,6 @@
   border-bottom: 1px solid var(--border-color);
 }
 
-
 .SecurityPage__logout {
   align-self: end;
   padding-top: 15px;
@@ -81,7 +78,7 @@
 }
 
 .SecurityPage__logout-span {
-  color: var(--button-green);
+  color: var(--theme-primary-color);
 
   font-weight: bold;
 
@@ -89,5 +86,5 @@
 }
 
 .SecurityPage__logout-span:hover {
-  color: var(--button-green);
+  color: var(--theme-primary-color);
 }

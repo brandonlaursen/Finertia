@@ -32,7 +32,7 @@
   justify-content: center;
   margin-right: 13px;
 
-  border: 0.2em solid var(--green-button);
+  border: 0.2em solid var(--theme-primary-color);
 
   outline: none;
   cursor: pointer;
@@ -45,7 +45,7 @@
 input.checked {
   position: relative;
 
-  background-color: var(--green-button);
+  background-color: var(--theme-primary-color);
 }
 
 /* Checkbox Icon */
@@ -58,7 +58,7 @@ input.checked {
   align-self: center;
 
   font-size: 24px;
-  color: var(--background-color);
+  color: var(--color-background);
 
   pointer-events: none;
 
@@ -96,5 +96,5 @@ input.checked {
   font-size: 14px;
   font-weight: 500;
 
-  color: var(--text-color);
+  color: var(--color-text-primary);
 }

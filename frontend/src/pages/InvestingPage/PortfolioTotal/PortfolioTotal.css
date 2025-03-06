@@ -28,10 +28,10 @@
 
 .PortfolioTotal__section:hover {
   box-shadow:
-  /* Top */ 0px 0px 0px 0px var(--highlight-color),
-    /* Left */ -16px 0px 0px 0px var(--highlight-color),
-    /* Right */ 16px 0px 0px 0px var(--highlight-color);
-  background-color: var(--highlight-color);
+  /* Top */ 0px 0px 0px 0px var(--color-hover),
+    /* Left */ -16px 0px 0px 0px var(--color-hover),
+    /* Right */ 16px 0px 0px 0px var(--color-hover);
+  background-color: var(--color-hover);
 }
 
 .PortfolioTotal__section-title {
@@ -49,5 +49,5 @@
 }
 
 .PortfolioTotal__section-value {
-  color: var(--secondary-text-color);
+  color: var(--color-text-secondary);
 }

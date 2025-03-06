@@ -1,9 +1,9 @@
 .Skeleton {
   background: linear-gradient(
     90deg,
-    var(--highlight-color) 25%,
+    var(--color-hover) 25%,
     var(--border-color) 37%,
-    var(--highlight-color) 63%
+    var(--color-hover) 63%
   );
   background-size: 400% 100%;
   animation: skeleton-loading 3.5s ease infinite;

@@ -35,10 +35,10 @@
 }
 
 .StockNews__article:hover {
-  background-color: var(--highlight-color);
+  background-color: var(--color-hover);
 
   cursor: pointer;
-  outline: 16px solid var(--highlight-color);
+  outline: 16px solid var(--color-hover);
 }
 
 .StockNews__article-main {
@@ -62,7 +62,7 @@
 
   font-style: italic;
   font-size: 12px;
-  color: var(--secondary-text-color);
+  color: var(--color-text-secondary);
 }
 
 .StockNews__article-title {
@@ -78,7 +78,7 @@
 
   font-size: 13px;
 
-  color: var(--secondary-text-color);
+  color: var(--color-text-secondary);
 }
 
 .StockNews__article-image {
@@ -107,7 +107,7 @@
   border: 1px solid var(--border-color);
   border-radius: 4px;
   background-color: var(--button-primary-inverted);
-  color: var(--text-color);
+  color: var(--color-text-primary);
   cursor: pointer;
   font-size: 0.9rem;
   transition: all 0.2s ease;
@@ -115,7 +115,7 @@
 }
 
 .StockNews__pagination-button:hover:not(:disabled) {
-  background-color: var(--highlight-color);
+  background-color: var(--color-hover);
 }
 
 .StockNews__pagination-button:disabled {
@@ -126,5 +126,5 @@
 .StockNews__pagination-info {
   font-size: 0.9rem;
   font-weight: 500;
-  color: var(--secondary-text-color);
+  color: var(--color-text-secondary);
 }

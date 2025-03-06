@@ -41,7 +41,6 @@
   margin-right: 4px;
 }
 
-
 .HelpPage__support-section__title {
   height: 40px;
 
@@ -78,8 +77,8 @@
   background-color: var(--color-highlight);
   box-shadow:
   /* Top */ 0px 0px 0px 0px var(--color-highlight),
-  /* Left */ -24px 0px 0px 0px var(--color-highlight),
-  /* Right */ 24px 0px 0px 0px var(--color-highlight);
+    /* Left */ -24px 0px 0px 0px var(--color-highlight),
+    /* Right */ 24px 0px 0px 0px var(--color-highlight);
   cursor: pointer;
 }
 

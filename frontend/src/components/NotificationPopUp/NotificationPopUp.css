@@ -12,8 +12,8 @@
 }
 
 .NotificationPopUp {
-  background-color: var(--notification-background);
-  color:var(--text-color);
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
 
   border: solid 1px var(--border-color);
 
@@ -50,9 +50,9 @@
   gap: 4px; /* space between icon and text */
 }
 
-.NotificationPopUp-checkmark{
-  background-color: var(--green-button);
-  color:var(--background-color);
+.NotificationPopUp-checkmark {
+  background-color: var(--theme-primary-color);
+  color: var(--color-background);
   border-radius: 50%;
   height: 16px;
   width: 16px;
@@ -92,7 +92,7 @@
 }
 
 .NotificationPopUp-close-icon {
-  color: var(--text-color-dark);
+  color: var(--color-text-primary-dark);
   height: 34px;
   width: 34px;
 }

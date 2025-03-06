@@ -1,18 +1,22 @@
 html,
 body {
-  height: 100%;
-  width: 100%;
-  padding: 0;
-  margin: 0;
   position: relative;
   display: block;
   box-sizing: border-box;
-  font-family: "Montserrat", sans-serif;
-  scroll-behavior: smooth;
 
+  height: 100%;
+  width: 100%;
+  padding: 0;
+
+  margin: 0;
+
+  font-family: "Montserrat", sans-serif;
   font-size: 16px;
-  background-color: var(--background-color);
-  color: var(--text-color);
+
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+
+  scroll-behavior: smooth;
 }
 input {
   border: none;
@@ -45,90 +49,79 @@ button {
   -webkit-font-smoothing: subpixel-antialiased;
 }
 
-/*
+:root .EmojiPickerReact {
+  /* Skin Tone Picker */
 
-Overlay
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  /* Background color  */
+  --epr-bg-color: var(--color-surface);
 
-Emojis
+  /* Border color */
+  --epr-picker-border-color: var(--border-color);
 
+  /* Text color */
+  --epr-text-color: var(--color-text-primary);
 
-Modals
-  position: fixed;
-  top: 0;
-   bottom: 15%;
-  left: 0;
-  right: 0;
+  /* Search input background */
+  --epr-search-input-bg-color: var(--color-surface-secondary);
 
-  height: 468px;
-  width: 364px;
+  /* Search input background active */
+  --epr-search-input-bg-color-active: var(--color-surface);
 
-  display: flex;
-  flex-direction: column;
-  padding: 16px 24px;
+  /* Search input border */
+  --epr-search-border-color: var(--theme-primary-color);
 
-  border-radius: 4px;
+  /* Search input text */
+  --epr-search-input-text-color: var(--color-text-primary);
 
-Modal Header
-  margin-bottom: 16px;
+  /* Category hover */
+  --epr-category-icon-active-color: var(--color-hover-secondary-light);
 
-Modal title
-  font-size: 16px;
-  font-weight: 600;
+  /* Icon header background color */
+  --epr-category-label-bg-color: var(--color-surface);
 
-Modal text
-  font-size: 14px;
-  font-weight: 500;
+  /* Icon hover color*/
+  --epr-focus-bg-color: var(--color-hover-secondary-light);
 
-Modal subtext
-
-
-
-Large Button
-  padding: 0 20px;
-  height: 38px;
-  width: 100%;
-  font-size: 13px;
-  font-weight: bold;
-  border-radius: 44px;
-
-color:   background-color:  rgb(0, 200, 5);
-  ---button-green:rgb(0, 200, 5);
-  var(--button-green);
-color:hover background-color: rgb(0, 180, 5, 1);
-
-Close Button container
-  height: 34px;
-  width: 34px;
-
-  display: flex;
-  align-items: center;
-
-Close Button container hover
-  background-color: var(--light-background-hover);
-  border-radius: 4px;
-
-Close Button Icon
-  height: 32px;
-  width: 32px;
+  /* Skin tone menu background */
+  --epr-skin-tone-picker-menu-color: var(--color-surface);
+  /* Skin tone border - active */
+  --epr-active-skin-tone-indicator-border-color: var(
+    --color-hover-secondary-light
+  );
+  /* Skin tone border hover color */
+  --epr-active-skin-hover-color: var(--green-button);
 }
 
-*/
+/* The scrollbar track */
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track-color);
+}
 
-/* var(); */
+/* The scrollbar thumb (the draggable part) */
+::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb-color);
+  border-radius: 6px;
+  border: 3px solid var(--scrollbar-track-color);
+}
+
+/* On hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-thumb-hover-color);
+}
+
+/* Apply scrollbar styles to specific elements */
+.AddToListModal__section,
+.modal-content,
+.scrollable-content {
+  scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-track-color);
+}
+
+/* For Firefox */
+* {
+  scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-track-color);
+}
+
 :root {
-  /* Accent Colors */
-  --color-primary: #07de96;
-  --color-primary-hover: rgb(7, 239, 162);
-
-  --color-secondary: #ca63fc;
-  --color-tertiary: rgb(22, 7, 40);
-
   /*  Icon Colors */
   --percent-change-positive: rgb(44, 202, 4);
   --percent-change-negative: rgb(255, 29, 4);
@@ -192,11 +185,11 @@ Close Button Icon
 
   /* ===== Colors ===== */
   /* Background Colors */
-  --background-color-light: rgb(255, 255, 255);
-  --background-color-dark: rgb(0, 0, 0);
+  --color-background-light: rgb(255, 255, 255);
+  --color-background-dark: rgb(0, 0, 0);
 
   /* For a modal */
-  --background-color-darkgrey: rgb(30, 33, 37);
+  --color-background-darkgrey: rgb(30, 33, 37);
 
   /* Text Colors */
   --text-color-light: rgb(0, 0, 0);
@@ -210,7 +203,7 @@ Close Button Icon
   --color-positive: rgb(44, 202, 4);
   --color-negative: rgb(255, 29, 4);
 
-  --color-negative-orange:rgb(255,80,1);
+  --color-negative-orange: rgb(255, 80, 1);
   --color-orange: rgb(248, 124, 14);
 
   /* Highlight Colors */
@@ -239,78 +232,28 @@ Close Button Icon
   --theme-color-yellow: #f0ad4e;
   --theme-color-green: #28a745;
 
-  /* Large Buttons */
-  /* -webkit-font-smoothing: subpixel-antialiased; */
-  --button-large-height: 40px;
-  --button-large-width: 100%;
-  --button-large-font-size: 12px;
-  --button-large-font-weight: bold;
-  --button-large-border-radius: 44px;
-
-  /* Small Buttons */
-  --button-small-padding: 0 20px;
-  --button-small-height: 32px;
-  --button-small-width: 100%;
-  --button-small-font-size: 12px;
-  --button-small-font-weight: bold;
-  --button-small-border-radius: 44px;
-
-  /* Close Button Container */
-  --close-button-height: 34px;
-  --close-button-width: 34px;
-  --close-button-border-radius: 4px;
-  --close-button-hover: rgb(237, 237, 237);
-  --close-button-border-radius: 4px;
-
-  /* Close Button Icon */
-  --close-button-icon-height: 32px;
-  --close-button-icon-width: 32px;
-
-  /* Modal Positioning */
-  --modal-position-top: 0;
-  --modal-position-bottom: 15%;
-  --modal-position-left: 0;
-  --modal-position-right: 0;
-
-  /* Modal Container */
-  --modal-container-height: 468px;
-  --modal-container-width: 364px;
-  --modal-container-padding: 16px 24px;
-
-  /* Modal Font Sizes */
-  --modal-font-size-title: 16px;
-  --modal-font-size-text: 14px;
-  --modal-font-weight-title: 600;
-  --modal-font-weight-text: 500;
-
   /* ==================== Finalized Styles ==================== */
 
   /* Light Mode Colors */
-  --background-color: #ffffff;
-  --background-color-secondary: rgb(255, 255, 255);
+  --color-background: #ffffff;
+  --color-background-secondary: rgb(255, 255, 255);
+  --border-color: rgb(227, 233, 237);
+
   --text-color: #000000;
   --secondary-text-color: rgb(152, 152, 152);
 
-  --modal-background: rgb(255, 255, 255);
-  --modal-emoji-icons: rgba(245, 248, 250);
-
-  --border-color: rgb(227, 233, 237);
   --disabled-overlay-color: rgba(255, 255, 255, 0.5);
   --disabled-button-color: rgb(180, 189, 194);
-
-  --highlight-color: rgba(245, 248, 250);
 
   --icon-color: rgb(106, 114, 120);
   --icon-hover-color: rgb(242, 241, 241);
 
   --list-item-hover: rgb(239, 239, 239);
 
-  --modal-background: #ffffff;
-
   --notification-background: rgb(255, 255, 255);
 
   --search-results: #ffffff;
-  --search-results-hover: rgba(245, 248, 250);
+  --color-hover-secondary: rgba(245, 248, 250);
 
   --list-menu-button: #ffffff;
   --list-menu-button-hover: rgba(245, 248, 250);
@@ -323,10 +266,7 @@ Close Button Icon
 
   --button-primary-inverted: #ffffff;
   --button-hover-primary-inverted: #e0e0e0;
-  /*
-  --button-green: rgb(0, 200, 5);
-  --button-green-hover: rgb(0, 180, 5, 1);
-  --button-light-green: rgb(211, 255, 240); */
+
   --green-button: rgb(0, 200, 5);
   --green-button-hover: rgb(0, 180, 5, 1);
   --green-button-light-hover: rgb(223, 255, 230);
@@ -343,6 +283,7 @@ Close Button Icon
   - text: 13px - 500
   - sub text: 11px - 500
   */
+
   /* ===== Font Sizes ===== */
   --font-size-title: 14px;
   --font-size-input: 13px;
@@ -370,65 +311,63 @@ Close Button Icon
   --percent-color-positive: rgb(44, 202, 4);
   --percent-color-negative: rgb(255, 29, 4);
   --percent-color-orange: rgb(248, 124, 14);
-}
 
-/*
-  /* -webkit-font-smoothing: antialiased; */
-/* -moz-osx-font-smoothing: grayscale; */
-/* text-rendering: optimizeLegibility; */
-/* -webkit-text-size-adjust: 100%; */
-/* -moz-text-size-adjust: 100%; */
-/* text-size-adjust: 100%; */
+  /*  ========Finished styles below=========== */
 
-/* Global scrollbar styles */
+  /*
 
-:root .EmojiPickerReact {
-  /* Skin Tone Picker */
+  Convention
+    * General styles
+      --property--element
 
-  --epr-bg-color: var(--modal-background);
-  --epr-highlight-color: var(--green-button);
+    * Targeted styles
+      --element--property
 
-  --epr-category-label-text-color: var(--epr-text-color);
-  --epr-category-label-bg-color: var(--modal-background);
-  --epr-focus-bg-color: var(--icon-hover-color);
-  --epr-text-color: var(--text-color);
-  --epr-picker-border-color: var(--border-color);
-  --epr-search-border-color: var(--green-button);
-  --epr-search-input-bg-color: var(--modal-emoji-icons);
-  --epr-search-input-bg-color-active: var(--modal-background);
-  --epr-search-input-text-color: var(--text-color);
+*/
 
-  --epr-skin-tone-picker-menu-color: var(--modal-background);
-  --epr-active-skin-tone-indicator-border-color: var(--modal-background);
-  --epr-active-skin-hover-color: var(--green-button);
-  --epr-category-icon-active-color: var(--modal-emoji-icons);
-}
+  --modal-emoji-icons: rgba(245, 248, 250);
+  /* LIGHT MODE */
 
-/* The scrollbar track */
-::-webkit-scrollbar-track {
-  background: var(--scrollbar-track-color);
-}
+  /* Background Colors */
+  --color-background: #ffffff; /* Background color for pages */
+  --color-surface: #ffffff; /* Surface color for cards and modals */
+  --color-surface-secondary: rgba(245, 248, 250); /* Light grey background */
 
-/* The scrollbar thumb (the draggable part) */
-::-webkit-scrollbar-thumb {
-  background-color: var(--scrollbar-thumb-color);
-  border-radius: 6px;
-  border: 3px solid var(--scrollbar-track-color);
-}
+  /* Border Colors */
+  --border-color: rgb(227, 233, 237); /* For borders, dividers, etc. */
 
-/* On hover */
-::-webkit-scrollbar-thumb:hover {
-  background-color: var(--scrollbar-thumb-hover-color);
-}
+  /* Text Colors */
+  --color-text-primary: #000000; /* Main text color */
+  --color-text-secondary: rgb(152, 152, 152); /* Secondary text color */
 
-/* Apply scrollbar styles to specific elements */
-.AddToListModal__section,
-.modal-content,
-.scrollable-content {
-  scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-track-color);
-}
+  /* Hover Colors */
+  --color-hover: rgba(245, 248, 250);
+  --color-hover-secondary-light: var(--color-hover);
+  --color-hover-secondary-dark: rgb(239, 239, 239);
 
-/* For Firefox */
-* {
-  scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-track-color);
+  /* Scrollbar Colors */
+  --scrollbar-track-color: transparent;
+  --scrollbar-thumb-color: rgb(193, 193, 193);
+  --scrollbar-thumb-hover-color: rgb(168, 168, 168);
+
+  /* ========= Default Theme ========= */
+  /* Theme: Primary */
+  --theme-primary-color: rgb(0, 200, 5);
+  --theme-primary-hover: rgb(0, 180, 5);
+  --theme-primary-hover-light: rgb(223, 255, 230);
+
+  /* Theme: Secondary */
+  --theme-secondary-color: rgb(255, 80, 1);
+  --theme-secondary-hover: rgb(231, 91, 27);
+  --theme-secondary-hover-light: rgb(255, 239, 232);
+
+  /* Button Colors */
+  --button-primary: var(--theme-primary-color);
+  --button-primary-hover: var(--theme-primary-hover);
+  --button-primary-hover-light: var(--theme-primary-hover-light);
+
+  /* Secondary Buttons */
+  --button-secondary: var(--theme-secondary-color);
+  --button-secondary-hover: var(--theme-secondary-hover);
+  --button-secondary-hover-light: var(--theme-secondary-hover-light);
 }

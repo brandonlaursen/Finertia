@@ -9,7 +9,7 @@
   font-size: var(--font-size-extra-large);
   font-weight: var(--font-weight-bold);
 
-  color: var(--text-color);
+  color: var(--color-text-primary);
 }
 
 /* HomePageOverview summary container styling */

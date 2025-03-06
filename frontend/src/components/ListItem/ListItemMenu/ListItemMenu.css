@@ -36,11 +36,11 @@
   font-weight: bold;
   font-size: 11px;
 
-  color: var(--text-color);
+  color: var(--color-text-primary);
 
   text-decoration: underline;
   text-decoration-thickness: 1px;
-  text-decoration-color: var(--text-color);
+  text-decoration-color: var(--color-text-primary);
   text-underline-offset: 3px;
 
   background: none;

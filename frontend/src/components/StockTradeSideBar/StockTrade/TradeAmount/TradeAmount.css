@@ -33,7 +33,7 @@
 
 /* Subtext styling (additional descriptions) */
 .TradeAmount__subtext {
-  color: var(--secondary-text-color);
+  color: var(--color-text-secondary);
   display: flex;
 }
 
@@ -42,7 +42,7 @@
   height: 15px;
   width: 15px;
   margin-left: 4px;
-  color: var(--secondary-text-color);
+  color: var(--color-text-secondary);
 }
 
 /* ========== Order Type Selection ========== */
@@ -98,7 +98,7 @@
 
 /* Highlight border when input is focused */
 .TradeAmount__input-container:focus-within {
-  border: 1px solid var(--green-button);
+  border: 1px solid var(--theme-primary-color);
 }
 
 /* Dollar sign inside the input field */
@@ -111,8 +111,8 @@
   width: 100%;
   text-align: right;
 
-  color: var(--text-color);
-  background-color: var(--modal-background);
+  color: var(--color-text-primary);
+  background-color: var(--color-surface);
 }
 
 /* Removes spin buttons from number input */
@@ -137,13 +137,13 @@
 .TradeAmount__amount-title {
   font-size: 11px;
   font-weight: 500;
-  color: var(--green-button);
+  color: var(--theme-primary-color);
 }
 
 .TradeAmount__amount-value {
   font-size: 11px;
   font-weight: 600;
-  color: var(--text-color);
+  color: var(--color-text-primary);
 }
 
 /* ========== Divider Line ========== */
@@ -159,6 +159,6 @@
 }
 
 .buyInDropDownBorder {
-  border: solid 1px var(--button-green);
-  background-color: var(--modal-background);
+  border: solid 1px var(--theme-primary-color);
+  background-color: var(--color-surface);
 }

@@ -24,7 +24,7 @@
   height: 170px;
   width: 385px;
   word-wrap: break-word;
-  background-color: var(--modal-background);
+  background-color: var(--color-surface);
 
   border-radius: 4px;
 
@@ -59,18 +59,18 @@
 
 .DeleteListModal__delete-button {
   background-color: var(--orange-button);
-  color: var(--background-color);
+  color: var(--color-background);
   border: none;
 }
 
 .DeleteListModal__delete-button:hover {
-  background-color: var(--orange-button-hover);
+  background-color: var(--theme-secondary-hover);
 }
 
 .StockTransaction__spinner {
   width: 16px;
   height: 16px;
-  border: 2px solid var(--background-color);
+  border: 2px solid var(--color-background);
   border-top: 2px solid transparent;
   border-radius: 50%;
   animation: spin 0.6s linear infinite;

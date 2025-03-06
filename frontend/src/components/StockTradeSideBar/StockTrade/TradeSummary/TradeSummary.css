@@ -27,7 +27,7 @@
   padding-left: 20px;
 
   font-size: 12px;
-  margin-top:16px;
+  margin-top: 16px;
 }
 
 /* Title inside the error message */
@@ -45,7 +45,7 @@
 /* Error icon inside the message */
 .TradeSummary__error-icon {
   font-size: 16px;
-  color: var(--secondary-text-color);
+  color: var(--color-text-secondary);
 }
 
 /* Error message text */

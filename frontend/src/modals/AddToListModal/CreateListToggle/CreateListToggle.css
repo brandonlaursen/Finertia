@@ -25,8 +25,6 @@
   margin-top: 20px;
 
   z-index: 20;
-
-
 }
 /* Create List Form */
 .CreateListToggle__form {
@@ -39,10 +37,9 @@
 
   margin-top: 8px;
 
-  background-color: var(--modal-background);
+  background-color: var(--color-surface);
 
   animation: dropdown 0.4s ease-out;
-
 }
 
 /* Create List Form Exit */
@@ -100,7 +97,7 @@
 
   font-size: 20px;
 
-  background-color: var(--highlight-color);
+  background-color: var(--color-hover);
   border: solid 1px var(--border-color);
   border-radius: 4px;
 
@@ -117,7 +114,7 @@
 
   z-index: 1000;
   transform: translate(-50%, -50%);
-  background-color: var(--modal-background) !important;
+  background-color: var(--color-surface) !important;
 }
 
 /* Create List Name Input */
@@ -131,7 +128,7 @@
   font-size: 13px;
 
   background-color: var(--modal-emoji-icons);
-  color: var(--text-color);
+  color: var(--color-text-primary);
 
   border: none;
   border-top-left-radius: 4px;
@@ -139,8 +136,8 @@
 }
 
 .CreateListToggle__form-input:focus {
-  border: solid 1px var(--button-green);
-  background-color: var(--modal-background);
+  border: solid 1px var(--theme-primary-color);
+  background-color: var(--color-surface);
 }
 
 /* Create List Form Buttons Container */
@@ -168,21 +165,21 @@
 
 /* Create List Form Cancel Button */
 .CreateListToggle__cancel-button {
-  color: var(--button-green);
-  background-color: var(--modal-background);
+  color: var(--theme-primary-color);
+  background-color: var(--color-surface);
 
-  border: solid 1px var(--button-green);
+  border: solid 1px var(--theme-primary-color);
 }
 
 /* Create List Form Cancel Button Hover */
 .CreateListToggle__cancel-button:hover {
-  background-color: var(--green-button-light-hover);
+  background-color: var(--theme-primary-color-light-hover);
 }
 
 /* Create List Form Create Button */
 .CreateListToggle__create-button {
-  color: var(--background-color);
-  background-color: var(--button-green);
+  color: var(--color-background);
+  background-color: var(--theme-primary-color);
 
   min-width: 102px;
   border: none;
@@ -190,7 +187,7 @@
 
 /* Create List Form Create Button Hover */
 .CreateListToggle__create-button:hover {
-  background-color: var(--green-button-hover);
+  background-color: var(--theme-primary-color-hover);
 }
 
 /* ========= Create New List Toggle ========= */
@@ -213,11 +210,10 @@
 
   font-size: 24px;
 
-  background-color: var(--green-button-light-hover);
-  color: var(--green-button);
+  background-color: var(--theme-primary-color-light-hover);
+  color: var(--theme-primary-color);
 
   border-radius: 4px;
-
 }
 
 .CreateListToggle__toggle-title {
@@ -228,7 +224,7 @@
   font-size: 14px;
   font-weight: 500;
 
-  color: var(--text-color);
+  color: var(--color-text-primary);
 }
 
 /* Create New List Toggle */
@@ -244,5 +240,5 @@
 }
 /* Create New List Toggle Icon */
 .CreateListToggle__toggle-icon {
-  color: var(--green-button);
+  color: var(--theme-primary-color);
 }

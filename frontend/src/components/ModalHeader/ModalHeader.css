@@ -11,6 +11,5 @@
   font-weight: bold;
 
   word-wrap: break-word;
-  color: var(--text-color);
-
+  color: var(--color-text-primary);
 }

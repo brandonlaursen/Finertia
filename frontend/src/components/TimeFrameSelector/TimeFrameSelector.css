@@ -28,14 +28,14 @@
 
 /* Hover effect for time frame option */
 .TimeFrameSelector span:hover {
-  color: var(--green-button);
+  color: var(--theme-primary-color);
 }
 
 /* ========== Selected Time Frame ========== */
 
 /* Active time frame option */
 .TimeFrameSelector span.TimeFrameSelector--selected {
-  color: var(--green-button);
+  color: var(--theme-primary-color);
 }
 
 /* Underline effect for selected time frame */
@@ -48,5 +48,5 @@
   left: 0;
   right: 0;
 
-  background-color: var(--green-button);
+  background-color: var(--theme-primary-color);
 }

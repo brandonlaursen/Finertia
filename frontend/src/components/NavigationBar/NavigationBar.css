@@ -11,7 +11,7 @@
 
   padding-top: 4px;
 
-  background-color: var(--background-color);
+  background-color: var(--color-background);
 
   z-index: 2;
 }
@@ -29,7 +29,7 @@
   width: 35px;
 
   cursor: pointer;
-  color: var(--text-color);
+  color: var(--color-text-primary);
 
   transition: color 0.3s ease-in-out;
 
@@ -38,7 +38,7 @@
 }
 
 #Navigation__logo:hover {
-  color: var(--button-green);
+  color: var(--theme-primary-color);
 }
 
 .Navigation__links {
@@ -62,7 +62,7 @@
   font-size: 13px;
   font-weight: 600;
 
-  color: var(--text-color);
+  color: var(--color-text-primary);
 
   text-decoration: none;
   cursor: pointer;
@@ -73,15 +73,15 @@
 
 .NavigationBar__home-btn:hover,
 .AccountDropdown__span:hover {
-  color: var(--button-green);
+  color: var(--theme-primary-color);
 }
 
 .AccountDropdown__span__active {
-  color: var(--button-green);
+  color: var(--theme-primary-color);
 }
 
 .Navigation__links a:hover {
-  color: var(--button-green);
+  color: var(--theme-primary-color);
 }
 
 @media screen and (max-width: 1080px) {
@@ -109,7 +109,7 @@
     padding: 16px 16px;
     gap: 16px;
 
-    color: var(--text-color);
+    color: var(--color-text-primary);
 
     border: solid var(--border-color) 1px;
   }
@@ -136,12 +136,12 @@
 
   padding-top: 4px;
 
-  background-color: var(--color-primary);
+  background-color: var(--theme-primary-color);
 
   z-index: 2;
 }
 
 /* Changes navbar background when scrolled */
 .scrolled {
-  background-color: var(--background-color);
+  background-color: var(--color-background);
 }

@@ -27,7 +27,7 @@
 }
 
 .WelcomePageNavbar__logo:hover {
-  color: var(--color-primary);
+  color: var(--theme-primary-color);
 }
 
 .WelcomePageNavbar__menu {
@@ -51,8 +51,6 @@
 
   padding: var(--button-padding);
 
-
-
   color: var(--color-white);
 
   font-size: var(--font-sm);
@@ -66,9 +64,9 @@
 }
 
 .login-button:hover {
-  color: var(--color-primary);
+  color: var(  --theme-primary-color);
 
-  border: 1px solid var(--color-primary);
+  border: 1px  --theme-primary-colorlor-primary);
 }
 
 .signup-button {

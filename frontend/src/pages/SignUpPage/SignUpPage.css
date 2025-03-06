@@ -43,7 +43,7 @@
 }
 
 .SignUpPage__aside-logo:hover {
-  color: var(--color-primary);
+  color: var(--theme-primary-color);
 }
 
 .SignUpPage__aside-header {

@@ -1,4 +1,3 @@
-
 .TransferMoney__button {
   height: 80px;
 
@@ -15,10 +14,10 @@
 .TransferMoney__button:hover {
   box-shadow:
     /* Top (or no shadow for top in this case) */ 0px 0px 0px 0px
-      var(--highlight-color),
-    /* Left */ -16px 0px 0px 0px var(--highlight-color),
-    /* Right */ 16px 0px 0px 0px var(--highlight-color);
-  background-color: var(--highlight-color);
+      var(--color-hover),
+    /* Left */ -16px 0px 0px 0px var(--color-hover),
+    /* Right */ 16px 0px 0px 0px var(--color-hover);
+  background-color: var(--color-hover);
 }
 
 .TransferMoney__money-icon-container {
@@ -29,7 +28,7 @@
   align-items: center;
   justify-content: center;
 
-  background-color: var(--modal-background);
+  background-color: var(--color-surface);
 
   border-radius: 50%;
 }
@@ -38,7 +37,7 @@
   height: 24px;
   width: 24px;
 
-  color: var(--text-color);
+  color: var(--color-text-primary);
 }
 
 .TransferMoney__text-container {
@@ -57,7 +56,7 @@
   font-size: 12px;
   font-weight: 500;
 
-  color: var(--secondary-text-color);
+  color: var(--color-text-secondary);
 }
 
 .TransferMoney__arrow-container {

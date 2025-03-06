@@ -1,11 +1,11 @@
 .apexcharts-tooltip {
-  background-color: var(--background-color) !important;
-  color: var(--text-color) !important;
+  background-color: var(--color-background) !important;
+  color: var(--color-text-primary) !important;
   border: solid var(--border-color) 1px !important;
 }
 
 .apexcharts-tooltip-title {
-  background-color: var(--search-results-hover) !important;
-  color: var(--text-color) !important;
+  background-color: var(--color-surface-hover) !important;
+  color: var(--color-text-primary) !important;
   border: solid var(--border-color) 1px !important;
 }

@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--background-color);
+  background-color: var(--color-background);
   padding: 2rem;
 }
 
@@ -33,12 +33,12 @@
 
 .NotFoundPage__content h2 {
   font-size: 2rem;
-  color: var(--text-color);
+  color: var(--color-text-primary);
   margin: 1rem 0;
 }
 
 .NotFoundPage__content p {
-  color: var(--text-color-secondary);
+  color: var(--color-text-primary-secondary);
   font-size: 1.1rem;
   margin-bottom: 2rem;
 }
@@ -54,7 +54,6 @@
   text-decoration: none;
   font-weight: 500;
   transition: all 0.2s ease;
-
 }
 
 .NotFoundPage__button:not(.secondary) {
@@ -65,7 +64,7 @@
 .NotFoundPage__button.secondary {
   background-color: transparent;
   color: var(--primary-color);
-  border: 1px solid black
+  border: 1px solid black;
 }
 
 .NotFoundPage__button:hover {

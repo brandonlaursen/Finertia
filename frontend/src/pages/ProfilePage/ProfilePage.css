@@ -8,8 +8,8 @@
 
   margin: 120px auto 0;
 
-  background-color: var(--background-color);
-  color: var(--text-color);
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
 
   margin-bottom: 1240px;
 }
@@ -23,7 +23,7 @@
 
   font-size: 12px;
   font-weight: 500;
-  margin-bottom: 40px
+  margin-bottom: 40px;
 }
 
 .ProfilePage__total__balance {
@@ -92,7 +92,7 @@
   font-size: 12px;
   font-weight: 500;
 
-  color: var(--secondary-text-color);
+  color: var(--color-text-secondary);
 }
 
 .ProfilePage__investments__details__dash {
@@ -139,8 +139,8 @@
 
   gap: 4px;
 
-  background-color: var(--color-primary);
-  color: var(--background-color);
+  background-color: var(--theme-primary-color);
+  color: var(--color-background);
 
   border-radius: 50%;
   cursor: pointer;
@@ -151,7 +151,7 @@
 }
 
 .ProfilePage__overview__button:hover {
-  background-color: var(--color-primary-hover);
+  background-color: var(--theme-primary-color-hover);
 }
 
 .ProfilePage__overview__percentage {
@@ -173,7 +173,7 @@
 .ProfilePage__description__text {
   font-size: 12px;
 
-  color: var(--secondary-text-color);
+  color: var(--color-text-secondary);
 }
 
 .ProfilePage__description__subtext {
@@ -195,7 +195,6 @@
 }
 
 .ProfilePage__buttons div {
-
   height: 32px;
   width: auto;
 
@@ -212,7 +211,7 @@
 }
 
 .ProfilePage__buttons div:hover {
-  background-color: var(--highlight-color);
+  background-color: var(--color-hover);
 }
 
 .ProfilePage__disclaimer {
@@ -236,7 +235,7 @@
 .ProfilePage__disclaimer-show-more {
   align-self: self-start;
 
-  color: var(--secondary-text-color);
+  color: var(--color-text-secondary);
 
   font-weight: bold;
 }

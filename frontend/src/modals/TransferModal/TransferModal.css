@@ -36,7 +36,7 @@
 }
 
 .TransferModal__background {
-  background-color: var(--background-color);
+  background-color: var(--color-background);
 }
 
 .TransferModal__header {
@@ -84,15 +84,15 @@
   margin-left: auto;
   margin-bottom: 6px;
 
-  color: var(--text-color);
-  /* background-color: var(--background-color); */
+  color: var(--color-text-primary);
+  /* background-color: var( --color-background); */
   border: 1px solid var(--border-color);
   border-radius: 4px;
 }
 
 .input-wrapper:focus-within {
-  border: 2px solid var(--button-green);
-  /* background-color: var(--background-color); */
+  border: 2px solid var(--theme-primary-color);
+  /* background-color: var( --color-background); */
 }
 .dollar-sign {
   font-size: 12px;
@@ -102,8 +102,8 @@
   width: 100%;
   text-align: right;
 
-  background-color: var(--background-color);
-  color: var(--text-color);
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
 }
 
 .TransferModal-button-span {
@@ -124,13 +124,13 @@
   justify-content: center;
 
   border-radius: 4px;
-  /* background-color: var(--background-color); */
+  /* background-color: var( --color-background); */
   border: 1px solid var(--border-color);
-  color: var(--text-color);
+  color: var(--color-text-primary);
 }
 
 .TransferModal-button-container:hover {
-  /* background-color: var(--modal-background); */
+  /* background-color: var( --color-surface); */
 }
 
 .TransferModal__close-button {
@@ -167,8 +167,8 @@
 
   padding: 8px 16px;
 
-  /* background-color: var(--background-color); */
-  color: var(--text-color);
+  /* background-color: var( --color-background); */
+  color: var(--color-text-primary);
   border-radius: 44px;
   border: 1px solid var(--border-color);
 
@@ -176,7 +176,7 @@
 }
 
 .TransferModal__amount:hover {
-  background-color: var(--search-results-hover);
+  background-color: var(--color-surface-hover);
   /* !!! */
 }
 
@@ -201,7 +201,7 @@
   margin: 5px 0;
   padding: 10px;
 
-  /* background: var(--background-color); */
+  /* background: var( --color-background); */
 
   border: 1px solid var(--border-color);
   border-radius: 4px;
@@ -212,7 +212,7 @@
 }
 
 .TransferModal__amount-title-green {
-  border: 2px solid var(--button-green);
+  border: 2px solid var(--theme-primary-color);
 }
 
 .TransferModal__from-dropdown {
@@ -222,7 +222,7 @@
   top: 100%;
   right: 0;
 
-  /* background: var(--modal-background); */
+  /* background: var( --color-surface); */
   border: 1px solid var(--border-color);
   border-radius: 4px;
 
@@ -251,8 +251,8 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  /* background-color: var(--modal-background); */
-  /* color: var(--text-color); */
+  /* background-color: var( --color-surface); */
+  /* color: var(--color-text-primary); */
 
   font-size: 12px;
   font-weight: var(--font-weight-normal);
@@ -261,8 +261,8 @@
 .dropdown-text-div {
   display: flex;
   flex-direction: column;
-  /* background-color: var(--modal-background); */
-  /* color: var(--text-color); */
+  /* background-color: var( --color-surface); */
+  /* color: var(--color-text-primary); */
 
   gap: 4px;
 }
@@ -277,39 +277,39 @@
 }
 
 .checkmark-div:hover {
-  /* background-color: var(--search-results-hover); */
+  /* background-color: var(--color-surface-hover); */
 }
 .TransferModal__checkmark {
   height: 22px;
   width: 22px;
-  color: var(--text-color);
+  color: var(--color-text-primary);
 }
 
 .TransferModal__from-dropdown-individual-container:hover {
-  background-color: var(--search-results-hover);
+  background-color: var(--color-surface-hover);
   /* !!! */
 }
 
 .TransferModal__from-dropdown-container-text {
   display: flex;
   align-items: center;
-  /* background-color: var(--modal-background); */
+  /* background-color: var( --color-surface); */
   gap: 8px;
 }
 
 .TransferModal__from-dropdown-container-subtext {
-  color: var(--secondary-text-color);
-  /* background-color: var(--modal-background); */
+  color: var(--color-text-secondary);
+  /* background-color: var( --color-surface); */
 }
 
 .TransferModal__from-dropdown div {
   cursor: pointer;
-  background-color: var(--modal-background);
+  background-color: var(--color-surface);
   /* !! */
 }
 
 .TransferModal__amount-input:focus {
-  border: 1px solid var(--button-green);
+  border: 1px solid var(--theme-primary-color);
 }
 
 .TransferModal__section-footer {
@@ -341,12 +341,12 @@
   gap: 4px;
 
   font-size: 12px;
-  color: var(--secondary-text-color);
+  color: var(--color-text-secondary);
   font-weight: var(--font-weight-normal);
 }
 
 .footer-confirm {
-  color: var(--text-color);
+  color: var(--color-text-primary);
   font-weight: var(--font-weight-normal);
 }
 
@@ -364,28 +364,28 @@
   border: none;
 
   cursor: pointer;
-  color: var(--text-color);
+  color: var(--color-text-primary);
   font-weight: var(--font-weight-bold);
 }
 
 .TransferModal__button-enabled {
-  background-color: var(--button-green);
-  color: var(--background-color);
+  background-color: var(--theme-primary-color);
+  color: var(--color-background);
 }
 
 .TransferModal__button-enabled:hover {
-  background-color: var(--green-button-hover);
+  background-color: var(--theme-primary-color-hover);
 }
 
 .cancel-button {
-  background-color: var(--background-color);
-  color: var(--text-color);
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
 
-  border: 1px solid var(--button-green);
+  border: 1px solid var(--theme-primary-color);
 }
 
 .cancel-button:hover {
-  background-color: var(--green-button-light-hover);
+  background-color: var(--theme-primary-color-light-hover);
 }
 
 .TransferModal__question-mark-container {

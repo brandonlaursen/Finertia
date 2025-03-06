@@ -40,7 +40,7 @@
 
   font-size: clamp(16px, 5vw, 2rem);
   font-weight: var(--font-weight-bold);
-  color: var(--color-primary);
+  color: var(--theme-primary-color);
 
   gap: var(--spacing-sm);
 }
@@ -142,7 +142,7 @@
   width: 140px;
   margin-top: 32px;
   font-weight: var(--font-weight-bold);
-  background-color: var(--color-primary);
+  background-color: var(--theme-primary-color);
   color: var(--color-black);
   border: none;
   border-radius: var(--button-border-radius-lg);
@@ -152,7 +152,7 @@
 
 /* Button hover effect */
 .WelcomePage__features-content__button:hover {
-  background-color: var(--color-primary-hover);
+  background-color: var(--theme-primary-color-hover);
 }
 
 /* ========== Join Section ========== */
@@ -185,7 +185,7 @@
   min-height: 40px;
   width: 140px;
   font-weight: var(--font-weight-bold);
-  background-color: var(--color-primary);
+  background-color: var(--theme-primary-color);
   color: var(--color-black);
   border: none;
   border-radius: var(--button-border-radius-lg);
@@ -195,7 +195,7 @@
 
 /* Button hover effect */
 .WelcomePage__join__button:hover {
-  background-color: var(--color-primary-hover);
+  background-color: var(--theme-primary-color-hover);
 }
 
 /* ========== Footer Section ========== */
@@ -206,7 +206,7 @@
   padding: 1.5rem;
   color: rgb(0, 0, 0);
   font-size: 1.5rem;
-  background-color: var(--color-primary);
+  background-color: var(--theme-primary-color);
 }
 
 /* ========== Responsive Design ========== */

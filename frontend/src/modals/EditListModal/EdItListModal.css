@@ -23,7 +23,7 @@
   height: 182px;
   width: 440px;
 
-  background-color: var(--modal-background);
+  background-color: var(--color-surface);
 
   border-radius: 4px;
 
@@ -50,7 +50,7 @@
   justify-content: center;
   align-items: center;
 
-  background-color: var(--highlight-color);
+  background-color: var(--color-hover);
   border: solid 1px var(--border-color);
 
   border-radius: 4px;
@@ -63,7 +63,7 @@
 }
 
 .EditListModal__section__input {
-  color: var(--text-color);
+  color: var(--color-text-primary);
   background-color: var(--modal-emoji-icons);
   width: 80%;
   height: 36px;
@@ -76,8 +76,8 @@
 }
 
 .EditListModal__section__input:focus {
-  border: solid 1px var(--button-green);
-  background-color: var(--modal-background);
+  border: solid 1px var(--theme-primary-color);
+  background-color: var(--color-surface);
 }
 
 .EditListModal__section__buttons {
@@ -101,12 +101,11 @@
 }
 
 .EditListModal__create-button {
-  background-color: var(--button-green);
-  color: var(--background-color);
+  background-color: var(--theme-primary-color);
+  color: var(--color-background);
   border: none;
 }
 
 .EditListModal__create-button:hover {
-  background-color: var(--green-button-hover);
+  background-color: var(--theme-primary-color-hover);
 }
-

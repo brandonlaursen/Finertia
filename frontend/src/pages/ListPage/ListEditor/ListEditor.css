@@ -21,7 +21,7 @@
 
 /* Change background color when hovered */
 .ListEditor__emoji-button:hover {
-  background-color: var(--highlight-color);
+  background-color: var(--color-hover);
 }
 
 /* Wrapper for the emoji picker dropdown */
@@ -51,8 +51,8 @@
   font-size: 24px;
   font-weight: 500;
 
-  color: var(--text-color);
-  background-color: var(--background-colors);
+  color: var(--color-text-primary);
+  background-color: var(--color-backgrounds);
 
   border: 2px solid rgb(255, 255, 255);
   border-radius: 4px;
@@ -64,12 +64,12 @@
 
 /* Change background when hovered */
 .ListEditor__name-input:hover {
-  background-color: var(--modal-background);
+  background-color: var(--color-surface);
 }
 
 /* Change border and background color when focused */
 .ListEditor__name-input:focus {
-  background-color: var(--background-colors);
+  background-color: var(--color-backgrounds);
 
   border: 2px solid red;
 }
@@ -86,7 +86,7 @@
 
 /* Change color on hover */
 .ListEditor__menu-button:hover {
-  color: var(--green-button);
+  color: var(--theme-primary-color);
 }
 
 /* Subtitle text below the list name */
@@ -99,7 +99,7 @@
   font-size: 12px;
   font-weight: 500;
 
-  color: var(--secondary-text-color);
+  color: var(--color-text-secondary);
 }
 
 /* Popover that appears when the delete button is clicked */
@@ -113,7 +113,7 @@
   width: auto;
   padding: 16px;
 
-  background-color: var(--background-color);
+  background-color: var(--color-background);
 
   display: flex;
   justify-content: center;

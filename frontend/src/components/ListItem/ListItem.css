@@ -6,7 +6,6 @@
 
   text-decoration: none;
   cursor: pointer;
-
 }
 
 /* Lists Side Bar Styling Only  */
@@ -15,7 +14,7 @@
 }
 
 .Lists__ListItem:hover {
-  background-color: var(--highlight-color);
+  background-color: var(--color-hover);
 }
 
 /* ========== List Item Container ========== */
@@ -28,7 +27,7 @@
   gap: 10px;
   padding: 0 12px;
 
-  color: var(--text-color);
+  color: var(--color-text-primary);
 }
 
 /* ========== List Item Header ========== */
@@ -37,12 +36,11 @@
   padding: 4px 8px;
   display: flex;
   align-items: center;
-
 }
 
 /* Hover effect for header */
 .ListItem__header-hover:hover {
-  background-color: var(--list-item-hover);
+  background-color: var(--color-hover-secondary-dark);
 }
 
 /* ========== List Item Emoji & Name ========== */
@@ -55,7 +53,7 @@
   align-items: center;
   margin-right: 10px;
   font-size: 13px;
-  background-color: var(--highlight-color);
+  background-color: var(--color-hover);
   border-radius: 4px;
 }
 
@@ -78,7 +76,7 @@
 
 .ListItem__item-count {
   font-size: 11px;
-  color: var(--secondary-text-color);
+  color: var(--color-text-secondary);
   font-weight: 500;
   text-align: left;
 }

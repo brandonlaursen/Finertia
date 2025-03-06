@@ -7,15 +7,15 @@
   height: 86vh;
   width: clamp(250px, 30vw, 300px);
 
-  transition: width 0.1s smooth;
-
   margin-top: var(--margin-top-container);
 
   border: 1px solid var(--border-color);
+
   border-radius: 4px;
 
   overflow-y: auto;
   scrollbar-width: none;
+  transition: width 0.1s smooth;
 }
 
 /* ====== Loading ====== */
