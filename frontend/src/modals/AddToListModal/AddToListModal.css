@@ -46,6 +46,7 @@
 
 /* Create New List Overlay */
 .AddToListModal__list-overlay {
+
   position: absolute;
   z-index: 10;
 
@@ -64,8 +65,6 @@
   pointer-events: auto;
 }
 
-
-
 /* ========== Modal Footer ========== */
 /* Modal Footer */
 .AddToListModal__footer {
@@ -73,7 +72,7 @@
   justify-content: center;
   gap: 8px;
   padding-top: 8px;
-  padding-bottom: 8px;
+  padding-bottom: 4px;
 }
 
 /* Modal Footer Button */

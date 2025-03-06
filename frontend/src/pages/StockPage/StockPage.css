@@ -22,6 +22,35 @@
   transition: width 0.3s smooth;
 }
 
+/* Stock Page skeleton layout */
+
+.StockPage__skeleton-overview {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3vw;
+
+  margin-bottom: 16px
+}
+
+
+
+.StockPage__skeleton-chart {
+  margin-bottom: 16px;
+}
+
+
+.StockPage__skeleton-details {
+  margin-bottom: 16px;
+}
+
+.StockPage__skeleton-news {
+  margin-bottom: 32px;
+
+  border-radius: 4px;
+}
+
+/* ========== Stock Not Found ========== */
 .StockPage__stock-not-found {
   display: flex;
   flex-direction: column;
@@ -60,23 +89,11 @@
   background-color: #0056b3;
 }
 
-/* ========== Loading Spinner ========== */
-
-/* Stock Page Loading Spinner */
-.StockPage__loading-spinner {
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  top: 100px;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
 /* ====== Media Queries ====== */
 /* Medium devices (tablets, 768px and up) */
 @media (max-width: 768px) {
-  .StockPage__main {
+  .StockPage__main,
+  .StockPage__skeleton {
     width: 90vw;
   }
 }

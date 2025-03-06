@@ -295,7 +295,7 @@ Close Button Icon
   --modal-emoji-icons: rgba(245, 248, 250);
 
   --border-color: rgb(227, 233, 237);
-  --disabled-overlay-color: rgba(255, 255, 255, 0.7);
+  --disabled-overlay-color: rgba(255, 255, 255, 0.5);
   --disabled-button-color: rgb(180, 189, 194);
 
   --highlight-color: rgba(245, 248, 250);

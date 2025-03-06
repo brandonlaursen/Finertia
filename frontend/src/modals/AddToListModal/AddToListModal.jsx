@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import ModalHeader from "../../components/ModalHeader/ModalHeader";
 import ModalOverlay from "../../components/ModalOverlay/ModalOverlay";
 import CreateListToggle from "./CreateListToggle";
+
 import AddToListModalLists from "./AddToListModalLists";
 
 import { fetchLists, selectListsArray } from "../../../store/lists";
@@ -112,7 +113,7 @@ function AddToListModal({ stock, setNotifications, setNotificationMessage }) {
         >{`Add ${stock.symbol} to List`}</ModalHeader>
 
         <section className="AddToListModal__section">
-          {isVisible && <div className="AddToListModal__list-overlay active" />}
+          {/* {isVisible && <div className="AddToListModal__list-overlay active" />} */}
           <CreateListToggle
             isVisible={isVisible}
             setIsVisible={setIsVisible}

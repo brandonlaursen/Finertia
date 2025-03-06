@@ -129,7 +129,7 @@
   --secondary-text-color: rgb(140, 155, 161);
 
   --disabled-button-color: rgb(98, 108, 112);
-  --disabled-overlay-color: rgb(30, 33, 37, 0.07);
+  --disabled-overlay-color: rgb(30,33,37, .7);
 
   --border-color: rgb(48, 54, 58);
 

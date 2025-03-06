@@ -25,10 +25,12 @@ function AddToListModalLists({
     lists &&
     lists.slice(0, 10).map((list) => {
       return (
+
         <article
           key={list.id}
           className={`AddToListModalLists ${isVisible ? "disabled" : ""}`}
         >
+          {isVisible && <div className="AddToListModal__list-overlay active" />}
           <div className="AddToListModalLists__checkbox-container">
             <input
               type="checkbox"

@@ -29,22 +29,16 @@
   flex-direction: column;
 
   gap: 3vw;
-  /* margin-bottom: var(--margin-bottom-container); */
+
   margin-bottom: 16px
 }
 
-.HomePage__skeleton-stats {
-  display: flex;
-  gap: 20px;
-}
+
 
 .HomePage__skeleton-chart {
   margin-bottom: 16px;
 }
 
-.HomePage__skeleton-timeframe {
-  margin-bottom: 16px;
-}
 
 .HomePage__skeleton-buying-power {
   margin-bottom: 16px;
