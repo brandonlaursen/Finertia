@@ -1,0 +1,42 @@
+/* ========== Add to List Button ========== */
+
+/* Button to add a stock to a watch list or list */
+.AddToListButton {
+  height: 36px;
+  width: 90%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--button-green);
+  background-color: var(--background-color);
+
+  border: solid 1px var(--button-green);
+
+  border-radius: 44px;
+
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Hover effect for the "Add to List" button */
+.AddToListButton:hover {
+  background-color: var(--green-button-light-hover);
+}
+
+/* ========== Icons ========== */
+
+/* Check mark icon for indicating list addition success */
+.AddToListButton__check-mark-icon {
+  height: 20px;
+  width: 20px;
+}
+
+
+.AddToListButton__plus-icon {
+  height: 14px;
+  width: 14px;
+  margin-right: 6px;
+}

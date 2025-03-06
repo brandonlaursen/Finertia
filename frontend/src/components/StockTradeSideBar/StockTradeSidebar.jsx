@@ -1,18 +1,13 @@
 import "./StockTradeSidebar.css";
-import { IoIosCheckmark } from "react-icons/io";
 
 import StockTrade from "./StockTrade/StockTrade";
-import AddToListModal from "../../modals/AddToListModal/AddToListModal";
-
-import { useModal } from "../../context/Modal";
+import AddToListButton from "./AddToListButton/AddToListButton";
 
 function StockTradeSidebar({
   stock,
   setNotifications,
   setNotificationMessage,
 }) {
-  const { setModalContent, setModalClass } = useModal();
-
   return (
     <div className="StockTradeSidebar">
       <main className="StockTradeSidebar__main">
@@ -22,27 +17,12 @@ function StockTradeSidebar({
           setNotificationMessage={setNotificationMessage}
         />
 
-        <button
-          className="StockTradeSidebar__add-to-list-button"
-          onClick={(e) => {
-            e.stopPropagation();
-            setModalContent(
-              <AddToListModal
-                stock={stock}
-                setNotifications={setNotifications}
-                setNotificationMessage={setNotificationMessage}
-              />
-            );
-            setModalClass({
-              modal: "AddToListModal",
-              modalBackground: "AddToListModal__background",
-              modalContainer: "AddToListModal__container",
-            });
-          }}
-        >
-          <IoIosCheckmark className="StockTradeSidebar__check-mark-icon" />
-          Add to Lists
-        </button>
+        <AddToListButton
+          stock={stock}
+          setNotifications={setNotifications}
+          setNotificationMessage={setNotificationMessage}
+   
+        />
       </main>
     </div>
   );
