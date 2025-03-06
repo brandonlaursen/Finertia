@@ -1,17 +1,16 @@
 import "./NotificationPopUp.css";
-import { IoClose } from "react-icons/io5";
+import { GrFormCheckmark } from "react-icons/gr";
+import CloseButton from "../CloseButton/CloseButton";
 
 function NotificationPopUp({ message, setNotifications }) {
   return (
     <div className="NotificationPopUp">
-      <span>{message}</span>
+      <span className="notification-message">
+        <GrFormCheckmark className="NotificationPopUp-checkmark" />
+        {message}
+      </span>
       <span className="NotificationPopUp-view">
-        <button className="NotificationPopUp-close-button">
-          <IoClose
-            className="NotificationPopUp-close-icon"
-            onClick={() => setNotifications(false)}
-          />
-        </button>
+        <CloseButton clearNotifications={() => setNotifications(false)} />
       </span>
     </div>
   );

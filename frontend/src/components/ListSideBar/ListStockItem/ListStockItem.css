@@ -65,5 +65,5 @@
 }
 
 .ListStockItem__percent-change-red {
-  color: var(--percent-change-negative);
+  color: var(--color-negative-orange);
 }

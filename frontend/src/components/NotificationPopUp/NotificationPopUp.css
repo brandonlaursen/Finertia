@@ -12,8 +12,10 @@
 }
 
 .NotificationPopUp {
-  background-color: #333;
-  color: #fff;
+  background-color: var(--notification-background);
+  color:var(--text-color);
+
+  border: solid 1px var(--border-color);
 
   padding: 12px 24px;
   border-radius: 8px;
@@ -24,8 +26,8 @@
   display: flex;
   align-items: center;
 
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 500;
   justify-content: space-between;
 }
 
@@ -41,6 +43,24 @@
 
   height: 34px;
   width: 34px;
+}
+.notification-message {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px; /* space between icon and text */
+}
+
+.NotificationPopUp-checkmark{
+  background-color: var(--green-button);
+  color:var(--background-color);
+  border-radius: 50%;
+  height: 16px;
+  width: 16px;
+
+  /* font-size: 30px; */
+  margin-right: 8px;
+  align-self: center;
+  justify-self: center;
 }
 
 /* .NotificationPopUp-icon {
