@@ -6,6 +6,7 @@
   /* Top */ 0px 0px 0px 0px var(--color-hover),
     /* Left */ -24px 0px 0px 0px var(--color-hover),
     /* Right */ 24px 0px 0px 0px var(--color-hover);
+  border-radius: 4px;
 }
 
 /* Toggle button for opening/closing the dropdown */
@@ -30,6 +31,7 @@
   /* Top */ 0px 0px 0px 0px var(--color-hover),
     /* Left */ -24px 0px 0px 0px var(--color-hover),
     /* Right */ 24px 0px 0px 0px var(--color-hover);
+  /* border-radius: 4px; */
 }
 
 /* Container for displaying balance information */

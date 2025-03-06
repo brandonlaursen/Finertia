@@ -234,11 +234,10 @@ button {
 
   --icon-size-md: 16px;
 
-
   /* * Percent colors */
   --color-positive: rgb(44, 202, 4);
   --color-negative: rgb(255, 29, 4);
-  --color-negative-secondary: rgb(248, 124, 14);
+  --color-negative-secondary: rgb(255,80,1);
 }
 
 /* ========== Color Indicators ========== */

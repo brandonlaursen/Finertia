@@ -33,8 +33,8 @@ function ListStockItem({ stock, stocks, navigate }) {
         <span
           className={`${
             todays_change_percent.toFixed(2) > 0
-              ? "ListStockItem__percent-change-green"
-              : "ListStockItem__percent-change-red"
+              ? "positive"
+              : "negative"
           }`}
         >
           {todays_change_percent.toFixed(2) > 0 && "+"}

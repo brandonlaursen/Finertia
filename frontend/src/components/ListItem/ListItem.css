@@ -33,10 +33,13 @@
 
 /* ========== List Item Header ========== */
 .ListItem__header {
-  border-radius: var(--border-radius-sm);
-  padding: 4px 8px;
+
   display: flex;
   align-items: center;
+  padding: 4px 8px;
+
+  border-radius: var(--border-radius-sm);
+
 }
 
 /* Hover effect for header */
@@ -63,7 +66,7 @@
 
 /* Stock/list name inside the list item */
 .ListItem__name {
-  font-size: var(--font-size-text-sm);
+  font-size: var(--font-size-text-xs);
   font-weight: var(--font-weight-normal);
 }
 
