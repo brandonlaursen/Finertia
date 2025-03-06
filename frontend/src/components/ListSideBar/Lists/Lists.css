@@ -5,16 +5,15 @@
   min-height: 50px;
 
   display: flex;
-  flex-shrink: 0;
   justify-content: space-between;
   align-items: center;
 
   padding: 0 20px;
 
   font-weight: bold;
-  font-size: 14px;
+  font-size: var(--font-size-text-md);
 
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: var(--border);
 }
 
 /* ========== Create List Button ========== */
@@ -26,15 +25,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
 
   color: var(--icon-color);
 }
 
 /* Hover effect for create button */
 .Lists__create-button:hover {
-  background-color: var(--icon-hover-color);
-  border-radius: 4px;
+  background-color: var(--icon-color-hover);
+  border-radius: var(--border-radius-sm);
 }
 
 /* ========== Lists Container (Holds All Lists) ========== */

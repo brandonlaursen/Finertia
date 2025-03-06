@@ -401,7 +401,7 @@
 }
 
 .TransferModal__question-mark-container:hover {
-  background-color: var(--icon-hover-color);
+  background-color: var(--icon-color-hover);
 }
 
 .TransferModal__question-mark {

@@ -50,7 +50,7 @@
 
   /* Icons */
   --icon-color: rgb(145, 159, 166);
-  --icon-hover-color: rgb(24, 24, 24);
+  --icon-color-hover: rgb(24, 24, 24);
 
   /* Overlay */
   --disabled-overlay-color: rgb(30, 33, 37, 0.7);

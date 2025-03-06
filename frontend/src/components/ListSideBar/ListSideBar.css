@@ -9,12 +9,13 @@
 
   margin-top: var(--margin-top-container);
 
-  border: 1px solid var(--border-color);
+  border: var(--border);
 
-  border-radius: 4px;
+  border-radius: var(--border-radius-sm);
 
   overflow-y: auto;
   scrollbar-width: none;
+  
   transition: width 0.1s smooth;
 }
 
@@ -28,8 +29,8 @@
 
   transition: width 0.1s smooth;
 
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
+  border: var(--border);
+  border-radius: var(--border-radius-sm);
 }
 
 /* ====== Media Queries ====== */

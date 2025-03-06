@@ -12,12 +12,10 @@
   flex-direction: column;
   justify-content: space-evenly;
 
-  background-color: var(--list-menu-button);
+  background-color: var(--color-surface);
 
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-
-  font-size: 14px;
+  border: var(--border);
+  border-radius: var(--button-border-radius-md);
 
   z-index: 100;
 }
@@ -33,8 +31,8 @@
   align-items: center;
   padding-left: 10px;
 
-  font-weight: bold;
-  font-size: 11px;
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-text-sm);
 
   color: var(--color-text-primary);
 
@@ -42,16 +40,11 @@
   text-decoration-thickness: 1px;
   text-decoration-color: var(--color-text-primary);
   text-underline-offset: 3px;
-
-  background: none;
-  border: none;
-  outline: none;
-  cursor: default;
 }
 
 /* Change background on hover */
 .ListItemMenu__button:hover {
-  background-color: var(--list-menu-button-hover);
+  background-color: var(--color-hover-secondary-light);
 }
 
 /* ========== List Item Icons ========== */

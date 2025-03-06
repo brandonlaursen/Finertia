@@ -21,7 +21,7 @@
   cursor: pointer;
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
-  border-radius: 4px;
+  border-radius: var(--border-radius-sm);
 }
 
 /* Remove focus outline on click */
@@ -34,7 +34,7 @@
 
 /* Show background on hover */
 .ListItemActions__menu-button:hover {
-  background-color: var(--icon-hover-color);
+  background-color: var(--icon-color-hover);
 
   opacity: 1;
 }
@@ -48,14 +48,14 @@
 /* Icon inside the menu button */
 
 .ListItemActions__menu-icon {
-  color: var(--color-icon-grey);
+  color: var(--icon-color);
 }
 
 /* Arrow icon for expanding/collapsing */
 .ListItemActions__arrow-icon {
   font-size: 18px;
   transition: transform 0.3s ease;
-  color: var(--color-icon-grey);
+  color: var(--icon-color);
 }
 
 /* Rotate arrow when list is open */

@@ -4,7 +4,6 @@
   justify-content: start;
   align-items: center;
 
-  text-decoration: none;
   cursor: pointer;
 }
 
@@ -20,10 +19,12 @@
 /* ========== List Item Container ========== */
 .ListItem__container {
   width: 100%;
+
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   gap: 10px;
   padding: 0 12px;
 
@@ -32,7 +33,7 @@
 
 /* ========== List Item Header ========== */
 .ListItem__header {
-  border-radius: 4px;
+  border-radius: var(--border-radius-sm);
   padding: 4px 8px;
   display: flex;
   align-items: center;
@@ -48,35 +49,36 @@
 .ListItem__emoji {
   height: 35px;
   width: 27px;
+
   display: inline-flex;
   justify-content: center;
   align-items: center;
+
   margin-right: 10px;
-  font-size: 13px;
+  font-size: var(--font-size-input);
+
   background-color: var(--color-hover);
-  border-radius: 4px;
+  border-radius: var(--border-radius-sm);
 }
 
 /* Stock/list name inside the list item */
 .ListItem__name {
-  display: block;
-  font-size: 12px;
-  font-weight: 500;
-
-  text-align: left;
+  font-size: var(--font-size-text-sm);
+  font-weight: var(--font-weight-normal);
 }
 
 .ListItem__name-container {
   display: flex;
   flex-direction: column;
+
   gap: 2px;
-  text-align: left;
-  text-align: left;
+
 }
 
 .ListItem__item-count {
-  font-size: 11px;
+  font-size: var(--font-size-text-xs);
   color: var(--color-text-secondary);
-  font-weight: 500;
-  text-align: left;
+  font-weight: var(--font-weight-normal);
+
+
 }

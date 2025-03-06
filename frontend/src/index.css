@@ -182,6 +182,8 @@ button {
   /* * Border Colors */
   --border-color: rgb(227, 233, 237); /* For borders, dividers, etc. */
 
+  --border-radius-sm: 4px;
+
   /* * Text Colors */
   --color-text-primary: #000000; /* Main text color */
   --color-text-secondary: rgb(152, 152, 152); /* Secondary text color */
@@ -228,7 +230,7 @@ button {
 
   /* * Icons */
   --icon-color: rgb(106, 114, 120);
-  --icon-hover-color: rgb(242, 241, 241);
+  --icon-color-hover: rgb(242, 241, 241);
 
   --icon-size-md: 16px;
 
