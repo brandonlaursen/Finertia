@@ -1,17 +1,17 @@
 .ProfilePage {
-  height: 100vh;
-  width: 65vw;
-  min-width: 600px;
+  width: clamp(400px, 60vw, 1000px);
 
   display: flex;
   flex-direction: column;
   align-content: center;
+  justify-content: center;
 
   margin: 120px auto 0;
 
-  color: rgb(0, 0, 0);
+  background-color: var(--background-color);
+  color: var(--text-color);
 
-  margin-bottom: 120px;
+  margin-bottom: 1240px;
 }
 
 .ProfilePage__total {
@@ -21,23 +21,23 @@
   flex-direction: column;
   justify-content: center;
 
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
-  margin-bottom: 24px;
+  margin-bottom: 40px
 }
 
 .ProfilePage__total__balance {
   font-size: 28px;
   font-weight: 500;
+  margin-bottom: 4px;
 }
 
 .ProfilePage__investments {
-  height: 180px;
-
   display: flex;
   flex-direction: column;
 
-  gap: 20px;
+  gap: 16px;
+  margin-bottom: 64px;
 }
 
 .ProfilePage__investments__header {
@@ -47,39 +47,36 @@
   align-items: center;
 
   gap: 4px;
-  padding-bottom: 16px;
+  padding-bottom: 24px;
 
   border-bottom: solid 1px var(--border-color);
 }
 
 .ProfilePage__investments__header__text {
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .ProfilePage__investments__header__info-icon {
-  font-size: 12px;
+  font-size: 14px;
   cursor: pointer;
 }
 
 .ProfilePage__investments__header__info-icon:hover {
-  font-size: 12px;
-  background-color: rgb(237, 237, 237);
+  background-color: var(--icon-hover-color);
 }
 
 .ProfilePage__investments__details {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  /* flex-grow: 1; */
 
-  gap: 12px;
+  gap: 24px;
 }
 
 .ProfilePage__investments__details__value {
   display: flex;
   justify-content: space-between;
-
-  padding-right: 4px;
 }
 
 .ProfilePage__investments__details__value-text {
@@ -93,8 +90,9 @@
 
 .ProfilePage__investments__details__subtext {
   font-size: 12px;
+  font-weight: 500;
 
-  color: rgb(165, 165, 165);
+  color: var(--secondary-text-color);
 }
 
 .ProfilePage__investments__details__dash {
@@ -111,14 +109,15 @@
 }
 
 .ProfilePage__overview__title {
-  height: 40px;
+  /* height: 40px; */
 
   font-size: 24px;
   font-weight: 700;
+  margin-bottom: 16px;
 }
 
 .ProfilePage__overview__buttons {
-  height: 100px;
+  /* height: 100px; */
 
   display: flex;
   flex-direction: row;
@@ -126,6 +125,7 @@
   align-items: center;
 
   gap: 16px;
+  margin-bottom: 16px;
 }
 
 .ProfilePage__overview__button {
@@ -140,18 +140,18 @@
   gap: 4px;
 
   background-color: var(--color-primary);
+  color: var(--background-color);
 
   border-radius: 50%;
   cursor: pointer;
   font-size: 14px;
-  color: white;
-  font-weight: bold;
+
+  font-weight: 500;
   margin-bottom: 16px;
 }
 
 .ProfilePage__overview__button:hover {
   background-color: var(--color-primary-hover);
-  color: white;
 }
 
 .ProfilePage__overview__percentage {
@@ -159,23 +159,25 @@
 }
 
 .ProfilePage__overview__description {
-  height: 70px;
+  /* height: 70px; */
 
   display: flex;
   flex-direction: column;
   justify-content: center;
 
   gap: 4px;
+
+  margin-bottom: 8px;
 }
 
 .ProfilePage__description__text {
   font-size: 12px;
 
-  color: rgb(124, 124, 124);
+  color: var(--secondary-text-color);
 }
 
 .ProfilePage__description__subtext {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: bold;
 }
 
@@ -185,13 +187,15 @@
   flex-wrap: wrap;
 
   gap: 5px;
-  margin-top: 10px;
+  margin-top: 32px;
+  margin-bottom: 32px;
 
   font-size: 13px;
   font-weight: 500;
 }
 
 .ProfilePage__buttons div {
+
   height: 32px;
   width: auto;
 
@@ -201,14 +205,14 @@
 
   padding: 10px;
 
-  border-radius: 20px;
+  border-radius: 44px;
   border: 1px solid var(--border-color);
 
   cursor: pointer;
 }
 
 .ProfilePage__buttons div:hover {
-  background-color: var(--color-highlight);
+  background-color: var(--highlight-color);
 }
 
 .ProfilePage__disclaimer {
@@ -220,7 +224,8 @@
   align-items: center;
 
   gap: 10px;
-  padding-top: 80px;
+  padding-top: 24px;
+  margin-bottom: 120px;
 
   font-size: 11px;
   line-height: 1.5;
@@ -231,7 +236,7 @@
 .ProfilePage__disclaimer-show-more {
   align-self: self-start;
 
-  color: black;
+  color: var(--secondary-text-color);
 
   font-weight: bold;
 }

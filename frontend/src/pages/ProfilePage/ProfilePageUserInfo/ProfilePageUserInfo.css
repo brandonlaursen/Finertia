@@ -1,4 +1,3 @@
-
 .ProfilePageUserInfo {
   height: 100px;
 
@@ -21,7 +20,7 @@
   width: 72px;
   border-radius: 50%;
 
-  color: rgb(180, 189, 194);
+  color: var(--secondary-text-color);
 }
 
 .ProfilePageUserInfo__spinner {
@@ -34,9 +33,8 @@
 
   border-radius: 50%;
   animation: spin 2s linear infinite;
-  color: rgb(0, 15, 179);
+  color: var(--secondary-text-color);
 }
-
 
 @keyframes spin {
   0% {
@@ -47,11 +45,9 @@
   }
 }
 
-
 .ProfilePageUserInfo--profile-blur {
   filter: blur(1px);
 }
-
 
 .ProfilePageUserInfo__plus-icon {
   height: 20px;
@@ -61,13 +57,12 @@
   top: 70px;
   right: 20px;
 
-  background-color: white;
+  background-color: var(--background-color);
+  color: var(--text-color);
 
   border-radius: 50%;
   cursor: pointer;
 }
-
-
 
 .ProfilePageUserInfo__information {
   display: flex;
@@ -83,25 +78,25 @@
 .ProfilePageUserInfo__information__username {
   margin-right: 4px;
 
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
 }
 
 .ProfilePageUserInfo__information__join-date {
   margin-left: 4px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
 
-  color: var(--color-light-text);
+  color: var(--secondary-text-color);
 }
 
 .ProfilePageUserInfo__information__edit {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: bold;
 
   text-decoration: underline;
   text-decoration-thickness: 1px;
-  text-decoration-color: black;
+  text-decoration-color: var(--text-color);
   text-underline-offset: 4px;
 
   cursor: pointer;

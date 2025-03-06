@@ -4,6 +4,9 @@
 
   display: flex;
   margin: 0px auto 0;
+
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 .SettingsLayout__aside {
@@ -33,13 +36,13 @@
   height: 30px;
 
 
-  color: rgb(106, 106, 106);
+  color: var(--secondary-text-color);
 
   border-bottom: 1px solid var(--border-color);
 }
 
 .SettingsLayout__subtitle {
-  color: black;
+  color: var(--text-color);
 
   text-decoration: none;
   font-weight: bold;
@@ -47,9 +50,9 @@
 }
 
 .settings-highlight-security {
-  color: var(--color-primary);
+  color: var(--button-green);
 }
 
 .settings-highlight-appearance {
-  color: var(--color-primary);
+  color: var(--button-green);
 }

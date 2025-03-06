@@ -51,5 +51,5 @@
 }
 
 .StockTableItem__button:hover {
-  color: var(--color-primary);
+  color: var(--button-green);
 }

@@ -22,10 +22,10 @@
 .CompletedTransfers__transfer:hover {
   box-shadow:
     /* Top (or no shadow for top in this case) */ 0px 0px 0px 0px
-      var(--color-highlight),
-    /* Left */ -16px 0px 0px 0px var(--color-highlight),
-    /* Right */ 16px 0px 0px 0px var(--color-highlight);
-  background-color: var(--color-highlight);
+      var(--highlight-color),
+    /* Left */ -16px 0px 0px 0px var(--highlight-color),
+    /* Right */ 16px 0px 0px 0px var(--highlight-color);
+  background-color: var(--highlight-color);
 }
 
 .CompletedTransfers__message-container {
@@ -60,9 +60,10 @@
 
 .CompletedTransfers__pagination-button {
   padding: 0.5rem 1rem;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
   border-radius: 4px;
-  background-color: white;
+  background-color: var(--button-primary-inverted);
   cursor: pointer;
   font-size: 0.9rem;
   transition: all 0.2s ease;
@@ -70,7 +71,7 @@
 }
 
 .CompletedTransfers__pagination-button:hover:not(:disabled) {
-  background-color: #f5f5f5;
+  background-color: var(--highlight-color);
 }
 
 .CompletedTransfers__pagination-button:disabled {
@@ -81,5 +82,5 @@
 .CompletedTransfers__pagination-info {
   font-size: 0.9rem;
   font-weight: 500;
-  color: #666;
+  color: var(--secondary-text-color);
 }

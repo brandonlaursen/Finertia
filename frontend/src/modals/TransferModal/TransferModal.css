@@ -18,12 +18,10 @@
   right: 0;
   left: 0;
   bottom: 0;
-
 }
 
 .TransferModal__container {
-
-  min-width:400px;
+  min-width: 400px;
   max-width: 750px;
   width: 45vw;
   position: absolute;
@@ -35,7 +33,6 @@
   padding: 16px 16px;
 
   border-radius: 5px;
-
 }
 
 .TransferModal__background {
@@ -73,7 +70,7 @@
 
 .TransferModal__amount-title {
   font-size: 12px;
-  font-weight: 500
+  font-weight: 500;
 }
 
 .input-wrapper {
@@ -87,12 +84,15 @@
   margin-left: auto;
   margin-bottom: 6px;
 
+  color: var(--text-color);
+  /* background-color: var(--background-color); */
   border: 1px solid var(--border-color);
   border-radius: 4px;
 }
 
 .input-wrapper:focus-within {
-  border: 2px solid var(--color-primary);
+  border: 2px solid var(--button-green);
+  /* background-color: var(--background-color); */
 }
 .dollar-sign {
   font-size: 12px;
@@ -102,14 +102,13 @@
   width: 100%;
   text-align: right;
 
-  border: none;
-  outline: none;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 .TransferModal-button-span {
   display: flex;
   justify-content: flex-end;
-
 
   padding: 24px;
 
@@ -125,12 +124,13 @@
   justify-content: center;
 
   border-radius: 4px;
-
-
+  /* background-color: var(--background-color); */
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
 }
 
 .TransferModal-button-container:hover {
-  background-color: var(--button-hover-lg);
+  /* background-color: var(--modal-background); */
 }
 
 .TransferModal__close-button {
@@ -167,8 +167,8 @@
 
   padding: 8px 16px;
 
-  background-color: white;
-
+  /* background-color: var(--background-color); */
+  color: var(--text-color);
   border-radius: 44px;
   border: 1px solid var(--border-color);
 
@@ -176,7 +176,8 @@
 }
 
 .TransferModal__amount:hover {
-  background-color: var(--button-hover-lg);
+  background-color: var(--search-results-hover);
+  /* !!! */
 }
 
 /*  */
@@ -200,7 +201,7 @@
   margin: 5px 0;
   padding: 10px;
 
-  background: white;
+  /* background: var(--background-color); */
 
   border: 1px solid var(--border-color);
   border-radius: 4px;
@@ -211,7 +212,7 @@
 }
 
 .TransferModal__amount-title-green {
-  border: 2px solid var(--color-primary);
+  border: 2px solid var(--button-green);
 }
 
 .TransferModal__from-dropdown {
@@ -221,13 +222,11 @@
   top: 100%;
   right: 0;
 
-  background: white;
+  /* background: var(--modal-background); */
   border: 1px solid var(--border-color);
   border-radius: 4px;
 
   z-index: 10;
-
-
 }
 
 .TransferModal__from-dropdown-individual {
@@ -235,7 +234,6 @@
 
   display: flex;
   flex-direction: column;
-
 }
 
 .TransferModal__from-dropdown-individual-header {
@@ -253,6 +251,8 @@
   display: flex;
   align-items: center;
   gap: 4px;
+  /* background-color: var(--modal-background); */
+  /* color: var(--text-color); */
 
   font-size: 12px;
   font-weight: var(--font-weight-normal);
@@ -261,8 +261,8 @@
 .dropdown-text-div {
   display: flex;
   flex-direction: column;
-
-
+  /* background-color: var(--modal-background); */
+  /* color: var(--text-color); */
 
   gap: 4px;
 }
@@ -275,32 +275,41 @@
 
   margin-left: 4px;
 }
+
+.checkmark-div:hover {
+  /* background-color: var(--search-results-hover); */
+}
 .TransferModal__checkmark {
   height: 22px;
   width: 22px;
+  color: var(--text-color);
 }
 
 .TransferModal__from-dropdown-individual-container:hover {
-  background-color: var(--color-highlight);
+  background-color: var(--search-results-hover);
+  /* !!! */
 }
 
 .TransferModal__from-dropdown-container-text {
   display: flex;
   align-items: center;
-
+  /* background-color: var(--modal-background); */
   gap: 8px;
 }
 
 .TransferModal__from-dropdown-container-subtext {
-  color: var(--color-light-text);
+  color: var(--secondary-text-color);
+  /* background-color: var(--modal-background); */
 }
 
 .TransferModal__from-dropdown div {
   cursor: pointer;
+  background-color: var(--modal-background);
+  /* !! */
 }
 
 .TransferModal__amount-input:focus {
-  border: 1px solid var(--color-primary);
+  border: 1px solid var(--button-green);
 }
 
 .TransferModal__section-footer {
@@ -332,13 +341,12 @@
   gap: 4px;
 
   font-size: 12px;
-  color: var(--color-light-text);
+  color: var(--secondary-text-color);
   font-weight: var(--font-weight-normal);
-
 }
 
-.footer-confirm{
-  color: black;
+.footer-confirm {
+  color: var(--text-color);
   font-weight: var(--font-weight-normal);
 }
 
@@ -350,34 +358,34 @@
 
   font-size: 13px;
 
-  background-color: var(--color-disabled);
+  background-color: var(--disabled-button-color);
 
   border-radius: 44px;
   border: none;
 
   cursor: pointer;
-  color: white;
+  color: var(--text-color);
   font-weight: var(--font-weight-bold);
 }
 
 .TransferModal__button-enabled {
-  background-color: #000000;
-  color: white;
+  background-color: var(--button-green);
+  color: var(--background-color);
 }
 
 .TransferModal__button-enabled:hover {
-  background-color: var(--color-disabled);
+  background-color: var(--green-button-hover);
 }
 
 .cancel-button {
-  background-color: white;
-  color: black;
+  background-color: var(--background-color);
+  color: var(--text-color);
 
-  border: 1px solid black;
+  border: 1px solid var(--button-green);
 }
 
 .cancel-button:hover {
-  background-color: var(--color-accent);
+  background-color: var(--green-button-light-hover);
 }
 
 .TransferModal__question-mark-container {
@@ -393,7 +401,7 @@
 }
 
 .TransferModal__question-mark-container:hover {
-  background-color: var(--color-highlight);
+  background-color: var(--icon-hover-color);
 }
 
 .TransferModal__question-mark {
@@ -406,13 +414,12 @@
 }
 
 .TransferModal__from-dropdown-individual-selected {
-  background-color: var(--color-highlight);
-
+  /* background-color: var(--color-highlight); */
 }
 
 .TransferModalDisabled {
-  color: var( --color-lightgrey);
-  border-color: var(--color-lightgrey);
+  color: var(--disabled-text-color);
+  border-color: var(--disabled-text-color);
 
   cursor: default;
 }
@@ -422,15 +429,13 @@
   background-color: var(--color-highlight);
 }
 
-
-.InputDisabled{
+.InputDisabled {
   color: var(--color-highlight);
   background-color: var(--color-highlight);
   border: none;
 }
 
-
-.TransferModal__section-footer-error{
+.TransferModal__section-footer-error {
   font-weight: bold;
   font-size: 13px;
 }

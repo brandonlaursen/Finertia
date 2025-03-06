@@ -58,7 +58,7 @@
 }
 
 .TransfersPage__withdraw-section-title {
-  color: rgb(85, 85, 85);
+  color: var(--secondary-text-color);
   font-size: 13px;
   font-weight: 500;
 }
@@ -74,5 +74,5 @@
 
   margin-left: 2px;
 
-  color: rgb(85, 85, 85);
+  color: var(--secondary-text-color);
 }

@@ -21,7 +21,7 @@
   top: 54px;
   right: 36px;
 
-  background-color: var(--color-primary);
+  background-color: var(--button-green);
 }
 
 .AccountDropdown__user {

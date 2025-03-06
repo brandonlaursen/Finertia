@@ -38,7 +38,7 @@
 }
 
 #Navigation__logo:hover {
-  color: var(--color-primary);
+  color: var(--button-green);
 }
 
 .Navigation__links {
@@ -73,15 +73,15 @@
 
 .NavigationBar__home-btn:hover,
 .AccountDropdown__span:hover {
-  color: var(--color-primary);
+  color: var(--button-green);
 }
 
 .AccountDropdown__span__active {
-  color: var(--color-primary);
+  color: var(--button-green);
 }
 
 .Navigation__links a:hover {
-  color: var(--color-primary);
+  color: var(--button-green);
 }
 
 @media screen and (max-width: 1080px) {

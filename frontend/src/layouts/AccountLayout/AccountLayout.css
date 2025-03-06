@@ -7,17 +7,12 @@
   flex-direction: column;
 
   margin-top: 48px;
-
-  color: rgb(0, 0, 0);
-  background-color: rgb(255, 255, 255);
-
+  background-color: var(--background-color);
+  color: var(--text-color);
   scrollbar-width: none;
-
-
 }
 
 .AccountLayout__main {
-
   height: 140px;
   width: 65vw;
 
@@ -28,7 +23,6 @@
   gap: 12px;
   padding-bottom: 12px;
   margin: 0px auto 0;
-  
 
   border-bottom: 1px solid var(--border-color);
 }
@@ -50,7 +44,7 @@
 .AccountLayout__select {
   position: relative;
 
-  color: black;
+  color: var(--text-color);
 
   cursor: pointer;
   text-decoration: none;
@@ -67,5 +61,5 @@
   bottom: -12px;
   left: 0;
 
-  background-color: rgb(7, 222, 150);
+  background-color: var(--button-green);
 }

@@ -55,12 +55,11 @@
 }
 
 .SecurityPage__link:hover {
-  background-color: var(--light-background-hover);
-  background-color: var(--color-highlight);
+  background-color: var(--highlight-color);
   box-shadow:
-  /* Top */ 0px 0px 0px 0px var(--color-highlight),
-  /* Left */ -24px 0px 0px 0px var(--color-highlight),
-  /* Right */ 24px 0px 0px 0px var(--color-highlight);
+  /* Top */ 0px 0px 0px 0px var(--highlight-color),
+  /* Left */ -24px 0px 0px 0px var(--highlight-color),
+  /* Right */ 24px 0px 0px 0px var(--highlight-color);
   cursor: pointer;
 }
 
@@ -82,7 +81,7 @@
 }
 
 .SecurityPage__logout-span {
-  color: rgb(7, 222, 150);
+  color: var(--button-green);
 
   font-weight: bold;
 
@@ -90,5 +89,5 @@
 }
 
 .SecurityPage__logout-span:hover {
-  color: rgb(7, 222, 150);
+  color: var(--button-green);
 }

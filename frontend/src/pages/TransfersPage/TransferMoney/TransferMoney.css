@@ -8,17 +8,17 @@
 
   gap: 4px;
 
-  border-bottom: 1px solid var(--light-background-hover);
+  border-bottom: 1px solid var(--border-color);
   cursor: pointer;
 }
 
 .TransferMoney__button:hover {
   box-shadow:
     /* Top (or no shadow for top in this case) */ 0px 0px 0px 0px
-      var(--color-highlight),
-    /* Left */ -16px 0px 0px 0px var(--color-highlight),
-    /* Right */ 16px 0px 0px 0px var(--color-highlight);
-  background-color: var(--color-highlight);
+      var(--highlight-color),
+    /* Left */ -16px 0px 0px 0px var(--highlight-color),
+    /* Right */ 16px 0px 0px 0px var(--highlight-color);
+  background-color: var(--highlight-color);
 }
 
 .TransferMoney__money-icon-container {
@@ -29,7 +29,7 @@
   align-items: center;
   justify-content: center;
 
-  background-color: rgb(0, 0, 0);
+  background-color: var(--modal-background);
 
   border-radius: 50%;
 }
@@ -38,7 +38,7 @@
   height: 24px;
   width: 24px;
 
-  color: white;
+  color: var(--text-color);
 }
 
 .TransferMoney__text-container {
@@ -57,7 +57,7 @@
   font-size: 12px;
   font-weight: 500;
 
-  color: rgb(85, 85, 85);
+  color: var(--secondary-text-color);
 }
 
 .TransferMoney__arrow-container {
@@ -75,5 +75,5 @@
   height: 18px;
   width: 18px;
 
-  color: var(--color-icon-grey);
+  color: var(--icon-color);
 }

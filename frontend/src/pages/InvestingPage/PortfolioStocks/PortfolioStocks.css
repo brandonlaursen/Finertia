@@ -14,10 +14,10 @@
 
 .PortfolioStocks__table-item:hover {
   box-shadow:
-  /* Top */ 0px 0px 0px 0px var(--color-highlight),
-    /* Left */ -16px 0px 0px 0px var(--color-highlight),
-    /* Right */ 16px 0px 0px 0px var(--color-highlight);
-  background-color: var(--color-highlight);
+  /* Top */ 0px 0px 0px 0px var(--highlight-color),
+    /* Left */ -16px 0px 0px 0px var(--highlight-color),
+    /* Right */ 16px 0px 0px 0px var(--highlight-color);
+  background-color: var(--highlight-color);
 }
 
 .PortfolioStocks__stock-table thead {
@@ -27,20 +27,20 @@
 
   font-size: 12px;
 
-  color: rgb(130, 130, 130);
+  color: var(--secondary-text-color);
 
   cursor: pointer;
 }
 
 .PortfolioStocks__stock-table thead th:hover {
-  color: rgb(118, 215, 183);
+  color: var(--button-green);
 }
 
 .PortfolioStocks__stock-table th,
 .PortfolioStocks__stock-table td {
   width: 100%;
 
-  border-bottom: 1px solid var(--light-background-hover);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .PortfolioStocks__stock-table td {
