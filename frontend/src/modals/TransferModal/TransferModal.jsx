@@ -9,6 +9,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { depositFunds, withdrawFunds } from "../../../store/transactions";
 import { useModal } from "../../context/Modal";
 
+import CloseButton from '../../components/CloseButton'
+
 function TransferModal(
   {setNotifications,
   setNotificationMessage,}
@@ -123,12 +125,7 @@ function TransferModal(
     <div className="TransferModal">
       <div className="TransferModal__background">
         <span className="TransferModal-button-span">
-          <span className="TransferModal-button-container">
-            <MdClose
-              className="TransferModal__close-button"
-              onClick={closeModal}
-            />
-          </span>
+          <CloseButton closeModal={closeModal} />
         </span>
       </div>
 

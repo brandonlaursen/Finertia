@@ -1,3 +1,3 @@
-import CompletedTransfers from "./CompletedTransafers";
+import CompletedTransfers from "./CompletedTransfers";
 
 export default CompletedTransfers;
