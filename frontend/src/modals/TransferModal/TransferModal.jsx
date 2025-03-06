@@ -1,5 +1,4 @@
 import "./TransferModal.css";
-import { MdClose } from "react-icons/md";
 import { RiQuestionLine } from "react-icons/ri";
 import { GrFormCheckmark } from "react-icons/gr";
 
