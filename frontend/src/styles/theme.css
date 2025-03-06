@@ -1,42 +1,9 @@
 .dark-mode {
-  --disabled-button-color: rgb(98, 108, 112);
-  --disabled-overlay-color: rgb(30, 33, 37, 0.7);
-
-  --icon-color: rgb(145, 159, 166);
-  --icon-hover-color: rgb(24, 24, 24);
-
-  --color-hover-secondary: rgb(22, 22, 24);
-
-  --list-menu-button-hover: rgb(48, 54, 58);
-
-  --list-menu-button: rgb(30, 33, 37);
-  --list-menu-button-hover: rgb(48, 54, 58);
-
-  --search-results: rgb(30, 33, 37);
-  --color-hover-secondary: rgb(48, 54, 58);
-
-  --account-dropdown: rgb(30, 33, 37);
-  --account-dropdown-hover: rgb(48, 54, 58);
-
-  --modal-emoji-icons: rgb(48, 54, 58);
-
-  --button-primary: #ffffff;
-  --button-hover-primary: #ececec;
-
-  --button-primary-inverted: #000000;
-  --button-hover-primary-inverted: #1e2125;
-
-  --green-button: rgb(0, 200, 5);
-  --green-button-light-hover: rgb(2, 88, 5);
-
-  /* FINISHED STYLES BELOW */
-
-  /* DARK MODE */
-
   /* Background Colors */
   --color-background: #000000; /* Background color for pages */
   --color-surface: rgb(30, 33, 37); /* Surface color for cards and modals */
   --color-surface-secondary: rgb(48, 54, 58); /* Light grey background */
+  --color-background-inverse: #ffffff;
 
   /* Border Colors */
   --border-color: rgb(48, 54, 58); /* For borders, dividers, etc. */
@@ -44,6 +11,7 @@
   /* Text Colors */
   --color-text-primary: #ffffff; /* Main text color */
   --color-text-secondary: rgb(140, 155, 161); /* Secondary text color */
+  --color-text-inverse: #000000;
 
   /* Hover Colors */
   --color-hover: rgb(30, 33, 37);
@@ -76,6 +44,16 @@
   --button-secondary: var(--theme-secondary-color);
   --button-secondary-hover: var(--theme-secondary-hover);
   --button-secondary-hover-light: var(--theme-secondary-hover-light);
+
+  /* Disabled Button */
+  --disabled-button-color: rgb(98, 108, 112);
+
+  /* Icons */
+  --icon-color: rgb(145, 159, 166);
+  --icon-hover-color: rgb(24, 24, 24);
+
+  /* Overlay */
+  --disabled-overlay-color: rgb(30, 33, 37, 0.7);
 }
 
 .theme-green {
@@ -88,4 +66,10 @@
   --theme-primary-color: rgb(255, 80, 1);
   --theme-primary-hover: rgb(231, 91, 27, 0.9);
   --theme-primary-hover-light: rgb(255, 239, 232);
+}
+
+.theme-teal {
+  --theme-primary-color: #07de96;
+  --theme-primary-hover: rgb(7, 239, 162);
+  --theme-primary-hover-light: rgb(223, 255, 230);
 }

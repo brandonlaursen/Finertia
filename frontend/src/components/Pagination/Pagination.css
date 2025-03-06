@@ -1,0 +1,44 @@
+.Pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 1rem;
+
+  margin-bottom: 5vh;
+  margin-top: 2rem;
+  
+  padding: 1rem;
+}
+
+.Pagination__button {
+  padding: 0.5rem 1rem;
+
+  border: var(--border);
+  border-radius: 4px;
+
+  font-size: 0.9rem;
+  font-weight: var(--font-weight-bold);
+
+  background-color: var(--button-primary-inverted);
+  color: var(--color-text-primary);
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.Pagination__button:hover:not(:disabled) {
+  background-color: var(--color-hover);
+}
+
+.Pagination__button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.Pagination__info {
+  font-size: 0.9rem;
+  font-weight: var(--font-weight-normal);
+  color: var(--color-text-secondary);
+}

@@ -18,15 +18,20 @@ body {
 
   scroll-behavior: smooth;
 }
+
+* {
+  box-sizing: border-box;
+}
+
 input {
   border: none;
   outline: none;
 }
+
 h1,
 h2 {
   margin: 0;
 }
-
 ul,
 ol {
   list-style: none;
@@ -35,10 +40,6 @@ ol {
 a {
   text-decoration: none;
   color: inherit;
-}
-
-* {
-  box-sizing: border-box;
 }
 
 button {
@@ -50,46 +51,54 @@ button {
 }
 
 :root .EmojiPickerReact {
-  /* Skin Tone Picker */
-
-  /* Background color  */
+  /* ========= Background ========= */
+  /* * Background color  */
   --epr-bg-color: var(--color-surface);
 
-  /* Border color */
+  /* ========= Border ========= */
+  /* * Border color */
   --epr-picker-border-color: var(--border-color);
 
-  /* Text color */
+  /* ========= Text ========= */
+  /* * Text color */
   --epr-text-color: var(--color-text-primary);
 
-  /* Search input background */
+  /* ========= Search ========= */
+  /* * Search input background */
   --epr-search-input-bg-color: var(--color-surface-secondary);
-
-  /* Search input background active */
+  /* * Search input background active */
   --epr-search-input-bg-color-active: var(--color-surface);
-
-  /* Search input border */
+  /* * Search input border */
   --epr-search-border-color: var(--theme-primary-color);
-
-  /* Search input text */
+  /* * Search input text */
   --epr-search-input-text-color: var(--color-text-primary);
 
-  /* Category hover */
+  /* ========= Category ========= */
+  /* * Category hover */
   --epr-category-icon-active-color: var(--color-hover-secondary-light);
 
-  /* Icon header background color */
+  /* ========= Icons ========= */
+  /* * Icon header background color */
   --epr-category-label-bg-color: var(--color-surface);
-
-  /* Icon hover color*/
+  /* * Icon hover color*/
   --epr-focus-bg-color: var(--color-hover-secondary-light);
 
-  /* Skin tone menu background */
+  /* ========= Skin Tone ========= */
+  /* * Skin tone menu background */
   --epr-skin-tone-picker-menu-color: var(--color-surface);
-  /* Skin tone border - active */
+  /* * Skin tone border - active */
   --epr-active-skin-tone-indicator-border-color: var(
     --color-hover-secondary-light
   );
-  /* Skin tone border hover color */
+  /* * Skin tone border hover color */
   --epr-active-skin-hover-color: var(--green-button);
+}
+
+/* ========= Scroll Bar ========= */
+
+/* For Firefox */
+* {
+  scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-track-color);
 }
 
 /* The scrollbar track */
@@ -116,258 +125,128 @@ button {
   scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-track-color);
 }
 
-/* For Firefox */
-* {
-  scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-track-color);
-}
-
 :root {
-  /*  Icon Colors */
-  --percent-change-positive: rgb(44, 202, 4);
-  --percent-change-negative: rgb(255, 29, 4);
-  /* icons percent change */
-  --percent-change-orange: rgb(248, 124, 14);
-
-  /* Border Colors */
-  /* Light */
-  --border-color: rgb(227, 233, 237);
-  /* Dark */
-  --border-color-2: rgb(48, 54, 58);
-
-  /* dark green button-hover rgb(2,180,5)*/
-  /* dark green button rgb(0, 200, 5);*/
-
-  /* /light button hover */
-  --color-accent: #e0e0e0;
-  /* dark button hover */
-  --dark-grey: #1e2125;
-
-  --color-text: #333;
-  --color-muted: #888;
-  --color-lightgrey: rgb(231, 231, 231);
-
-  --color-light-text: rgb(106, 114, 120);
-
-  /* disabled button */
-  --color-disabled: rgb(180, 189, 194);
-
-  /* light blue highlight */
-  --color-highlight: rgba(245, 248, 250);
-
-  /* light gray icon */
-  --color-icon-grey: rgb(106, 114, 120);
-
-  /* icon grey background hover */
-  --light-background-hover: rgb(237, 237, 237);
-
-  --light-orange-button: rgb(254, 237, 230);
-  --dark-orange-button: rgb(255, 118, 58);
-
-  /* Button Padding */
-  --button-padding: 0 32px;
-
-  --button-hover-lg: rgb(244, 244, 244);
-  --button-border-white: 1px solid #fff;
-  --button-border-dark: 1px solid #000000;
-
-  --border-radius-xs: 5px;
-  --button-border-radius-lg: 36px;
-
-  --button-height: 40px;
-
-  /* Button Colors */
-  --button-green: rgb(0, 200, 5);
-  --button-green-hover: rgb(0, 180, 5, 1);
-  --button-light-green: rgb(211, 255, 240);
-
-  /* Light green hover */
-  --button-hover-light-green: rgb(223, 255, 230);
-
-  /* ===== Colors ===== */
-  /* Background Colors */
-  --color-background-light: rgb(255, 255, 255);
-  --color-background-dark: rgb(0, 0, 0);
-
-  /* For a modal */
-  --color-background-darkgrey: rgb(30, 33, 37);
-
-  /* Text Colors */
-  --text-color-light: rgb(0, 0, 0);
-  --text-color-dark: rgb(255, 255, 255);
-
-  /* Border Colors */
-  --border-color-light: rgb(232, 232, 232);
-  --border-color-dark: rgb(48, 54, 58);
-
-  /* Icon Colors */
-  --color-positive: rgb(44, 202, 4);
-  --color-negative: rgb(255, 29, 4);
-
-  --color-negative-orange: rgb(255, 80, 1);
-  --color-orange: rgb(248, 124, 14);
-
-  /* Highlight Colors */
-  --highlight-lightblue: rgb(245, 248, 250);
-  --highlight-darkgrey: #444444;
-
-  --hover-lightgrey: rgb(237, 237, 237);
-  --hover-black: #1e2125;
-
-  /* Button Colors */
-  --button-orange: rgb(255, 80, 1);
-  --button-orange-hover: rgb(214, 68, 1);
-  --button-light-orange: rgb(252, 222, 208);
-
-  --button-green: rgb(0, 200, 5);
-  --button-green-hover: rgb(0, 180, 5, 1);
-  --button-light-green: rgb(211, 255, 240);
-
-  /* Theme Colors */
-  --theme-color-teal: #07de96;
-  --theme-color-teal-hover: rgb(7, 239, 162);
-
-  --theme-color-purple: #ca63fc;
-  --theme-color-blue: #007bff;
-  --theme-color-red: #dc3545;
-  --theme-color-yellow: #f0ad4e;
-  --theme-color-green: #28a745;
-
-  /* ==================== Finalized Styles ==================== */
-
-  /* Light Mode Colors */
-  --color-background: #ffffff;
-  --color-background-secondary: rgb(255, 255, 255);
-  --border-color: rgb(227, 233, 237);
-
-  --text-color: #000000;
-  --secondary-text-color: rgb(152, 152, 152);
-
-  --disabled-overlay-color: rgba(255, 255, 255, 0.5);
-  --disabled-button-color: rgb(180, 189, 194);
-
-  --icon-color: rgb(106, 114, 120);
-  --icon-hover-color: rgb(242, 241, 241);
-
-  --list-item-hover: rgb(239, 239, 239);
-
-  --notification-background: rgb(255, 255, 255);
-
-  --search-results: #ffffff;
-  --color-hover-secondary: rgba(245, 248, 250);
-
-  --list-menu-button: #ffffff;
-  --list-menu-button-hover: rgba(245, 248, 250);
-
-  --account-dropdown: #ffffff;
-  --account-dropdown-hover: rgba(245, 248, 250);
-
-  --button-primary: #000000;
-  --button-hover-primary: #1e2125;
-
-  --button-primary-inverted: #ffffff;
-  --button-hover-primary-inverted: #e0e0e0;
-
-  --green-button: rgb(0, 200, 5);
-  --green-button-hover: rgb(0, 180, 5, 1);
-  --green-button-light-hover: rgb(223, 255, 230);
-
-  --orange-button: rgb(255, 80, 1);
-  --orange-button-hover: rgb(214, 68, 1);
-  --orange-button-light-hover: rgb(252, 222, 208);
-
   /*
-  Font sizes
-  - input: 13px
-  - button: 12px - bold
-  - title: 14px - 600 font-weight
-  - text: 13px - 500
-  - sub text: 11px - 500
-  */
+    Convention
+      * General styles
+        --property--element
 
-  /* ===== Font Sizes ===== */
-  --font-size-title: 14px;
-  --font-size-input: 13px;
-  --font-size-text: 13px;
-  --font-size-button: 12px;
-  --font-size-subtext: 11px;
-
-  --base-font-size: 16;
-  --font-size-extra-large: 1.7rem;
-  --font-size-large: calc(14 / var(--base-font-size) * 1rem);
-  --font-size-medium: calc(13 / var(--base-font-size) * 1rem);
-  --font-size-small: calc(12 / var(--base-font-size) * 1rem);
-  --font-size-extra-small: calc(11 / var(--base-font-size) * 1rem);
-
-  --font-weight-bold: 700;
-  --font-weight-normal: 500;
-
-  /* Margins */
-  --margin-top-page: 80px;
-  --margin-bottom-page: 10vh;
-
-  --margin-top-container: 30px;
-
-  /* Percent Color */
-  --percent-color-positive: rgb(44, 202, 4);
-  --percent-color-negative: rgb(255, 29, 4);
-  --percent-color-orange: rgb(248, 124, 14);
-
-  /*  ========Finished styles below=========== */
-
-  /*
-
-  Convention
-    * General styles
-      --property--element
-
-    * Targeted styles
-      --element--property
-
+      * Targeted styles
+        --element--property
 */
 
-  --modal-emoji-icons: rgba(245, 248, 250);
-  /* LIGHT MODE */
+  /* ===== Font Sizes ===== */
+  /* * Titles / Headings */
+  --font-size-title-lg: 28px; /* Large Titles (Main Heading) */
+  --font-size-title-md: 22px; /* Medium Titles */
+  --font-size-title-sm: 18px; /* Small Titles / Section Headers */
 
-  /* Background Colors */
+  /* * Text / Paragraphs */
+  --font-size-text-lg: 16px; /* Main Text / Body */
+  --font-size-text-md: 14px; /* Standard Paragraphs */
+  --font-size-text-sm: 12px; /* Secondary Text */
+  --font-size-text-xs: 11px; /* Subtext / Captions */
+
+  /* * UI Elements */
+  --font-size-button-lg: 16px; /* Large Buttons */
+  --font-size-button-md: 14px; /* Standard Buttons */
+  --font-size-button-sm: 12px; /* Small Buttons */
+
+  --font-size-input: 13px; /* Form Inputs */
+  --font-size-label: 12px; /* Labels for Forms, Buttons */
+  --font-size-subtext: 11px; /* Helper Text, Tooltips */
+
+  /* * Font Weight */
+  --font-weight-bold: 600;
+  --font-weight-normal: 500;
+
+  /* * Margins */
+  --page-margin-top: 80px;
+  --page-margin-bottom: 10vh;
+  --container-margin-top: 30px;
+
+  /* Borders */
+  --border: 1px solid var(--border-color);
+
+  /* Gap */
+  --page-gap: 3vw;
+
+  /* * Background Colors */
   --color-background: #ffffff; /* Background color for pages */
   --color-surface: #ffffff; /* Surface color for cards and modals */
   --color-surface-secondary: rgba(245, 248, 250); /* Light grey background */
 
-  /* Border Colors */
+  /* * Overlay */
+  --disabled-overlay-color: rgba(255, 255, 255, 0.5);
+
+  /* * Border Colors */
   --border-color: rgb(227, 233, 237); /* For borders, dividers, etc. */
 
-  /* Text Colors */
+  /* * Text Colors */
   --color-text-primary: #000000; /* Main text color */
   --color-text-secondary: rgb(152, 152, 152); /* Secondary text color */
 
-  /* Hover Colors */
+  /* * Hover Colors */
   --color-hover: rgba(245, 248, 250);
   --color-hover-secondary-light: var(--color-hover);
   --color-hover-secondary-dark: rgb(239, 239, 239);
 
-  /* Scrollbar Colors */
+  /* * Scrollbar Colors */
   --scrollbar-track-color: transparent;
   --scrollbar-thumb-color: rgb(193, 193, 193);
   --scrollbar-thumb-hover-color: rgb(168, 168, 168);
 
   /* ========= Default Theme ========= */
-  /* Theme: Primary */
+  /* * Theme: Primary */
   --theme-primary-color: rgb(0, 200, 5);
   --theme-primary-hover: rgb(0, 180, 5);
   --theme-primary-hover-light: rgb(223, 255, 230);
 
-  /* Theme: Secondary */
+  /* * Theme: Secondary */
   --theme-secondary-color: rgb(255, 80, 1);
   --theme-secondary-hover: rgb(231, 91, 27);
   --theme-secondary-hover-light: rgb(255, 239, 232);
 
-  /* Button Colors */
+  /* ========= Buttons ========= */
+
+  /* * Border Radius */
+  --button-border-radius-lg: 44px;
+  --button-border-radius-md: 4px;
+
+  /* * Primary Buttons */
   --button-primary: var(--theme-primary-color);
   --button-primary-hover: var(--theme-primary-hover);
   --button-primary-hover-light: var(--theme-primary-hover-light);
 
-  /* Secondary Buttons */
+  /* * Secondary Buttons */
   --button-secondary: var(--theme-secondary-color);
   --button-secondary-hover: var(--theme-secondary-hover);
   --button-secondary-hover-light: var(--theme-secondary-hover-light);
+
+  /* * Disabled Button */
+  --disabled-button-color: rgb(180, 189, 194);
+
+  /* * Icons */
+  --icon-color: rgb(106, 114, 120);
+  --icon-hover-color: rgb(242, 241, 241);
+
+  --icon-size-md: 16px;
+
+
+  /* * Percent colors */
+  --color-positive: rgb(44, 202, 4);
+  --color-negative: rgb(255, 29, 4);
+  --color-negative-secondary: rgb(248, 124, 14);
+}
+
+/* ========== Color Indicators ========== */
+
+/* Negative price movement */
+.negative {
+  color: var(--color-negative-secondary);
+}
+
+/* Positive price movement */
+.positive {
+  color: var(--color-positive);
 }

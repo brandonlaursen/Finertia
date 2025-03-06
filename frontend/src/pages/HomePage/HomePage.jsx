@@ -6,12 +6,13 @@ import { useNavigate } from "react-router-dom";
 
 import HomePageOverview from "./HomePageOverview";
 import StockChart from "../../components/StockChart";
-import SelectTimeFrame from "../../components/TimeFrameSelector";
+import TimeFrameSelector from "../../components/TimeFrameSelector";
 import BuyingPowerDropDown from "./BuyingPowerDropDown";
 import HomePageNewsFeed from "./HomePageNewsFeed";
 import ListSideBar from "../../components/ListSideBar";
 import NotificationPopUp from "../../components/NotificationPopUp";
 import Skeleton from "../../components/Skeleton";
+
 import { selectUser } from "../../../store/session";
 
 function HomePage() {
@@ -58,7 +59,7 @@ function HomePage() {
               stockData={stockSummary}
               selectedTimeFrame={selectedTimeFrame}
             />
-            <SelectTimeFrame
+            <TimeFrameSelector
               selectedTimeFrame={selectedTimeFrame}
               setSelectedTimeFrame={setSelectedTimeFrame}
             />

@@ -127,6 +127,11 @@ function StockChart({ stockData, selectedTimeFrame }) {
             opacityTo: 1,
           },
         },
+        toolbar: {
+          tools: {
+            download: false,
+          },
+        },
       },
 
       xaxis: {

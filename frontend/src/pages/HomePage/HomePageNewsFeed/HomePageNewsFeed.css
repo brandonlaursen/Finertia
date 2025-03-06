@@ -3,7 +3,7 @@
 
   font-size: 20px;
   font-weight: bold;
-  border-bottom: solid 1px var(--border-color);
+  border-bottom: var(--border);
 
   height: 65px;
   display: flex;
@@ -28,7 +28,7 @@
   align-items: center;
 
   gap: 6px;
-  border-bottom: solid 1px var(--border-color);
+  border-bottom: var(--border);
 }
 
 .HomePageNewsFeed__categories button {
@@ -41,13 +41,13 @@
   padding: 12px;
   gap: 4px;
 
-  background-color: var(--color-background);
   color: var(--color-text-primary);
-
-  border: 1px solid var(--border-color);
-  border-radius: 44px;
+  background-color: var(--color-background);
 
   font-weight: var(--font-weight-bold);
+
+  border: var(--border);
+  border-radius: 44px;
 }
 
 .HomePageNewsFeed__categories button svg {
@@ -64,41 +64,3 @@
   flex-direction: column;
 }
 
-.HomePageNewsFeed__pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  gap: 1rem;
-  margin-top: 2rem;
-  padding: 1rem;
-  margin-bottom: 5vh;
-}
-
-.HomePageNewsFeed__pagination-button {
-  padding: 0.5rem 1rem;
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-
-  background-color: var(--button-primary-inverted);
-  color: var(--color-text-primary);
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: all 0.2s ease;
-  font-weight: 600;
-}
-
-.HomePageNewsFeed__pagination-button:hover:not(:disabled) {
-  background-color: var(--color-hover);
-}
-
-.HomePageNewsFeed__pagination-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.HomePageNewsFeed__pagination-info {
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--color-text-secondary);
-}

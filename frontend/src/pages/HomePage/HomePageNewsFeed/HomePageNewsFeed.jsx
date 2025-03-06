@@ -9,13 +9,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
 import HomePageNewsArticle from "./HomePageNewsArticle";
+import Skeleton from "../../../components/Skeleton";
 
 import {
   fetchStockNews,
   fetchStockNewsByCategory,
 } from "../../../../store/stocks";
-
-import Skeleton from "../../../components/Skeleton";
+import Pagination from "../../../components/Pagination";
 
 function HomePageNewsFeed() {
   const dispatch = useDispatch();
@@ -29,7 +29,7 @@ function HomePageNewsFeed() {
 
   const chooseCategory = async (e) => {
     e.preventDefault();
-    setCurrentPage(1); // Reset to first page when changing category
+    setCurrentPage(1);
     await dispatch(fetchStockNewsByCategory(e.target.value));
   };
 
@@ -41,7 +41,6 @@ function HomePageNewsFeed() {
     );
   }
 
-  // Calculate pagination
   const indexOfLastNews = currentPage * newsPerPage;
   const indexOfFirstNews = indexOfLastNews - newsPerPage;
   const currentNews = stockNews.slice(indexOfFirstNews, indexOfLastNews);
@@ -84,27 +83,11 @@ function HomePageNewsFeed() {
           ))}
       </div>
 
-      {totalPages > 1 && (
-        <div className="HomePageNewsFeed__pagination">
-          <button
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-            className="HomePageNewsFeed__pagination-button"
-          >
-            Previous
-          </button>
-          <span className="HomePageNewsFeed__pagination-info">
-            Page {currentPage} of {totalPages}
-          </span>
-          <button
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-            className="HomePageNewsFeed__pagination-button"
-          >
-            Next
-          </button>
-        </div>
-      )}
+      <Pagination
+        totalPages={totalPages}
+        currentPage={currentPage}
+        handlePageChange={handlePageChange}
+      />
     </div>
   );
 }

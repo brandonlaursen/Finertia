@@ -52,10 +52,11 @@ function HomePageOverview({ stockData, selectedTimeFrame }) {
     };
   }, [data]);
 
+
   return (
     <div className="HomePageOverview">
       <h1 className="HomePageOverview__title">Investing</h1>
-      <main className="HomePageOverview__summary">
+      <main className="HomePageOverview__main">
         <span className="HomePageOverview__total-investments">
           ${stockData?.totalInvestments}
         </span>

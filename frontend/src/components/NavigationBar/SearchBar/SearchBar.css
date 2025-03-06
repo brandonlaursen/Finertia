@@ -4,6 +4,7 @@
   align-items: center;
 
   width: 640px;
+  z-index:100;
 }
 
 #SearchBar-icon {
@@ -77,6 +78,7 @@
   max-height: 250px;
 
   outline: none;
+  z-index:100;
 }
 
 .SearchBar-results:focus {
@@ -102,6 +104,7 @@
 
   display: flex;
   align-items: center;
+  z-index:100;
 }
 
 .SearchBar li:hover {

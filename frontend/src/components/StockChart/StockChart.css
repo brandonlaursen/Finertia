@@ -5,7 +5,7 @@
 }
 
 .apexcharts-tooltip-title {
-  background-color: var(--color-surface-hover) !important;
+  background-color: var(--color-surface) !important;
   color: var(--color-text-primary) !important;
   border: solid var(--border-color) 1px !important;
 }

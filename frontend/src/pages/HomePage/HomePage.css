@@ -1,44 +1,39 @@
 /* ========== Home Page ========== */
-/* Home Page Container */
+/* * Home Page Container */
 .HomePage {
   display: flex;
   justify-content: center;
 
-  gap: 3vw;
-  margin-top: var(--margin-top-page);
-  margin-bottom: var(--margin-bottom-page);
-
+  gap: var(--page-gap);
+  margin-top: var(--page-margin-top);
+  margin-bottom: var(--page-margin-bottom);
 }
 
-/* HomePage main content area styles */
+/* * HomePage main content area styles */
 .HomePage__main {
   width: clamp(400px, 60vw, 1000px);
 
   display: flex;
   flex-direction: column;
 
-  margin-top: var(--margin-top-container);
+  margin-top: var(--container-margin-top);
 
   transition: width 0.3s smooth;
 }
-
 
 /* ====== Skeleton Loading ====== */
 .HomePage__skeleton-overview {
   display: flex;
   flex-direction: column;
 
-  gap: 3vw;
+  gap: var(--page-gap);
 
-  margin-bottom: 16px
+  margin-bottom: 16px;
 }
-
-
 
 .HomePage__skeleton-chart {
   margin-bottom: 16px;
 }
-
 
 .HomePage__skeleton-buying-power {
   margin-bottom: 16px;
@@ -52,17 +47,17 @@
 }
 
 /* ====== Media Queries ====== */
-/* Medium devices (tablets, 768px and up) */
+/* * Medium devices (tablets, 768px and up) */
 @media (max-width: 768px) {
   .HomePage__main {
     width: 90vw;
   }
 }
 
-/* Small devices (landscape phones, 576px and up) */
+/* * Small devices (landscape phones, 576px and up) */
 @media (max-width: 576px) {
 }
 
-/* Extra small devices (portrait phones, less than 576px) */
+/* * Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
 }

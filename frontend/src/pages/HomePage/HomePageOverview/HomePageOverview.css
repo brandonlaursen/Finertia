@@ -1,61 +1,60 @@
 /* ========== Home Page Overview ========== */
 
-/* HomePageOverview title styling */
+/* * HomePageOverview title styling */
 .HomePageOverview__title {
   display: flex;
 
   margin-bottom: 4px;
 
-  font-size: var(--font-size-extra-large);
+  font-size: var(--font-size-title-lg);
   font-weight: var(--font-weight-bold);
 
   color: var(--color-text-primary);
 }
 
-/* HomePageOverview summary container styling */
-.HomePageOverview__summary {
-  height: 50px;
+/* * HomePageOverview summary container styling */
+.HomePageOverview__main {
   display: flex;
   flex-direction: column;
 }
 
-/* Total investments text styling */
+/* * Total investments text styling */
 .HomePageOverview__total-investments {
-  font-size: var(--font-size-extra-large);
+  font-size: var(--font-size-title-lg);
   font-weight: var(--font-weight-normal);
 }
 
-/* Portfolio amount change styling */
+/* * Portfolio amount change styling */
 .HomePageOverview__portfolio-amount-change {
   display: flex;
 
   align-items: center;
 
-  font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-text-sm);
+  font-weight: var(--font-weight-normal);
 }
 
 .HomePageOverview__portfolio-amount-change span {
   margin-right: 4px;
 }
 
-/* Modifier: negative portfolio amount change */
+/* * Modifier: negative portfolio amount change */
 .HomePageOverview__portfolio-amount-change--negative {
   height: 24px;
   width: 24px;
 
-  color: var(--color-negative-orange);
+  color: var(--color-negative-secondary);
 }
 
-/* Modifier: positive portfolio amount change */
+/* * Modifier: positive portfolio amount change */
 .HomePageOverview__portfolio-amount-change--positive {
   height: 24px;
   width: 24px;
 
-  color: var(--percent-change-positive);
+  color: var(--color-positive);
 }
 
-/* Subtext styling */
+/* * Subtext styling */
 .HomePageOverview__subtext {
   font-weight: var(--font-weight-normal);
 }
