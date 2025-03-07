@@ -35,6 +35,8 @@
 /* Container for the list name input field */
 .ListEditor__name {
   position: relative;
+  width: 100%;
+  margin-bottom: 24px;
 
   display: flex;
   justify-content: space-between;
@@ -48,7 +50,7 @@
 
   padding-left: 8px;
 
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 500;
 
   color: var(--color-text-primary);
@@ -129,12 +131,41 @@
   cursor: pointer;
 }
 
-/* Change color when hovered */
 .ListEditor__delete-popover:hover {
   color: rgb(55, 225, 33);
 }
 
-/* Icon inside the delete popover */
+
 .ListEditor__delete-icon {
   font-size: 20px;
+}
+
+.ListEditor__error {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 20;
+
+  width: 200px;
+  height: 60px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  background-color: var(--color-surface);
+
+  padding: 8px 12px;
+  margin-top: 8px;
+
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.ListEditor__error-icon {
+  margin-right: 4px;
+  font-size: 16px;
 }

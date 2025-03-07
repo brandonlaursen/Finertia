@@ -1,6 +1,7 @@
 import "./ListEditor.css";
 import { IoEllipsisHorizontalSharp } from "react-icons/io5";
 import { TiDeleteOutline } from "react-icons/ti";
+import { LuInfo } from "react-icons/lu";
 
 import { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
@@ -15,9 +16,11 @@ function ListEditor({ list, listId, navigate }) {
   const location = useLocation();
 
   const menuRef = useRef(null);
+  const errorRef = useRef(null);
 
   const [showMenu, setShowMenu] = useState(false);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const [error, setError] = useState("");
 
   const [updatedListName, setUpdatedListName] = useState("");
   const [selectedUpdatedEmoji, setSelectedUpdatedEmoji] = useState(
@@ -47,17 +50,27 @@ function ListEditor({ list, listId, navigate }) {
     };
   }, [showMenu]);
 
-  const handleListNameChange = async (e) => {
-    const newListName = e.target.value;
-    setUpdatedListName(newListName);
-
-    const editedList = {
-      stockListId: list.id,
-      name: newListName,
-      emoji: selectedUpdatedEmoji,
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (errorRef.current && !errorRef.current.contains(e.target)) {
+        setError("");
+        setUpdatedListName(list.name);
+      }
     };
 
-    await dispatch(editList(editedList));
+    if (error) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [error, list.name]);
+
+  const handleListNameChange = (e) => {
+    const newListName = e.target.value;
+    setUpdatedListName(newListName);
+    setError("");
   };
 
   const handleListEmojiChange = async (emojiData) => {
@@ -70,7 +83,6 @@ function ListEditor({ list, listId, navigate }) {
     };
 
     await dispatch(editList(editedList));
-
     setShowEmojiPicker(false);
   };
 
@@ -80,6 +92,24 @@ function ListEditor({ list, listId, navigate }) {
       navigate("/");
     }
   };
+
+  function handleBlur(e) {
+    e.stopPropagation();
+
+    if (updatedListName.trim() === "") {
+      setError("Please enter a valid name");
+      return;
+    }
+
+    if (updatedListName.trim() !== list.name) {
+      const editedList = {
+        stockListId: list.id,
+        name: updatedListName.trim(),
+        emoji: selectedUpdatedEmoji,
+      };
+      dispatch(editList(editedList));
+    }
+  }
 
   return (
     <div className="ListEditor">
@@ -107,7 +137,15 @@ function ListEditor({ list, listId, navigate }) {
           value={updatedListName}
           className="ListEditor__name-input"
           onChange={handleListNameChange}
+          onBlur={handleBlur}
+          placeholder="Edit List Name"
         />
+        {error && (
+          <div className="ListEditor__error" ref={errorRef}>
+            <LuInfo className="ListEditor__error-icon" />
+            {error}
+          </div>
+        )}
         <IoEllipsisHorizontalSharp
           className="ListEditor__menu-button"
           onClick={(e) => {
