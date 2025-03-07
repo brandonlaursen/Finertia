@@ -244,14 +244,3 @@ button {
   --color-negative-secondary: rgb(255,80,1);
 }
 
-/* ========== Color Indicators ========== */
-
-/* Negative price movement */
-.negative {
-  color: var(--color-negative-secondary);
-}
-
-/* Positive price movement */
-.positive {
-  color: var(--color-positive);
-}

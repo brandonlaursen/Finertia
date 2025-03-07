@@ -10,7 +10,7 @@ function StockOverview({ stock, selectedTimeFrame }) {
     late_trading_change,
     late_trading_change_percent,
   } = stock;
-  console.log(selectedTimeFrame);
+  console.log(regular_trading_change < 0);
   return (
     <div className="StockOverview">
       <h1 className="StockOverview__name">{name}</h1>
@@ -19,7 +19,11 @@ function StockOverview({ stock, selectedTimeFrame }) {
       <section className="StockOverview__section">
         <span
           className={`StockOverview__change ${
-            regular_trading_change < 0 ? "negative" : regular_trading_change > 0
+            regular_trading_change < 0
+              ? "negative"
+              : regular_trading_change > 0
+              ? "positive"
+              : ""
           }`}
         >
           {regular_trading_change < 0 ? "" : "+"}${regular_trading_change}
@@ -28,6 +32,8 @@ function StockOverview({ stock, selectedTimeFrame }) {
               regular_trading_change_percent < 0
                 ? "negative"
                 : regular_trading_change_percent > 0
+                ? "positive"
+                : ""
             }`}
           >
             {` (${
@@ -36,7 +42,6 @@ function StockOverview({ stock, selectedTimeFrame }) {
           </span>
         </span>
         <span className="StockOverview__day">
-          {" "}
           {selectedTimeFrame === "1D"
             ? "Today"
             : selectedTimeFrame === "1W"
@@ -57,7 +62,11 @@ function StockOverview({ stock, selectedTimeFrame }) {
         <section className="StockOverview__section">
           <span
             className={`StockOverview__change  ${
-              late_trading_change < 0 ? "negative" : late_trading_change > 0
+              late_trading_change < 0
+                ? "negative"
+                : late_trading_change > 0
+                ? "positive"
+                : ""
             }`}
           >
             {`$${late_trading_change} (${late_trading_change_percent?.toFixed(

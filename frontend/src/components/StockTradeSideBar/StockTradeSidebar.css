@@ -2,7 +2,7 @@
 
 /* Main container for the Stock Trade Sidebar */
 .StockTradeSidebar {
-  margin-top: var(--margin-top-container);
+  margin-top: var(--container-margin-top);
 }
 
 /* Sticky container that holds all the trade actions */

@@ -1,7 +1,7 @@
 import "./StockPage.css";
 
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import StockOverview from "./StockOverview";
@@ -10,16 +10,16 @@ import SelectTimeFrame from "../../components/TimeFrameSelector";
 import StockDetails from "./StockDetails";
 import StockNews from "./StockNews";
 import Skeleton from "../../components/Skeleton/Skeleton";
-
 import StockTradeSidebar from "../../components/StockTradeSideBar/StockTradeSidebar";
 import NotificationPopUp from "../../components/NotificationPopUp";
+import StockNotFound from "./StockNotFound";
 
 import { fetchStock } from "../../../store/stocks";
 
 function StockPage() {
   const dispatch = useDispatch();
   const { stockSymbol } = useParams();
-  const navigate = useNavigate();
+
   const stock = useSelector((state) => state.stocks.currentStock);
 
   const [error, setError] = useState(null);
@@ -51,13 +51,7 @@ function StockPage() {
   }, [stockSymbol, dispatch]);
 
   if (error) {
-    return (
-      <div className="StockPage__stock-not-found">
-        <h2>Stock Not Found</h2>
-        <p>The stock symbol {`"${stockSymbol}"`} not found.</p>
-        <button onClick={() => navigate("/")}>Return to Home</button>
-      </div>
-    );
+    return <StockNotFound stockSymbol={stockSymbol} />;
   }
 
   return (

@@ -55,3 +55,14 @@
   font-weight: 500;
 }
 
+/* ========== Color Indicators ========== */
+
+/* Negative price movement */
+.negative {
+  color: var(--color-negative-secondary);
+}
+
+/* Positive price movement */
+.positive {
+  color: var(--color-positive);
+}

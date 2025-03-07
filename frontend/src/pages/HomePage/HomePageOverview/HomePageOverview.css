@@ -7,7 +7,9 @@
   margin-bottom: 4px;
 
   font-size: var(--font-size-title-lg);
-  font-weight: var(--font-weight-bold);
+  font-size: 28px;
+  font-weight: bold;
+  /* font-weight: var(--font-weight-bold); */
 
   color: var(--color-text-primary);
 }
@@ -21,7 +23,8 @@
 /* * Total investments text styling */
 .HomePageOverview__total-investments {
   font-size: var(--font-size-title-lg);
-  font-weight: var(--font-weight-normal);
+
+  /* font-weight: var(--font-weight-normal); */
 }
 
 /* * Portfolio amount change styling */
@@ -31,7 +34,7 @@
   align-items: center;
 
   font-size: var(--font-size-text-sm);
-  font-weight: var(--font-weight-normal);
+  font-weight: bold
 }
 
 .HomePageOverview__portfolio-amount-change span {

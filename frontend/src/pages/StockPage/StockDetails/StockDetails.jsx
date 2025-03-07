@@ -28,7 +28,7 @@ function StockDetails({ stock }) {
       <section className="StockDetails__about">
         <h1 className="StockDetails__header">About</h1>
         <p
-          className="StockDetails__about-description"
+          className="StockDetails__about"
           style={{
             maxHeight: showMoreStockDetails ? "200px" : "42px",
           }}
@@ -43,83 +43,68 @@ function StockDetails({ stock }) {
         </button>
       </section>
 
-      <section className="StockDetails__company-info">
-        <div className="StockDetails__company-info-item">
-          <span className="StockDetails__company-info__label">CEO</span>
+      <section className="StockDetails__section">
+        <div>
+          <span>CEO</span>
           <span>-</span>
         </div>
-        <div className="StockDetails__company-info-item">
-          <span className="StockDetails__company-info__label">Employees</span>
+        <div>
+          <span>Employees</span>
           <span>{formatNumber(totalEmployees)}</span>
         </div>
-        <div className="StockDetails__company-info-item">
-          <span className="StockDetails__company-info__label">
-            Headquarters
-          </span>
-          <span> {address}</span>
+        <div>
+          <span>Headquarters</span>
+          <span>{address}</span>
         </div>
-        <div className="StockDetails__company-info-item">
-          <span className="StockDetails__company-info__label">Industry</span>
-          <span> {industry}</span>
+        <div>
+          <span>Industry</span>
+          <span>{industry}</span>
         </div>
       </section>
 
       <header className="StockDetails__header">Key statistics</header>
-
-      <div className="StockDetails__statistics">
-        <section className="StockDetails__statistics-column">
-          <div>
-            <span>Market cap</span>
-            <span> {marketCap === 0 ? "-" : formatNumber(marketCap)}</span>
-          </div>
-          <div>
-            <span>High today</span>
-            <span>${high}</span>
-          </div>
-
-          <div>
-            <span>52 Week high</span>
-            <span>-</span>
-          </div>
-        </section>
-
-        <section className="StockDetails__statistics-column">
-          <div>
-            <span>Price-Earnings ratio</span>
-            <span>-</span>
-          </div>
-          <div>
-            <span>Low today</span>
-            <span>${low}</span>
-          </div>
-          <div>
-            <span>52 Week low</span>
-            <span>-</span>
-          </div>
-        </section>
-
-        <section className="StockDetails__statistics-column">
-          <div>
-            <span>Dividend yield</span>
-            <span>-</span>
-          </div>
-          <div>
-            <span>Open price</span>
-            <span>${open}</span>
-          </div>
-        </section>
-
-        <section className="StockDetails__statistics-column">
-          <div>
-            <span>Average volume</span>
-            <span>-</span>
-          </div>
-          <div>
-            <span>Volume</span>
-            <span> {formatNumber(volume)}</span>
-          </div>
-        </section>
-      </div>
+      <section className="StockDetails__section">
+        <div>
+          <span>Market cap</span>
+          <span> {marketCap === 0 ? "-" : formatNumber(marketCap)}</span>
+        </div>
+        <div>
+          <span>Price-Earnings ratio</span>
+          <span>-</span>
+        </div>
+        <div>
+          <span>Dividend yield</span>
+          <span>-</span>
+        </div>
+        <div>
+          <span>Average volume</span>
+          <span>-</span>
+        </div>
+        <div>
+          <span>High today</span>
+          <span>${high}</span>
+        </div>
+        <div>
+          <span>Low today</span>
+          <span>${low}</span>
+        </div>
+        <div>
+          <span>Open price</span>
+          <span>${open}</span>
+        </div>
+        <div>
+          <span>Volume</span>
+          <span> {formatNumber(volume)}</span>
+        </div>
+        <div>
+          <span>52 Week high</span>
+          <span>-</span>
+        </div>
+        <div>
+          <span>52 Week low</span>
+          <span>-</span>
+        </div>
+      </section>
     </div>
   );
 }

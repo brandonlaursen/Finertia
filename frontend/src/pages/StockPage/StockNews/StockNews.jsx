@@ -1,5 +1,8 @@
 import "./StockNews.css";
+
 import { useState } from "react";
+
+import Pagination from "../../../components/Pagination/Pagination";
 
 function StockNews({ stockNews }) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -25,7 +28,6 @@ function StockNews({ stockNews }) {
     }
   }
 
-  // Calculate pagination
   const indexOfLastNews = currentPage * newsPerPage;
   const indexOfFirstNews = indexOfLastNews - newsPerPage;
   const currentNews = stockNews?.slice(indexOfFirstNews, indexOfLastNews);
@@ -67,27 +69,11 @@ function StockNews({ stockNews }) {
           })}
       </section>
 
-      {totalPages > 1 && (
-        <div className="StockNews__pagination">
-          <button
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-            className="StockNews__pagination-button"
-          >
-            Previous
-          </button>
-          <span className="StockNews__pagination-info">
-            Page {currentPage} of {totalPages}
-          </span>
-          <button
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-            className="StockNews__pagination-button"
-          >
-            Next
-          </button>
-        </div>
-      )}
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        handlePageChange={handlePageChange}
+      />
     </div>
   );
 }

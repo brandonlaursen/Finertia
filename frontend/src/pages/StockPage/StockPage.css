@@ -5,9 +5,9 @@
   display: flex;
   justify-content: center;
 
-  gap: 3vw;
-  margin-top: var(--margin-top-page);
-  margin-bottom: var(--margin-bottom-page);
+  gap: var(--page-gap);
+  margin-top: var(--page-margin-top);
+  margin-bottom: var(--page-margin-bottom);
 }
 
 /* Stock Page main content area styles */
@@ -17,28 +17,22 @@
   display: flex;
   flex-direction: column;
 
-  margin-top: var(--margin-top-container);
-
-  transition: width 0.3s smooth;
+  margin-top: var(--container-margin-top);
 }
 
 /* Stock Page skeleton layout */
-
 .StockPage__skeleton-overview {
   display: flex;
   flex-direction: column;
 
   gap: 3vw;
 
-  margin-bottom: 16px
+  margin-bottom: 16px;
 }
-
-
 
 .StockPage__skeleton-chart {
   margin-bottom: 16px;
 }
-
 
 .StockPage__skeleton-details {
   margin-bottom: 16px;
@@ -48,45 +42,6 @@
   margin-bottom: 32px;
 
   border-radius: 4px;
-}
-
-/* ========== Stock Not Found ========== */
-.StockPage__stock-not-found {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 60vh;
-  padding: 2rem;
-  text-align: center;
-  border-radius: 8px;
-}
-
-.StockPage__stock-not-found h2 {
-  color: #dc3545;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.StockPage__stock-not-found p {
-  color: #6c757d;
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
-}
-
-.StockPage__stock-not-found button {
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  color: white;
-  background-color: #007bff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.StockPage__stock-not-found button:hover {
-  background-color: #0056b3;
 }
 
 /* ====== Media Queries ====== */
