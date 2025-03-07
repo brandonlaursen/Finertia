@@ -10,7 +10,6 @@
 
 .MoneyButtons__buttons {
   width: 100%;
-  /* height: 36px; */
 
   display: flex;
   justify-content: flex-end;
@@ -25,12 +24,11 @@
 
   padding: 8px 16px;
 
-  /* background-color: var( --color-background); */
   color: var(--color-text-primary);
+
   border-radius: 44px;
   border: 1px solid var(--border-color);
 
-  cursor: pointer;
 }
 
 .MoneyButtons__button:hover {

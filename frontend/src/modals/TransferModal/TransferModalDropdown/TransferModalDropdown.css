@@ -1,0 +1,75 @@
+.TransferModalDropdown {
+  width: 280px;
+
+  position: absolute;
+  top: 100%;
+  right: 0;
+
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+
+  z-index: 10;
+
+  background-color: var(--color-surface);
+}
+
+.TransferModalDropdown__section {
+  height: 100px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.TransferModalDropdown__header {
+  padding: 12px;
+
+  font-size: 12px;
+  font-weight: bold;
+
+  border-bottom: 1px solid var(--border-color);
+}
+
+.TransferModalDropdown__main {
+  position: relative;
+  height: 65%;
+
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  font-size: 12px;
+  font-weight: var(--font-weight-normal);
+
+  cursor: pointer;
+}
+
+.TransferModalDropdown__main:hover {
+  background-color: var(--color-hover-secondary-light);
+}
+
+.TransferModalDropdown__main--selected {
+  background-color: var(--color-hover-secondary-light);
+}
+
+.TransferModalDropdown__check-mark {
+  position: absolute;
+  top: 11px;
+  left: 10px;
+
+  height: 18px;
+  width: 18px;
+
+  color: var(--color-text-primary);
+}
+
+.TransferModalDropdown__text-container {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+  margin-left: 32px;
+}
+
+.TransferModalDropdown__sub-text {
+  color: var(--color-text-secondary);
+}

@@ -11,6 +11,7 @@ import MoneyButtons from "./MoneyButtons/MoneyButtons";
 
 import { depositFunds, withdrawFunds } from "../../../store/transactions";
 import { useModal } from "../../context/Modal";
+import TransferModalDropdown from "./TransferModalDropdown/TransferModalDropdown";
 
 function TransferModal({ setNotifications, setNotificationMessage }) {
   const { closeModal } = useModal();
@@ -117,6 +118,15 @@ function TransferModal({ setNotifications, setNotificationMessage }) {
     }
   };
 
+  const transferModalProps = {
+    showFrom,
+    setFrom,
+    setTo,
+    from,
+    to,
+    sessionUser,
+  };
+
   return (
     <div className="TransferModal">
       <div className="TransferModal__background">
@@ -162,70 +172,7 @@ function TransferModal({ setNotifications, setNotificationMessage }) {
               </div>
             )}
 
-            {showFrom && (
-              <div className="TransferModal__from-dropdown">
-                <div className="TransferModal__from-dropdown-individual">
-                  <span className="TransferModal__from-dropdown-individual-header">
-                    Fintertia accounts
-                  </span>
-                  <div
-                    onClick={() => {
-                      setFrom("Individual"), setTo("Bank");
-                    }}
-                    className={`TransferModal__from-dropdown-individual-container ${
-                      from === "Individual"
-                        ? "TransferModal__from-dropdown-individual-selected"
-                        : ""
-                    }`}
-                  >
-                    <div className="checkmark-div">
-                      {from === "Individual" && (
-                        <GrFormCheckmark className="TransferModal__checkmark" />
-                      )}
-                    </div>
-
-                    <div className="dropdown-text-div">
-                      <span className="TransferModal__from-dropdown-container-text">
-                        Individual
-                      </span>
-                      <span className="TransferModal__from-dropdown-container-subtext">
-                        Withdrawable cash · ${sessionUser.balance}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="TransferModal__from-dropdown-individual">
-                  <span className="TransferModal__from-dropdown-individual-header">
-                    External accounts
-                  </span>
-                  <div
-                    onClick={() => {
-                      setFrom("Bank"), setTo("Individual");
-                    }}
-                    className={`TransferModal__from-dropdown-individual-container ${
-                      from === "Bank"
-                        ? "TransferModal__from-dropdown-individual-selected"
-                        : ""
-                    }`}
-                  >
-                    <div className="checkmark-div">
-                      {from === "Bank" && (
-                        <GrFormCheckmark className="TransferModal__checkmark" />
-                      )}
-                    </div>
-
-                    <div className="dropdown-text-div">
-                      <span className="TransferModal__from-dropdown-container-text">
-                        Finertia Bank
-                      </span>
-                      <span className="TransferModal__from-dropdown-container-subtext">
-                        Typically 1-2 seconds
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
+            <TransferModalDropdown {...transferModalProps} />
           </div>
 
           <div className="TransferModal__section-two">

@@ -412,9 +412,7 @@
   justify-content: center;
 }
 
-.TransferModal__from-dropdown-individual-selected {
-  /* background-color: var(--color-highlight); */
-}
+
 
 .TransferModalDisabled {
   color: var(--disabled-text-color);
