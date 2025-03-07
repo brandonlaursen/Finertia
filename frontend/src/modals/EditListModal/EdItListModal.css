@@ -68,11 +68,15 @@
   width: 80%;
   height: 36px;
 
-  border-radius: 4px;
-  border: none;
+  padding: 2px 15px;
+
   font-size: 12px;
 
-  padding: 2px 15px;
+  color: var(--color-text-primary);
+  background-color: var(--color-hover-secondary-light);
+
+  border-radius: 4px;
+  border: none;
 }
 
 .EditListModal__section__input:focus {
@@ -84,28 +88,29 @@
   display: flex;
   justify-content: center;
   gap: 8px;
-  /* margin-right: 28px; */
+
   padding-left: 16px;
-  padding-right: 26px;
+  padding-right: 29px;
   padding-top: 10px;
 }
 
 .EditListModal__section__button {
   height: 40px;
   width: 100%;
-  border-radius: 44px;
+
   padding: 0 20px;
+
   font-size: 12px;
   font-weight: bold;
-  cursor: pointer;
+
+  border-radius: 44px;
 }
 
 .EditListModal__create-button {
-  background-color: var(--theme-primary-color);
   color: var(--color-background);
-  border: none;
+  background-color: var(--theme-primary-color);
 }
 
 .EditListModal__create-button:hover {
-  background-color: var(--theme-primary-color-hover);
+  background-color: var(--theme-primary-hover);
 }

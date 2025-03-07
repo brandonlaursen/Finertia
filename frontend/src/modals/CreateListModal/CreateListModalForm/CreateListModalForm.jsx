@@ -59,13 +59,16 @@ function CreateListModalForm({
   };
 
   return (
-    <div className="CreateListModalForm">
+    <form className="CreateListModalForm" onSubmit={handleSubmit}>
       <ModalHeader closeModal={closeModal}>Create list</ModalHeader>
 
       <section className="CreateListModalForm__inputs">
         <button
           className="CreateListModalForm__emoji-button"
-          onClick={() => setShowPicker(!showPicker)}
+          onClick={(e) => {
+            e.preventDefault();
+            setShowPicker(!showPicker);
+          }}
         >
           {selectedEmoji}
         </button>
@@ -81,6 +84,7 @@ function CreateListModalForm({
           placeholder="List Name"
           value={listName}
           onChange={(e) => setListName(e.target.value)}
+          required
         />
       </section>
 
@@ -96,7 +100,7 @@ function CreateListModalForm({
           className="CreateListModalForm__button
     CreateListModalForm__create-button
     "
-          onClick={handleSubmit}
+          type="submit"
         >
           {isLoading ? (
             <span className="StockTransaction__spinner"></span>
@@ -105,7 +109,7 @@ function CreateListModalForm({
           )}
         </button>
       </section>
-    </div>
+    </form>
   );
 }
 

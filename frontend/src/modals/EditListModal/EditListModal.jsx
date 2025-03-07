@@ -56,58 +56,53 @@ function EditListModal({ list, setNotifications, setNotificationMessage }) {
   }
 
   return (
-    <div className="EditListModal">
-      <ModalOverlay closeModal={closeModal} />
+    <form className="EditListModal">
+      <ModalOverlay closeModal={closeModal} onSubmit={handleSubmit} />
 
       <div className="EditListModal__container">
-  
-          <ModalHeader closeModal={closeModal}>Edit List</ModalHeader>
+        <ModalHeader closeModal={closeModal}>Edit List</ModalHeader>
 
-
-        <div>
-          <div className="EditListModal__section">
-            <div>
-              <button
-                className="EditListModal__section__emoji"
-                onClick={() => setShowPicker(!showPicker)}
-              >
-                {selectedEmoji}
-              </button>
-              {showPicker && (
-                <div className="EditListModal__emoji-picker-wrapper">
-                  <EmojiPicker
-                    onEmojiClick={handleEmojiClick}
-                    // style={{ width: "500px" }}
-                  />
-                </div>
-              )}
+        <div className="EditListModal__section">
+          <button
+            className="EditListModal__section__emoji"
+            onClick={(e) => {
+              e.preventDefault();
+              setShowPicker(!showPicker);
+            }}
+          >
+            {selectedEmoji}
+          </button>
+          {showPicker && (
+            <div className="EditListModal__emoji-picker-wrapper">
+              <EmojiPicker onEmojiClick={handleEmojiClick} />
             </div>
+          )}
 
-            <input
-              className="EditListModal__section__input"
-              type="text"
-              placeholder="List Name"
-              value={listName}
-              onChange={(e) => setListName(e.target.value)}
-            />
-          </div>
-          <div className="EditListModal__section__buttons">
-            <button
-              className="EditListModal__section__button
+          <input
+            className="EditListModal__section__input"
+            type="text"
+            placeholder="List Name"
+            value={listName}
+            onChange={(e) => setListName(e.target.value)}
+            required
+          />
+        </div>
+        <div className="EditListModal__section__buttons">
+          <button
+            className="EditListModal__section__button
                 EditListModal__create-button
                 "
-              onClick={handleSubmit}
-            >
-              {isLoading ? (
-                <span className="StockTransaction__spinner"></span>
-              ) : (
-                "Save"
-              )}
-            </button>
-          </div>
+            type="submit"
+          >
+            {isLoading ? (
+              <span className="StockTransaction__spinner"></span>
+            ) : (
+              "Save"
+            )}
+          </button>
         </div>
       </div>
-    </div>
+    </form>
   );
 }
 

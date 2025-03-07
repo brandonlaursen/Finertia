@@ -69,6 +69,7 @@
   justify-content: end;
 
   gap: 8px;
+  margin-top: 4px;
   margin-right: 28px;
 }
 
@@ -98,6 +99,7 @@
 .CreateListModalForm__create-button {
   color: var(--color-background);
   background-color: var(--theme-primary-color);
+  min-width: 103px;
 
 }
 
