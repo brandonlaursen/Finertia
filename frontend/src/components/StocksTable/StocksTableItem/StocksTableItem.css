@@ -4,8 +4,8 @@
   font-size: 11px;
   font-weight: 500;
 
+  border-bottom: var(--border);
   cursor: pointer;
-  border-bottom: 1px solid var(--border-color);
 }
 
 .StockTableItem:hover {
@@ -15,16 +15,18 @@
 .StocksTableItem__name {
   font-weight: bold;
 
-  padding-right: 16px;
-  word-wrap: break-word;
+  /* padding-right: 16px; */
+
+  white-space: nowrap;
+  overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .stocks-table-arrow-container {
   display: flex;
+  align-items: center;
 
   gap: 4px;
-  align-items: center;
 }
 
 .triangleIconDown {
@@ -44,12 +46,20 @@
 .StockTableItem__button {
   height: 14px;
   width: 14px;
+
   float: right;
   margin-right: 16px;
+
   color: var(--icon-color);
   cursor: pointer;
 }
 
 .StockTableItem__button:hover {
   color: var(--theme-primary-color);
+}
+
+
+.StocksTable {
+  width: 100%;
+  table-layout: fixed; /* Ensures column widths stay consistent */
 }

@@ -1,104 +1,48 @@
 .StocksTable {
-  max-height: 600px;
-  height: auto;
-  width: 100%;
-  border-collapse: collapse;
+
+
+  margin-top: 32px;
+
   table-layout: fixed;
+  border-collapse: collapse;
 
   scrollbar-width: none;
   overflow-y: auto;
-
-  margin-top: 32px;
 }
 
-.StocksTable__head {
-  height: 40px;
-  position: sticky;
-  top: 0;
-  text-align: left;
-  font-size: 13px;
-  font-weight: 600;
-  background-color: var(--color-background);
-  color: var(--color-text-primary);
-  cursor: pointer;
-  border-bottom: 1px solid var(--border-color);
-  white-space: nowrap;
+.StocksTable__container {
+
+  display: flex;
+  flex-direction: column;
+}
+
+.StocksTable__no-data {
+  text-align: center;
+  padding: 2rem;
 }
 
 .StocksTable__sort-icon {
-  font-size: 0.8rem;
-  color: var(--icon-color);
-  transition: all 0.2s ease;
   vertical-align: middle;
   margin-left: 4px;
+
+  font-size: 0.8rem;
+
+  color: var(--icon-color);
+
+  transition: all 0.2s ease;
 }
 
 .StocksTable__sort-icon--active {
   color: var(--theme-primary-color);
 }
 
-.StocksTable th:nth-of-type(1),
+/* .StocksTable th:nth-of-type(1),
 .StocksTable td:nth-of-type(1) {
   text-align: left;
-}
+} */
 
-/* ========== Loading Spinner ========== */
-
-/* Loading spinner for stocks page */
-.Stocks-loading-spinner {
-  height: 250px;
-  width: 620px;
-
-  display: flex;
-  justify-content: center;
-  align-items: start;
-}
-
-.StocksTable__container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.StocksTable__pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 2rem;
-  padding: 1rem;
-}
-
-.StocksTable__pagination-button {
-  padding: 0.5rem 1rem;
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  background-color: var(--button-primary-inverted);
-  color: var(--color-text-primary);
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: all 0.2s ease;
-  font-weight: 600;
-}
-
-.StocksTable__pagination-button:hover:not(:disabled) {
-  background-color: var(--color-hover);
-}
-
-.StocksTable__pagination-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.StocksTable__pagination-info {
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--color-text-secondary);
-}
-
-.StocksTable__no-data {
-  text-align: center;
-  padding: 2rem;
+.StocksTable th{
+  text-align: left;
 }
 
 .StocksTable__skeleton-row {

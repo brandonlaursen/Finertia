@@ -64,7 +64,6 @@
 
   color: var(--color-text-primary);
 
-  text-decoration: none;
   cursor: pointer;
 
   -webkit-font-smoothing: antialiased;

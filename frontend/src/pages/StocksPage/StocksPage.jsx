@@ -11,7 +11,6 @@ import { fetchAllStocks, selectStocksArray } from "../../../store/stocks";
 import ListSideBar from "../../components/ListSideBar";
 import StocksTable from "../../components/StocksTable";
 import NotificationPopUp from "../../components/NotificationPopUp/NotificationPopUp";
-import LoadingSpinner from "../../components/LoadingSpinner";
 
 function StocksPage() {
   const navigate = useNavigate();
@@ -81,7 +80,6 @@ function StocksPage() {
     setSortCriteria(criteria);
   };
 
-  // if (!stocks) return <LoadingSpinner />;
 
   return (
     <div className="StocksPage">
@@ -128,15 +126,7 @@ function StocksPage() {
             notificationMessage={notificationMessage}
           />
 
-          <div className="StocksPage__disclaimer">
-            This list is based on data from one or more third party data
-            providers. It is provided for informational purposes only by
-            Finertia Financial, LLC., and is not investment advice or a
-            recommendation. Investors should consider the characteristics of any
-            security they consider purchasing, including the investment
-            objectives and unique risk profile of any Exchange Traded Products
-            (ETP) and read the ETPs prospectus carefully before investing.
-          </div>
+       
         </main>
 
         <ListSideBar

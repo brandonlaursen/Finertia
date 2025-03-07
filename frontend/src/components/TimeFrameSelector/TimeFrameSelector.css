@@ -23,7 +23,7 @@
   position: relative;
 
   font-size: var(--font-size-text-md);
-  font-weight: bold;
+  font-weight: var(--font-weight-bold);
 }
 
 /* * Hover effect for time frame option */

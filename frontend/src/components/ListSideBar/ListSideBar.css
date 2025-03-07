@@ -7,7 +7,7 @@
   height: 86vh;
   width: clamp(250px, 30vw, 300px);
 
-  margin-top: var(--margin-top-container);
+  margin-top: 30px;
 
   border: var(--border);
 
@@ -15,8 +15,7 @@
 
   overflow-y: auto;
   scrollbar-width: none;
-  
-  transition: width 0.1s smooth;
+
 }
 
 /* ====== Loading ====== */
@@ -27,7 +26,7 @@
   height: 86vh;
   width: clamp(250px, 30vw, 300px);
 
-  transition: width 0.1s smooth;
+  margin-top: 30px;
 
   border: var(--border);
   border-radius: var(--border-radius-sm);

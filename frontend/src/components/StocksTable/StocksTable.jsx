@@ -1,9 +1,12 @@
 import "./StocksTable.css";
-import { useMemo, useState } from "react";
 import { FaSort, FaSortUp, FaSortDown } from "react-icons/fa";
 
-import StocksTableItem from "./StocksTableItem/StocksTableItem";
-import Skeleton from "../Skeleton";
+import { useMemo, useState } from "react";
+
+import StocksTableHeader from "./StocksTableHeader";
+import StocksTableBody from "./StocksTableBody";
+
+import Pagination from "../Pagination/Pagination";
 
 function StocksTable({
   stocks,
@@ -49,12 +52,6 @@ function StocksTable({
     });
   }, [stocksData, sortConfig]);
 
-  // Calculate pagination
-  const indexOfLastStock = currentPage * stocksPerPage;
-  const indexOfFirstStock = indexOfLastStock - stocksPerPage;
-  const currentStocks = sortedStocks.slice(indexOfFirstStock, indexOfLastStock);
-  const totalPages = Math.ceil(sortedStocks.length / stocksPerPage);
-
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
@@ -77,85 +74,39 @@ function StocksTable({
     );
   };
 
-  // Simulate loading state
   setTimeout(() => {
     setIsLoading(false);
   }, 1500);
 
+  const indexOfLastStock = currentPage * stocksPerPage;
+  const indexOfFirstStock = indexOfLastStock - stocksPerPage;
+  const currentStocks = sortedStocks.slice(indexOfFirstStock, indexOfLastStock);
+  const totalPages = Math.ceil(sortedStocks.length / stocksPerPage);
+
+  const stocksTableProps = {
+    isLoading,
+    currentStocks,
+    navigate,
+    setNotifications,
+    setNotificationMessage,
+    listId,
+    listStocks,
+  };
+
   return (
     <div className="StocksTable__container">
       <table className="StocksTable">
-        <thead className="StocksTable__head">
-          <tr>
-            <th onClick={() => handleSortClick("name")}>
-              Name {getSortIcon("name")}
-            </th>
-            <th onClick={() => handleSortClick("symbol")}>
-              Symbol {getSortIcon("symbol")}
-            </th>
-            <th onClick={() => handleSortClick("current_price")}>
-              Price {getSortIcon("current_price")}
-            </th>
-            <th onClick={() => handleSortClick("todays_change_percent")}>
-              Today {getSortIcon("todays_change_percent")}
-            </th>
-            <th onClick={() => handleSortClick("market_cap")}>
-              Market Cap {getSortIcon("market_cap")}
-            </th>
-            <th></th>
-          </tr>
-        </thead>
-
-        {isLoading ? (
-          <tbody className="StocksTable__body">
-            {[...Array(5)].map((_, index) => (
-              <tr key={index} className="StocksTable__skeleton-row">
-                <td colSpan="6">
-                  <Skeleton width="100%" height="40px" />
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        ) : (
-          <tbody className="StocksTable__body">
-            {currentStocks.map((stock) => {
-              return (
-                <StocksTableItem
-                  key={stock.id}
-                  stock={stock}
-                  navigate={navigate}
-                  setNotifications={setNotifications}
-                  setNotificationMessage={setNotificationMessage}
-                  listId={listId}
-                  listStocks={listStocks}
-                />
-              );
-            })}
-          </tbody>
-        )}
+        <StocksTableHeader
+          handleSortClick={handleSortClick}
+          getSortIcon={getSortIcon}
+        />
+        <StocksTableBody {...stocksTableProps} />
       </table>
-
-      {totalPages > 1 && (
-        <div className="StocksTable__pagination">
-          <button
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-            className="StocksTable__pagination-button"
-          >
-            Previous
-          </button>
-          <span className="StocksTable__pagination-info">
-            Page {currentPage} of {totalPages}
-          </span>
-          <button
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-            className="StocksTable__pagination-button"
-          >
-            Next
-          </button>
-        </div>
-      )}
+      <Pagination
+        totalPages={totalPages}
+        currentPage={currentPage}
+        handlePageChange={handlePageChange}
+      />
     </div>
   );
 }

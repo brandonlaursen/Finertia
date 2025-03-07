@@ -28,20 +28,16 @@
   display: flex;
   justify-content: center;
 
-  gap: 1.5vw;
+  gap: var(--page-gap);
 }
 
 /* Main stocks content section */
 .StocksPage__main {
-  /* ! unify media queries */
-  width: 65vw;
-  min-width: 400px;
-  max-width: 900px;
+  width: clamp(400px, 60vw, 1000px);
 
   display: flex;
   flex-direction: column;
 
-  transition: width 0.3s smooth;
 }
 
 /* Section wrapper for spacing */
@@ -168,79 +164,4 @@
 /* Faded out description */
 .StocksPage__hide--description {
   opacity: 0;
-}
-
-/* ========== Disclaimer Section ========== */
-
-/* Disclaimer text section */
-.StocksPage__disclaimer {
-  display: flex;
-  align-items: start;
-
-  font-size: 12px;
-  color: var(--color-light-text);
-  line-height: 1.5;
-
-  margin-top: 16px;
-  margin-bottom: 140px;
-}
-
-/* Extra Large Screens (Desktops & TVs) */
-@media (min-width: 1440px) {
-  /* Styles for large desktop screens */
-  .StocksPage__main {
-    max-width: 800px;
-  }
-}
-
-/* Large Desktops */
-@media (max-width: 1280px) {
-  /* Styles for medium-sized desktops */
-  .StocksPage__main {
-    max-width: 650px;
-  }
-}
-
-/* Small Desktops & Large Tablets */
-@media (max-width: 1024px) {
-  /* Adjust layouts, reduce container sizes */
-  .StocksPage__main {
-    max-width: 460px;
-  }
-}
-
-@media (max-width: 830px) {
-  /* Stack columns, adjust text sizes, shrink margins */
-  .StocksPage__main {
-    max-width: 420px;
-  }
-}
-
-/* Tablets (Portrait & Small Laptops) */
-@media (max-width: 768px) {
-  /* Stack columns, adjust text sizes, shrink margins */
-  .StocksPage__main {
-    max-width: 300px;
-  }
-}
-
-/* Large Phones (Landscape Mode) */
-@media (max-width: 700px) {
-  /* Reduce button sizes, make touch targets larger */
-  .StocksPage__main {
-    width: 85vw;
-    max-width: 800px;
-    margin: 0;
-    gap: 0;
-  }
-}
-
-/* Most Mobile Phones (Portrait Mode) */
-@media (max-width: 480px) {
-  /* Full-width elements, simplify layouts */
-}
-
-/* Very Small Phones */
-@media (max-width: 360px) {
-  /* Reduce paddings/margins for ultra-small screens */
 }
