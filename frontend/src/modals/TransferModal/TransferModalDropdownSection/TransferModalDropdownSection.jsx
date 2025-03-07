@@ -31,7 +31,6 @@ function TransferModalDropdownSection({
     toggleDropdown,
   };
 
-  console.log(toggleDropdown);
   return (
     <>
       <div className="TransferModalDropdownSection">
