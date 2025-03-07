@@ -80,7 +80,6 @@ function StocksPage() {
     setSortCriteria(criteria);
   };
 
-
   return (
     <div className="StocksPage">
       <div className="StocksPage__banner" />
@@ -100,11 +99,11 @@ function StocksPage() {
               </span>
             </header>
 
-            <div className="StocksPage__menu">
+            {/* <div className="StocksPage__menu">
               <RiListSettingsLine className="StocksPage__settings-icon" />
 
               <button className="StocksPage__follow-button">Follow</button>
-            </div>
+            </div> */}
           </section>
 
           <section
@@ -125,8 +124,6 @@ function StocksPage() {
             notifications={notifications}
             notificationMessage={notificationMessage}
           />
-
-       
         </main>
 
         <ListSideBar

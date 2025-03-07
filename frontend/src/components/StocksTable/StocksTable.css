@@ -1,6 +1,5 @@
 .StocksTable {
-
-
+  width: 100%;
   margin-top: 32px;
 
   table-layout: fixed;
@@ -11,7 +10,6 @@
 }
 
 .StocksTable__container {
-
   display: flex;
   flex-direction: column;
 }
@@ -34,15 +32,6 @@
 
 .StocksTable__sort-icon--active {
   color: var(--theme-primary-color);
-}
-
-/* .StocksTable th:nth-of-type(1),
-.StocksTable td:nth-of-type(1) {
-  text-align: left;
-} */
-
-.StocksTable th{
-  text-align: left;
 }
 
 .StocksTable__skeleton-row {
