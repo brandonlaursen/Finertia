@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import CloseButton from "../../components/CloseButton";
 import TransferModalAmountInput from "./TransferModalAmountInput";
+import MoneyButtons from "./MoneyButtons/MoneyButtons";
 
 import { depositFunds, withdrawFunds } from "../../../store/transactions";
 import { useModal } from "../../context/Modal";
@@ -135,37 +136,11 @@ function TransferModal({ setNotifications, setNotificationMessage }) {
             setAmount={setAmount}
             amount={amount}
           />
-
-          {showMoneyButtons && (
-            <div className="TransferModal__section">
-              <div className="TransferModal__amount-container">
-                <button
-                  className="TransferModal__amount"
-                  onClick={() => {
-                    setShowMoneyButtons(false), setAmount(100);
-                  }}
-                >
-                  $100
-                </button>
-                <button
-                  className="TransferModal__amount"
-                  onClick={() => {
-                    setShowMoneyButtons(false), setAmount(300);
-                  }}
-                >
-                  $300
-                </button>
-                <button
-                  className="TransferModal__amount"
-                  onClick={() => {
-                    setShowMoneyButtons(false), setAmount(1000);
-                  }}
-                >
-                  $1,000
-                </button>
-              </div>
-            </div>
-          )}
+          <MoneyButtons
+            showMoneyButtons={showMoneyButtons}
+            setShowMoneyButtons={setShowMoneyButtons}
+            setAmount={setAmount}
+          />
 
           <div className="TransferModal__section-two">
             <span className={`TransferModal__amount-title`}>From</span>
