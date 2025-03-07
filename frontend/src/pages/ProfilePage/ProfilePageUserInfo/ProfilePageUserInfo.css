@@ -101,3 +101,9 @@
 
   cursor: pointer;
 }
+
+.ProfilePageUserInfo__profile-skeleton {
+  height: 72px;
+  width: 72px;
+  border-radius: 50%;
+}

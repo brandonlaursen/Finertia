@@ -10,8 +10,6 @@
 
   background-color: var(--color-background);
   color: var(--color-text-primary);
-
-  margin-bottom: 1240px;
 }
 
 .ProfilePage__total {
@@ -23,7 +21,7 @@
 
   font-size: 12px;
   font-weight: 500;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
 }
 
 .ProfilePage__total__balance {
@@ -37,7 +35,7 @@
   flex-direction: column;
 
   gap: 16px;
-  margin-bottom: 64px;
+  margin-bottom: 60px;
 }
 
 .ProfilePage__investments__header {
@@ -63,7 +61,7 @@
 }
 
 .ProfilePage__investments__header__info-icon:hover {
-  background-color: var(--icon-color-hover);
+  background-color: var(--theme-primary-color-hover);
 }
 
 .ProfilePage__investments__details {
@@ -151,7 +149,7 @@
 }
 
 .ProfilePage__overview__button:hover {
-  background-color: var(--theme-primary-color-hover);
+  background-color: var(--theme-primary-hover);
 }
 
 .ProfilePage__overview__percentage {
@@ -238,4 +236,31 @@
   color: var(--color-text-secondary);
 
   font-weight: bold;
+}
+
+/* ====== Skeleton Loading ====== */
+.ProfilePage__skeleton-overview {
+  display: flex;
+  flex-direction: column;
+
+
+  gap: var(--page-gap);
+
+  margin-top: 24px;
+  margin-bottom: 16px;
+}
+
+.ProfilePage__skeleton-chart {
+  margin-bottom: 16px;
+}
+
+.ProfilePage__skeleton-buying-power {
+  margin-bottom: 16px;
+}
+
+.ProfilePage__skeleton-news {
+
+  margin-bottom: 32px;
+
+  border-radius: 4px;
 }

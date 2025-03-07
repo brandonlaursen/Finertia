@@ -13,6 +13,8 @@ import { useModal } from "../../../context/Modal";
 
 import EditProfileModal from "../../../modals/EditProfileModal/EditProfileModal";
 
+import Skeleton from "../../../components/Skeleton";
+
 const DEFAULT_IMAGE =
   "https://finertia.s3.amazonaws.com/public/1739990232538.png";
 
@@ -22,8 +24,8 @@ function ProfilePageUserInfo() {
   const dispatch = useDispatch();
 
   const { setModalContent, setModalClass } = useModal();
-  const [isLoading, setIsLoading] = useState(false);
-
+  const [loadingProfilePic, setLoadingProfilePic] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const fileInputRef = useRef(null);
 
   const [profilePic, setProfilePic] = useState(sessionUser.profilePic);
@@ -51,9 +53,9 @@ function ProfilePageUserInfo() {
 
     await dispatch(editUser(editedProfile));
 
-    setIsLoading(true);
+    setLoadingProfilePic(true);
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    setIsLoading(false);
+    setLoadingProfilePic(false);
   };
 
   const handleFileChange = (e) => {
@@ -61,16 +63,40 @@ function ProfilePageUserInfo() {
     handleFileUpload(file);
   };
 
+  setTimeout(() => {
+    setIsLoading(false);
+  }, 1500);
+
+  if (isLoading) {
+    return (
+      <div className="ProfilePageUserInfo">
+        <section className="ProfilePageUserInfo__profile-pic-container">
+          <Skeleton
+            className="ProfilePageUserInfo__profile-skeleton"
+            height="72px"
+            width="72px"
+            borderRadius="50%"
+          />
+        </section>
+
+        <section className="ProfilePageUserInfo__information">
+          <Skeleton width="160px" height="30px" />
+          <Skeleton width="100px" height="16px" />
+        </section>
+      </div>
+    );
+  }
+
   return (
     <div className="ProfilePageUserInfo">
       <section className="ProfilePageUserInfo__profile-pic-container">
-        {isLoading ? (
+        {loadingProfilePic ? (
           <div>
             <img
               src={profilePic}
               alt="User Profile"
               className={`ProfilePageUserInfo__profile-pic ${
-                isLoading && "ProfilePageUserInfo--profile-blur"
+                loadingProfilePic && "ProfilePageUserInfo--profile-blur"
               }`}
             />
             <PiSpinner className="ProfilePageUserInfo__spinner" />
@@ -116,6 +142,7 @@ function ProfilePageUserInfo() {
             {`Joined ${sessionUser.joinDate.split("-")[0]}`}
           </span>
         </div>
+
         <span
           className="ProfilePageUserInfo__information__edit"
           onClick={(e) => {

@@ -1,18 +1,64 @@
 import "./ProfilePage.css";
 import { LuInfo } from "react-icons/lu";
 
+import { useState } from "react";
 import { useSelector } from "react-redux";
 
 import { selectUser } from "../../../store/session";
 
 import ProfilePageUserInfo from "./ProfilePageUserInfo/ProfilePageUserInfo";
+import Skeleton from "../../components/Skeleton";
 
 function ProfilePage() {
   const sessionUser = useSelector(selectUser);
+  const [isLoading, setIsLoading] = useState(true);
 
   const { stockSummary } = sessionUser;
 
   const total = stockSummary.totalInvestments + stockSummary.balance;
+
+  setTimeout(() => {
+    setIsLoading(false);
+  }, 1000);
+
+  if (isLoading)
+    return (
+      <div className="ProfilePage">
+        <ProfilePageUserInfo />
+
+        <section className="ProfilePage__total">
+          <Skeleton width="150px" height="40px" />
+        </section>
+
+        <section className="ProfilePage__investments">
+          <header className="ProfilePage__investments__header">
+            <Skeleton width="120px" height="40px" />
+          </header>
+
+          <div className="ProfilePage__investments__details">
+            <div className="ProfilePage__investments__details__value">
+              <Skeleton width="150px" height="15px" />
+            </div>
+
+            <div className="ProfilePage__investments__details__value ProfilePage__investments__details__subtext">
+              <Skeleton width="150px" height="15px" />
+            </div>
+
+            <div className="ProfilePage__investments__details__value ProfilePage__investments__details__subtext">
+              <Skeleton width="150px" height="15px" />
+            </div>
+          </div>
+        </section>
+
+        <section className="ProfilePage__overview">
+          <Skeleton width="100%" height="200px" />
+        </section>
+
+        <section className="ProfilePage__buttons">
+          <Skeleton width="100%" height="200px" />
+        </section>
+      </div>
+    );
 
   return (
     <div className="ProfilePage">
@@ -77,12 +123,12 @@ function ProfilePage() {
           </button>
         </div>
 
-        <div className="ProfilePage__overview__description">
+        {/* <div className="ProfilePage__overview__description">
           <span className="ProfilePage__description__text">
             Stocks are pieces of a company that investors can own.
           </span>
           <span className="ProfilePage__description__subtext">Learn More</span>
-        </div>
+        </div> */}
       </section>
 
       <section className="ProfilePage__buttons">
