@@ -1,6 +1,6 @@
 import "./StocksPage.css";
 import { IoIosCheckmarkCircle } from "react-icons/io";
-import { RiListSettingsLine } from "react-icons/ri";
+// import { RiListSettingsLine } from "react-icons/ri";
 
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";

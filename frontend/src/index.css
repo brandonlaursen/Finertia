@@ -184,7 +184,7 @@ button {
   /* * Border Colors */
   --border-color: rgb(227, 233, 237); /* For borders, dividers, etc. */
 
-  /* Border radius */
+  /* * Border radius */
   --border-radius-sm: 4px;
 
   /* * Text Colors */

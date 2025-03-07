@@ -6,8 +6,8 @@ import { useSelector, useDispatch } from "react-redux";
 import ModalHeader from "../../components/ModalHeader/ModalHeader";
 import ModalOverlay from "../../components/ModalOverlay/ModalOverlay";
 import CreateListToggle from "./CreateListToggle";
-
 import AddToListModalLists from "./AddToListModalLists";
+import AddToListModalFooter from "./AddToListModalFooter";
 
 import { fetchLists, selectListsArray } from "../../../store/lists";
 import { selectUser } from "../../../store/session";
@@ -19,10 +19,9 @@ function AddToListModal({ stock, setNotifications, setNotificationMessage }) {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
 
+  const sessionUser = useSelector(selectUser);
   const lists = useSelector(selectListsArray);
   const listObj = useSelector((state) => state.lists);
-
-  const sessionUser = useSelector(selectUser);
 
   let checkedList = {};
   for (let listId of stock.listIds) {
@@ -103,6 +102,23 @@ function AddToListModal({ stock, setNotifications, setNotificationMessage }) {
     }
   }, [newListId]);
 
+  const addToListModalProps = {
+    sessionUser,
+    lists,
+    isLoading,
+    isVisible,
+    setIsVisible,
+    setNewListId,
+    selectedEmoji,
+    setSelectedEmoji,
+    listName,
+    setListName,
+    checkedItems,
+    setCheckedItems,
+    handleSubmit,
+    closeModal,
+  };
+
   return (
     <div className="AddToListModal">
       <ModalOverlay closeModal={closeModal} />
@@ -113,44 +129,11 @@ function AddToListModal({ stock, setNotifications, setNotificationMessage }) {
         >{`Add ${stock.symbol} to List`}</ModalHeader>
 
         <section className="AddToListModal__section">
-          {/* {isVisible && <div className="AddToListModal__list-overlay active" />} */}
-          <CreateListToggle
-            isVisible={isVisible}
-            setIsVisible={setIsVisible}
-            selectedEmoji={selectedEmoji}
-            setSelectedEmoji={setSelectedEmoji}
-            sessionUser={sessionUser}
-            setNewListId={setNewListId}
-            listName={listName}
-            setListName={setListName}
-          />
-
-          <AddToListModalLists
-            lists={lists}
-            checkedItems={checkedItems}
-            isVisible={isVisible}
-            setCheckedItems={setCheckedItems}
-          />
+          <CreateListToggle {...addToListModalProps} />
+          <AddToListModalLists {...addToListModalProps} />
         </section>
 
-        <footer className="AddToListModal__footer">
-          <button
-            className="AddToListModal__footer__button
-                AddToListModal__save-button
-                "
-            onClick={handleSubmit}
-            disabled={
-              !Object.keys(checkedItems).length ||
-              (isVisible && !listName.trim())
-            }
-          >
-            {isLoading ? (
-              <span className="StockTransaction__spinner"></span>
-            ) : (
-              "Save Changes"
-            )}
-          </button>
-        </footer>
+        <AddToListModalFooter {...addToListModalProps} />
       </main>
     </div>
   );

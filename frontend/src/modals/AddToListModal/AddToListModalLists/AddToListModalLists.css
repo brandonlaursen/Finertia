@@ -8,6 +8,26 @@
   z-index: 5;
 }
 
+/* Create New List Overlay */
+.AddToListModal__list-overlay {
+  position: absolute;
+  z-index: 10;
+
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background-color: var(--disabled-overlay-color);
+
+  pointer-events: none;
+}
+
+/* ========== Create New List Overlay active ========== */
+.AddToListModal__list-overlay.active {
+  pointer-events: auto;
+}
+
 /* Add To List Modal Lists Container Disabled */
 .AddToListModalLists.disabled {
   opacity: 0.5;
@@ -83,7 +103,7 @@ input.checked {
 
   font-size: 20px;
 
-  background-color: var(--modal-emoji-icons);
+  background-color: var(--color-hover-secondary-light);
   border-radius: 4px;
 }
 

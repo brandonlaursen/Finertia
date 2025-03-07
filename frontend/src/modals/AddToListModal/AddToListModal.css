@@ -19,7 +19,6 @@
 .AddToListModal__main {
   position: absolute;
 
-  height: 470px;
   width: 364px;
 
   display: flex;
@@ -27,7 +26,6 @@
   padding: 16px 24px;
 
   background-color: var(--color-surface);
-
   border-radius: 4px;
 }
 
@@ -37,69 +35,10 @@
 .AddToListModal__section {
   position: relative;
 
+  height: 330px;
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
 
   overflow: auto;
-}
-
-/* Create New List Overlay */
-.AddToListModal__list-overlay {
-  position: absolute;
-  z-index: 10;
-
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-
-  background-color: var(--disabled-overlay-color);
-
-  pointer-events: none;
-}
-
-/* ========== Create New List Overlay active ========== */
-.AddToListModal__list-overlay.active {
-  pointer-events: auto;
-}
-
-/* ========== Modal Footer ========== */
-/* Modal Footer */
-.AddToListModal__footer {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  padding-top: 8px;
-  padding-bottom: 4px;
-}
-
-/* Modal Footer Button */
-.AddToListModal__footer__button {
-  padding: 0 20px;
-  height: 38px;
-  width: 100%;
-
-  font-size: 12px;
-  font-weight: bold;
-
-  border-radius: 44px;
-}
-
-/* Create Button */
-.AddToListModal__save-button {
-  color: var(--color-background);
-  background-color: var(--theme-primary-color);
-  border: none;
-  -webkit-font-smoothing: subpixel-antialiased;
-}
-
-/* Create Button Hover */
-.AddToListModal__save-button:hover {
-  background-color: var(--theme-primary-color-hover);
-}
-
-/* Disabled Button */
-.AddToListModal__footer__button:disabled {
-  background-color: var(--disabled-button-color);
 }

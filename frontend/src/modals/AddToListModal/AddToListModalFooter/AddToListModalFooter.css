@@ -1,0 +1,39 @@
+/* ========== Modal Footer ========== */
+/* Modal Footer */
+.AddToListModal__footer {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding-top: 8px;
+  padding-bottom: 4px;
+}
+
+/* Modal Footer Button */
+.AddToListModal__footer__button {
+  padding: 0 20px;
+  height: 38px;
+  width: 100%;
+
+  font-size: 12px;
+  font-weight: bold;
+
+  border-radius: 44px;
+}
+
+/* Create Button */
+.AddToListModal__save-button {
+  color: var(--color-background);
+  background-color: var(--theme-primary-color);
+
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+/* Create Button Hover */
+.AddToListModal__save-button:hover {
+  background-color: var(--theme-primary-hover);
+}
+
+/* Disabled Button */
+.AddToListModal__footer__button:disabled {
+  background-color: var(--disabled-button-color);
+}

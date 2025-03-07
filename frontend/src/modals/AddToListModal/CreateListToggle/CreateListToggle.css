@@ -1,5 +1,5 @@
-/* ========== Create Toggle Container ========== */
-.CreateListToggle__container {
+/* ========== Create List Toggle ========== */
+.CreateListToggle {
   position: relative;
   z-index: 20;
 
@@ -15,189 +15,12 @@
   cursor: pointer;
 }
 
-/* ========== Create List Form Container ========== */
-.CreateListToggle__form-container {
-  position: relative;
-
-  width: 100%;
-
-  margin-bottom: 20px;
-  margin-top: 20px;
-
-  z-index: 20;
-}
-/* Create List Form */
-.CreateListToggle__form {
-  height: 90px;
-  width: 100%;
-  z-index: 20;
-
-  display: flex;
-  flex-direction: column;
-
-  margin-top: 8px;
-
-  background-color: var(--color-surface);
-
-  animation: dropdown 0.4s ease-out;
-}
-
-/* Create List Form Exit */
-.CreateListToggle__form.exit {
-  animation: slideUp 0.4s ease-out forwards;
-}
-
-/* Create List Form Dropdown Animations */
-@keyframes dropdown {
-  from {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* Create List Form Slide Up Animation */
-@keyframes slideUp {
-  from {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-}
-
-/* ========== Create List Form Input Container ========== */
-.CreateListToggle__form-input-container {
-  position: relative;
-
-  height: 60px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  gap: 8px;
-}
-
-/* Create List Form Emoji Picker Button */
-.CreateListToggle__emoji-button {
-  position: relative;
-
-  height: 42px;
-  width: 46px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  font-size: 20px;
-
-  background-color: var(--color-hover);
-  border: solid 1px var(--border-color);
-  border-radius: 4px;
-
-  cursor: pointer;
-
-  z-index: 1001;
-}
-
-/* Create List Emoji Picker Wrapper */
-.CreateListToggle__emoji-wrapper {
-  position: fixed;
-  top: 490px;
-  left: 40%;
-
-  z-index: 1000;
-  transform: translate(-50%, -50%);
-  background-color: var(--color-surface) !important;
-}
-
-/* Create List Name Input */
-.CreateListToggle__form-input {
-  width: 90%;
-  height: 42px;
-
-  padding: 2px 15px;
-  margin-right: 1px;
-
-  font-size: 13px;
-
-  background-color: var(--modal-emoji-icons);
-  color: var(--color-text-primary);
-
-  border: none;
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-}
-
-.CreateListToggle__form-input:focus {
-  border: solid 1px var(--theme-primary-color);
-  background-color: var(--color-surface);
-}
-
-/* Create List Form Buttons Container */
-.CreateListToggle__form-buttons {
-  display: flex;
-  justify-content: end;
-  gap: 8px;
-
-  margin-right: 1px;
-}
-
-/* Create List Form Buttons */
-.CreateListToggle__form-button {
-  padding: 0 20px;
-  height: 32px;
-
-  font-size: 12px;
-  font-weight: bold;
-
-  border-radius: 44px;
-
-  cursor: pointer;
-  -webkit-font-smoothing: subpixel-antialiased;
-}
-
-/* Create List Form Cancel Button */
-.CreateListToggle__cancel-button {
-  color: var(--theme-primary-color);
-  background-color: var(--color-surface);
-
-  border: solid 1px var(--theme-primary-color);
-}
-
-/* Create List Form Cancel Button Hover */
-.CreateListToggle__cancel-button:hover {
-  background-color: var(--theme-primary-color-light-hover);
-}
-
-/* Create List Form Create Button */
-.CreateListToggle__create-button {
-  color: var(--color-background);
-  background-color: var(--theme-primary-color);
-
-  min-width: 102px;
-  border: none;
-}
-
-/* Create List Form Create Button Hover */
-.CreateListToggle__create-button:hover {
-  background-color: var(--theme-primary-color-hover);
-}
-
-/* ========= Create New List Toggle ========= */
-
-/* Create New List Toggle Container */
+/* Create New List Toggle */
 .CreateListToggle__toggle {
   display: flex;
 }
 
-.CreateListToggle__toggle-container {
+.CreateListToggle__toggle-icon-container {
   height: 60px;
   width: 48px;
 
@@ -210,13 +33,18 @@
 
   font-size: 24px;
 
-  background-color: var(--theme-primary-color-light-hover);
+  background-color: var(--button-primary-hover-light);
   color: var(--theme-primary-color);
 
   border-radius: 4px;
 }
 
-.CreateListToggle__toggle-title {
+/* Create New List Toggle Icon */
+.CreateListToggle__icon {
+  color: var(--theme-primary-color);
+}
+
+.CreateListToggle__title {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -229,16 +57,12 @@
 
 /* Create New List Toggle */
 .CreateListToggle__toggle-container,
-.CreateListToggle__toggle-title {
+.CreateListToggle__title {
   transition: transform 0.3s ease-out;
 }
 
 /* Create New List Toggle exit */
 .CreateListToggle__form-container.exit ~ .CreateListToggle__toggle-container,
-.CreateListToggle__form-container.exit ~ .CreateListToggle__toggle-title {
+.CreateListToggle__form-container.exit ~ .CreateListToggle__title {
   transform: translateY(-100%);
-}
-/* Create New List Toggle Icon */
-.CreateListToggle__toggle-icon {
-  color: var(--theme-primary-color);
 }
