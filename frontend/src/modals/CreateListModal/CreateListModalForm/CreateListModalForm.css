@@ -1,0 +1,106 @@
+.CreateListModalForm {
+  height: 170px;
+  width: 430px;
+
+  position: absolute;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 16px 24px;
+
+  background-color: var(--color-surface);
+
+  border-radius: 4px;
+}
+
+.CreateListModalForm__inputs {
+  display: flex;
+  align-items: end;
+
+  padding-left: 16px;
+  margin-bottom: 10px;
+  gap: 8px;
+}
+
+.CreateListModalForm__emoji-button {
+  height: 38px;
+  width: 38px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--color-hover);
+  border: solid 1px var(--border-color);
+
+  border-radius: 4px;
+}
+
+.CreateListModalForm__emoji-picker-wrapper {
+  position: absolute;
+  top: 105px;
+  right: 200px;
+
+  z-index: 1000;
+}
+
+.CreateListModalForm__name-input {
+  width: 80%;
+  height: 36px;
+
+  padding: 2px 15px;
+
+  font-size: 12px;
+
+  color: var(--color-text-primary);
+  background-color: var(--color-hover-secondary-light);
+
+  border-radius: 4px;
+}
+
+.CreateListModalForm__name-input:focus {
+  border: solid 1px var(--theme-primary-color);
+  background-color: var(--color-surface);
+}
+
+.CreateListModalForm__buttons {
+  display: flex;
+  justify-content: end;
+
+  gap: 8px;
+  margin-right: 28px;
+}
+
+.CreateListModalForm__button {
+  height: 32px;
+
+  padding: 0 20px;
+
+  font-size: 12px;
+  font-weight: bold;
+
+  border-radius: 44px;
+  cursor: pointer;
+}
+
+.CreateListModalForm__cancel-button {
+  color: var(--theme-primary-color);
+  background-color: var(--color-surface);
+
+  border: solid 1px var(--theme-primary-color);
+}
+
+.CreateListModalForm__cancel-button:hover {
+  background-color: var(--button-primary-hover-light);
+}
+
+.CreateListModalForm__create-button {
+  color: var(--color-background);
+  background-color: var(--theme-primary-color);
+
+}
+
+.CreateListModalForm__create-button:hover {
+  background-color: var(--theme-primary-hover);
+}

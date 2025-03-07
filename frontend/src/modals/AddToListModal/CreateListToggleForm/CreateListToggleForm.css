@@ -134,16 +134,15 @@
 
 /* Create List Form Buttons */
 .CreateListToggleForm__button {
-  padding: 0 20px;
   height: 32px;
+  padding: 0 20px;
+
 
   font-size: 12px;
   font-weight: bold;
 
   border-radius: 44px;
-
   cursor: pointer;
-  -webkit-font-smoothing: subpixel-antialiased;
 }
 
 /* Create List Form Cancel Button */

@@ -1,0 +1,136 @@
+/* ========== Modal Positioning & Overlay ========== */
+
+/* Centers the modal on the page */
+.ChooseListType {
+  position: fixed;
+  top: 348px;
+  left: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 100;
+
+  color: var(--color-text-primary);
+}
+
+/* ========== Modal Container ========== */
+
+/* ChooseListType wrapper */
+.ChooseListType__wrapper {
+  position: absolute;
+
+  width: 430px;
+
+  display: flex;
+  justify-content: center;
+
+  background-color: var(--color-surface);
+  border-radius: 4px;
+}
+
+/* Main ChooseListType container */
+.ChooseListType__container {
+  display: flex;
+  flex-direction: column;
+
+  padding: 16px 24px;
+}
+
+/* ========== Options Container ========== */
+
+/* Container for options (Watch List & Screener) */
+.ChooseListType__options {
+  display: flex;
+  gap: 8px;
+}
+
+/* ========== Option Boxes ========== */
+
+/* Each option box (Watch List & Screener) */
+.ChooseListType__option {
+  height: 260px;
+  width: 188px;
+
+  display: flex;
+  flex-direction: column;
+
+  border: 1px solid var(--border-color);
+  border-radius: 2px;
+
+  cursor: pointer;
+}
+
+/* Image container for each option */
+.ChooseListType__option__image {
+  height: 60%;
+  width: 100%;
+
+  background-color: var(--color-background);
+
+  border-bottom: solid 1px var(--border-color);
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+
+/* Watch List image */
+.ChooseListType__image-one {
+  background-image: url("https://img.freepik.com/premium-vector/bright-telescope-cartoon-vector-illustration-white-background_1322560-79848.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Screener image */
+.ChooseListType__image-two {
+  background-image: url("https://i.etsystatic.com/27713397/r/il/ba1b96/4493269889/il_1080xN.4493269889_lz2v.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ========== Option Text Styling ========== */
+
+/* Container for text inside each option */
+.ChooseListType__option__text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  padding: 16px 16px;
+}
+
+/* Option title (e.g., "Create Watch List", "Create Screener") */
+.ChooseListType__text__title {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* Option description text */
+.ChooseListType__text__sub-text {
+  font-size: 11px;
+  font-weight: 500;
+}
+
+/* ========== Back Button ========== */
+
+/* Back button */
+.ChooseListType__back-button {
+  height: 40px;
+
+  margin-top: 24px;
+  margin-bottom: 8px;
+
+  font-weight: bold;
+  font-size: 12px;
+  color: var(--color-background);
+  background-color: var(--theme-primary-color);
+
+  border-radius: 44px;
+}
+
+/* Hover effect for the back button */
+.ChooseListType__back-button:hover {
+  background-color: var(--theme-primary-hover);
+}
