@@ -68,15 +68,14 @@ function TransferModalFooter({
     setNotificationMessage([]);
   }
 
+ 
   return (
-    <div className="TransferModal__section-footer">
+    <div className="TransferModalFooter">
       {showConfirmation ? (
         <>
-          {error && (
-            <span className="TransferModal__section-footer-error">{error}</span>
-          )}
+          {error && <span className="TransferModalFooter__error">{error}</span>}
           {!error && (
-            <span className="TransferModal__footer-title footer-confirm">
+            <span className="TransferModalFooter__message">
               {from === "Bank" &&
                 `$${amount} will be withdrawn from Finertia Bank.`}
               {from === "Individual" &&
@@ -85,10 +84,15 @@ function TransferModalFooter({
           )}
 
           <button
-            className={`TransferModal__button ${
-              !disableButton && "TransferModal__button-enabled"
-            }`}
+            className={`TransferModalFooter__button
+
+               ${
+                 disableButton
+                   ? "TransferModalFooter__button--disabled"
+                   : "TransferModalFooter__transfer-button"
+               }`}
             onClick={submitTransaction}
+            disabled={disableButton}
           >
             {isLoading ? (
               <span className="StockTransaction__spinner"></span>
@@ -96,11 +100,11 @@ function TransferModalFooter({
               `Transfer $${amount}`
             )}
           </button>
-
           <button
-            className="TransferModal__button cancel-button"
+            className="TransferModalFooter__button TransferModalFooter__cancel-button"
             onClick={() => {
               setShowConfirmation(false), setError(null);
+              setDisableButton(false);
             }}
           >
             Cancel
@@ -109,7 +113,7 @@ function TransferModalFooter({
       ) : (
         <>
           <span className="TransferModal__footer-container">
-            <span className="TransferModal__footer-title">
+            <span className="TransferModalFooter__message">
               {from === "Bank" && `    Daily deposit limit: No limits`}
               {from === "Individual" && `$${sessionUser.balance} available`}
               <span className="TransferModal__question-mark-container">
@@ -118,9 +122,13 @@ function TransferModalFooter({
             </span>
           </span>
           <button
-            className={`TransferModal__button ${
-              !disableButton && "TransferModal__button-enabled"
-            }`}
+            className={`TransferModalFooter__button
+
+              ${
+                disableButton
+                  ? "TransferModalFooter__button--disabled"
+                  : "  TransferModalFooter__review-button"
+              }`}
             onClick={handleSubmit}
             disabled={disableButton}
           >

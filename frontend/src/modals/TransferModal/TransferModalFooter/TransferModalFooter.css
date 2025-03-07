@@ -1,0 +1,118 @@
+.TransferModalFooter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 12px;
+  padding-top: 32px;
+}
+
+.TransferModalFooter__error {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.TransferModalFooter__message {
+  width: 300px;
+
+  display: flex;
+  justify-content: center;
+
+  gap: 4px;
+  margin-bottom: 12px;
+
+  font-size: 12px;
+
+  color: var(--color-text);
+  font-weight: var(--font-weight-normal);
+}
+
+.TransferModalFooter__button {
+  width: 350px;
+  height: 40px;
+
+  font-size: 12px;
+
+  border-radius: 44px;
+
+  font-weight: var(--font-weight-bold);
+}
+
+.TransferModalFooter__button--disabled {
+  background-color: var(--disabled-button-color);
+}
+
+.TransferModalFooter__review-button {
+  background-color: var(--theme-primary-color);
+  color: var(--color-background);
+}
+
+.TransferModalFooter__review-button:hover {
+  background-color: var(--theme-primary-hover);
+}
+
+.TransferModalFooter__transfer-button {
+  background-color: var(--color-background-inverse);
+  color: var(--color-text-inverse);
+}
+
+.TransferModalFooter__transfer-button:hover {
+  background-color: var(--button-hover-inverse);
+}
+
+.TransferModalFooter__cancel-button {
+  background-color: var(--color-background);
+  color: var(--button-hover-inverse);
+
+  border: 1px solid var(--button-hover-inverse);
+}
+
+.TransferModalFooter__cancel-button:hover {
+  background-color: var(--button-hover-muted);
+}
+
+.TransferModal__footer-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 4px;
+}
+
+.TransferModal__question-mark-container {
+  height: 16px;
+  width: 16px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.TransferModal__question-mark-container:hover {
+  background-color: var(--icon-color-hover);
+}
+
+.TransferModal__question-mark {
+  height: 14px;
+  width: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .TransferModalDisabled {
+  color: var(--disabled-text-color);
+  border-color: var(--disabled-text-color);
+
+  cursor: default;
+} */
+
+/* .amount-input:disabled {
+  color: var(--color-highlight);
+  background-color: var(--color-highlight);
+} */

@@ -232,6 +232,11 @@ button {
   /* * Disabled Button */
   --disabled-button-color: rgb(180, 189, 194);
 
+  /* Inverse button hover */
+  --button-hover-muted: rgb(236, 236, 236);
+  --button-hover-inverse: rgb(40, 40, 40);
+
+
   /* * Icons */
   --icon-color: rgb(106, 114, 120);
   --icon-color-hover: rgb(242, 241, 241);
@@ -243,4 +248,3 @@ button {
   --color-negative: rgb(255, 29, 4);
   --color-negative-secondary: rgb(255,80,1);
 }
-

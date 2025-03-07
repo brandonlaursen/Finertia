@@ -7,7 +7,7 @@ function MoneyButtons({ showMoneyButtons, setShowMoneyButtons, setAmount }) {
     <div className="MoneyButtons">
       <div className="MoneyButtons__buttons">
         <button
-          className="TransferModal__amount"
+          className="MoneyButtons__button"
           onClick={() => {
             setShowMoneyButtons(false), setAmount(100);
           }}

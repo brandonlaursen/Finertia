@@ -25,7 +25,7 @@ function TransferModal({ setNotifications, setNotificationMessage }) {
   const [to, setTo] = useState("Individual");
   const [showFrom, setShowFrom] = useState(false);
   const [showTo, setShowTo] = useState(false);
-  const [showMoneyButtons, setShowMoneyButtons] = useState(true);
+  const [showMoneyButtons, setShowMoneyButtons] = useState(false);
   const [disableButton, setDisableButton] = useState(true);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [error, setError] = useState(null);

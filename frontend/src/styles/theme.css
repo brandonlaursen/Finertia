@@ -48,6 +48,10 @@
   /* Disabled Button */
   --disabled-button-color: rgb(98, 108, 112);
 
+  /* Inverse button hover */
+  --button-hover-muted: rgb(40, 40, 40);
+  --button-hover-inverse: rgb(236, 236, 236);
+
   /* Icons */
   --icon-color: rgb(145, 159, 166);
   --icon-color-hover: rgb(24, 24, 24);
