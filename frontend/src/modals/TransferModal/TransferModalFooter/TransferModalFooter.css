@@ -39,16 +39,17 @@
 }
 
 .TransferModalFooter__button--disabled {
+  color: var(--color-background);
   background-color: var(--disabled-button-color);
 }
 
 .TransferModalFooter__review-button {
-  background-color: var(--theme-primary-color);
-  color: var(--color-background);
+  background-color: var(--color-background-inverse);
+  color: var(--color-text-inverse);
 }
 
 .TransferModalFooter__review-button:hover {
-  background-color: var(--theme-primary-hover);
+  background-color: var(--button-hover-inverse);
 }
 
 .TransferModalFooter__transfer-button {

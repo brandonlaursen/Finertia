@@ -23,7 +23,6 @@
   padding: 2px 5px;
   margin-left: auto;
 
-
   color: var(--color-text-primary);
 
   border: 1px solid var(--border-color);
@@ -33,7 +32,6 @@
 .TransferModalAmountInput__input-container:focus-within {
   border: 2px solid var(--theme-primary-color);
 }
-
 
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
@@ -55,6 +53,14 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .TransferModalAmountInput--input-disabled {
-  color: var(--color-highlight);
-  background-color: var(--color-highlight);
+  color: var(--color-hover);
+  background-color: var(--color-hover);
+  border: none;
+}
+
+.TransferModalDropdownSection__button--disabled {
+  color: var(--disabled-button-color);
+  border-color: var(--disabled-button-color);
+  pointer-events: none;
+  cursor: none;
 }

@@ -110,14 +110,14 @@
   font-size: var(--font-size-button-sm);
   font-weight: var(--font-weight-bold);
 
-  background-color: var(--button-primary);
-  color: var(--color-background);
+  background-color: var(--color-background-inverse);
+  color: var(--color-text-inverse);
 
   border-radius: var(--button-border-radius-lg);
 }
 
 .BuyingPowerDropDown__button:hover {
-  background-color: var(--button-primary-hover);
+  background-color: var(--button-hover-inverse);
 }
 
 .BuyingPowerDropDown__arrow-icon {

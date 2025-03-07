@@ -14,7 +14,9 @@ function TransferModalAmountInput({ showConfirmation, amount, setAmount }) {
         <input
           type="number"
           pattern="[0-9]*"
-          className="TransferModalAmountInput__amount-input"
+          className={`TransferModalAmountInput__amount-input ${
+            showConfirmation && "TransferModalAmountInput--input-disabled"
+          }`}
           value={amount || ""}
           onChange={(e) => {
             setAmount(e.target.value);

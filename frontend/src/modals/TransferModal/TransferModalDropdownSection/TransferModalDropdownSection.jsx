@@ -15,6 +15,7 @@ function TransferModalDropdownSection({
   fromRef,
   toRef,
   toggleDropdown,
+  showConfirmation,
 }) {
   const transferModalDropdownSectionProps = {
     from,
@@ -38,9 +39,12 @@ function TransferModalDropdownSection({
         <div
           className={`TransferModalDropdownSection__button ${
             showFrom && "TransferModalDropdown--button-active"
-          }`}
+          }
+${showConfirmation && "TransferModalDropdownSection__button--disabled"}
+          `}
           onClick={() => toggleDropdown("from")}
           ref={fromRef}
+          disabled={showConfirmation}
         >
           {from} {from === "Individual" && `· $${sessionUser.balance}`}
         </div>
@@ -52,7 +56,12 @@ function TransferModalDropdownSection({
       <div className="TransferModalDropdownSection">
         <span className="TransferModalDropdownSection__title">To</span>
         <div
-          className="TransferModalDropdownSection__button"
+          className={`TransferModalDropdownSection__button
+            ${
+              showConfirmation &&
+              "TransferModalDropdownSection__button--disabled"
+            }
+            `}
           onClick={() => toggleDropdown("to")}
           ref={toRef}
         >
