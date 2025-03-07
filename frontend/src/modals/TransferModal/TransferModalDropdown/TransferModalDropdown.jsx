@@ -3,65 +3,54 @@ import { GrFormCheckmark } from "react-icons/gr";
 
 function TransferModalDropdown({
   showFrom,
+  from,
   setFrom,
   setTo,
-  from,
   sessionUser,
 }) {
   if (!showFrom) return null;
 
+  const options = [
+    {
+      category: "Fintertia accounts",
+      label: "Individual",
+      subText: `Withdrawable cash · $${sessionUser.balance}`,
+      value: "Individual",
+    },
+    {
+      category: "External accounts",
+      label: "Finertia Bank",
+      subText: "Typically 1-2 seconds",
+      value: "Bank",
+    },
+  ];
+
+  const handleSelection = (selectedFrom) => {
+    setFrom(selectedFrom);
+    setTo(selectedFrom === "Individual" ? "Bank" : "Individual");
+  };
+
   return (
     <div className="TransferModalDropdown">
-      <section className="TransferModalDropdown__section">
-        <header className="TransferModalDropdown__header">
-          Fintertia accounts
-        </header>
-
-        <main
-          onClick={() => {
-            setFrom("Individual"), setTo("Bank");
-          }}
-          className={`TransferModalDropdown__main ${
-            from === "Individual" ? "TransferModalDropdown__main--selected" : ""
-          }`}
-        >
-          {from === "Individual" && (
-            <GrFormCheckmark className="TransferModalDropdown__check-mark" />
-          )}
-
-          <div className="TransferModalDropdown__text-container">
-            <span className="TransferModalDropdown__text">Individual</span>
-            <span className="TransferModalDropdown__sub-text">
-              Withdrawable cash · ${sessionUser.balance}
-            </span>
-          </div>
-        </main>
-      </section>
-
-      <section className="TransferModalDropdown__section">
-        <header className="TransferModalDropdown__header">
-          External accounts
-        </header>
-        <main
-          onClick={() => {
-            setFrom("Bank"), setTo("Individual");
-          }}
-          className={`TransferModalDropdown__main ${
-            from === "Bank" ? "TransferModalDropdown__main--selected" : ""
-          }`}
-        >
-          {from === "Bank" && (
-            <GrFormCheckmark className="TransferModalDropdown__check-mark" />
-          )}
-
-          <div className="TransferModalDropdown__text-container">
-            <span className="TransferModalDropdown__text">Finertia Bank</span>
-            <span className="TransferModalDropdown__sub-text">
-              Typically 1-2 seconds
-            </span>
-          </div>
-        </main>
-      </section>
+      {options.map(({ category, label, subText, value }) => (
+        <section key={value} className="TransferModalDropdown__section">
+          <header className="TransferModalDropdown__header">{category}</header>
+          <main
+            onClick={() => handleSelection(value)}
+            className={`TransferModalDropdown__main ${
+              from === value ? "TransferModalDropdown__main--selected" : ""
+            }`}
+          >
+            {from === value && (
+              <GrFormCheckmark className="TransferModalDropdown__check-mark" />
+            )}
+            <div className="TransferModalDropdown__text-container">
+              <span className="TransferModalDropdown__text">{label}</span>
+              <span className="TransferModalDropdown__sub-text">{subText}</span>
+            </div>
+          </main>
+        </section>
+      ))}
     </div>
   );
 }

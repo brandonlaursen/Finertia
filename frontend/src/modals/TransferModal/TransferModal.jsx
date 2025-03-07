@@ -12,6 +12,7 @@ import MoneyButtons from "./MoneyButtons/MoneyButtons";
 import { depositFunds, withdrawFunds } from "../../../store/transactions";
 import { useModal } from "../../context/Modal";
 import TransferModalDropdown from "./TransferModalDropdown/TransferModalDropdown";
+import TransferModalDropdownSection from "./TransferModalDropdownSection/TransferModalDropdownSection";
 
 function TransferModal({ setNotifications, setNotificationMessage }) {
   const { closeModal } = useModal();
@@ -119,12 +120,18 @@ function TransferModal({ setNotifications, setNotificationMessage }) {
   };
 
   const transferModalProps = {
-    showFrom,
-    setFrom,
-    setTo,
     from,
     to,
+    setFrom,
+    setTo,
     sessionUser,
+    showFrom,
+    showTo,
+    setShowFrom,
+    setShowTo,
+    fromRef,
+    toRef,
+    toggleDropdown,
   };
 
   return (
@@ -140,125 +147,18 @@ function TransferModal({ setNotifications, setNotificationMessage }) {
           <span className="TransferModal__header-title">Transfer money</span>
         </div>
 
-        <div>
-          <TransferModalAmountInput
-            showConfirmation={showConfirmation}
-            setAmount={setAmount}
-            amount={amount}
-          />
-          <MoneyButtons
-            showMoneyButtons={showMoneyButtons}
-            setShowMoneyButtons={setShowMoneyButtons}
-            setAmount={setAmount}
-          />
+        <TransferModalAmountInput
+          showConfirmation={showConfirmation}
+          setAmount={setAmount}
+          amount={amount}
+        />
+        <MoneyButtons
+          showMoneyButtons={showMoneyButtons}
+          setShowMoneyButtons={setShowMoneyButtons}
+          setAmount={setAmount}
+        />
 
-          <div className="TransferModal__section-two">
-            <span className={`TransferModal__amount-title`}>From</span>
-            {showConfirmation ? (
-              <div
-                className={`TransferModal__from-dropdown-button TransferModalDisabled`}
-              >
-                {from}
-              </div>
-            ) : (
-              <div
-                className={`TransferModal__from-dropdown-button ${
-                  showFrom && "TransferModal__amount-title-green"
-                }`}
-                onClick={() => toggleDropdown("from")}
-                ref={fromRef}
-              >
-                {from} {from === "Individual" && `· $${sessionUser.balance}`}
-              </div>
-            )}
-
-            <TransferModalDropdown {...transferModalProps} />
-          </div>
-
-          <div className="TransferModal__section-two">
-            <span className="TransferModal__amount-title">To</span>
-
-            {showConfirmation ? (
-              <div
-                className={`TransferModal__from-dropdown-button TransferModalDisabled`}
-              >
-                {to}
-              </div>
-            ) : (
-              <div
-                className={`TransferModal__from-dropdown-button ${
-                  showTo && "TransferModal__amount-title-green"
-                }`}
-                onClick={() => toggleDropdown("to")}
-                ref={toRef}
-              >
-                {from === "Bank" ? "Individual" : "Bank"}
-              </div>
-            )}
-
-            {showTo && (
-              <div className="TransferModal__from-dropdown">
-                {to === "Bank" ? (
-                  <div className="TransferModal__from-dropdown-individual">
-                    <span className="TransferModal__from-dropdown-individual-header">
-                      External accounts
-                    </span>
-                    <div
-                      className={`TransferModal__from-dropdown-individual-container ${
-                        to === "Individual"
-                          ? "TransferModal__from-dropdown-individual-selected"
-                          : ""
-                      }`}
-                    >
-                      <div className="checkmark-div">
-                        {to === "Bank" && (
-                          <GrFormCheckmark className="TransferModal__checkmark" />
-                        )}
-                      </div>
-
-                      <div className="dropdown-text-div">
-                        <span className="TransferModal__from-dropdown-container-text">
-                          Finertia Bank
-                        </span>
-                        <span className="TransferModal__from-dropdown-container-subtext">
-                          Typically 1-2 seconds
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="TransferModal__from-dropdown-individual">
-                    <span className="TransferModal__from-dropdown-individual-header">
-                      Fintertia accounts
-                    </span>
-                    <div
-                      className={`TransferModal__from-dropdown-individual-container ${
-                        to === "Individual"
-                          ? "TransferModal__from-dropdown-individual-selected"
-                          : ""
-                      }`}
-                    >
-                      <div className="checkmark-div">
-                        {to === "Individual" && (
-                          <GrFormCheckmark className="TransferModal__checkmark" />
-                        )}
-                      </div>
-
-                      <div className="dropdown-text-div">
-                        <span className="TransferModal__from-dropdown-container-text">
-                          Individual · ${sessionUser.balance}
-                        </span>
-                        <span className="TransferModal__from-dropdown-container-subtext">
-                          Withdrawable cash
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-        </div>
+        <TransferModalDropdownSection {...transferModalProps} />
 
         <div className="TransferModal__section-footer">
           {showConfirmation ? (

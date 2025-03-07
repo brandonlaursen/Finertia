@@ -2,10 +2,6 @@
   width: 100%;
 
   position: relative;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .MoneyButtons__buttons {
@@ -16,6 +12,7 @@
   align-items: center;
 
   gap: 8px;
+  margin-top: 10px;
 }
 
 .MoneyButtons__button {
@@ -28,7 +25,6 @@
 
   border-radius: 44px;
   border: 1px solid var(--border-color);
-
 }
 
 .MoneyButtons__button:hover {
