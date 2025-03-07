@@ -25,7 +25,7 @@ function DeleteListModal({
     e.preventDefault();
 
     setIsLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     setIsLoading(false);
 
     await dispatch(deleteList(listId));

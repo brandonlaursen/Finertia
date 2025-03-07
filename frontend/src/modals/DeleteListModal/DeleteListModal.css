@@ -9,29 +9,21 @@
   z-index: 100;
 }
 
-.DeleteListModal__overlay {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
-}
-
 .DeleteListModal__container {
   position: absolute;
 
   height: 170px;
   width: 385px;
-  word-wrap: break-word;
-  background-color: var(--color-surface);
-
-  border-radius: 4px;
 
   display: flex;
   flex-direction: column;
 
   padding: 16px 24px;
+
+  background-color: var(--color-surface);
+
+  word-wrap: break-word;
+  border-radius: 4px;
 }
 
 .DeleteListModal__section {
@@ -50,31 +42,35 @@
 .DeleteListModal__section__button {
   height: 40px;
   width: 100%;
-  border-radius: 44px;
+
   padding: 0 20px;
+
+  border-radius: 44px;
+
   font-size: 12px;
   font-weight: bold;
-  cursor: pointer;
 }
 
 .DeleteListModal__delete-button {
-  background-color: var(--orange-button);
   color: var(--color-background);
-  border: none;
+  background-color: var(--theme-secondary-color);
 }
 
 .DeleteListModal__delete-button:hover {
-  background-color: var(--theme-secondary-hover);
+  background-color: var(--button-secondary-hover);
 }
 
 .StockTransaction__spinner {
+  display: inline-block;
+
   width: 16px;
   height: 16px;
+
   border: 2px solid var(--color-background);
   border-top: 2px solid transparent;
   border-radius: 50%;
+
   animation: spin 0.6s linear infinite;
-  display: inline-block;
 }
 
 @keyframes spin {
