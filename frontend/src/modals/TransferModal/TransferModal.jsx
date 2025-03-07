@@ -5,17 +5,13 @@ import { GrFormCheckmark } from "react-icons/gr";
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import CloseButton from "../../components/CloseButton";
+import TransferModalAmountInput from "./TransferModalAmountInput";
+
 import { depositFunds, withdrawFunds } from "../../../store/transactions";
 import { useModal } from "../../context/Modal";
 
-import CloseButton from '../../components/CloseButton'
-
-function TransferModal(
-  {setNotifications,
-  setNotificationMessage,}
-) {
-
-
+function TransferModal({ setNotifications, setNotificationMessage }) {
   const { closeModal } = useModal();
   const dispatch = useDispatch();
 
@@ -134,26 +130,11 @@ function TransferModal(
         </div>
 
         <div>
-          <div className="TransferModal__section">
-            <span className={`TransferModal__amount-title`}>Amount</span>
-
-            <div
-              className={`input-wrapper ${showConfirmation && "InputDisabled"}`}
-            >
-              <span className="dollar-sign">$</span>
-              <input
-                type="number"
-                pattern="[0-9]*"
-                className="amount-input"
-                value={amount || ""}
-                onChange={(e) => {
-                  setAmount(e.target.value);
-                }}
-                placeholder={0}
-                disabled={showConfirmation}
-              />
-            </div>
-          </div>
+          <TransferModalAmountInput
+            showConfirmation={showConfirmation}
+            setAmount={setAmount}
+            amount={amount}
+          />
 
           {showMoneyButtons && (
             <div className="TransferModal__section">

@@ -58,7 +58,7 @@
 }
 
 .TransferModal__section {
-  /* height: 40px; */
+
   width: 100%;
 
   position: relative;
@@ -85,14 +85,14 @@
   margin-bottom: 6px;
 
   color: var(--color-text-primary);
-  /* background-color: var( --color-background); */
+
   border: 1px solid var(--border-color);
   border-radius: 4px;
 }
 
 .input-wrapper:focus-within {
   border: 2px solid var(--theme-primary-color);
-  /* background-color: var( --color-background); */
+
 }
 .dollar-sign {
   font-size: 12px;
@@ -124,13 +124,13 @@
   justify-content: center;
 
   border-radius: 4px;
-  /* background-color: var( --color-background); */
+
   border: 1px solid var(--border-color);
   color: var(--color-text-primary);
 }
 
 .TransferModal-button-container:hover {
-  /* background-color: var( --color-surface); */
+  background-color: var( --color-hover);
 }
 
 .TransferModal__close-button {
@@ -176,8 +176,7 @@
 }
 
 .TransferModal__amount:hover {
-  background-color: var(--color-surface-hover);
-  /* !!! */
+  background-color: var(--color-hover);
 }
 
 /*  */
@@ -429,11 +428,7 @@
   background-color: var(--color-highlight);
 }
 
-.InputDisabled {
-  color: var(--color-highlight);
-  background-color: var(--color-highlight);
-  border: none;
-}
+
 
 .TransferModal__section-footer-error {
   font-weight: bold;

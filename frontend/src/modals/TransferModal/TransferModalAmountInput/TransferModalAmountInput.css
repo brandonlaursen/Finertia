@@ -1,0 +1,60 @@
+.TransferModalAmountInput {
+  width: 100%;
+
+  position: relative;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.TransferModalAmountInput__title {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.TransferModalAmountInput__input-container {
+  width: 280px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 2px 5px;
+  margin-left: auto;
+  margin-bottom: 6px;
+
+  color: var(--color-text-primary);
+
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.TransferModalAmountInput__input-container:focus-within {
+  border: 2px solid var(--theme-primary-color);
+}
+
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.TransferModalAmountInput__dollar-sign {
+  font-size: 12px;
+}
+
+.TransferModalAmountInput__amount-input {
+  width: 100%;
+  text-align: right;
+  padding-right: 4px;
+
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+}
+
+.TransferModalAmountInput--input-disabled {
+  color: var(--color-highlight);
+  background-color: var(--color-highlight);
+}
