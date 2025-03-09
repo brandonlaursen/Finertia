@@ -68,8 +68,7 @@ function WelcomePage() {
 
       <footer className="WelcomePage__footer">
         <div className="footer-content">
-          <p>Brandon Laursen</p>
-          |
+          <p>Brandon Laursen</p>|
           <a
             href="https://www.linkedin.com/in/your-profile"
             target="_blank"
