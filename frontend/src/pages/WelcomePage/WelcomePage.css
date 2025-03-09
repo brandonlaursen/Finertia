@@ -42,6 +42,20 @@
   color: #07de96;
 
   margin-bottom: 8px;
+
+  animation: fadeIn 1s ease-in-out; /* Apply animation */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px); 
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Highlight text in the hero section */
@@ -227,4 +241,3 @@
 }
 
 /* ========== Responsive Design ========== */
-
