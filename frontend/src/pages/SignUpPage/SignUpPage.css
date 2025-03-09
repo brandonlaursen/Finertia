@@ -6,8 +6,8 @@
   display: flex;
   flex-direction: row;
 
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: black;
+  color: white;
 }
 
 .SignUpPage__aside {
@@ -18,9 +18,9 @@
 
   padding: 0px 64px 36px;
 
-  gap: var(--spacing-md);
+  gap: 18px;
 
-  box-shadow: 0 0 0 0.5px var(--border-color);
+  box-shadow: 0 0 0 1px rgb(48, 54, 58);
 }
 
 .SignUpPage__aside-logo {
@@ -35,15 +35,11 @@
   font-size: 24px;
   font-weight: bold;
 
-  color: var(--color-white);
-
-  text-decoration: none;
-  cursor: pointer;
   transition: color 0.3s ease-in-out;
 }
 
 .SignUpPage__aside-logo:hover {
-  color: var(--theme-primary-color);
+  color: #07de96;
 }
 
 .SignUpPage__aside-header {
@@ -57,7 +53,7 @@
   flex-wrap: wrap;
   word-wrap: break-word;
 
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.5;
 
   margin-top: 32px;
@@ -77,6 +73,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-color: black;
 }
 
 .SignUpPage__main {
@@ -92,7 +89,7 @@
   display: flex;
 
   font-size: 20px;
-  font-weight: var(--font-weight-normal);
+  font-weight: 500;
   margin-bottom: 40px;
 
   line-height: 1.5;
@@ -107,9 +104,11 @@
 .SignUpPage__form-input {
   width: 100%;
   padding: 12px;
-  border: 1px solid var(--border-color);
-  margin-bottom: 20px;
-  outline: none;
+  border: 1px solid rgb(48, 54, 58);
+  margin-bottom: 16px;
+
+  background-color: black;
+  color: white;
 }
 
 .SignUpPage__form__section-two {
@@ -134,14 +133,18 @@
 .SignUpPage__hide-icon {
   position: absolute;
   right: 15px;
-  top: 15px;
+  top: 12px;
 
-  font-size: 24px;
+  font-size: 18px;
 
-  background-color: transparent;
-  color: var(--button-border-white);
+  color: white;
 
   cursor: pointer;
+  border-radius: 4px;
+}
+
+.SignUpPage__hide-icon:hover {
+  background-color: rgb(30, 33, 37);
 }
 
 .SignUpPage__form__errors {
@@ -149,22 +152,20 @@
 }
 
 .SignUpPage__form__error {
-  min-height: 50px;
+  min-height: 42px;
   width: 100%;
 
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  box-sizing: border-box;
 
   padding-left: 10px;
-  gap: 0px;
 
-  font-size: var(--font-base);
+  font-size: 13px;
+  font-weight: 500;
 
   background-color: rgb(30, 33, 37);
 
-  border-width: 1px;
-  border-radius: 5px;
+  border-radius: 4px;
 }
 
 .SignUpPage__info-icon {
@@ -182,17 +183,18 @@
 
   align-self: center;
 
-  font-weight: var(--font-weight-bold);
+  font-weight: 600;
 
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: white;
+  color: black;
 
-  border: 1px solid var(--color-white);
-  border-radius: var(--button-border-radius-lg);
+  border: 1px solid white;
+  border-radius: 44px;
+  margin-top: 4px;
 }
 
 .SignUpPage__form button:hover {
-  background-color: var(--color-accent);
+  background-color: rgb(236, 236, 236);
 }
 
 input:focus {
