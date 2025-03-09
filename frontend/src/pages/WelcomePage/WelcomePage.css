@@ -42,6 +42,7 @@
   color: #07de96;
 
   margin-bottom: 8px;
+  animation: fadeIn 1s ease-in-out;
 }
 
 /* Highlight text in the hero section */
@@ -232,5 +233,17 @@
   /* Adjust layout for smaller screens */
   .WelcomePage__features {
     flex-direction: column-reverse;
+  }
+}
+
+/* Example animation for the hero title */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px); /* Optional: adds a slight upward movement */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
