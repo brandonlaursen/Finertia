@@ -196,18 +196,35 @@
 
 /* Footer container */
 .WelcomePage__footer {
-  text-align: center;
-  padding: 1.5rem;
+  height: 72px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   color: rgb(0, 0, 0);
-  font-size: 1.5rem;
-  background-color: var(--theme-primary-color);
+  font-size: 16px;
+  font-weight: 500;
+  background-color: #07de96;
+}
+
+/* Footer content alignment */
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Footer links */
+.WelcomePage__footer a {
+  color: black;
+  text-decoration: none;
+}
+
+.WelcomePage__footer a:hover {
+  cursor: pointer;
+  color: rgb(40, 40, 40);
 }
 
 /* ========== Responsive Design ========== */
 
-@media (max-width: 768px) {
-  /* Adjust layout for smaller screens */
-  .WelcomePage__features {
-    flex-direction: column-reverse;
-  }
-}

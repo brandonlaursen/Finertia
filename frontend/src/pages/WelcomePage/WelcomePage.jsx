@@ -66,7 +66,27 @@ function WelcomePage() {
         <button className="WelcomePage__join__button">Sign up</button>
       </section>
 
-      <footer className="WelcomePage__footer">Brandon Laursen</footer>
+      <footer className="WelcomePage__footer">
+        <div className="footer-content">
+          <p>Brandon Laursen</p>
+          |
+          <a
+            href="https://www.linkedin.com/in/your-profile"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>{" "}
+          |
+          <a
+            href="https://github.com/your-profile"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+        </div>
+      </footer>
     </div>
   );
 }
