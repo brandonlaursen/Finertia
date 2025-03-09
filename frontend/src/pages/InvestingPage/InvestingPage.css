@@ -38,12 +38,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
 }
 
 .InvestingPage__chart-container-value {
   position: absolute;
 
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
 
   height: 50px;

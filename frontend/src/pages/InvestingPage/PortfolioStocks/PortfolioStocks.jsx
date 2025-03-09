@@ -63,9 +63,30 @@ function PortfolioStocks({ stockInvestments, stockSummary }) {
     tooltip: {
       enabled: false,
     },
-    colors: ["#00f0A8", "#33FF57"],
+    colors: [
+      "#00F0A8", 
+      "#00E6A0",
+      "#00DA98",
+      "#00CF90",
+      "#00C488",
+      "#00B980",
+      "#00AE78",
+      "#00A370",
+      "#009868",
+      "#008E60",
+      "#008458",
+      "#007A50",
+      "#007048",
+      "#006640",
+      "#005C38",
+    ],
     fill: {
       type: "solid",
+    },
+    stroke: {
+      show: true,
+      width: 3, // Border thickness
+      colors: ["var(  --color-background)"], // Border color (black in this case)
     },
   });
 
@@ -96,7 +117,9 @@ function PortfolioStocks({ stockInvestments, stockSummary }) {
                   key={stock.stockId}
                   onClick={() => navigate(`/stocks/${stock?.symbol}`)}
                 >
-                  <td       className="PortfolioStocks__stock-name">{stock.stockName}</td>
+                  <td className="PortfolioStocks__stock-name">
+                    {stock.stockName}
+                  </td>
                   <td>{stock.symbol}</td>
                   <td>{stock.sharesOwned.toFixed(2)}</td>
                   <td>${stock.price.toFixed(2)}</td>

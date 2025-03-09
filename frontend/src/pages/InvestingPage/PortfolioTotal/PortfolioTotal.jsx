@@ -51,15 +51,36 @@ function PortfolioTotal({
       },
 
       style: {
-        fontSize: "16px",
+        fontSize: "12px",
       },
     },
     tooltip: {
       enabled: false,
     },
-    colors: ["#00f0A8", "#33FF57"],
+    colors: [
+      "#00F0A8", 
+      "#00E6A0",
+      "#00DA98",
+      "#00CF90",
+      "#00C488",
+      "#00B980",
+      "#00AE78",
+      "#00A370",
+      "#009868",
+      "#008E60",
+      "#008458",
+      "#007A50",
+      "#007048",
+      "#006640",
+      "#005C38",
+    ],
     fill: {
       type: "solid",
+    },
+    stroke: {
+      show: true,
+      width: 3, // Border thickness
+      colors: ["var(  --color-background)"], // Border color (black in this case)
     },
   });
 
