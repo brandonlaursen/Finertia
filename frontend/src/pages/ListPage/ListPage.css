@@ -17,9 +17,7 @@
 /* List Page main content area styles */
 .ListPage__main {
   /* ! unify media queries */
-  width: 65vw;
-  min-width: 400px;
-  max-width: 900px;
+  width: clamp(400px, 60vw, 1000px);
 
   display: flex;
   flex-direction: column;
