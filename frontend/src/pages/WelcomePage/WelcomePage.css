@@ -12,7 +12,6 @@
 
 /* Main section of the page */
 .WelcomePage__section {
-  height: 70vmax;
   height: 630px;
   width: 100%;
 
@@ -38,51 +37,47 @@
   align-items: center;
   justify-content: center;
 
-  font-size: clamp(16px, 5vw, 2rem);
+  font-size: clamp(20px, 2rem, 28px);
   font-weight: var(--font-weight-bold);
-  color: var(--theme-primary-color);
+  color: #07de96;
 
-  gap: var(--spacing-sm);
+  margin-bottom: 8px;
 }
 
 /* Highlight text in the hero section */
 .WelcomePage__hero-highlight {
-  width: 60%;
+  width: clamp(450px, 100%, 800px);
   display: flex;
   flex-direction: column;
   text-align: center;
-  font-size: clamp(16px, 4vw, 32px);
-}
+  font-size: clamp(16px, 4vw, 24px);
 
-/* Styling for the heading inside the hero highlight */
-.WelcomePage__hero-highlight > h1 {
-  color: var(--color-accent);
+  color: white;
 }
 
 /* Hero section button */
 .WelcomePage__hero-button {
   box-sizing: border-box;
-  height: var(--button-height);
-  padding: var(--button-padding);
-  font-weight: var(--font-weight-bold);
-  background-color: var(--color-white);
-  border-radius: var(--button-border-radius-lg);
-  border: none;
-  text-decoration: none;
-  white-space: nowrap;
+
+  height: 40px;
+  padding: 0 32px;
+  background-color: white;
+  margin-top: 32px;
+  border-radius: 44px;
+  font-weight: bold;
 }
 
 /* Button hover effect */
 .WelcomePage__hero-button:hover {
-  background-color: var(--color-accent);
+  background-color: rgb(236, 236, 236);
 }
 
 /* ========== Features Section ========== */
 
 /* Container for the features section */
 .WelcomePage__features {
-  color: var(--color-white);
-  background-color: var(--color-tertiary);
+  color: white;
+  background-color: rgb(22, 7, 40);
 }
 
 /* Image within the features section */
@@ -100,24 +95,25 @@
   display: flex;
   flex-direction: column;
   padding: 32px 32px;
-  gap: var(--spacing-sm);
+  gap: 8px;
 }
 
 /* Header inside the features section */
 .WelcomePage__features-contents__header {
   font-size: clamp(16px, 3vw, 2rem);
-  color: var(--color-accent);
+  color: rgb(152, 152, 152);
 }
 
 /* Sub-header in the features section */
 .WelcomePage__features-contents__sub-header {
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: 4px;
   font-size: clamp(18px, 4vw, 2rem);
+  width: 350px;
 }
 
 /* Description text inside the features section */
 .WelcomePage__features-contents__text {
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: 4px;
   font-size: clamp(14px, 1vw, 2rem);
 }
 
@@ -126,8 +122,8 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 14px;
-  color: var(--color-accent);
+  font-size: 12px;
+  color: rgb(152, 152, 152);
 }
 
 /* Information icon within the disclosure */
@@ -142,17 +138,15 @@
   width: 140px;
   margin-top: 32px;
   font-weight: var(--font-weight-bold);
-  background-color: var(--theme-primary-color);
-  color: var(--color-black);
-  border: none;
-  border-radius: var(--button-border-radius-lg);
-  text-decoration: none;
-  white-space: nowrap;
+  background-color: #07de96;
+  color: black;
+
+  border-radius: 44px;
 }
 
 /* Button hover effect */
 .WelcomePage__features-content__button:hover {
-  background-color: var(--theme-primary-color-hover);
+  background-color: rgb(7, 239, 162);
 }
 
 /* ========== Join Section ========== */
@@ -160,7 +154,7 @@
 /* Section encouraging users to join */
 .WelcomePage__join {
   flex-direction: column;
-  gap: var(--spacing-xl);
+  gap: 16px;
   background-color: rgb(13, 15, 21);
 }
 
@@ -176,26 +170,26 @@
 
 /* Header inside the Join section */
 .WelcomePage__join__header {
-  color: var(--color-accent);
-  font-size: clamp(24px, 3vw, 2rem);
+  color: white;
+  font-size: clamp(16px, 2vw, 24px);
 }
 
 /* Join section button */
 .WelcomePage__join__button {
   min-height: 40px;
   width: 140px;
-  font-weight: var(--font-weight-bold);
-  background-color: var(--theme-primary-color);
-  color: var(--color-black);
+
+  background-color: #07de96;
+  color: black;
+  font-weight: bold;
+
   border: none;
-  border-radius: var(--button-border-radius-lg);
-  text-decoration: none;
-  white-space: nowrap;
+  border-radius: 44px;
 }
 
 /* Button hover effect */
 .WelcomePage__join__button:hover {
-  background-color: var(--theme-primary-color-hover);
+  background-color: rgb(7, 239, 162);
 }
 
 /* ========== Footer Section ========== */

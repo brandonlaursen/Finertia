@@ -16,24 +16,22 @@
   gap: 5px;
   margin-left: 16px;
 
-  font-size: var(--font-lg);
-  font-weight: var(--font-weight-bold);
+  font-size: 22px;
+  font-weight: bold;
 
-  color: var(--color-white);
+  color: white;
 
-  cursor: pointer;
-  text-decoration: none;
   transition: color 0.3s ease-in-out;
 }
 
 .WelcomePageNavbar__logo:hover {
-  color: var(--theme-primary-color);
+  color: #07de96;
 }
 
 .WelcomePageNavbar__menu {
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
+  gap: 10px;
   margin-left: auto;
 
   list-style: none;
@@ -41,43 +39,40 @@
 }
 
 .WelcomePageNavbar__menu-item {
-  height: var(--button-height);
-  width: 100px;
+
+  height: 40px;
 
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  white-space: nowrap;
 
-  padding: var(--button-padding);
+  padding: 0 32px;
 
-  color: var(--color-white);
+  color: white;
 
-  font-size: var(--font-sm);
-  font-weight: var(--font-weight-normal);
+  font-size: 14px;
+  font-weight: 500;
 
-  border: var(--button-border-white);
-  border-radius: var(--button-border-radius-lg);
+  border: white;
+  border-radius: 44px;
+  border: 1px solid white;
 
-  cursor: pointer;
-  text-decoration: none;
+  transition: color 0.3s ease-in-out;
 }
 
 .login-button:hover {
-  color: var(  --theme-primary-color);
-
-  border: 1px  --theme-primary-colorlor-primary);
+  color: #07de96;
+  border-color: #07de96;
 }
 
 .signup-button {
-  background-color: var(--color-white);
+  background-color: white;
   color: black;
 
-  border: none;
 }
 
 .signup-button:hover {
-  background-color: var(--color-accent);
+  background-color: rgb(236, 236, 236);
 }
 
 @media (max-width: 768px) {
