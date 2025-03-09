@@ -65,7 +65,7 @@ function ProfilePageUserInfo() {
 
   setTimeout(() => {
     setIsLoading(false);
-  }, 1500);
+  }, 1000);
 
   if (isLoading) {
     return (

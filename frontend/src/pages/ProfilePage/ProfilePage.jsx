@@ -27,34 +27,21 @@ function ProfilePage() {
         <ProfilePageUserInfo />
 
         <section className="ProfilePage__total">
-          <Skeleton width="150px" height="40px" />
+          <Skeleton width="100px" height="40px" />
         </section>
 
         <section className="ProfilePage__investments">
           <header className="ProfilePage__investments__header">
-            <Skeleton width="120px" height="40px" />
+            <Skeleton width="200px" height="40px" />
           </header>
 
           <div className="ProfilePage__investments__details">
+            <Skeleton width="180px" height="20px" />
+            <Skeleton width="150px" height="20px" />
             <div className="ProfilePage__investments__details__value">
-              <Skeleton width="150px" height="15px" />
-            </div>
-
-            <div className="ProfilePage__investments__details__value ProfilePage__investments__details__subtext">
-              <Skeleton width="150px" height="15px" />
-            </div>
-
-            <div className="ProfilePage__investments__details__value ProfilePage__investments__details__subtext">
-              <Skeleton width="150px" height="15px" />
+              <Skeleton width="150px" height="20px" />
             </div>
           </div>
-        </section>
-
-        <section className="ProfilePage__overview">
-          <Skeleton width="100%" height="200px" />
-        </section>
-
-        <section className="ProfilePage__buttons">
           <Skeleton width="100%" height="200px" />
         </section>
       </div>

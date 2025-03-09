@@ -67,7 +67,6 @@
 .ProfilePage__investments__details {
   display: flex;
   flex-direction: column;
-  /* flex-grow: 1; */
 
   gap: 24px;
 }
@@ -107,16 +106,12 @@
 }
 
 .ProfilePage__overview__title {
-  /* height: 40px; */
-
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 16px;
 }
 
 .ProfilePage__overview__buttons {
-  /* height: 100px; */
-
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -243,7 +238,6 @@
   display: flex;
   flex-direction: column;
 
-
   gap: var(--page-gap);
 
   margin-top: 24px;
@@ -259,7 +253,6 @@
 }
 
 .ProfilePage__skeleton-news {
-
   margin-bottom: 32px;
 
   border-radius: 4px;
