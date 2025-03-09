@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 
 import { useDispatch } from "react-redux";
 import { fetchAccountTransactions } from "../../../../store/transactions";
+import Pagination from "../../../components/Pagination/Pagination";
 
 function CompletedTransfers({ transactions }) {
   const dispatch = useDispatch();
@@ -10,13 +11,9 @@ function CompletedTransfers({ transactions }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [transfersPerPage] = useState(5);
 
-
-
   useEffect(() => {
     dispatch(fetchAccountTransactions());
   }, [dispatch]);
-
-
 
   const sortedTransactions = transactions.sort((a, b) => {
     const dateA = a.transactionDate ? new Date(a.transactionDate) : new Date(0);
@@ -24,7 +21,6 @@ function CompletedTransfers({ transactions }) {
 
     return dateB - dateA;
   });
-
 
   const indexOfLastTransfer = currentPage * transfersPerPage;
   const indexOfFirstTransfer = indexOfLastTransfer - transfersPerPage;
@@ -72,27 +68,11 @@ function CompletedTransfers({ transactions }) {
             );
           })}
 
-          {totalPages > 1 && (
-            <div className="CompletedTransfers__pagination">
-              <button
-                onClick={() => handlePageChange(currentPage - 1)}
-                disabled={currentPage === 1}
-                className="CompletedTransfers__pagination-button"
-              >
-                Previous
-              </button>
-              <span className="CompletedTransfers__pagination-info">
-                Page {currentPage} of {totalPages}
-              </span>
-              <button
-                onClick={() => handlePageChange(currentPage + 1)}
-                disabled={currentPage === totalPages}
-                className="CompletedTransfers__pagination-button"
-              >
-                Next
-              </button>
-            </div>
-          )}
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            handlePageChange={handlePageChange}
+          />
         </>
       )}
     </section>

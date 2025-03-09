@@ -1,6 +1,6 @@
 .TransfersPage {
   height: 100%;
-  width: 65vw;
+  width: clamp(430px, 85vw, 1000px);
 
   display: flex;
   flex-direction: column;
@@ -20,12 +20,12 @@
 }
 
 .TransfersPage__title {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
 }
 
 .TransfersPage__subtext {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
 }
 
@@ -58,13 +58,14 @@
 
 .TransfersPage__withdraw-section-title {
   color: var(--color-text-secondary);
-  font-size: 13px;
+
+  font-size: 12px;
   font-weight: 500;
 }
 
 .TransfersPage__withdraw-section-amount {
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .TransfersPage__question-mark-icon {
@@ -74,4 +75,4 @@
   margin-left: 2px;
 
   color: var(--color-text-secondary);
-}--color-text-secondary
+}
