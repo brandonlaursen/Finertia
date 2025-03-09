@@ -66,21 +66,14 @@ function PortfolioTotal({
   return (
     <div className="PortfolioTotal">
       <header className="InvestingPage__header">
-        <span className="PortfolioTotal__title">
-          Total Portfolio value
-        </span>
-        <span className="PortfolioTotal__value">
-          ${total.toFixed(2)}
-        </span>
+        <span className="PortfolioTotal__title">Total Portfolio value</span>
+        <span className="PortfolioTotal__value">${total.toFixed(2)}</span>
       </header>
 
       <main className="InvestingPage__main">
         <section className="InvestingPage__section">
-
           <div className="PortfolioTotal__section">
-            <span className="PortfolioTotal__section-title">
-              Stocks
-            </span>
+            <span className="PortfolioTotal__section-title">Stocks</span>
             <div className="PortfolioTotal__section-value-container">
               <span className="PortfolioTotal__section-value">
                 {stockPercentage.toFixed(2)}%

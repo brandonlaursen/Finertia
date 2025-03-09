@@ -1,10 +1,12 @@
+
 .PortfolioTotal__title {
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .PortfolioTotal__value {
-  font-size: 28px;
+  font-size: 24px;
   font-weight: bold;
+  margin-bottom: 4px;
 }
 
 .InvestingPage__section {
@@ -16,7 +18,7 @@
 }
 
 .PortfolioTotal__section {
-  height: 60px;
+  height: 54px;
 
   display: flex;
   justify-content: space-between;
@@ -46,6 +48,7 @@
   padding-right: 48px;
 
   font-size: 12px;
+  font-weight: 500;
 }
 
 .PortfolioTotal__section-value {

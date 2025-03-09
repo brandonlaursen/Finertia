@@ -14,12 +14,12 @@
 
 .AccountLayout__main {
   position: sticky;
-  top: 54px; /* Sticks to the top */
+  top: 54px;
   left: 0;
 
-
   height: 140px;
-  width: 65vw;
+
+  width: clamp(430px, 65vw,900px);
 
   display: flex;
   flex-direction: column;
@@ -32,20 +32,17 @@
   background-color: var(--color-background);
 
   border-bottom: 1px solid var(--border-color);
+  z-index: 1;
 }
 
 .AccountLayout__username {
-  font-size: 30px;
+  font-size: 28px;
   font-weight: bold;
 }
 
 .AccountLayout__section {
   display: flex;
-
   gap: 24px;
-
-  font-size: 14px;
-  font-weight: bold;
 }
 
 .AccountLayout__select {
@@ -54,9 +51,9 @@
   color: var(--color-text-primary);
 
   cursor: pointer;
-  text-decoration: none;
 
-  font-size: 13px !important;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .AccountLayout__selected::after {
@@ -69,4 +66,21 @@
   left: 0;
 
   background-color: var(--theme-primary-color);
+}
+
+/* ====== Media Queries ====== */
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+  /* styles for medium devices */
+  .AccountLayout__main {
+    /* width: 85vw; */
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) {
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
 }

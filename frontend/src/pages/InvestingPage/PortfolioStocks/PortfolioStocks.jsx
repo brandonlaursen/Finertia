@@ -76,36 +76,35 @@ function PortfolioStocks({ stockInvestments, stockSummary }) {
       </header>
 
       <main className="InvestingPage__main">
+        {console.log(stocks)}
 
-          <table className="PortfolioStocks__stock-table">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Symbol</th>
-                <th>Shares</th>
-                <th>Price</th>
-                <th>Average Cost</th>
-              </tr>
-            </thead>
-            <tbody>
-              {Object.values(stocks).map((stock) => {
-                return (
-                  <tr
-                    className="PortfolioStocks__table-item"
-                    key={stock.stockId}
-                    onClick={() => navigate(`/stocks/${stock?.symbol}`)}
-                  >
-                    <td>{stock.stockName}</td>
-                    <td>{stock.symbol}</td>
-                    <td>{stock.sharesOwned.toFixed(2)}</td>
-                    <td>-</td>
-                    <td>${stock.price.toFixed(2)}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-  
+        <table className="PortfolioStocks__stock-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Symbol</th>
+              <th>Shares</th>
+
+              <th>Average Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            {Object.values(stocks).map((stock) => {
+              return (
+                <tr
+                  className="PortfolioStocks__table-item"
+                  key={stock.stockId}
+                  onClick={() => navigate(`/stocks/${stock?.symbol}`)}
+                >
+                  <td       className="PortfolioStocks__stock-name">{stock.stockName}</td>
+                  <td>{stock.symbol}</td>
+                  <td>{stock.sharesOwned.toFixed(2)}</td>
+                  <td>${stock.price.toFixed(2)}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
 
         <section className="InvestingPage__chart-container">
           <ReactApexChart
