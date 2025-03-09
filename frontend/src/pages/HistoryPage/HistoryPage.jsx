@@ -8,6 +8,7 @@ import {
   fetchAccountTransactions,
   fetchStockTransactions,
 } from "../../../store/transactions";
+import Pagination from "../../components/Pagination/Pagination";
 
 function HistoryPage() {
   const dispatch = useDispatch();
@@ -56,9 +57,8 @@ function HistoryPage() {
       {currentTransactions.length > 0 && (
         <>
           {currentTransactions.map((transaction, i) => {
-               console.log(transaction);
+            console.log(transaction);
             if (transaction.stockId) {
-
               return (
                 <article className="HistoryPage__transfer" key={i}>
                   <div className="HistoryPage__message-container">
@@ -108,7 +108,7 @@ function HistoryPage() {
             }
           })}
 
-          {totalPages > 1 && (
+          {/* {totalPages > 1 && (
             <div className="HistoryPage__pagination">
               <button
                 onClick={() => handlePageChange(currentPage - 1)}
@@ -128,7 +128,12 @@ function HistoryPage() {
                 Next
               </button>
             </div>
-          )}
+          )} */}
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            handlePageChange={handlePageChange}
+          />
         </>
       )}
     </div>

@@ -1,16 +1,16 @@
 .HistoryPage {
-  width: 65vw;
+  width: clamp(430px, 85vw, 1000px);
 
   display: flex;
   flex-direction: column;
 
   margin: 0px auto 0;
-  margin-bottom: 120px;
+  margin-bottom: 100px;
   margin-top: 30px;
 }
 
 .HistoryPage__title {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
 
   height: 40px;
