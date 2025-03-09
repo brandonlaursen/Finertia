@@ -9,76 +9,39 @@ function AccountLayout() {
   const location = useLocation();
   const sessionUser = useSelector(selectUser);
 
+  const navLinks = [
+    { path: "/account/investing", label: "Investing" },
+    { path: "/account/transfers", label: "Transfers" },
+    { path: "/account/history", label: "History" },
+    { path: "/account/settings/security", label: "Settings" },
+    { path: "/account/help", label: "Help" },
+  ];
+
+  const isActive = (path) =>
+    path === "/account/settings/security"
+      ? location.pathname.includes("settings")
+      : location.pathname === path;
+
   return (
     <div className="AccountLayout">
       <div className="AccountLayout__main">
-        <span className="AccountLayout__username">{`${sessionUser.firstName} ${sessionUser.lastName}`}</span>
-        <div className="AccountLayout__section">
-          <Link
-            to="/account/investing"
-            className={`
-                  AccountLayout__select
-                ${
-                  location.pathname === "/account/investing" &&
-                  "AccountLayout__selected"
-                }
-                `}
-          >
-            Investing
-          </Link>
+        <header className="AccountLayout__username">
+          {sessionUser.firstName} {sessionUser.lastName}
+        </header>
 
-          <Link
-            to="/account/transfers"
-            className={`
-                  AccountLayout__select
-                ${
-                  location.pathname === "/account/transfers" &&
-                  "AccountLayout__selected"
-                }
-                `}
-          >
-            Transfers
-          </Link>
-
-          <Link
-            to="/account/history"
-            className={`
-                  AccountLayout__select
-                ${
-                  location.pathname === "/account/history" &&
-                  "AccountLayout__selected"
-                }
-                `}
-          >
-            History
-          </Link>
-
-          <Link
-            to="/account/settings/security"
-            className={`
-                  AccountLayout__select
-                ${
-                  location.pathname.includes("settings") &&
-                  "AccountLayout__selected"
-                }
-                `}
-          >
-            Settings
-          </Link>
-
-          <Link
-            to="/account/help"
-            className={`
-                  AccountLayout__select
-                ${
-                  location.pathname === "/account/help" &&
-                  "AccountLayout__selected"
-                }
-                `}
-          >
-            Help
-          </Link>
-        </div>
+        <section className="AccountLayout__section">
+          {navLinks.map(({ path, label }) => (
+            <Link
+              key={path}
+              to={path}
+              className={`AccountLayout__select ${
+                isActive(path) ? "AccountLayout__selected" : ""
+              }`}
+            >
+              {label}
+            </Link>
+          ))}
+        </section>
       </div>
 
       <Outlet />

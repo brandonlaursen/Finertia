@@ -165,10 +165,10 @@ button {
   --page-margin-bottom: 10vh;
   --container-margin-top: 30px;
 
-  /* Borders */
+  /* * Borders */
   --border: 1px solid var(--border-color);
 
-  /* Gap */
+  /* * Gap */
   --page-gap: 3vw;
 
   /* * Background Colors */

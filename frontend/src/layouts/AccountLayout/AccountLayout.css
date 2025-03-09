@@ -6,13 +6,18 @@
   display: flex;
   flex-direction: column;
 
-  margin-top: 48px;
+  margin-top: 54px;
   background-color: var(--color-background);
   color: var(--color-text-primary);
   scrollbar-width: none;
 }
 
 .AccountLayout__main {
+  position: sticky;
+  top: 54px; /* Sticks to the top */
+  left: 0;
+
+
   height: 140px;
   width: 65vw;
 
@@ -23,6 +28,8 @@
   gap: 12px;
   padding-bottom: 12px;
   margin: 0px auto 0;
+
+  background-color: var(--color-background);
 
   border-bottom: 1px solid var(--border-color);
 }
