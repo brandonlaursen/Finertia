@@ -25,7 +25,8 @@
 }
 
 .SettingsLayout__section {
-  width: 180px;
+
+  width: clamp(100px, 100%, 180px);
   display: flex;
   flex-direction: column;
 
@@ -33,11 +34,12 @@
 }
 
 .SettingsLayout__title {
-  height: 30px;
+  height: 40px;
 
   color: var(--color-text-secondary);
 
   border-bottom: 1px solid var(--border-color);
+
 }
 
 .SettingsLayout__subtitle {
