@@ -33,13 +33,11 @@
 
 /* ========== List Item Header ========== */
 .ListItem__header {
-
   display: flex;
   align-items: center;
   padding: 4px 8px;
 
   border-radius: var(--border-radius-sm);
-
 }
 
 /* Hover effect for header */
@@ -66,7 +64,7 @@
 
 /* Stock/list name inside the list item */
 .ListItem__name {
-  font-size: var(--font-size-text-xs);
+  font-size: var(--font-size-text-sm);
   font-weight: var(--font-weight-normal);
 }
 
@@ -75,13 +73,10 @@
   flex-direction: column;
 
   gap: 2px;
-
 }
 
 .ListItem__item-count {
   font-size: var(--font-size-text-xs);
   color: var(--color-text-secondary);
   font-weight: var(--font-weight-normal);
-
-
 }
