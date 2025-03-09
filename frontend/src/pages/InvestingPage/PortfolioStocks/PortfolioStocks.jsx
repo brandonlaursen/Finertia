@@ -64,7 +64,7 @@ function PortfolioStocks({ stockInvestments, stockSummary }) {
       enabled: false,
     },
     colors: [
-      "#00F0A8", 
+      "#00F0A8",
       "#00E6A0",
       "#00DA98",
       "#00CF90",
@@ -97,8 +97,6 @@ function PortfolioStocks({ stockInvestments, stockSummary }) {
       </header>
 
       <main className="InvestingPage__main">
-        {console.log(stocks)}
-
         <table className="PortfolioStocks__stock-table">
           <thead>
             <tr>

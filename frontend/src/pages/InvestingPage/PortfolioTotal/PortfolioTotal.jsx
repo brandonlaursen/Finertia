@@ -58,7 +58,7 @@ function PortfolioTotal({
       enabled: false,
     },
     colors: [
-      "#00F0A8", 
+      "#00F0A8",
       "#00E6A0",
       "#00DA98",
       "#00CF90",
@@ -99,7 +99,9 @@ function PortfolioTotal({
               <span className="PortfolioTotal__section-value">
                 {stockPercentage.toFixed(2)}%
               </span>
-              <span>${stockInvestments.toFixed(2)}</span>
+              <span className="PortfolioTotal__section-value">
+                ${stockInvestments.toFixed(2)}
+              </span>
             </div>
           </div>
 
@@ -111,7 +113,9 @@ function PortfolioTotal({
               <span className="PortfolioTotal__section-value">
                 {balancePercentage.toFixed(2)}%
               </span>
-              <span>${balance.toFixed(2)}</span>
+              <span className="PortfolioTotal__section-value">
+                ${balance.toFixed(2)}
+              </span>
             </div>
           </div>
         </section>

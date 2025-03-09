@@ -9,9 +9,7 @@
   margin-bottom: 4px;
 }
 
-.InvestingPage__section {
-  width: 100%;
-}
+
 
 .InvestingPage__section > *:last-child {
   border-bottom: 1px solid var(--border-color);
@@ -26,6 +24,7 @@
 
   border-top: 1px solid var(--border-color);
   cursor: pointer;
+
 }
 
 .PortfolioTotal__section:hover {
@@ -45,12 +44,18 @@
   display: flex;
 
   gap: 20px;
-  padding-right: 48px;
 
   font-size: 12px;
   font-weight: 500;
+
+  width: 142px;
+
+
 }
 
 .PortfolioTotal__section-value {
   color: var(--color-text-secondary);
+
+  width: 50px;
+
 }
