@@ -2,13 +2,13 @@
 
 /* Main container for the login page */
 .LoginPage {
-  height: 100vh;
+  height: 100%;
   min-height: 100vh;
 
   display: flex;
   flex-direction: row;
 
-  background-color: var(--color-black);
+  background-color: black;
 }
 
 /* ========== Sidebar Section ========== */
@@ -38,8 +38,8 @@
   margin-left: 32px;
   margin-right: 32px;
 
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: black;
+  color: white;
 
   padding-bottom: 64px;
 }
@@ -52,18 +52,28 @@
   flex-direction: column;
   padding: 16px;
   gap: 16px;
-  font-size: 14px;
+  font-size: 13px;
+
+  width: 95%;
+  max-width: 690px;
 }
 
 /* Form header (Login title) */
 .LoginPage__form header {
   margin-bottom: 16px;
   font-size: 18px;
+  font-weight: 500;
+}
+
+.LoginPage__form label {
+  font-weight: 500;
 }
 
 /* Password input wrapper */
 .LoginPage__form__password {
   width: 100%;
+
+
   position: relative;
   display: flex;
   align-items: center;
@@ -77,11 +87,13 @@
   padding-right: 40px;
   padding-left: 12px;
 
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: black;
+  color: white;
 
-  border: 1px solid var(--border-color);
-  border-radius: 5px;
+  border: 1px solid rgb(48, 54, 58);
+  border-radius: 4px;
+
+  font-weight: 500;
 }
 
 /* Password visibility toggle icon */
@@ -89,8 +101,8 @@
   position: absolute;
   right: 10px;
   font-size: 18px;
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: black;
+  color: white;
   cursor: pointer;
 }
 
@@ -98,13 +110,14 @@
 
 /* Error message container */
 .LoginPage__form__errors {
-  min-height: 50px;
+  height: 42px;
   display: inline-flex;
   align-items: center;
   padding-left: 10px;
-  font-size: 14px;
-  background-color: var(--dark-grey);
-  border-radius: var(--border-radius-xs);
+  font-size: 13px;
+  font-weight: 500;
+  background-color: rgb(30, 33, 37);
+  border-radius: 4px;
 }
 
 /* Icon inside the error message */
@@ -128,33 +141,31 @@
   height: 40px;
   gap: 8px;
   padding: 0 32px;
-  font-weight: var(--font-weight-bold);
-  border-radius: var(--button-border-radius-lg);
-  white-space: nowrap;
+  font-weight: 600;
+  border-radius: 44px;
 }
 
 /* Login button */
 .LoginPage__form__login-account-btn {
-  background-color: var(--color-white);
-  color: var(--color-black);
-  border: none;
+  background-color: #07de96;
+  color: black;
 }
 
 /* Login button hover effect */
 .LoginPage__form__login-account-btn:hover {
-  background-color: var(--color-accent);
+  background-color: rgb(7, 239, 162);
 }
 
 /* Create account button */
 .LoginPage__form__create-account-btn {
-  background-color: var(--color-black);
-  color: var(--color-white);
-  border: 1px solid var(--color-white);
+  background-color: black;
+  color: white;
+  border: 1px solid white;
 }
 
 /* Create account button hover effect */
 .LoginPage__form__create-account-btn:hover {
-  background-color: var(--dark-grey);
+  background-color: rgb(40, 40, 40);
 }
 
 /* ========== Responsive Design ========== */
