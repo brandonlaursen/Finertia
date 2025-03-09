@@ -25,23 +25,25 @@ function AccountLayout() {
   return (
     <div className="AccountLayout">
       <div className="AccountLayout__main">
-        <header className="AccountLayout__username">
-          {sessionUser.firstName} {sessionUser.lastName}
-        </header>
+        <div className="AccountLayout__main-wrapper">
+          <header className="AccountLayout__username">
+            {sessionUser.firstName} {sessionUser.lastName}
+          </header>
 
-        <section className="AccountLayout__section">
-          {navLinks.map(({ path, label }) => (
-            <Link
-              key={path}
-              to={path}
-              className={`AccountLayout__select ${
-                isActive(path) ? "AccountLayout__selected" : ""
-              }`}
-            >
-              {label}
-            </Link>
-          ))}
-        </section>
+          <section className="AccountLayout__section">
+            {navLinks.map(({ path, label }) => (
+              <Link
+                key={path}
+                to={path}
+                className={`AccountLayout__select ${
+                  isActive(path) ? "AccountLayout__selected" : ""
+                }`}
+              >
+                {label}
+              </Link>
+            ))}
+          </section>
+        </div>
       </div>
 
       <Outlet />
