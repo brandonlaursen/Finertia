@@ -22,7 +22,8 @@ router.post("/", async (req, res) => {
   const { id } = req.user;
 
   const { name, emoji, stockIds } = req.body;
-
+  console.log("creating list");
+  console.log(name, emoji, stockIds, id);
   const newList = await StockList.create(
     {
       userId: id,
@@ -34,13 +35,14 @@ router.post("/", async (req, res) => {
       include: [Stock],
     }
   );
-
+  console.log(newList);
   if (stockIds) {
     for (const stockId of stockIds) {
       await newList.addStocks(stockId);
     }
   }
 
+  console.log(newList);
   return res.json(newList);
 });
 

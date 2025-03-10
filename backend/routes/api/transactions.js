@@ -151,7 +151,7 @@ router.get("/stock-summary", async (req, res) => {
         oneYearAggregates: [],
         fiveYearsAggregates: [],
       };
-
+      await t.rollback();
       return res.json(userSummary);
     }
     const processedTransactions = processTransactionSummary(
