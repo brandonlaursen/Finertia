@@ -113,3 +113,21 @@
   --theme-primary-hover: rgb(119, 119, 119);
   --theme-primary-hover-light: rgba(94, 94, 94, 0.3);
 }
+
+.theme-cyan {
+  --theme-primary-color: rgb(0, 188, 212);
+  --theme-primary-hover: rgb(3, 204, 231);
+  --theme-primary-hover-light: rgb(0, 188, 212, 0.3);
+}
+
+.theme-coral {
+  --theme-primary-color: rgb(255, 105, 97);
+  --theme-primary-hover: rgb(254, 125, 118);
+  --theme-primary-hover-light: rgb(255, 105, 97, 0.2);
+}
+
+.theme-lavender {
+  --theme-primary-color: rgb(230, 190, 255);
+  --theme-primary-hover: rgb(234, 202, 254);
+  --theme-primary-hover-light: rgb(230, 190, 255, .2);
+}
