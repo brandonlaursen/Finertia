@@ -37,7 +37,7 @@ function StockOverview({ stock, selectedTimeFrame }) {
             }`}
           >
             {` (${
-              regular_trading_change_percent < 0 ? "" : "+"
+              regular_trading_change_percent <= 0 ? "" : "+"
             }${regular_trading_change_percent?.toFixed(2)}%)`}
           </span>
         </span>
@@ -73,11 +73,11 @@ function StockOverview({ stock, selectedTimeFrame }) {
               2
             )}%)`}
           </span>
-          <span className="StockOverview__market-hours">Overnight</span>
+          <span className="StockOverview__market-hours">Market Closed</span>
         </section>
       ) : (
         <section className="StockOverview__market-hours">
-          {selectedTimeFrame === "1D" ? `24 Hour Market` : ""}
+          {selectedTimeFrame === "1D" ? `Regular Trading Hours` : ""}
         </section>
       )}
     </div>

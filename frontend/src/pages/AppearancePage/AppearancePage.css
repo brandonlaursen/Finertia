@@ -1,11 +1,12 @@
 .AppearancePage {
   height: 100%;
-  width: 70%;
+  width: 50%;
 
   display: flex;
   flex-direction: column;
 
   font-size: 14px;
+  font-weight: 500;
 }
 
 .AppearancePage__content {
@@ -14,8 +15,9 @@
 
   gap: 10px;
   padding-top: 30px;
+  padding-bottom: 16px;
 
-  border-bottom: 1px solid rgb(231, 231, 231);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .AppearancePage__title {
@@ -28,8 +30,88 @@
 }
 
 .AppearancePage__subtitle {
-  height: 20px;
+  display: flex;
+  align-items: center;
 
-  align-content: center;
-  margin-bottom: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.AppearancePage__theme {
+  display: flex;
+  justify-content: space-between;
+}
+
+.AppearancePage__theme-selector {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.AppearancePage__dropdown__menu {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+
+  width: 200px;
+
+  padding: 8px 8px;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.AppearancePage__dropdown__menu--active {
+  border-color: var(--theme-primary-color);
+}
+
+.AppearancePage__dropdown__arrows {
+  height: 14px;
+  width: 14px;
+}
+
+.AppearancePage__dropdown {
+  position: absolute;
+  top: 100%;
+  left: -1px;
+  width: 200px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-top: 4px;
+
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+
+  background-color: var(--color-surface);
+  z-index: 10;
+
+  cursor: pointer;
+}
+
+.AppearancePage__dropdown__option {
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+}
+
+.AppearancePage__dropdown__option:hover {
+  background-color: var(--color-hover-secondary-light);
+}
+
+.AppearancePage__dropdown__option--selected {
+  color: var(--color-background);
+  background-color: var(--theme-primary-color);
+  font-weight: 600;
+}
+
+.AppearancePage__dropdown__option--selected:hover {
+  color: var(--color-background);
+  background-color: var(--theme-primary-color);
 }

@@ -111,7 +111,7 @@ function StocksPage() {
               scrolled ? "StocksPage__hide--description" : ""
             }`}
           >
-            Explore some of the most popular stocks.
+            Explore all the available stocks.
           </section>
 
           <StocksTable

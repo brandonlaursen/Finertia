@@ -40,6 +40,11 @@ function TransferModalFooter({
     setIsLoading(false);
 
     if (to === "Individual") {
+      if (amount > 1_000_000) {
+        setError("Max deposit is limited to 1000000 for each deposit");
+        setDisableButton(true);
+        return;
+      }
       await dispatch(depositFunds(Number(amount)));
     }
     if (to === "Bank") {
@@ -68,7 +73,6 @@ function TransferModalFooter({
     setNotificationMessage([]);
   }
 
- 
   return (
     <div className="TransferModalFooter">
       {showConfirmation ? (
