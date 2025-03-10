@@ -20,8 +20,16 @@ function InvestingPage() {
   const balance = Number(stockSummary.balance);
   const total = Number((stockInvestments + balance).toFixed(2));
 
-  const balancePercentage = (balance / total) * 100;
-  const stockPercentage = (stockInvestments / total) * 100;
+  let balancePercentage;
+  let stockPercentage;
+
+  if (balance === 0) {
+    balancePercentage = 0;
+    stockPercentage = 0;
+  } else {
+    balancePercentage = (balance / total) * 100;
+    stockPercentage = (stockInvestments / total) * 100;
+  }
 
   useEffect(() => {
     dispatch(fetchStockTransactions());

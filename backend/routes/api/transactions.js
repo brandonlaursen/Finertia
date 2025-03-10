@@ -139,7 +139,21 @@ router.get("/stock-summary", async (req, res) => {
       }),
     ]);
 
-    console.log(userTransactions, accountTransactions);
+    if (accountTransactions.length === 0) {
+      const userSummary = {
+        totalInvestments: 0,
+        balance: 0,
+        stocksOwned: {},
+        oneDayAggregates: [],
+        oneWeekAggregates: [],
+        oneMonthAggregates: [],
+        threeMonthsAggregates: [],
+        oneYearAggregates: [],
+        fiveYearsAggregates: [],
+      };
+
+      return res.json(userSummary);
+    }
     const processedTransactions = processTransactionSummary(
       userTransactions,
       accountTransactions
