@@ -104,6 +104,7 @@
 
 .ProfilePageUserInfo__information__edit:hover {
   color: var(--theme-primary-color);
+  text-decoration-color: var(--theme-primary-color);
 }
 
 .ProfilePageUserInfo__profile-skeleton {

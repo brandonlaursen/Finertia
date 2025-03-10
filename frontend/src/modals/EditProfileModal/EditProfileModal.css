@@ -90,6 +90,7 @@
   right: 145px;
 
   background-color: var(--color-background);
+  color: var(--theme-primary-color);
   border-radius: 50%;
   cursor: pointer;
 }
@@ -146,13 +147,25 @@
 }
 
 .EditProfileModal__color-btn {
+  position: relative;
   height: 48px;
   width: 48px;
 
-  background-color: var(--color-surface-secondary);
 
   border-radius: 50%;
   cursor: pointer;
+}
+
+.EditProfileModal__check-mark {
+  position: absolute;
+  right: -5px;
+  top: -5px;
+  height: 22px;
+  width: 22px;
+
+  background-color: var(--color-background);
+  border-radius: 50%;
+  color: var(--theme-primary-color);
 }
 
 .EditProfileModal__section__save {

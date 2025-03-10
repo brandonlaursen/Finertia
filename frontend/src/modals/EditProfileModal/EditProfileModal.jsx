@@ -1,6 +1,7 @@
 import "./EditProfileModal.css";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { FiPlusCircle } from "react-icons/fi";
+import { IoIosCheckmarkCircle } from "react-icons/io";
 
 import { useDispatch } from "react-redux";
 import { useState, useRef } from "react";
@@ -14,9 +15,11 @@ import { useModal } from "../../context/Modal";
 import { useAccentTheme } from "../../context/AccentThemeContext";
 
 function EditProfileModal({ sessionUser }) {
-  const { closeModal } = useModal();
   const dispatch = useDispatch();
-  const { toggleAccentTheme } = useAccentTheme();
+
+  const { closeModal } = useModal();
+
+  const { toggleAccentTheme, selectedAccentTheme } = useAccentTheme();
 
   const fileInputRef = useRef(null);
 
@@ -27,6 +30,7 @@ function EditProfileModal({ sessionUser }) {
 
   const [preview, setPreview] = useState(false);
   const [previewImage, setPreviewImage] = useState(null);
+  const [newAccentTheme, setNewAccentTheme] = useState(selectedAccentTheme);
 
   const DEFAULT_IMAGE =
     "https://finertia.s3.amazonaws.com/public/1739990232538.png";
@@ -37,6 +41,8 @@ function EditProfileModal({ sessionUser }) {
     setIsLoading(true);
     await new Promise((resolve) => setTimeout(resolve, 1000));
     setIsLoading(false);
+
+    toggleAccentTheme(newAccentTheme);
 
     const editedProfile = {
       username: userName,
@@ -69,6 +75,10 @@ function EditProfileModal({ sessionUser }) {
     setPreviewImage(DEFAULT_IMAGE);
     setPreview(true);
   };
+
+  function handleAccentTheme(color) {
+    setNewAccentTheme(color);
+  }
 
   return (
     <div className="EditProfileModal">
@@ -153,8 +163,15 @@ function EditProfileModal({ sessionUser }) {
                   key={color}
                   className="EditProfileModal__color-btn"
                   style={{ backgroundColor: color }}
-                  onClick={() => toggleAccentTheme(color)}
-                ></div>
+                  onClick={() => handleAccentTheme(color)}
+                >
+                  {newAccentTheme === color && (
+                    <IoIosCheckmarkCircle
+                      className="EditProfileModal__check-mark"
+                      style={{ color: color }}
+                    />
+                  )}
+                </div>
               ))}
             </div>
           </div>
@@ -163,6 +180,7 @@ function EditProfileModal({ sessionUser }) {
             <button
               className="EditProfileModal__section_save-button"
               onClick={handleSubmit}
+              style={{ backgroundColor: newAccentTheme }}
             >
               {isLoading ? (
                 <span className="StockTransaction__spinner"></span>
