@@ -27,7 +27,7 @@ function EditListModal({ list, setNotifications, setNotificationMessage }) {
   };
 
   async function handleSubmit(e) {
-    console.log(listName, "handle submit");
+
     e.preventDefault();
 
     setIsLoading(true);
@@ -56,7 +56,6 @@ function EditListModal({ list, setNotifications, setNotificationMessage }) {
     setNotificationMessage([]);
   }
 
-  console.log("edit list modal");
   return (
     <form className="EditListModal" onSubmit={handleSubmit}>
       <ModalOverlay closeModal={closeModal} />

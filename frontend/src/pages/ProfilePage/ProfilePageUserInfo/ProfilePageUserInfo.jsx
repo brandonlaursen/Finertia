@@ -41,7 +41,7 @@ function ProfilePageUserInfo() {
 
   const handleRemoveImage = async () => {
     setProfilePic(DEFAULT_IMAGE);
-    console.log("in handle remove image");
+
     await dispatch(
       editUser({ username: sessionUser.username, image: DEFAULT_IMAGE })
     );

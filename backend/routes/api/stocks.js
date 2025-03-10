@@ -130,7 +130,7 @@ const checkMarketStatus = async (req, res, next) => {
     );
 
     const marketStatus = await response.json();
-    console.log("===>", marketStatus.market);
+   
     if (marketStatus.market === "open") {
       next();
     } else {
@@ -355,7 +355,7 @@ router.get("/lists/:stockSymbol", checkMarketStatus, async (req, res) => {
       x: aggregate.t,
       y: aggregate.c,
     }));
-  
+
     return res.json({ stockSymbol, oneDayAggregates });
   } catch (error) {
     console.log(error);

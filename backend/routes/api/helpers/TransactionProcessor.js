@@ -66,7 +66,6 @@ class TransactionProcessor {
           this.stockSharesTracker.allStocksEverOwned.add(stockSymbol);
         }
       } else {
-        console.log("Insufficient balance to buy shares.");
       }
     } else if (transactionType === "sell") {
       if (currentShares >= quantityFixed) {
@@ -78,7 +77,6 @@ class TransactionProcessor {
             (this.stockSharesTracker.balance + totalPrice) * MULTIPLIER_100
           ) / MULTIPLIER_100;
       } else {
-        console.log("Insufficient shares to sell.");
         stock.totalShares = 0;
       }
     }

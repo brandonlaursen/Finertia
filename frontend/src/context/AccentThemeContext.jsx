@@ -35,7 +35,6 @@ export function AccentThemeProvider({ children }) {
   }, [selectedAccentTheme]);
 
   const toggleAccentTheme = (newSelectedAccentTheme) => {
-    console.log(newSelectedAccentTheme);
     setSelectedAccentTheme(newSelectedAccentTheme);
   };
 
