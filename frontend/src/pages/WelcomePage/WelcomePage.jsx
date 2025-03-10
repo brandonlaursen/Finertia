@@ -1,6 +1,9 @@
 import "./WelcomePage.css";
 import { LuInfo } from "react-icons/lu";
 import { FaSpaceShuttle } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa6";
+import { FaLinkedin } from "react-icons/fa6";
+import { FaUserAstronaut } from "react-icons/fa6";
 
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -68,20 +71,28 @@ function WelcomePage() {
 
       <footer className="WelcomePage__footer">
         <div className="footer-content">
-          <p>Brandon Laursen</p>|
-          <a
-            href="https://www.linkedin.com/in/your-profile"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            LinkedIn
-          </a>{" "}
+          <p className="footer-content">
+            <FaUserAstronaut />
+            Brandon Laursen
+          </p>
           |
           <a
-            href="https://github.com/your-profile"
+            href="https://www.linkedin.com/in/brandon-laursen-398563218/"
             target="_blank"
             rel="noopener noreferrer"
+            className="footer-content"
           >
+            <FaLinkedin />
+            LinkedIn
+          </a>
+          |
+          <a
+            href="https://github.com/brandonlaursen"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="footer-content"
+          >
+            <FaGithub />
             GitHub
           </a>
         </div>
