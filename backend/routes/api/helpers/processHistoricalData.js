@@ -25,6 +25,7 @@ async function processHistoricalData(processedTransactions) {
     ...Object.keys(lastTransaction.stockSharesOwned),
   ];
 
+
   const aggregateData = {};
   const allTimestamps = new Set();
 
@@ -33,6 +34,7 @@ async function processHistoricalData(processedTransactions) {
       `https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/5/minute/${roundedTransactionTimestamp}/${todaysDate}?adjusted=true&sort=asc&apiKey=${process.env.STOCK_API_KEY2}`
     );
     const data = await response.json();
+
     const currentStocksAggregates = data.results || [];
 
     for (let aggregate of currentStocksAggregates) {

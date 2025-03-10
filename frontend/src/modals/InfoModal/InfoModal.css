@@ -1,0 +1,64 @@
+/* ========== Add To List Modal ========== */
+/* Modal container and overlay */
+.InfoModal {
+  position: fixed;
+  top: 350px;
+  left: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 100;
+
+  color: var(--color-text-primary-light);
+}
+
+/* ========= Modal Container ========= */
+/* Modal Main */
+.InfoModal__main {
+  position: absolute;
+
+  width: 500px;
+
+  display: flex;
+  flex-direction: column;
+  padding: 16px 24px;
+
+  background-color: var(--color-surface);
+  border-radius: 4px;
+}
+
+/* ========== Create New List Section ========== */
+
+/* Create New List Section */
+.InfoModal__contents {
+  position: relative;
+
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+
+  overflow: auto;
+}
+
+.InfoModal__section {
+  margin-bottom: 8px;
+}
+
+.InfoModal__header {
+  display: block;
+
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.InfoModal__text {
+  font-size: 13px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}

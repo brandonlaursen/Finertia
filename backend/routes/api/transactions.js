@@ -117,7 +117,6 @@ router.get("/stock-transactions", async (req, res) => {
 });
 
 router.get("/stock-summary", async (req, res) => {
-
   const { id } = req.user;
 
   const t = await sequelize.transaction();
@@ -139,7 +138,6 @@ router.get("/stock-summary", async (req, res) => {
       }),
     ]);
 
-
     if (accountTransactions.length === 0) {
       const userSummary = {
         totalInvestments: 0,
@@ -160,22 +158,19 @@ router.get("/stock-summary", async (req, res) => {
       accountTransactions
     );
 
-
     const processedHistoricalData = await processHistoricalData(
       processedTransactions
     );
-
-
 
     const mergedTransactionData = mergeTransactionAndAggregateData(
       processedTransactions,
       processedHistoricalData
     );
 
+
     const mergedTransactionDataArray = Object.values(mergedTransactionData);
     const lastTransaction =
       mergedTransactionDataArray[mergedTransactionDataArray.length - 1];
-
 
     const userHistoricalData = Object.values(mergedTransactionData).map(
       (data) => ({
@@ -217,6 +212,15 @@ router.post("/trade/:stockId", async (req, res) => {
     stockName,
     stockSymbol,
   } = req.body;
+
+  console.log(
+    stockId,
+    stockPrice,
+    quantity,
+
+    stockName,
+    stockSymbol
+  );
 
   const t = await sequelize.transaction();
 
@@ -301,7 +305,7 @@ router.post("/trade/:stockId", async (req, res) => {
       processedHistoricalData
     );
 
-    const mergedTransactionDataArray = Object.values(mergedTransactionData);
+    // const mergedTransactionDataArray = Object.values(mergedTransactionData);
 
     const userHistoricalData = Object.values(mergedTransactionData).map(
       (data) => ({

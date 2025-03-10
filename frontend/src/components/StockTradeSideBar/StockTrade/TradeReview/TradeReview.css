@@ -76,6 +76,56 @@
   background-color: var(--button-primary-hover-light);
 }
 
+.TradeReview__market-closed {
+  position: relative;
+  height: 32px;
+  width: 90%;
+
+  display: flex;
+  align-items: center;
+
+  padding: 8px 8px;
+
+  margin-bottom: 8px;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  background-color: var(--color-surface);
+  color: var(--theme-primary-color);
+
+  border: 1px solid var(--theme-primary-color);
+  border-radius: 4px;
+}
+
+.TradeReview__market-closed__info {
+  height: 24px;
+  width: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 4px;
+  margin-right: 2px;
+}
+
+.TradeReview__market-closed__info:hover {
+  background-color: var(--color-hover-secondary-dark);
+}
+
+.TradeReview__market-closed__info-icon {
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.TradeReview__review-button--disabled {
+  background-color: var(--disabled-button-color);
+}
+.TradeReview__review-button--disabled:hover {
+  background-color: var(--disabled-button-color);
+}
+
 /* ========== Review Confirmation Section ========== */
 /* Container for confirmation messages after submitting a trade */
 .TradeReview__confirmation {

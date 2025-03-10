@@ -130,12 +130,13 @@ const checkMarketStatus = async (req, res, next) => {
     );
 
     const marketStatus = await response.json();
-   
+
     if (marketStatus.market === "open") {
-      next();
+      req.marketStatus = "open";
     } else {
-      return res.json({ message: "Market Closed", marketStatus: "closed" });
+      req.marketStatus = "closed";
     }
+    next();
   } catch (error) {
     console.error("Error updating database:", error);
     next(error);
@@ -148,6 +149,7 @@ router.get(
   updateDatabaseMiddleware,
   async (req, res) => {
     const { stockSymbol } = req.params;
+
 
     const stock = await Stock.findOne({
       where: { stockSymbol },
@@ -326,6 +328,7 @@ router.get(
         threeMonthsAggregates,
         oneYearAggregates,
         fiveYearsAggregates,
+        marketStatus: req.marketStatus
       };
 
       return res.json(stockData);
@@ -349,7 +352,6 @@ router.get("/lists/:stockSymbol", checkMarketStatus, async (req, res) => {
     );
 
     const oneDayData = await oneDayDataResponse.json();
-
 
     const oneDayAggregates = oneDayData.results.map((aggregate) => ({
       x: aggregate.t,

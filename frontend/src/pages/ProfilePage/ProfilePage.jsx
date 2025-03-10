@@ -53,7 +53,7 @@ function ProfilePage() {
 
       <section className="ProfilePage__total">
         <span className="ProfilePage__total__balance">
-          ${stockSummary?.balance?.toFixed(2)}
+          ${stockSummary ? stockSummary?.balance?.toFixed(2) : 0}
         </span>
         Total in Finertia
       </section>
@@ -73,7 +73,7 @@ function ProfilePage() {
             </span>
             <span className="ProfilePage__investments__details__value-subtext">
               {" "}
-              ${total ? total.toFixed(2) : ""}
+              ${total ? total.toFixed(2) : "0.00"}
             </span>
           </div>
 

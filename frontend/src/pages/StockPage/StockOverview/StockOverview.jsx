@@ -58,7 +58,7 @@ function StockOverview({ stock, selectedTimeFrame }) {
         </span>
       </section>
 
-      {market_status === "closed" ? (
+      {market_status === "late_trading" ? (
         <section className="StockOverview__section">
           <span
             className={`StockOverview__change  ${
@@ -73,7 +73,7 @@ function StockOverview({ stock, selectedTimeFrame }) {
               2
             )}%)`}
           </span>
-          <span className="StockOverview__market-hours">Market Closed</span>
+          <span className="StockOverview__market-hours">After-Hours</span>
         </section>
       ) : (
         <section className="StockOverview__market-hours">

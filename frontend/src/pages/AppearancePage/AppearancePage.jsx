@@ -37,7 +37,7 @@ function AppearancePage() {
             }`}
             onClick={() => setShowDropdown(!showDropdown)}
           >
-            <span>Light</span>
+            <span>{isDarkMode ? "Dark" : "Light"}</span>
             <TiArrowUnsorted className="AppearancePage__dropdown__arrows" />
             {showDropdown && (
               <div className="AppearancePage__dropdown">

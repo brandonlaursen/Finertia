@@ -45,7 +45,7 @@ function TradeSummary({
               <span className="TradeSummary__error-message">{errors[1]}</span>
             </div>
           )}
-          {messages && (
+          {messages && !errors && (
             <div className="TradeSummary__errors">
               <span className="TradeSummary__title">
                 <MdInfoOutline className="TradeSummary__error-icon" />

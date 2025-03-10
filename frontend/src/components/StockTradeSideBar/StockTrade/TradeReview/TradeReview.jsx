@@ -1,4 +1,5 @@
 import "./TradeReview.css";
+import { LuInfo } from "react-icons/lu";
 
 import { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -6,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { executeStockTrade } from "../../../../../store/transactions";
 
 import TransferModal from "../../../../modals/TransferModal";
+import InfoModal from "../../../../modals/InfoModal/InfoModal";
 
 import { useModal } from "../../../../context/Modal";
 
@@ -31,7 +33,7 @@ function TradeReview({
   setMessages,
   setNotifications,
   setNotificationMessage,
-  setReviewingTrade
+  setReviewingTrade,
 }) {
   const dispatch = useDispatch();
   const { setModalContent, setModalClass } = useModal();
@@ -137,11 +139,17 @@ function TradeReview({
       {showReview && errors && (
         <>
           {tradeType === "buy" && errors[0] === "Not Enough Buying Power." && (
-            <button className="TradeReview__button TradeReview__deposit-button" onClick={handleDeposit}>
+            <button
+              className="TradeReview__button TradeReview__deposit-button"
+              onClick={handleDeposit}
+            >
               Make Deposit
             </button>
           )}
-          <button className="TradeReview__button TradeReview__dismiss-button" onClick={clearReview}>
+          <button
+            className="TradeReview__button TradeReview__dismiss-button"
+            onClick={clearReview}
+          >
             Dismiss
           </button>
         </>
@@ -160,24 +168,52 @@ function TradeReview({
               "Submit Order"
             )}
           </button>
-          <button className="TradeReview__button TradeReview__cancel-button" onClick={clearReview}>
+          <button
+            className="TradeReview__button TradeReview__cancel-button"
+            onClick={clearReview}
+          >
             Cancel
           </button>
         </div>
       )}
 
       {!showReview && (
-        <button
-          className="TradeReview__button TradeReview__review-button"
-          onClick={handleStockTradeReview}
-          disabled={isLoading}
-        >
-          {isLoading ? (
-            <span className="TradeReview__spinner"></span>
-          ) : (
-            "Review Order"
+        <>
+          {stock.marketStatus === "closed" && (
+            <span className="TradeReview__market-closed">
+              <span className="TradeReview__market-closed__info">
+                <LuInfo
+                  className="TradeReview__market-closed__info-icon"
+               
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setModalContent(<InfoModal />);
+                    setModalClass({
+                      modal: "AddToListModal",
+                      modalBackground: "AddToListModal__background",
+                      modalContainer: "AddToListModal__container",
+                    });
+                  }}
+                />
+              </span>
+              Market Closed
+            </span>
           )}
-        </button>
+          <button
+            className={`TradeReview__button TradeReview__review-button ${
+              stock.marketStatus === "closed" &&
+              "TradeReview__review-button--disabled"
+            }`}
+            onClick={handleStockTradeReview}
+            disabled={isLoading || stock.marketStatus === "closed"}
+          >
+            {isLoading ? (
+              <span className="TradeReview__spinner"></span>
+            ) : (
+              "Review Order"
+            )}
+          </button>
+        </>
       )}
     </div>
   );
