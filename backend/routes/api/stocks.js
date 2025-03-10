@@ -336,6 +336,33 @@ router.get(
   }
 );
 
+router.get("/lists/:stockSymbol", checkMarketStatus, async (req, res) => {
+  const { stockSymbol } = req.params;
+
+
+  try {
+    const todaysDate = getDate();
+    const oneDayAway = getDate(1);
+
+    const oneDayDataResponse = await fetch(
+      `https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/5/minute/${oneDayAway}/${todaysDate}?adjusted=true&sort=asc&apiKey=${process.env.STOCK_API_KEY2}`
+    );
+
+    const oneDayData = await oneDayDataResponse.json();
+
+
+    const oneDayAggregates = oneDayData.results.map((aggregate) => ({
+      x: aggregate.t,
+      y: aggregate.c,
+    }));
+  
+    return res.json({ stockSymbol, oneDayAggregates });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error, message: "Failed to fetch stock data" });
+  }
+});
+
 // * Get all stocks
 router.get("/", async (req, res) => {
   try {

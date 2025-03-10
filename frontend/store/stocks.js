@@ -9,6 +9,8 @@ const SET_STOCKS_NEWS = "stocks/SET_STOCKS_NEWS";
 const UPDATE_LIST_STOCKS = "lists/UPDATE_LIST_STOCKS";
 const REMOVE_USER = "session/removeUser";
 
+const SET_CURRENT_STOCK_FOR_LIST = "lists/SET_CURRENT_STOCK_FOR_LIST";
+
 // * Action Creators
 export const setAllStocks = (stocks) => ({
   type: SET_ALL_STOCKS,
@@ -17,6 +19,11 @@ export const setAllStocks = (stocks) => ({
 
 export const setCurrentStock = (currentStock) => ({
   type: SET_CURRENT_STOCK,
+  currentStock,
+});
+
+export const setCurrentStockForLists = (currentStock) => ({
+  type: SET_CURRENT_STOCK_FOR_LIST,
   currentStock,
 });
 
@@ -53,6 +60,24 @@ export const fetchStock = (stockSymbol) => async (dispatch) => {
 
     const data = await response.json();
     dispatch(setCurrentStock(data));
+  } catch (error) {
+    console.error("Error fetching stock:", error);
+    throw error;
+  }
+};
+
+export const fetchStockForList = (stockSymbol) => async (dispatch) => {
+
+  try {
+    const response = await csrfFetch(`/api/stocks/lists/${stockSymbol}`);
+
+    if (!response.ok) {
+      throw new Error("Stock not found");
+    }
+
+    const data = await response.json();
+
+    dispatch(setCurrentStockForLists(data));
   } catch (error) {
     console.error("Error fetching stock:", error);
     throw error;
@@ -119,7 +144,7 @@ export const selectStocksObject = createSelector(
 );
 
 // * Stock Reducer
-const initialState = { allStocks: [], currentStock: {} };
+const initialState = { allStocks: [], currentStock: {}, listStocks: {} };
 
 const stockReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -142,6 +167,17 @@ const stockReducer = (state = initialState, action) => {
         currentStock: {
           ...action.currentStock,
           listIds: [...action.currentStock.listIds],
+        },
+      };
+    }
+    case SET_CURRENT_STOCK_FOR_LIST: {
+      return {
+        ...state,
+        listStocks: {
+          ...state.listStocks,
+          [action.currentStock.stockSymbol]: [
+            ...action.currentStock.oneDayAggregates,
+          ],
         },
       };
     }

@@ -3,19 +3,11 @@ import ReactApexChart from "react-apexcharts";
 
 import { useState } from "react";
 
-function TinyChart({ o, h, c }) {
-  const mediumValue = (o + h + c) / 3;
-
-  const data = [
-    { x: 1, y: o },
-    { x: 2, y: h },
-    { x: 3, y: c },
-  ];
-
+function TinyChart({ aggregates, todays_change_percent }) {
   const series = [
     {
       name: "Price",
-      data,
+      data: aggregates,
     },
   ];
 
@@ -29,18 +21,9 @@ function TinyChart({ o, h, c }) {
       },
       sparkline: { enabled: true },
     },
-    colors: [c < o ? "#FF4560" : "#00E396"],
+    colors: [todays_change_percent < 0 ? "#FF4560" : "#00E396"],
     stroke: { width: 1, curve: "straight" },
-    annotations: {
-      yaxis: [
-        {
-          y: mediumValue,
-          borderColor: "var(--border-color)",
-          borderWidth: 1,
-          strokeDashArray: "1, 15",
-        },
-      ],
-    },
+
     tooltip: {
       enabled: false,
     },
