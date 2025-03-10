@@ -12,15 +12,12 @@ function ListStockItem({ stock, stocks, navigate }) {
   const { symbol = stock.stockSymbol, sharesOwned } = stock;
 
   const listStocks = useSelector((state) => state.stocks.listStocks);
-  console.log(" listStocks:", listStocks);
 
   const stockInfo = Object.values(stocks).find(
     (stock) => stock.symbol === symbol
   );
 
-
   useEffect(() => {
-
     async function fetchStockData() {
       await dispatch(fetchStockForList(symbol));
     }
@@ -30,10 +27,8 @@ function ListStockItem({ stock, stocks, navigate }) {
     }
   }, [symbol, dispatch]);
 
-
-
   const { id, current_price, todays_change_percent } = stockInfo;
-  console.log(stockInfo)
+
   return (
     <article
       className="ListStockItem"
@@ -47,7 +42,10 @@ function ListStockItem({ stock, stocks, navigate }) {
         </span>
       </section>
 
-      <TinyChart aggregates={listStocks[symbol]} todays_change_percent={todays_change_percent}/>
+      <TinyChart
+        aggregates={listStocks[symbol]}
+        todays_change_percent={todays_change_percent}
+      />
 
       <section className="ListStockItem__stats">
         <span> ${current_price.toFixed(2)}</span>
