@@ -46,6 +46,8 @@ export const fetchLists = () => async (dispatch) => {
 export const createList =
   ({ name, emoji, stockIds }) =>
   async (dispatch) => {
+
+    console.log('entering list thunk')
     const response = await csrfFetch("/api/lists", {
       method: "POST",
       body: JSON.stringify({

@@ -42,8 +42,7 @@ function mergeTransactionAndAggregateData(
     if (processedTransactions[tsStr]) {
       // get the transaction object at this timestamp
       const transaction = processedTransactions[tsStr];
-      // console.log('transaction', transaction);
-
+   
       // update currentBalance
       currentBalance = transaction.balance;
 

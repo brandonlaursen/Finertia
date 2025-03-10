@@ -10,7 +10,7 @@ function StockOverview({ stock, selectedTimeFrame }) {
     late_trading_change,
     late_trading_change_percent,
   } = stock;
-  console.log(regular_trading_change < 0);
+
   return (
     <div className="StockOverview">
       <h1 className="StockOverview__name">{name}</h1>

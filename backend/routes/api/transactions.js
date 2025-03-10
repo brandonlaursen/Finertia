@@ -117,7 +117,7 @@ router.get("/stock-transactions", async (req, res) => {
 });
 
 router.get("/stock-summary", async (req, res) => {
-  console.log("GETTING STOCK SUMMARY");
+
   const { id } = req.user;
 
   const t = await sequelize.transaction();
@@ -139,6 +139,7 @@ router.get("/stock-summary", async (req, res) => {
       }),
     ]);
 
+
     if (accountTransactions.length === 0) {
       const userSummary = {
         totalInvestments: 0,
@@ -159,13 +160,12 @@ router.get("/stock-summary", async (req, res) => {
       accountTransactions
     );
 
-    console.log(processedTransactions);
 
     const processedHistoricalData = await processHistoricalData(
       processedTransactions
     );
 
-    console.log(processedHistoricalData);
+
 
     const mergedTransactionData = mergeTransactionAndAggregateData(
       processedTransactions,
@@ -175,6 +175,7 @@ router.get("/stock-summary", async (req, res) => {
     const mergedTransactionDataArray = Object.values(mergedTransactionData);
     const lastTransaction =
       mergedTransactionDataArray[mergedTransactionDataArray.length - 1];
+
 
     const userHistoricalData = Object.values(mergedTransactionData).map(
       (data) => ({

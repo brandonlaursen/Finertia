@@ -57,7 +57,7 @@ function HistoryPage() {
       {currentTransactions.length > 0 && (
         <>
           {currentTransactions.map((transaction, i) => {
-            console.log(transaction);
+      
             if (transaction.stockId) {
               return (
                 <article className="HistoryPage__transfer" key={i}>

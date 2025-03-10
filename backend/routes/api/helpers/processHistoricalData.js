@@ -5,7 +5,6 @@ async function processHistoricalData(processedTransactions) {
   const todaysDate = getDate();
 
 
-  console.log('==>',processedTransactions);
 
   // * users first transaction
   const firstTimestamp = Math.min(

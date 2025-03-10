@@ -146,11 +146,7 @@ router.put("/", singleMulterUpload("image"), async (req, res) => {
     profileImageUrl = userInfo.profilePic;
   }
 
-  // console.log('====>',profileImageUrl);
-  // if (!profileImageUrl) {
-  //   profileImageUrl =
-  //     "https://finertia.s3.amazonaws.com/public/1739990232538.png";
-  // }
+
 
   const user = await User.findByPk(userInfo.id);
 
