@@ -58,7 +58,7 @@
   right: 20px;
 
   background-color: var(--color-background);
-  color: var(--color-text-primary);
+  color: var(--theme-primary-color);
 
   border-radius: 50%;
   cursor: pointer;
@@ -100,6 +100,10 @@
   text-underline-offset: 4px;
 
   cursor: pointer;
+}
+
+.ProfilePageUserInfo__information__edit:hover {
+  color: var(--theme-primary-color);
 }
 
 .ProfilePageUserInfo__profile-skeleton {
