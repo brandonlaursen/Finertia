@@ -58,7 +58,7 @@ function HomePageOverview({ stockData, selectedTimeFrame }) {
       <h1 className="HomePageOverview__title">Investing</h1>
       <main className="HomePageOverview__main">
         <span className="HomePageOverview__total-investments">
-          ${stockData?.totalInvestments}
+          ${stockData?.totalInvestments || 0}
         </span>
 
         <span className="HomePageOverview__portfolio-amount-change">

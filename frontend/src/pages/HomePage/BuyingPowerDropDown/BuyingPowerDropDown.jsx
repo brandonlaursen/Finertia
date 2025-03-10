@@ -18,7 +18,8 @@ function BuyingPowerDropDown({
 
   const [isDropDownVisible, setDropDownIsVisible] = useState(false);
 
-  const { balance } = sessionUser.stockSummary;
+  // Check if stockSummary exists and set balance accordingly
+  const balance = sessionUser?.stockSummary?.balance || 0; // Default to 0 if stockSummary is undefined
 
   return (
     <div
@@ -47,11 +48,15 @@ function BuyingPowerDropDown({
             <section className="BuyingPowerDropDown__summary">
               <div className="BuyingPowerDropDown__summary-text">
                 <span>Individual Cash</span>
-                <span className="BuyingPowerDropDown__summary-value">${balance.toFixed(2)}</span>
+                <span className="BuyingPowerDropDown__summary-value">
+                  ${balance.toFixed(2)}
+                </span>
               </div>
               <div className="BuyingPowerDropDown__summary-text">
                 <span>Total</span>
-                <span className="BuyingPowerDropDown__summary-value">${balance.toFixed(2)}</span>
+                <span className="BuyingPowerDropDown__summary-value">
+                  ${balance.toFixed(2)}
+                </span>
               </div>
             </section>
 

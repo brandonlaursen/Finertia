@@ -4,10 +4,14 @@ const roundTimestampToInterval = require("./roundTimestampToInterval.js");
 async function processHistoricalData(processedTransactions) {
   const todaysDate = getDate();
 
+
+  console.log('==>',processedTransactions);
+
   // * users first transaction
   const firstTimestamp = Math.min(
     ...Object.keys(processedTransactions).map(Number)
   );
+
   const firstTransaction = processedTransactions[firstTimestamp];
   const firstTransactionTimestamp = firstTransaction.unixTimestamp;
 

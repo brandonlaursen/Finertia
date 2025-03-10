@@ -139,14 +139,19 @@ router.get("/stock-summary", async (req, res) => {
       }),
     ]);
 
+    console.log(userTransactions, accountTransactions);
     const processedTransactions = processTransactionSummary(
       userTransactions,
       accountTransactions
     );
 
+    console.log(processedTransactions);
+
     const processedHistoricalData = await processHistoricalData(
       processedTransactions
     );
+
+    console.log(processedHistoricalData);
 
     const mergedTransactionData = mergeTransactionAndAggregateData(
       processedTransactions,
