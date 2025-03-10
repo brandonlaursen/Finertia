@@ -136,11 +136,15 @@ function EditProfileModal({ sessionUser }) {
             <span className="EditProfileModal__section__title">Theme</span>
             <div className="EditProfileModal__section-selector">
               {[
-                "#07de96",
+                "rgb(7, 222, 150)",
                 "rgb(0, 200, 5)",
-                "rgb(255, 80, 1)",
                 "rgb(0, 127, 245)",
+                "rgb(136, 58, 234)",
+                "rgb(220, 38, 38)",
                 "rgb(218, 65, 107)",
+                "rgb(255, 80, 1)",
+                "rgb(255, 193, 7)",
+                "rgb(45, 45, 45)",
               ].map((color) => (
                 <div
                   key={color}

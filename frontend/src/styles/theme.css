@@ -73,7 +73,7 @@
 }
 
 .theme-teal {
-  --theme-primary-color: #07de96;
+  --theme-primary-color: rgb(7, 222, 150);
   --theme-primary-hover: rgb(7, 239, 162);
   --theme-primary-hover-light: rgb(7, 239, 162, 0.2);
 }
@@ -88,4 +88,28 @@
   --theme-primary-color: rgb(0, 127, 245);
   --theme-primary-hover: rgba(0, 114, 221, 1);
   --theme-primary-hover-light: rgba(0, 127, 245, 0.3);
+}
+
+.theme-red {
+  --theme-primary-color: rgb(220, 38, 38);
+  --theme-primary-hover: rgb(185, 28, 28);
+  --theme-primary-hover-light: rgb(220, 38, 38, 0.2);
+}
+
+.theme-purple {
+  --theme-primary-color: rgb(136, 58, 234);
+  --theme-primary-hover: rgb(118, 48, 214);
+  --theme-primary-hover-light: rgba(136, 58, 234, 0.2);
+}
+
+.theme-yellow {
+  --theme-primary-color: rgb(255, 193, 7);
+  --theme-primary-hover: rgb(230, 170, 0);
+  --theme-primary-hover-light: rgba(255, 193, 7, 0.3);
+}
+
+.theme-grey {
+  --theme-primary-color: rgb(94, 94, 94);
+  --theme-primary-hover: rgb(119, 119, 119);
+  --theme-primary-hover-light: rgba(94, 94, 94, 0.3);
 }

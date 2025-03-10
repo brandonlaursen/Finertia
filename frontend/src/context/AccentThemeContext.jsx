@@ -11,11 +11,15 @@ export function AccentThemeProvider({ children }) {
 
   useEffect(() => {
     const themeMap = {
-      "#07de96": "theme-teal",
+      "rgb(7, 222, 150)": "theme-teal",
       "rgb(0, 200, 5)": "theme-green",
       "rgb(255, 80, 1)": "theme-orange",
       "rgb(218, 65, 107)": "theme-pink",
       "rgb(0, 127, 245)": "theme-blue",
+      "rgb(220, 38, 38)": "theme-red",
+      "rgb(136, 58, 234)": "theme-purple",
+      "rgb(255, 193, 7)": "theme-yellow",
+      "rgb(45, 45, 45)": "theme-grey",
     };
 
     // Remove all theme classes
@@ -32,7 +36,7 @@ export function AccentThemeProvider({ children }) {
   }, [selectedAccentTheme]);
 
   const toggleAccentTheme = (newSelectedAccentTheme) => {
-    console.log(newSelectedAccentTheme)
+    console.log(newSelectedAccentTheme);
     setSelectedAccentTheme(newSelectedAccentTheme);
   };
 
