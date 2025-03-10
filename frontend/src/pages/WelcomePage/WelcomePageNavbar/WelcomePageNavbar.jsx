@@ -9,6 +9,7 @@ function WelcomePageNavbar() {
     <nav className="WelcomePageNavbar">
       <Link className="WelcomePageNavbar__logo" to="/welcome">
         <FaSpaceShuttle />
+        {/* <img src="/favicon.ico" alt="Logo" width="24" /> */}
         Finertia
       </Link>
 
