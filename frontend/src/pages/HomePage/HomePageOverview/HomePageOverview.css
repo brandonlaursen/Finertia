@@ -43,7 +43,7 @@
   height: 24px;
   width: 24px;
 
-  color: var(--color-negative-secondary);
+  color: var(--theme-secondary-color);
 }
 
 /* * Modifier: positive portfolio amount change */
@@ -51,7 +51,7 @@
   height: 24px;
   width: 24px;
 
-  color: var(--color-positive);
+  color: var(--theme-primary-color);
 }
 
 /* * Subtext styling */

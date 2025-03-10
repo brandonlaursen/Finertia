@@ -30,9 +30,9 @@
   --theme-primary-hover-light: rgb(2, 88, 5);
 
   /* Theme: Secondary */
-  --theme-secondary-color: rgb(255, 80, 1);
-  --theme-secondary-hover: rgb(231, 91, 27, 0.9);
-  --theme-secondary-hover-light: rgb(83, 43, 28);
+  --theme-secondary-color: var(--theme-primary-color);
+  --theme-secondary-hover: var(--theme-primary-hover);
+  --theme-secondary-hover-light: var(--theme-primary-hover-light);
 
   /* Button Colors */
   /* Primary Buttons */
@@ -64,18 +64,30 @@
   --theme-primary-color: rgb(0, 200, 5);
   --theme-color-green-hover: rgb(0, 180, 5, 1);
   --theme-color-green-hover-transparent: rgb(223, 255, 230);
+
+  --theme-secondary-color: rgb(255, 80, 1);
+  --theme-secondary-hover: rgb(231, 91, 27, 0.9);
+  --theme-secondary-hover-light: rgb(83, 43, 28);
 }
 
 .theme-orange {
   --theme-primary-color: rgb(255, 80, 1);
   --theme-primary-hover: rgb(231, 91, 27, 0.9);
   --theme-primary-hover-light: rgb(255, 80, 1, 0.2);
+
+  --theme-secondary-color: var(--theme-primary-color);
+  --theme-secondary-hover: var(--theme-primary-hover);
+  --theme-secondary-hover-light: var(--theme-primary-hover-light);
 }
 
 .theme-teal {
   --theme-primary-color: rgb(7, 222, 150);
   --theme-primary-hover: rgb(7, 239, 162);
   --theme-primary-hover-light: rgb(7, 239, 162, 0.2);
+
+  --theme-secondary-color: var(--theme-primary-color);
+  --theme-secondary-hover: var(--theme-primary-hover);
+  --theme-secondary-hover-light: var(--theme-primary-hover-light);
 }
 
 .theme-pink {
@@ -88,6 +100,10 @@
   --theme-primary-color: rgb(0, 127, 245);
   --theme-primary-hover: rgba(0, 114, 221, 1);
   --theme-primary-hover-light: rgba(0, 127, 245, 0.3);
+
+  --theme-secondary-color: var(--theme-primary-color);
+  --theme-secondary-hover: var(--theme-primary-hover);
+  --theme-secondary-hover-light: var(--theme-primary-hover-light);
 }
 
 .theme-red {
@@ -100,34 +116,58 @@
   --theme-primary-color: rgb(136, 58, 234);
   --theme-primary-hover: rgb(118, 48, 214);
   --theme-primary-hover-light: rgba(136, 58, 234, 0.2);
+
+  --theme-secondary-color: var(--theme-primary-color);
+  --theme-secondary-hover: var(--theme-primary-hover);
+  --theme-secondary-hover-light: var(--theme-primary-hover-light);
 }
 
 .theme-yellow {
   --theme-primary-color: rgb(255, 193, 7);
   --theme-primary-hover: rgb(230, 170, 0);
   --theme-primary-hover-light: rgba(255, 193, 7, 0.3);
+
+  --theme-secondary-color: var(--theme-primary-color);
+  --theme-secondary-hover: var(--theme-primary-hover);
+  --theme-secondary-hover-light: var(--theme-primary-hover-light);
 }
 
 .theme-grey {
   --theme-primary-color: rgb(94, 94, 94);
   --theme-primary-hover: rgb(119, 119, 119);
   --theme-primary-hover-light: rgba(94, 94, 94, 0.3);
+
+  --theme-secondary-color: var(--theme-primary-color);
+  --theme-secondary-hover: var(--theme-primary-hover);
+  --theme-secondary-hover-light: var(--theme-primary-hover-light);
 }
 
 .theme-cyan {
   --theme-primary-color: rgb(0, 188, 212);
   --theme-primary-hover: rgb(3, 204, 231);
   --theme-primary-hover-light: rgb(0, 188, 212, 0.3);
+
+  --theme-secondary-color: var(--theme-primary-color);
+  --theme-secondary-hover: var(--theme-primary-hover);
+  --theme-secondary-hover-light: var(--theme-primary-hover-light);
 }
 
 .theme-coral {
   --theme-primary-color: rgb(255, 105, 97);
   --theme-primary-hover: rgb(254, 125, 118);
   --theme-primary-hover-light: rgb(255, 105, 97, 0.2);
+
+  --theme-secondary-color: var(--theme-primary-color);
+  --theme-secondary-hover: var(--theme-primary-hover);
+  --theme-secondary-hover-light: var(--theme-primary-hover-light);
 }
 
 .theme-lavender {
   --theme-primary-color: rgb(230, 190, 255);
   --theme-primary-hover: rgb(234, 202, 254);
-  --theme-primary-hover-light: rgb(230, 190, 255, .2);
+  --theme-primary-hover-light: rgb(230, 190, 255, 0.2);
+
+  --theme-secondary-color: var(--theme-primary-color);
+  --theme-secondary-hover: var(--theme-primary-hover);
+  --theme-secondary-hover-light: var(--theme-primary-hover-light);
 }

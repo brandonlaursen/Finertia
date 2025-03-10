@@ -36,7 +36,7 @@
 
 /* Positive price change */
 .StockOverview__change {
-  color: var(--percent-change-positive);
+  color: var(--theme-primary-color);
 }
 
 /* ========== Market Hours & Date Info ========== */
@@ -59,10 +59,10 @@
 
 /* Negative price movement */
 .negative {
-  color: var(--color-negative-secondary);
+  color: var(--theme-secondary-color);
 }
 
 /* Positive price movement */
 .positive {
-  color: var(--color-positive);
+  color: var(--theme-primary-color);
 }

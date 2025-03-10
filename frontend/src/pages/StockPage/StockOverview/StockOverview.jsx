@@ -26,7 +26,7 @@ function StockOverview({ stock, selectedTimeFrame }) {
               : ""
           }`}
         >
-          {regular_trading_change < 0 ? "" : "+"}${regular_trading_change}
+          ${regular_trading_change < 0 ? "" : "+"}{regular_trading_change}
           <span
             className={`StockOverview__change ${
               regular_trading_change_percent < 0

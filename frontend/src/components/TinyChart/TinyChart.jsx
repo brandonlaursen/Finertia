@@ -21,7 +21,12 @@ function TinyChart({ aggregates, todays_change_percent }) {
       },
       sparkline: { enabled: true },
     },
-    colors: [todays_change_percent < 0 ? "#FF4560" : "#00E396"],
+    colors: [
+      todays_change_percent < 0
+        ? "var(--theme-secondary-color)"
+        : "var(--theme-primary-color)",
+    ],
+
     stroke: { width: 1, curve: "straight" },
 
     tooltip: {
