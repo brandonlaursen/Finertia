@@ -29,3 +29,7 @@
   font-weight: bold;
   font-size: 11px;
 }
+
+.TradeHoldings__holdings__sell-all-button--disabled{
+  color: var(--disabled-button-color)
+}

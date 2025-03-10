@@ -8,9 +8,9 @@ function TradeHoldings({
   tradeType,
   setTradeType,
   setTradeUnit,
-  setSharesToTrade
+  setSharesToTrade,
+  stock,
 }) {
-
   async function handleSellAllShares() {
     setTradeType("sell");
     setTradeUnit("Shares");
@@ -33,8 +33,12 @@ function TradeHoldings({
           )}
 
           <button
-            className="TradeHoldings__holdings__sell-all-button"
+            className={`TradeHoldings__holdings__sell-all-button ${
+              stock.marketStatus === "closed" &&
+              "TradeHoldings__holdings__sell-all-button--disabled"
+            }`}
             onClick={handleSellAllShares}
+            disabled={stock.marketStatus === "closed"}
           >
             Sell All
           </button>
