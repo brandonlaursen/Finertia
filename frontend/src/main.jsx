@@ -13,6 +13,7 @@ import App from "./App";
 import { ModalProvider, Modal } from "./context/Modal";
 import { ThemeProvider } from "./context/ThemeContext";
 import ThemeToggle from "./components/ThemeToggle/ThemeToggle";
+import { AccentThemeProvider } from "./context/AccentThemeContext";
 
 const store = configureStore();
 
@@ -25,14 +26,16 @@ if (import.meta.env.MODE !== "production") {
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <ThemeProvider>
-      <ModalProvider>
-        <Provider store={store}>
+    <AccentThemeProvider>
+      <ThemeProvider>
+        <ModalProvider>
+          <Provider store={store}>
           <App />
           <Modal />
           <ThemeToggle />
         </Provider>
-      </ModalProvider>
-    </ThemeProvider>
+        </ModalProvider>
+      </ThemeProvider>
+    </AccentThemeProvider>
   </React.StrictMode>
 );

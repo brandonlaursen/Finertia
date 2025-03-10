@@ -48,7 +48,6 @@ function Layout() {
   useEffect(() => {
     const loadUser = async () => {
       if (!sessionUser) {
- 
         await dispatch(restoreUser());
       }
       setIsLoaded(true);

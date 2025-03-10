@@ -2,18 +2,21 @@ import "./EditProfileModal.css";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { FiPlusCircle } from "react-icons/fi";
 
-
 import { useDispatch } from "react-redux";
 import { useState, useRef } from "react";
 
 import ModalHeader from "../../components/ModalHeader/ModalHeader";
 import ModalOverlay from "../../components/ModalOverlay/ModalOverlay";
+
 import { editUser } from "../../../store/session";
 import { useModal } from "../../context/Modal";
+
+import { useAccentTheme } from "../../context/AccentThemeContext";
 
 function EditProfileModal({ sessionUser }) {
   const { closeModal } = useModal();
   const dispatch = useDispatch();
+  const { toggleAccentTheme } = useAccentTheme();
 
   const fileInputRef = useRef(null);
 
@@ -132,13 +135,20 @@ function EditProfileModal({ sessionUser }) {
           <div className="EditProfileModal__section__theme">
             <span className="EditProfileModal__section__title">Theme</span>
             <div className="EditProfileModal__section-selector">
-              <div className="EditProfileModal__color-btn"></div>
-              <div className="EditProfileModal__color-btn"></div>
-              <div className="EditProfileModal__color-btn"></div>
-              <div className="EditProfileModal__color-btn"></div>
-              <div className="EditProfileModal__color-btn"></div>
-              <div className="EditProfileModal__color-btn"></div>
-              <div className="EditProfileModal__color-btn"></div>
+              {[
+                "#07de96",
+                "rgb(0, 200, 5)",
+                "rgb(255, 80, 1)",
+                "rgb(0, 127, 245)",
+                "rgb(218, 65, 107)",
+              ].map((color) => (
+                <div
+                  key={color}
+                  className="EditProfileModal__color-btn"
+                  style={{ backgroundColor: color }}
+                  onClick={() => toggleAccentTheme(color)}
+                ></div>
+              ))}
             </div>
           </div>
 

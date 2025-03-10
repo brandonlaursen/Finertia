@@ -77,3 +77,15 @@
   --theme-primary-hover: rgb(7, 239, 162);
   --theme-primary-hover-light: rgb(223, 255, 230);
 }
+
+.theme-pink {
+  --theme-primary-color: rgb(218, 65, 107);
+  --theme-primary-hover: rgba(196, 59, 96, 1);
+  --theme-primary-hover-light: rgba(218, 65, 107, 0.3);
+}
+
+.theme-blue {
+  --theme-primary-color: rgb(0, 127, 245);
+  --theme-primary-hover: rgba(0, 114, 221, 1);
+  --theme-primary-hover-light: rgba(0, 127, 245, 0.3);
+}
