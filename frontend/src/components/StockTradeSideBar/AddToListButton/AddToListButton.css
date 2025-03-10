@@ -9,10 +9,10 @@
   align-items: center;
   justify-content: center;
 
-  color: var(--button-secondary);
+  color: var(--button-primary);
   background-color: var(--color-background);
 
-  border: solid 1px var(--button-secondary);
+  border: solid 1px var(--button-primary);
 
   border-radius: 44px;
 
@@ -23,7 +23,7 @@
 
 /* Hover effect for the "Add to List" button */
 .AddToListButton:hover {
-  background-color: var(--button-secondary-hover-light);
+  background-color: var(--button-primary-hover-light);
 }
 
 /* ========== Icons ========== */

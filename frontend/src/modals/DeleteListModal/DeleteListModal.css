@@ -53,11 +53,11 @@
 
 .DeleteListModal__delete-button {
   color: var(--color-background);
-  background-color: var(--theme-secondary-color);
+  background-color: var(--button-primary);
 }
 
 .DeleteListModal__delete-button:hover {
-  background-color: var(--button-secondary-hover);
+  background-color: var(--button-primary-hover);
 }
 
 .StockTransaction__spinner {
