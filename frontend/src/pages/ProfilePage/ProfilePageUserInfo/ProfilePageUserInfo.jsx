@@ -23,11 +23,12 @@ function ProfilePageUserInfo() {
 
   const dispatch = useDispatch();
 
-  const { setModalContent, setModalClass } = useModal();
-  const [loadingProfilePic, setLoadingProfilePic] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
   const fileInputRef = useRef(null);
 
+  const { setModalContent, setModalClass } = useModal();
+
+  const [loadingProfilePic, setLoadingProfilePic] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [profilePic, setProfilePic] = useState(sessionUser.profilePic);
 
   useEffect(() => {
@@ -40,7 +41,10 @@ function ProfilePageUserInfo() {
 
   const handleRemoveImage = async () => {
     setProfilePic(DEFAULT_IMAGE);
-    await dispatch(editUser({ username: sessionUser.username, image: null }));
+    console.log("in handle remove image");
+    await dispatch(
+      editUser({ username: sessionUser.username, image: DEFAULT_IMAGE })
+    );
   };
 
   const handleFileUpload = async (file) => {

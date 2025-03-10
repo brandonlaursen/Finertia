@@ -132,6 +132,8 @@ router.put("/", singleMulterUpload("image"), async (req, res) => {
 
   const { username: newUsername } = req.body;
 
+  console.log(req.file)
+
   if (req.file) {
     // If a new file is uploaded, use it
     profileImageUrl = await singleFileUpload({ file: req.file, public: true });
