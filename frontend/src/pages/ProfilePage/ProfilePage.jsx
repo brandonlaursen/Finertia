@@ -79,7 +79,7 @@ function ProfilePage() {
 
           <div className="ProfilePage__investments__details__value ProfilePage__investments__details__subtext">
             <span>Individual holdings</span>$
-            {stockSummary.totalInvestments.toFixed(2)}
+            {stockSummary ? stockSummary.totalInvestments.toFixed(2) : 0}
           </div>
 
           <div className="ProfilePage__investments__details__value ProfilePage__investments__details__subtext">
