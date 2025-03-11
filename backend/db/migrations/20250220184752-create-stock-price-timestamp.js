@@ -8,6 +8,7 @@ if (process.env.NODE_ENV === "production") {
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
+    console.log('before create')
     await queryInterface.createTable(
       "StockPriceTimestamps",
       {
@@ -48,6 +49,7 @@ module.exports = {
       },
       options
     );
+    console.log('after create table')
 console.log(options.schema)
     await queryInterface.addConstraint(
       "StockPriceTimestamps",
@@ -58,6 +60,8 @@ console.log(options.schema)
       },
       options
     );
+
+    console.log('after add constraint')
   },
   async down(queryInterface, Sequelize) {
     // options.tableName = "StockPriceTimestamps";
