@@ -19,13 +19,13 @@ module.exports = {
         rejectUnauthorized: false,
       },
       // keepAlive: true, // Keeps connection alive
-      statement_timeout: 900000, // 15 minutes (max recommended for Render)
-      query_timeout: 900000, // 15 minutes (max recommended for Render)
+      statement_timeout: 120000,
+      query_timeout: 120000,
     },
     pool: {
-      max: 10, // Max connections (adjust based on Render's plan)
-      min: 1, // Keep at least 1 connection open
-      acquire: 900000, // 15 minutes (wait time to get a connection)
+      // max: 10, // Max connections (adjust based on Render's plan)
+      // min: 1, // Keep at least 1 connection open
+      acquire: 120000, // 15 minutes (wait time to get a connection)
       idle: 30000, // Close idle connections after 30 seconds
     },
     define: {
