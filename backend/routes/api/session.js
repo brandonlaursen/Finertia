@@ -45,7 +45,7 @@ router.post("/", validateLogin, async (req, res, next) => {
     id: user.id,
     email: user.email,
     username: user.username,
-    balance: user.balance,
+    balance: Number(user.balance),
     profilePic: user.profilePic,
     firstName: user.firstName,
     lastName: user.lastName,
@@ -92,7 +92,7 @@ router.put("/update-password", async (req, res, next) => {
     id: user.id,
     email: user.email,
     username: user.username,
-    balance: user.balance,
+    balance: Number(user.balance),
     profilePic: user.profilePic,
     firstName: user.firstName,
     lastName: user.lastName,
@@ -108,13 +108,14 @@ router.put("/update-password", async (req, res, next) => {
 // * Get logged in user info
 router.get("/", async (req, res) => {
   const { user } = req;
+  console.log(" user:", user);
 
   if (user) {
     const safeUser = {
       id: user.id,
       email: user.email,
       username: user.username,
-      balance: user.balance,
+      balance: Number(user.balance),
       profilePic: user.profilePic,
       firstName: user.firstName,
       lastName: user.lastName,
@@ -132,7 +133,7 @@ router.put("/", singleMulterUpload("image"), async (req, res) => {
 
   const { username: newUsername } = req.body;
 
-  console.log(req.file)
+  req.file;
 
   if (req.file) {
     // If a new file is uploaded, use it
@@ -148,8 +149,6 @@ router.put("/", singleMulterUpload("image"), async (req, res) => {
     profileImageUrl = userInfo.profilePic;
   }
 
-
-
   const user = await User.findByPk(userInfo.id);
 
   await user.update({
@@ -161,7 +160,7 @@ router.put("/", singleMulterUpload("image"), async (req, res) => {
     id: user.id,
     email: user.email,
     username: newUsername || user.username,
-    balance: user.balance,
+    balance: Number(user.balance),
     profilePic: profileImageUrl || user.profilePic,
     firstName: user.firstName,
     lastName: user.lastName,

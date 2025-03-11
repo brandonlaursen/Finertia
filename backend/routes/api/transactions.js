@@ -15,15 +15,17 @@ const gatherAggregates = require("./helpers/gatherAggregates.js");
 
 router.post("/deposit", async (req, res) => {
   const { id, balance } = req.user;
+  console.log(" balance:", balance);
 
   const { amount } = req.body;
 
   const user = await User.findByPk(id);
+  console.log(" user:", user);
 
-  const newBalance = balance + Number(amount);
+  const newBalance = Number(balance) + Number(amount);
 
   await user.update({
-    balance: newBalance,
+    balance: Number(newBalance),
   });
 
   const transaction = {
@@ -39,7 +41,7 @@ router.post("/deposit", async (req, res) => {
 
   return res.json({
     transaction,
-    balance: newBalance,
+    balance: Number(newBalance),
     message: `successfully deposited ${amount} for user with id of ${id}, new balance is ${newBalance}`,
   });
 });
@@ -51,17 +53,17 @@ router.post("/withdraw", async (req, res) => {
 
   const user = await User.findByPk(id);
 
-  const newBalance = balance - amount;
+  const newBalance = Number(balance) - Number(amount);
 
   if (newBalance < 0) {
     return res.json({
       message: `Not enough funds`,
-      balance,
+      balance: Number(balance),
     });
   }
 
   await user.update({
-    balance: newBalance,
+    balance: Number(newBalance),
   });
 
   const transaction = {
@@ -77,7 +79,7 @@ router.post("/withdraw", async (req, res) => {
 
   return res.json({
     transaction,
-    balance: newBalance,
+    balance: Number(newBalance),
     message: `successfully withdrew ${amount} for user with id of ${id}, new balance is ${newBalance}`,
   });
 });
@@ -167,7 +169,6 @@ router.get("/stock-summary", async (req, res) => {
       processedHistoricalData
     );
 
-
     const mergedTransactionDataArray = Object.values(mergedTransactionData);
     const lastTransaction =
       mergedTransactionDataArray[mergedTransactionDataArray.length - 1];
@@ -185,10 +186,11 @@ router.get("/stock-summary", async (req, res) => {
 
     const userSummary = {
       totalInvestments: lastTransaction.totalInvestments,
-      balance: lastTransaction.balance,
+      balance: Number(lastTransaction.balance),
       stocksOwned: lastTransaction.stocksOwned,
       ...aggregates,
     };
+    console.log(" userSummary:", userSummary);
 
     return res.json(userSummary);
   } catch (error) {
@@ -213,14 +215,7 @@ router.post("/trade/:stockId", async (req, res) => {
     stockSymbol,
   } = req.body;
 
-  console.log(
-    stockId,
-    stockPrice,
-    quantity,
-
-    stockName,
-    stockSymbol
-  );
+  stockId, stockPrice, quantity, stockName, stockSymbol;
 
   const t = await sequelize.transaction();
 
@@ -272,7 +267,7 @@ router.post("/trade/:stockId", async (req, res) => {
     // Update user balance within the same transaction
     await user.update(
       {
-        balance: newBalance,
+        balance: Number(newBalance),
       },
       { transaction: t }
     );
@@ -322,7 +317,7 @@ router.post("/trade/:stockId", async (req, res) => {
       id: req.user.id,
       email: req.user.email,
       username: req.user.username,
-      balance: newBalance,
+      balance: Number(newBalance),
       profilePic: req.user.profilePic,
       firstName: req.user.firstName,
       lastName: req.user.lastName,

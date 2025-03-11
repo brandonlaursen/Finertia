@@ -10,7 +10,7 @@ if (process.env.NODE_ENV === "production") {
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    console.log("entering up!");
+    ("entering up!");
 
     // options.tableName = "StockPriceTimestamps";
     // * get timestamp for api call
@@ -31,12 +31,12 @@ module.exports = {
       return `${year}-${month}-${day}`;
     }
 
-    console.log("Retrieving stocks");
+    ("Retrieving stocks");
     const stocks = await Stock.findAll();
     const todaysDate = getDate();
 
     async function getOneDayIntervalsUpToFiveYears(stockSymbol, stockId) {
-      console.log("entering get one day intervals");
+      ("entering get one day intervals");
 
       const fiveYearsAgo = getDate(1825);
       let currentUrl = `https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/1/day/${fiveYearsAgo}/${todaysDate}?adjusted=true&sort=asc&apiKey=${process.env.STOCK_API_KEY2}`;
@@ -52,7 +52,7 @@ module.exports = {
         }
 
         for (let aggregateBar of data.results) {
-          console.log(aggregateBar.t);
+          aggregateBar.t;
           timestamps.push({
             stockId,
             timestamp: aggregateBar.t,
@@ -72,7 +72,7 @@ module.exports = {
     }
 
     async function getOneHourIntervalsUpToOneMonth(stockSymbol, stockId) {
-      console.log("entering get one hour intervals");
+      ("entering get one hour intervals");
       const oneMonthAgo = getDate(30);
       let currentUrl = `https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/1/hour/${oneMonthAgo}/${todaysDate}?adjusted=true&sort=asc&apiKey=${process.env.STOCK_API_KEY2}`;
 
@@ -105,16 +105,16 @@ module.exports = {
       return timestamps;
     }
 
-    console.log("before data fetches");
+    ("before data fetches");
     const fetchIntervals = stocks.map(async (stock) => {
       try {
-        console.log("before one hour intervals");
+        ("before one hour intervals");
         const oneHourIntervals = await getOneHourIntervalsUpToOneMonth(
           stock.stockSymbol,
           stock.id
         );
 
-        console.log("before one day intervals");
+        ("before one day intervals");
         const oneDayIntervals = await getOneDayIntervalsUpToFiveYears(
           stock.stockSymbol,
           stock.id
@@ -122,7 +122,7 @@ module.exports = {
 
         return [...oneHourIntervals, ...oneDayIntervals];
       } catch (error) {
-        console.log("error!");
+        ("error!");
         console.error(
           `Error fetching data for stock ${stock.stockSymbol}:`,
           error.message
@@ -133,7 +133,7 @@ module.exports = {
     });
 
     const combinedIntervals = await Promise.all(fetchIntervals);
-    console.log("combined intervals retrieved!");
+    ("combined intervals retrieved!");
 
     async function insertStockPriceTimestamps(data) {
       const BATCH_SIZE = 5000;
@@ -146,17 +146,15 @@ module.exports = {
           validate: false,
         });
 
-        console.log(
-          `Inserted batch ${i / BATCH_SIZE + 1} of ${Math.ceil(
-            data.length / BATCH_SIZE
-          )}`
-        );
+        `Inserted batch ${i / BATCH_SIZE + 1} of ${Math.ceil(
+          data.length / BATCH_SIZE
+        )}`;
       }
     }
 
-    console.log("before inserts");
+    ("before inserts");
     await insertStockPriceTimestamps(combinedIntervals.flat());
-    console.log("after insertions");
+    ("after insertions");
 
     // await StockPriceTimestamp.bulkCreate(combinedIntervals.flat());
     // await StockPriceTimestamp.bulkCreate([

@@ -6,7 +6,6 @@ const { setTokenCookie } = require("../../utils/auth.js");
 const { User } = require("../../db/models");
 const bcrypt = require("bcryptjs");
 
-
 const validateSignup = [
   check("email")
     .exists({ checkFalsy: true })
@@ -41,7 +40,7 @@ router.post("/", validateSignup, async (req, res) => {
     id: user.id,
     email: user.email,
     username: user.username,
-    balance: user.balance,
+    balance: Number(user.balance),
     profilePic: user.profilePic,
     firstName: user.firstName,
     lastName: user.lastName,
@@ -54,8 +53,5 @@ router.post("/", validateSignup, async (req, res) => {
     user: safeUser,
   });
 });
-
-
-
 
 module.exports = router;
