@@ -13,12 +13,10 @@ router.post("/", async (req, res) => {
     where: {
       [Op.or]: [
         {
-          stockName: { [Op.like]: `%${searchQuery}%` },
+          stockName: { [Op.iLike]: `%${searchQuery}%` },
         },
         {
-          stockSymbol: {
-            [Op.like]: `%${searchQuery}%`,
-          },
+          stockSymbol: { [Op.iLike]: `%${searchQuery}%` }, 
         },
       ],
     },
