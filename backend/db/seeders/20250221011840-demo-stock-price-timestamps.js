@@ -108,7 +108,7 @@ module.exports = {
           stock.stockSymbol,
           stock.id
         );
-
+        console.log(stock);
         return [...oneHourIntervals, ...oneDayIntervals];
       } catch (error) {
         console.error(

@@ -18,15 +18,18 @@ module.exports = {
         require: true,
         rejectUnauthorized: false,
       },
-    },
-    define: {
-      schema: process.env.SCHEMA,
+      keepAlive: true, // Keeps connection alive
+      statement_timeout: 120000, // 120,000 ms (2 minutes)
+      query_timeout: 120000, // 120,000 ms (2 minutes)
     },
     pool: {
       max: 10, // Maximum number of connections
       min: 1, // Minimum number of connections
       acquire: 120000, // How long to try getting a connection before timing out (ms)
       idle: 10000, // Time (ms) before closing an idle connection
+    },
+    define: {
+      schema: process.env.SCHEMA,
     },
   },
 };
