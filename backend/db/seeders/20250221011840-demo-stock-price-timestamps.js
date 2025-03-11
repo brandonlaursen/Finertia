@@ -10,6 +10,8 @@ if (process.env.NODE_ENV === "production") {
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
+
+    options.tableName = "StockPriceTimestamps";
     // * get timestamp for api call
     function getDate(daysAgo = 0) {
       let date = new Date();
@@ -135,6 +137,6 @@ module.exports = {
 
   async down(queryInterface, Sequelize) {
     options.tableName = "StockPriceTimestamps";
-    await queryInterface.dropTable(options);
+    return queryInterface.dropTable(options);
   },
 };

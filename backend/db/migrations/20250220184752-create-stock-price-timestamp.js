@@ -59,6 +59,6 @@ module.exports = {
   async down(queryInterface, Sequelize) {
     options.tableName = "StockPriceTimestamps";
     // await queryInterface.removeConstraint("StockPriceTimestamps", "unique_stock_timestamp_interval");
-    await queryInterface.dropTable(options);
+    return queryInterface.dropTable(options);
   },
 };

@@ -220,7 +220,7 @@ const data = {
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    options.tableName = "Stocks";
+    // options.tableName = "Stocks";
     try {
       const stocks = [];
 
@@ -269,6 +269,6 @@ module.exports = {
 
   down: async (queryInterface, Sequelize) => {
     options.tableName = "Stocks";
-    await queryInterface.dropTable(options);
+    return queryInterface.dropTable(options);
   },
 };
