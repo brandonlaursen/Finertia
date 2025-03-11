@@ -37,25 +37,34 @@ function HomePageOverview({ stockData, selectedTimeFrame }) {
 
   const { portfolioPercentChange, portfolioAmountChange } = useMemo(() => {
     if (!data || data.length < 2) {
-      return { portfolioPercentChange: 0.00, portfolioAmountChange: 0.00 };
+      return { portfolioPercentChange: 0.0, portfolioAmountChange: 0.0 };
     }
 
     const firstAggregate = data[0].y;
     const lastAggregate = data[data.length - 1].y;
 
-    if (lastAggregate - firstAggregate == 0)
-      return { portfolioPercentChange: 0.00, portfolioAmountChange: 0.00 };
+    console.log(" lastAggregate:", lastAggregate);
+    console.log(" firstAggregate:", firstAggregate);
+
+    if (firstAggregate === 0) {
+      return {
+        portfolioPercentChange: 0.0,
+        portfolioAmountChange: lastAggregate,
+      };
+    }
+
+    console.log(((lastAggregate - firstAggregate) / firstAggregate) * 100);
+
+    if (lastAggregate - firstAggregate === 0)
+      return { portfolioPercentChange: 0.0, portfolioAmountChange: 0.0 };
 
     return {
-      portfolioPercentChange: (
-        ((lastAggregate - firstAggregate) / firstAggregate) *
-        100
-      ).toFixed(2),
-      portfolioAmountChange: (lastAggregate - firstAggregate).toFixed(2),
+      portfolioPercentChange:
+        ((lastAggregate - firstAggregate) / firstAggregate) * 100,
+      portfolioAmountChange: lastAggregate - firstAggregate,
     };
   }, [data]);
 
-  console.log(portfolioPercentChange, portfolioAmountChange);
   return (
     <div className="HomePageOverview">
       <h1 className="HomePageOverview__title">Investing</h1>
@@ -65,7 +74,7 @@ function HomePageOverview({ stockData, selectedTimeFrame }) {
         </span>
 
         <span className="HomePageOverview__portfolio-amount-change">
-          {portfolioPercentChange > 0 ? (
+          {portfolioPercentChange >= 0 ? (
             <GoTriangleUp className="HomePageOverview__portfolio-amount-change--positive" />
           ) : (
             <GoTriangleDown className="HomePageOverview__portfolio-amount-change--negative" />
@@ -74,7 +83,7 @@ function HomePageOverview({ stockData, selectedTimeFrame }) {
             className={`${
               portfolioAmountChange < 0
                 ? "negative"
-                : portfolioAmountChange > 0
+                : portfolioAmountChange >= 0
                 ? "positive"
                 : ""
             }`}
@@ -91,7 +100,7 @@ function HomePageOverview({ stockData, selectedTimeFrame }) {
             className={`${
               portfolioPercentChange < 0
                 ? "negative"
-                : portfolioPercentChange > 0
+                : portfolioPercentChange >= 0
                 ? "positive"
                 : ""
             }`}
@@ -102,7 +111,7 @@ function HomePageOverview({ stockData, selectedTimeFrame }) {
                 : portfolioPercentChange > 0
                 ? "+"
                 : ""
-            }${portfolioAmountChange.toFixed(2)}%) `}
+            }${portfolioPercentChange.toFixed(2)}%) `}
           </span>
 
           <span className="HomePageOverview__subtext">

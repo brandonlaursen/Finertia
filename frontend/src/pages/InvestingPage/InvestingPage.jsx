@@ -27,8 +27,8 @@ function InvestingPage() {
     balancePercentage = 0;
     stockPercentage = 0;
   } else {
-    balancePercentage = (balance / total) * 100;
-    stockPercentage = (stockInvestments / total) * 100;
+    balancePercentage = Number((balance / total) * 100);
+    stockPercentage = Number((stockInvestments / total) * 100);
   }
 
   useEffect(() => {

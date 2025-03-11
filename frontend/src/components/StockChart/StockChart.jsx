@@ -90,7 +90,7 @@ function StockChart({ stockData, selectedTimeFrame }) {
     }
 
     const dataPoints = data
-      .filter((point) => point.y > 0)
+      // .filter((point) => point.y > 0)
       .map((point) => point.y);
 
     if (dataPoints.length === 0) {
@@ -111,6 +111,7 @@ function StockChart({ stockData, selectedTimeFrame }) {
     return { dynamicMin, dynamicMax, middleValue: avgValue };
   }, [data]);
 
+  console.log(data, dynamicMin, dynamicMax)
   const options = useMemo(
     () => ({
       chart: {

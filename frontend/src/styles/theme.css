@@ -94,6 +94,10 @@
   --theme-primary-color: rgb(218, 65, 107);
   --theme-primary-hover: rgba(196, 59, 96, 1);
   --theme-primary-hover-light: rgba(218, 65, 107, 0.3);
+
+  --theme-secondary-color: var(--theme-primary-color);
+  --theme-secondary-hover: var(--theme-primary-hover);
+  --theme-secondary-hover-light: var(--theme-primary-hover-light);
 }
 
 .theme-blue {
