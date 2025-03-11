@@ -19,14 +19,14 @@ module.exports = {
         rejectUnauthorized: false,
       },
       // keepAlive: true, // Keeps connection alive
-      statement_timeout: 600000, // 5 minutes
-      query_timeout: 600000, // 5 minutes
+      statement_timeout: 900000, // 15 minutes (max recommended for Render)
+      query_timeout: 900000, // 15 minutes (max recommended for Render)
     },
     pool: {
-      // max: 10, // Maximum number of connections
-      // min: 1, // Minimum number of connections
-      acquire: 600000, // How long to try getting a connection before timing out (ms)
-      idle: 600000, // Time (ms) before closing an idle connection
+      max: 10, // Max connections (adjust based on Render's plan)
+      min: 1, // Keep at least 1 connection open
+      acquire: 900000, // 15 minutes (wait time to get a connection)
+      idle: 30000, // Close idle connections after 30 seconds
     },
     define: {
       schema: process.env.SCHEMA,
