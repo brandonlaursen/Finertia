@@ -274,9 +274,15 @@ module.exports = {
     });
 
     await queryInterface.dropTable({
+      tableName: "StockUserTransactions",
+      schema: options.schema,
+    });
+
+    await queryInterface.dropTable({
       tableName: "StockListJoins",
       schema: options.schema,
     });
+
     return queryInterface.dropTable({
       tableName: "Stocks",
       schema: options.schema,
