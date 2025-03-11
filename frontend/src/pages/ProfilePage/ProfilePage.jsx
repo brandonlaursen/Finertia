@@ -54,7 +54,7 @@ function ProfilePage() {
 
       <section className="ProfilePage__total">
         <span className="ProfilePage__total__balance">
-          ${stockSummary ? stockSummary?.balance?.toFixed(2) : 0}
+          ${stockSummary ? +stockSummary.balance.toFixed(2) : 0}
         </span>
         Total in Finertia
       </section>
@@ -74,17 +74,17 @@ function ProfilePage() {
             </span>
             <span className="ProfilePage__investments__details__value-subtext">
               {" "}
-              ${total ? total.toFixed(2) : "0.00"}
+              ${total ? +total.toFixed(2) : "0.00"}
             </span>
           </div>
 
           <div className="ProfilePage__investments__details__value ProfilePage__investments__details__subtext">
             <span>Individual holdings</span>$
-            {stockSummary ? stockSummary.totalInvestments.toFixed(2) : 0}
+            {stockSummary ? +stockSummary.totalInvestments.toFixed(2) : 0}
           </div>
 
           <div className="ProfilePage__investments__details__value ProfilePage__investments__details__subtext">
-            <span>Individual cash</span>${stockSummary.balance.toFixed(2)}
+            <span>Individual cash</span>${+stockSummary.balance.toFixed(2)}
           </div>
         </div>
       </section>
