@@ -8,7 +8,7 @@ if (process.env.NODE_ENV === "production") {
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    console.log('before create')
+    console.log("before create");
     await queryInterface.createTable(
       "StockPriceTimestamps",
       {
@@ -49,19 +49,15 @@ module.exports = {
       },
       options
     );
-    console.log('after create table')
-console.log(options.schema.tableName)
-    await queryInterface.addConstraint(
-      "StockPriceTimestamps",
-      {
-        fields: ["stockId", "timestamp", "interval"],
-        type: "unique",
-        name: "unique_stock_timestamp_interval",
-      },
-      options
-    );
+    console.log("after create table");
+    console.log(options.schema.tableName);
+    await queryInterface.addConstraint("StockPriceTimestamps", {
+      fields: ["stockId", "timestamp", "interval"],
+      type: "unique",
+      name: "unique_stock_timestamp_interval",
+    });
 
-    console.log('after add constraint')
+    console.log("after add constraint");
   },
   async down(queryInterface, Sequelize) {
     // options.tableName = "StockPriceTimestamps";
