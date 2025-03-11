@@ -43,8 +43,8 @@ function HomePageOverview({ stockData, selectedTimeFrame }) {
     const firstAggregate = data[0].y;
     const lastAggregate = data[data.length - 1].y;
 
-    console.log(" lastAggregate:", lastAggregate);
-    console.log(" firstAggregate:", firstAggregate);
+    " lastAggregate:", lastAggregate;
+    " firstAggregate:", firstAggregate;
 
     if (firstAggregate === 0) {
       return {
@@ -53,7 +53,7 @@ function HomePageOverview({ stockData, selectedTimeFrame }) {
       };
     }
 
-    console.log(((lastAggregate - firstAggregate) / firstAggregate) * 100);
+    ((lastAggregate - firstAggregate) / firstAggregate) * 100;
 
     if (lastAggregate - firstAggregate === 0)
       return { portfolioPercentChange: 0.0, portfolioAmountChange: 0.0 };

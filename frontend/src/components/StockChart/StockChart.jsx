@@ -111,7 +111,7 @@ function StockChart({ stockData, selectedTimeFrame }) {
     return { dynamicMin, dynamicMax, middleValue: avgValue };
   }, [data]);
 
-  console.log(data, dynamicMin, dynamicMax)
+  data, dynamicMin, dynamicMax;
   const options = useMemo(
     () => ({
       chart: {
