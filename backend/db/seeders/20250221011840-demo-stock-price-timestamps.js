@@ -38,7 +38,7 @@ module.exports = {
       let currentUrl = `https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/1/day/${fiveYearsAgo}/${todaysDate}?adjusted=true&sort=asc&apiKey=${process.env.STOCK_API_KEY2}`;
 
       const timestamps = [];
-  
+
       while (currentUrl) {
         const response = await fetch(currentUrl);
         const data = await response.json();
@@ -75,14 +75,14 @@ module.exports = {
       while (currentUrl) {
         const response = await fetch(currentUrl);
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         if (!data.results) {
           currentUrl = null;
           continue;
         }
 
         for (let aggregateBar of data.results) {
-          console.log(aggregateBar);
+          // console.log(aggregateBar);
           timestamps.push({
             stockId,
             timestamp: aggregateBar.t,
