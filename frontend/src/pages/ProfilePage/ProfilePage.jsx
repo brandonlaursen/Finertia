@@ -15,9 +15,14 @@ function ProfilePage() {
 
   const { stockSummary } = sessionUser;
 
-  console.log(stockSummary)
+  console.log(stockSummary);
   const total =
     Number(stockSummary.totalInvestments) + Number(stockSummary.balance);
+
+  console.log(
+    "==>",
+    Number(stockSummary.totalInvestments) + Number("01000.00")
+  );
 
   setTimeout(() => {
     setIsLoading(false);
@@ -55,7 +60,7 @@ function ProfilePage() {
 
       <section className="ProfilePage__total">
         <span className="ProfilePage__total__balance">
-          ${stockSummary ? +stockSummary.balance.toFixed(2) : 0}
+          ${stockSummary ? Number(stockSummary.balance).toFixed(2) : 0}
         </span>
         Total in Finertia
       </section>
@@ -75,17 +80,20 @@ function ProfilePage() {
             </span>
             <span className="ProfilePage__investments__details__value-subtext">
               {" "}
-              ${total ? +total.toFixed(2) : "0.00"}
+              ${total ? Number(total).toFixed(2) : "0.00"}
             </span>
           </div>
 
           <div className="ProfilePage__investments__details__value ProfilePage__investments__details__subtext">
             <span>Individual holdings</span>$
-            {stockSummary ? +stockSummary.totalInvestments.toFixed(2) : 0}
+            {stockSummary
+              ? Number(stockSummary.totalInvestments).toFixed(2)
+              : 0}
           </div>
 
           <div className="ProfilePage__investments__details__value ProfilePage__investments__details__subtext">
-            <span>Individual cash</span>${+stockSummary.balance.toFixed(2)}
+            <span>Individual cash</span>$
+            {Number(stockSummary.balance).toFixed(2)}
           </div>
         </div>
       </section>

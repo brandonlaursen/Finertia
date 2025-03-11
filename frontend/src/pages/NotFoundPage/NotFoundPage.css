@@ -79,9 +79,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(184, 184, 184);
+  background-color: var(--color-background);
+  border-radius: 44px;
 
-  background-image: url("https://cdn.dribbble.com/userupload/22984346/file/original-f3af67df05948241aefdd35c91bae538.gif");
+  background-image: url("https://image.freepik.com/free-vector/404-error-with-astronaut-planet-space-background_114341-45.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

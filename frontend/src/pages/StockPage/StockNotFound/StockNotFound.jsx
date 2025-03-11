@@ -7,6 +7,8 @@ function StockNotFound({ stockSymbol }) {
 
   return (
     <div className="StockPage__stock-not-found">
+
+      <div className="StockPage__stock-not-found-image"/>
       <h2>Stock Not Found</h2>
       <p>The stock symbol {`"${stockSymbol}"`} not found.</p>
       <button onClick={() => navigate("/")}>Return to Home</button>

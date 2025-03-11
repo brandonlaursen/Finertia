@@ -11,14 +11,15 @@
   padding: 2rem;
 
   border-radius: 8px;
+
+  margin-top: 100px;
 }
 
 .StockPage__stock-not-found h2 {
-  margin-bottom: 1rem;
-
   font-size: 2rem;
 
   color: #dc3545;
+  margin-top: 12px;
 }
 
 .StockPage__stock-not-found p {
@@ -34,7 +35,7 @@
   font-size: 1rem;
 
   color: white;
-  background-color: #007bff;
+  background-color: var(--theme-primary-color);
 
   border-radius: 4px;
 
@@ -42,5 +43,24 @@
 }
 
 .StockPage__stock-not-found button:hover {
-  background-color: #0056b3;
+  background-color: var(--theme-primary-hover);
+}
+
+.StockPage__stock-not-found-image {
+  flex: 1;
+  position: relative;
+  height: 350px;
+  min-width: 400px;
+  max-width: 600px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-background);
+  border-radius: 44px;
+
+  background-image: url("https://image.freepik.com/free-vector/404-error-with-astronaut-planet-space-background_114341-45.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
