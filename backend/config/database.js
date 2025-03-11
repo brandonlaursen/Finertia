@@ -25,8 +25,8 @@ module.exports = {
     pool: {
       // max: 10, // Maximum number of connections
       // min: 1, // Minimum number of connections
-      acquire: 120000, // How long to try getting a connection before timing out (ms)
-      idle: 10000, // Time (ms) before closing an idle connection
+      acquire: 600000, // How long to try getting a connection before timing out (ms)
+      idle: 600000, // Time (ms) before closing an idle connection
     },
     define: {
       schema: process.env.SCHEMA,
