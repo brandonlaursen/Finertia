@@ -66,6 +66,11 @@ module.exports = {
     );
   },
   async down(queryInterface, Sequelize) {
+    await queryInterface.dropTable({
+      tableName: "StockPriceTimestamps",
+      schema: options.schema,
+    });
+
     // options.tableName = "Stocks";
     return queryInterface.dropTable({
       tableName: "Stocks",
