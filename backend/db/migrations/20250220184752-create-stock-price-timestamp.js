@@ -49,15 +49,12 @@ module.exports = {
       options
     );
 
-    await queryInterface.addConstraint(
-      options,
-      "unique_stock_timestamp_interval",
-      {
-        fields: ["stockId", "timestamp", "interval"],
-        type: "unique",
-        name: "unique_stock_timestamp_interval",
-      }
-    );
+    await queryInterface.addConstraint("StockPriceTimestamps", {
+      fields: ["stockId", "timestamp", "interval"],
+      type: "unique",
+      name: "unique_stock_timestamp_interval",
+      ...options 
+    });
   },
   async down(queryInterface, Sequelize) {
     options.tableName = "StockPriceTimestamps";
@@ -79,7 +76,7 @@ module.exports = {
       options,
       "unique_stock_timestamp_interval"
     );
-    
+
     return queryInterface.dropTable(options);
   },
 };
