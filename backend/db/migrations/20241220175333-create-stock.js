@@ -44,7 +44,7 @@ module.exports = {
         marketCap: {
           type: Sequelize.STRING,
           allowNull: true,
-          defaultValue: '-',
+          defaultValue: "-",
         },
         industry: {
           type: Sequelize.STRING,
@@ -66,7 +66,10 @@ module.exports = {
     );
   },
   async down(queryInterface, Sequelize) {
-    options.tableName = "Stocks";
-    return queryInterface.dropTable(options);
+    // options.tableName = "Stocks";
+    return queryInterface.dropTable({
+      tableName: "Stocks",
+      schema: options.schema,
+    });
   },
 };

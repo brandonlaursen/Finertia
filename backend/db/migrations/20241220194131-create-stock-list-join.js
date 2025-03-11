@@ -43,6 +43,9 @@ module.exports = {
   },
   async down(queryInterface, Sequelize) {
     options.tableName = "StockListJoins";
-    return queryInterface.dropTable(options);
+    return queryInterface.dropTable({
+      tableName: "StockListJoins",
+      schema: options.schema,
+    });
   },
 };
