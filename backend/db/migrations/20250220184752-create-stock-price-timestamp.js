@@ -50,7 +50,8 @@ module.exports = {
     );
 
     await queryInterface.addConstraint(
-      { tableName: "StockPriceTimestamps", schema: options.schema },
+      options,
+      "unique_stock_timestamp_interval",
       {
         fields: ["stockId", "timestamp", "interval"],
         type: "unique",
@@ -59,23 +60,26 @@ module.exports = {
     );
   },
   async down(queryInterface, Sequelize) {
-    // options.tableName = "StockPriceTimestamps";
+    options.tableName = "StockPriceTimestamps";
+
+    // await queryInterface.removeConstraint(
+    //   options,
+    //   "StockPriceTimestamps_stockId_fkey"
+    // );
+
+
+
+    // await queryInterface.removeConstraint(
+    //   { tableName: "StockPriceTimestamps", schema: options.schema },
+    //   "unique_stock_timestamp_interval",
+    //   options
+    // );
 
     await queryInterface.removeConstraint(
-      { tableName: "StockPriceTimestamps", schema: options.schema },
-      "StockPriceTimestamps_stockId_fkey",
-      options
+      options,
+      "unique_stock_timestamp_interval"
     );
-
-    await queryInterface.removeConstraint(
-      { tableName: "StockPriceTimestamps", schema: options.schema },
-      "unique_stock_timestamp_interval",
-      options
-    );
-
-    return queryInterface.dropTable({
-      tableName: "StockPriceTimestamps",
-      schema: options.schema,
-    });
+    
+    return queryInterface.dropTable(options);
   },
 };
