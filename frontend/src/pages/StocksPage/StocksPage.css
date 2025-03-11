@@ -14,7 +14,7 @@
 .StocksPage__banner {
   height: 160px;
 
-  background-color: #07de96;
+  background-color: var(--theme-primary-hover);
   background-image: url("https://png.pngtree.com/png-vector/20230728/ourmid/pngtree-boost-clipart-cartoon-rocket-ship-traveling-into-the-space-vector-png-image_6796486.png");
   background-size: contain;
   background-repeat: no-repeat;

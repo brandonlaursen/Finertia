@@ -135,7 +135,7 @@
 
   padding-top: 4px;
 
-  background-color: #07de96;
+  background-color: var(--theme-primary-hover);
 
   z-index: 2;
 }

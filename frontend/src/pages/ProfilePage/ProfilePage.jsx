@@ -15,6 +15,7 @@ function ProfilePage() {
 
   const { stockSummary } = sessionUser;
 
+  console.log(stockSummary)
   const total =
     Number(stockSummary.totalInvestments) + Number(stockSummary.balance);
 
