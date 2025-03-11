@@ -128,7 +128,7 @@ module.exports = {
     const combinedIntervals = await Promise.all(fetchIntervals);
     console.log(" combinedIntervals:", );
 
-    console.log("inside demo stocks price timestamp", , "--");
+    console.log("inside demo stocks price timestamp",  "--");
     await StockPriceTimestamp.bulkCreate(combinedIntervals.flat());
     console.log("after");
     // await StockPriceTimestamp.bulkCreate([
