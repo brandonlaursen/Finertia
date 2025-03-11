@@ -52,6 +52,7 @@ module.exports = {
         }
 
         for (let aggregateBar of data.results) {
+          console.log(aggregateBar.t);
           timestamps.push({
             stockId,
             timestamp: aggregateBar.t,
@@ -136,7 +137,6 @@ module.exports = {
 
     async function insertStockPriceTimestamps(data) {
       const BATCH_SIZE = 5000;
-      
 
       for (let i = 0; i < data.length; i += BATCH_SIZE) {
         const batch = data.slice(i, i + BATCH_SIZE);
