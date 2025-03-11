@@ -19,7 +19,7 @@ function BuyingPowerDropDown({
   const [isDropDownVisible, setDropDownIsVisible] = useState(false);
 
   // Check if stockSummary exists and set balance accordingly
-  const balance = sessionUser?.stockSummary?.balance || 0; // Default to 0 if stockSummary is undefined
+  const balance = Number(sessionUser?.stockSummary?.balance) || 0; // Default to 0 if stockSummary is undefined
   console.log(balance, sessionUser);
   return (
     <div
