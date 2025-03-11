@@ -54,11 +54,13 @@ module.exports = {
       type: "unique",
       name: "unique_stock_timestamp_interval",
     });
-
   },
   async down(queryInterface, Sequelize) {
     options.tableName = "StockPriceTimestamps";
-    // await queryInterface.removeConstraint("StockPriceTimestamps", "unique_stock_timestamp_interval");
+    await queryInterface.removeConstraint(
+      "StockPriceTimestamps",
+      "unique_stock_timestamp_interval"
+    );
     return queryInterface.dropTable(options);
   },
 };
