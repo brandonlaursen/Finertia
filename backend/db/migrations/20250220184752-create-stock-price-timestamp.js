@@ -48,7 +48,7 @@ module.exports = {
       },
       options
     );
-console.log(options)
+console.log(options.schema)
     await queryInterface.addConstraint(
       "StockPriceTimestamps",
       {
