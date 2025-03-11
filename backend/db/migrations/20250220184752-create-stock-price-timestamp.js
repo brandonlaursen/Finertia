@@ -59,7 +59,8 @@ module.exports = {
     options.tableName = "StockPriceTimestamps";
     await queryInterface.removeConstraint(
       "StockPriceTimestamps",
-      "unique_stock_timestamp_interval"
+      "unique_stock_timestamp_interval",
+      options
     );
     return queryInterface.dropTable(options);
   },
