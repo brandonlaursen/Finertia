@@ -10,6 +10,7 @@ if (process.env.NODE_ENV === "production") {
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
+    console.log('entering up!')
     // options.tableName = "StockPriceTimestamps";
     // * get timestamp for api call
     function getDate(daysAgo = 0) {
@@ -37,7 +38,7 @@ module.exports = {
       let currentUrl = `https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/1/day/${fiveYearsAgo}/${todaysDate}?adjusted=true&sort=asc&apiKey=${process.env.STOCK_API_KEY2}`;
 
       const timestamps = [];
-      console.log("in day intervals");
+  
       while (currentUrl) {
         const response = await fetch(currentUrl);
         const data = await response.json();
