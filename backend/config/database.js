@@ -19,8 +19,8 @@ module.exports = {
         rejectUnauthorized: false,
       },
       // keepAlive: true, // Keeps connection alive
-      statement_timeout: 120000, // 120,000 ms (2 minutes)
-      query_timeout: 120000, // 120,000 ms (2 minutes)
+      statement_timeout: 600000, // 5 minutes
+      query_timeout: 600000, // 5 minutes
     },
     pool: {
       // max: 10, // Maximum number of connections
