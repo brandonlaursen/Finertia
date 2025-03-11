@@ -62,6 +62,11 @@ module.exports = {
       "unique_stock_timestamp_interval",
       options
     );
+    await queryInterface.removeConstraint(
+      "StockPriceTimestamps",
+      "StockPriceTimestamps_stockId_fkey",
+      options
+    );
     return queryInterface.dropTable(options);
   },
 };
