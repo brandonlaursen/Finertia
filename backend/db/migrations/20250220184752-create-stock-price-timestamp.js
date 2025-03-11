@@ -49,15 +49,14 @@ module.exports = {
       options
     );
 
-    console.log('before')
+    console.log("before");
     await queryInterface.addConstraint("StockPriceTimestamps", {
       fields: ["stockId", "timestamp", "interval"],
       type: "unique",
       name: "unique_stock_timestamp_interval",
-      ...options
     });
 
-    console.log('after')
+    console.log("after");
   },
   async down(queryInterface, Sequelize) {
     options.tableName = "StockPriceTimestamps";
@@ -66,8 +65,6 @@ module.exports = {
     //   options,
     //   "StockPriceTimestamps_stockId_fkey"
     // );
-
-
 
     // await queryInterface.removeConstraint(
     //   { tableName: "StockPriceTimestamps", schema: options.schema },
