@@ -10,7 +10,6 @@ if (process.env.NODE_ENV === "production") {
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-
     // options.tableName = "StockPriceTimestamps";
     // * get timestamp for api call
     function getDate(daysAgo = 0) {
@@ -123,9 +122,9 @@ module.exports = {
 
     const combinedIntervals = await Promise.all(fetchIntervals);
 
-    console.log('inside demo stocks price timestamp')
+    console.log("inside demo stocks price timestamp");
     await StockPriceTimestamp.bulkCreate(combinedIntervals.flat());
-
+    console.log("after");
     // await StockPriceTimestamp.bulkCreate([
     //   {
     //     stockId: 1,
