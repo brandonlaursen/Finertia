@@ -128,9 +128,28 @@ module.exports = {
     const combinedIntervals = await Promise.all(fetchIntervals);
     console.log(" combinedIntervals:", );
 
+
+    async function insertStockPriceTimestamps(data) {
+      const BATCH_SIZE = 5000; // Adjust based on database performance
+
+      for (let i = 0; i < data.length; i += BATCH_SIZE) {
+        const batch = data.slice(i, i + BATCH_SIZE);
+
+        await StockPriceTimestamp.bulkCreate(batch, {
+          ignoreDuplicates: true, // Prevent duplicate key errors
+          validate: false, // Speed up inserts by skipping validation
+        });
+
+        console.log(`Inserted batch ${i / BATCH_SIZE + 1} of ${Math.ceil(data.length / BATCH_SIZE)}`);
+      }
+    }
+
+    await insertStockPriceTimestamps(combinedIntervals.flat())
     console.log("inside demo stocks price timestamp",  "--");
-    await StockPriceTimestamp.bulkCreate(combinedIntervals.flat());
+    // await StockPriceTimestamp.bulkCreate(combinedIntervals.flat());
     console.log("after");
+
+
     // await StockPriceTimestamp.bulkCreate([
     //   {
     //     stockId: 1,
