@@ -4,8 +4,6 @@ const roundTimestampToInterval = require("./roundTimestampToInterval.js");
 async function processHistoricalData(processedTransactions) {
   const todaysDate = getDate();
 
-
-
   // * users first transaction
   const firstTimestamp = Math.min(
     ...Object.keys(processedTransactions).map(Number)
@@ -13,8 +11,22 @@ async function processHistoricalData(processedTransactions) {
 
   const firstTransaction = processedTransactions[firstTimestamp];
   const firstTransactionTimestamp = firstTransaction.unixTimestamp;
+  console.log(" firstTransactionTimestamp:", firstTransactionTimestamp);
 
-  const roundedTransactionTimestamp = roundTimestampToInterval(firstTransactionTimestamp, 5)
+  const roundedTransactionTimestamp = roundTimestampToInterval(
+    firstTransactionTimestamp,
+    5
+  );
+  console.log(" roundedTransactionTimestamp:", roundedTransactionTimestamp);
+
+  // Check if within 15 minutes
+  const now = Date.now();
+  const fifteenMinutesAgo = now - 15 * 60 * 1000; // 15 minutes in ms
+
+  if (roundedTransactionTimestamp >= fifteenMinutesAgo) {
+    // console.log("First transaction is within 15 minutes. Adjusting...");
+    roundedTransactionTimestamp -= 20 * 60 * 1000; // Subtract 20 minutes
+  }
 
   // * get users last transaction
   const lastTimestamp = Math.max(
@@ -25,7 +37,6 @@ async function processHistoricalData(processedTransactions) {
     ...Object.keys(lastTransaction.stockSharesOwned),
   ];
 
-
   const aggregateData = {};
   const allTimestamps = new Set();
 
@@ -34,6 +45,9 @@ async function processHistoricalData(processedTransactions) {
       `https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/5/minute/${roundedTransactionTimestamp}/${todaysDate}?adjusted=true&sort=asc&apiKey=${process.env.STOCK_API_KEY2}`
     );
     const data = await response.json();
+    console.log(" data:", data);
+    console.log("roundedTransactionTimestamp", roundedTransactionTimestamp);
+    console.log("todaysDate", todaysDate);
 
     const currentStocksAggregates = data.results || [];
 

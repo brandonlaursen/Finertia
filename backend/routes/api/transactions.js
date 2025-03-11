@@ -119,6 +119,8 @@ router.get("/stock-transactions", async (req, res) => {
 });
 
 router.get("/stock-summary", async (req, res) => {
+  console.log('-------------------------------')
+  console.log('    ')
   const { id } = req.user;
 
   const t = await sequelize.transaction();
@@ -140,6 +142,14 @@ router.get("/stock-summary", async (req, res) => {
       }),
     ]);
 
+    console.log('-------------------------------')
+    console.log('    ')
+    console.log("1: userTransactions", userTransactions);
+
+    console.log('-------------------------------')
+    console.log('    ')
+    console.log("2: accountTransactions", accountTransactions);
+
     if (accountTransactions.length === 0) {
       const userSummary = {
         totalInvestments: 0,
@@ -155,14 +165,24 @@ router.get("/stock-summary", async (req, res) => {
       await t.rollback();
       return res.json(userSummary);
     }
+
     const processedTransactions = processTransactionSummary(
       userTransactions,
       accountTransactions
     );
 
+    console.log('-------------------------------')
+    console.log('    ')
+    console.log("3, processedTransactions", processedTransactions);
+
     const processedHistoricalData = await processHistoricalData(
       processedTransactions
     );
+
+    console.log('-------------------------------')
+    console.log('    ')
+    // console.log('4: processedHistoricalData', processedHistoricalData);
+
 
     const mergedTransactionData = mergeTransactionAndAggregateData(
       processedTransactions,
@@ -190,7 +210,7 @@ router.get("/stock-summary", async (req, res) => {
       stocksOwned: lastTransaction.stocksOwned,
       ...aggregates,
     };
-    console.log(" userSummary:", userSummary);
+    // console.log(" userSummary:", userSummary);
 
     return res.json(userSummary);
   } catch (error) {
