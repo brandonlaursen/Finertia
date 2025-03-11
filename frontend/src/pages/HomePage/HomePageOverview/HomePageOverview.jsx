@@ -37,11 +37,14 @@ function HomePageOverview({ stockData, selectedTimeFrame }) {
 
   const { portfolioPercentChange, portfolioAmountChange } = useMemo(() => {
     if (!data || data.length < 2) {
-      return { portfolioPercentChange: "0.00", portfolioAmountChange: "0.00" };
+      return { portfolioPercentChange: 0.00, portfolioAmountChange: 0.00 };
     }
 
     const firstAggregate = data[0].y;
     const lastAggregate = data[data.length - 1].y;
+
+    if (lastAggregate - firstAggregate == 0)
+      return { portfolioPercentChange: 0.00, portfolioAmountChange: 0.00 };
 
     return {
       portfolioPercentChange: (
@@ -52,7 +55,7 @@ function HomePageOverview({ stockData, selectedTimeFrame }) {
     };
   }, [data]);
 
-
+  console.log(portfolioPercentChange, portfolioAmountChange);
   return (
     <div className="HomePageOverview">
       <h1 className="HomePageOverview__title">Investing</h1>
@@ -81,7 +84,7 @@ function HomePageOverview({ stockData, selectedTimeFrame }) {
               : portfolioAmountChange > 0
               ? "+"
               : ""}
-            ${portfolioAmountChange}
+            ${portfolioAmountChange.toFixed(2)}
           </span>
 
           <span
@@ -99,7 +102,7 @@ function HomePageOverview({ stockData, selectedTimeFrame }) {
                 : portfolioPercentChange > 0
                 ? "+"
                 : ""
-            }${portfolioPercentChange}%) `}
+            }${portfolioAmountChange.toFixed(2)}%) `}
           </span>
 
           <span className="HomePageOverview__subtext">
