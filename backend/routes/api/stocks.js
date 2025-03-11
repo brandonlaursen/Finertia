@@ -333,7 +333,7 @@ router.get(
 
       return res.json(stockData);
     } catch (error) {
-      console.log(error);
+     
       res.status(500).json({ error, message: "Failed to fetch stock data" });
     }
   }
@@ -360,7 +360,7 @@ router.get("/lists/:stockSymbol", checkMarketStatus, async (req, res) => {
 
     return res.json({ stockSymbol, oneDayAggregates });
   } catch (error) {
-    console.log(error);
+
     res.status(500).json({ error, message: "Failed to fetch stock data" });
   }
 });

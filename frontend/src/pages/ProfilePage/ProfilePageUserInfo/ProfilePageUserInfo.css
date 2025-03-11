@@ -67,7 +67,8 @@
 .ProfilePageUserInfo__information {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+
+  gap:8px
 }
 
 .ProfilePageUserInfo__information__name {

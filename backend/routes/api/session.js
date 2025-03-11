@@ -108,7 +108,6 @@ router.put("/update-password", async (req, res, next) => {
 // * Get logged in user info
 router.get("/", async (req, res) => {
   const { user } = req;
-  console.log(" user:", user);
 
   if (user) {
     const safeUser = {

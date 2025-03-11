@@ -75,21 +75,28 @@ function ProfilePage() {
               Total Individual value
             </span>
             <span className="ProfilePage__investments__details__value-subtext">
-              {" "}
-              ${total ? Number(total).toFixed(2) : "0.00"}
+              <span className="ProfilePage__value-subtext">
+                {" "}
+                ${total ? Number(total).toFixed(2) : "0.00"}
+              </span>
             </span>
           </div>
 
           <div className="ProfilePage__investments__details__value ProfilePage__investments__details__subtext">
-            <span>Individual holdings</span>$
-            {stockSummary
-              ? Number(stockSummary.totalInvestments).toFixed(2)
-              : 0}
+            <span>Individual holdings</span>
+            <span className="ProfilePage__value-subtext">
+              $
+              {stockSummary
+                ? Number(stockSummary.totalInvestments).toFixed(2)
+                : 0}
+            </span>
           </div>
 
           <div className="ProfilePage__investments__details__value ProfilePage__investments__details__subtext">
-            <span>Individual cash</span>$
-            {Number(stockSummary.balance).toFixed(2)}
+            <span>Individual cash</span>
+            <span className="ProfilePage__value-subtext">
+              $ {Number(stockSummary.balance).toFixed(2)}
+            </span>
           </div>
         </div>
       </section>

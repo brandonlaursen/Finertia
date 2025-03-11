@@ -56,7 +56,7 @@ module.exports = {
       name: "unique_stock_timestamp_interval",
     });
 
-    console.log("after");
+  
   },
   async down(queryInterface, Sequelize) {
     options.tableName = "StockPriceTimestamps";

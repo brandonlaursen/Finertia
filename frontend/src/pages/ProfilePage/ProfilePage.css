@@ -83,6 +83,7 @@
 
 .ProfilePage__investments__details__value-subtext {
   font-weight: 500;
+
 }
 
 .ProfilePage__investments__details__subtext {
@@ -90,6 +91,10 @@
   font-weight: 500;
 
   color: var(--color-text-secondary);
+}
+
+.ProfilePage__value-subtext{
+  color: var(--color-text-primary);
 }
 
 .ProfilePage__investments__details__dash {
