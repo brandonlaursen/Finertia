@@ -162,6 +162,7 @@
 .CreateListToggleForm__create-button {
   color: var(--color-background);
   background-color: var(--theme-primary-color);
+  min-width:103px;
 }
 
 /* Create List Form Create Button Hover */

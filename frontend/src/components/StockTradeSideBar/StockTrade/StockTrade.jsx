@@ -20,6 +20,7 @@ function StockTrade({ stock, setNotifications, setNotificationMessage }) {
 
   const sessionUser = useSelector(selectUser);
 
+  console.log(stock)
   const stockSummary = sessionUser.stockSummary.stocksOwned[stock.symbol];
 
   const sharesOwned = stockSummary?.sharesOwned || 0;

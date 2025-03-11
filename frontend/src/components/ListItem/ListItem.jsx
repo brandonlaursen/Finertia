@@ -18,13 +18,13 @@ function ListItem({
   setNotifications,
   setNotificationMessage,
   showItems = false,
-  showDropdown
+  showDropdown,
 }) {
   const isCurrentList = activeListId === list.id;
 
   return (
     <article
-      onClick={() => navigate(`/lists/${list.id}`)}
+      onClick={showItems ? undefined : () => navigate(`/lists/${list.id}`)}
       className={`ListItem ${className}`}
     >
       <div className={`ListItem__container ${container}`}>

@@ -87,6 +87,7 @@ function ListEditor({ list, listId, navigate }) {
   };
 
   const handleDeleteList = async () => {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     await dispatch(deleteList(listId));
     if (location.pathname.includes(listId)) {
       navigate("/");
