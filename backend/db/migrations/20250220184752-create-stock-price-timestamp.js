@@ -53,7 +53,7 @@ module.exports = {
       fields: ["stockId", "timestamp", "interval"],
       type: "unique",
       name: "unique_stock_timestamp_interval",
-    });
+    }, options);
   },
   async down(queryInterface, Sequelize) {
     options.tableName = "StockPriceTimestamps";
