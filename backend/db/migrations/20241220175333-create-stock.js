@@ -71,6 +71,11 @@ module.exports = {
       schema: options.schema,
     });
 
+    await queryInterface.dropTable({
+      tableName: "StockUserTransactions",
+      schema: options.schema,
+    });
+
     // options.tableName = "Stocks";
     return queryInterface.dropTable({
       tableName: "Stocks",
