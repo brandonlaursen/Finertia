@@ -8,6 +8,7 @@ import { useLocation, Navigate, NavLink, useNavigate } from "react-router-dom";
 import SearchBar from "./SearchBar/SearchBar";
 import HamburgerMenu from "./HamburgerMenu/HamburgerMenu";
 import AccountDropdown from "./AccountDropdown/AccountDropdown";
+import HamburgerDropdown from "./HamburgerDropdown";
 
 import { selectUser } from "../../../store/session";
 
@@ -31,6 +32,7 @@ function NavigationBar({ scrolled }) {
       <SearchBar />
 
       <HamburgerMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+      {isMenuOpen && <HamburgerDropdown navigate={navigate} />}
 
       <div className={`Navigation__links ${isMenuOpen && "show"}`}>
         <span

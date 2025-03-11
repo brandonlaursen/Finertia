@@ -1,32 +1,38 @@
-.hamburger-icon {
+.HamburgerMenu {
   display: none;
-  color: black;
 }
 
+.hamburger-icon {
+  height: 28px;
+  width: 28px;
 
-@media screen and (max-width: 1080px) {
-  .hamburger-icon-container {
-    width: 100px;
+  transition: color 0.3s ease-in-out;
+}
 
+.hamburger-icon:hover {
+  color: var(--theme-primary-color);
+}
+
+/* ====== Media Queries ====== */
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+  /* styles for medium devices */
+  .Navigation__links {
+    display: none;
+  }
+
+  .HamburgerMenu {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
+    color: var(--color-text-primary);
+
+    margin-right: 16px;
+    margin-left: 16px;
+
     cursor: pointer;
   }
-
-
-  .hamburger-icon {
-    height: 24px;
-    width: 24px;
-
-    display: block;
-
-    color: black;
-  }
-
-  .close-icon {
-    height: 24px;
-    width: 24px;
-  }
 }
+

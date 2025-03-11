@@ -5,7 +5,7 @@ import { IoClose } from "react-icons/io5";
 
 function HamburgerMenu({ isMenuOpen, setIsMenuOpen }) {
   return (
-    <div className="hamburger-icon-container">
+    <div className="HamburgerMenu">
       {isMenuOpen ? (
         <IoClose
           className="hamburger-icon close-icon"
@@ -18,6 +18,7 @@ function HamburgerMenu({ isMenuOpen, setIsMenuOpen }) {
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         />
       )}
+   
     </div>
   );
 }
