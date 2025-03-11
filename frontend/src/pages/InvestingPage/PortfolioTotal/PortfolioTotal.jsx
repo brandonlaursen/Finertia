@@ -88,7 +88,7 @@ function PortfolioTotal({
     <div className="PortfolioTotal">
       <header className="InvestingPage__header">
         <span className="PortfolioTotal__title">Total Portfolio value</span>
-        <span className="PortfolioTotal__value">${total.toFixed(2)}</span>
+        <span className="PortfolioTotal__value">${+total.toFixed(2)}</span>
       </header>
 
       <main className="InvestingPage__main">
@@ -97,10 +97,10 @@ function PortfolioTotal({
             <span className="PortfolioTotal__section-title">Stocks</span>
             <div className="PortfolioTotal__section-value-container">
               <span className="PortfolioTotal__section-value">
-                {stockPercentage.toFixed(2)}%
+                {+stockPercentage.toFixed(2)}%
               </span>
               <span className="PortfolioTotal__section-value">
-                ${stockInvestments.toFixed(2)}
+                ${+stockInvestments.toFixed(2)}
               </span>
             </div>
           </div>
@@ -111,10 +111,10 @@ function PortfolioTotal({
             </span>
             <div className="PortfolioTotal__section-value-container">
               <span className="PortfolioTotal__section-value">
-                {balancePercentage.toFixed(2)}%
+                {+balancePercentage.toFixed(2)}%
               </span>
               <span className="PortfolioTotal__section-value">
-                ${balance.toFixed(2)}
+                ${+balance.toFixed(2)}
               </span>
             </div>
           </div>
@@ -136,7 +136,7 @@ function PortfolioTotal({
             ) : (
               <>
                 <span>Total portfolio value</span>
-                <span>${total.toFixed(2)}</span>
+                <span>${+total.toFixed(2)}</span>
               </>
             )}
           </span>
