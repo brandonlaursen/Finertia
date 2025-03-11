@@ -37,7 +37,7 @@ module.exports = {
       let currentUrl = `https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/1/day/${fiveYearsAgo}/${todaysDate}?adjusted=true&sort=asc&apiKey=${process.env.STOCK_API_KEY2}`;
 
       const timestamps = [];
-
+      console.log("in day intervals");
       while (currentUrl) {
         const response = await fetch(currentUrl);
         const data = await response.json();
@@ -70,16 +70,18 @@ module.exports = {
       let currentUrl = `https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/1/hour/${oneMonthAgo}/${todaysDate}?adjusted=true&sort=asc&apiKey=${process.env.STOCK_API_KEY2}`;
 
       const timestamps = [];
-
+      console.log("before loop");
       while (currentUrl) {
         const response = await fetch(currentUrl);
         const data = await response.json();
+        console.log(data);
         if (!data.results) {
           currentUrl = null;
           continue;
         }
 
         for (let aggregateBar of data.results) {
+          console.log(aggregateBar);
           timestamps.push({
             stockId,
             timestamp: aggregateBar.t,
@@ -99,18 +101,20 @@ module.exports = {
 
     const fetchIntervals = stocks.map(async (stock) => {
       try {
+        console.log("before fetches");
         const oneHourIntervals = await getOneHourIntervalsUpToOneMonth(
           stock.stockSymbol,
           stock.id
         );
-
+        console.log("after hour");
         const oneDayIntervals = await getOneDayIntervalsUpToFiveYears(
           stock.stockSymbol,
           stock.id
         );
-        console.log(stock);
+        console.log("after day");
         return [...oneHourIntervals, ...oneDayIntervals];
       } catch (error) {
+        console.log("error");
         console.error(
           `Error fetching data for stock ${stock.stockSymbol}:`,
           error.message
@@ -121,6 +125,7 @@ module.exports = {
     });
 
     const combinedIntervals = await Promise.all(fetchIntervals);
+    console.log(" combinedIntervals:", combinedIntervals);
 
     console.log("inside demo stocks price timestamp", combinedIntervals, "--");
     await StockPriceTimestamp.bulkCreate(combinedIntervals.flat());
