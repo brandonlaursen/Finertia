@@ -42,18 +42,15 @@ function HomePageOverview({ stockData, selectedTimeFrame }) {
 
     const firstAggregate = data[0].y;
     const lastAggregate = data[data.length - 1].y;
-
-    " lastAggregate:", lastAggregate;
-    " firstAggregate:", firstAggregate;
-
+    console.log(" lastAggregate:", lastAggregate);
+    console.log(" firstAggregate:", firstAggregate);
+    
     if (firstAggregate === 0) {
       return {
         portfolioPercentChange: 0.0,
         portfolioAmountChange: lastAggregate,
       };
     }
-
-    ((lastAggregate - firstAggregate) / firstAggregate) * 100;
 
     if (lastAggregate - firstAggregate === 0)
       return { portfolioPercentChange: 0.0, portfolioAmountChange: 0.0 };
@@ -65,12 +62,14 @@ function HomePageOverview({ stockData, selectedTimeFrame }) {
     };
   }, [data]);
 
+
+  console.log(portfolioPercentChange, portfolioAmountChange);
   return (
     <div className="HomePageOverview">
       <h1 className="HomePageOverview__title">Investing</h1>
       <main className="HomePageOverview__main">
         <span className="HomePageOverview__total-investments">
-          ${stockData?.totalInvestments || 0}
+          ${stockData.totalInvestments || 0}
         </span>
 
         <span className="HomePageOverview__portfolio-amount-change">
