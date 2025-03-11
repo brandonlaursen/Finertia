@@ -11,7 +11,7 @@ if (process.env.NODE_ENV === "production") {
 module.exports = {
   async up(queryInterface, Sequelize) {
 
-    options.tableName = "StockPriceTimestamps";
+    // options.tableName = "StockPriceTimestamps";
     // * get timestamp for api call
     function getDate(daysAgo = 0) {
       let date = new Date();
@@ -123,6 +123,7 @@ module.exports = {
 
     const combinedIntervals = await Promise.all(fetchIntervals);
 
+    console.log('inside demo stocks price timestamp')
     await StockPriceTimestamp.bulkCreate(combinedIntervals.flat());
 
     // await StockPriceTimestamp.bulkCreate([
