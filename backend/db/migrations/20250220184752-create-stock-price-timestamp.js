@@ -26,7 +26,7 @@ module.exports = {
           allowNull: false,
         },
         timestamp: {
-          type: Sequelize.INTEGER,
+          type: Sequelize.DATE,
           allowNull: false,
         },
         price: {
