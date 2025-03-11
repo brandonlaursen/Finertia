@@ -49,7 +49,7 @@ module.exports = {
       options
     );
 
-    console.log("before", process.env.SCHEMA, '--');
+    console.log("before", options.schema, '--');
     await queryInterface.addConstraint("StockPriceTimestamps", {
       fields: ["stockId", "timestamp", "interval"],
       type: "unique",
