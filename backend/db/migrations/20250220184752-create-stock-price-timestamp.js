@@ -50,7 +50,7 @@ module.exports = {
       options
     );
     console.log('after create table')
-console.log(options.schema)
+console.log(options.schema.tableName)
     await queryInterface.addConstraint(
       "StockPriceTimestamps",
       {
