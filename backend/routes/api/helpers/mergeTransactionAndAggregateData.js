@@ -42,7 +42,7 @@ function mergeTransactionAndAggregateData(
     if (processedTransactions[tsStr]) {
       // get the transaction object at this timestamp
       const transaction = processedTransactions[tsStr];
-   
+
       // update currentBalance
       currentBalance = transaction.balance;
 
@@ -74,9 +74,9 @@ function mergeTransactionAndAggregateData(
           const price = lastHistoricalSnapshot[stock].price;
           stocksOwned[stock] = {
             price,
-            sharesOwned: shares.quantity,
+            sharesOwned: Number(shares.quantity),
             symbol: stock,
-            purchasePrice: shares.purchasePrice,
+            purchasePrice: Number(shares.purchasePrice),
             stockName: shares.stockName,
             stockId: shares.stockId,
           };

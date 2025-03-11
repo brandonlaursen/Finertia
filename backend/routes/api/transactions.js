@@ -15,12 +15,10 @@ const gatherAggregates = require("./helpers/gatherAggregates.js");
 
 router.post("/deposit", async (req, res) => {
   const { id, balance } = req.user;
-  console.log(" balance:", balance);
 
   const { amount } = req.body;
 
   const user = await User.findByPk(id);
-  console.log(" user:", user);
 
   const newBalance = Number(balance) + Number(amount);
 
@@ -106,8 +104,8 @@ router.get("/stock-transactions", async (req, res) => {
       stockId,
       stockSymbol: Stock.stockSymbol,
       transactionType,
-      quantity,
-      purchasePrice,
+      quantity: Number(quantity),
+      purchasePrice: Number(purchasePrice),
       purchaseDate,
     };
   });
@@ -119,8 +117,6 @@ router.get("/stock-transactions", async (req, res) => {
 });
 
 router.get("/stock-summary", async (req, res) => {
-  console.log('-------------------------------')
-  console.log('    ')
   const { id } = req.user;
 
   const t = await sequelize.transaction();
@@ -141,14 +137,6 @@ router.get("/stock-summary", async (req, res) => {
         transaction: t,
       }),
     ]);
-
-    console.log('-------------------------------')
-    console.log('    ')
-    console.log("1: userTransactions", userTransactions);
-
-    console.log('-------------------------------')
-    console.log('    ')
-    console.log("2: accountTransactions", accountTransactions);
 
     if (accountTransactions.length === 0) {
       const userSummary = {
@@ -171,18 +159,9 @@ router.get("/stock-summary", async (req, res) => {
       accountTransactions
     );
 
-    console.log('-------------------------------')
-    console.log('    ')
-    console.log("3, processedTransactions", processedTransactions);
-
     const processedHistoricalData = await processHistoricalData(
       processedTransactions
     );
-
-    console.log('-------------------------------')
-    console.log('    ')
-    // console.log('4: processedHistoricalData', processedHistoricalData);
-
 
     const mergedTransactionData = mergeTransactionAndAggregateData(
       processedTransactions,
@@ -210,7 +189,6 @@ router.get("/stock-summary", async (req, res) => {
       stocksOwned: lastTransaction.stocksOwned,
       ...aggregates,
     };
-    // console.log(" userSummary:", userSummary);
 
     return res.json(userSummary);
   } catch (error) {
@@ -234,8 +212,6 @@ router.post("/trade/:stockId", async (req, res) => {
     stockName,
     stockSymbol,
   } = req.body;
-
-  stockId, stockPrice, quantity, stockName, stockSymbol;
 
   const t = await sequelize.transaction();
 

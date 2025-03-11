@@ -16,7 +16,7 @@ router.post("/", async (req, res) => {
           stockName: { [Op.iLike]: `%${searchQuery}%` },
         },
         {
-          stockSymbol: { [Op.iLike]: `%${searchQuery}%` }, 
+          stockSymbol: { [Op.iLike]: `%${searchQuery}%` },
         },
       ],
     },

@@ -11,13 +11,11 @@ async function processHistoricalData(processedTransactions) {
 
   const firstTransaction = processedTransactions[firstTimestamp];
   const firstTransactionTimestamp = firstTransaction.unixTimestamp;
-  console.log(" firstTransactionTimestamp:", firstTransactionTimestamp);
 
   const roundedTransactionTimestamp = roundTimestampToInterval(
     firstTransactionTimestamp,
     5
   );
-  console.log(" roundedTransactionTimestamp:", roundedTransactionTimestamp);
 
   // Check if within 15 minutes
   const now = Date.now();
@@ -45,10 +43,7 @@ async function processHistoricalData(processedTransactions) {
       `https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/5/minute/${roundedTransactionTimestamp}/${todaysDate}?adjusted=true&sort=asc&apiKey=${process.env.STOCK_API_KEY2}`
     );
     const data = await response.json();
-    console.log(" data:", data);
-    console.log("roundedTransactionTimestamp", roundedTransactionTimestamp);
-    console.log("todaysDate", todaysDate);
-
+ 
     const currentStocksAggregates = data.results || [];
 
     for (let aggregate of currentStocksAggregates) {
