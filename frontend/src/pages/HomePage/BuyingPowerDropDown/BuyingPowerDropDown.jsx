@@ -20,7 +20,7 @@ function BuyingPowerDropDown({
 
   // Check if stockSummary exists and set balance accordingly
   const balance = sessionUser?.stockSummary?.balance || 0; // Default to 0 if stockSummary is undefined
-
+  console.log(balance);
   return (
     <div
       className={`BuyingPowerDropDown ${
@@ -33,7 +33,7 @@ function BuyingPowerDropDown({
       >
         <span>Buying Power</span>
         <span className="BuyingPowerDropDown__balance">
-          ${balance.toFixed(2)}
+          ${balance ? balance.toFixed(2) : 0}
           <FaAngleDown
             className={`BuyingPowerDropDown__arrow-icon ${
               isDropDownVisible && "open"
@@ -49,13 +49,13 @@ function BuyingPowerDropDown({
               <div className="BuyingPowerDropDown__summary-text">
                 <span>Individual Cash</span>
                 <span className="BuyingPowerDropDown__summary-value">
-                  ${balance.toFixed(2)}
+                  ${balance ? balance.toFixed(2) : 0}
                 </span>
               </div>
               <div className="BuyingPowerDropDown__summary-text">
                 <span>Total</span>
                 <span className="BuyingPowerDropDown__summary-value">
-                  ${balance.toFixed(2)}
+                  ${balance ? balance.toFixed(2) : 0}
                 </span>
               </div>
             </section>

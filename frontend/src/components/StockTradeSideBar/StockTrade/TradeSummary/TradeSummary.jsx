@@ -17,7 +17,7 @@ function TradeSummary({
           <>
             <span>Estimated Quantity</span>
             <span className="TradeSummary__estimate">
-              {Number(tradeSharesEstimate).toFixed(5)}
+              {tradeSharesEstimate && Number(tradeSharesEstimate).toFixed(5)}
             </span>
           </>
         ) : (

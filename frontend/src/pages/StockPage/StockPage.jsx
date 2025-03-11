@@ -92,13 +92,19 @@ function StockPage() {
         )}
       </main>
 
-      <StockTradeSidebar
-        stock={stock}
-        setNotifications={setNotifications}
-        setNotificationMessage={setNotificationMessage}
-        notifications={notifications}
-        notificationMessage={notificationMessage}
-      />
+      {isLoading ? (
+        <div className="StockTrade__sidebar-skeleton">
+          <Skeleton height="100%" />
+        </div>
+      ) : (
+        <StockTradeSidebar
+          stock={stock}
+          setNotifications={setNotifications}
+          setNotificationMessage={setNotificationMessage}
+          notifications={notifications}
+          notificationMessage={notificationMessage}
+        />
+      )}
 
       {notifications && (
         <div className="NotificationPopsContainer">

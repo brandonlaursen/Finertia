@@ -12,3 +12,19 @@
   border: 1px solid var(--border-color);
   background-color: var(--color-surface);
 }
+
+.StockTrade__sidebar-skeleton {
+  position: sticky;
+  top: 85px;
+  height: 500px;
+
+  margin-top: var(--container-margin-top);
+
+  width: clamp(250px, 30vw, 300px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 24px;
+}
