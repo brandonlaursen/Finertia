@@ -30,7 +30,7 @@ function StockDetails({ stock }) {
         <p
           className="StockDetails__about"
           style={{
-            maxHeight: showMoreStockDetails ? "200px" : "42px",
+            maxHeight: showMoreStockDetails ? "280px" : "42px",
           }}
         >
           {description}
