@@ -16,7 +16,8 @@
 
 .NotificationPopUp {
   height: 50px;
-  width: 800px;
+  max-width: 800px;
+  width: 80vw;
 
   display: flex;
   align-items: center;
@@ -67,5 +68,4 @@
 
   border-radius: 50%;
 }
-
 
