@@ -16,7 +16,7 @@
 }
 
 .PortfolioTotal__section {
-  height: 54px;
+  height: 48px;
 
   display: flex;
   justify-content: space-between;
@@ -47,8 +47,6 @@
 
   font-size: 12px;
   font-weight: 500;
-
-  width: 142px;
 
 
 }

@@ -22,24 +22,17 @@
 
 .InvestingPage__main {
   display: flex;
-
 }
 
 .InvestingPage__section {
   width: 100%;
-
 }
 
 /* Chart Container */
 .InvestingPage__chart-container {
-  width: 20%;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
-  margin-bottom: 24px;
-  margin-left: 64px;
 }
 
 .InvestingPage__chart-container-value {
@@ -62,7 +55,6 @@
 /* ====== Media Queries ====== */
 /* Medium devices (tablets, 768px and up) */
 @media (max-width: 768px) {
-
   .InvestingPage {
     width: 90vw;
   }
@@ -78,6 +70,4 @@
   .InvestingPage__chart-container {
     margin-left: 0px;
   }
-
 }
-
