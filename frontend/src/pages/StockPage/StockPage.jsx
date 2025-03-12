@@ -107,8 +107,8 @@ function StockPage() {
           />
 
           <div className="StockTradeBarMobile">
-            <button className="StockTradeBarMobile__buttons">Buy</button>
-            <button className="StockTradeBarMobile__buttons">Add To List</button>
+            <button className="StockTradeBarMobile__button">Buy</button>
+            <button className="StockTradeBarMobile__button StockTradeBarMobile__add-to-list-btn">Add To List</button>
           </div>
         </>
       )}

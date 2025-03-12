@@ -115,3 +115,28 @@
   color: var(--color-background);
   background-color: var(--theme-primary-color);
 }
+
+@media (max-width: 768px) {
+  .AppearancePage {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .AppearancePage__content {
+    display: flex;
+    flex-direction: column;
+
+    gap: 0px;
+    padding-top: 10px;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+  }
+
+  .AppearancePage__title {
+    font-size: 18px;
+  }
+}
