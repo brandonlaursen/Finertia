@@ -69,13 +69,14 @@
   overflow: hidden;
 
   font-size: 12px;
+  margin-right: 8px;
 
   color: var(--color-text-secondary);
 }
 
 .StockNews__article-image {
   margin: 0;
-  margin-left: auto;
+  margin-left: 8px;
   border-radius: 4px;
 }
 
