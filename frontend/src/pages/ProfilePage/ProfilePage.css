@@ -279,3 +279,11 @@
 
   }
 }
+
+
+/* * Small devices (landscape phones, 576px and up) */
+@media (max-width: 480px) {
+  .ProfilePage {
+    margin-top: 60px;
+  }
+}

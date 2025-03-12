@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 
 import NavigationBar from "../../components/NavigationBar/NavigationBar";
+import MobileNavigationBar from "../../components/MobileNavigationBar/MobileNavigationBar";
 
 function HomeLayout() {
   const routeClass =
@@ -26,7 +27,8 @@ function HomeLayout() {
 
   return (
     <>
-      <NavigationBar scrolled={scrolled} routeClass={routeClass} />
+      <NavigationBar scrolled={scrolled} routeClass={routeClass}/>
+      <MobileNavigationBar />
       <Outlet context={{ scrolled }} />
     </>
   );

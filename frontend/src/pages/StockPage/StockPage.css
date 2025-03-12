@@ -84,3 +84,11 @@
     color: var(--color-text-primary);
   }
 }
+
+/* * Small devices (landscape phones, 576px and up) */
+@media (max-width: 480px) {
+  .StockPage__main,
+  .StockPage__skeleton {
+    margin-top: 0px;
+  }
+}

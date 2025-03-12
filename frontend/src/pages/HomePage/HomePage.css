@@ -54,14 +54,13 @@
 }
 
 /* * Small devices (landscape phones, 576px and up) */
-@media (max-width: 576px) {
-}
-
-/* * Extra small devices (portrait phones, less than 576px) */
-@media (max-width: 575.98px) {
+@media (max-width: 480px) {
+  .HomePage__main {
+    width: 90vw;
+    margin-top: 0px;
+  }
 }
 
 /* * Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 430px) {
-
 }

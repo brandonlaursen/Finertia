@@ -1,0 +1,42 @@
+.MobileNavigationBar {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .MobileNavigationBar {
+    height: 70px;
+    width: 100%;
+
+    position: fixed;
+    bottom: 0;
+
+    padding: 0 16px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    background-color: var(--color-surface);
+
+    z-index: 2;
+  }
+
+  .MobileNavigationBar__button {
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+  }
+
+  .MobileNavigationBar__button:hover {
+    color: var(--theme-primary-color);
+  }
+
+  .MobileNavigationBar__icon {
+    font-size: 24px;
+  }
+}

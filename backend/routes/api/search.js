@@ -13,14 +13,28 @@ router.post("/", async (req, res) => {
     where: {
       [Op.or]: [
         {
-          stockName: { [Op.iLike]: `%${searchQuery}%` },
+          stockName: { [Op.like]: `%${searchQuery}%` },
         },
         {
-          stockSymbol: { [Op.iLike]: `%${searchQuery}%` },
+          stockSymbol: { [Op.like]: `%${searchQuery}%` },
         },
       ],
     },
   });
+
+
+  // const results = await Stock.findAll({
+  //   where: {
+  //     [Op.or]: [
+  //       {
+  //         stockName: { [Op.iLike]: `%${searchQuery}%` },
+  //       },
+  //       {
+  //         stockSymbol: { [Op.iLike]: `%${searchQuery}%` },
+  //       },
+  //     ],
+  //   },
+  // });
 
   res.json(results);
 });

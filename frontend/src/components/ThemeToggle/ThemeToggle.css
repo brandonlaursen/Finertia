@@ -25,3 +25,13 @@
   color: var(--color-text-primary);
   font-size: 20px;
 }
+
+@media (max-width: 768px) {
+  .ThemeToggle {
+  
+
+    display: none;
+  }
+
+
+}

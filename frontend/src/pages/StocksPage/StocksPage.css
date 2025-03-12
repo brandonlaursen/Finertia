@@ -164,3 +164,16 @@
 .StocksPage__hide--description {
   opacity: 0;
 }
+
+/* * Small devices (landscape phones, 576px and up) */
+@media (max-width: 480px) {
+  .StocksPage {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 0px;
+  }
+
+  .StocksPage__banner {
+  }
+}
