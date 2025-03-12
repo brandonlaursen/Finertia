@@ -127,7 +127,7 @@ function ListEditor({ list, listId, navigate }) {
           <div className="ListEditor__emoji-picker-wrapper">
             <EmojiPicker
               onEmojiClick={handleListEmojiChange}
-              style={{ width: "500px" }}
+              // style={{ width: "500px" }}
             />
           </div>
         )}
