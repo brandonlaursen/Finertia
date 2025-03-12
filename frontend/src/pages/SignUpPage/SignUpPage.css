@@ -160,7 +160,7 @@
 
   padding-left: 10px;
 
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
 
   background-color: rgb(30, 33, 37);
@@ -260,10 +260,17 @@ input:focus {
   }
 
   .SignUpPage__form__error {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .SignUpPage__form button {
     margin-top: 8px;
+  }
+}
+
+/* * Small devices (landscape phones, 576px and up) */
+@media (max-width: 480px) {
+  .SignUpPage {
+    padding-top: 70px;
   }
 }

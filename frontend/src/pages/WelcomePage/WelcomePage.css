@@ -2,6 +2,7 @@
 
 /* Main container for the Welcome Page */
 .WelcomePage {
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -12,7 +13,8 @@
 
 /* Main section of the page */
 .WelcomePage__section {
-  height: 630px;
+  /* height: 630px; */
+  height: 100%;
   width: 100%;
 
   display: flex;
@@ -246,4 +248,23 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+
+/* * Small devices (landscape phones, 576px and up) */
+@media (max-width: 480px) {
+
+  .HomePage {
+    margin-top: 70px;
+  }
+
+
+  .HomePage__main {
+    width: 90vw;
+    margin-top: 0px;
+  }
+}
+
+/* * Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 430px) {
 }

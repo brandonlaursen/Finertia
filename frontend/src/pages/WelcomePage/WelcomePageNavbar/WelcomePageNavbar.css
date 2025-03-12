@@ -46,7 +46,7 @@
   justify-content: center;
   align-items: center;
 
-  padding: 0 32px;
+  padding: 0 24px;
 
   color: white;
 
@@ -78,5 +78,17 @@
 @media (max-width: 768px) {
   .WelcomePageNavbar__logo {
     margin-right: auto;
+  }
+
+  .WelcomePageNavbar {
+    height: 60px;
+
+    display: flex;
+    padding: 0 8px;
+
+    background-color: #000000;
+    color: white;
+
+    border-bottom: 1px solid white;
   }
 }

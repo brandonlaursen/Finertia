@@ -73,7 +73,6 @@
 .LoginPage__form__password {
   width: 100%;
 
-
   position: relative;
   display: flex;
   align-items: center;
@@ -193,6 +192,24 @@
 
   /* Ensure buttons take full width */
   .LoginPage__form__buttons button {
+    width: 100%;
+  }
+}
+
+/* * Small devices (landscape phones, 576px and up) */
+@media (max-width: 480px) {
+  .LoginPage__main {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 0px;
+  }
+
+  /* ========== Login Form Styles ========== */
+
+  /* Container for the login form */
+  .LoginPage__form {
     width: 100%;
   }
 }

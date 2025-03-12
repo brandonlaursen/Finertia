@@ -38,7 +38,7 @@ function WelcomePage() {
         </div>
       </section>
 
-      <section className="WelcomePage__section WelcomePage__features">
+      {/* <section className="WelcomePage__section WelcomePage__features">
         <figure className="WelcomePage__features-image" />
 
         <div className="WelcomePage__features-contents">
@@ -67,7 +67,7 @@ function WelcomePage() {
           Join a new generation of investors.
         </header>
         <button className="WelcomePage__join__button">Sign up</button>
-      </section>
+      </section> */}
 
       <footer className="WelcomePage__footer">
         <div className="footer-content">

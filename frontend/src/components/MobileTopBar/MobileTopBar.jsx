@@ -12,10 +12,17 @@ function MobileTopBar() {
   const menuRef = useRef(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const goBack = () => {
+    navigate(-1);
+  };
+
   return (
     <div className="MobileTopBar">
       <div className="MobileTopBar__back">
-        <MdOutlineArrowBackIos className="MobileTopBar__back-button" />
+        <MdOutlineArrowBackIos
+          className="MobileTopBar__back-button"
+          onClick={goBack}
+        />
       </div>
 
       <div ref={menuRef} className="HamburgerMenu__wrapper">
