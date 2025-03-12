@@ -7,6 +7,8 @@
 
   font-size: 14px;
   font-weight: 500;
+  margin-top: 20px;
+  padding-left: 20px;
 }
 
 .AppearancePage__content {
@@ -14,7 +16,6 @@
   flex-direction: column;
 
   gap: 10px;
-  padding-top: 30px;
   padding-bottom: 16px;
 
   border-bottom: 1px solid var(--border-color);
@@ -25,7 +26,7 @@
 
   align-content: center;
 
-  font-size: 24px;
+  font-size: 18px;
   font-weight: bold;
 }
 
@@ -119,11 +120,7 @@
 @media (max-width: 768px) {
   .AppearancePage {
     width: 100%;
-
-    display: flex;
-    flex-direction: column;
-    padding-left: 20px;
-    padding-right: 20px;
+    margin-top: 10px;
   }
 
   .AppearancePage__content {
@@ -131,12 +128,6 @@
     flex-direction: column;
 
     gap: 0px;
-    padding-top: 10px;
-    padding-bottom: 16px;
     margin-bottom: 16px;
-  }
-
-  .AppearancePage__title {
-    font-size: 18px;
   }
 }

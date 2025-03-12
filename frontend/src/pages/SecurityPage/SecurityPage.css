@@ -1,6 +1,6 @@
 .SecurityPage {
   height: 100%;
-  width: clamp(430px, 85vw, 1000px);
+  width: clamp(430px, 60vw, 1000px);
 
   display: flex;
   flex-direction: column;
@@ -8,7 +8,7 @@
   font-size: 12px;
   font-weight: 500;
   margin-bottom: 100px;
-  padding-left: 20px;
+
 }
 
 .SecurityPage__content {
@@ -92,6 +92,11 @@
   color: var(--theme-primary-color);
 }
 
+
+.SecurityPage__appearance-page-wrapper{
+  display: none;
+}
+
 /* ====== Media Queries ====== */
 /* * Medium devices (tablets, 768px and up) */
 @media (max-width: 768px) {
@@ -99,5 +104,9 @@
     width: 100vw;
     padding-left: 0px;
     padding-right: 0px;
+  }
+
+  .SecurityPage__appearance-page-wrapper{
+    display: flex;
   }
 }
