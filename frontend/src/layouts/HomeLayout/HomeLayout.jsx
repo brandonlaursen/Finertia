@@ -5,6 +5,7 @@ import { Outlet } from "react-router-dom";
 
 import NavigationBar from "../../components/NavigationBar/NavigationBar";
 import MobileNavigationBar from "../../components/MobileNavigationBar/MobileNavigationBar";
+import MobileTopBar from "../../components/MobileTopBar/MobileTopBar";
 
 function HomeLayout() {
   const routeClass =
@@ -27,6 +28,7 @@ function HomeLayout() {
 
   return (
     <>
+      <MobileTopBar />
       <NavigationBar scrolled={scrolled} routeClass={routeClass}/>
       <MobileNavigationBar />
       <Outlet context={{ scrolled }} />

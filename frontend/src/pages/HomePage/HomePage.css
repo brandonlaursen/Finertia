@@ -55,6 +55,12 @@
 
 /* * Small devices (landscape phones, 576px and up) */
 @media (max-width: 480px) {
+
+  .HomePage {
+    margin-top: 70px;
+  }
+
+
   .HomePage__main {
     width: 90vw;
     margin-top: 0px;

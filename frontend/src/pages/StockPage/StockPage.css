@@ -91,4 +91,8 @@
   .StockPage__skeleton {
     margin-top: 0px;
   }
+
+  .StockPage {
+    margin-top: 70px;
+  }
 }

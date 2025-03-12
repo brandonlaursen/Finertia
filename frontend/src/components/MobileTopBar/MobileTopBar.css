@@ -1,0 +1,23 @@
+.MobileTopBar {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .MobileTopBar {
+    height: 50px;
+    width: 100%;
+
+    position: fixed;
+    top: 0;
+
+    padding: 0 16px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    background-color: var(--color-surface);
+
+    z-index: 2;
+  }
+}
