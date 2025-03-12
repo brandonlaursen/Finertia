@@ -33,10 +33,10 @@ function HamburgerDropdown({ navigate }) {
       <span
         className="HamburgerDropdown__link"
         onClick={() => navigate("/stocks")}
-        data-tooltip="Home"
+        data-tooltip="Explore"
       >
         <MdOutlineExplore className="HamburgerDropdown__icon" />
-        <Tooltip text="Home" />
+        <Tooltip text="Explore" />
       </span>
 
       <Link

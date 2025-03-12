@@ -50,3 +50,41 @@
 
   background-color: var(--theme-primary-color);
 }
+
+/* ====== Media Queries ====== */
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+  .TimeFrameSelector {
+    height: auto;
+    justify-content: space-evenly;
+  }
+
+  .TimeFrameSelector span {
+    padding: 0 4px;
+    position: relative;
+
+    font-size: 15px;
+    font-weight: var(--font-weight-bold);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 32px;
+    width: 72px;
+
+    border-radius: 4px;
+
+    margin-bottom: 16px;
+  }
+
+  .TimeFrameSelector span.TimeFrameSelector--selected {
+    color: var(--color-text-inverse);
+
+    background-color: var(--theme-primary-color);
+  }
+
+  .TimeFrameSelector span.TimeFrameSelector--selected::after {
+    display: none;
+  }
+}

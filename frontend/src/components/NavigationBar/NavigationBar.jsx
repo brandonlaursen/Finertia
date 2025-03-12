@@ -1,7 +1,7 @@
 import "./NavigationBar.css";
 import { FaSpaceShuttle } from "react-icons/fa";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useLocation, Navigate, NavLink, useNavigate } from "react-router-dom";
 
@@ -17,9 +17,28 @@ function NavigationBar({ scrolled }) {
   const routeClass =
     location.pathname === "/stocks" ? "stocks-nav" : "Navigation";
 
+  const navigate = useNavigate();
+  const menuRef = useRef(null);
+
   const sessionUser = useSelector(selectUser);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navigate = useNavigate();
+
+  // * Close menu when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsMenuOpen(false);
+      }
+    }
+
+    if (isMenuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isMenuOpen]);
 
   if (!sessionUser) return <Navigate to="/welcome" replace={true} />;
 
@@ -31,8 +50,10 @@ function NavigationBar({ scrolled }) {
 
       <SearchBar />
 
-      <HamburgerMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-      {isMenuOpen && <HamburgerDropdown navigate={navigate} />}
+      <div ref={menuRef} className="HamburgerMenu__wrapper">
+        <HamburgerMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+        {isMenuOpen && <HamburgerDropdown navigate={navigate} />}
+      </div>
 
       <div className={`Navigation__links ${isMenuOpen && "show"}`}>
         <span

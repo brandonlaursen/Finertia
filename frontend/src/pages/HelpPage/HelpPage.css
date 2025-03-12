@@ -104,3 +104,13 @@
   height: 20px;
   width: 20px;
 }
+
+/* ====== Media Queries ====== */
+/* * Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+  .HelpPage {
+    width: 100vw;
+
+    padding: 0 20px;;
+  }
+}

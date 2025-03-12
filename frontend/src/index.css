@@ -17,6 +17,7 @@ body {
   color: var(--color-text-primary);
 
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
 }
 
 * {

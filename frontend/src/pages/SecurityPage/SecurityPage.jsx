@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import NotificationPopUp from "../../components/NotificationPopUp";
+import AppearancePage from "../AppearancePage/AppearancePage";
 
 import { logout } from "../../../store/session";
 
@@ -23,6 +24,9 @@ function SecurityPage() {
   return (
     <div className="SecurityPage">
       <div className="SecurityPage__content">
+        <div className="SecurityPage__appearance-page-wrapper">
+          <AppearancePage />
+        </div>
         <span className="SecurityPage__content__title">Security</span>
         <span className="SecurityPage__content__subtitle">
           Keep your Finertia account secure with additional layers of

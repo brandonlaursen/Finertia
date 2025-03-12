@@ -44,7 +44,7 @@ function HomePageOverview({ stockData, selectedTimeFrame }) {
     const lastAggregate = data[data.length - 1].y;
     console.log(" lastAggregate:", lastAggregate);
     console.log(" firstAggregate:", firstAggregate);
-    
+
     if (firstAggregate === 0) {
       return {
         portfolioPercentChange: 0.0,

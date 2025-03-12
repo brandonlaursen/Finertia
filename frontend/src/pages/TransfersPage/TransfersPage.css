@@ -76,3 +76,9 @@
 
   color: var(--color-text-secondary);
 }
+
+@media (max-width: 768px) {
+  .TransfersPage {
+    width: 90vw;
+  }
+}

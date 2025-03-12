@@ -55,8 +55,11 @@ function ListSideBar({
   if (error) {
     return (
       <aside className="ListSideBar">
-        <div className="ListSideBar__error">
-          Error loading data. Please try again later.
+        <div className="ListSideBar__error-container">
+          <div className="ListSideBar__error">
+            Error loading data. Please try again later.
+          </div>
+          <div className="ListSideBar__error-image" />
         </div>
       </aside>
     );

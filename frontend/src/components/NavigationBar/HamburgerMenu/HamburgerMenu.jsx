@@ -1,14 +1,14 @@
 import "./HamburgerMenu.css";
 
 import { GiHamburgerMenu } from "react-icons/gi";
-import { IoClose } from "react-icons/io5";
+import { RiCloseLargeFill } from "react-icons/ri";
 
 function HamburgerMenu({ isMenuOpen, setIsMenuOpen }) {
   return (
     <div className="HamburgerMenu">
       {isMenuOpen ? (
-        <IoClose
-          className="hamburger-icon close-icon"
+        <RiCloseLargeFill
+          className="close-icon"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           onBlur={() => setIsMenuOpen(false)}
         />
@@ -18,7 +18,6 @@ function HamburgerMenu({ isMenuOpen, setIsMenuOpen }) {
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         />
       )}
-   
     </div>
   );
 }

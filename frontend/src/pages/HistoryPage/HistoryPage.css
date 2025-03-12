@@ -95,3 +95,9 @@
   font-weight: 500;
   color: var(--color-text-secondary);
 }
+
+@media (max-width: 768px) {
+  .HistoryPage {
+    width: 90vw;
+  }
+}

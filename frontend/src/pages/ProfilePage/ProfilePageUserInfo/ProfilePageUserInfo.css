@@ -2,8 +2,11 @@
   height: 100px;
 
   display: flex;
+  align-items: center;
 
   margin-bottom: 20px;
+
+
 }
 
 .ProfilePageUserInfo__profile-pic-container {
@@ -113,3 +116,5 @@
   width: 72px;
   border-radius: 50%;
 }
+
+

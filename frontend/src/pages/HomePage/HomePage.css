@@ -11,19 +11,19 @@
 
 /* * HomePage main content area styles */
 .HomePage__main {
-  width: clamp(400px, 60vw, 1000px);
+  width: clamp(200px, 60vw, 1000px);
 
   display: flex;
   flex-direction: column;
 
   margin-top: var(--container-margin-top);
-
 }
 
 /* ====== Skeleton Loading ====== */
 .HomePage__skeleton-overview {
   display: flex;
   flex-direction: column;
+  width: 100%;
 
   gap: var(--page-gap);
 
@@ -59,4 +59,9 @@
 
 /* * Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
+}
+
+/* * Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 430px) {
+
 }

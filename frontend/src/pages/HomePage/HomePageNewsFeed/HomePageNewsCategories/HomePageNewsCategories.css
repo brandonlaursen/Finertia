@@ -37,3 +37,28 @@
 .HomePageNewsCategories button:hover {
   background-color: var(--color-hover);
 }
+
+
+/* ====== Media Queries ====== */
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+  .HomePageNewsCategories {
+    height: 65px;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    gap: 6px;
+    border-bottom: var(--border);
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) {
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+}

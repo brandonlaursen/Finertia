@@ -15,7 +15,32 @@
 
   overflow-y: auto;
   scrollbar-width: none;
+}
 
+.ListSideBar__error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ListSideBar__error {
+  padding: 24px 16px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.ListSideBar__error-image {
+  background-image: url("https://i.pinimg.com/originals/17/29/4c/17294ce8fe0d49e9da696c2772461773.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 180px;
+  width: 180px;
 }
 
 /* ====== Loading ====== */
@@ -37,6 +62,10 @@
 @media (max-width: 768px) {
   /* styles for medium devices */
   .ListSideBar {
+    display: none;
+  }
+
+  .ListSideBar__loading {
     display: none;
   }
 }

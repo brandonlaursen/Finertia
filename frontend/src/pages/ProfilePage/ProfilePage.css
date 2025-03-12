@@ -83,7 +83,6 @@
 
 .ProfilePage__investments__details__value-subtext {
   font-weight: 500;
-
 }
 
 .ProfilePage__investments__details__subtext {
@@ -93,7 +92,7 @@
   color: var(--color-text-secondary);
 }
 
-.ProfilePage__value-subtext{
+.ProfilePage__value-subtext {
   color: var(--color-text-primary);
 }
 
@@ -104,7 +103,7 @@
 }
 
 .ProfilePage__overview {
-  height: 200px;
+  /* height: 200px; */
 
   display: flex;
   flex-direction: column;
@@ -261,4 +260,22 @@
   margin-bottom: 32px;
 
   border-radius: 4px;
+}
+
+/* ====== Media Queries ====== */
+/* * Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+  .ProfilePage__overview__button {
+    height: 80px;
+    width: 80px;
+
+    margin-bottom: 8px;
+  }
+
+  .ProfilePage__buttons {
+
+    margin-top: 0;
+    margin-bottom: 32px;
+
+  }
 }

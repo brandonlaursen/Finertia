@@ -1,6 +1,6 @@
 import "./HomePage.css";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -27,9 +27,13 @@ function HomePage() {
 
   const { stockSummary } = sessionUser;
 
-  setTimeout(() => {
-    setIsLoading(false);
-  }, 1500);
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+
+    return () => clearTimeout(timeout); // Cleanup to prevent memory leaks
+  }, []);
 
   return (
     <div className="HomePage">

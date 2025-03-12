@@ -28,3 +28,26 @@
 
   gap: 24px;
 }
+
+
+/* ====== Media Queries ====== */
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+  /* styles for medium devices */
+  .StockTradeSidebar {
+    display: none;
+  }
+
+  .StockTrade__sidebar-skeleton {
+    display: none;
+
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) {
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+}

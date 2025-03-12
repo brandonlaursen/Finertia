@@ -71,3 +71,16 @@
 
   background-color: var(--theme-primary-color);
 }
+
+.AccountLayout__main-wrapper {
+  width: clamp(430px, 85vw, 1000px);
+}
+
+/* ====== Media Queries ====== */
+/* * Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+  .AccountLayout__main-wrapper {
+    width: 90vw;
+  }
+}
+

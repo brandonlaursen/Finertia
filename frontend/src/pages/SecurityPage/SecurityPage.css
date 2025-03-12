@@ -15,9 +15,7 @@
   display: flex;
   flex-direction: column;
 
-
   padding-top: 20px;
-
 }
 
 .SecurityPage__content__title {
@@ -30,7 +28,6 @@
 
   margin-left: 20px;
   margin-right: 20px;
-
 }
 
 .SecurityPage__content__subtitle {
@@ -41,7 +38,6 @@
   margin-bottom: 24px;
   margin-left: 20px;
   margin-right: 20px;
-
 }
 
 .SecurityPage__content__links {
@@ -96,24 +92,12 @@
   color: var(--theme-primary-color);
 }
 
-
-
 /* ====== Media Queries ====== */
 /* * Medium devices (tablets, 768px and up) */
 @media (max-width: 768px) {
   .SecurityPage {
-
-    width: 80%;
-    padding-left: 4px;
-
+    width: 100vw;
+    padding-left: 0px;
+    padding-right: 0px;
   }
-
-}
-
-/* * Small devices (landscape phones, 576px and up) */
-@media (max-width: 576px) {
-}
-
-/* * Extra small devices (portrait phones, less than 576px) */
-@media (max-width: 575.98px) {
 }
