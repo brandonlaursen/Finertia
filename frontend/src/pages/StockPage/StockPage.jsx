@@ -97,13 +97,17 @@ function StockPage() {
           <Skeleton height="100%" />
         </div>
       ) : (
-        <StockTradeSidebar
-          stock={stock}
-          setNotifications={setNotifications}
-          setNotificationMessage={setNotificationMessage}
-          notifications={notifications}
-          notificationMessage={notificationMessage}
-        />
+        <>
+          <StockTradeSidebar
+            stock={stock}
+            setNotifications={setNotifications}
+            setNotificationMessage={setNotificationMessage}
+            notifications={notifications}
+            notificationMessage={notificationMessage}
+          />
+
+          <div className="StockTradeBarMobile">Mobile</div>
+        </>
       )}
 
       {notifications && (

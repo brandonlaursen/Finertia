@@ -2,8 +2,8 @@
   height: auto;
   width: 100%;
 
-  position: sticky;
-  top: 85px;
+  /* position: sticky; */
+  /* top: 85px; */
 
   display: flex;
   flex-direction: column;
@@ -29,6 +29,9 @@
   gap: 24px;
 }
 
+.StockTradeSidebar__mobile {
+  display: none;
+}
 
 /* ====== Media Queries ====== */
 /* Medium devices (tablets, 768px and up) */
@@ -38,16 +41,11 @@
     display: none;
   }
 
+
+
   .StockTrade__sidebar-skeleton {
     display: none;
-
   }
+
 }
 
-/* Small devices (landscape phones, 576px and up) */
-@media (max-width: 576px) {
-}
-
-/* Extra small devices (portrait phones, less than 576px) */
-@media (max-width: 575.98px) {
-}

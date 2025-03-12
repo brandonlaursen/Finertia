@@ -21,9 +21,11 @@ function StockTradeSidebar({
           stock={stock}
           setNotifications={setNotifications}
           setNotificationMessage={setNotificationMessage}
-   
+
         />
       </main>
+
+      
     </div>
   );
 }
