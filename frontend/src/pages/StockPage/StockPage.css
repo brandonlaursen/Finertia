@@ -52,11 +52,22 @@
     width: 90vw;
   }
 
-  .StockTradeBarMobile{
+  .StockTradeBarMobile {
     position: fixed;
     bottom: 0;
-    height: 150px;
+
+    height: 100px;
     width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
     background-color: var(--color-surface);
+  }
+
+  .StockTradeBarMobile__buttons {
+    background-color: var(--theme-primary-color);
   }
 }

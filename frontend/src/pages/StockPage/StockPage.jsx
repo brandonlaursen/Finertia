@@ -106,7 +106,10 @@ function StockPage() {
             notificationMessage={notificationMessage}
           />
 
-          <div className="StockTradeBarMobile">Mobile</div>
+          <div className="StockTradeBarMobile">
+            <button className="StockTradeBarMobile__buttons">Buy</button>
+            <button className="StockTradeBarMobile__buttons">Add To List</button>
+          </div>
         </>
       )}
 
