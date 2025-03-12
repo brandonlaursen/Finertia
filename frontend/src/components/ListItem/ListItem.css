@@ -25,7 +25,6 @@
   align-items: center;
   justify-content: space-between;
 
-  gap: 10px;
   padding: 0 12px;
 
   color: var(--color-text-primary);
@@ -35,7 +34,7 @@
 .ListItem__header {
   display: flex;
   align-items: center;
-  padding: 4px 8px;
+  padding-left: 8px;
 
   border-radius: var(--border-radius-sm);
 }
@@ -48,10 +47,10 @@
 /* ========== List Item Emoji & Name ========== */
 /* Emoji inside the list item */
 .ListItem__emoji {
-  height: 35px;
-  width: 27px;
+  height: 36px;
+  width: 30px;
 
-  display: inline-flex;
+  display: flex;
   justify-content: center;
   align-items: center;
 

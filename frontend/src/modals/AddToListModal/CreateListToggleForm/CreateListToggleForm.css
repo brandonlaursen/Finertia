@@ -4,9 +4,6 @@
 
   width: 100%;
 
-  margin-bottom: 20px;
-  margin-top: 20px;
-
   z-index: 20;
 }
 
@@ -17,8 +14,6 @@
 
   display: flex;
   flex-direction: column;
-
-  margin-top: 8px;
 
   background-color: var(--color-surface);
 
@@ -81,6 +76,7 @@
   font-size: 20px;
 
   background-color: var(--color-hover);
+
   border: solid 1px var(--border-color);
   border-radius: 4px;
 
@@ -92,12 +88,10 @@
 /* Create List Emoji Picker Wrapper */
 .CreateListToggleForm__emoji-wrapper {
   position: fixed;
-  top: 490px;
-  left: 40%;
+  top: 230px;
 
   z-index: 1000;
-  transform: translate(-50%, -50%);
-  background-color: var(--color-surface) !important;
+
 }
 
 /* Create List Name Input */
@@ -137,7 +131,6 @@
   height: 32px;
   padding: 0 20px;
 
-
   font-size: 12px;
   font-weight: bold;
 
@@ -162,7 +155,7 @@
 .CreateListToggleForm__create-button {
   color: var(--color-background);
   background-color: var(--theme-primary-color);
-  min-width:103px;
+  min-width: 103px;
 }
 
 /* Create List Form Create Button Hover */

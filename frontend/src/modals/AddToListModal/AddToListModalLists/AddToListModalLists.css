@@ -6,6 +6,7 @@
   align-items: center;
 
   z-index: 5;
+  margin-bottom: 16px;
 }
 
 /* Create New List Overlay */
@@ -37,6 +38,7 @@
 /* Checkbox Container */
 .AddToListModalLists__checkbox-container {
   position: relative;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -50,15 +52,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 13px;
 
-  border: 0.2em solid var(--theme-primary-color);
+  border: 2px solid var(--theme-primary-color);
 
   outline: none;
-  cursor: pointer;
-
   -webkit-appearance: none;
   appearance: none;
+
+  cursor: pointer;
 }
 
 /* Checked Checkbox */
@@ -72,7 +73,7 @@ input.checked {
 .AddToListModalLists__checkbox-icon {
   position: absolute;
   top: 50%;
-  left: 37%;
+  left: 50%;
 
   text-align: center;
   align-self: center;
@@ -87,8 +88,9 @@ input.checked {
 
 /* ========== List Item Container ========== */
 .AddToListModalLists__item {
-  padding-bottom: 8px;
   padding-left: 0;
+
+
 }
 
 /* ========== List Item Emoji ========== */
@@ -96,14 +98,16 @@ input.checked {
   height: 60px;
   width: 48px;
 
-  display: inline-flex;
+  display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 10px;
 
-  font-size: 20px;
+  margin-right: 8px;
+
+  font-size: 24px;
 
   background-color: var(--color-hover-secondary-light);
+
   border-radius: 4px;
 }
 

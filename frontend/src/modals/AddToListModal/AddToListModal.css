@@ -2,8 +2,9 @@
 /* Modal container and overlay */
 .AddToListModal {
   position: fixed;
-  top: 390px;
+  top: 350px;
   left: 50%;
+
 
   display: flex;
   justify-content: center;
