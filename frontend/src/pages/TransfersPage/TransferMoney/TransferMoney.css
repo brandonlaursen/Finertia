@@ -76,3 +76,17 @@
 
   color: var(--icon-color);
 }
+
+/* ====== Media Queries ====== */
+/* * Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+  .TransferMoney__money-icon-container {
+    height: 36px;
+    width: 36px;
+  }
+
+  .TransferMoney__money-icon {
+    height: 18px;
+    width: 18px;
+  }
+}

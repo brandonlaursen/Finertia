@@ -1,5 +1,5 @@
 import "./HamburgerDropdown.css";
-import { FaBriefcase } from "react-icons/fa";
+import { FaMoneyBill } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
 import { IoMdHelpCircle } from "react-icons/io";
 import { LuLogOut } from "react-icons/lu";
@@ -53,7 +53,7 @@ function HamburgerDropdown({ navigate }) {
         to="/account/investing"
         data-tooltip="Investing"
       >
-        <FaBriefcase className="HamburgerDropdown__icon" />
+        <FaMoneyBill className="HamburgerDropdown__icon" />
         <Tooltip text="Investing" />
       </Link>
       <Link
@@ -75,10 +75,10 @@ function HamburgerDropdown({ navigate }) {
       <Link
         className="HamburgerDropdown__link"
         to="/account/settings/security"
-        data-tooltip="Security"
+        data-tooltip="Settings"
       >
         <IoMdSettings className="HamburgerDropdown__icon" />
-        <Tooltip text="Security" />
+        <Tooltip text="Settings" />
       </Link>
       <Link
         className="HamburgerDropdown__link"

@@ -1,5 +1,6 @@
 import "./AccountDropdown.css";
-import { FaBriefcase } from "react-icons/fa";
+
+import { FaMoneyBill } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
 import { IoMdHelpCircle } from "react-icons/io";
 import { LuLogOut } from "react-icons/lu";
@@ -76,7 +77,7 @@ function AccountDropdown({ sessionUser }) {
               Profile
             </Link>
             <Link to="/account/investing">
-              <FaBriefcase className="AccountDropdown__icon" />
+              <FaMoneyBill className="AccountDropdown__icon" />
               Investing
             </Link>
             <Link to="/account/transfers">
