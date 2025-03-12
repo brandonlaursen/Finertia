@@ -10,14 +10,31 @@
     position: fixed;
     top: 0;
 
-    padding: 0 16px;
-
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    align-self: center;
+    justify-content: space-between;
 
     background-color: var(--color-surface);
 
     z-index: 2;
+  }
+
+  .MobileTopBar__back {
+    /* background-color: aliceblue; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 18px;
+    margin-left: 12px;
+  }
+
+  .MobileTopBar__back-button {
+    height: 24px;
+    width: 24px;
+    cursor: pointer;
+  }
+
+  .MobileTopBar__back-button:hover {
+    color: var(--theme-primary-color);
   }
 }

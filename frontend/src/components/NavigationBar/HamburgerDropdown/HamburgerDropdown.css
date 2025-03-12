@@ -1,6 +1,6 @@
 .HamburgerMenu__drop-down {
   position: absolute;
-  top: 68px;
+  top: 48px;
   right: 5px;
 
   width: 50px;
@@ -67,7 +67,7 @@
   content: "";
   position: absolute;
   top: 50%;
-  left: 100%; 
+  left: 100%;
   transform: translateY(-50%);
 
   /* Triangle Shape */

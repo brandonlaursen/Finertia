@@ -1,11 +1,29 @@
-import './MobileTopBar.css';
+import "./MobileTopBar.css";
+import { MdOutlineArrowBackIos } from "react-icons/md";
 
-function MobileTopBar(){
+import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
-  return <div className='MobileTopBar'>
+import HamburgerMenu from "../NavigationBar/HamburgerMenu";
+import HamburgerDropdown from "../NavigationBar/HamburgerDropdown";
 
-  </div>
+function MobileTopBar() {
+  const navigate = useNavigate();
+  const menuRef = useRef(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  return (
+    <div className="MobileTopBar">
+      <div className="MobileTopBar__back">
+        <MdOutlineArrowBackIos className="MobileTopBar__back-button" />
+      </div>
+
+      <div ref={menuRef} className="HamburgerMenu__wrapper">
+        <HamburgerMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+        {isMenuOpen && <HamburgerDropdown navigate={navigate} />}
+      </div>
+    </div>
+  );
 }
-
 
 export default MobileTopBar;

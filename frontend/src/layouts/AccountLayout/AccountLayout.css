@@ -82,5 +82,12 @@
   .AccountLayout__main-wrapper {
     width: 90vw;
   }
-}
 
+  .AccountLayout__main {
+    position: sticky;
+    top: 54px;
+    left: 0;
+
+    height: 100px;
+  }
+}

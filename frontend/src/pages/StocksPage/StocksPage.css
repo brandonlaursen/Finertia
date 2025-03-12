@@ -6,7 +6,6 @@
   flex-direction: column;
 
   margin-top: 80px;
-
 }
 
 /* ========== Stocks Page Banner ========== */
@@ -183,5 +182,9 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: 50%;
+  }
+
+  .StocksPage__section {
+    margin-top: 0px;
   }
 }
