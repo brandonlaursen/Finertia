@@ -4,7 +4,14 @@ import { useNavigate } from "react-router-dom";
 
 import ListStockItem from "../ListStockItem/ListStockItem";
 
-function ListStocks({ expandedListIds, list, stocks, sessionUser }) {
+function ListStocks({
+  expandedListIds,
+  list,
+  stocks,
+  sessionUser,
+  setShowListSideBar,
+  showListSideBar,
+}) {
   const navigate = useNavigate();
 
   const isListOpen = expandedListIds.includes(list.id);
@@ -26,6 +33,8 @@ function ListStocks({ expandedListIds, list, stocks, sessionUser }) {
                   stocks={stocks}
                   stockSummary={stockSummary}
                   navigate={navigate}
+                  setShowListSideBar={setShowListSideBar}
+                  showListSideBar={showListSideBar}
                 />
               );
             })}

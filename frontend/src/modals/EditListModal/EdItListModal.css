@@ -114,3 +114,16 @@
 .EditListModal__create-button:hover {
   background-color: var(--theme-primary-hover);
 }
+
+
+
+@media (max-width: 480px) {
+  .EditListModal__container {
+    width: 410px;
+  }
+  .EditListModal__emoji-picker-wrapper {
+    
+    right: 40px;
+
+  }
+}

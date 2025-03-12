@@ -32,7 +32,7 @@ function HomePage() {
       setIsLoading(false);
     }, 1500);
 
-    return () => clearTimeout(timeout); // Cleanup to prevent memory leaks
+    return () => clearTimeout(timeout); 
   }, []);
 
   return (

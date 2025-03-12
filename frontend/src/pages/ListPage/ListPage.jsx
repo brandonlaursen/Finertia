@@ -23,7 +23,7 @@ function ListPage() {
   const stocks = useSelector((state) => state.stocks.allStocks);
   const list = useSelector((state) => selectListById(state, listId));
 
-  const [isLoading, setIsLoading] = useState(true);
+  const [, setIsLoading] = useState(true);
   const [notifications, setNotifications] = useState(false);
   const [notificationMessage, setNotificationMessage] = useState([]);
 
@@ -48,7 +48,7 @@ function ListPage() {
     };
   }, [dispatch]);
 
-  if (isLoading) return <h1>Loading</h1>;
+  // if (isLoading) return <h1>Loading</h1>;
 
   if (!list) {
     return (

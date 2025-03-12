@@ -19,14 +19,24 @@ function ListItem({
   setNotificationMessage,
   showItems = false,
   showDropdown,
+  setShowListSideBar,
+  showListSideBar,
 }) {
   const isCurrentList = activeListId === list.id;
 
+  function handleListItemClick() {
+    if (showListSideBar) {
+      setShowListSideBar(false);
+    }
+
+    if (!showItems) {
+      navigate(`/lists/${list.id}`);
+    }
+  }
+  console.log(showListSideBar, showItems);
+
   return (
-    <article
-      onClick={showItems ? undefined : () => navigate(`/lists/${list.id}`)}
-      className={`ListItem ${className}`}
-    >
+    <article onClick={handleListItemClick} className={`ListItem ${className}`}>
       <div className={`ListItem__container ${container}`}>
         <header
           className={`ListItem__header ${

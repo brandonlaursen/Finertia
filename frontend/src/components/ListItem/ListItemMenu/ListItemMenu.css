@@ -56,3 +56,10 @@
   height: 14px;
   width: 14px;
 }
+
+@media (max-width: 480px) {
+  .ListItemMenu {
+    top: 38px;
+  left: 222px;
+  }
+}

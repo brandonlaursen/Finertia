@@ -100,9 +100,18 @@
   color: var(--color-background);
   background-color: var(--theme-primary-color);
   min-width: 103px;
-
 }
 
 .CreateListModalForm__create-button:hover {
   background-color: var(--theme-primary-hover);
+}
+
+@media (max-width: 480px) {
+  .CreateListModalForm {
+    width: 410px;
+  }
+
+  .CreateListModalForm__emoji-picker-wrapper {
+    right: 40px;
+  }
 }

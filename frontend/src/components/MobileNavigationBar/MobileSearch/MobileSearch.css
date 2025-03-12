@@ -117,3 +117,31 @@
   width: 50px;
   padding-right: 64px;
 }
+
+.MobileSearch__spinner-wrapper {
+  height: 100%;
+  width: 90%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.MobileSearch__spinner {
+  display: inline-block;
+
+  width: 36px;
+  height: 36px;
+
+  border: 2px solid var(--color-text-primary);
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

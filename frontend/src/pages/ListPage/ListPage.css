@@ -37,14 +37,18 @@
   flex-direction: column;
 
   gap: 16px;
+
 }
 
 .ListPage__no-stocks-container-text {
   font-weight: bold;
   font-size: 18px;
+
 }
 
 .ListPage__no-stocks-container-subtext {
   font-weight: 500;
   font-size: 13px;
 }
+
+

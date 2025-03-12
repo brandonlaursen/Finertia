@@ -63,6 +63,7 @@
   /* styles for medium devices */
   .ListSideBar {
     display: none;
+    border-radius: 0px;
   }
 
   .ListSideBar__loading {

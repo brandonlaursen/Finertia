@@ -4,12 +4,15 @@ import { useNavigate } from "react-router-dom";
 
 import ListStockItem from "../ListStockItem/ListStockItem";
 
-function PortfolioStocks({ sessionUser, stocks }) {
+function PortfolioStocks({
+  sessionUser,
+  stocks,
+  setShowListSideBar,
+  showListSideBar,
+}) {
   const navigate = useNavigate();
 
-
   const stocksOwned = sessionUser?.stockSummary?.stocksOwned || {}; // Default to an empty object if undefined
-
 
   const stocksOwnedArray = stocksOwned ? Object.values(stocksOwned) : [];
 
@@ -28,6 +31,8 @@ function PortfolioStocks({ sessionUser, stocks }) {
                 stock={stock}
                 navigate={navigate}
                 stocks={stocks}
+                setShowListSideBar={setShowListSideBar}
+                showListSideBar={showListSideBar}
               />
             );
           })

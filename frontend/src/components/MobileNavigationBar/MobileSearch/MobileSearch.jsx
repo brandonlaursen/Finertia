@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 import { fetchSearchResults } from "../../../../store/search";
 
-function MobileSearch() {
+function MobileSearch({ setShowSearch }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const searchResults = useSelector((state) => state.search);
@@ -47,6 +47,11 @@ function MobileSearch() {
     );
   }
 
+  async function handleMouseDown(result) {
+    setShowSearch(false);
+    navigate(`/stocks/${result.stockSymbol}`);
+  }
+
   return (
     <div className="MobileSearch">
       <div className="MobileSearch__top-bar">
@@ -72,7 +77,12 @@ function MobileSearch() {
           onChange={(e) => setSearch(e.target.value)}
         ></input>
 
-        <button className="MobileSearch-cancel-btn">Cancel</button>
+        <button
+          className="MobileSearch-cancel-btn"
+          onClick={() => setShowSearch(false)}
+        >
+          Cancel
+        </button>
       </div>
 
       {isFocused && search.length > 0 && searchResults.length > 0 && (
@@ -80,13 +90,7 @@ function MobileSearch() {
           <span className="MobileSearch-results-header">Stocks</span>
           {searchResults.map((result) => {
             return (
-              <li
-                key={result.id}
-                onMouseDown={(e) => {
-                  e.stopPropagation(),
-                    navigate(`/stocks/${result.stockSymbol}`);
-                }}
-              >
+              <li key={result.id} onMouseDown={() => handleMouseDown(result)}>
                 <span className="MobileSearch-results__stock-symbol">
                   {highlightMatch(result.stockSymbol, search)}
                 </span>

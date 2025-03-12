@@ -16,7 +16,9 @@ function Lists({
   lists,
   setNotifications,
   setNotificationMessage,
-  showDropdown
+  showDropdown,
+  setShowListSideBar,
+  showListSideBar,
 }) {
   const [activeListId, setActiveListId] = useState(null);
   const [expandedListIds, setExpandedListIds] = useState([]);
@@ -64,6 +66,8 @@ function Lists({
                 setNotifications={setNotifications}
                 setNotificationMessage={setNotificationMessage}
                 showDropdown={showDropdown}
+                setShowListSideBar={setShowListSideBar}
+      showListSideBar={showListSideBar}
               />
               <ListStocks
                 expandedListIds={expandedListIds}
@@ -71,6 +75,8 @@ function Lists({
                 list={list}
                 stocks={stocks}
                 sessionUser={sessionUser}
+                setShowListSideBar={setShowListSideBar}
+      showListSideBar={showListSideBar}
               />
             </div>
           ))}

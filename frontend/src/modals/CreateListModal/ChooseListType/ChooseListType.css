@@ -134,3 +134,27 @@
 .ChooseListType__back-button:hover {
   background-color: var(--theme-primary-hover);
 }
+
+
+
+@media (max-width: 480px) {
+  .ChooseListType__wrapper {
+
+
+    width: 410px;
+
+  }
+
+  .ChooseListType__option {
+    height: 240px;
+    width: 178px;
+
+    display: flex;
+    flex-direction: column;
+
+    border: 1px solid var(--border-color);
+    border-radius: 2px;
+
+    cursor: pointer;
+  }
+}

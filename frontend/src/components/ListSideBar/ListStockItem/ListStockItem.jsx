@@ -6,7 +6,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchStockForList } from "../../../../store/stocks";
 import { useEffect } from "react";
 
-function ListStockItem({ stock, stocks, navigate }) {
+function ListStockItem({
+  stock,
+  stocks,
+  navigate,
+  setShowListSideBar,
+  showListSideBar,
+}) {
   const dispatch = useDispatch();
 
   const { symbol = stock.stockSymbol, sharesOwned } = stock;
@@ -28,12 +34,17 @@ function ListStockItem({ stock, stocks, navigate }) {
   }, [symbol, dispatch]);
 
   const { id, current_price, todays_change_percent } = stockInfo;
-
+  console.log(showListSideBar, setShowListSideBar);
   return (
     <article
       className="ListStockItem"
       key={id}
-      onClick={() => navigate(`/stocks/${symbol}`)}
+      onClick={() => {
+        if (showListSideBar) {
+          setShowListSideBar(false);
+        }
+        navigate(`/stocks/${symbol}`);
+      }}
     >
       <section className="ListStockItem__details">
         <span>{symbol}</span>
