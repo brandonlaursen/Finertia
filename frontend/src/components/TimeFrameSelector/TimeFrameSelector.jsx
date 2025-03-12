@@ -4,7 +4,7 @@ function TimeFrameSelector({ selectedTimeFrame, setSelectedTimeFrame }) {
 
   return (
     <div className="TimeFrameSelector">
-      {["1D", "1W", "1M", "3M", "1Y", "All"].map((timeFrame) => (
+      {["1D", "1W", "1M", "3M", "1Y", "5Y"].map((timeFrame) => (
         <span
           key={timeFrame}
           onClick={() => setSelectedTimeFrame(timeFrame)}

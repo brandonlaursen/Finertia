@@ -3,16 +3,17 @@
   justify-content: center;
   align-items: center;
 
-  gap: 1rem;
+  gap: 8px;
 
-  margin-bottom: 5vh;
-  margin-top: 2rem;
+  margin-bottom: 16px;
+  margin-top: 16px;
 
-  padding: 1rem;
+  padding: 8px;
 }
 
 .Pagination__button {
   padding: 0.5rem 1rem;
+  width: 90px;
 
   border: var(--border);
   border-radius: var(--border-radius-sm);
