@@ -5,10 +5,11 @@
   display: flex;
   flex-direction: column;
 
+  margin-bottom: 100px;
+  padding-left: 30px;
+
   font-size: 12px;
   font-weight: 500;
-  margin-bottom: 100px;
-
 }
 
 .SecurityPage__content {
@@ -92,8 +93,7 @@
   color: var(--theme-primary-color);
 }
 
-
-.SecurityPage__appearance-page-wrapper{
+.SecurityPage__appearance-page-wrapper {
   display: none;
 }
 
@@ -106,7 +106,7 @@
     padding-right: 0px;
   }
 
-  .SecurityPage__appearance-page-wrapper{
+  .SecurityPage__appearance-page-wrapper {
     display: flex;
   }
 }

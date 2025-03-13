@@ -29,7 +29,7 @@ function HomeLayout() {
   return (
     <>
       <MobileTopBar />
-      <NavigationBar scrolled={scrolled} routeClass={routeClass}/>
+      <NavigationBar scrolled={scrolled} routeClass={routeClass} />
       <MobileNavigationBar />
       <Outlet context={{ scrolled }} />
     </>
