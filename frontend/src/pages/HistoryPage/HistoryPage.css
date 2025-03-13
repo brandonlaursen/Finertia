@@ -51,11 +51,17 @@
 
 .HistoryPage__date {
   font-size: 12px;
+  font-weight: 500;
 }
 
 .HistoryPage__amount {
+  font-weight: 700;
   font-size: 13px;
-  font-weight: bold;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 70px;
 }
 
 @media (max-width: 768px) {
