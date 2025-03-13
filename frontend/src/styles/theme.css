@@ -61,6 +61,7 @@
   --disabled-overlay-color: rgb(30, 33, 37, 0.7);
 }
 
+/* ========= Accent Themes ========= */
 .theme-green {
   --theme-primary-color: rgb(0, 200, 5);
   --theme-color-green-hover: rgb(0, 180, 5, 1);
@@ -115,6 +116,10 @@
   --theme-primary-color: rgb(220, 38, 38);
   --theme-primary-hover: rgb(185, 28, 28);
   --theme-primary-hover-light: rgb(220, 38, 38, 0.2);
+
+  --theme-secondary-color: var(--theme-primary-color);
+  --theme-secondary-hover: var(--theme-primary-hover);
+  --theme-secondary-hover-light: var(--theme-primary-hover-light);
 }
 
 .theme-purple {

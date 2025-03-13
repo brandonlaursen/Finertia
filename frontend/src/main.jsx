@@ -10,9 +10,11 @@ import configureStore from "../store";
 import { restoreCSRF, csrfFetch } from "../store/csrf";
 
 import App from "./App";
-import { ModalProvider, Modal } from "./context/Modal";
-import { ThemeProvider } from "./context/ThemeContext";
 import ThemeToggle from "./components/ThemeToggle/ThemeToggle";
+
+import { ModalProvider, Modal } from "./context/Modal";
+
+import { ThemeProvider } from "./context/ThemeContext";
 import { AccentThemeProvider } from "./context/AccentThemeContext";
 
 const store = configureStore();
@@ -30,10 +32,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <ThemeProvider>
         <ModalProvider>
           <Provider store={store}>
-          <App />
-          <Modal />
-          <ThemeToggle />
-        </Provider>
+            <App />
+            <Modal />
+            <ThemeToggle />
+          </Provider>
         </ModalProvider>
       </ThemeProvider>
     </AccentThemeProvider>

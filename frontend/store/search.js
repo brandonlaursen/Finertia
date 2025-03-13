@@ -1,7 +1,9 @@
 import { csrfFetch } from "./csrf";
 
+// * Constants
 const SET_SEARCH_RESULTS = "search/SET_SEARCH_RESULTS";
 
+// * Action Creators
 const setSearchResults = (results) => {
   return {
     type: SET_SEARCH_RESULTS,
@@ -9,6 +11,7 @@ const setSearchResults = (results) => {
   };
 };
 
+// * Thunks
 export const fetchSearchResults = (searchQuery) => async (dispatch) => {
   const response = await csrfFetch(`/api/search`, {
     method: "POST",
@@ -16,14 +19,14 @@ export const fetchSearchResults = (searchQuery) => async (dispatch) => {
   });
 
   if (response) {
-    const data = await response.json();
+    const searchResults = await response.json();
 
-    dispatch(setSearchResults(data));
+    dispatch(setSearchResults(searchResults));
   }
 };
 
 const initialState = [];
-
+// * Reducer
 const searchReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_SEARCH_RESULTS:

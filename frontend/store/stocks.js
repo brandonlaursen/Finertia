@@ -7,7 +7,7 @@ const SET_CURRENT_STOCK = "stocks/SET_CURRENT_STOCK";
 const SET_STOCKS_NEWS = "stocks/SET_STOCKS_NEWS";
 
 const UPDATE_LIST_STOCKS = "lists/UPDATE_LIST_STOCKS";
-const REMOVE_USER = "session/removeUser";
+const REMOVE_USER = "session/REMOVE_USER";
 
 const SET_CURRENT_STOCK_FOR_LIST = "lists/SET_CURRENT_STOCK_FOR_LIST";
 
@@ -44,9 +44,9 @@ export const fetchAllStocks = () => async (dispatch) => {
   const response = await csrfFetch("/api/stocks");
 
   if (response.ok) {
-    const data = await response.json();
+    const allStocks = await response.json();
 
-    dispatch(setAllStocks(data));
+    dispatch(setAllStocks(allStocks));
   }
 };
 
@@ -58,8 +58,8 @@ export const fetchStock = (stockSymbol) => async (dispatch) => {
       throw new Error("Stock not found");
     }
 
-    const data = await response.json();
-    dispatch(setCurrentStock(data));
+    const currentStock = await response.json();
+    dispatch(setCurrentStock(currentStock));
   } catch (error) {
     console.error("Error fetching stock:", error);
     throw error;
@@ -67,7 +67,6 @@ export const fetchStock = (stockSymbol) => async (dispatch) => {
 };
 
 export const fetchStockForList = (stockSymbol) => async (dispatch) => {
-
   try {
     const response = await csrfFetch(`/api/stocks/lists/${stockSymbol}`);
 
@@ -75,9 +74,9 @@ export const fetchStockForList = (stockSymbol) => async (dispatch) => {
       throw new Error("Stock not found");
     }
 
-    const data = await response.json();
+    const stock = await response.json();
 
-    dispatch(setCurrentStockForLists(data));
+    dispatch(setCurrentStockForLists(stock));
   } catch (error) {
     console.error("Error fetching stock:", error);
     throw error;
@@ -88,9 +87,9 @@ export const fetchStockNews = () => async (dispatch) => {
   const response = await csrfFetch("/api/stocks/news");
 
   if (response.ok) {
-    const data = await response.json();
+    const stockNews = await response.json();
 
-    dispatch(setStockNews(data));
+    dispatch(setStockNews(stockNews));
   }
 };
 
@@ -98,8 +97,8 @@ export const fetchStockNewsByCategory = (category) => async (dispatch) => {
   const response = await csrfFetch(`/api/stocks/news/${category}`);
 
   if (response.ok) {
-    const data = await response.json();
-    dispatch(setStockNews(data));
+    const stockNews = await response.json();
+    dispatch(setStockNews(stockNews));
   }
 };
 
@@ -113,14 +112,14 @@ export const editListStocks = (stockListsIdsObj, stock) => async (dispatch) => {
   });
 
   if (response.ok) {
-    const data = await response.json();
+    const list = await response.json();
 
     dispatch(
-      updateListStocks(data.stock, data.updatedListIds, data.removedFromIds)
+      updateListStocks(list.stock, list.updatedListIds, list.removedFromIds)
     );
     return {
-      updatedListIds: data.updatedListIds,
-      removedFromIds: data.removedFromIds,
+      updatedListIds: list.updatedListIds,
+      removedFromIds: list.removedFromIds,
     };
   }
 };

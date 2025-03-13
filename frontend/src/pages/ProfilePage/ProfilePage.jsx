@@ -14,11 +14,9 @@ function ProfilePage() {
   const [isLoading, setIsLoading] = useState(true);
 
   const { stockSummary } = sessionUser;
-  console.log(" stockSummary:", stockSummary);
 
   const total =
     Number(stockSummary.totalInvestments) + Number(stockSummary.balance);
-  console.log(" total:", total);
 
   setTimeout(() => {
     setIsLoading(false);

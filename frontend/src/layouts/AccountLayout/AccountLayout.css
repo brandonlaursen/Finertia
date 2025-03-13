@@ -6,18 +6,18 @@
   flex-direction: column;
 
   margin-top: 54px;
-  background-color: var(--color-background);
+
   color: var(--color-text-primary);
-  scrollbar-width: none;
+  background-color: var(--color-background);
 }
 
 .AccountLayout__main {
   position: sticky;
   top: 54px;
   left: 0;
+  z-index: 1;
 
   height: 140px;
-
   width: 100%;
 
   display: flex;
@@ -31,17 +31,17 @@
   background-color: var(--color-background);
 
   border-bottom: 1px solid var(--border-color);
-  z-index: 1;
 }
 
-.AccountLayout__main-wrapper {
+.AccountLayout__container {
   width: clamp(430px, 85vw, 1000px);
 }
 
 .AccountLayout__username {
+  margin-bottom: 12px;
+
   font-size: 28px;
   font-weight: bold;
-  margin-bottom: 12px;
 }
 
 .AccountLayout__section {
@@ -54,10 +54,10 @@
 
   color: var(--color-text-primary);
 
-  cursor: pointer;
-
   font-size: 12px;
   font-weight: bold;
+
+  cursor: pointer;
 }
 
 .AccountLayout__selected::after {
@@ -72,14 +72,10 @@
   background-color: var(--theme-primary-color);
 }
 
-.AccountLayout__main-wrapper {
-  width: clamp(430px, 85vw, 1000px);
-}
-
 /* ====== Media Queries ====== */
-/* * Medium devices (tablets, 768px and up) */
+
 @media (max-width: 768px) {
-  .AccountLayout__main-wrapper {
+  .AccountLayout__container {
     width: 90vw;
   }
 

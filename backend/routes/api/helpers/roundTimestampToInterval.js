@@ -1,5 +1,5 @@
 function roundTimestampToInterval(timestamp, intervalMinutes) {
-  console.log('timestamp', timestamp)
+ 
   const date = new Date(timestamp);
   const remainder = date.getUTCMinutes() % intervalMinutes;
   date.setUTCMinutes(

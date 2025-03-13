@@ -33,7 +33,6 @@ function ListItem({
       navigate(`/lists/${list.id}`);
     }
   }
-  console.log(showListSideBar, showItems);
 
   return (
     <article onClick={handleListItemClick} className={`ListItem ${className}`}>

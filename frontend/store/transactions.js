@@ -1,13 +1,13 @@
 import { csrfFetch } from "./csrf";
 import { setUser } from "./session";
+
 // * Constants
 const SET_ACCOUNT_TRANSACTIONS = "transactions/SET_ACCOUNT_TRANSACTIONS";
 const ADD_ACCOUNT_TRANSACTION = "transactions/ADD_ACCOUNT_TRANSACTION";
-
 const SET_STOCK_TRANSACTIONS = "transactions/SET_STOCK_TRANSACTIONS";
 const ADD_STOCK_TRANSACTION = "transactions/ADD_STOCK_TRANSACTION";
-const REMOVE_USER = "session/removeUser";
 
+const REMOVE_USER = "session/REMOVE_USER";
 const SET_USER = "session/setUser";
 
 // * Action Creators
@@ -98,8 +98,8 @@ export const executeStockTrade = (transaction) => async (dispatch) => {
       const { transactions } = await transactionsResponse.json();
 
       // Update all relevant state
-      dispatch(setUser(user, stockSummary));
-      dispatch(setStockTransactions(transactions));
+      await dispatch(setUser(user, stockSummary));
+      await dispatch(setStockTransactions(transactions));
 
       return { success: true, user, stockSummary, transactions };
     }

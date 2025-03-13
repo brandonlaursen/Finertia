@@ -34,7 +34,7 @@ function ListStockItem({
   }, [symbol, dispatch]);
 
   const { id, current_price, todays_change_percent } = stockInfo;
-  console.log(showListSideBar, setShowListSideBar);
+
   return (
     <article
       className="ListStockItem"

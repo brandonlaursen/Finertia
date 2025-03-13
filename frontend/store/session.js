@@ -3,7 +3,7 @@ import { createSelector } from "reselect";
 
 // * Constants
 const SET_USER = "session/setUser";
-const REMOVE_USER = "session/removeUser";
+const REMOVE_USER = "session/REMOVE_USER";
 
 const ADD_ACCOUNT_TRANSACTION = "transactions/ADD_ACCOUNT_TRANSACTION";
 const ADD_STOCK_TRANSACTION = "transactions/ADD_STOCK_TRANSACTION";
@@ -73,9 +73,9 @@ export const restoreUser = () => async (dispatch) => {
 
   if (userInfo.user) {
     const response = await csrfFetch("/api/transactions/stock-summary");
-    const data = await response.json();
+    const stockSummary = await response.json();
 
-    dispatch(setUser(userInfo.user, data));
+    dispatch(setUser(userInfo.user, stockSummary));
   }
 
   return response;
@@ -125,7 +125,7 @@ export const editPassword = (passwordInfo) => async (dispatch) => {
 export const userSelector = (state) => state.session.user;
 export const selectUser = createSelector([userSelector], (user) => user);
 
-// * Session Reducer
+// * Reducer
 const initialState = { user: null };
 
 const sessionReducer = (state = initialState, action) => {

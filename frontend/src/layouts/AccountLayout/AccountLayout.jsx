@@ -24,8 +24,8 @@ function AccountLayout() {
 
   return (
     <div className="AccountLayout">
-      <div className="AccountLayout__main">
-        <div className="AccountLayout__main-wrapper">
+      <main className="AccountLayout__main">
+        <div className="AccountLayout__container">
           <header className="AccountLayout__username">
             {sessionUser.firstName} {sessionUser.lastName}
           </header>
@@ -44,7 +44,7 @@ function AccountLayout() {
             ))}
           </section>
         </div>
-      </div>
+      </main>
 
       <Outlet />
     </div>

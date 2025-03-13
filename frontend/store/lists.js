@@ -1,4 +1,3 @@
-
 import { csrfFetch } from "./csrf";
 import { createSelector } from "reselect";
 
@@ -9,7 +8,8 @@ const UPDATE_LIST = "lists/UPDATE_LIST";
 const REMOVE_LIST = "lists/REMOVE_LIST";
 
 const UPDATE_LIST_STOCKS = "lists/UPDATE_LIST_STOCKS";
-const REMOVE_USER = "session/removeUser";
+
+const REMOVE_USER = "session/REMOVE_USER";
 
 // * Action Creators
 export const setLists = (lists) => ({
@@ -37,17 +37,15 @@ export const fetchLists = () => async (dispatch) => {
   const response = await csrfFetch("/api/lists");
 
   if (response.ok) {
-    const data = await response.json();
+    const lists = await response.json();
 
-    dispatch(setLists(data));
+    dispatch(setLists(lists));
   }
 };
 
 export const createList =
   ({ name, emoji, stockIds }) =>
   async (dispatch) => {
-
-
     const response = await csrfFetch("/api/lists", {
       method: "POST",
       body: JSON.stringify({
@@ -58,10 +56,10 @@ export const createList =
     });
 
     if (response.ok) {
-      const data = await response.json();
+      const createdList = await response.json();
 
-      dispatch(addList(data));
-      return data.id;
+      dispatch(addList(createdList));
+      return createdList.id;
     }
   };
 
@@ -78,9 +76,9 @@ export const editList =
     });
 
     if (response.ok) {
-      const data = await response.json();
+      const editedList = await response.json();
 
-      dispatch(updateList(data));
+      dispatch(updateList(editedList));
     }
   };
 
@@ -94,7 +92,7 @@ export const deleteList = (stockListId) => async (dispatch) => {
   }
 };
 
-// * Selector
+// * Selectors
 const selectAllLists = (state) => state.lists || {};
 const selectListId = (state, listId) => listId;
 
@@ -102,9 +100,12 @@ export const selectListsArray = createSelector(selectAllLists, (list) => {
   return Object.values(list);
 });
 
-export const selectListById = createSelector([selectAllLists, selectListId], (lists, listId) => lists[listId]);
+export const selectListById = createSelector(
+  [selectAllLists, selectListId],
+  (lists, listId) => lists[listId]
+);
 
-const initialState = {}
+const initialState = {};
 // * Reducer
 const listsReducer = (state = initialState, action) => {
   switch (action.type) {

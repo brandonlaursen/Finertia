@@ -42,8 +42,6 @@ function HomePageOverview({ stockData, selectedTimeFrame }) {
 
     const firstAggregate = data[0].y;
     const lastAggregate = data[data.length - 1].y;
-    console.log(" lastAggregate:", lastAggregate);
-    console.log(" firstAggregate:", firstAggregate);
 
     if (firstAggregate === 0) {
       return {
@@ -63,7 +61,6 @@ function HomePageOverview({ stockData, selectedTimeFrame }) {
   }, [data]);
 
 
-  console.log(portfolioPercentChange, portfolioAmountChange);
   return (
     <div className="HomePageOverview">
       <h1 className="HomePageOverview__title">Investing</h1>
