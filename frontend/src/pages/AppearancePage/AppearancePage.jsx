@@ -1,6 +1,9 @@
 import "./AppearancePage.css";
-import { useState } from "react";
 import { TiArrowUnsorted } from "react-icons/ti";
+
+import { useState } from "react";
+
+import AppearancePageDropdown from "./AppearancePageDropdown";
 
 import { useTheme } from "../../context/ThemeContext";
 
@@ -8,26 +11,10 @@ function AppearancePage() {
   const [showDropdown, setShowDropdown] = useState(false);
   const { isDarkMode, toggleTheme } = useTheme();
 
-  function handleToggleTheme(theme) {
-    if (theme === "dark" && isDarkMode) {
-      return;
-    }
-    if (theme === "dark" && !isDarkMode) {
-      toggleTheme();
-      return;
-    }
-    if (theme === "light" && isDarkMode) {
-      toggleTheme();
-      return;
-    }
-    if (theme === "light" && !isDarkMode) {
-      return;
-    }
-  }
   return (
     <div className="AppearancePage">
-      <div className="AppearancePage__content">
-        <span className="AppearancePage__title">App Appearance</span>
+      <main className="AppearancePage__main">
+        <header className="AppearancePage__title">App Appearance</header>
         <div className="AppearancePage__theme">
           <span className="AppearancePage__subtitle">Theme</span>
 
@@ -39,29 +26,16 @@ function AppearancePage() {
           >
             <span>{isDarkMode ? "Dark" : "Light"}</span>
             <TiArrowUnsorted className="AppearancePage__dropdown__arrows" />
+
             {showDropdown && (
-              <div className="AppearancePage__dropdown">
-                <span
-                  className={`AppearancePage__dropdown__option ${
-                    !isDarkMode && "AppearancePage__dropdown__option--selected"
-                  }`}
-                  onClick={() => handleToggleTheme("light")}
-                >
-                  Light
-                </span>
-                <span
-                  className={`AppearancePage__dropdown__option ${
-                    isDarkMode && "AppearancePage__dropdown__option--selected"
-                  }`}
-                  onClick={() => handleToggleTheme("dark")}
-                >
-                  Dark
-                </span>
-              </div>
+              <AppearancePageDropdown
+                toggleTheme={toggleTheme}
+                isDarkMode={isDarkMode}
+              />
             )}
           </span>
         </div>
-      </div>
+      </main>
     </div>
   );
 }

@@ -12,7 +12,7 @@
   font-weight: 500;
 }
 
-.AppearancePage__content {
+.AppearancePage__main {
   display: flex;
   flex-direction: column;
 
@@ -31,23 +31,17 @@
   font-weight: bold;
 }
 
+.AppearancePage__theme {
+  display: flex;
+  justify-content: space-between;
+}
+
 .AppearancePage__subtitle {
   display: flex;
   align-items: center;
 
   font-size: 12px;
   font-weight: 500;
-}
-
-.AppearancePage__theme {
-  display: flex;
-  justify-content: space-between;
-}
-
-.AppearancePage__theme-selector {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .AppearancePage__dropdown__menu {
@@ -75,56 +69,15 @@
   width: 14px;
 }
 
-.AppearancePage__dropdown {
-  position: absolute;
-  top: 100%;
-  left: -1px;
-  width: 200px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  margin-top: 4px;
-
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-
-  background-color: var(--color-surface);
-  z-index: 10;
-
-  cursor: pointer;
-}
-
-.AppearancePage__dropdown__option {
-  height: 40px;
-
-  display: flex;
-  align-items: center;
-  padding-left: 8px;
-}
-
-.AppearancePage__dropdown__option:hover {
-  background-color: var(--color-hover-secondary-light);
-}
-
-.AppearancePage__dropdown__option--selected {
-  color: var(--color-background);
-  background-color: var(--theme-primary-color);
-  font-weight: 600;
-}
-
-.AppearancePage__dropdown__option--selected:hover {
-  color: var(--color-background);
-  background-color: var(--theme-primary-color);
-}
-
+/* ====== Media Queries ====== */
 @media (max-width: 768px) {
   .AppearancePage {
     width: 100%;
+
     margin-top: 10px;
   }
 
-  .AppearancePage__content {
+  .AppearancePage__main {
     display: flex;
     flex-direction: column;
 

@@ -8,44 +8,9 @@
   margin: 0px auto 0;
 
   margin-top: 10px;
-
 }
 
-.HelpPage__section {
-  height: 40px;
-  width: 100%;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  gap: 20px;
-  margin-top: 30px;
-
-  font-size: 13px;
-  font-weight: 500;
-
-  background-color: var(--color-hover-secondary-light);
-  border-radius: 4px;
-}
-
-.HelpPage__section__text {
-  display: inline-flex;
-  vertical-align: middle;
-  align-items: center;
-
-  font-size: 12px;
-
-}
-
-.HelpPage__info-icon {
-  height: 20px;
-  width: 20px;
-
-  margin-right: 4px;
-}
-
-.HelpPage__support-section__title {
+.HelpPage__title {
   height: 40px;
 
   margin-top: 20px;
@@ -56,7 +21,7 @@
   border-bottom: solid 1px var(--border-color);
 }
 
-.HelpPage__support-section__links {
+.HelpPage__links {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -64,7 +29,7 @@
   margin-bottom: 20px;
 }
 
-.HelpPage__support-section__link {
+.HelpPage__link {
   height: 45px;
 
   display: flex;
@@ -77,13 +42,18 @@
   border-bottom: solid 1px var(--border-color);
 }
 
-.HelpPage__support-section__link:hover {
+.HelpPage__link:hover {
   background-color: var(--color-hover);
   box-shadow:
-  /* Top */ 0px 0px 0px 0px var(--color-hover),
+    /* Top */ 0px 0px 0px 0px var(--color-hover),
     /* Left */ -24px 0px 0px 0px var(--color-hover),
     /* Right */ 24px 0px 0px 0px var(--color-hover);
   cursor: pointer;
+}
+
+.HelpPage__icon {
+  height: 20px;
+  width: 20px;
 }
 
 .HelpPage__button {
@@ -97,24 +67,17 @@
   background-color: var(--color-background-inverse);
 
   border-radius: 20px;
-  cursor: pointer;
 }
 
 .HelpPage__button:hover {
   background-color: var(--button-hover-inverse);
 }
 
-.HelpPage__icon {
-  height: 20px;
-  width: 20px;
-}
-
 /* ====== Media Queries ====== */
-/* * Medium devices (tablets, 768px and up) */
 @media (max-width: 768px) {
   .HelpPage {
     width: 100vw;
 
-    padding: 0 20px;;
+    padding: 0 20px;
   }
 }
