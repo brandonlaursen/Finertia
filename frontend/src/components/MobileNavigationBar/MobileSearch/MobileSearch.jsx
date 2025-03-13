@@ -54,18 +54,6 @@ function MobileSearch({ setShowSearch }) {
 
   return (
     <div className="MobileSearch">
-      <div className="MobileSearch__top-bar">
-        <IoSearch className="MobileSearch-icon" />
-        <input
-          className="MobileSearch-input"
-          placeholder="Search"
-          onFocus={() => setIsFocused(true)}
-          onBlur={handleBlur}
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        ></input>
-      </div>
-
       <div className="MobileSearch__bar">
         <IoSearch className="MobileSearch-icon" />
         <input
@@ -78,7 +66,7 @@ function MobileSearch({ setShowSearch }) {
         ></input>
 
         <button
-          className="MobileSearch-cancel-btn"
+          className={`MobileSearch-cancel-btn ${search && "MobileSearch-cancel-btn--active"}`}
           onClick={() => setShowSearch(false)}
         >
           Cancel

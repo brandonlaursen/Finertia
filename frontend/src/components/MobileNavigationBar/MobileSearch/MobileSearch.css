@@ -3,26 +3,15 @@
   top: 0;
   left: 0;
   right: 0;
-  height: calc(100% - 70px);
+  height: calc(100% - 50px);
 
   background-color: var(--color-background);
 }
 
-.MobileSearch__top-bar {
-  position: fixed;
-  top: 0;
-
-  height: 50px;
-  width: 100%;
-
-  display: flex;
-
-  background-color: var(--color-background);
-}
 
 .MobileSearch__bar {
   position: fixed;
-  bottom: 70px;
+  top: 0;
 
   height: 50px;
   width: 100%;
@@ -59,12 +48,16 @@
   font-weight: 500;
 }
 
+.MobileSearch-cancel-btn--active{
+  background-color: var(--color-surface);
+}
+
 .MobileSearch-results {
   position: absolute;
   top: 34px;
   background-color: var(--color-surface);
 
-  height: 89%;
+  height: 95%;
   width: 100%;
   overflow: scroll;
 
