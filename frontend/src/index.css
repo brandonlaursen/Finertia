@@ -192,6 +192,8 @@ button {
   --color-text-primary: #000000; /* Main text color */
   --color-text-secondary: rgb(152, 152, 152); /* Secondary text color */
   --color-text-inverse: #ffffff;
+  --color-text-grey: #4a4a4a;
+
 
   /* * Hover Colors */
   --color-hover: rgba(245, 248, 250);

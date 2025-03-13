@@ -37,4 +37,14 @@
   .MobileTopBar__back-button:hover {
     color: var(--theme-primary-color);
   }
+
+  .MobileTopBar__add-to-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .MobileTopBar__add-to-list-btn {
+    font-size: 20px;
+  }
 }

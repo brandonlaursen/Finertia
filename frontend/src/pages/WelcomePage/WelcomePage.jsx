@@ -1,5 +1,5 @@
 import "./WelcomePage.css";
-import { LuInfo } from "react-icons/lu";
+// import { LuInfo } from "react-icons/lu";
 import { FaSpaceShuttle } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa6";
@@ -68,7 +68,7 @@ function WelcomePage() {
         </header>
         <button className="WelcomePage__join__button">Sign up</button>
       </section> */}
-
+      {/*
       <footer className="WelcomePage__footer">
         <div className="footer-content">
           <p className="footer-content">
@@ -96,7 +96,7 @@ function WelcomePage() {
             GitHub
           </a>
         </div>
-      </footer>
+      </footer> */}
     </div>
   );
 }

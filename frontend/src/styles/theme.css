@@ -12,6 +12,7 @@
   --color-text-primary: #ffffff; /* Main text color */
   --color-text-secondary: rgb(140, 155, 161); /* Secondary text color */
   --color-text-inverse: #000000;
+  --color-text-grey: #adacac;
 
   /* Hover Colors */
   --color-hover: rgb(30, 33, 37);

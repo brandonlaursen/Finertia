@@ -44,6 +44,10 @@
   border-radius: 4px;
 }
 
+.StockTradeBarMobile {
+  display: none;
+}
+
 /* ====== Media Queries ====== */
 /* Medium devices (tablets, 768px and up) */
 @media (max-width: 768px) {
@@ -54,7 +58,7 @@
 
   .StockTradeBarMobile {
     position: fixed;
-    bottom: 0;
+    bottom: 70px;
 
     /* height: 100px; */
     width: 100%;
@@ -94,5 +98,17 @@
 
   .StockPage {
     margin-top: 70px;
+  }
+
+  .StockTradeSideBar__mobile-wrapper {
+    position: fixed;
+    bottom: 120px;
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: end;
   }
 }

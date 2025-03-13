@@ -1,8 +1,9 @@
 import "./MobileTopBar.css";
 import { MdOutlineArrowBackIos } from "react-icons/md";
+import { IoMdAddCircle } from "react-icons/io";
 
 import { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import HamburgerMenu from "../NavigationBar/HamburgerMenu";
 import HamburgerDropdown from "../NavigationBar/HamburgerDropdown";
@@ -10,6 +11,8 @@ import HamburgerDropdown from "../NavigationBar/HamburgerDropdown";
 function MobileTopBar() {
   const navigate = useNavigate();
   const menuRef = useRef(null);
+  const location = useLocation();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const goBack = () => {
@@ -26,6 +29,11 @@ function MobileTopBar() {
       </div>
 
       <div ref={menuRef} className="HamburgerMenu__wrapper">
+        {/* <div className="MobileTopBar__add-to-list">
+          {location.pathname.includes("stocks/") && (
+            <IoMdAddCircle className="MobileTopBar__add-to-list-btn " />
+          )}
+        </div> */}
         <HamburgerMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
         {isMenuOpen && <HamburgerDropdown navigate={navigate} />}
       </div>

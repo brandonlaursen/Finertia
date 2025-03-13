@@ -161,3 +161,9 @@
   }
 }
 
+@media (max-width: 480px) {
+  .TradeReview__button {
+    width: 75%;
+    height: 38px;
+  }
+}

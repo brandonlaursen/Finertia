@@ -6,7 +6,10 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: #000000;
+  align-items: center;
+
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
 }
 
 /* ========== Hero Section ========== */
@@ -14,23 +17,31 @@
 /* Main section of the page */
 .WelcomePage__section {
   /* height: 630px; */
+
   height: 100%;
   width: 100%;
 
   display: flex;
   align-items: center;
-  justify-content: center;
-
-  padding: 0 32px;
+  justify-content: start;
 }
 
 /* Hero banner with background image */
 .WelcomePage__hero {
+  position: relative;
+
   flex-direction: column;
-  background-image: url("https://i.makeagif.com/media/4-24-2017/xzMHOc.gif");
-  background-size: cover;
+  background-image: url("/public/finertia-background.png");
+  background-size: fit;
   background-position: center;
   background-repeat: no-repeat;
+
+  width: 1360px;
+  height: 760px;
+  /* border: 1px solid var(--border-color); */
+  border-radius: 44px;
+  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px,
+    rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
 }
 
 /* Title within the hero section */
@@ -39,23 +50,22 @@
   align-items: center;
   justify-content: center;
 
-  font-size: clamp(20px, 2rem, 28px);
+  font-size: clamp(14px, 2rem, 28px);
   font-weight: var(--font-weight-bold);
-  color: #07de96;
+  color: var(--color-text-grey);
 
+  margin-top: 32px;
   margin-bottom: 8px;
   animation: fadeIn 1s ease-in-out;
 }
 
 /* Highlight text in the hero section */
 .WelcomePage__hero-highlight {
-  width: clamp(450px, 100%, 800px);
+  width: clamp(450px, 100%, 700px);
   display: flex;
   flex-direction: column;
   text-align: center;
   font-size: clamp(16px, 4vw, 24px);
-
-  color: white;
 }
 
 /* Hero section button */
@@ -64,7 +74,8 @@
 
   height: 40px;
   padding: 0 32px;
-  background-color: white;
+  background-color: rgb(35, 5, 74);
+  color: white;
   margin-top: 32px;
   border-radius: 44px;
   font-weight: bold;
@@ -72,7 +83,7 @@
 
 /* Button hover effect */
 .WelcomePage__hero-button:hover {
-  background-color: rgb(236, 236, 236);
+  background-color: rgb(50, 8, 106);
 }
 
 /* ========== Features Section ========== */
@@ -250,14 +261,11 @@
   }
 }
 
-
 /* * Small devices (landscape phones, 576px and up) */
 @media (max-width: 480px) {
-
   .HomePage {
     margin-top: 70px;
   }
-
 
   .HomePage__main {
     width: 90vw;
@@ -267,4 +275,13 @@
 
 /* * Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 430px) {
+  .WelcomePage__hero {
+    position: relative;
+
+    flex-direction: column;
+    background-image: url("/public/finertia-background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
 }
