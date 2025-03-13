@@ -11,48 +11,34 @@ import BuyingPowerDropDown from "./BuyingPowerDropDown";
 import HomePageNewsFeed from "./HomePageNewsFeed";
 import ListSideBar from "../../components/ListSideBar";
 import NotificationPopUp from "../../components/NotificationPopUp";
-import Skeleton from "../../components/Skeleton";
+import HomePageSkeleton from "./HomePageSkeleton";
 
 import { selectUser } from "../../../store/session";
 
 function HomePage() {
   const navigate = useNavigate();
   const sessionUser = useSelector(selectUser);
-  const [isLoading, setIsLoading] = useState(true);
-
-  const [notifications, setNotifications] = useState(false);
-  const [notificationMessage, setNotificationMessage] = useState([]);
-
-  const [selectedTimeFrame, setSelectedTimeFrame] = useState("1D");
 
   const { stockSummary } = sessionUser;
+
+  const [isLoading, setIsLoading] = useState(true);
+  const [notifications, setNotifications] = useState(false);
+  const [notificationMessage, setNotificationMessage] = useState([]);
+  const [selectedTimeFrame, setSelectedTimeFrame] = useState("1D");
 
   useEffect(() => {
     const timeout = setTimeout(() => {
       setIsLoading(false);
     }, 1500);
 
-    return () => clearTimeout(timeout); 
+    return () => clearTimeout(timeout);
   }, []);
 
   return (
     <div className="HomePage">
       <main className="HomePage__main">
         {isLoading ? (
-          <>
-            <div className="HomePage__skeleton-overview">
-              <Skeleton height="100px" />
-            </div>
-            <div className="HomePage__skeleton-chart">
-              <Skeleton height="350px" />
-            </div>
-            <div className="HomePage__skeleton-buying-power">
-              <Skeleton height="80px" />
-            </div>
-            <div className="HomePage__skeleton-news">
-              <Skeleton height="400px" />
-            </div>
-          </>
+          <HomePageSkeleton />
         ) : (
           <>
             <HomePageOverview

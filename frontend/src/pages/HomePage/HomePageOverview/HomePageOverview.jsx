@@ -36,12 +36,12 @@ function HomePageOverview({ stockData, selectedTimeFrame }) {
   ]);
 
   const { portfolioPercentChange, portfolioAmountChange } = useMemo(() => {
-    if (!data || data.length < 2) {
+    if (!Array.isArray(data) || data.length < 2) {
       return { portfolioPercentChange: 0.0, portfolioAmountChange: 0.0 };
     }
 
-    const firstAggregate = data[0].y;
-    const lastAggregate = data[data.length - 1].y;
+    const firstAggregate = Number(data[0]?.y) || 0;
+    const lastAggregate = Number(data[data.length - 1]?.y) || 0;
 
     if (firstAggregate === 0) {
       return {
@@ -50,16 +50,15 @@ function HomePageOverview({ stockData, selectedTimeFrame }) {
       };
     }
 
-    if (lastAggregate - firstAggregate === 0)
-      return { portfolioPercentChange: 0.0, portfolioAmountChange: 0.0 };
+    const amountChange = lastAggregate - firstAggregate;
+    const percentChange =
+      firstAggregate !== 0 ? (amountChange / firstAggregate) * 100 : 0.0;
 
     return {
-      portfolioPercentChange:
-        ((lastAggregate - firstAggregate) / firstAggregate) * 100,
-      portfolioAmountChange: lastAggregate - firstAggregate,
+      portfolioPercentChange: isFinite(percentChange) ? percentChange : 0.0,
+      portfolioAmountChange: isFinite(amountChange) ? amountChange : 0.0,
     };
   }, [data]);
-
 
   return (
     <div className="HomePageOverview">

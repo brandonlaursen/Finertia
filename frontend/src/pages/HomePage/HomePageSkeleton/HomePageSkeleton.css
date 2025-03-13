@@ -1,0 +1,24 @@
+.HomePage__skeleton-overview {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  gap: var(--page-gap);
+
+  margin-bottom: 16px;
+}
+
+.HomePage__skeleton-chart {
+  margin-bottom: 16px;
+}
+
+.HomePage__skeleton-buying-power {
+  margin-bottom: 16px;
+}
+
+.HomePage__skeleton-news {
+  margin-top: 16px;
+  margin-bottom: 32px;
+
+  border-radius: 4px;
+}
