@@ -1,14 +1,11 @@
-import "./BuyingPowerDropDown.css";
-import { FaAngleDown } from "react-icons/fa6";
-
-import { useState } from "react";
-
-import TransferModal from "../../../modals/TransferModal";
+import "./BuyingPowerDropdown.css";
 
 import { useModal } from "../../../context/Modal";
 
-function BuyingPowerDropDown({
-  sessionUser,
+import TransferModal from "../../../modals/TransferModal";
+
+function BuyingPowerDropdown({
+  balance,
   setNotifications,
   setNotificationMessage,
   notifications,
@@ -16,78 +13,50 @@ function BuyingPowerDropDown({
 }) {
   const { setModalContent, setModalClass } = useModal();
 
-  const [isDropDownVisible, setDropDownIsVisible] = useState(false);
-
-  // Check if stockSummary exists and set balance accordingly
-  const balance = Number(sessionUser?.stockSummary?.balance) || 0; // Default to 0 if stockSummary is undefined
-  balance, sessionUser;
   return (
-    <div
-      className={`BuyingPowerDropDown ${
-        isDropDownVisible && "BuyingPowerDropDown--highlight"
-      }`}
-    >
-      <div
-        className="BuyingPowerDropDown__toggle"
-        onClick={() => setDropDownIsVisible(!isDropDownVisible)}
-      >
-        <span>Buying Power</span>
-        <span className="BuyingPowerDropDown__balance">
-          ${balance ? balance.toFixed(2) : 0}
-          <FaAngleDown
-            className={`BuyingPowerDropDown__arrow-icon ${
-              isDropDownVisible && "open"
-            }`}
-          />
-        </span>
-      </div>
+    <div className="BuyingPowerDropDown">
+      <main className="BuyingPowerDropDown__main">
+        <section className="BuyingPowerDropDown__details">
+          <div className="BuyingPowerDropDown__label">
+            <span>Individual Cash</span>
+            <span className="BuyingPowerDropDown__value">
+              ${balance ? balance.toFixed(2) : 0}
+            </span>
+          </div>
+          <div className="BuyingPowerDropDown__label">
+            <span>Total</span>
+            <span className="BuyingPowerDropDown__value">
+              ${balance ? balance.toFixed(2) : 0}
+            </span>
+          </div>
+        </section>
 
-      {isDropDownVisible && (
-        <div className="BuyingPowerDropDown__dropdown">
-          <main className="BuyingPowerDropDown__dropdown-main">
-            <section className="BuyingPowerDropDown__summary">
-              <div className="BuyingPowerDropDown__summary-text">
-                <span>Individual Cash</span>
-                <span className="BuyingPowerDropDown__summary-value">
-                  ${balance ? balance.toFixed(2) : 0}
-                </span>
-              </div>
-              <div className="BuyingPowerDropDown__summary-text">
-                <span>Total</span>
-                <span className="BuyingPowerDropDown__summary-value">
-                  ${balance ? balance.toFixed(2) : 0}
-                </span>
-              </div>
-            </section>
-
-            <section className="BuyingPowerDropDown__button-container">
-              <button
-                className="BuyingPowerDropDown__button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setModalContent(
-                    <TransferModal
-                      setNotifications={setNotifications}
-                      setNotificationMessage={setNotificationMessage}
-                      notifications={notifications}
-                      notificationMessage={notificationMessage}
-                    />
-                  );
-                  setModalClass({
-                    modal: "TransferModal",
-                    modalBackground: "TransferModal__background",
-                    modalContainer: "TransferModal__container",
-                  });
-                }}
-              >
-                Deposit Funds
-              </button>
-            </section>
-          </main>
-        </div>
-      )}
+        <section className="BuyingPowerDropDown__buttons">
+          <button
+            className="BuyingPowerDropDown__button"
+            onClick={(e) => {
+              e.stopPropagation();
+              setModalContent(
+                <TransferModal
+                  setNotifications={setNotifications}
+                  setNotificationMessage={setNotificationMessage}
+                  notifications={notifications}
+                  notificationMessage={notificationMessage}
+                />
+              );
+              setModalClass({
+                modal: "TransferModal",
+                modalBackground: "TransferModal__background",
+                modalContainer: "TransferModal__container",
+              });
+            }}
+          >
+            Deposit Funds
+          </button>
+        </section>
+      </main>
     </div>
   );
 }
 
-export default BuyingPowerDropDown;
+export default BuyingPowerDropdown;

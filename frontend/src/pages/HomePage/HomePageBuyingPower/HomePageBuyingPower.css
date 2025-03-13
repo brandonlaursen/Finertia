@@ -1,0 +1,48 @@
+.HomePageBuyingPower--highlight {
+  background-color: var(--color-hover);
+  box-shadow: 0px 0px 0px 0px var(--color-hover),
+    -24px 0px 0px 0px var(--color-hover), 24px 0px 0px 0px var(--color-hover);
+  border-radius: 4px;
+}
+
+.HomePageBuyingPower__toggle {
+  height: 65px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: var(--font-size-text-md);
+  font-weight: var(--font-weight-bold);
+
+  border-bottom: 1px solid var(--border-color);
+
+  cursor: pointer;
+}
+
+.HomePageBuyingPower__toggle:hover {
+  background-color: var(--color-hover);
+  box-shadow: 0px 0px 0px 0px var(--color-hover),
+    -24px 0px 0px 0px var(--color-hover), 24px 0px 0px 0px var(--color-hover);
+}
+
+.HomePageBuyingPower__balance {
+  height: 100%;
+  width: 100px;
+
+  display: flex;
+  justify-content: end;
+  align-items: center;
+
+  gap: 8px;
+}
+
+.HomePageBuyingPower__arrow-icon {
+  font-size: var(--icon-size-md);
+
+  transition: transform 0.3s ease;
+}
+
+.HomePageBuyingPower__arrow-icon.open {
+  transform: rotate(180deg);
+}

@@ -1,53 +1,5 @@
-/* ========== Buying Power Dropdown ========== */
-
-.BuyingPowerDropDown--highlight {
-  background-color: var(--color-hover);
-  box-shadow:
-  /* Top */ 0px 0px 0px 0px var(--color-hover),
-    /* Left */ -24px 0px 0px 0px var(--color-hover),
-    /* Right */ 24px 0px 0px 0px var(--color-hover);
-  border-radius: 4px;
-}
-
-/* Toggle button for opening/closing the dropdown */
-.BuyingPowerDropDown__toggle {
-  height: 65px;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  font-size: var(--font-size-text-md);
-  font-weight: var(--font-weight-bold);
-
-  border-bottom: 1px solid var(--border-color);
-
-  cursor: pointer;
-}
-
-.BuyingPowerDropDown__toggle:hover {
-  background-color: var(--color-hover);
-  box-shadow:
-  /* Top */ 0px 0px 0px 0px var(--color-hover),
-    /* Left */ -24px 0px 0px 0px var(--color-hover),
-    /* Right */ 24px 0px 0px 0px var(--color-hover);
-  /* border-radius: 4px; */
-}
-
-/* Container for displaying balance information */
-.BuyingPowerDropDown__balance {
-  height: 100%;
-  width: 100px;
-
-  display: flex;
-  justify-content: end;
-  align-items: center;
-
-  gap: 8px;
-}
-
-/* Dropdown content container */
-.BuyingPowerDropDown__dropdown {
+/*  */
+.BuyingPowerDropDown {
   height: 170px;
 
   display: flex;
@@ -59,8 +11,7 @@
   font-weight: var(--font-weight-normal);
 }
 
-/* Main section within the dropdown */
-.BuyingPowerDropDown__dropdown-main {
+.BuyingPowerDropDown__main {
   height: 100%;
   width: 50%;
 
@@ -69,15 +20,13 @@
   justify-content: space-evenly;
 }
 
-/* Summary area of the dropdown */
-.BuyingPowerDropDown__summary {
+.BuyingPowerDropDown__details {
   height: 60%;
 
   border-bottom: 2px solid var(--border-color);
 }
 
-/* Text container within the summary */
-.BuyingPowerDropDown__summary-text {
+.BuyingPowerDropDown__label {
   height: 50%;
 
   display: flex;
@@ -85,13 +34,12 @@
   align-items: center;
 }
 
-.BuyingPowerDropDown__summary-value {
+.BuyingPowerDropDown__value {
   font-size: var(--font-size-large);
   font-weight: var(--font-weight-bold);
 }
 
-/* Container for the button in the dropdown */
-.BuyingPowerDropDown__button-container {
+.BuyingPowerDropDown__buttons {
   height: 30%;
 
   display: flex;
@@ -99,7 +47,6 @@
   align-items: center;
 }
 
-/* Styled button within the dropdown */
 .BuyingPowerDropDown__button {
   height: 40px;
   width: 50%;
@@ -120,23 +67,8 @@
   background-color: var(--button-hover-inverse);
 }
 
-.BuyingPowerDropDown__arrow-icon {
-  font-size: var(--icon-size-md);
-
-  transition: transform 0.3s ease;
-}
-
-/* Rotate arrow when list is open */
-.BuyingPowerDropDown__arrow-icon.open {
-  transform: rotate(180deg);
-}
-
-
-
-/* ====== Media Queries ====== */
-/* Medium devices (tablets, 768px and up) */
 @media (max-width: 768px) {
-  .BuyingPowerDropDown__dropdown {
+  .BuyingPowerDropDown {
     height: 170px;
     width: 100%;
 
@@ -149,7 +81,7 @@
     font-weight: var(--font-weight-normal);
   }
 
-  .BuyingPowerDropDown__dropdown-main {
+  .BuyingPowerDropDown__main {
     height: 100%;
     width: 100%;
 
@@ -157,5 +89,4 @@
     flex-direction: column;
     justify-content: space-evenly;
   }
-
 }

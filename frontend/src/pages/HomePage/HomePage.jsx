@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import HomePageOverview from "./HomePageOverview";
 import StockChart from "../../components/StockChart";
 import TimeFrameSelector from "../../components/TimeFrameSelector";
-import BuyingPowerDropDown from "./BuyingPowerDropDown";
+import BuyingPowerDropDown from "./HomePageBuyingPower";
 import HomePageNewsFeed from "./HomePageNewsFeed";
 import ListSideBar from "../../components/ListSideBar";
 import NotificationPopUp from "../../components/NotificationPopUp";
