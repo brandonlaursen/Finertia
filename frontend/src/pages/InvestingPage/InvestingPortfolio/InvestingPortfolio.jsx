@@ -1,16 +1,20 @@
-import "./PortfolioTotal.css";
+import "./InvestingPortfolio.css";
 
 import { useState } from "react";
+
 import ReactApexChart from "react-apexcharts";
 
-function PortfolioTotal({
-  total,
-  stockPercentage,
-  stockInvestments,
-  balancePercentage,
-  balance,
-}) {
+function InvestingPortfolio({ total = 0, stockInvestments = 0, balance = 0 }) {
   const [currentPoint, setCurrentPoint] = useState(null);
+
+  const safeTotal = Math.max(Number(total), 0);
+  const safeStockInvestments = Math.max(Number(stockInvestments), 0);
+  const safeBalance = Math.max(Number(balance), 0);
+
+  const safeStockPercentage =
+    safeTotal > 0 ? (safeStockInvestments / safeTotal) * 100 : 0;
+  const safeBalancePercentage =
+    safeTotal > 0 ? (safeBalance / safeTotal) * 100 : 0;
 
   const series = [stockInvestments, balance];
   const labels = ["Stocks", "Individual Cash"];
@@ -58,21 +62,6 @@ function PortfolioTotal({
       enabled: false,
     },
     colors: [
-      // "#00F0A8",
-      // "#00E6A0",
-      // "#00DA98",
-      // "#00CF90",
-      // "#00C488",
-      // "#00B980",
-      // "#00AE78",
-      // "#00A370",
-      // "#009868",
-      // "#008E60",
-      // "#008458",
-      // "#007A50",
-      // "#007048",
-      // "#006640",
-      // "#005C38",
       "var(--theme-primary-color)",
       "var(--theme-primary-hover)",
       "var(--theme-primary-hover-light)",
@@ -82,55 +71,55 @@ function PortfolioTotal({
     },
     stroke: {
       show: true,
-      width: 3, // Border thickness
-      colors: ["var(  --color-background)"], // Border color (black in this case)
+      width: 3,
+      colors: ["var(  --color-background)"],
     },
   });
 
   return (
-    <div className="PortfolioTotal">
-      <header className="InvestingPage__header">
-        <span className="PortfolioTotal__title">Total Portfolio value</span>
-        <span className="PortfolioTotal__value">${+total.toFixed(2)}</span>
+    <div className="InvestingPortfolio">
+      <header className="InvestingPortfolio__header">
+        <span className="InvestingPortfolio__title">Total Portfolio value</span>
+        <span className="InvestingPortfolio__sub-title">
+          ${safeTotal.toFixed(2)}
+        </span>
       </header>
 
-      <main className="InvestingPage__main">
-        <section className="InvestingPage__section">
-          <div className="PortfolioTotal__section">
-            <span className="PortfolioTotal__section-title">Stocks</span>
-            <div className="PortfolioTotal__section-value-container">
-              <span className="PortfolioTotal__section-value">
-                {+stockPercentage.toFixed(2)}%
+      <main className="InvestingPortfolio__main">
+        <section className="InvestingPortfolio__details">
+          <div className="InvestingPortfolio__section">
+            <span className="InvestingPortfolio__label">Stocks</span>
+            <div className="InvestingPortfolio__values">
+              <span className="InvestingPortfolio__value">
+                {safeStockPercentage.toFixed(2)}%
               </span>
-              <span className="PortfolioTotal__section-value">
-                ${+stockInvestments.toFixed(2)}
+              <span className="InvestingPortfolio__value InvestingPortfolio__value--bolded">
+                ${safeStockInvestments.toFixed(2)}
               </span>
             </div>
           </div>
 
-          <div className="PortfolioTotal__section">
-            <span className="PortfolioTotal__section-title">
-              Individual cash
-            </span>
-            <div className="PortfolioTotal__section-value-container">
-              <span className="PortfolioTotal__section-value">
-                {+balancePercentage.toFixed(2)}%
+          <div className="InvestingPortfolio__section">
+            <span className="InvestingPortfolio__label">Individual cash</span>
+            <div className="InvestingPortfolio__values">
+              <span className="InvestingPortfolio__value">
+                {safeBalancePercentage.toFixed(2)}%
               </span>
-              <span className="PortfolioTotal__section-value">
-                ${+balance.toFixed(2)}
+              <span className="InvestingPortfolio__value InvestingPortfolio__value--bolded">
+                ${safeBalance.toFixed(2)}
               </span>
             </div>
           </div>
         </section>
 
-        <section className="InvestingPage__chart-container">
+        <section className="InvestingPortfolio__chart-container">
           <ReactApexChart
             options={options}
             series={series}
             type="donut"
             height={options.chart.height}
           />
-          <span className="InvestingPage__chart-container-value">
+          <span className="InvestingPortfolio__chart-container-value">
             {currentPoint ? (
               <>
                 <span>{currentPoint.label}</span>
@@ -139,7 +128,7 @@ function PortfolioTotal({
             ) : (
               <>
                 <span>Total portfolio value</span>
-                <span>${+total.toFixed(2)}</span>
+                <span>${safeTotal.toFixed(2)}</span>
               </>
             )}
           </span>
@@ -149,4 +138,4 @@ function PortfolioTotal({
   );
 }
 
-export default PortfolioTotal;
+export default InvestingPortfolio;

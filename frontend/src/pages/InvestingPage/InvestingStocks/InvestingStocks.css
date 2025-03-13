@@ -1,0 +1,111 @@
+.InvestingStocks__header {
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.InvestingStocks__title {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.InvestingStocks__main {
+  display: flex;
+}
+
+.InvestingStocks__stock-table {
+  width: 100%;
+
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.InvestingStocks__table-item:hover {
+  box-shadow:
+    /* Top */ 0px 0px 0px 0px var(--color-hover),
+    /* Left */ -16px 0px 0px 0px var(--color-hover),
+    /* Right */ 16px 0px 0px 0px var(--color-hover);
+  background-color: var(--color-hover);
+}
+
+.InvestingStocks__stock-table thead {
+  height: 48px;
+
+  text-align: left;
+
+  font-size: 11px;
+
+  color: var(--color-text-secondary);
+
+  cursor: pointer;
+}
+
+.InvestingStocks__stock-table th,
+.InvestingStocks__stock-table td {
+  height: 48px;
+
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.InvestingStocks__stock-table thead th:hover {
+  color: var(--theme-primary-color);
+}
+
+.InvestingStocks__stock-table tbody tr {
+  font-size: 11px;
+}
+
+.InvestingStocks__stock-table tbody tr td:first-child {
+  font-weight: bold;
+}
+
+.InvestingStocks__stock-table tbody tr {
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.InvestingStocks__stock-table td {
+  cursor: pointer;
+}
+
+.InvestingStocks__chart-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.InvestingStocks__chart-container-value {
+  position: absolute;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  height: 50px;
+  width: 150px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 4px;
+}
+
+/* ====== Media Queries ====== */
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+  .InvestingStocks__main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 24px;
+  }
+
+  .InvestingStocks__chart-container {
+    margin-left: 0px;
+  }
+}

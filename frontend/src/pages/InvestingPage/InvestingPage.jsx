@@ -1,10 +1,10 @@
 import "./InvestingPage.css";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import PortfolioTotal from "./PortfolioTotal";
-import PortfolioStocks from "./PortfolioStocks";
+import InvestingPortfolio from "./InvestingPortfolio";
+import InvestingStocks from "./InvestingStocks/InvestingStocks";
 import LoadingSpinner from "../../components/LoadingSpinner";
 
 import { selectUser } from "../../../store/session";
@@ -12,45 +12,46 @@ import { fetchStockTransactions } from "../../../store/transactions";
 
 function InvestingPage() {
   const dispatch = useDispatch();
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const sessionUser = useSelector(selectUser);
-  const { stockSummary } = sessionUser;
-
-  const stockInvestments = stockSummary.totalInvestments;
-  const balance = Number(stockSummary.balance);
-  const total = Number((stockInvestments + balance).toFixed(2));
-
-  let balancePercentage;
-  let stockPercentage;
-
-  if (balance === 0) {
-    balancePercentage = 0;
-    stockPercentage = 0;
-  } else {
-    balancePercentage = Number((balance / total) * 100);
-    stockPercentage = Number((stockInvestments / total) * 100);
-  }
+  const stockSummary = sessionUser?.stockSummary || {};
 
   useEffect(() => {
-    dispatch(fetchStockTransactions());
+    async function fetchData() {
+      try {
+        await dispatch(fetchStockTransactions());
+      } catch (err) {
+        setError("Failed to load stock transactions. Please try again.");
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    fetchData();
   }, [dispatch]);
 
-  if (stockInvestments.length < 0) return <LoadingSpinner />;
+  const stockInvestments = Number(stockSummary?.totalInvestments) || 0;
+  const balance = Number(stockSummary?.balance) || 0;
+  const total = stockInvestments + balance;
+
+  if (isLoading) return <LoadingSpinner />;
+  if (error) return <div className="InvestingPage__error">{error}</div>;
+
   return (
     <div className="InvestingPage">
-        <PortfolioTotal
-          total={total}
-          stockPercentage={stockPercentage}
-          stockInvestments={stockInvestments}
-          balancePercentage={balancePercentage}
-          balance={balance}
-        />
+      <InvestingPortfolio
+        total={total}
+        stockInvestments={stockInvestments}
+        balance={balance}
+      />
 
-        <PortfolioStocks
-          stockSummary={stockSummary}
-          stockInvestments={stockInvestments}
-          balance={balance}
-        />
+      <InvestingStocks
+        stockSummary={stockSummary}
+        stockInvestments={stockInvestments}
+        balance={balance}
+      />
     </div>
   );
 }

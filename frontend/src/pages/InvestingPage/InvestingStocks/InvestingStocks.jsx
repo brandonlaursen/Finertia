@@ -1,11 +1,11 @@
-import "./PortfolioStocks.css";
+import "./InvestingStocks.css";
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import ReactApexChart from "react-apexcharts";
 
-function PortfolioStocks({ stockInvestments, stockSummary }) {
+function InvestingStocks({ stockInvestments, stockSummary }) {
   const navigate = useNavigate();
   const [currentPoint, setCurrentPoint] = useState(null);
 
@@ -64,21 +64,6 @@ function PortfolioStocks({ stockInvestments, stockSummary }) {
       enabled: false,
     },
     colors: [
-      // "#00F0A8",
-      // "#00E6A0",
-      // "#00DA98",
-      // "#00CF90",
-      // "#00C488",
-      // "#00B980",
-      // "#00AE78",
-      // "#00A370",
-      // "#009868",
-      // "#008E60",
-      // "#008458",
-      // "#007A50",
-      // "#007048",
-      // "#006640",
-      // "#005C38",
       "var(--theme-primary-color)",
       "var(--theme-primary-hover)",
       "var(--theme-primary-hover-light)",
@@ -88,19 +73,19 @@ function PortfolioStocks({ stockInvestments, stockSummary }) {
     },
     stroke: {
       show: true,
-      width: 3, // Border thickness
-      colors: ["var(  --color-background)"], // Border color (black in this case)
+      width: 3,
+      colors: ["var(  --color-background)"],
     },
   });
 
   return (
-    <div className="PortfolioStocks">
-      <header className="InvestingPage__header">
-        <span className="PortfolioStocks__title">Stocks</span>
+    <div className="InvestingStocks">
+      <header className="InvestingStocks__header">
+        <span className="InvestingStocks__title">Stocks</span>
       </header>
 
-      <main className="InvestingPage__main">
-        <table className="PortfolioStocks__stock-table">
+      <main className="InvestingStocks__main">
+        <table className="InvestingStocks__stock-table">
           <thead>
             <tr>
               <th>Name</th>
@@ -114,13 +99,11 @@ function PortfolioStocks({ stockInvestments, stockSummary }) {
             {Object.values(stocks).map((stock) => {
               return (
                 <tr
-                  className="PortfolioStocks__table-item"
+                  className="InvestingStocks__table-item"
                   key={stock.stockId}
                   onClick={() => navigate(`/stocks/${stock?.symbol}`)}
                 >
-                  <td className="PortfolioStocks__stock-name">
-                    {stock.stockName}
-                  </td>
+                  <td>{stock.stockName}</td>
                   <td>{stock.symbol}</td>
                   <td>{stock.sharesOwned.toFixed(2)}</td>
                   <td>${stock.price.toFixed(2)}</td>
@@ -130,14 +113,14 @@ function PortfolioStocks({ stockInvestments, stockSummary }) {
           </tbody>
         </table>
 
-        <section className="InvestingPage__chart-container">
+        <section className="InvestingStocks__chart-container">
           <ReactApexChart
             options={options}
             series={series}
             type="donut"
             height={options.chart.height}
           />
-          <span className="InvestingPage__chart-container-value">
+          <span className="InvestingStocks__chart-container-value">
             {currentPoint ? (
               <>
                 <span>{currentPoint.label}</span>
@@ -156,4 +139,4 @@ function PortfolioStocks({ stockInvestments, stockSummary }) {
   );
 }
 
-export default PortfolioStocks;
+export default InvestingStocks;
