@@ -1,4 +1,4 @@
-export function timeAgo(timestamp) {
+export default function timeAgo(timestamp) {
   const now = Date.now() / 1000;
   const diff = now - timestamp;
 

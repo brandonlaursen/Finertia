@@ -1,6 +1,6 @@
 import "./HomePageNewsArticle.css";
 
-import { findTimeAgo } from "../findTimeAgo";
+import findTimeAgo from "../findTimeAgo.js";
 
 function HomePageNewsArticle({ article }) {
   return (

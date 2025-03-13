@@ -13,8 +13,7 @@
 }
 
 
-/* ====== Media Queries ====== */
-/* Medium devices (tablets, 768px and up) */
+
 @media (max-width: 768px) {
   .InvestingPage {
     width: 90vw;

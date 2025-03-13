@@ -12,12 +12,12 @@ async function processHistoricalData(processedTransactions) {
   const firstTransaction = processedTransactions[firstTimestamp];
   const firstTransactionTimestamp = firstTransaction.unixTimestamp;
 
-  const roundedTransactionTimestamp = roundTimestampToInterval(
+  let roundedTransactionTimestamp = roundTimestampToInterval(
     firstTransactionTimestamp,
     5
   );
 
-  // Check if within 15 minutes
+  // * Check if within 15 minutes
   const now = Date.now();
   const fifteenMinutesAgo = now - 15 * 60 * 1000; // 15 minutes in ms
 
