@@ -1,47 +1,45 @@
 .SecurityPage {
   height: 100%;
-  width: clamp(430px, 60vw, 1000px);
+  width: 60%;
 
   display: flex;
   flex-direction: column;
 
-  margin-bottom: 100px;
-  padding-left: 30px;
+  margin-top: 20px;
 
   font-size: 12px;
   font-weight: 500;
 }
 
-.SecurityPage__content {
+.SecurityPage__section {
   display: flex;
   flex-direction: column;
-
-  padding-top: 20px;
 }
 
-.SecurityPage__content__title {
+.SecurityPage__title {
   height: 50px;
 
   align-content: center;
 
-  font-size: 18px;
-  font-weight: bold;
-
+  margin-top: 12px;
   margin-left: 20px;
   margin-right: 20px;
+
+  font-size: 18px;
+  font-weight: bold;
 }
 
-.SecurityPage__content__subtitle {
+.SecurityPage__subtitle {
   height: 20px;
 
   align-content: center;
 
-  margin-bottom: 24px;
   margin-left: 20px;
   margin-right: 20px;
+  margin-bottom: 16px;
 }
 
-.SecurityPage__content__links {
+.SecurityPage__links {
   display: flex;
   flex-direction: column;
 }
@@ -53,30 +51,27 @@
   justify-content: space-between;
   align-items: center;
 
-  cursor: pointer;
   margin-left: 20px;
   margin-right: 20px;
+
+  border-bottom: 1px solid var(--border-color);
+
+  cursor: pointer;
 }
 
 .SecurityPage__link:hover {
   background-color: var(--color-hover);
-  box-shadow:
-  /* Top */ 0px 0px 0px 0px var(--color-hover),
-    /* Left */ -24px 0px 0px 0px var(--color-hover),
-    /* Right */ 24px 0px 0px 0px var(--color-hover);
-  cursor: pointer;
+  box-shadow: 0px 0px 0px 0px var(--color-hover),
+    -24px 0px 0px 0px var(--color-hover), 24px 0px 0px 0px var(--color-hover);
 }
 
-.SecurityPage_border {
+.SecurityPage__border-top {
   border-top: 1px solid var(--border-color);
-}
-
-.border-bottom {
-  border-bottom: 1px solid var(--border-color);
 }
 
 .SecurityPage__logout {
   align-self: end;
+
   padding-top: 15px;
   margin-right: 20px;
 }
@@ -97,13 +92,10 @@
   display: none;
 }
 
-/* ====== Media Queries ====== */
-/* * Medium devices (tablets, 768px and up) */
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .SecurityPage {
-    width: 100vw;
-    padding-left: 0px;
-    padding-right: 0px;
+    width: 100%;
+    margin-top: 30px;
   }
 
   .SecurityPage__appearance-page-wrapper {

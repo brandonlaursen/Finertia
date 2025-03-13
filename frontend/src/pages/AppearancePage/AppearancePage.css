@@ -1,14 +1,13 @@
 .AppearancePage {
-  height: 100%;
-  width: 50%;
+  width: 60%;
 
   display: flex;
   flex-direction: column;
 
-  margin-top: 20px;
-  padding-left: 20px;
+  margin-top: 32px;
+  margin-left: 20px;
 
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
 }
 
@@ -16,14 +15,12 @@
   display: flex;
   flex-direction: column;
 
-  gap: 10px;
-  padding-bottom: 16px;
-
   border-bottom: 1px solid var(--border-color);
 }
 
 .AppearancePage__title {
   height: 50px;
+
 
   align-content: center;
 
@@ -34,14 +31,14 @@
 .AppearancePage__theme {
   display: flex;
   justify-content: space-between;
+
+  padding-bottom: 12px;
+  margin-bottom: 12px;
 }
 
 .AppearancePage__subtitle {
   display: flex;
   align-items: center;
-
-  font-size: 12px;
-  font-weight: 500;
 }
 
 .AppearancePage__dropdown__menu {
@@ -52,9 +49,6 @@
   width: 200px;
 
   padding: 8px 8px;
-
-  font-size: 12px;
-  font-weight: 500;
 
   border: 1px solid var(--border-color);
   border-radius: 4px;
@@ -69,19 +63,25 @@
   width: 14px;
 }
 
-/* ====== Media Queries ====== */
-@media (max-width: 768px) {
+@media (max-width: 480px) {
+  .SecurityPage__appearance-page-wrapper {
+    display: flex;
+  }
+
   .AppearancePage {
     width: 100%;
 
-    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 0px;
+    margin-top: 0px;
+
   }
 
   .AppearancePage__main {
     display: flex;
     flex-direction: column;
-
-    gap: 0px;
-    margin-bottom: 16px;
   }
 }

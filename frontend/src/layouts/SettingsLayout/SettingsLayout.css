@@ -22,7 +22,7 @@
 }
 
 .SettingsLayout__section {
-  width: clamp(180px, 100%, 180px);
+  width: clamp(171px, 100%, 171px);
 
   display: flex;
   flex-direction: column;
@@ -53,22 +53,7 @@
   color: var(--theme-primary-color);
 }
 
-/* ====== Media Queries ====== */
-/* * Medium devices (tablets, 768px and up) */
-@media (max-width: 768px) {
-  .SecurityPage__appearance-page-wrapper {
-    display: flex;
-  }
-
-  .AppearancePage {
-    width: 100%;
-
-    display: flex;
-    flex-direction: column;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
+@media (max-width: 480px) {
   .SettingsLayout__aside {
     display: none;
   }

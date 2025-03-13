@@ -1,10 +1,10 @@
 .MobileNavigationBar {
-  display: none;
+  /* display: none; */
 }
 
 @media (max-width: 480px) {
   .MobileNavigationBar {
-    height: 70px;
+    height: 48px;
     width: 100%;
 
     position: fixed;
@@ -23,7 +23,7 @@
 
   .MobileNavigationBar__button {
     width: 60px;
-    height: 60px;
+    height: 48px;
 
     display: flex;
     justify-content: center;

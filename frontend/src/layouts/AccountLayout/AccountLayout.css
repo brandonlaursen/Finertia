@@ -72,9 +72,8 @@
   background-color: var(--theme-primary-color);
 }
 
-/* ====== Media Queries ====== */
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .AccountLayout__container {
     width: 90vw;
   }

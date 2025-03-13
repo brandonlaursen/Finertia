@@ -23,17 +23,17 @@ function SecurityPage() {
 
   return (
     <div className="SecurityPage">
-      <div className="SecurityPage__content">
+      <section className="SecurityPage__section">
         <div className="SecurityPage__appearance-page-wrapper">
           <AppearancePage />
         </div>
-        <span className="SecurityPage__content__title">Security</span>
-        <span className="SecurityPage__content__subtitle">
-          Keep your Finertia account secure with additional layers of
-          protection.
+
+        <span className="SecurityPage__title">Security</span>
+        <span className="SecurityPage__subtitle">
+          Keep your Finertia account secure.
         </span>
 
-        <div className={`SecurityPage__content__links `}>
+        <div className="SecurityPage__links">
           <UpdatePassword
             setNotificationMessage={setNotificationMessage}
             setNotifications={setNotifications}
@@ -43,41 +43,42 @@ function SecurityPage() {
             <span>Two Factor Authentication</span>
             <span>Disabled</span>
           </div>
-          <div className="SecurityPage__link SecurityPage_border">
+          <div className="SecurityPage__link">
             <span>Devices</span>
           </div>
-          <div className="SecurityPage__link SecurityPage_border border-bottom">
+          <div className="SecurityPage__link">
             <span>Linked Apps</span>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className="SecurityPage__content">
-        <span className="SecurityPage__content__title">Privacy</span>
-        <span className="SecurityPage__content__subtitle">
+      <section className="SecurityPage__section">
+        <span className="SecurityPage__title">Privacy</span>
+        <span className="SecurityPage__subtitle">
           Manage how your data is used..
         </span>
 
-        <div className="SecurityPage__content__links">
-          <div className="SecurityPage__link SecurityPage_border">
+        <div className="SecurityPage__links">
+          <div className="SecurityPage__link SecurityPage__border-top">
             <span>Profile Visibility</span>
           </div>
-          <div className="SecurityPage__link SecurityPage_border">
+          <div className="SecurityPage__link">
             <span>Data Sharing Permissions</span>
             <span>Enabled</span>
           </div>
 
-          <div className="SecurityPage__link SecurityPage_border border-bottom">
+          <div className="SecurityPage__link">
             <span>Private Privacy</span>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className="SecurityPage__logout">
+      <section className="SecurityPage__logout">
         <span className="SecurityPage__logout-span" onClick={handleLogout}>
           Log out
         </span>
-      </div>
+      </section>
+
       {notifications && (
         <div className="NotificationPopsContainer">
           <NotificationPopUp
