@@ -1,9 +1,9 @@
 import "./WelcomePage.css";
 // import { LuInfo } from "react-icons/lu";
 import { FaSpaceShuttle } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa6";
-import { FaLinkedin } from "react-icons/fa6";
-import { FaUserAstronaut } from "react-icons/fa6";
+// import { FaGithub } from "react-icons/fa6";
+// import { FaLinkedin } from "react-icons/fa6";
+// import { FaUserAstronaut } from "react-icons/fa6";
 
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
