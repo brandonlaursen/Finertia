@@ -1,19 +1,20 @@
 import "./HistoryPage.css";
-import { useState } from "react";
 
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
+
+import Pagination from "../../components/Pagination/Pagination";
 
 import {
   fetchAccountTransactions,
   fetchStockTransactions,
 } from "../../../store/transactions";
-import Pagination from "../../components/Pagination/Pagination";
 
 function HistoryPage() {
   const dispatch = useDispatch();
+
   const [currentPage, setCurrentPage] = useState(1);
-  const [transactionsPerPage] = useState(10);
+  const transactionsPerPage = 10;
 
   const transactions = useSelector((state) => state.transactions);
 
@@ -28,107 +29,63 @@ function HistoryPage() {
   ];
 
   const sortedTransactions = mergedTransactions.sort((a, b) => {
-    const dateA = a.transactionDate
-      ? new Date(a.transactionDate)
-      : new Date(a.purchaseDate);
-    const dateB = b.transactionDate
-      ? new Date(b.transactionDate)
-      : new Date(b.purchaseDate);
-
+    const dateA = new Date(a.transactionDate || a.purchaseDate);
+    const dateB = new Date(b.transactionDate || b.purchaseDate);
     return dateB - dateA;
   });
 
-  const indexOfLastTransaction = currentPage * transactionsPerPage;
-  const indexOfFirstTransaction = indexOfLastTransaction - transactionsPerPage;
-  const currentTransactions = sortedTransactions.slice(
-    indexOfFirstTransaction,
-    indexOfLastTransaction
+  const paginatedTransactions = sortedTransactions.slice(
+    (currentPage - 1) * transactionsPerPage,
+    currentPage * transactionsPerPage
   );
+
   const totalPages = Math.ceil(sortedTransactions.length / transactionsPerPage);
 
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
+  const handlePageChange = (pageNumber) => setCurrentPage(pageNumber);
+
+  const formatDate = (date) =>
+    new Date(date).toLocaleString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
+
+  const renderTransaction = (transaction, index) => {
+    const isStockTransaction = transaction.stockId;
+    return (
+      <article className="HistoryPage__article" key={index}>
+        <section className="HistoryPage__details">
+          <span className="HistoryPage__description">
+            {isStockTransaction
+              ? `${transaction.stockSymbol} Market ${transaction.transactionType}`
+              : transaction.transactionType === "deposit"
+              ? `Deposit to Individual from Finertia Bank`
+              : `Withdrawal from Individual to Finertia Bank`}
+          </span>
+          <time className="HistoryPage__date">
+            {formatDate(
+              transaction.purchaseDate || transaction.transactionDate
+            )}
+          </time>
+        </section>
+        <section className="HistoryPage__amount">
+          {isStockTransaction
+            ? `$${transaction.purchasePrice.toFixed(2)}`
+            : `${transaction.transactionType === "deposit" ? "+" : "-"} $${
+                transaction.amount
+              }`}
+        </section>
+      </article>
+    );
   };
 
   return (
     <div className="HistoryPage">
       <header className="HistoryPage__title">Transaction History</header>
 
-      {currentTransactions.length > 0 && (
+      {paginatedTransactions.length > 0 && (
         <>
-          {currentTransactions.map((transaction, i) => {
-      
-            if (transaction.stockId) {
-              return (
-                <article className="HistoryPage__transfer" key={i}>
-                  <div className="HistoryPage__message-container">
-                    <span className="HistoryPage__message">{`${transaction.stockSymbol} Market ${transaction.transactionType}`}</span>
-                    <time className="HistoryPage__date">
-                      {new Date(transaction.purchaseDate).toLocaleString(
-                        "en-US",
-                        {
-                          year: "numeric",
-                          month: "short",
-                          day: "numeric",
-                        }
-                      )}
-                    </time>
-                  </div>
-                  <div className="HistoryPage__amount">
-                    ${transaction.purchasePrice.toFixed(2)}
-                  </div>
-                </article>
-              );
-            } else {
-              return (
-                <article className="HistoryPage__transfer" key={i}>
-                  <div className="HistoryPage__message-container">
-                    <span className="HistoryPage__message">
-                      {transaction.transactionType === "deposit"
-                        ? `Deposit to Individual from Finertia Bank`
-                        : `Withdrawal from Individual to Finertia Bank`}
-                    </span>
-                    <time className="HistoryPage__date">
-                      {new Date(transaction.transactionDate).toLocaleString(
-                        "en-US",
-                        {
-                          year: "numeric",
-                          month: "short",
-                          day: "numeric",
-                        }
-                      )}
-                    </time>
-                  </div>
-                  <div className="HistoryPage__amount">
-                    {transaction.transactionType === "deposit" ? "+" : "-"} $
-                    {transaction.amount}
-                  </div>
-                </article>
-              );
-            }
-          })}
-
-          {/* {totalPages > 1 && (
-            <div className="HistoryPage__pagination">
-              <button
-                onClick={() => handlePageChange(currentPage - 1)}
-                disabled={currentPage === 1}
-                className="HistoryPage__pagination-button"
-              >
-                Previous
-              </button>
-              <span className="HistoryPage__pagination-info">
-                Page {currentPage} of {totalPages}
-              </span>
-              <button
-                onClick={() => handlePageChange(currentPage + 1)}
-                disabled={currentPage === totalPages}
-                className="HistoryPage__pagination-button"
-              >
-                Next
-              </button>
-            </div>
-          )} */}
+          {paginatedTransactions.map(renderTransaction)}
           <Pagination
             currentPage={currentPage}
             totalPages={totalPages}
