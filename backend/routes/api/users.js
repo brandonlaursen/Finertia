@@ -49,8 +49,20 @@ router.post("/", validateSignup, async (req, res) => {
 
   await setTokenCookie(res, safeUser);
 
+  const stockSummary = {
+    totalInvestments: 0,
+    balance: 0,
+    stocksOwned: {},
+    oneDayAggregates: [],
+    oneWeekAggregates: [],
+    oneMonthAggregates: [],
+    threeMonthsAggregates: [],
+    oneYearAggregates: [],
+    fiveYearsAggregates: [],
+  };
   return res.json({
     user: safeUser,
+    stockSummary
   });
 });
 

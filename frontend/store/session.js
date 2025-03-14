@@ -37,7 +37,7 @@ export const signup = (user) => async (dispatch) => {
     }),
   });
   const data = await response.json();
-  dispatch(setUser(data.user));
+  dispatch(setUser(data.user, data.stockSummary));
   return response;
 };
 
