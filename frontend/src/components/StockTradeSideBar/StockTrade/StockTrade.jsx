@@ -20,9 +20,13 @@ function StockTrade({ stock, setNotifications, setNotificationMessage }) {
 
   const sessionUser = useSelector(selectUser);
 
-  const stockSummary = sessionUser.stockSummary.stocksOwned[stock.symbol];
+  let sharesOwned = 0;
+  if (sessionUser?.stockSummary?.stocksOwned[stock?.symbol]) {
+    const stockSummary = sessionUser.stockSummary.stocksOwned[stock.symbol];
 
-  const sharesOwned = stockSummary?.sharesOwned || 0;
+    sharesOwned = stockSummary.sharesOwned;
+  }
+
   const { price } = stock;
   const { balance } = sessionUser.stockSummary;
 

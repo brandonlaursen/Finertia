@@ -14,6 +14,14 @@ function HomePageOverview({ stockData, selectedTimeFrame }) {
     fiveYearsAggregates,
   } = stockData;
 
+  console.log(
+    oneDayAggregates,
+    oneWeekAggregates,
+    oneMonthAggregates,
+    threeMonthsAggregates,
+    oneYearAggregates,
+    fiveYearsAggregates
+  );
   const data = useMemo(() => {
     const aggregatesMap = {
       "1D": oneDayAggregates,
@@ -41,24 +49,27 @@ function HomePageOverview({ stockData, selectedTimeFrame }) {
     }
 
     const firstAggregate = Number(data[0]?.y) || 0;
+    console.log(" firstAggregate:", firstAggregate);
     const lastAggregate = Number(data[data.length - 1]?.y) || 0;
-
-    if (firstAggregate === 0) {
-      return {
-        portfolioPercentChange: 0.0,
-        portfolioAmountChange: lastAggregate,
-      };
-    }
+    console.log(" lastAggregate:", lastAggregate);
 
     const amountChange = lastAggregate - firstAggregate;
-    const percentChange =
-      firstAggregate !== 0 ? (amountChange / firstAggregate) * 100 : 0.0;
+
+    let percentChange;
+
+    if (firstAggregate === 0) {
+      percentChange = lastAggregate !== 0 ? 100.0 : 0.0; // If first value is 0, assume full growth
+    } else {
+      percentChange = (amountChange / firstAggregate) * 100;
+    }
 
     return {
       portfolioPercentChange: isFinite(percentChange) ? percentChange : 0.0,
       portfolioAmountChange: isFinite(amountChange) ? amountChange : 0.0,
     };
   }, [data]);
+
+  console.log(portfolioPercentChange, portfolioAmountChange);
 
   return (
     <div className="HomePageOverview">

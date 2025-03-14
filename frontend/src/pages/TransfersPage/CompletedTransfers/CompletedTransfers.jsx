@@ -47,7 +47,7 @@ function CompletedTransfers({ transactions }) {
                   <span className="CompletedTransfers__message">
                     {transaction.transactionType === "withdraw"
                       ? "Withdrawal from Finertia Bank"
-                      : "Deposit to Individual from Finertia Band "}
+                      : "Deposit to Individual from Finertia Bank "}
                   </span>
                   <time className="CompletedTransfers__date">
                     {new Date(transaction.transactionDate).toLocaleString(

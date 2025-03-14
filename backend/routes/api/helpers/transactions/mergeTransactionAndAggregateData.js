@@ -9,7 +9,6 @@ function getUnionTimestamps(transactions, prices) {
     .sort((a, b) => a - b);
 }
 
-
 // * Using users historical transactions + historical stock data owned by user
 // * Merge data over both sets of timestamps
 // * Fill in gaps between users transactions with stock prices
@@ -18,57 +17,82 @@ function mergeTransactionAndAggregateData(
   processedTransactions,
   historicalPrices
 ) {
-  // Sort the array of timestamps
+  // * Combine and sort the account and stock timestamps
+  // * give us the timestamps we need to map users portfolio and stocks values over time
   const unionTimestamps = getUnionTimestamps(
     processedTransactions,
     historicalPrices
   );
 
-  // Initialize current portfolio state.
-  // Before any transaction, we assume balance 0 and empty stock holdings.
+  console.log(" historicalPrices:", historicalPrices);
+  console.log(" processedTransactions:", processedTransactions);
+  console.log(" unionTimestamps:", unionTimestamps);
+
   let currentBalance = 0;
 
-  // Local variable for the last known historical snapshot
+  // * Track last transaction
+  // * gives us details of what stocks are owned and how many shares a point in time
   let lastHistoricalSnapshot = null;
 
   const result = {};
 
-  // loop through timestamps, store in result obj, the timestamps as key
-  let lastCurrentStockSharesOwned;
+  // * Tracks users stocks owned, before the next transaction
+  // * use to fill in gap between transactions
+  let lastCurrentStockSharesOwned = {};
+
+  // * loop through timestamps, store in result obj, the timestamps as key
   unionTimestamps.forEach((ts) => {
     const tsStr = ts.toString();
+    console.log(" tsStr:", tsStr);
 
-    // reset currentStockShares owned each iteration
+    // * reset currentStockShares owned each iteration
+    // * users ownership of stocks may change after a new transaction
     let currentStockSharesOwned = {};
 
-    // checked if there is a transaction at this time stamp
+    // * checked if there is a transaction at this time stamp
     if (processedTransactions[tsStr]) {
-      // get the transaction object at this timestamp
+      // * get the transaction object at this timestamp
       const transaction = processedTransactions[tsStr];
 
-      // update currentBalance
+      // * update currentBalance
       currentBalance = transaction.balance;
 
-      // Use a deep clone so that subsequent mutations do not affect this snapshot.
+      // * Use a deep clone so that subsequent mutations do not affect this snapshot.
       currentStockSharesOwned = deepClone(transaction.stockSharesOwned);
 
-      // store stock shares for timestamps in between transactions
+      // * store stock shares for timestamps in between transactions
+      // * give us how many shares a users owns of a stock at each timestamp
       lastCurrentStockSharesOwned = deepClone(transaction.stockSharesOwned);
     }
 
-    // Update the last known historical price snapshot if available.
+    // * Update the last known historical price snapshot if available.
     if (historicalPrices[tsStr]) {
       lastHistoricalSnapshot = deepClone(historicalPrices[tsStr]);
     }
 
-    // Build the stocksOwned object using the last known historical snapshot.
+    // added
+    if (!currentStockSharesOwned || Object.keys(currentStockSharesOwned).length === 0) {
+      currentStockSharesOwned = lastCurrentStockSharesOwned || {};
+    }
+
+
+
+    console.log(" historicalPrices[tsStr]:", historicalPrices[tsStr]);
+    console.log(" currentStockSharesOwned:", currentStockSharesOwned);
+    console.log(" lastCurrentStockSharesOwned:", lastCurrentStockSharesOwned);
+
+    // * Build the stocksOwned object using the last known historical snapshot.
     let stocksOwned = {};
     let totalInvestments = 0;
 
     // if there is stockShares owned use previous user transaction timestamp
     if (Object.keys(currentStockSharesOwned).length === 0) {
       currentStockSharesOwned = lastCurrentStockSharesOwned;
+
+      //if there is no lastCurrentStockSharesOwned shares owned
     }
+
+    // console.log(currentStockSharesOwned);//undefined
 
     if (lastHistoricalSnapshot) {
       for (const [stock, shares] of Object.entries(currentStockSharesOwned)) {
@@ -93,14 +117,12 @@ function mergeTransactionAndAggregateData(
     result[tsStr] = {
       timestamp: ts,
       balance: currentBalance,
-      stocksOwned,
+      stocksOwned: stocksOwned ?? {},
       totalInvestments,
     };
   });
 
   return result;
 }
-
-
 
 module.exports = mergeTransactionAndAggregateData;

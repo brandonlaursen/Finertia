@@ -56,43 +56,55 @@ router.post("/deposit", async (req, res) => {
       .json({ error: "Something went wrong. Please try again later." });
   }
 });
-
 router.post("/withdraw", async (req, res) => {
-  const { id, balance } = req.user;
+  try {
+    // Validate request body
+    const { amount } = req.body;
+    if (!amount || isNaN(amount) || Number(amount) <= 0) {
+      return res.status(400).json({ error: "Invalid withdrawal amount." });
+    }
 
-  const { amount } = req.body;
+    // Validate user
+    const { id, balance } = req.user;
+    const user = await User.findByPk(id);
+    if (!user) {
+      return res.status(404).json({ error: "User not found." });
+    }
 
-  const user = await User.findByPk(id);
+    // Calculate new balance
+    const newBalance = Number(balance) - Number(amount);
 
-  const newBalance = Number(balance) - Number(amount);
+    // Check if the user has enough funds
+    if (newBalance < 0) {
+      return res.status(400).json({
+        error: "Insufficient funds.",
+        balance: Number(balance),
+      });
+    }
 
-  if (newBalance < 0) {
-    return res.json({
-      message: `Not enough funds`,
-      balance: Number(balance),
+    // Update balance in the database
+    await user.update({ balance: newBalance });
+
+    // Create a transaction record
+    const transaction = await UserTransaction.create({
+      userId: id,
+      amount: Number(amount),
+      transactionType: "withdraw",
+      transactionDate: new Date(),
     });
+
+    // Send response
+    return res.json({
+      transaction,
+      balance: newBalance,
+      message: `Successfully withdrew $${amount} for user with ID ${id}. New balance: $${newBalance}`,
+    });
+  } catch (error) {
+    console.error("Withdrawal error:", error);
+    return res
+      .status(500)
+      .json({ error: "Something went wrong. Please try again later." });
   }
-
-  await user.update({
-    balance: Number(newBalance),
-  });
-
-  const transaction = {
-    amount,
-    transactionType: "withdraw",
-    transactionDate: new Date(),
-  };
-
-  await UserTransaction.create({
-    userId: id,
-    ...transaction,
-  });
-
-  return res.json({
-    transaction,
-    balance: Number(newBalance),
-    message: `successfully withdrew ${amount} for user with id of ${id}, new balance is ${newBalance}`,
-  });
 });
 
 router.get("/stock-transactions", async (req, res) => {
@@ -200,7 +212,7 @@ router.get("/stock-summary", async (req, res) => {
     await t.commit();
 
     const userSummary = {
-      totalInvestments: lastTransaction.totalInvestments,
+      totalInvestments: lastTransaction.totalInvestments || 0,
       balance: Number(lastTransaction.balance),
       stocksOwned: lastTransaction.stocksOwned,
       ...aggregates,
@@ -246,7 +258,6 @@ router.post("/trade/:stockId", async (req, res) => {
 
     const roundedAmount = Math.round(amount * MULTIPLIER_100) / MULTIPLIER_100;
 
-    // Check if user has enough balance for buy
     if (transactionType === "buy" && balance < roundedAmount) {
       return res.status(400).json({
         message: "Insufficient funds for this transaction",
@@ -276,7 +287,6 @@ router.post("/trade/:stockId", async (req, res) => {
       { transaction: t }
     );
 
-    // Update user balance within the same transaction
     await user.update(
       {
         balance: Number(newBalance),
@@ -284,7 +294,6 @@ router.post("/trade/:stockId", async (req, res) => {
       { transaction: t }
     );
 
-    // Fetch updated transaction data within the same transaction
     const userTransactions = await StockUserTransaction.findAll({
       where: { userId: id },
       include: [
@@ -294,7 +303,6 @@ router.post("/trade/:stockId", async (req, res) => {
       transaction: t,
     });
 
-    // Calculate aggregates with the latest transaction included
     const processedTransactions = processTransactionSummary(
       userTransactions,
       await UserTransaction.findAll({
@@ -311,8 +319,6 @@ router.post("/trade/:stockId", async (req, res) => {
       processedTransactions,
       processedHistoricalData
     );
-
-    // const mergedTransactionDataArray = Object.values(mergedTransactionData);
 
     const userHistoricalData = Object.values(mergedTransactionData).map(
       (data) => ({
