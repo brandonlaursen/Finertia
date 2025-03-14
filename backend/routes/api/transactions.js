@@ -15,34 +15,46 @@ const gatherAggregates = require("./helpers/transactions/gatherAggregates.js");
 const formatMergedTransactions = require("./helpers/transactions/formatMergedTransactions.js");
 
 router.post("/deposit", async (req, res) => {
-  const { id, balance } = req.user;
+  try {
+    // Validate request body
+    const { amount } = req.body;
+    if (!amount || isNaN(amount) || Number(amount) <= 0) {
+      return res.status(400).json({ error: "Invalid deposit amount." });
+    }
 
-  const { amount } = req.body;
+    // Validate user
+    const { id, balance } = req.user;
+    const user = await User.findByPk(id);
+    if (!user) {
+      return res.status(404).json({ error: "User not found." });
+    }
 
-  const user = await User.findByPk(id);
+    // Calculate new balance
+    const newBalance = Number(balance) + Number(amount);
 
-  const newBalance = Number(balance) + Number(amount);
+    // Update balance in the database
+    await user.update({ balance: newBalance });
 
-  await user.update({
-    balance: Number(newBalance),
-  });
+    // Create a transaction record
+    const transaction = await UserTransaction.create({
+      userId: id,
+      amount: Number(amount),
+      transactionType: "deposit",
+      transactionDate: new Date(),
+    });
 
-  const transaction = {
-    amount,
-    transactionType: "deposit",
-    transactionDate: new Date(),
-  };
-
-  await UserTransaction.create({
-    userId: id,
-    ...transaction,
-  });
-
-  return res.json({
-    transaction,
-    balance: Number(newBalance),
-    message: `successfully deposited ${amount} for user with id of ${id}, new balance is ${newBalance}`,
-  });
+    // Send response
+    return res.json({
+      transaction,
+      balance: newBalance,
+      message: `Successfully deposited $${amount} for user with ID ${id}. New balance: $${newBalance}`,
+    });
+  } catch (error) {
+    console.error("Deposit error:", error);
+    return res
+      .status(500)
+      .json({ error: "Something went wrong. Please try again later." });
+  }
 });
 
 router.post("/withdraw", async (req, res) => {
@@ -177,7 +189,7 @@ router.get("/stock-summary", async (req, res) => {
     );
 
     // * Get details of last transaction
-    // * Get formatted historical data 
+    // * Get formatted historical data
     const { lastTransaction, userHistoricalData } = formatMergedTransactions(
       mergedTransactionData
     );
