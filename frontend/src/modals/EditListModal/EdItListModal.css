@@ -1,24 +1,16 @@
 .EditListModal {
   position: fixed;
-  top: 234px;
-  left: 50%;
+  top: 20%;
+  left: 0;
+  right: 0;
+
   display: flex;
   justify-content: center;
-  align-items: center;
   z-index: 100;
 }
 
-.EditListModal__background {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
-}
-
 .EditListModal__container {
-  position: absolute;
+  /* position: absolute; */
 
   height: 182px;
   width: 440px;
@@ -31,6 +23,7 @@
   flex-direction: column;
 
   padding: 16px 24px;
+  z-index: 20;
 }
 
 .EditListModal__section {
@@ -57,10 +50,9 @@
 }
 
 .EditListModal__emoji-picker-wrapper {
-  position: absolute;
-  top: 105px;
-  left: 10px;
-
+  position: fixed;
+  top: calc(20% + 105px);
+  z-index: 1000;
 }
 
 .EditListModal__section__input {
@@ -116,18 +108,29 @@
   background-color: var(--theme-primary-hover);
 }
 
-
-
 @media (max-width: 480px) {
-
-
+  .EditListModal {
+    position: fixed;
+    top: auto;
+    bottom: 46px;
+    left: 0;
+    right: 0;
+  }
 
   .EditListModal__container {
-    width: 410px;
+    width: 100%;
+
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
   }
+
   .EditListModal__emoji-picker-wrapper {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
 
-    right: 40px;
 
+    z-index: 1000;
   }
 }

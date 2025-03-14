@@ -1,27 +1,24 @@
-
-
 /* second modal */
 .CreateList {
   position: fixed;
-  top: 234px;
-  left: 50%;
+  bottom: 0;
+  top: 20%;
+  left: 0;
+  right: 0;
 
   display: flex;
   justify-content: center;
-  align-items: center;
 
-  z-index: 100;
-}
-
-.CreateList__overlay {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-
-  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 600;
 }
 
 
-
+@media (max-width: 480px) {
+  .CreateList {
+    position: fixed;
+    top: auto;
+    bottom: 46px;
+    left: 0;
+    right: 0;
+  }
+}

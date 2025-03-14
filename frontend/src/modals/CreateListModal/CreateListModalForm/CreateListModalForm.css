@@ -1,8 +1,9 @@
 .CreateListModalForm {
+
+
   height: 170px;
   width: 430px;
 
-  position: absolute;
 
   display: flex;
   flex-direction: column;
@@ -12,6 +13,8 @@
   background-color: var(--color-surface);
 
   border-radius: 4px;
+
+  z-index: 101;
 }
 
 .CreateListModalForm__inputs {
@@ -38,10 +41,8 @@
 }
 
 .CreateListModalForm__emoji-picker-wrapper {
-  position: absolute;
-  top: 105px;
-  left: 10px;
-
+  position: fixed;
+  top: calc(20% + 105px);
   z-index: 1000;
 }
 
@@ -108,10 +109,18 @@
 
 @media (max-width: 480px) {
   .CreateListModalForm {
-    width: 410px;
+    width: 100%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
   }
 
   .CreateListModalForm__emoji-picker-wrapper {
-    left: 0px;
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+
+
+    z-index: 1000;
   }
 }

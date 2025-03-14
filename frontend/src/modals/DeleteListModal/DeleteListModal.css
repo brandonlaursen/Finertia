@@ -1,16 +1,16 @@
 .DeleteListModal {
   position: fixed;
-  top: 230px;
-  left: 50%;
+  top: 20%;
+  left: 0;
+  right: 0;
 
   display: flex;
   justify-content: center;
-  align-items: center;
   z-index: 100;
 }
 
 .DeleteListModal__container {
-  position: absolute;
+  /* position: absolute; */
 
   height: 170px;
   width: 385px;
@@ -24,6 +24,8 @@
 
   word-wrap: break-word;
   border-radius: 4px;
+
+  z-index: 20;
 }
 
 .DeleteListModal__section {
@@ -80,7 +82,26 @@
 }
 
 @media (max-width: 480px) {
+  .DeleteListModal {
+    position: fixed;
+    top: auto;
+    bottom: 46px;
+    left: 0;
+    right: 0;
+  }
+
   .DeleteListModal__container {
-    width: 410px;
+    width: 100%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+
+  .CreateListModalForm__emoji-picker-wrapper {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+
+    z-index: 1000;
   }
 }

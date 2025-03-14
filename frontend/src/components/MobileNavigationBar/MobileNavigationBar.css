@@ -18,7 +18,7 @@
 
     background-color: var(--color-surface);
 
-    z-index: 2;
+    z-index: 90;
   }
 
   .MobileNavigationBar__button {

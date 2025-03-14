@@ -39,7 +39,7 @@
   .AddToListModal {
     position: fixed;
     top: auto;
-    bottom: 52px;
+    bottom: 46px;
     left: 0;
     right: 0;
   }
@@ -47,6 +47,7 @@
   .AddToListModal__main {
     width: 100%;
 
-    border-radius: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
   }
 }
