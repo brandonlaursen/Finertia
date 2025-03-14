@@ -14,7 +14,7 @@ function StockOverview({ stock, selectedTimeFrame }) {
   return (
     <div className="StockOverview">
       <h1 className="StockOverview__name">{name}</h1>
-      <span className="StockOverview__price">${price.toFixed(2)}</span>
+      <span className="StockOverview__price">${price.toFixed(2) || '-'}</span>
 
       <section className="StockOverview__section">
         <span
@@ -38,7 +38,7 @@ function StockOverview({ stock, selectedTimeFrame }) {
           >
             {` (${
               regular_trading_change_percent <= 0 ? "" : "+"
-            }${regular_trading_change_percent?.toFixed(2)}%)`}
+            }${regular_trading_change_percent?.toFixed(2)}%)` || '-'}
           </span>
         </span>
         <span className="StockOverview__day">
@@ -71,7 +71,7 @@ function StockOverview({ stock, selectedTimeFrame }) {
           >
             {`$${late_trading_change} (${late_trading_change_percent?.toFixed(
               2
-            )}%)`}
+            )}%)` || '-'}
           </span>
           <span className="StockOverview__market-hours">After-Hours</span>
         </section>
