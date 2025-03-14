@@ -16,18 +16,27 @@ function TradeHoldings({
     setTradeUnit("Shares");
     setSharesToTrade(Number(sharesOwned).toFixed(5));
   }
+
+  const validPrice = Number.isFinite(price) ? price : 0;
+  const availableDollarAmount = Number.isFinite(sharesOwned)
+    ? (Number(sharesOwned) * validPrice).toFixed(2)
+    : "0.00";
+  const availableShares = Number.isFinite(sharesOwned)
+    ? Number(sharesOwned).toFixed(5)
+    : "0.00000";
+
   return (
     <div className="TradeHoldings">
       {tradeType === "buy" ? (
-        ` $${balance.toFixed(2)} buying power available.`
+        ` $${
+          Number.isFinite(balance) ? balance.toFixed(2) : "0.00"
+        } buying power available.`
       ) : (
         <div className="TradeHoldings__holdings">
           {tradeUnit === "Dollars" ? (
-            <span>{`$${(Number(sharesOwned) * price).toFixed(
-              2
-            )} Available - `}</span>
+            <span>{`$${availableDollarAmount} Available - `}</span>
           ) : (
-            <span>{`${Number(sharesOwned).toFixed(5)} Share${
+            <span>{`${availableShares} Share${
               Math.round(sharesOwned) > 1 ? "s" : ""
             } Available - `}</span>
           )}
@@ -47,5 +56,4 @@ function TradeHoldings({
     </div>
   );
 }
-
 export default TradeHoldings;

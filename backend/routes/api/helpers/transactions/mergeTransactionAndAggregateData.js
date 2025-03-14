@@ -1,9 +1,7 @@
-// Utility: Deep clone an object (for simple objects)
 function deepClone(obj) {
   return JSON.parse(JSON.stringify(obj));
 }
 
-// Utility: Get the union of timestamps from both datasets, then sort ascending.
 function getUnionTimestamps(transactions, prices) {
   const tsSet = new Set([...Object.keys(transactions), ...Object.keys(prices)]);
   return Array.from(tsSet)
@@ -11,6 +9,11 @@ function getUnionTimestamps(transactions, prices) {
     .sort((a, b) => a - b);
 }
 
+
+// * Using users historical transactions + historical stock data owned by user
+// * Merge data over both sets of timestamps
+// * Fill in gaps between users transactions with stock prices
+// * Format and map data to show portfolio and value over time
 function mergeTransactionAndAggregateData(
   processedTransactions,
   historicalPrices
@@ -97,5 +100,7 @@ function mergeTransactionAndAggregateData(
 
   return result;
 }
+
+
 
 module.exports = mergeTransactionAndAggregateData;

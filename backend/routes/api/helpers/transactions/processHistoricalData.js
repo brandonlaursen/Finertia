@@ -1,6 +1,11 @@
-const { getDate } = require("./getDate.js");
+const { getDate } = require("../getDate.js");
 const roundTimestampToInterval = require("./roundTimestampToInterval.js");
 
+
+// * Using users transaction history
+// * Get users owned stocks over time
+// * Get stock prices and how many shares a users owns
+// * Track and map data over time
 async function processHistoricalData(processedTransactions) {
   const todaysDate = getDate();
 

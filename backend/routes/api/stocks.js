@@ -1,9 +1,25 @@
 const express = require("express");
 const router = express.Router();
-const { Op } = require("sequelize");
 
 const { Stock, StockList, StockPriceTimestamp } = require("../../db/models");
+
+const checkMarketStatus = require("./helpers/middleware/checkMarketStatus.js");
+const updateStockDB = require("./helpers/middleware/updateStockDB.js");
+
 const { getDate } = require("./helpers/getDate.js");
+const fetchStockSnapshot = require("./helpers/stocks/fetchStockSnapshot.js");
+const {
+  fetchOneMonthAndFiveYearsAggregates,
+  fetchOneDayAndOneWeekAggregates,
+} = require("./helpers/stocks/fetchAggregates.js");
+const {
+  formatOneDayAggregates,
+  formatOneWeekAggregates,
+  formatOneMonthAggregates,
+  formatThreeMonthsAggregates,
+  formatOneYearAggregates,
+  formatFiveYearsAggregates,
+} = require("./helpers/stocks/formatAggregates.js");
 
 const finnhub = require("finnhub");
 
@@ -59,257 +75,31 @@ router.get("/news/:category", async (req, res) => {
   }
 });
 
-const updateDatabaseMiddleware = async (req, res, next) => {
-  try {
-    const { stockSymbol } = req.params;
-
-    const stock = await Stock.findOne({
-      where: { stockSymbol },
-    });
-
-    if (!stock) {
-      return res.status(500).json({ message: "Stock not found" });
-    }
-
-    const latestRecord = await StockPriceTimestamp.findOne({
-      where: { stockId: stock.id },
-      order: [["timestamp", "DESC"]],
-    });
-
-    const latestDateUnix = latestRecord
-      ? new Date(latestRecord.timestamp).getTime()
-      : 0;
-
-    const nowUnix = Date.now();
-    const apiKey = process.env.STOCK_API_KEY2;
-
-    const [oneHourDataObj, oneDayDataObj] = await Promise.all([
-      fetch(
-        `https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/1/hour/${latestDateUnix}/${nowUnix}?adjusted=true&sort=asc&apiKey=${apiKey}`
-      ).then((res) => res.json()),
-      fetch(
-        `https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/1/day/${latestDateUnix}/${nowUnix}?adjusted=true&sort=asc&apiKey=${apiKey}`
-      ).then((res) => res.json()),
-    ]);
-
-    const oneHourData = (oneHourDataObj.results || []).map((agg) => ({
-      stockId: stock.id,
-      timestamp: agg.t,
-      price: agg.c,
-      interval: "1H",
-    }));
-
-    const oneDayData = (oneDayDataObj.results || []).map((agg) => ({
-      stockId: stock.id,
-      timestamp: agg.t,
-      price: agg.c,
-      interval: "1D",
-    }));
-
-    await Promise.all([
-      StockPriceTimestamp.bulkCreate(oneHourData, {
-        updateOnDuplicate: ["price"],
-      }),
-      StockPriceTimestamp.bulkCreate(oneDayData, {
-        updateOnDuplicate: ["price"],
-      }),
-    ]);
-
-    req.stock = stock;
-    next();
-  } catch (error) {
-    console.error("Error updating database:", error);
-    next(error);
-  }
-};
-
-const checkMarketStatus = async (req, res, next) => {
-  try {
-    const response = await fetch(
-      `https://api.polygon.io/v1/marketstatus/now?apiKey=${process.env.STOCK_API_KEY2}`
-    );
-
-    const marketStatus = await response.json();
-
-    if (marketStatus.market === "open") {
-      req.marketStatus = "open";
-    } else {
-      req.marketStatus = "closed";
-    }
-    next();
-  } catch (error) {
-    console.error("Error updating database:", error);
-    next(error);
-  }
-};
-
+// * Get a single stock
 router.get(
   "/:stockSymbol",
   checkMarketStatus,
-  updateDatabaseMiddleware,
+  updateStockDB,
   async (req, res) => {
     const { stockSymbol } = req.params;
 
-
-    const stock = await Stock.findOne({
-      where: { stockSymbol },
-      include: [StockList, StockPriceTimestamp],
-    });
-
-    if (!stock) {
-      return res.status(500).json({ message: "Stock not found" });
-    }
-
     try {
-      const currentTime = Date.now();
-      const todaysDate = getDate();
-      const oneDayAway = getDate(1);
-      const oneWeekAway = getDate(7);
+      // * Query stock in DB
+      const stock = await Stock.findOne({
+        where: { stockSymbol },
+        include: [StockList, StockPriceTimestamp],
+      });
 
-      const [stockSnapshotResponse, stockNewsResponse] = await Promise.all([
-        fetch(
-          `https://api.polygon.io/v3/snapshot?ticker.any_of=${stockSymbol}&limit=10&apiKey=${process.env.STOCK_API_KEY2}`
-        ),
-        fetch(
-          `https://api.polygon.io/v2/reference/news?ticker=${stockSymbol}&limit=10&apiKey=${process.env.STOCK_API_KEY2}`
-        ),
-      ]);
-
-      const [stockSnapshotData, stockNewsData] = await Promise.all([
-        stockSnapshotResponse.json(),
-        stockNewsResponse.json(),
-      ]);
-
-      const {
-        market_status = "-",
-        session: {
-          price = 0,
-          change = 0,
-          change_percent = 0,
-          regular_trading_change = 0,
-          regular_trading_change_percent = 0,
-          early_trading_change = 0,
-          early_trading_change_percent = 0,
-          late_trading_change = 0,
-          late_trading_change_percent = 0,
-          high = 0,
-          low = 0,
-          open = 0,
-          close = 0,
-          volume = 0,
-        } = {},
-      } = stockSnapshotData.results[0] ?? {};
-
-      const stockNews = stockNewsData?.results ?? [];
-
-      const [oneMonthData, fiveYearsData] = await Promise.all([
-        StockPriceTimestamp.findAll({
-          where: {
-            stockId: stock.id,
-            interval: "1H",
-          },
-          order: [["timestamp", "ASC"]],
-        }),
-
-        StockPriceTimestamp.findAll({
-          where: {
-            stockId: stock.id,
-            interval: "1D",
-          },
-          order: [["timestamp", "ASC"]],
-        }),
-      ]);
-
-      const [oneDayDataResponse, oneWeekDataResponse] = await Promise.all([
-        fetch(
-          `https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/5/minute/${oneDayAway}/${todaysDate}?adjusted=true&sort=asc&apiKey=${process.env.STOCK_API_KEY2}`
-        ),
-        fetch(
-          `https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/1/hour/${oneWeekAway}/${todaysDate}?adjusted=true&sort=asc&apiKey=${process.env.STOCK_API_KEY2}`
-        ),
-      ]);
-
-      let [oneDayData, oneWeekData] = await Promise.all([
-        oneDayDataResponse.json(),
-        oneWeekDataResponse.json(),
-      ]);
-
-      if (oneDayData.resultsCount === 0) {
-        oneDayData = oneWeekData;
+      if (!stock) {
+        return res.status(500).json({ message: "Stock not found" });
       }
 
-      const oneDayAggregates = oneDayData.results.map((aggregate) => ({
-        x: aggregate.t,
-        y: aggregate.c,
-      }));
-
-      const oneWeekAggregates = oneWeekData.results.map((aggregate) => ({
-        x: aggregate.t,
-        y: aggregate.c,
-      }));
-
-      const oneMonthAggregates = oneMonthData.map((aggregate) => {
-        const newDate = new Date(aggregate.timestamp);
-        const unixTimestamp = newDate.getTime();
-        return {
-          x: unixTimestamp,
-          y: aggregate.price,
-        };
-      });
-
-      const threeMonthsAggregates = fiveYearsData
-        .filter((aggregate) => {
-          const newDate = new Date(aggregate.timestamp);
-          const unixTimestamp = newDate.getTime();
-          return currentTime - unixTimestamp <= 3 * 30 * 24 * 60 * 60 * 1000; // 90 days in milliseconds
-        })
-        .map((aggregate) => {
-          const newDate = new Date(aggregate.timestamp);
-          const unixTimestamp = newDate.getTime();
-          return {
-            x: unixTimestamp,
-            y: aggregate.price,
-          };
-        });
-
-      const oneYearAggregates = fiveYearsData
-        .filter((aggregate) => {
-          const newDate = new Date(aggregate.timestamp);
-          const unixTimestamp = newDate.getTime();
-          return currentTime - unixTimestamp <= 365 * 24 * 60 * 60 * 1000; // 365 days in milliseconds
-        })
-        .map((aggregate) => {
-          const newDate = new Date(aggregate.timestamp);
-          const unixTimestamp = newDate.getTime();
-          return {
-            x: unixTimestamp,
-            y: aggregate.price,
-          };
-        });
-
-      const fiveYearsAggregates = fiveYearsData.map((aggregate) => {
-        const newDate = new Date(aggregate.timestamp);
-        const unixTimestamp = newDate.getTime();
-        return {
-          x: unixTimestamp,
-          y: aggregate.price,
-        };
-      });
-
-      const stockData = {
-        id: stock.id,
-        name: stock.stockName,
-        symbol: stock.stockSymbol,
-        address: stock.address,
-        description: stock.description,
-        totalEmployees: stock.totalEmployees,
-        marketCap: stock.marketCap,
-        industry: stock.industry,
-        listIds: stock.StockLists.map((stock) => stock.id),
+      // * Fetch stock snapshot
+      const {
+        market_status,
         price,
         change,
         change_percent,
-        market_status,
         regular_trading_change,
         regular_trading_change_percent,
         early_trading_change,
@@ -321,46 +111,101 @@ router.get(
         open,
         close,
         volume,
-        news: stockNews,
-        oneDayAggregates,
-        oneWeekAggregates,
-        oneMonthAggregates,
-        threeMonthsAggregates,
-        oneYearAggregates,
-        fiveYearsAggregates,
-        marketStatus: req.marketStatus
+        stockNews,
+      } = await fetchStockSnapshot(stockSymbol);
+
+      // * Fetch aggregates
+      const { oneMonthData, fiveYearsData } =
+        await fetchOneMonthAndFiveYearsAggregates(stock.id);
+      const { oneDayData, oneWeekData } = await fetchOneDayAndOneWeekAggregates(
+        stockSymbol
+      );
+
+      // * Format aggregate data
+      const oneDayAggregates = formatOneDayAggregates(oneDayData);
+      const oneWeekAggregates = formatOneWeekAggregates(oneWeekData);
+      const oneMonthAggregates = formatOneMonthAggregates(oneMonthData);
+      const threeMonthsAggregates = formatThreeMonthsAggregates(fiveYearsData);
+      const oneYearAggregates = formatOneYearAggregates(fiveYearsData);
+      const fiveYearsAggregates = formatFiveYearsAggregates(fiveYearsData);
+
+      const stockData = {
+        id: stock?.id ?? null,
+        name: stock?.stockName ?? "N/A",
+        symbol: stock?.stockSymbol ?? "N/A",
+        address: stock?.address ?? "Unknown",
+        description: stock?.description ?? "No description available",
+        totalEmployees: stock?.totalEmployees ?? 0,
+        marketCap: stock?.marketCap ?? 0,
+        industry: stock?.industry ?? "Unknown",
+        listIds: stock?.StockLists?.map((stock) => stock?.id) ?? [],
+
+        price: price ?? 0,
+        change: change ?? 0,
+        change_percent: change_percent ?? 0,
+        market_status: market_status ?? "Unknown",
+
+        regular_trading_change: regular_trading_change ?? 0,
+        regular_trading_change_percent: regular_trading_change_percent ?? 0,
+
+        early_trading_change: early_trading_change ?? 0,
+        early_trading_change_percent: early_trading_change_percent ?? 0,
+
+        late_trading_change: late_trading_change ?? 0,
+        late_trading_change_percent: late_trading_change_percent ?? 0,
+
+        high: high ?? 0,
+        low: low ?? 0,
+        open: open ?? 0,
+        close: close ?? 0,
+        volume: volume ?? 0,
+
+        news: stockNews ?? [],
+        oneDayAggregates: oneDayAggregates ?? [],
+        oneWeekAggregates: oneWeekAggregates ?? [],
+        oneMonthAggregates: oneMonthAggregates ?? [],
+        threeMonthsAggregates: threeMonthsAggregates ?? [],
+        oneYearAggregates: oneYearAggregates ?? [],
+        fiveYearsAggregates: fiveYearsAggregates ?? [],
+
+        marketStatus: req?.marketStatus ?? "Unknown",
       };
 
       return res.json(stockData);
     } catch (error) {
-     
+      console.log(error);
       res.status(500).json({ error, message: "Failed to fetch stock data" });
     }
   }
 );
 
+// * Get stocks in a list
 router.get("/lists/:stockSymbol", checkMarketStatus, async (req, res) => {
   const { stockSymbol } = req.params;
-
 
   try {
     const todaysDate = getDate();
     const oneDayAway = getDate(1);
+    const oneWeekAway = getDate(7);
 
     const oneDayDataResponse = await fetch(
       `https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/5/minute/${oneDayAway}/${todaysDate}?adjusted=true&sort=asc&apiKey=${process.env.STOCK_API_KEY2}`
     );
 
-    const oneDayData = await oneDayDataResponse.json();
+    let oneDayData = await oneDayDataResponse.json();
 
-    const oneDayAggregates = oneDayData.results.map((aggregate) => ({
-      x: aggregate.t,
-      y: aggregate.c,
-    }));
+    if (oneDayData.resultsCount === 0) {
+      const oneWeekDataResponse = await fetch(
+        `https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/5/minute/${oneWeekAway}/${todaysDate}?adjusted=true&sort=asc&apiKey=${process.env.STOCK_API_KEY2}`
+      );
+      const oneWeekData = await oneWeekDataResponse.json();
+      oneDayData = oneWeekData;
+    }
+
+    const oneDayAggregates = formatOneDayAggregates(oneDayData);
 
     return res.json({ stockSymbol, oneDayAggregates });
   } catch (error) {
-
     res.status(500).json({ error, message: "Failed to fetch stock data" });
   }
 });

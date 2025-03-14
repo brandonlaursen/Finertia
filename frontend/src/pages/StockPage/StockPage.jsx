@@ -57,6 +57,7 @@ function StockPage() {
     };
   }, [stockSymbol, dispatch]);
 
+  console.log(error)
   if (error) {
     return <StockNotFound stockSymbol={stockSymbol} />;
   }

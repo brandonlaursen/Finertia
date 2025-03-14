@@ -2,11 +2,11 @@
   display: flex;
   flex-direction: column;
 
-  margin-top: 80px;
+  margin-top: 60px;
 }
 
 .StocksPage__banner {
-  height: 160px;
+  height: 180px;
 
   background-color: var(--theme-primary-hover);
   background-image: url("https://png.pngtree.com/png-vector/20230728/ourmid/pngtree-boost-clipart-cartoon-rocket-ship-traveling-into-the-space-vector-png-image_6796486.png");

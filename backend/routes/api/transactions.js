@@ -8,10 +8,11 @@ const {
 } = require("../../db/models");
 const { sequelize } = require("../../db/models");
 
-const processTransactionSummary = require("./helpers/processTransactionSummary.js");
-const processHistoricalData = require("./helpers/processHistoricalData.js");
-const mergeTransactionAndAggregateData = require("./helpers/mergeTransactionAndAggregateData.js");
-const gatherAggregates = require("./helpers/gatherAggregates.js");
+const processTransactionSummary = require("./helpers/transactions/processTransactionSummary.js");
+const processHistoricalData = require("./helpers/transactions/processHistoricalData.js");
+const mergeTransactionAndAggregateData = require("./helpers/transactions/mergeTransactionAndAggregateData.js");
+const gatherAggregates = require("./helpers/transactions/gatherAggregates.js");
+const formatMergedTransactions = require("./helpers/transactions/formatMergedTransactions.js");
 
 router.post("/deposit", async (req, res) => {
   const { id, balance } = req.user;
@@ -154,31 +155,34 @@ router.get("/stock-summary", async (req, res) => {
       return res.json(userSummary);
     }
 
+    // * Gather users stock and account transactions with timestamps
+    // * Track whats stocks are owned at what time and how many shares
     const processedTransactions = processTransactionSummary(
       userTransactions,
       accountTransactions
     );
 
+    // * Gather stocks owned by user historical data
+    // * Track stocks owned by users historical prices over time
     const processedHistoricalData = await processHistoricalData(
       processedTransactions
     );
 
+    // * Merge users and stocks data + timestamps
+    // * Create a timeline of portfolio changes + value
+    // * Fill in gaps between users transactions
     const mergedTransactionData = mergeTransactionAndAggregateData(
       processedTransactions,
       processedHistoricalData
     );
 
-    const mergedTransactionDataArray = Object.values(mergedTransactionData);
-    const lastTransaction =
-      mergedTransactionDataArray[mergedTransactionDataArray.length - 1];
-
-    const userHistoricalData = Object.values(mergedTransactionData).map(
-      (data) => ({
-        x: data.timestamp,
-        y: data.totalInvestments,
-      })
+    // * Get details of last transaction
+    // * Get formatted historical data 
+    const { lastTransaction, userHistoricalData } = formatMergedTransactions(
+      mergedTransactionData
     );
 
+    // * Organize data into timeframes - ie: 1D, 1W, 1M, 3M, 1Y, 5Y
     const aggregates = gatherAggregates(userHistoricalData);
 
     await t.commit();

@@ -44,17 +44,16 @@ function StockTrade({ stock, setNotifications, setNotificationMessage }) {
   // The number of shares a user wants to trade
   const [sharesToTrade, setSharesToTrade] = useState("");
 
-  // Estimated shares being traded
-  const tradeSharesEstimate = useMemo(
-    () => (tradeAmount / price).toFixed(5),
-    [tradeAmount, price]
-  );
+  const tradeSharesEstimate = useMemo(() => {
+    if (!Number.isFinite(price) || price === 0) return "0.00000";
+    return (tradeAmount / price).toFixed(5);
+  }, [tradeAmount, price]);
 
   // Estimated cost of trade
-  const tradeCostEstimate = useMemo(
-    () => (sharesToTrade * price).toFixed(2),
-    [sharesToTrade, price]
-  );
+  const tradeCostEstimate = useMemo(() => {
+    if (!Number.isFinite(price)) return "0.00";
+    return (sharesToTrade * price).toFixed(2);
+  }, [sharesToTrade, price]);
 
   useEffect(() => {
     dispatch(fetchStockTransactions());
