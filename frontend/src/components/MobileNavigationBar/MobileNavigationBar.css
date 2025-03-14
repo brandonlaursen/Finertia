@@ -1,5 +1,5 @@
 .MobileNavigationBar {
-  /* display: none; */
+  display: none;
 }
 
 @media (max-width: 480px) {

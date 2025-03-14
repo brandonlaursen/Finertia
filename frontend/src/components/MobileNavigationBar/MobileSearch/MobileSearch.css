@@ -3,7 +3,7 @@
   top: 0;
   left: 0;
   right: 0;
-  height: calc(100% - 50px);
+  height: calc(100% - 48px);
 
   background-color: var(--color-background);
 }
@@ -23,7 +23,7 @@
 
 .MobileSearch-icon {
   position: absolute;
-  top: 31%;
+  top: 16px;
   left: 10px;
 
   font-size: 18px;
@@ -57,7 +57,7 @@
   top: 34px;
   background-color: var(--color-surface);
 
-  height: 95%;
+  height: 100%;
   width: 100%;
   overflow: scroll;
 

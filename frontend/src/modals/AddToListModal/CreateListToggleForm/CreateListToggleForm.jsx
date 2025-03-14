@@ -73,7 +73,7 @@ function CreateListToggleForm({
             <div className="CreateListToggleForm__emoji-wrapper">
               <EmojiPicker
                 onEmojiClick={handleEmojiClick}
-                style={{ width: "100vw" }}
+                style={{ width: "clamp(350px, 100vw, 500px)" }}
               />
             </div>
           )}

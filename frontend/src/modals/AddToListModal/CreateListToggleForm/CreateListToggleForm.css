@@ -82,13 +82,13 @@
 
   cursor: pointer;
 
-  z-index: 1001;
+  z-index: 900;
 }
 
 /* Create List Emoji Picker Wrapper */
 .CreateListToggleForm__emoji-wrapper {
   position: fixed;
-  bottom: 0px;
+  top: calc(20% + 115px);
 
   z-index: 1000;
 
@@ -161,4 +161,20 @@
 /* Create List Form Create Button Hover */
 .CreateListToggleForm__create-button:hover {
   background-color: var(--theme-primary-hover);
+}
+
+
+
+@media (max-width: 480px) {
+/* Create List Emoji Picker Wrapper */
+.CreateListToggleForm__emoji-wrapper {
+  position: fixed;
+  top: auto;
+  bottom: 52px;
+
+
+  z-index: 1000;
+
+}
+
 }
