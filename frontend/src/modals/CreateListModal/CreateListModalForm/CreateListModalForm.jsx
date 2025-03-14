@@ -74,7 +74,10 @@ function CreateListModalForm({
         </button>
         {showPicker && (
           <div className="CreateListModalForm__emoji-picker-wrapper">
-            <EmojiPicker onEmojiClick={handleEmojiClick} />
+            <EmojiPicker
+              onEmojiClick={handleEmojiClick}
+              style={{ width: "410px" }}
+            />
           </div>
         )}
 

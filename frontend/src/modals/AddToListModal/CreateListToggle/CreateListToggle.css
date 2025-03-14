@@ -64,3 +64,17 @@
 .CreateListToggle__form-container.exit ~ .CreateListToggle__title {
   transform: translateY(-100%);
 }
+
+
+/* Create New List Section */
+.AddToListModal__section {
+  position: relative;
+
+  height: 330px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+
+  overflow: auto;
+}
+

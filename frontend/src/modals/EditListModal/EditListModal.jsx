@@ -27,7 +27,6 @@ function EditListModal({ list, setNotifications, setNotificationMessage }) {
   };
 
   async function handleSubmit(e) {
-
     e.preventDefault();
 
     setIsLoading(true);
@@ -75,7 +74,10 @@ function EditListModal({ list, setNotifications, setNotificationMessage }) {
           </button>
           {showPicker && (
             <div className="EditListModal__emoji-picker-wrapper">
-              <EmojiPicker onEmojiClick={handleEmojiClick} />
+              <EmojiPicker
+                onEmojiClick={handleEmojiClick}
+                style={{ width: "410px" }}
+              />
             </div>
           )}
 

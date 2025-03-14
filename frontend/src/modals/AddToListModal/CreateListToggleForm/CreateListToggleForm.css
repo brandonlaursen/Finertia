@@ -88,7 +88,7 @@
 /* Create List Emoji Picker Wrapper */
 .CreateListToggleForm__emoji-wrapper {
   position: fixed;
-  top: 230px;
+  bottom: 0px;
 
   z-index: 1000;
 

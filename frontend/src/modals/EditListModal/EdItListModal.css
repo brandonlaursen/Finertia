@@ -59,7 +59,8 @@
 .EditListModal__emoji-picker-wrapper {
   position: absolute;
   top: 105px;
-  right: 200px;
+  left: 10px;
+
 }
 
 .EditListModal__section__input {
@@ -118,11 +119,14 @@
 
 
 @media (max-width: 480px) {
+
+
+
   .EditListModal__container {
     width: 410px;
   }
   .EditListModal__emoji-picker-wrapper {
-    
+
     right: 40px;
 
   }

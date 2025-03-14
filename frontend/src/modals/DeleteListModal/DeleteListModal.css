@@ -78,3 +78,9 @@
     transform: rotate(360deg);
   }
 }
+
+@media (max-width: 480px) {
+  .DeleteListModal__container {
+    width: 410px;
+  }
+}
