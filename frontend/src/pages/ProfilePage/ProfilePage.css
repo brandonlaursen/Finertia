@@ -1,15 +1,20 @@
 .ProfilePage {
-  width: clamp(400px, 60vw, 1000px);
+  
+  display: flex;
+  justify-content: center;
+
+  gap: var(--page-gap);
+  margin-top: var(--page-margin-top);
+  margin-bottom: var(--page-margin-bottom);
+}
+
+.ProfilePage__main {
+  width: clamp(400px, 70vw, 1000px);
 
   display: flex;
   flex-direction: column;
-  align-content: center;
-  justify-content: center;
 
-  margin: 120px auto 0;
-
-  background-color: var(--color-background);
-  color: var(--color-text-primary);
+  margin-top: var(--container-margin-top);
 }
 
 .ProfilePage__total {
@@ -262,8 +267,7 @@
   border-radius: 4px;
 }
 
-/* ====== Media Queries ====== */
-/* * Medium devices (tablets, 768px and up) */
+
 @media (max-width: 768px) {
   .ProfilePage__overview__button {
     height: 80px;
@@ -273,17 +277,18 @@
   }
 
   .ProfilePage__buttons {
-
     margin-top: 0;
     margin-bottom: 32px;
-
   }
 }
 
 
-/* * Small devices (landscape phones, 576px and up) */
 @media (max-width: 480px) {
   .ProfilePage {
-    margin-top: 70px;
+    margin-top: 60px;
+  }
+
+  .ProfilePage__main {
+    margin-top: 0px;
   }
 }
