@@ -50,6 +50,8 @@
 
   .AddToListModal__main {
     width: 100%;
+    height: auto;
+    max-height: 450px;
 
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;

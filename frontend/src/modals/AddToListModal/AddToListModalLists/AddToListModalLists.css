@@ -29,6 +29,7 @@
 .AddToListModalLists.disabled {
   opacity: 0.5;
   pointer-events: none;
+
 }
 
 .AddToListModalLists__checkbox-container {
@@ -110,4 +111,10 @@ input.checked {
   font-weight: 500;
 
   color: var(--color-text-primary);
+
+  width: 180px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
