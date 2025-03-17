@@ -1,4 +1,3 @@
-/* ========== Create List Toggle ========== */
 .CreateListToggle {
   position: relative;
   z-index: 20;
@@ -6,13 +5,10 @@
   width: 100%;
 
   display: flex;
-  flex-direction: row;
-  align-items: center;
 
   cursor: pointer;
 }
 
-/* Create New List Toggle */
 .CreateListToggle__toggle {
   display: flex;
   margin-bottom: 16px;
@@ -31,19 +27,18 @@
 
   font-size: 24px;
 
-  background-color: var(--button-primary-hover-light);
   color: var(--theme-primary-color);
+  background-color: var(--button-primary-hover-light);
 
   border-radius: 4px;
 }
 
-/* Create New List Toggle Icon */
 .CreateListToggle__icon {
   color: var(--theme-primary-color);
 }
 
 .CreateListToggle__title {
-  display: inline-flex;
+  display: flex;
   justify-content: center;
   align-items: center;
 
@@ -53,26 +48,23 @@
   color: var(--color-text-primary);
 }
 
-/* Create New List Toggle */
 .CreateListToggle__toggle-container,
 .CreateListToggle__title {
   transition: transform 0.3s ease-out;
 }
 
-/* Create New List Toggle exit */
 .CreateListToggle__form-container.exit ~ .CreateListToggle__toggle-container,
 .CreateListToggle__form-container.exit ~ .CreateListToggle__title {
   transform: translateY(-100%);
 }
 
-
-/* Create New List Section */
 .AddToListModal__section {
   position: relative;
 
   height: 330px;
   display: flex;
   flex-direction: column;
+
   margin-bottom: 10px;
 
   overflow: auto;

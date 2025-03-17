@@ -8,14 +8,12 @@
   justify-content: center;
 
   z-index: 100;
-
-  color: var(--color-text-primary-light);
 }
 
 .AddToListModal__main {
   z-index: 10;
 
-  width: 364px;
+  width: clamp(300px, 100%, 365px);
 
   display: flex;
   flex-direction: column;
@@ -23,16 +21,6 @@
 
   background-color: var(--color-surface);
   border-radius: 4px;
-}
-
-.AddToListModal__section {
-  position: relative;
-
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-
-  overflow: auto;
 }
 
 @media (max-width: 480px) {

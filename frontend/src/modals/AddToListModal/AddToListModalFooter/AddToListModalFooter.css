@@ -1,39 +1,29 @@
-/* ========== Modal Footer ========== */
-/* Modal Footer */
-.AddToListModal__footer {
+.AddToListModalFooter {
   display: flex;
   justify-content: center;
-  gap: 8px;
+
   padding-top: 8px;
-  /* padding-bottom: 4px; */
 }
 
-/* Modal Footer Button */
-.AddToListModal__footer__button {
-  padding: 0 20px;
+.AddToListModalFooter__button {
   min-height: 38px;
   width: 100%;
+
+  padding: 0 20px;
 
   font-size: 12px;
   font-weight: bold;
 
-  border-radius: 44px;
-}
-
-/* Create Button */
-.AddToListModal__save-button {
   color: var(--color-background);
   background-color: var(--theme-primary-color);
 
-  -webkit-font-smoothing: subpixel-antialiased;
+  border-radius: 44px;
 }
 
-/* Create Button Hover */
-.AddToListModal__save-button:hover {
+.AddToListModalFooter__button:hover {
   background-color: var(--theme-primary-hover);
 }
 
-/* Disabled Button */
-.AddToListModal__footer__button:disabled {
+.AddToListModalFooter__button:disabled {
   background-color: var(--disabled-button-color);
 }

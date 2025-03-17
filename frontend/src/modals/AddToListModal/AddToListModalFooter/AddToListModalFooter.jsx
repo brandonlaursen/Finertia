@@ -8,11 +8,9 @@ function AddToListModalFooter({
   isLoading,
 }) {
   return (
-    <footer className="AddToListModal__footer">
+    <footer className="AddToListModalFooter">
       <button
-        className="AddToListModal__footer__button
-        AddToListModal__save-button
-        "
+        className="AddToListModalFooter__button"
         onClick={handleSubmit}
         disabled={
           !Object.keys(checkedItems).length || (isVisible && !listName.trim())

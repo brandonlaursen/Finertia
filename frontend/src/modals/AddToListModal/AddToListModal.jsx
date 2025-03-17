@@ -40,6 +40,12 @@ function AddToListModal({ stock, setNotifications, setNotificationMessage }) {
     dispatch(fetchLists());
   }, [dispatch]);
 
+  useEffect(() => {
+    if (newListId) {
+      setCheckedItems((prev) => ({ ...prev, [newListId]: true }));
+    }
+  }, [newListId]);
+
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -95,12 +101,6 @@ function AddToListModal({ stock, setNotifications, setNotificationMessage }) {
     setNotifications(false);
     setNotificationMessage([]);
   }
-
-  useEffect(() => {
-    if (newListId) {
-      setCheckedItems((prev) => ({ ...prev, [newListId]: true }));
-    }
-  }, [newListId]);
 
   const addToListModalProps = {
     sessionUser,
