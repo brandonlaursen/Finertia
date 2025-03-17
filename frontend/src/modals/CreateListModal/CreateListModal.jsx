@@ -13,18 +13,19 @@ function CreateListModal({ setNotifications, setNotificationMessage }) {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  if (!isOpen)
-    return <ChooseListType closeModal={closeModal} setIsOpen={setIsOpen} />;
-
   return (
     <div className="CreateList">
       <ModalOverlay closeModal={closeModal} />
 
-      <CreateListModalForm
-        closeModal={closeModal}
-        setNotifications={setNotifications}
-        setNotificationMessage={setNotificationMessage}
-      />
+      {!isOpen ? (
+        <ChooseListType closeModal={closeModal} setIsOpen={setIsOpen} />
+      ) : (
+        <CreateListModalForm
+          closeModal={closeModal}
+          setNotifications={setNotifications}
+          setNotificationMessage={setNotificationMessage}
+        />
+      )}
     </div>
   );
 }

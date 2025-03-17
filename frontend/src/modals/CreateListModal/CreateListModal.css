@@ -12,12 +12,11 @@
   z-index: 600;
 }
 
-
 @media (max-width: 480px) {
   .CreateList {
     position: fixed;
     top: auto;
-    bottom: 46px;
+    bottom: 0;
     left: 0;
     right: 0;
   }
