@@ -97,7 +97,15 @@ function ListItemMenu({
             <TiDeleteOutline className="ListItemMenu__delete-icon" />
             Delete
           </button>
-          <button className="ListItemMenu__button ListItemMenu__done-button" >Done</button>
+          <button
+            className="ListItemMenu__button ListItemMenu__done-button"
+            onClick={(e) => {
+              e.stopPropagation();
+              setActiveListId(null);
+            }}
+          >
+            Done
+          </button>
         </div>
       )}
     </>

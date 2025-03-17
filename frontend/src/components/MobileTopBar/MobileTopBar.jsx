@@ -27,11 +27,6 @@ function MobileTopBar() {
       </div>
 
       <div ref={menuRef} className="HamburgerMenu__wrapper">
-        {/* <div className="MobileTopBar__add-to-list">
-          {location.pathname.includes("stocks/") && (
-            <IoMdAddCircle className="MobileTopBar__add-to-list-btn " />
-          )}
-        </div> */}
         <HamburgerMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
         {isMenuOpen && <HamburgerDropdown navigate={navigate} />}
       </div>

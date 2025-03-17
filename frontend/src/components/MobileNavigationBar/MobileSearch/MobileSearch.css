@@ -19,6 +19,7 @@
   display: flex;
 
   background-color: var(--color-background);
+
 }
 
 .MobileSearch-icon {
@@ -37,6 +38,8 @@
   color: var(--color-text-primary);
 
   font-size: 15px;
+
+  border-radius: none;
 }
 
 .MobileSearch-input:focus {

@@ -17,6 +17,7 @@
 .CloseButton__icon {
   height: 32px;
   width: 32px;
+  font-size: 22px;
 
   color: var(--icon-color);
 }

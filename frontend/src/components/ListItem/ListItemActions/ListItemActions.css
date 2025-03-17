@@ -73,4 +73,8 @@
   .ListItemActions__arrow-icon {
     font-size: 22px;
   }
+
+  .ListItemActions__menu-icon {
+    font-size: 22px;
+  }
 }

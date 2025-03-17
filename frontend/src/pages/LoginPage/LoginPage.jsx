@@ -28,8 +28,8 @@ function LoginPage() {
     setErrors({});
 
     setIsLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setIsLoading(false);
+    // await new Promise((resolve) => setTimeout(resolve, 1000));
+
 
     try {
       const res = await dispatch(login({ credential, password }));
@@ -37,6 +37,8 @@ function LoginPage() {
     } catch (res) {
       const data = await res.json();
       if (data.errors) setErrors(data.errors);
+    } finally {
+      setIsLoading(false);
     }
   };
 

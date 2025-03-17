@@ -26,8 +26,7 @@
 }
 
 .Lists__create-button-icon {
-  height: 14px;
-  width: 14px;
+  font-size: 22px;
 
   color: var(--icon-color);
 }
@@ -52,7 +51,6 @@
   }
 
   .Lists__create-button-icon {
-    height: 18px;
-    width: 18px;
+    font-size: 22px;
   }
 }
