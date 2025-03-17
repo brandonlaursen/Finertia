@@ -108,7 +108,7 @@ function CreateListModalForm({
           {isLoading ? (
             <span className="StockTransaction__spinner"></span>
           ) : (
-            "Create List"
+            "Create"
           )}
         </button>
       </section>
