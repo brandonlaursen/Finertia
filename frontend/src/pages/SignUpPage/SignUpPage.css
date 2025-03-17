@@ -271,6 +271,6 @@ input:focus {
 /* * Small devices (landscape phones, 576px and up) */
 @media (max-width: 480px) {
   .SignUpPage {
-    padding-top: 70px;
+    padding-top: 10px;
   }
 }

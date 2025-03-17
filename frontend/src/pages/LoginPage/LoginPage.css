@@ -1,6 +1,4 @@
-/* ========== Login Page Layout ========== */
 
-/* Main container for the login page */
 .LoginPage {
   height: 100%;
   min-height: 100vh;
@@ -11,9 +9,7 @@
   background-color: black;
 }
 
-/* ========== Sidebar Section ========== */
 
-/* Sidebar containing background image */
 .LoginPage__aside {
   width: 50%;
   align-items: stretch;
@@ -22,12 +18,10 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  transition: width 1s ease; /* Smooth transition when resizing */
+  transition: width 1s ease;
 }
 
-/* ========== Main Content Section ========== */
 
-/* Main content area where login form is located */
 .LoginPage__main {
   width: 50%;
   display: flex;
@@ -44,9 +38,7 @@
   padding-bottom: 64px;
 }
 
-/* ========== Login Form Styles ========== */
 
-/* Container for the login form */
 .LoginPage__form {
   display: flex;
   flex-direction: column;
@@ -58,7 +50,7 @@
   max-width: 690px;
 }
 
-/* Form header (Login title) */
+
 .LoginPage__form header {
   margin-bottom: 16px;
   font-size: 18px;
@@ -69,7 +61,7 @@
   font-weight: 500;
 }
 
-/* Password input wrapper */
+
 .LoginPage__form__password {
   width: 100%;
 
@@ -78,7 +70,7 @@
   align-items: center;
 }
 
-/* Input fields for the form */
+
 .LoginPage__form-input {
   width: 100%;
   min-height: 36px;
@@ -95,7 +87,7 @@
   font-weight: 500;
 }
 
-/* Password visibility toggle icon */
+
 .LoginPage__form__password-icon {
   position: absolute;
   right: 10px;
@@ -105,9 +97,7 @@
   cursor: pointer;
 }
 
-/* ========== Error Messages ========== */
 
-/* Error message container */
 .LoginPage__form__errors {
   height: 42px;
   display: inline-flex;
@@ -119,22 +109,20 @@
   border-radius: 4px;
 }
 
-/* Icon inside the error message */
+
 .LoginPage__form__errors-icon {
   min-height: 20px;
   width: 20px;
   margin-right: 8px;
 }
 
-/* ========== Buttons ========== */
 
-/* Wrapper for form buttons */
 .LoginPage__form__buttons {
   display: flex;
   gap: 16px;
 }
 
-/* Base styles for buttons */
+
 .LoginPage__form__button {
   width: 100%;
   height: 40px;
@@ -144,71 +132,74 @@
   border-radius: 44px;
 }
 
-/* Login button */
+
 .LoginPage__form__login-account-btn {
   background-color: #07de96;
   color: black;
 }
 
-/* Login button hover effect */
+
 .LoginPage__form__login-account-btn:hover {
   background-color: rgb(7, 239, 162);
 }
 
-/* Create account button */
+
 .LoginPage__form__create-account-btn {
   background-color: black;
   color: white;
   border: 1px solid white;
 }
 
-/* Create account button hover effect */
+
 .LoginPage__form__create-account-btn:hover {
   background-color: rgb(40, 40, 40);
 }
 
-/* ========== Responsive Design ========== */
 
 @media screen and (max-width: 770px) {
-  /* Ensure full height for mobile screens */
+
   .LoginPage {
     height: 100%;
   }
 
-  /* Hide sidebar on smaller screens */
+
   .LoginPage__aside {
     display: none;
   }
 
-  /* Make main content take full width */
+
   .LoginPage__main {
     width: 100%;
   }
 
-  /* Stack buttons vertically on smaller screens */
+
   .LoginPage__form__buttons {
     flex-direction: column;
   }
 
-  /* Ensure buttons take full width */
+
   .LoginPage__form__buttons button {
     width: 100%;
   }
 }
 
-/* * Small devices (landscape phones, 576px and up) */
+
 @media (max-width: 480px) {
   .LoginPage__main {
+
+    
     width: 100%;
     justify-content: center;
     align-items: center;
 
     margin-top: 0px;
+
+    margin-left: 5%;
+    margin-right: 5%;
+
   }
 
-  /* ========== Login Form Styles ========== */
 
-  /* Container for the login form */
   .LoginPage__form {
     width: 100%;
   }
