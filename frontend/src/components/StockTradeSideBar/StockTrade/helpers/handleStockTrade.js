@@ -24,7 +24,7 @@ async function handleStockTrade({
   const tradeAmountNum = Number(tradeAmount);
   const tradeSharesEstimateNum = Number(tradeSharesEstimate);
   const tradeCostEstimateNum = Number(tradeCostEstimate);
-console.log(tradeAmountNum > balance)
+
   if (tradeType === "buy") {
     if (tradeUnit === "Dollars") {
       if (tradeAmountNum < MIN_DOLLARS) {

@@ -25,7 +25,7 @@
   color: var(--icon-color);
 }
 
-.Lists__create-button-icon{
+.Lists__create-button-icon {
   height: 14px;
   width: 14px;
 
@@ -39,4 +39,20 @@
 
 .Lists__container {
   position: relative;
+}
+
+@media (max-width: 480px) {
+  .Lists__header {
+    font-size: 18px;
+  }
+
+  .Lists__create-button {
+    height: 30px;
+    width: 30px;
+  }
+
+  .Lists__create-button-icon {
+    height: 18px;
+    width: 18px;
+  }
 }

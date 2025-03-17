@@ -24,10 +24,6 @@ function mergeTransactionAndAggregateData(
     historicalPrices
   );
 
-  console.log(" historicalPrices:", historicalPrices);
-  console.log(" processedTransactions:", processedTransactions);
-  console.log(" unionTimestamps:", unionTimestamps);
-
   let currentBalance = 0;
 
   // * Track last transaction
@@ -43,7 +39,6 @@ function mergeTransactionAndAggregateData(
   // * loop through timestamps, store in result obj, the timestamps as key
   unionTimestamps.forEach((ts) => {
     const tsStr = ts.toString();
-    console.log(" tsStr:", tsStr);
 
     // * reset currentStockShares owned each iteration
     // * users ownership of stocks may change after a new transaction
@@ -71,15 +66,12 @@ function mergeTransactionAndAggregateData(
     }
 
     // added
-    if (!currentStockSharesOwned || Object.keys(currentStockSharesOwned).length === 0) {
+    if (
+      !currentStockSharesOwned ||
+      Object.keys(currentStockSharesOwned).length === 0
+    ) {
       currentStockSharesOwned = lastCurrentStockSharesOwned || {};
     }
-
-
-
-    console.log(" historicalPrices[tsStr]:", historicalPrices[tsStr]);
-    console.log(" currentStockSharesOwned:", currentStockSharesOwned);
-    console.log(" lastCurrentStockSharesOwned:", lastCurrentStockSharesOwned);
 
     // * Build the stocksOwned object using the last known historical snapshot.
     let stocksOwned = {};
@@ -92,7 +84,6 @@ function mergeTransactionAndAggregateData(
       //if there is no lastCurrentStockSharesOwned shares owned
     }
 
-    // console.log(currentStockSharesOwned);//undefined
 
     if (lastHistoricalSnapshot) {
       for (const [stock, shares] of Object.entries(currentStockSharesOwned)) {

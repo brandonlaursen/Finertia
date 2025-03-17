@@ -72,7 +72,7 @@ module.exports = {
     }
 
     async function getOneHourIntervalsUpToOneMonth(stockSymbol, stockId) {
-      ("entering get one hour intervals");
+     
       const oneMonthAgo = getDate(30);
       let currentUrl = `https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/1/hour/${oneMonthAgo}/${todaysDate}?adjusted=true&sort=asc&apiKey=${process.env.STOCK_API_KEY2}`;
 

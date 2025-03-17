@@ -57,7 +57,7 @@ function TradeReview({
   }
 
   async function handleStockTradeReview() {
-    console.log(balance)
+    
     setReviewingTrade(true);
     setIsLoading(true);
     await new Promise((resolve) => setTimeout(resolve, 500));

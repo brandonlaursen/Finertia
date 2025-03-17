@@ -14,14 +14,6 @@ function HomePageOverview({ stockData, selectedTimeFrame }) {
     fiveYearsAggregates,
   } = stockData;
 
-  console.log(
-    oneDayAggregates,
-    oneWeekAggregates,
-    oneMonthAggregates,
-    threeMonthsAggregates,
-    oneYearAggregates,
-    fiveYearsAggregates
-  );
   const data = useMemo(() => {
     const aggregatesMap = {
       "1D": oneDayAggregates,
@@ -49,9 +41,8 @@ function HomePageOverview({ stockData, selectedTimeFrame }) {
     }
 
     const firstAggregate = Number(data[0]?.y) || 0;
-    console.log(" firstAggregate:", firstAggregate);
+
     const lastAggregate = Number(data[data.length - 1]?.y) || 0;
-    console.log(" lastAggregate:", lastAggregate);
 
     const amountChange = lastAggregate - firstAggregate;
 
@@ -68,8 +59,6 @@ function HomePageOverview({ stockData, selectedTimeFrame }) {
       portfolioAmountChange: isFinite(amountChange) ? amountChange : 0.0,
     };
   }, [data]);
-
-  console.log(portfolioPercentChange, portfolioAmountChange);
 
   return (
     <div className="HomePageOverview">

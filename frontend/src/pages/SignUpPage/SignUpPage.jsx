@@ -13,6 +13,8 @@ function SignUpPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
 
+
+  const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -41,6 +43,10 @@ function SignUpPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    setIsLoading(true);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    setIsLoading(false);
 
     try {
       const res = await dispatch(
@@ -174,7 +180,11 @@ function SignUpPage() {
               </div>
             </div>
 
-            <button type="submit">Sign Up</button>
+            <button type="submit">   {isLoading ? (
+                <span className="StockTransaction__spinner"></span>
+              ) : (
+                "Sign Up"
+              )}</button>
           </section>
         </form>
       </div>

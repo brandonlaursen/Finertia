@@ -13,6 +13,7 @@ function LoginPage() {
   const navigate = useNavigate();
   const sessionUser = useSelector((state) => state.session.user);
 
+  const [isLoading, setIsLoading] = useState(false);
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
@@ -25,6 +26,10 @@ function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors({});
+
+    setIsLoading(true);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    setIsLoading(false);
 
     try {
       const res = await dispatch(login({ credential, password }));
@@ -81,7 +86,11 @@ function LoginPage() {
               type="submit"
               className="LoginPage__form__login-account-btn LoginPage__form__button"
             >
-              Log In
+              {isLoading ? (
+                <span className="StockTransaction__spinner"></span>
+              ) : (
+                "Log In"
+              )}
             </button>
 
             <button

@@ -175,7 +175,7 @@ router.get("/stock-summary", async (req, res) => {
         oneYearAggregates: [],
         fiveYearsAggregates: [],
       };
-      console.log(userSummary);
+
       await t.rollback();
       return res.json(userSummary);
     }
@@ -192,6 +192,7 @@ router.get("/stock-summary", async (req, res) => {
     const processedHistoricalData = await processHistoricalData(
       processedTransactions
     );
+   
 
     // * Merge users and stocks data + timestamps
     // * Create a timeline of portfolio changes + value
@@ -201,11 +202,14 @@ router.get("/stock-summary", async (req, res) => {
       processedHistoricalData
     );
 
+
+
     // * Get details of last transaction
     // * Get formatted historical data
     const { lastTransaction, userHistoricalData } = formatMergedTransactions(
       mergedTransactionData
     );
+
 
     // * Organize data into timeframes - ie: 1D, 1W, 1M, 3M, 1Y, 5Y
     const aggregates = gatherAggregates(userHistoricalData);

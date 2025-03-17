@@ -40,3 +40,9 @@
   align-items: center;
   justify-content: center;
 }
+
+@media (max-width: 480px) {
+  .PortfolioStocks__header {
+    font-size: 18px;
+  }
+}

@@ -1,7 +1,6 @@
 const { getDate } = require("../getDate.js");
 const roundTimestampToInterval = require("./roundTimestampToInterval.js");
 
-
 // * Using users transaction history
 // * Get users owned stocks over time
 // * Get stock prices and how many shares a users owns
@@ -43,25 +42,37 @@ async function processHistoricalData(processedTransactions) {
   const allTimestamps = new Set();
 
   for (let stockSymbol of stocksOwnedOverTime) {
-    const response = await fetch(
-      `https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/5/minute/${roundedTransactionTimestamp}/${todaysDate}?adjusted=true&sort=asc&apiKey=${process.env.STOCK_API_KEY2}`
-    );
-    const data = await response.json();
+    let currentUrl = `https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/5/minute/${roundedTransactionTimestamp}/${todaysDate}?adjusted=true&sort=asc&apiKey=${process.env.STOCK_API_KEY2}`;
 
-    const currentStocksAggregates = data.results || [];
+    while (currentUrl) {
+      const response = await fetch(currentUrl);
+      const data = await response.json();
 
-    for (let aggregate of currentStocksAggregates) {
-      const timestamp = aggregate.t;
-
-      if (!aggregateData[timestamp]) {
-        aggregateData[timestamp] = {};
+      if (!data.results) {
+        currentUrl = null;
+        continue;
       }
 
-      aggregateData[timestamp][stockSymbol] = {
-        price: aggregate.c, // Closing price
-      };
 
-      allTimestamps.add(timestamp);
+      for (let aggregate of data.results) {
+        const timestamp = aggregate.t;
+
+        if (!aggregateData[timestamp]) {
+          aggregateData[timestamp] = {};
+        }
+
+        aggregateData[timestamp][stockSymbol] = {
+          price: aggregate.c, // Closing price
+        };
+
+        allTimestamps.add(timestamp);
+      }
+
+      if (data.next_url) {
+        currentUrl = data.next_url + `&apiKey=${process.env.STOCK_API_KEY2}`;
+      } else {
+        currentUrl = null;
+      }
     }
   }
 
