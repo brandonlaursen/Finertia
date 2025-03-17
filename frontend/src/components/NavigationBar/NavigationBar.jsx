@@ -52,7 +52,13 @@ function NavigationBar({ scrolled }) {
 
       <div ref={menuRef} className="HamburgerMenu__wrapper">
         <HamburgerMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-        {isMenuOpen && <HamburgerDropdown navigate={navigate} />}
+        {isMenuOpen && (
+          <HamburgerDropdown
+            navigate={navigate}
+            isMenuOpen={isMenuOpen}
+            setIsMenuOpen={setIsMenuOpen}
+          />
+        )}
       </div>
 
       <div className={`Navigation__links ${isMenuOpen && "show"}`}>

@@ -10,7 +10,7 @@ function HamburgerMenu({ isMenuOpen, setIsMenuOpen }) {
         <RiCloseLargeFill
           className="close-icon"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          onBlur={() => setIsMenuOpen(false)}
+
         />
       ) : (
         <GiHamburgerMenu
