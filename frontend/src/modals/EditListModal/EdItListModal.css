@@ -10,8 +10,6 @@
 }
 
 .EditListModal__container {
-  /* position: absolute; */
-
   height: 182px;
   width: 440px;
 
@@ -112,27 +110,35 @@
   .EditListModal {
     position: fixed;
     top: auto;
-    bottom: 46px;
+    bottom: 0;
     left: 0;
     right: 0;
   }
 
   .EditListModal__container {
     width: 100%;
-    height: 200px;
+    height: 250px;
 
     border-radius: 0;
   }
 
+  .EditListModal__section {
+    padding-left: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+  }
+
   .EditListModal__section__input {
     height: 44px;
+    width: 100%;
   }
 
   .EditListModal__section__emoji {
     height: 44px;
     width: 44px;
   }
-
 
   .EditListModal__emoji-picker-wrapper {
     position: fixed;
