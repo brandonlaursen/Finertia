@@ -1,11 +1,8 @@
-/* ========== Stock Trade Sidebar ========== */
 
-/* Main container for the Stock Trade Sidebar */
 .StockTradeSidebar {
   margin-top: var(--container-margin-top);
 }
 
-/* Sticky container that holds all the trade actions */
 .StockTradeSidebar__main {
   position: sticky;
   top: 85px;

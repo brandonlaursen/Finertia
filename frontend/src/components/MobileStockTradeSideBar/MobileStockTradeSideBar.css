@@ -1,0 +1,95 @@
+.StockTradeBarMobile {
+  display: none;
+}
+
+@media (max-width: 480px) {
+
+  .StockTradeSideBar__mobile-wrapper {
+    height: 100%;
+    width: 100%;
+
+    position: fixed;
+    bottom: 106px;
+    bottom: 0;
+    left: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: end;
+
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  .StockTradeBarMobile {
+    position: fixed;
+    bottom: 48px;
+
+    height: 60px;
+    padding: 8px 16px;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;
+    gap: 8px;
+
+    background-color: var(--color-surface);
+  }
+
+  .StockTradeBarMobile__details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  .StockTradeBarMobile__symbol {
+    font-size: 13px;
+    font-weight: bold;
+  }
+
+  .StockTradeBarMobile__price {
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .StockTradeBarMobile__buttons {
+    display: flex;
+    gap: 12px;
+  }
+
+  .StockTradeBarMobile__button {
+    height: 40px;
+    width: 120px;
+
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .StockTradeBarMobile__buy-button {
+    height: 40px;
+    width: 120px;
+
+    font-weight: 600;
+
+    color: var(--color-background);
+    background-color: var(--theme-primary-color);
+    border-radius: 8px;
+  }
+
+  .StockTradeBarMobile__buy-button:hover {
+    background-color: var(--theme-primary-hover);
+  }
+
+  .StockTradeBarMobile__add-to-list-btn {
+    color: var(--theme-primary-color);
+    background-color: var(--color-surface);
+
+    border: 1px solid var(--theme-primary-color);
+    border-radius: 8px;
+  }
+
+  .StockTradeBarMobile__add-to-list-btn:hover {
+    background-color: var(--theme-primary-hover-light);
+  }
+}

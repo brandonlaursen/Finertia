@@ -15,7 +15,13 @@ import { fetchStockTransactions } from "../../../../store/transactions";
 
 import handleStockTrade from "./helpers/handleStockTrade";
 
-function StockTrade({ stock, setNotifications, setNotificationMessage }) {
+function StockTrade({
+  stock,
+  setNotifications,
+  setNotificationMessage,
+  showStockTradeSideBar,
+  setShowStockTradeSideBar,
+}) {
   const dispatch = useDispatch();
 
   const sessionUser = useSelector(selectUser);
@@ -101,6 +107,8 @@ function StockTrade({ stock, setNotifications, setNotificationMessage }) {
     setNotificationMessage,
     reviewingTrade,
     setReviewingTrade,
+    showStockTradeSideBar,
+    setShowStockTradeSideBar,
   };
 
   const tradeComponents = [

@@ -1,0 +1,34 @@
+.StockPage__skeleton-overview {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3vw;
+
+  margin-bottom: 16px;
+}
+
+.StockPage__skeleton-chart {
+  margin-bottom: 16px;
+}
+
+.StockPage__skeleton-details {
+  margin-bottom: 16px;
+}
+
+.StockPage__skeleton-news {
+  margin-bottom: 32px;
+
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .StockPage__skeleton {
+    width: 90vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .StockPage__skeleton {
+    margin-top: 0px;
+  }
+}

@@ -2,9 +2,6 @@
   height: auto;
   width: 100%;
 
-  /* position: sticky; */
-  /* top: 85px; */
-
   display: flex;
   flex-direction: column;
 
@@ -33,30 +30,25 @@
   display: none;
 }
 
-/* ====== Media Queries ====== */
-/* Medium devices (tablets, 768px and up) */
 @media (max-width: 768px) {
-  /* styles for medium devices */
   .StockTradeSidebar {
     display: none;
   }
 
-
-
   .StockTrade__sidebar-skeleton {
     display: none;
   }
-
-
-
 }
-
 
 @media (max-width: 480px) {
   .StockTrade {
-    /* height: 400px; */
     width: 100%;
 
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 
+    border-bottom: none;
   }
 }

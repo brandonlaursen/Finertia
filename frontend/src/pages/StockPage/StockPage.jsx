@@ -13,18 +13,14 @@ import Skeleton from "../../components/Skeleton/Skeleton";
 import StockTradeSidebar from "../../components/StockTradeSideBar/StockTradeSidebar";
 import NotificationPopUp from "../../components/NotificationPopUp";
 import StockNotFound from "./StockNotFound";
-import AddToListModal from "../../modals/AddToListModal/AddToListModal";
-
-import StockTrade from "../../components/StockTradeSideBar/StockTrade/StockTrade";
-
-import { useModal } from "../../context/Modal";
+import MobileStockTradeSideBar from "../../components/MobileStockTradeSideBar";
+import StockPageSkeleton from "./StockPageSkeleton";
 
 import { fetchStock } from "../../../store/stocks";
 
 function StockPage() {
   const dispatch = useDispatch();
   const { stockSymbol } = useParams();
-  const { setModalContent, setModalClass } = useModal();
 
   const stock = useSelector((state) => state.stocks.currentStock);
 
@@ -57,7 +53,6 @@ function StockPage() {
     };
   }, [stockSymbol, dispatch]);
 
-  console.log(error)
   if (error) {
     return <StockNotFound stockSymbol={stockSymbol} />;
   }
@@ -66,20 +61,7 @@ function StockPage() {
     <div className="StockPage">
       <main className="StockPage__main">
         {isLoading ? (
-          <>
-            <div className="StockPage__skeleton-overview">
-              <Skeleton height="100px" />
-            </div>
-            <div className="StockPage__skeleton-chart">
-              <Skeleton height="350px" />
-            </div>
-            <div className="StockPage__skeleton-details">
-              <Skeleton height="200px" />
-            </div>
-            <div className="StockPage__skeleton-news">
-              <Skeleton height="400px" />
-            </div>
-          </>
+          <StockPageSkeleton />
         ) : (
           <>
             <StockOverview
@@ -114,54 +96,15 @@ function StockPage() {
             notificationMessage={notificationMessage}
           />
 
-          <div className="StockTradeBarMobile">
-            <div className="StockTradeBarMobile__details">
-              <span className="StockTradeBarMobile__symbol">{stock.symbol}</span>
-              <span className="StockTradeBarMobile__price">${stock.price}</span>
-            </div>
-
-            <div className="StockTradeBarMobile__buttons">
-              <button
-                className="StockTradeBarMobile__button StockTradeBarMobile__add-to-list-btn"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setShowStockTradeSideBar(false);
-                  setModalContent(
-                    <AddToListModal
-                      stock={stock}
-                      setNotifications={setNotifications}
-                      setNotificationMessage={setNotificationMessage}
-                    />
-                  );
-                  setModalClass({
-                    modal: "AddToListModal",
-                    modalBackground: "AddToListModal__background",
-                    modalContainer: "AddToListModal__container",
-                  });
-                }}
-              >
-                Add To List
-              </button>
-
-              <button
-                className="StockTradeBarMobile__buy-button"
-                onClick={() => {
-                  setShowStockTradeSideBar(!showStockTradeSideBar);
-                }}
-              >
-                Buy
-              </button>
-            </div>
-            {showStockTradeSideBar && (
-              <div className="StockTradeSideBar__mobile-wrapper">
-                <StockTrade
-                  stock={stock}
-                  setNotifications={setNotifications}
-                  setNotificationMessage={setNotificationMessage}
-                />
-              </div>
-            )}
-          </div>
+          <MobileStockTradeSideBar
+            stock={stock}
+            setNotifications={setNotifications}
+            setNotificationMessage={setNotificationMessage}
+            notifications={notifications}
+            notificationMessage={notificationMessage}
+            showStockTradeSideBar={showStockTradeSideBar}
+            setShowStockTradeSideBar={setShowStockTradeSideBar}
+          />
         </>
       )}
 

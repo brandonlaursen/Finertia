@@ -15,6 +15,8 @@
 
   width: clamp(300px, 100%, 365px);
 
+  height: clamp(300px, 100vh, 450px);
+
   display: flex;
   flex-direction: column;
   padding: 16px 24px;
@@ -23,11 +25,25 @@
   border-radius: 4px;
 }
 
+.AddToListModal__section {
+  position: relative;
+
+  /* height: 330px; */
+
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 10px;
+
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
 @media (max-width: 480px) {
   .AddToListModal {
     position: fixed;
     top: auto;
-    bottom: 46px;
+    bottom: 0;
     left: 0;
     right: 0;
   }

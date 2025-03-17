@@ -1,4 +1,3 @@
-/* ============ Add To List Modal Lists Container ============ */
 .AddToListModalLists {
   position: relative;
 
@@ -9,7 +8,6 @@
   margin-bottom: 16px;
 }
 
-/* Create New List Overlay */
 .AddToListModal__list-overlay {
   position: absolute;
   z-index: 10;
@@ -24,18 +22,15 @@
   pointer-events: none;
 }
 
-/* ========== Create New List Overlay active ========== */
 .AddToListModal__list-overlay.active {
   pointer-events: auto;
 }
 
-/* Add To List Modal Lists Container Disabled */
 .AddToListModalLists.disabled {
   opacity: 0.5;
   pointer-events: none;
 }
 
-/* Checkbox Container */
 .AddToListModalLists__checkbox-container {
   position: relative;
 
@@ -44,7 +39,6 @@
   justify-content: center;
 }
 
-/* Checkbox Styling */
 .AddToListModalLists__checkbox-container input[type="checkbox"] {
   width: 16px;
   height: 16px;
@@ -56,20 +50,18 @@
   border: 2px solid var(--theme-primary-color);
 
   outline: none;
-  -webkit-appearance: none;
   appearance: none;
+  -webkit-appearance: none;
 
   cursor: pointer;
 }
 
-/* Checked Checkbox */
 input.checked {
   position: relative;
 
   background-color: var(--theme-primary-color);
 }
 
-/* Checkbox Icon */
 .AddToListModalLists__checkbox-icon {
   position: absolute;
   top: 50%;
@@ -79,6 +71,7 @@ input.checked {
   align-self: center;
 
   font-size: 24px;
+
   color: var(--color-background);
 
   pointer-events: none;
@@ -86,14 +79,11 @@ input.checked {
   transform: translate(-50%, -50%);
 }
 
-/* ========== List Item Container ========== */
+/* Add to List specific list styling */
 .AddToListModalLists__item {
   padding-left: 0;
-
-
 }
 
-/* ========== List Item Emoji ========== */
 .AddToListModalLists__item-emoji {
   height: 60px;
   width: 48px;
@@ -111,7 +101,6 @@ input.checked {
   border-radius: 4px;
 }
 
-/* ========== List Item Name ========== */
 .AddToListModalLists__item-name {
   flex-direction: column;
   justify-content: center;

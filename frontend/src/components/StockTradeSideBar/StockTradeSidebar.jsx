@@ -7,6 +7,8 @@ function StockTradeSidebar({
   stock,
   setNotifications,
   setNotificationMessage,
+  showStockTradeSideBar = false,
+  setShowStockTradeSideBar = null,
 }) {
   return (
     <div className="StockTradeSidebar">
@@ -15,17 +17,16 @@ function StockTradeSidebar({
           stock={stock}
           setNotifications={setNotifications}
           setNotificationMessage={setNotificationMessage}
+          showStockTradeSideBar={showStockTradeSideBar}
+          setShowStockTradeSideBar={setShowStockTradeSideBar}
         />
 
         <AddToListButton
           stock={stock}
           setNotifications={setNotifications}
           setNotificationMessage={setNotificationMessage}
-
         />
       </main>
-
-      
     </div>
   );
 }

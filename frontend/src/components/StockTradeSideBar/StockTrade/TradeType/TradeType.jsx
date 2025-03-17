@@ -1,4 +1,5 @@
 import "./TradeType.css";
+import { MdClose } from "react-icons/md";
 
 function TradeType({
   stock,
@@ -8,13 +9,22 @@ function TradeType({
   setTradeAmount,
   clearReview,
   reviewingTrade,
+  showStockTradeSideBar,
+  setShowStockTradeSideBar,
 }) {
-  const handleTradeTypeChange = (type) => {
+  function handleTradeTypeChange(type) {
     setTradeType(type);
     setSharesToTrade("");
     setTradeAmount("");
     clearReview();
-  };
+  }
+
+  function closeMobileTradeSideBar() {
+    setShowStockTradeSideBar(false);
+    setSharesToTrade("");
+    setTradeAmount("");
+    clearReview();
+  }
 
   return (
     <header className="TradeType">
@@ -37,6 +47,15 @@ function TradeType({
         >
           Sell {stock.symbol}
         </div>
+      )}
+
+      {showStockTradeSideBar && (
+        <button className="TradeType__close-button">
+          <MdClose
+            className="TradeType__close-button-icon"
+            onClick={closeMobileTradeSideBar}
+          />
+        </button>
       )}
     </header>
   );

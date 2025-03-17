@@ -58,14 +58,3 @@
   transform: translateY(-100%);
 }
 
-.AddToListModal__section {
-  position: relative;
-
-  height: 330px;
-  display: flex;
-  flex-direction: column;
-
-  margin-bottom: 10px;
-
-  overflow: auto;
-}
