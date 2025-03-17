@@ -69,7 +69,7 @@ function ListItemMenu({
             Edit list
           </button>
 
-          <button className="ListItemMenu__button">
+          <button className="ListItemMenu__button ListItemMenu__rearrange">
             <MdOutlineDragIndicator className="ListItemMenu__rearrange-icon" />
             Rearrange
           </button>
@@ -97,6 +97,7 @@ function ListItemMenu({
             <TiDeleteOutline className="ListItemMenu__delete-icon" />
             Delete
           </button>
+          <button className="ListItemMenu__button ListItemMenu__done-button" >Done</button>
         </div>
       )}
     </>

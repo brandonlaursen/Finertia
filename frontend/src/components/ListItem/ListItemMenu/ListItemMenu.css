@@ -1,12 +1,10 @@
-/* ========== Menu (Dropdown) Styles ========== */
-/* Menu container */
 .ListItemMenu {
   height: 100px;
   width: 150px;
 
   position: absolute;
   top: 38px;
-  left: 92px;
+  left: 110px;
 
   display: flex;
   flex-direction: column;
@@ -20,8 +18,6 @@
   z-index: 100;
 }
 
-/* ========== Menu Buttons ========== */
-/* Buttons inside the Menu */
 .ListItemMenu__button {
   display: flex;
   height: 100%;
@@ -43,13 +39,10 @@
   cursor: default;
 }
 
-/* Change background on hover */
 .ListItemMenu__button:hover {
   background-color: var(--color-hover-secondary-light);
 }
 
-/* ========== List Item Icons ========== */
-/* Icons used inside Menu (edit, rearrange, delete) */
 .ListItemMenu__edit-icon,
 .ListItemMenu__rearrange-icon,
 .ListItemMenu__delete-icon {
@@ -57,9 +50,59 @@
   width: 14px;
 }
 
+.ListItemMenu__done-button {
+  display: none;
+}
+
 @media (max-width: 480px) {
   .ListItemMenu {
-    top: 38px;
-  left: 222px;
+    position: fixed;
+    top: auto;
+    right: auto;
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 160px;
+  }
+
+  .ListItemMenu__button {
+    display: flex;
+    height: 100%;
+
+    gap: 12px;
+
+    padding-left: 32px;
+
+    font-weight: var(--font-weight-bold);
+    font-size: 15px;
+
+    color: var(--color-text-primary);
+
+    text-decoration: none;
+    cursor: pointer;
+
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .ListItemMenu__rearrange {
+    display: none;
+  }
+
+  .ListItemMenu__done-button {
+    display: flex;
+    padding-left: 0px;
+    justify-content: center;
+    color: var(--theme-primary-color);
+  }
+  .ListItemMenu__button:hover {
+    background-color: var(--color-surface);
+  }
+
+  .ListItemMenu__edit-icon,
+  .ListItemMenu__rearrange-icon,
+  .ListItemMenu__delete-icon {
+    height: 18px;
+    width: 18px;
   }
 }
