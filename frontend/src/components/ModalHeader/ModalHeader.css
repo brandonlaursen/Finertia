@@ -11,5 +11,6 @@
   font-weight: bold;
 
   word-wrap: break-word;
+  overflow: hidden;
   color: var(--color-text-primary);
 }

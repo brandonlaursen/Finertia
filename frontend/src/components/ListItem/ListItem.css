@@ -37,11 +37,11 @@
 
 .ListItem__header-hover:hover {
   background-color: var(--color-hover-secondary-dark);
-  background-color: var(--color-hover-secondary-dark);
-  box-shadow: -4px 0px 2px 0px var(--color-hover-secondary-dark),
-    4px 0px 2px 0px var(--color-hover-secondary-dark),
-    0px -2px 2px 0px var(--color-hover-secondary-dark),
-    0px 2px 2px 0px var(--color-hover-secondary-dark);
+
+  box-shadow: -4px 4px 0px 0px var(--color-hover-secondary-dark),
+    /* bottom left */ 4px 4px 0px 0px var(--color-hover-secondary-dark),
+    /* bottom right */ 4px -4px 0px 0px var(--color-hover-secondary-dark),
+    /* top right */ -4px -4px 0px 0px var(--color-hover-secondary-dark); /* top left */
 }
 
 .ListItem__emoji {
@@ -99,6 +99,5 @@
 
   .ListItem__name {
     font-size: 14px;
-
   }
 }
