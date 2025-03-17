@@ -14,11 +14,15 @@ function MobileStockTradeSideBar({
 }) {
   const { setModalContent, setModalClass } = useModal();
 
+  const formattedPrice = Number.isFinite(stock?.price)
+    ? `$${stock.price.toFixed(2)}`
+    : "-";
+
   return (
     <div className="StockTradeBarMobile">
       <div className="StockTradeBarMobile__details">
         <span className="StockTradeBarMobile__symbol">{stock.symbol}</span>
-        <span className="StockTradeBarMobile__price">${stock.price}</span>
+        <span className="StockTradeBarMobile__price">{formattedPrice}</span>
       </div>
 
       <div className="StockTradeBarMobile__buttons">
