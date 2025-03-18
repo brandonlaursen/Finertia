@@ -1,26 +1,21 @@
 .ListItemActions {
   display: flex;
-  align-items: center;
-
-  margin-right: 11px;
+  gap: 12px;
 }
 
 .ListItemActions__menu-button {
-  height: 30px;
-  width: 30px;
-
   display: flex;
   align-items: center;
-  justify-content: center;
 
-  margin-right: 14px;
+  padding: 4px;
+
   color: var(--icon-color);
 
-  cursor: pointer;
-  opacity: 0;
-  transition: opacity 0.2s ease-in-out;
   border-radius: var(--border-radius-sm);
 
+  opacity: 0;
+
+  transition: opacity 0.2s ease-in-out;
 }
 
 .ListItemActions__menu-button:active,
@@ -40,33 +35,41 @@
 }
 
 .ListItemActions__menu-icon {
+  height: 16px;
+  width: 16px;
+  font-size: 16px;
 
-  height: 18px;
-  width: 20px;
   color: var(--icon-color);
 }
 
+.ListItemActions__arrow-button {
+  display: flex;
+  align-items: center;
+
+  padding: 4px;
+}
+
 .ListItemActions__arrow-icon {
+  height: 18px;
+  width: 18px;
   font-size: 18px;
-  transition: transform 0.3s ease;
+
   color: var(--icon-color);
+
+  transition: transform 0.3s ease;
 }
 
 .ListItemActions__arrow-icon.open {
   transform: rotate(180deg);
 }
 
-/* Change color on hover */
 .ListItemActions__arrow-icon:hover {
   color: var(--theme-primary-color);
 }
 
 @media (max-width: 480px) {
   .ListItemActions {
-    display: flex;
-    align-items: center;
-
-    margin-right: 12px;
+    gap: 16px;
   }
 
   .ListItemActions__menu-button {
@@ -74,14 +77,14 @@
   }
 
   .ListItemActions__arrow-icon {
+    height: 22px;
+    width: 22px;
     font-size: 22px;
   }
 
-  .ListItemActions__menu-button {
-    height: 40px;
-    width: 40px;
-  }
   .ListItemActions__menu-icon {
+    height: 22px;
+    width: 22px;
     font-size: 22px;
   }
 }

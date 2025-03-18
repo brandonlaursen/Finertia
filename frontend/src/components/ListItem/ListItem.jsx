@@ -35,8 +35,13 @@ function ListItem({
   }
 
   return (
-    <article onClick={handleListItemClick} className={`ListItem ${className}`}>
-      <div className={`ListItem__container ${container}`}>
+    <article
+      onClick={handleListItemClick}
+      className={`ListItem
+${showHover && `ListItem--hover`}
+    `}
+    >
+      <div className={`ListItem__container`}>
         <header
           className={`ListItem__header ${
             showHover && `ListItem__header-hover`

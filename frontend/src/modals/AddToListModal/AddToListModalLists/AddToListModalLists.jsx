@@ -47,10 +47,12 @@ function AddToListModalLists({
 
           <ListItem
             list={list}
-            className="AddToListModal__ListItem"
-            container="AddToListModalLists__item"
+
+
             name="AddToListModalLists__item-name"
             emoji="AddToListModalLists__item-emoji"
+
+
             showActions={false}
             showHover={false}
             showItems={true}

@@ -15,19 +15,18 @@
 }
 
 .Lists__create-button {
-  height: 24px;
-  width: 24px;
-
   display: flex;
   align-items: center;
-  justify-content: center;
+
+  padding: 4px;
 
   color: var(--icon-color);
 }
 
 .Lists__create-button-icon {
-  font-size: 22px;
-
+  height: 16px;
+  width: 16px;
+  font-size: 16px;
   color: var(--icon-color);
 }
 
@@ -41,7 +40,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-
 }
 
 @media (max-width: 480px) {
@@ -49,12 +47,11 @@
     font-size: 18px;
   }
 
-  .Lists__create-button {
-    height: 30px;
-    width: 30px;
+  .Lists__create-button-icon {
+    height: 22px;
+    width: 22px;
+    font-size: 22px;
+    color: var(--icon-color);
   }
 
-  .Lists__create-button-icon {
-    font-size: 22px;
-  }
 }

@@ -5,7 +5,10 @@
   align-items: center;
 
   z-index: 5;
-  margin-bottom: 16px;
+  /* margin-bottom: 16px; */
+
+
+
 }
 
 .AddToListModal__list-overlay {
@@ -32,12 +35,50 @@
 
 }
 
+/* -- */
+.AddToListModalLists__item-emoji {
+  height: 60px;
+  width: 48px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-right: 8px;
+
+  font-size: 24px;
+
+  background-color: var(--color-hover-secondary-light);
+
+  border-radius: 4px;
+}
+
+.AddToListModalLists__item-name {
+  /* flex-direction: column; */
+  /* justify-content: center; */
+  /* align-items: center; */
+
+  font-size: 14px;
+  font-weight: 500;
+
+  color: var(--color-text-primary);
+
+  width: 180px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+
 .AddToListModalLists__checkbox-container {
   position: relative;
 
   display: flex;
   align-items: center;
   justify-content: center;
+
 }
 
 .AddToListModalLists__checkbox-container input[type="checkbox"] {
@@ -78,43 +119,4 @@ input.checked {
   pointer-events: none;
 
   transform: translate(-50%, -50%);
-}
-
-/* Add to List specific list styling */
-.AddToListModalLists__item {
-  padding-left: 0;
-}
-
-.AddToListModalLists__item-emoji {
-  height: 60px;
-  width: 48px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  margin-right: 8px;
-
-  font-size: 24px;
-
-  background-color: var(--color-hover-secondary-light);
-
-  border-radius: 4px;
-}
-
-.AddToListModalLists__item-name {
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  font-size: 14px;
-  font-weight: 500;
-
-  color: var(--color-text-primary);
-
-  width: 180px;
-
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }

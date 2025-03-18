@@ -52,10 +52,12 @@ function Lists({
             <div key={list.id}>
               <ListItem
                 list={list}
-                className="Lists__ListItem"
-                container="ListItem__container"
+
+               
                 emoji="ListItem__emoji"
                 name="ListItem__name"
+
+
                 showActions={true}
                 showHover={true}
                 navigate={navigate}
@@ -67,7 +69,7 @@ function Lists({
                 setNotificationMessage={setNotificationMessage}
                 showDropdown={showDropdown}
                 setShowListSideBar={setShowListSideBar}
-      showListSideBar={showListSideBar}
+                showListSideBar={showListSideBar}
               />
               <ListStocks
                 expandedListIds={expandedListIds}
@@ -76,7 +78,7 @@ function Lists({
                 stocks={stocks}
                 sessionUser={sessionUser}
                 setShowListSideBar={setShowListSideBar}
-      showListSideBar={showListSideBar}
+                showListSideBar={showListSideBar}
               />
             </div>
           ))}

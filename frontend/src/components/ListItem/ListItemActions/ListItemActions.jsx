@@ -61,10 +61,12 @@ function ListItemActions({
           <IoEllipsisHorizontalSharp className="ListItemActions__menu-icon" />
         </button>
         {showDropdown && (
-          <IoIosArrowDown
-            onClick={expandList}
-            className={`ListItemActions__arrow-icon ${isListOpen && "open"}`}
-          />
+          <button className="ListItemActions__arrow-button">
+            <IoIosArrowDown
+              onClick={expandList}
+              className={`ListItemActions__arrow-icon ${isListOpen && "open"}`}
+            />
+          </button>
         )}
       </div>
 

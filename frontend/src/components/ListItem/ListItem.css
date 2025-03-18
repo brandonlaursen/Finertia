@@ -4,13 +4,11 @@
   align-items: center;
 
   cursor: pointer;
+  padding: 8px 20px;
+
 }
 
-.Lists__ListItem {
-  height: 55px;
-}
-
-.Lists__ListItem:hover {
+.ListItem--hover:hover {
   background-color: var(--color-hover);
 }
 
@@ -22,15 +20,14 @@
   align-items: center;
   justify-content: space-between;
 
-  padding: 0 12px;
-
   color: var(--color-text-primary);
 }
+
+
 
 .ListItem__header {
   display: flex;
   align-items: center;
-  padding-left: 8px;
 
   border-radius: var(--border-radius-sm);
 }
@@ -44,6 +41,7 @@
     /* top right */ -4px -4px 0px 0px var(--color-hover-secondary-dark); /* top left */
 }
 
+/* -- */
 .ListItem__emoji {
   height: 36px;
   width: 30px;
@@ -71,6 +69,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+
 
 .ListItem__name-container {
   display: flex;
