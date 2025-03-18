@@ -1,7 +1,7 @@
 import "./ProfilePage.css";
 import { LuInfo } from "react-icons/lu";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
 import { selectUser } from "../../../store/session";
@@ -18,9 +18,13 @@ function ProfilePage() {
   const total =
     Number(stockSummary.totalInvestments) + Number(stockSummary.balance);
 
-  setTimeout(() => {
-    setIsLoading(false);
-  }, 1000);
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timeout);
+  }, []);
 
   if (isLoading)
     return (
@@ -76,7 +80,6 @@ function ProfilePage() {
               </span>
               <span className="ProfilePage__investments__details__value-subtext">
                 <span className="ProfilePage__value-subtext">
-
                   ${total ? Number(total).toFixed(2) : "0.00"}
                 </span>
               </span>

@@ -210,6 +210,8 @@ router.get("/stock-summary", async (req, res) => {
       mergedTransactionData
     );
 
+    console.log(" lastTransaction:", lastTransaction);
+
 
     // * Organize data into timeframes - ie: 1D, 1W, 1M, 3M, 1Y, 5Y
     const aggregates = gatherAggregates(userHistoricalData);
@@ -223,7 +225,7 @@ router.get("/stock-summary", async (req, res) => {
       ...aggregates,
     };
 
-    console.log(userSummary)
+
     return res.json(userSummary);
   } catch (error) {
     await t.rollback();
@@ -234,6 +236,7 @@ router.get("/stock-summary", async (req, res) => {
     });
   }
 });
+
 
 router.post("/trade/:stockId", async (req, res) => {
   const { id, balance } = req.user;

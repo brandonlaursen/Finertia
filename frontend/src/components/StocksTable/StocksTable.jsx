@@ -1,7 +1,7 @@
 import "./StocksTable.css";
 import { FaSort, FaSortUp, FaSortDown } from "react-icons/fa";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 
 import StocksTableHeader from "./StocksTableHeader";
 import StocksTableBody from "./StocksTableBody";
@@ -74,9 +74,13 @@ function StocksTable({
     );
   };
 
-  setTimeout(() => {
-    setIsLoading(false);
-  }, 1500);
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timeout);
+  }, []);
 
   const indexOfLastStock = currentPage * stocksPerPage;
   const indexOfFirstStock = indexOfLastStock - stocksPerPage;

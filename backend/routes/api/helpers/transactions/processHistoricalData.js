@@ -1,6 +1,9 @@
 const { getDate } = require("../getDate.js");
 const roundTimestampToInterval = require("./roundTimestampToInterval.js");
-
+const {
+  StockUserTransaction,
+  UserTransaction,
+} = require("../../../../db/models");
 // * Using users transaction history
 // * Get users owned stocks over time
 // * Get stock prices and how many shares a users owns
@@ -14,6 +17,7 @@ async function processHistoricalData(processedTransactions) {
   );
 
   const firstTransaction = processedTransactions[firstTimestamp];
+
   const firstTransactionTimestamp = firstTransaction.unixTimestamp;
 
   let roundedTransactionTimestamp = roundTimestampToInterval(
@@ -52,7 +56,6 @@ async function processHistoricalData(processedTransactions) {
         currentUrl = null;
         continue;
       }
-
 
       for (let aggregate of data.results) {
         const timestamp = aggregate.t;
