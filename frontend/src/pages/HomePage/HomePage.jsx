@@ -20,7 +20,7 @@ function HomePage() {
   const sessionUser = useSelector(selectUser);
 
   const { stockSummary } = sessionUser;
-  console.log(" stockSummary:", stockSummary, sessionUser);
+
 
   const [isLoading, setIsLoading] = useState(true);
   const [notifications, setNotifications] = useState(false);

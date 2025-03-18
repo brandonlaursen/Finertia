@@ -210,7 +210,6 @@ router.get("/stock-summary", async (req, res) => {
       mergedTransactionData
     );
 
-    console.log(" lastTransaction:", lastTransaction);
 
 
     // * Organize data into timeframes - ie: 1D, 1W, 1M, 3M, 1Y, 5Y

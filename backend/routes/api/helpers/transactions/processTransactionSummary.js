@@ -45,7 +45,7 @@ function processTransactionSummary(userTransactions, accountTransactions) {
       } = transaction;
 
 
-      console.log(purchasePrice)
+   
       // summary.purchaseAmount = purchasePrice;
       summary.shares = quantity;
 

@@ -4,7 +4,7 @@
 // * return aggregates
 function formatMergedTransactions(mergedTransactionData) {
   const mergedTransactionDataArray = Object.values(mergedTransactionData);
-  console.log(" mergedTransactionDataArray:", mergedTransactionDataArray);
+
   const lastTransaction =
     mergedTransactionDataArray[mergedTransactionDataArray.length - 1];
 
