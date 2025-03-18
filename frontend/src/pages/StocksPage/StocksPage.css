@@ -26,12 +26,15 @@
   width: clamp(400px, 60vw, 1000px);
 
   display: flex;
+  justify-content: center;
+
   flex-direction: column;
 }
 
 .StocksPage__section {
   display: flex;
   justify-content: space-between;
+
   margin-top: 20px;
 }
 
@@ -123,8 +126,6 @@
 .StocksPage__description {
   font-size: 15px;
   font-weight: 500;
-  /* margin-left: 8px; */
-
 }
 
 .StocksPage__hide--description {
@@ -150,7 +151,7 @@
   }
 
   .StocksPage__banner {
-    height: 120px;
+    height: 100px;
 
     background-color: var(--theme-primary-hover);
     background-image: url("https://png.pngtree.com/png-vector/20230728/ourmid/pngtree-boost-clipart-cartoon-rocket-ship-traveling-into-the-space-vector-png-image_6796486.png");
@@ -158,4 +159,6 @@
     background-repeat: no-repeat;
     background-position: 50%;
   }
+
+
 }

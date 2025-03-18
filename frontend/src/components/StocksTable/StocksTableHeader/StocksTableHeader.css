@@ -18,10 +18,8 @@
 
 .StocksTable th {
   height: 48px;
+  min-width: 140px;
   text-align: left;
-}
-
-.StocksTable__head th {
   font-size: 11px;
   color: var(--color-text-secondary);
 }
@@ -32,5 +30,12 @@
 
 .StocksTable th:first-child,
 .StocksTable td:first-child {
-  width: clamp(70px, 25vw, 300px);
+  width: clamp(70px, 20vw, 300px);
+}
+
+@media (max-width: 480px) {
+  .StocksTable th:first-child,
+  .StocksTable td:first-child {
+    width: clamp(70px, 10vw, 300px);
+  }
 }

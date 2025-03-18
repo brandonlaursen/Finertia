@@ -1,17 +1,19 @@
+.StocksTable__container {
+  display: flex;
+  flex-direction: column;
+
+
+}
+
 .StocksTable {
   width: 100%;
-  margin-top: 32px;
+  margin-top: 12px;
 
   table-layout: fixed;
   border-collapse: collapse;
 
   scrollbar-width: none;
   overflow-y: auto;
-}
-
-.StocksTable__container {
-  display: flex;
-  flex-direction: column;
 }
 
 .StocksTable__no-data {
@@ -21,7 +23,6 @@
 
 .StocksTable__sort-icon {
   vertical-align: middle;
-  margin-left: 4px;
 
   font-size: 0.8rem;
 
