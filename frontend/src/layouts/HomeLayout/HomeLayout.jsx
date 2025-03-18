@@ -18,7 +18,7 @@ function HomeLayout() {
       const header = document.querySelector(".StocksPage__banner");
       if (header) {
         const offset = header.getBoundingClientRect().top;
-        setScrolled(offset <= 74);
+        setScrolled(offset <= 59);
       }
     };
 

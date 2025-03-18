@@ -124,6 +124,7 @@
   font-size: 15px;
   font-weight: 500;
   /* margin-left: 8px; */
+
 }
 
 .StocksPage__hide--description {
@@ -132,6 +133,12 @@
 
 .StocksPage__hide--description {
   opacity: 0;
+}
+
+@media (max-width: 768px) {
+  .StocksPage__main {
+    width: 90vw;
+  }
 }
 
 @media (max-width: 480px) {
@@ -150,9 +157,5 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: 50%;
-  }
-
-  .StocksPage__section {
-    margin-top: 0px;
   }
 }

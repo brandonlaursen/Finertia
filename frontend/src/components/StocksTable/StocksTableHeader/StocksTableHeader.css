@@ -17,6 +17,7 @@
 }
 
 .StocksTable th {
+  height: 48px;
   text-align: left;
 }
 
@@ -31,11 +32,5 @@
 
 .StocksTable th:first-child,
 .StocksTable td:first-child {
-  width: clamp(70px, 15vw, 300px);
-}
-
-/* ====== Media Queries ====== */
-/* * Medium devices (tablets, 768px and up) */
-@media (max-width: 768px) {
-
+  width: clamp(70px, 25vw, 300px);
 }
