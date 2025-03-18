@@ -3,6 +3,9 @@
   align-items: center;
 
   padding: 4px;
+
+  max-height: 30px;
+
 }
 
 .CloseButton__container:hover {
@@ -16,4 +19,6 @@
   font-size: 22px;
 
   color: var(--icon-color);
+
+
 }
