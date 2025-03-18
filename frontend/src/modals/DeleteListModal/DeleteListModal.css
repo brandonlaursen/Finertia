@@ -23,6 +23,15 @@
   border-radius: 4px;
 
   z-index: 20;
+
+  opacity: 0;
+  transform: translateY(50%);
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.DeleteListModal__container.open {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .DeleteListModal__section {

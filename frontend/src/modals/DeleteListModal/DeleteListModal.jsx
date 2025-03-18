@@ -1,6 +1,6 @@
 import "./DeleteListModal.css";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import { useModal } from "../../context/Modal";
@@ -20,6 +20,11 @@ function DeleteListModal({
   const dispatch = useDispatch();
 
   const [isLoading, setIsLoading] = useState(false);
+  const [slideUp, setSlideUp] = useState(false);
+
+  useEffect(() => {
+    setSlideUp(true);
+  }, []);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -51,7 +56,7 @@ function DeleteListModal({
     <div className="DeleteListModal">
       <ModalOverlay closeModal={closeModal} />
 
-      <div className="DeleteListModal__container">
+      <div className={`DeleteListModal__container ${slideUp ? "open" : ""}`}>
         <ModalHeader closeModal={closeModal}>
           Are you sure you want to delete<span>{` "${listName}"?`}</span>
         </ModalHeader>
