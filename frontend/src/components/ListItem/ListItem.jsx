@@ -4,8 +4,6 @@ import ListItemActions from "./ListItemActions";
 
 function ListItem({
   list,
-  className,
-  container,
   emoji,
   name,
   showActions,
@@ -38,10 +36,10 @@ function ListItem({
     <article
       onClick={handleListItemClick}
       className={`ListItem
-${showHover && `ListItem--hover`}
+${showHover && `ListItem--hover ListItem--side-bar`}
     `}
     >
-      <div className={`ListItem__container`}>
+      <div className="ListItem__container">
         <header
           className={`ListItem__header ${
             showHover && `ListItem__header-hover`

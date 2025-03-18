@@ -14,7 +14,6 @@
   z-index: 10;
 
   width: clamp(300px, 100%, 365px);
-
   height: clamp(300px, 100vh, 450px);
 
   display: flex;
@@ -28,7 +27,7 @@
 .AddToListModal__section {
   position: relative;
 
-  /* height: 330px; */
+  height: 330px;
 
   display: flex;
   flex-direction: column;
@@ -55,5 +54,12 @@
 
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+  }
+
+  .AddToListModal__section {
+
+    height: auto;
+
+
   }
 }

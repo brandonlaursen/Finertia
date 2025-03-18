@@ -4,8 +4,11 @@
   align-items: center;
 
   cursor: pointer;
-  padding: 8px 20px;
+  padding: 8px 12px;
+}
 
+.ListItem--side-bar {
+  padding: 8px 20px;
 }
 
 .ListItem--hover:hover {
@@ -23,8 +26,6 @@
   color: var(--color-text-primary);
 }
 
-
-
 .ListItem__header {
   display: flex;
   align-items: center;
@@ -35,10 +36,10 @@
 .ListItem__header-hover:hover {
   background-color: var(--color-hover-secondary-dark);
 
-  box-shadow: -4px 4px 0px 0px var(--color-hover-secondary-dark),
-    /* bottom left */ 4px 4px 0px 0px var(--color-hover-secondary-dark),
-    /* bottom right */ 4px -4px 0px 0px var(--color-hover-secondary-dark),
-    /* top right */ -4px -4px 0px 0px var(--color-hover-secondary-dark); /* top left */
+  box-shadow: -8px 4px 0px 0px var(--color-hover-secondary-dark),
+    /* bottom left */ 8px 4px 0px 0px var(--color-hover-secondary-dark),
+    /* bottom right */ 8px -4px 0px 0px var(--color-hover-secondary-dark),
+    /* top right */ -8px -4px 0px 0px var(--color-hover-secondary-dark); /* top left */
 }
 
 /* -- */
@@ -69,8 +70,6 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
-
 
 .ListItem__name-container {
   display: flex;

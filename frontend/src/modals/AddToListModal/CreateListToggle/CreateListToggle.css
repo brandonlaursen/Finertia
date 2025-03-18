@@ -11,8 +11,7 @@
 
 .CreateListToggle__toggle {
   display: flex;
-  margin-bottom: 8px;
-
+  padding: 8px 12px;
 }
 
 .CreateListToggle__toggle-icon-container {
@@ -23,20 +22,19 @@
   justify-content: center;
   align-items: center;
 
-  margin-right: 8px;
-
-
-  font-size: 24px;
+  margin-right: 10px;
 
   color: var(--theme-primary-color);
   background-color: var(--button-primary-hover-light);
 
   border-radius: 4px;
-
-
 }
 
 .CreateListToggle__icon {
+  height: 24px;
+  width: 24px;
+  font-size: 24px;
+
   color: var(--theme-primary-color);
 }
 
@@ -59,4 +57,13 @@
 .CreateListToggle__form-container.exit ~ .CreateListToggle__toggle-container,
 .CreateListToggle__form-container.exit ~ .CreateListToggle__title {
   transform: translateY(-100%);
+}
+
+.CreateListToggle__placeholder input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
 }

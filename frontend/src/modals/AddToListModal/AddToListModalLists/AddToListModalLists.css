@@ -5,8 +5,6 @@
   align-items: center;
 
   z-index: 5;
-  /* margin-bottom: 16px; */
-
 
 
 }
@@ -32,10 +30,8 @@
 .AddToListModalLists.disabled {
   opacity: 0.5;
   pointer-events: none;
-
 }
 
-/* -- */
 .AddToListModalLists__item-emoji {
   height: 60px;
   width: 48px;
@@ -44,7 +40,7 @@
   justify-content: center;
   align-items: center;
 
-  margin-right: 8px;
+  margin-right: 10px;
 
   font-size: 24px;
 
@@ -54,10 +50,6 @@
 }
 
 .AddToListModalLists__item-name {
-  /* flex-direction: column; */
-  /* justify-content: center; */
-  /* align-items: center; */
-
   font-size: 14px;
   font-weight: 500;
 
@@ -68,9 +60,8 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
 }
-
-
 
 .AddToListModalLists__checkbox-container {
   position: relative;
@@ -78,6 +69,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
 
 }
 

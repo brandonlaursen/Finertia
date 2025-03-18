@@ -27,17 +27,23 @@ function CreateListToggle({
   return (
     <div className="CreateListToggle">
       {!isVisible ? (
-        <div className="CreateListToggle__toggle">
-          <span className="CreateListToggle__toggle-icon-container">
-            <FiPlus className="CreateListToggle__icon" />
-          </span>
-          <span
-            className="CreateListToggle__title"
-            onClick={() => setIsVisible(true)}
-          >
-            Create New List
-          </span>
-        </div>
+        <>
+          <div className="CreateListToggle__placeholder">
+            <input type="checkbox" disabled aria-hidden="true" />
+          </div>
+
+          <div className="CreateListToggle__toggle">
+            <span className="CreateListToggle__toggle-icon-container">
+              <FiPlus className="CreateListToggle__icon" />
+            </span>
+            <span
+              className="CreateListToggle__title"
+              onClick={() => setIsVisible(true)}
+            >
+              Create New List
+            </span>
+          </div>
+        </>
       ) : (
         <CreateListToggleForm {...createListToggleProps} />
       )}
