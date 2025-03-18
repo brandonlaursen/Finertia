@@ -9,6 +9,7 @@
 
   color: var(--color-text-primary);
   background-color: var(--color-background);
+
 }
 
 .AccountLayout__main {
@@ -31,6 +32,7 @@
   background-color: var(--color-background);
 
   border-bottom: 1px solid var(--border-color);
+
 }
 
 .AccountLayout__container {
@@ -80,9 +82,9 @@
 
   .AccountLayout__main {
     position: sticky;
-    top: 50px;
+    top: 40px;
     left: 0;
 
-    height: 100px;
+    height: 110px;
   }
 }
