@@ -56,3 +56,27 @@
 .StockTableItem__button:hover {
   color: var(--theme-primary-color);
 }
+
+@media (max-width: 480px) {
+  .StockTableItem__button {
+    height: 16px;
+    width: 16px;
+    font-size: 16px;
+
+    border: 1px solid var(--icon-color);
+    border-radius: 50%;
+  }
+
+  .stocks__btn--delete {
+    height: 18px;
+    width: 18px;
+    font-size: 18px;
+
+    border: 1px solid red;
+    border-radius: 50%;
+    color: red;
+  }
+  .stocks__btn--delete:hover {
+    color: red;
+  }
+}
