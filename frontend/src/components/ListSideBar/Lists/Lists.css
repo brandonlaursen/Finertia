@@ -22,14 +22,12 @@
   padding: 4px;
 
   color: var(--icon-color);
-
- 
 }
 
 .Lists__create-button-icon {
-  height: 14px;
-  width: 14px;
-  font-size: 14px;
+  height: 16px;
+  width: 16px;
+  font-size: 16px;
 
   color: var(--icon-color);
 }
@@ -55,9 +53,10 @@
   }
 
   .Lists__create-button-icon {
-    height: 22px;
-    width: 22px;
-    font-size: 22px;
+    height: 16px;
+    width: 16px;
+    font-size: 16px;
+
     color: var(--icon-color);
   }
 }

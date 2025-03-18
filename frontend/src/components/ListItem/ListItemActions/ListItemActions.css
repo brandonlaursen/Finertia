@@ -35,9 +35,9 @@
 }
 
 .ListItemActions__menu-icon {
-  height: 16px;
-  width: 16px;
-  font-size: 16px;
+  height: 14px;
+  width: 14px;
+  font-size: 14px;
 
   color: var(--icon-color);
 }
@@ -45,7 +45,7 @@
 .ListItemActions__arrow-button {
   display: flex;
 
-  padding: 4px 3px;
+  padding: 4px;
 
 
 }
@@ -79,15 +79,5 @@
     opacity: 1;
   }
 
-  .ListItemActions__arrow-icon {
-    height: 22px;
-    width: 22px;
-    font-size: 22px;
-  }
 
-  .ListItemActions__menu-icon {
-    height: 22px;
-    width: 22px;
-    font-size: 22px;
-  }
 }
