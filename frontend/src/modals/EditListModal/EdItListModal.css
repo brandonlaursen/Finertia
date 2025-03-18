@@ -22,6 +22,15 @@
 
   padding: 16px 24px;
   z-index: 20;
+
+  opacity: 0;
+  transform: translateY(50%);
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.EditListModal__container.open {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .EditListModal__section {
@@ -127,7 +136,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
   }
 
   .EditListModal__section__input {

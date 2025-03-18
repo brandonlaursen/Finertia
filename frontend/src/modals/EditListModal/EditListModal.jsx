@@ -1,6 +1,6 @@
 import "./EditListModal.css";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import EmojiPicker from "emoji-picker-react";
@@ -20,6 +20,12 @@ function EditListModal({ list, setNotifications, setNotificationMessage }) {
   const [listName, setListName] = useState(list.name);
 
   const [showPicker, setShowPicker] = useState(false);
+
+  const [slideUp, setSlideUp] = useState(false);
+
+  useEffect(() => {
+    setSlideUp(true);
+  }, []);
 
   const handleEmojiClick = (emojiData) => {
     setSelectedEmoji(emojiData.emoji);
@@ -59,7 +65,7 @@ function EditListModal({ list, setNotifications, setNotificationMessage }) {
     <form className="EditListModal" onSubmit={handleSubmit}>
       <ModalOverlay closeModal={closeModal} />
 
-      <div className="EditListModal__container">
+      <div className={`EditListModal__container ${slideUp ? "open" : ""}`}>
         <ModalHeader closeModal={closeModal}>Edit List</ModalHeader>
 
         <div className="EditListModal__section">
