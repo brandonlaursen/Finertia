@@ -28,9 +28,7 @@ function CreateListToggle({
     <div className="CreateListToggle">
       {!isVisible ? (
         <>
-          <div className="CreateListToggle__placeholder">
-            <input type="checkbox" disabled aria-hidden="true" />
-          </div>
+          <div className="CreateListToggle__placeholder" />
 
           <div className="CreateListToggle__toggle">
             <span className="CreateListToggle__toggle-icon-container">
