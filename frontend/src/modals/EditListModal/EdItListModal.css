@@ -156,4 +156,12 @@
 
     z-index: 1000;
   }
+
+  .EditListModal__section__buttons {
+
+    padding-left: 16px;
+    padding-right: 16px;
+
+  }
+
 }
