@@ -30,6 +30,12 @@ function TransferModal({ setNotifications, setNotificationMessage }) {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [error, setError] = useState(null);
 
+  const [slideUp, setSlideUp] = useState(false);
+
+  useEffect(() => {
+    setSlideUp(true);
+  }, []);
+
   useEffect(() => {
     if (amount == 0) {
       setShowMoneyButtons(true);
@@ -101,12 +107,13 @@ function TransferModal({ setNotifications, setNotificationMessage }) {
   };
 
   return (
-    <div className="TransferModal">
-      <div className="TransferModal__background">
-        <span className="TransferModal-button-span">
-          <CloseButton closeModal={closeModal} />
-        </span>
-      </div>
+    <div
+     
+      className={`TransferModal ${slideUp ? "open" : ""}`}
+    >
+      <span className="TransferModal-button-span">
+        <CloseButton closeModal={closeModal} />
+      </span>
 
       <div className="TransferModal__container">
         <div className="TransferModal__header">
