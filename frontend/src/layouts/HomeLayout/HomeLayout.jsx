@@ -26,6 +26,7 @@ function HomeLayout() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [routeClass]);
 
+
   return (
     <>
       <MobileTopBar />

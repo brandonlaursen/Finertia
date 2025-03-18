@@ -32,7 +32,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 
 function ProtectedRoute({ children }) {
   const sessionUser = useSelector(selectUser);
- 
+
   if (!sessionUser) {
     return <Navigate to="/welcome" replace />;
   }
