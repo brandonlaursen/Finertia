@@ -20,6 +20,7 @@
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
   border-radius: var(--border-radius-sm);
+
 }
 
 .ListItemActions__menu-button:active,
@@ -31,7 +32,6 @@
 
 .ListItemActions__menu-button:hover {
   background-color: var(--icon-color-hover);
-
   opacity: 1;
 }
 
@@ -40,6 +40,9 @@
 }
 
 .ListItemActions__menu-icon {
+
+  height: 18px;
+  width: 20px;
   color: var(--icon-color);
 }
 
@@ -74,6 +77,10 @@
     font-size: 22px;
   }
 
+  .ListItemActions__menu-button {
+    height: 40px;
+    width: 40px;
+  }
   .ListItemActions__menu-icon {
     font-size: 22px;
   }

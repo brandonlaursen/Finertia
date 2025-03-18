@@ -74,7 +74,7 @@ function StocksTableItem({
           />
         ) : (
           <FaPlus
-            className="StockTableItem__button stocks__btn--add"
+            className="StockTableItem__button"
             onClick={(e) => {
               e.stopPropagation();
               setModalContent(
