@@ -1,5 +1,6 @@
 import "./BuyingPowerDropdown.css";
 
+import { useState, useEffect } from "react";
 import { useModal } from "../../../context/Modal";
 
 import TransferModal from "../../../modals/TransferModal";
@@ -13,8 +14,16 @@ function BuyingPowerDropdown({
 }) {
   const { setModalContent, setModalClass } = useModal();
 
+  const [dropdownTransition, setDropdownTransition] = useState(false);
+
+  useEffect(() => {
+    setDropdownTransition(true);
+  }, []);
+
   return (
-    <div className="BuyingPowerDropDown">
+    <div
+      className={`BuyingPowerDropDown ${dropdownTransition ? "slideDown" : ""}`}
+    >
       <main className="BuyingPowerDropDown__main">
         <section className="BuyingPowerDropDown__details">
           <div className="BuyingPowerDropDown__label">
