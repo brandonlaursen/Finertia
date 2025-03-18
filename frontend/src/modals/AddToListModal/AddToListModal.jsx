@@ -28,6 +28,8 @@ function AddToListModal({ stock, setNotifications, setNotificationMessage }) {
     checkedList[listId] = true;
   }
 
+  const [slideUp, setSlideUp] = useState(false);
+
   const [isLoading, setIsLoading] = useState(false);
   const [checkedItems, setCheckedItems] = useState(checkedList);
   const [isVisible, setIsVisible] = useState(false);
@@ -35,6 +37,10 @@ function AddToListModal({ stock, setNotifications, setNotificationMessage }) {
   const [newListId, setNewListId] = useState(null);
   const [listName, setListName] = useState("");
   const [selectedEmoji, setSelectedEmoji] = useState("💡");
+
+  useEffect(() => {
+    setSlideUp(true);
+  }, []);
 
   useEffect(() => {
     dispatch(fetchLists());
@@ -120,10 +126,10 @@ function AddToListModal({ stock, setNotifications, setNotificationMessage }) {
   };
 
   return (
-    <div className="AddToListModal">
+    <div className={`AddToListModal`}>
       <ModalOverlay closeModal={closeModal} />
 
-      <main className="AddToListModal__main">
+      <main className={`AddToListModal__main ${slideUp ? "open" : ""}`}>
         <ModalHeader
           closeModal={closeModal}
         >{`Add ${stock.symbol} to List`}</ModalHeader>
