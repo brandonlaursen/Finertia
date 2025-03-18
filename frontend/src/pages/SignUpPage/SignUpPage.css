@@ -54,6 +54,7 @@
   word-wrap: break-word;
 
   font-size: 13px;
+  font-weight: 500;
   line-height: 1.5;
 
   margin-top: 32px;
@@ -88,10 +89,10 @@
 .SignUpPage__main-header {
   display: flex;
 
-  font-size: 20px;
-  font-weight: 500;
   margin-bottom: 40px;
 
+  font-size: 18px;
+  font-weight: 600;
   line-height: 1.5;
 }
 
@@ -104,11 +105,13 @@
 .SignUpPage__form-input {
   width: 100%;
   padding: 12px;
-  border: 1px solid rgb(48, 54, 58);
+
   margin-bottom: 16px;
 
-  background-color: black;
   color: white;
+  background-color: black;
+
+  border: 1px solid rgb(48, 54, 58);
 }
 
 .SignUpPage__form__section-two {
@@ -172,7 +175,7 @@
   min-height: 20px;
   width: 20px;
 
-  margin-right: 10px;
+  margin-right: 8px;
 }
 
 .SignUpPage__form button {
