@@ -27,5 +27,8 @@
   .StockPage {
     margin-top: 70px;
   }
-  
+
+  .StockPage__main {
+    margin-top: 0px;
+  }
 }
