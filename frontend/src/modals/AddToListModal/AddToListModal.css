@@ -23,15 +23,14 @@
   background-color: var(--color-surface);
   border-radius: 4px;
 
-  transition: transform 0.3s ease-out;
-  transform: translateY(100%);
-
   opacity: 0;
+  transform: translateY(50%);
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 }
 
 .AddToListModal__main.open {
-  transform: translateY(0);
   opacity: 1;
+  transform: translateY(0);
 }
 
 .AddToListModal__section {

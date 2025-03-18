@@ -9,11 +9,13 @@
   height: 390px;
   width: 430px;
 
-  transition: transform 0.3s ease-out;
-  transform: translateY(100%);
+  opacity: 0;
+  transform: translateY(50%);
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 }
 
 .ChooseListType.open {
+  opacity: 1;
   transform: translateY(0);
 }
 
@@ -91,7 +93,7 @@
 
   font-weight: bold;
   font-size: 12px;
-  
+
   color: var(--color-background);
   background-color: var(--theme-primary-color);
 
