@@ -1,5 +1,6 @@
 .SecurityPage {
   width: 74%;
+  height: 100vh;
 
   display: flex;
   flex-direction: column;
