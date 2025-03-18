@@ -76,7 +76,7 @@ function ProfilePage() {
               </span>
               <span className="ProfilePage__investments__details__value-subtext">
                 <span className="ProfilePage__value-subtext">
-                  {" "}
+
                   ${total ? Number(total).toFixed(2) : "0.00"}
                 </span>
               </span>
@@ -95,7 +95,7 @@ function ProfilePage() {
             <div className="ProfilePage__investments__details__value ProfilePage__investments__details__subtext">
               <span>Individual cash</span>
               <span className="ProfilePage__value-subtext">
-                $ {Number(stockSummary.balance).toFixed(2)}
+                ${Number(stockSummary.balance).toFixed(2)}
               </span>
             </div>
           </div>
