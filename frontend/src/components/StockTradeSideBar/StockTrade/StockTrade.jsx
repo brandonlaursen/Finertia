@@ -69,6 +69,12 @@ function StockTrade({
     return (sharesToTrade * price).toFixed(2);
   }, [sharesToTrade, price]);
 
+  const [slideUp, setSlideUp] = useState(false);
+
+  useEffect(() => {
+    setSlideUp(true);
+  }, []);
+
   useEffect(() => {
     dispatch(fetchStockTransactions());
   }, [dispatch]);
@@ -120,7 +126,7 @@ function StockTrade({
   ];
 
   return (
-    <div className="StockTrade">
+    <div className={`StockTrade ${slideUp ? "open" : ""}`}>
       {tradeComponents.map((Component, index) => (
         <Component key={index} {...stockTradeProps} />
       ))}

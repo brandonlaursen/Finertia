@@ -3,13 +3,11 @@
 }
 
 @media (max-width: 480px) {
-
   .StockTradeSideBar__mobile-wrapper {
     height: 100%;
     width: 100%;
 
     position: fixed;
-    bottom: 106px;
     bottom: 0;
     left: 0;
 
@@ -18,7 +16,11 @@
     align-items: end;
 
     background-color: rgba(0, 0, 0, 0.7);
+
   }
+
+
+
 
   .StockTradeBarMobile {
     position: fixed;
