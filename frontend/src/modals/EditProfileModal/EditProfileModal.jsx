@@ -4,7 +4,7 @@ import { FiPlusCircle } from "react-icons/fi";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 
 import { useDispatch } from "react-redux";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 import ModalHeader from "../../components/ModalHeader/ModalHeader";
 import ModalOverlay from "../../components/ModalOverlay/ModalOverlay";
@@ -31,6 +31,12 @@ function EditProfileModal({ sessionUser }) {
   const [preview, setPreview] = useState(false);
   const [previewImage, setPreviewImage] = useState(null);
   const [newAccentTheme, setNewAccentTheme] = useState(selectedAccentTheme);
+
+  const [slideUp, setSlideUp] = useState(false);
+
+  useEffect(() => {
+    setSlideUp(true);
+  }, []);
 
   const DEFAULT_IMAGE =
     "https://finertia.s3.amazonaws.com/public/1739990232538.png";
@@ -83,7 +89,7 @@ function EditProfileModal({ sessionUser }) {
   return (
     <div className="EditProfileModal">
       <ModalOverlay closeModal={closeModal} />
-      <div className="EditProfileModal__container">
+      <div className={`EditProfileModal__container ${slideUp ? "open" : ""}`}>
         <ModalHeader closeModal={closeModal}>Edit Profile</ModalHeader>
 
         <section className="EditProfileModal__section">

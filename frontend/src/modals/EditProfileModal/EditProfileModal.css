@@ -23,7 +23,6 @@
 }
 
 .EditProfileModal__container {
-  /* height: 420px; */
   width: 400px;
 
   position: absolute;
@@ -38,6 +37,15 @@
   color: var(--color-text-primary);
 
   border-radius: 4px;
+
+  opacity: 0;
+  transform: translateY(50%);
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.EditProfileModal__container.open {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .EditProfileModal__header {
@@ -150,7 +158,6 @@
   position: relative;
   height: 48px;
   width: 48px;
-
 
   border-radius: 50%;
   cursor: pointer;
