@@ -1,14 +1,13 @@
 .ListItemMenu {
   height: 100px;
-  width: 150px;
+  width: 170px;
 
   position: absolute;
   top: 38px;
-  left: 110px;
+  right: 36px;
 
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
 
   background-color: var(--color-surface);
 
@@ -36,6 +35,7 @@
   text-decoration-thickness: 1px;
   text-decoration-color: var(--color-text-primary);
   text-underline-offset: 3px;
+
   cursor: default;
 }
 

@@ -9,7 +9,7 @@
   padding: 0 20px;
 
   font-weight: bold;
-  font-size: var(--font-size-text-md);
+  font-size: 14px;
 
   border-bottom: var(--border);
 }
@@ -27,6 +27,7 @@
   height: 16px;
   width: 16px;
   font-size: 16px;
+
   color: var(--icon-color);
 }
 
@@ -37,6 +38,7 @@
 
 .Lists__container {
   position: relative;
+
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -44,7 +46,7 @@
 
 @media (max-width: 480px) {
   .Lists__header {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .Lists__create-button-icon {
