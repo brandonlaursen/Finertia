@@ -28,8 +28,7 @@ function LoginPage() {
     setErrors({});
 
     setIsLoading(true);
-    // await new Promise((resolve) => setTimeout(resolve, 1000));
-
+ 
 
     try {
       const res = await dispatch(login({ credential, password }));
