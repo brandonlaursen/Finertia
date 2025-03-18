@@ -1,10 +1,18 @@
 import "./ChooseListType.css";
 
+import { useState, useEffect } from "react";
+
 import ModalHeader from "../../../components/ModalHeader/ModalHeader";
 
 function ChooseListType({ closeModal, setIsOpen }) {
+  const [slideUp, setSlideUp] = useState(false);
+
+  useEffect(() => {
+    setSlideUp(true);
+  }, []);
+
   return (
-    <div className="ChooseListType">
+    <div className={`ChooseListType ${slideUp ? "open" : ""}`}>
       <main className="ChooseListType__container">
         <ModalHeader closeModal={closeModal}>Choose a list type</ModalHeader>
 
