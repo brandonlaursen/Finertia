@@ -13,6 +13,7 @@ function CreateListModal({ setNotifications, setNotificationMessage }) {
 
   const [isOpen, setIsOpen] = useState(false);
 
+
   return (
     <div className="CreateList">
       <ModalOverlay closeModal={closeModal} />

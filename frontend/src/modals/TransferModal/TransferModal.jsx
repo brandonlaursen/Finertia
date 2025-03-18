@@ -37,6 +37,14 @@ function TransferModal({ setNotifications, setNotificationMessage }) {
   }, []);
 
   useEffect(() => {
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
+
+  useEffect(() => {
     if (amount == 0) {
       setShowMoneyButtons(true);
       setDisableButton(true);
@@ -108,7 +116,7 @@ function TransferModal({ setNotifications, setNotificationMessage }) {
 
   return (
     <div
-     
+
       className={`TransferModal ${slideUp ? "open" : ""}`}
     >
       <span className="TransferModal-button-span">
