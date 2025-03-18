@@ -50,7 +50,7 @@ function mergeTransactionAndAggregateData(
       const transaction = processedTransactions[tsStr];
 
       // * update currentBalance
-      currentBalance = transaction.balance;
+      currentBalance = Number(transaction.balance);
 
       // * Use a deep clone so that subsequent mutations do not affect this snapshot.
       currentStockSharesOwned = deepClone(transaction.stockSharesOwned);
