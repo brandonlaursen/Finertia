@@ -17,16 +17,19 @@
 .Lists__create-button {
   display: flex;
   align-items: center;
+  justify-content: center;
 
   padding: 4px;
 
   color: var(--icon-color);
+
+ 
 }
 
 .Lists__create-button-icon {
-  height: 16px;
-  width: 16px;
-  font-size: 16px;
+  height: 14px;
+  width: 14px;
+  font-size: 14px;
 
   color: var(--icon-color);
 }

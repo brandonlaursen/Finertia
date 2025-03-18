@@ -1,9 +1,6 @@
 .ListItemActions {
   display: flex;
   gap: 12px;
-
-  /* background-color: antiquewhite; */
-
 }
 
 .ListItemActions__menu-button {
@@ -47,19 +44,22 @@
 
 .ListItemActions__arrow-button {
   display: flex;
-  align-items: center;
 
-  padding: 4px;
+  padding: 4px 3px;
+
+
 }
 
 .ListItemActions__arrow-icon {
-  height: 18px;
-  width: 18px;
-  font-size: 18px;
+  height: 16px;
+  width: 16px;
+  font-size: 16px;
 
   color: var(--icon-color);
 
   transition: transform 0.3s ease;
+
+
 }
 
 .ListItemActions__arrow-icon.open {
