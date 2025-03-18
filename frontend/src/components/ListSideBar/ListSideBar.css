@@ -1,5 +1,4 @@
-/* ========== List Home Container ========== */
-/* Main sidebar container that stays fixed while scrolling */
+
 .ListSideBar {
   position: sticky;
   top: 85px;
@@ -43,7 +42,7 @@
   width: 180px;
 }
 
-/* ====== Loading ====== */
+
 .ListSideBar__loading {
   position: sticky;
   top: 85px;
@@ -57,10 +56,9 @@
   border-radius: var(--border-radius-sm);
 }
 
-/* ====== Media Queries ====== */
-/* Medium devices (tablets, 768px and up) */
+
 @media (max-width: 768px) {
-  /* styles for medium devices */
+
   .ListSideBar {
     display: none;
     border-radius: 0px;
@@ -71,10 +69,10 @@
   }
 }
 
-/* Small devices (landscape phones, 576px and up) */
+
 @media (max-width: 576px) {
 }
 
-/* Extra small devices (portrait phones, less than 576px) */
+
 @media (max-width: 575.98px) {
 }

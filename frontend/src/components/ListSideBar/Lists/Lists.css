@@ -46,6 +46,8 @@
 
 @media (max-width: 480px) {
   .Lists__header {
+    height: 60px;
+
     font-size: 16px;
   }
 
@@ -55,5 +57,4 @@
     font-size: 22px;
     color: var(--icon-color);
   }
-
 }
