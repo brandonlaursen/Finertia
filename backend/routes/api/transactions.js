@@ -192,7 +192,7 @@ router.get("/stock-summary", async (req, res) => {
     const processedHistoricalData = await processHistoricalData(
       processedTransactions
     );
-   
+
 
     // * Merge users and stocks data + timestamps
     // * Create a timeline of portfolio changes + value
@@ -223,6 +223,7 @@ router.get("/stock-summary", async (req, res) => {
       ...aggregates,
     };
 
+    console.log(userSummary)
     return res.json(userSummary);
   } catch (error) {
     await t.rollback();
