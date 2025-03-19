@@ -50,7 +50,7 @@ function StockChart({ stockData, selectedTimeFrame }) {
     const minValue = Math.min(...dataPoints);
     const maxValue = Math.max(...dataPoints);
     const range = maxValue - minValue;
-    // Force a minimum padding if the range is too small
+ 
     const padding = range < 1 ? 0.5 : Math.max(range * 0.1, 0.5);
 
     const dynamicMin = minValue - padding;
@@ -67,21 +67,26 @@ function StockChart({ stockData, selectedTimeFrame }) {
       chart: {
         type: "line",
         height: 350,
-        zoom: { enabled: false },
-        fill: {
-          type: "gradient",
-          gradient: {
-            shade: "light",
-            type: "horizontal",
-            shadeIntensity: 0.6,
-            opacityFrom: 1,
-            opacityTo: 1,
-          },
+        zoom: {
+          type: "x",
+          enabled: true,
+          autoScaleYaxis: true,
         },
+
         toolbar: {
           tools: {
             download: false,
           },
+        },
+      },
+      fill: {
+        type: "gradient",
+        gradient: {
+          shade: "light",
+          type: "horizontal",
+          shadeIntensity: 1,
+          opacityFrom: .1,
+          opacityTo: 1,
         },
       },
 
@@ -98,6 +103,15 @@ function StockChart({ stockData, selectedTimeFrame }) {
           stroke: { color: "var(--border-color)", width: 1, dashArray: 0 },
         },
         tooltip: { enabled: false },
+        plotOptions: {
+          line: {
+            colors: {
+              threshold: 10,
+              colorAboveThreshold: "#0088ee",
+              colorBelowThreshold: "#ff0000",
+            },
+          },
+        },
       },
       annotations: {
         yaxis: [
