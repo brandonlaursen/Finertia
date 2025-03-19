@@ -42,10 +42,7 @@ function StockChart({ stockData, selectedTimeFrame }) {
       return { dynamicMin: 0, dynamicMax: 0, middleValue: 0 };
     }
 
-    const dataPoints = data
-      // .filter((point) => point.y > 0)
-      .map((point) => point.y);
-
+    const dataPoints = data.map((point) => point.y);
     if (dataPoints.length === 0) {
       return { dynamicMin: 0, dynamicMax: 0, middleValue: 0 };
     }
@@ -53,7 +50,8 @@ function StockChart({ stockData, selectedTimeFrame }) {
     const minValue = Math.min(...dataPoints);
     const maxValue = Math.max(...dataPoints);
     const range = maxValue - minValue;
-    const padding = Math.max(range * 0.1, 0.5);
+    // Force a minimum padding if the range is too small
+    const padding = range < 1 ? 0.5 : Math.max(range * 0.1, 0.5);
 
     const dynamicMin = minValue - padding;
     const dynamicMax = maxValue + padding;

@@ -33,7 +33,8 @@
 
   font-size: clamp(14px, 2rem, 28px);
   font-weight: var(--font-weight-bold);
-  color: var(--color-text-grey);
+  /* color: var(--color-text-grey); */
+  color:#adacac;
 
   margin-top: 15vh;
   margin-bottom: 8px;
@@ -41,10 +42,12 @@
 }
 
 .WelcomePage__hero-highlight {
-  width: clamp(350px, 100%, 700px);
+  width: clamp(350px, 90%, 700px);
 
   display: flex;
   flex-direction: column;
+
+  color: white;
 
   text-align: center;
   font-size: clamp(14px, 2vw, 24px);
