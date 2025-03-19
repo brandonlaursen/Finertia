@@ -1,12 +1,12 @@
 .WelcomePageNavbar {
-  /* height: 60px; */
+  height: 70px;
   width: 100%;
+
   display: flex;
   justify-content: space-evenly;
+
   padding: 0 1%;
 
-  /* background-color: var(--color-background); */
-  background-color: transparent;
   background-color: rgba(0, 0, 0, 0.2);
 
   color: var(--color-text-primary);
@@ -15,6 +15,7 @@
 .WelcomePageNavbar__logo {
   display: flex;
   align-items: center;
+
   gap: 5px;
   margin-left: 16px;
 
@@ -33,6 +34,8 @@
 .WelcomePageNavbar__menu {
   display: flex;
   align-items: center;
+
+  
   gap: 10px;
   margin-left: auto;
 
@@ -67,7 +70,6 @@
   background-color: rgb(245, 63, 104);
   color: white;
   font-weight: bold;
-
 }
 
 .signup-button:hover {
