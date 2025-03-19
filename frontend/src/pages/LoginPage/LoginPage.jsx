@@ -51,7 +51,7 @@ function LoginPage() {
           <header className="LoginPage__header">
 
             <img
-              src="/public/favicon3.png"
+              src="favicon3.png"
               alt="Logo"
               width="18"
               height="18"

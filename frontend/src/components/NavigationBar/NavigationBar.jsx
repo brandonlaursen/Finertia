@@ -45,7 +45,7 @@ function NavigationBar({ scrolled }) {
   return (
     <nav className={`${routeClass} ${scrolled && "scrolled"}`}>
       <NavLink className={`Navigation__logo-container`}>
-      <img src="/public/favicon3.png" alt="Logo" width="24" />
+      <img src="/favicon3.png" alt="Logo" width="24" />
       </NavLink>
 
       <SearchBar />

@@ -22,7 +22,7 @@ function WelcomePage() {
       <section className="WelcomePage__section WelcomePage__hero">
         <div className="WelcomePage__hero-title">
           {/* <FaSpaceShuttle /> */}
-          <img src="/public/favicon3.png" alt="Logo" width="20" />
+          <img src="/favicon3.png" alt="Logo" width="20" />
           <span>Finertia Investing</span>
         </div>
 

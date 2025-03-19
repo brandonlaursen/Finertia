@@ -75,7 +75,7 @@ function SignUpPage() {
       <aside className="SignUpPage__aside">
         <Link className="SignUpPage__aside-logo" to="/welcome">
           {/* <FaSpaceShuttle /> */}
-          <img src="/public/favicon3.png" alt="Logo" width="18" />
+          <img src="/favicon3.png" alt="Logo" width="18" />
           Finertia
         </Link>
 
