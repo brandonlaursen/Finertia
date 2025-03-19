@@ -32,14 +32,14 @@
 
   gap: 8px;
 
-  font-size: 24px;
+  font-size: 22px;
   font-weight: bold;
 
   transition: color 0.3s ease-in-out;
 }
 
 .SignUpPage__aside-logo:hover {
-  color: #07de96;
+  color: rgb(10, 191, 246,);
 }
 
 .SignUpPage__aside-header {

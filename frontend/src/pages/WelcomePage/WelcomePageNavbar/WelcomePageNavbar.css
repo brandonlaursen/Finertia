@@ -5,11 +5,11 @@
   justify-content: space-evenly;
   padding: 0 1%;
 
-  background-color: var(--color-background);
+  /* background-color: var(--color-background); */
+  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.2);
 
   color: var(--color-text-primary);
-
-  
 }
 
 .WelcomePageNavbar__logo {
@@ -27,7 +27,7 @@
 }
 
 .WelcomePageNavbar__logo:hover {
-  color: rgb(134, 250, 230);
+  color: rgb(10, 191, 246);
 }
 
 .WelcomePageNavbar__menu {
@@ -41,7 +41,7 @@
 }
 
 .WelcomePageNavbar__menu-item {
-  height: 40px;
+  height: 38px;
 
   display: inline-flex;
   justify-content: center;
@@ -54,23 +54,24 @@
   font-size: 14px;
   font-weight: 700;
 
-  border-radius: 44px;
+  border-radius: 4px;
 
   transition: color 0.3s ease-in-out;
 }
 
 .login-button:hover {
-  color: rgb(134, 250, 230);
+  color: rgb(245, 63, 104);
 }
 
 .signup-button {
-  background-color: #ffa502;
+  background-color: rgb(245, 63, 104);
   color: white;
   font-weight: bold;
+
 }
 
 .signup-button:hover {
-  background-color: #faaf23;
+  background-color: rgb(245, 63, 104, 0.9);
 }
 
 @media (max-width: 768px) {

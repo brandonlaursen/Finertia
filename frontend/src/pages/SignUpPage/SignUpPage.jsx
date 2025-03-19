@@ -1,5 +1,5 @@
 import "./SignUpPage.css";
-import { FaSpaceShuttle } from "react-icons/fa";
+// import { FaSpaceShuttle } from "react-icons/fa";
 import { LuInfo } from "react-icons/lu";
 import { MdRemoveRedEye } from "react-icons/md";
 
@@ -74,7 +74,8 @@ function SignUpPage() {
     <div className="SignUpPage">
       <aside className="SignUpPage__aside">
         <Link className="SignUpPage__aside-logo" to="/welcome">
-          <FaSpaceShuttle />
+          {/* <FaSpaceShuttle /> */}
+          <img src="/public/favicon3.png" alt="Logo" width="18" />
           Finertia
         </Link>
 

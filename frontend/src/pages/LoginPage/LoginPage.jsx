@@ -28,7 +28,6 @@ function LoginPage() {
     setErrors({});
 
     setIsLoading(true);
- 
 
     try {
       const res = await dispatch(login({ credential, password }));
@@ -49,7 +48,19 @@ function LoginPage() {
 
       <main className="LoginPage__main">
         <form onSubmit={handleSubmit} className="LoginPage__form">
-          <header>Log In to Finertia</header>
+          <header className="LoginPage__header">
+
+            <img
+              src="/public/favicon3.png"
+              alt="Logo"
+              width="18"
+              height="18"
+              className="LoginPage__icon"
+              onClick={() => navigate("/welcome")}
+            />
+            <span className="LoginPage__title">Log In to Finertia</span>
+          </header>
+
           <label>Email</label>
           <input
             type="text"

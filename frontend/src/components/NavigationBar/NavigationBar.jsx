@@ -1,5 +1,5 @@
 import "./NavigationBar.css";
-import { FaSpaceShuttle } from "react-icons/fa";
+// import { FaSpaceShuttle } from "react-icons/fa";
 
 import { useState, useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
@@ -45,7 +45,7 @@ function NavigationBar({ scrolled }) {
   return (
     <nav className={`${routeClass} ${scrolled && "scrolled"}`}>
       <NavLink className={`Navigation__logo-container`}>
-        <FaSpaceShuttle id="Navigation__logo" />
+      <img src="/public/favicon3.png" alt="Logo" width="24" />
       </NavLink>
 
       <SearchBar />

@@ -1,6 +1,6 @@
 import "./WelcomePageNavbar.css";
 
-import { FaSpaceShuttle } from "react-icons/fa";
+// import { FaSpaceShuttle } from "react-icons/fa";
 
 import { Link } from "react-router-dom";
 
@@ -8,8 +8,8 @@ function WelcomePageNavbar() {
   return (
     <nav className="WelcomePageNavbar">
       <Link className="WelcomePageNavbar__logo" to="/welcome">
-        <FaSpaceShuttle />
-        {/* <img src="/favicon.ico" alt="Logo" width="24" /> */}
+        {/* <FaSpaceShuttle /> */}
+        <img src="/public/favicon3.png" alt="Logo" width="20" />
         Finertia
       </Link>
 
