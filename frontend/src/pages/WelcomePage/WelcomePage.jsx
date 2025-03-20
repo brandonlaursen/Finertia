@@ -17,13 +17,13 @@ function WelcomePage() {
       <section className="WelcomePage__section WelcomePage__hero">
         <div className="WelcomePage__hero-title">
           <img src="/favicon3.png" alt="Logo" width="20" />
-          <span>Finertia Investing</span>
+          <span>Welcome to Finertia</span>
         </div>
 
         <div className="WelcomePage__hero-highlight">
           <h1>
-            Investing, like space, requires momentum—stay the course, &quot;defy
-            inertia.&quot;
+            &quot;Defy inertia—simulate, strategize, and keep your investments
+            in motion.&quot;
           </h1>
           {sessionUser ? null : (
             <Link to="/signup">

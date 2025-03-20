@@ -22,14 +22,13 @@
   font-size: 22px;
   font-weight: bold;
 
-  /* color: var(--color-text-grey); */
   color:#adacac;
 
   transition: color 0.3s ease-in-out;
 }
 
 .WelcomePageNavbar__logo:hover {
-  color: rgb(10, 191, 246);
+  color: rgb(0, 153, 255);
 }
 
 .WelcomePageNavbar__menu {
@@ -53,7 +52,7 @@
 
   padding: 0 24px;
 
-  /* color: var(--color-text-primary); */
+
   color: white;
 
   font-size: 14px;
@@ -65,17 +64,17 @@
 }
 
 .login-button:hover {
-  color: rgb(226, 31, 125);
+  color: rgb(0, 153, 255);
 }
 
 .signup-button {
-  background-color: rgb(226, 31, 125);
+  background-color: rgb(229, 31, 125);
   color: white;
   font-weight: bold;
 }
 
 .signup-button:hover {
-  background-color: rgb(226, 31, 125, .8);
+  background-color: rgb(229, 31, 125, .8);
 }
 
 @media (max-width: 768px) {
