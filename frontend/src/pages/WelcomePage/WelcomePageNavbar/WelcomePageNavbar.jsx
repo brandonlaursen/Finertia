@@ -15,6 +15,9 @@ function WelcomePageNavbar() {
 
       <ul className="WelcomePageNavbar__menu">
         <li>
+          <Link className="WelcomePageNavbar__about-link">About</Link>
+        </li>
+        <li>
           <Link
             className="WelcomePageNavbar__menu-item login-button"
             to="/login"
