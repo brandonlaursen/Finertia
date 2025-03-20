@@ -89,7 +89,7 @@ function StockChart({ stockData, selectedTimeFrame }) {
           opacityTo: 1,
           gradientToColors: [
             // "#FDD835",
-            "var(--theme-secondary-hover-light)",
+            "var(--theme-primary-hover-light)",
           ],
         },
       },
