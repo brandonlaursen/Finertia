@@ -2,15 +2,19 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 40px;
+
   height: 40px;
-  border-radius: 50%;
-  background-color: var(--button-background);
-  border: none;
-  cursor: pointer;
+  width: 40px;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+  border-radius: 50%;
+  background-color: var(--button-background);
+
+  border: none;
+  cursor: pointer;
   box-shadow: 0 2px 10px var(--shadow-color);
   transition: all 0.3s ease;
   z-index: 1000;
@@ -29,10 +33,5 @@
 @media (max-width: 768px) {
   .ThemeToggle {
     display: none;
-
-    /* height: 32px;
-    width: 32px;
-    top:9px;
-    right: 50px; */
   }
 }

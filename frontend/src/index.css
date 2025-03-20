@@ -19,7 +19,7 @@ body {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
 
-  scrollbar-gutter: stable;
+  /* scrollbar-gutter: stable; */
 }
 
 * {

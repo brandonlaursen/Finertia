@@ -44,7 +44,7 @@ function WelcomePageFooter() {
           <FaCode />
         </a>
       </section>
-      <span className="WelcomePageFooter__name">Built by Brandon Laursen </span>
+      <span className="WelcomePageFooter__name">© Brandon Laursen</span>
     </footer>
   );
 }

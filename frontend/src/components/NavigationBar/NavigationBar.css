@@ -13,7 +13,10 @@
 
   background-color: var(--color-background);
 
-  z-index: 2;
+
+  z-index: 100;
+
+
 }
 
 .Navigation__logo-container {
@@ -76,9 +79,7 @@
   color: var(--theme-primary-color);
 }
 
-/* ========== Navigation Bar ========== */
 
-/* Navbar for the Stocks page */
 .stocks-nav {
   height: 80px;
   width: 100%;
@@ -98,16 +99,12 @@
   z-index: 2;
 }
 
-/* Changes navbar background when scrolled */
+
 .scrolled {
-  background-color: var(--color-background);
+  /* background-color: var(--color-background); */
 }
 
-/* ====== Media Queries ====== */
-/* Medium devices (tablets, 768px and up) */
-@media (max-width: 768px) {
-  /* styles for medium devices */
-}
+
 
 @media (max-width: 480px) {
   .Navigation {

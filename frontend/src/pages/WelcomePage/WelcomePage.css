@@ -17,13 +17,11 @@
 .WelcomePage__section {
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-}
 
-.WelcomePage__hero {
-  flex-direction: column;
   display: flex;
+  flex-direction: column;
+
+  align-items: center;
 }
 
 .WelcomePage__hero-title {
@@ -37,7 +35,7 @@
 
   color: white;
 
-  margin-top: 11vh;
+  margin-top: 10vh;
   margin-bottom: 24px;
   animation: fadeIn 1s ease-in-out;
 }
@@ -94,15 +92,26 @@
   .WelcomePage {
     background-image: url("/mobile-welcome-page-bg.jpg");
     background-size: cover;
-    background-position: center -15px;
+    background-position: center -1px;
     background-repeat: no-repeat;
 
     background-color: rgb(32, 1, 68);
+
+  }
+
+  .WelcomePage__section {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: flex-start;
   }
 
   .WelcomePage__hero-title {
-    margin-top: 15%;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
 
     font-size: clamp(14px, 3rem, 48px);
     font-weight: 500;
@@ -111,11 +120,14 @@
     text-align: center;
 
     color: white;
+
+    margin-top: 10%;
   }
 
   .WelcomePage__hero-highlight {
     font-size: 13px;
-    font-weight: 500;
+
+    flex: 1;
   }
 
   .WelcomePage__logo {
@@ -127,9 +139,6 @@
   }
 
   .WelcomePage__mobile-buttons {
-    position: fixed;
-    bottom: 0;
-
     height: 10%;
     width: 100%;
 
@@ -138,7 +147,8 @@
     align-items: center;
     gap: 16px;
 
-    background-color: rgb(32, 1, 68);
+
+    background-color: rgb(5, 156, 181);
   }
 
   .WelcomePage__mobile-button {
