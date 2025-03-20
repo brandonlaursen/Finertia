@@ -1,5 +1,6 @@
 .WelcomePage {
   height: 100vh;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -8,7 +9,7 @@
   background-color: var(--color-background);
   color: var(--color-text-primary);
 
-  background-image: url("/public/welcome-page-bg.jpg");
+  background-image: url("/welcome-page-bg.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -34,7 +35,6 @@
   font-size: clamp(14px, 2rem, 48px);
   font-weight: var(--font-weight-bold);
 
-  /* color: #adacac; */
   color: white;
 
   margin-top: 12vh;
@@ -48,7 +48,7 @@
   display: flex;
   flex-direction: column;
 
-  color: #D3D3D3;
+  color: #d3d3d3;
 
   text-align: center;
   font-size: clamp(14px, 1.5vw, 24px);
@@ -69,6 +69,10 @@
   background-color: rgba(0, 153, 255, 0.8);
 }
 
+.WelcomePage__mobile-buttons {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .WelcomePage__features {
     flex-direction: column-reverse;
@@ -86,5 +90,89 @@
   }
 }
 
-@media (max-width: 430px) {
+@media (max-width: 830px) {
+  .WelcomePage {
+    background-image: url("/mobile-welcome-page-bg.jpg");
+    background-size: cover;
+    background-position: center -15px;
+    background-repeat: no-repeat;
+
+    background-color: rgb(32, 1, 68);
+  }
+
+  .WelcomePage__hero-title {
+    margin-top: 15%;
+    margin-bottom: 8px;
+
+    font-size: clamp(14px, 3rem, 48px);
+    font-weight: 500;
+
+    width: 70%;
+    text-align: center;
+
+    color: white;
+  }
+
+  .WelcomePage__hero-highlight {
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .WelcomePage__logo {
+    display: none;
+  }
+
+  .WelcomePage__hero-button {
+    display: none;
+  }
+
+  .WelcomePage__mobile-buttons {
+    position: fixed;
+    bottom: 0;
+
+    height: 10%;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    background-color: rgb(32, 1, 68);
+  }
+
+  .WelcomePage__mobile-button {
+    height: 42px;
+    width: 40%;
+
+    padding: 0 24px;
+
+    color: white;
+
+    background-color: rgb(229, 31, 125);
+
+    font-weight: bold;
+
+    border-radius: 44px;
+  }
+
+  .WPM-login-btn {
+    background-color: transparent;
+
+    border: 1px solid white;
+  }
+
+  .WPM-login-btn:hover {
+    background-color: rgba(44, 2, 91, 0.5);
+  }
+
+  .WPM-signup-btn {
+    background-color: rgb(229, 31, 125);
+    color: white;
+    font-weight: bold;
+  }
+
+  .WPM-signup-btn:hover {
+    background-color: rgb(229, 31, 125, 0.8);
+  }
 }

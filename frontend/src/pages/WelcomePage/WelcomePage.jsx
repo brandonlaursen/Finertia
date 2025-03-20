@@ -1,6 +1,6 @@
 import "./WelcomePage.css";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import WelcomePageNavbar from "./WelcomePageNavbar";
@@ -9,6 +9,7 @@ import { selectUser } from "../../../store/session";
 
 function WelcomePage() {
   const sessionUser = useSelector(selectUser);
+  const navigate = useNavigate();
 
   return (
     <div className="WelcomePage">
@@ -16,7 +17,12 @@ function WelcomePage() {
 
       <section className="WelcomePage__section WelcomePage__hero">
         <div className="WelcomePage__hero-title">
-          <img src="/favicon3.png" alt="Logo" width="20" />
+          <img
+            src="/favicon3.png"
+            alt="Logo"
+            width="20"
+            className="WelcomePage__logo"
+          />
           <span>Welcome to Finertia</span>
         </div>
 
@@ -31,6 +37,21 @@ function WelcomePage() {
             </Link>
           )}
         </div>
+
+        <section className="WelcomePage__mobile-buttons">
+          <button
+            className="WelcomePage__mobile-button WPM-login-btn"
+            onClick={() => navigate("/login")}
+          >
+            Login
+          </button>
+          <button
+            className="WelcomePage__mobile-button WPM-signup-btn"
+            onClick={() => navigate("/signup")}
+          >
+            Sign Up
+          </button>
+        </section>
       </section>
     </div>
   );

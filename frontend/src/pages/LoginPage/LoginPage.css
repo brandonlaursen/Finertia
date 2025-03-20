@@ -138,12 +138,12 @@
 }
 
 .LoginPage__form__login-account-btn {
-  background-color: rgb(10, 191, 246);
+  background-color: rgb(229, 31, 125);
   color: black;
 }
 
 .LoginPage__form__login-account-btn:hover {
-  background-color: rgb(10, 191, 246, 0.8);
+  background-color: rgb(229, 31, 125, 0.8);
 }
 
 .LoginPage__form__create-account-btn {

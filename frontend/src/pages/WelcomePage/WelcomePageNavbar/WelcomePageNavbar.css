@@ -22,7 +22,7 @@
   font-size: 22px;
   font-weight: bold;
 
-  color:#adacac;
+  color: #adacac;
 
   transition: color 0.3s ease-in-out;
 }
@@ -34,7 +34,6 @@
 .WelcomePageNavbar__menu {
   display: flex;
   align-items: center;
-
 
   gap: 10px;
   margin-left: auto;
@@ -51,7 +50,6 @@
   align-items: center;
 
   padding: 0 24px;
-
 
   color: white;
 
@@ -74,11 +72,17 @@
 }
 
 .signup-button:hover {
-  background-color: rgb(229, 31, 125, .8);
+  background-color: rgb(229, 31, 125, 0.8);
 }
 
 @media (max-width: 768px) {
   .WelcomePageNavbar__logo {
     margin-right: auto;
+  }
+}
+
+@media (max-width: 430px) {
+  .WelcomePageNavbar {
+    display: none;
   }
 }
