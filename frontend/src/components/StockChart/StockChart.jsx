@@ -50,7 +50,7 @@ function StockChart({ stockData, selectedTimeFrame }) {
     const minValue = Math.min(...dataPoints);
     const maxValue = Math.max(...dataPoints);
     const range = maxValue - minValue;
- 
+
     const padding = range < 1 ? 0.5 : Math.max(range * 0.1, 0.5);
 
     const dynamicMin = minValue - padding;
@@ -85,8 +85,13 @@ function StockChart({ stockData, selectedTimeFrame }) {
           shade: "light",
           type: "horizontal",
           shadeIntensity: 1,
-          opacityFrom: .1,
+          opacityFrom: 1,
           opacityTo: 1,
+          gradientToColors: [
+            "#FDD835",
+            "var(--theme-secondary-hover-light)",
+            "#0D47A1",
+          ],
         },
       },
 
