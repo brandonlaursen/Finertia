@@ -12,20 +12,18 @@
   align-items: center;
   gap: 12px;
 
-
-
   background-color: rgba(0, 0, 0, 0.2);
 
   border-radius: 44px;
 }
 
 .WelcomePageFooter__name {
+  color: white;
   font-size: 14px;
   font-weight: 600;
 }
 
-
-.WelcomePageFooter__links{
+.WelcomePageFooter__links {
   display: flex;
 
   gap: 12px;
@@ -34,7 +32,6 @@
 .WelcomePageFooter__link {
   height: 36px;
   width: 36px;
-
 
   display: flex;
   justify-content: center;
