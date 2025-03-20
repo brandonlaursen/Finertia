@@ -41,7 +41,7 @@
   font-weight: 600;
 }
 
-.WelcomePageNavbar__about-link:hover {
+.login-button:hover {
   color: rgb(0, 153, 255);
 }
 
