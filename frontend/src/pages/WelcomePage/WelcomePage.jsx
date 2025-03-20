@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import WelcomePageNavbar from "./WelcomePageNavbar";
+import WelcomePageFooter from "./WelcomePageFooter";
 
 import { selectUser } from "../../../store/session";
 
@@ -53,6 +54,8 @@ function WelcomePage() {
           </button>
         </section>
       </section>
+
+      <WelcomePageFooter />
     </div>
   );
 }
