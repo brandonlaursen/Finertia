@@ -90,18 +90,19 @@
 
 @media (max-width: 430px) {
   .WelcomePage {
+    height: 100dvh;
+
     background-image: url("/mobile-welcome-page-bg.jpg");
     background-size: cover;
     background-position: center -20px;
     background-repeat: no-repeat;
 
     background-color: rgb(32, 1, 68);
-
   }
 
   .WelcomePage__section {
     width: 100%;
-    /* height: 100vh; */
+    height: 100dvh;
 
     display: flex;
     flex-direction: column;
@@ -148,7 +149,6 @@
     align-items: center;
     gap: 16px;
 
-
     background-color: rgb(5, 156, 181);
   }
 
@@ -162,10 +162,10 @@
 
     background-color: rgb(229, 31, 125);
 
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
 
-    border-radius: 44px;
+    border-radius: 4px;
   }
 
   .WPM-login-btn {
