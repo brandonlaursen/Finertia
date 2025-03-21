@@ -58,7 +58,8 @@
 
 .EditListModal__emoji-picker-wrapper {
   position: fixed;
-  top: calc(20% + 105px);
+  top: calc(20% + 64px);
+
   z-index: 1000;
 }
 

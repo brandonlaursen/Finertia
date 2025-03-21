@@ -39,7 +39,7 @@
 
 .CreateListModalForm__emoji-picker-wrapper {
   position: fixed;
-  top: calc(20% + 105px);
+  top: calc(20% + 100px);
   z-index: 1000;
 }
 
@@ -110,7 +110,7 @@
     height: 100%;
     border-radius: 0px;
 
-  
+
   }
 
   .CreateListModalForm__emoji-picker-wrapper {
