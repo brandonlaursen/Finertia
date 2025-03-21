@@ -12,13 +12,36 @@ async function processHistoricalData(processedTransactions) {
   const todaysDate = getDate();
 
   // * users first transaction
-  const firstTimestamp = Math.min(
-    ...Object.keys(processedTransactions).map(Number)
+  // const firstTimestamp = Math.min(
+  //   ...Object.keys(processedTransactions).map(Number)
+  // );
+
+  // const firstTransaction = processedTransactions[firstTimestamp];
+  // const firstTransactionTimestamp = firstTransaction.unixTimestamp;
+
+  let buyTransactions = [];
+
+  for (let key in processedTransactions) {
+    let transaction = processedTransactions[key];
+    if (transaction.transactionType === "buy") {
+      buyTransactions.push(transaction);
+    }
+  }
+
+  // Find the transaction with the smallest timestamp
+  let smallestTimestampTransaction = buyTransactions.reduce(
+    (minTransaction, currentTransaction) => {
+      return currentTransaction.unixTimestamp < minTransaction.unixTimestamp
+        ? currentTransaction
+        : minTransaction;
+    },
+    buyTransactions[0]
   );
 
-  const firstTransaction = processedTransactions[firstTimestamp];
-
-  const firstTransactionTimestamp = firstTransaction.unixTimestamp;
+  if (!smallestTimestampTransaction) {
+    return [];
+  }
+  const firstTransactionTimestamp = smallestTimestampTransaction.unixTimestamp;
 
   let roundedTransactionTimestamp = roundTimestampToInterval(
     firstTransactionTimestamp,
@@ -26,12 +49,12 @@ async function processHistoricalData(processedTransactions) {
   );
 
   // * Check if within 15 minutes
-  const now = Date.now();
-  const fifteenMinutesAgo = now - 15 * 60 * 1000; // 15 minutes in ms
+  // const now = Date.now();
+  // const fifteenMinutesAgo = now - 15 * 60 * 1000; // 15 minutes in ms
 
-  if (roundedTransactionTimestamp >= fifteenMinutesAgo) {
-    roundedTransactionTimestamp -= 20 * 60 * 1000; // Subtract 20 minutes
-  }
+  // if (roundedTransactionTimestamp >= fifteenMinutesAgo) {
+  //   roundedTransactionTimestamp -= 20 * 60 * 1000; // Subtract 20 minutes
+  // }
 
   // * get users last transaction
   const lastTimestamp = Math.max(
@@ -83,6 +106,7 @@ async function processHistoricalData(processedTransactions) {
   const sortedTimestamps = Array.from(allTimestamps).sort((a, b) => a - b);
 
   // Ensure each stock has a value at every timestamp
+
   for (let timestamp of sortedTimestamps) {
     for (let stockSymbol of stocksOwnedOverTime) {
       if (!aggregateData[timestamp]) {
@@ -95,6 +119,7 @@ async function processHistoricalData(processedTransactions) {
           timestamp,
           sortedTimestamps
         );
+
         aggregateData[timestamp][stockSymbol] = {
           price: lastPrice,
         };
@@ -111,6 +136,7 @@ function findClosestPrice(data, stockSymbol, timestamp, sortedTimestamps) {
   let pastTimestamps = sortedTimestamps.filter(
     (t) => t < timestamp && data[t]?.[stockSymbol]
   );
+
   let closestPastTimestamp = pastTimestamps.length
     ? pastTimestamps[pastTimestamps.length - 1]
     : null;

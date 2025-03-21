@@ -209,7 +209,7 @@ router.get("/stock-summary", async (req, res) => {
 
     // * Organize data into timeframes - ie: 1D, 1W, 1M, 3M, 1Y, 5Y
     const aggregates = gatherAggregates(userHistoricalData);
-
+  
     await t.commit();
 
     const userSummary = {
@@ -229,6 +229,7 @@ router.get("/stock-summary", async (req, res) => {
     });
   }
 });
+
 
 router.post("/trade/:stockId", async (req, res) => {
   const { id, balance } = req.user;

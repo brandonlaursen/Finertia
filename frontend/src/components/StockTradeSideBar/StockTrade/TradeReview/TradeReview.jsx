@@ -57,7 +57,7 @@ function TradeReview({
   }
 
   async function handleStockTradeReview() {
-    
+
     setReviewingTrade(true);
     setIsLoading(true);
     await new Promise((resolve) => setTimeout(resolve, 500));
@@ -96,6 +96,8 @@ function TradeReview({
     };
 
     setIsLoading(true);
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+
     try {
       const result = await dispatch(executeStockTrade(transaction));
 

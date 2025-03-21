@@ -1,6 +1,6 @@
 .HamburgerMenu__drop-down {
   position: absolute;
-  top: 48px;
+  top: 68px;
   right: 5px;
 
   width: 50px;
@@ -18,6 +18,7 @@
   padding: 8px 8px;
 
   border-radius: 44px;
+  z-index: 100;
 }
 
 .HamburgerDropdown__icon {
@@ -26,7 +27,7 @@
 
 .HamburgerDropdown__link {
   height: 40px;
- 
+
   display: flex;
   align-items: center;
   gap: 8px;
@@ -51,7 +52,6 @@
   font-size: 14px;
   font-weight: 500;
 
-
   color: var(--theme-primary-color);
   background-color: var(--theme-primary-hover-light);
 
@@ -60,7 +60,6 @@
 
   border-right: 100%;
 }
-
 
 .Tooltip::after {
   content: "";
@@ -75,7 +74,6 @@
   border-left: 10px solid var(--theme-primary-hover-light);
   border-top: 14px solid transparent;
   border-bottom: 14px solid transparent;
-
 }
 
 .HamburgerDropdown__link:hover .Tooltip {
@@ -83,9 +81,13 @@
 }
 
 @media (min-width: 768px) {
-  /* styles for medium devices */
-
   .HamburgerMenu__drop-down {
     display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .HamburgerMenu__drop-down {
+    top: 42px;
   }
 }
