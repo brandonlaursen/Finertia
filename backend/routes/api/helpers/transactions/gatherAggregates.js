@@ -1,6 +1,4 @@
 function gatherAggregates(userHistoricalData) {
-  // const test = userHistoricalData.slice(20);
-
   // Aggregation helper: rounds each point down to the bucket start and picks the latest point per bucket.
   function aggregatePoints(points, bucketDurationMs) {
     const buckets = {};
@@ -9,8 +7,12 @@ function gatherAggregates(userHistoricalData) {
       const bucketKey =
         Math.floor(point.x / bucketDurationMs) * bucketDurationMs;
       // Keep the point with the latest timestamp and override x with the bucketKey.
+
       if (!buckets[bucketKey] || point.x > buckets[bucketKey].x) {
-        buckets[bucketKey] = { ...point, x: bucketKey };
+        // do not include timestamps where investments were 0
+        if (point.y > 0) {
+          buckets[bucketKey] = { ...point, x: bucketKey };
+        }
       }
     });
     return Object.values(buckets).sort((a, b) => a.x - b.x);
@@ -22,7 +24,7 @@ function gatherAggregates(userHistoricalData) {
 
   // Get the current time and today's midnight timestamp.
   const now = Date.now();
-  const todayMidnightTimestamp = new Date().setHours(0, 0, 0, 0);
+  // const todayMidnightTimestamp = new Date().setHours(0, 0, 0, 0);
 
   // Get the most recent data point
   const mostRecentPoint = userHistoricalData.reduce((latest, current) =>
@@ -37,6 +39,7 @@ function gatherAggregates(userHistoricalData) {
     ...userHistoricalData.filter((point) => point.x >= now - oneDayMs),
     mostRecentPoint,
   ];
+
   const oneDayAggregates = aggregatePoints(oneDayData, 5 * 60 * 1000);
 
   // One Week (last 7 days) aggregated to 1-hour buckets:
@@ -78,7 +81,6 @@ function gatherAggregates(userHistoricalData) {
     mostRecentPoint,
   ];
   const fiveYearsAggregates = aggregatePoints(fiveYearData, oneDayMs);
-
 
   return {
     oneDayAggregates,

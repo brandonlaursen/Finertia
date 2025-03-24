@@ -49,12 +49,12 @@ async function processHistoricalData(processedTransactions) {
   );
 
   // * Check if within 15 minutes
-  // const now = Date.now();
-  // const fifteenMinutesAgo = now - 15 * 60 * 1000; // 15 minutes in ms
+  const now = Date.now();
+  const fifteenMinutesAgo = now - 15 * 60 * 1000; // 15 minutes in ms
 
-  // if (roundedTransactionTimestamp >= fifteenMinutesAgo) {
-  //   roundedTransactionTimestamp -= 20 * 60 * 1000; // Subtract 20 minutes
-  // }
+  if (roundedTransactionTimestamp >= fifteenMinutesAgo) {
+    roundedTransactionTimestamp -= 20 * 60 * 1000; // Subtract 20 minutes
+  }
 
   // * get users last transaction
   const lastTimestamp = Math.max(
