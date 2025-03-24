@@ -30,6 +30,9 @@ import SecurityPage from "./pages/SecurityPage";
 import AppearancePage from "./pages/AppearancePage";
 import NotFoundPage from "./pages/NotFoundPage";
 
+
+import ThemeToggle from "./components/ThemeToggle/ThemeToggle";
+
 function ProtectedRoute({ children }) {
   const sessionUser = useSelector(selectUser);
 
@@ -80,6 +83,7 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <HomeLayout />
+            <ThemeToggle />
           </ProtectedRoute>
         ),
         children: [

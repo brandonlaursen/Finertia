@@ -10,7 +10,7 @@ import configureStore from "../store";
 import { restoreCSRF, csrfFetch } from "../store/csrf";
 
 import App from "./App";
-import ThemeToggle from "./components/ThemeToggle/ThemeToggle";
+// import ThemeToggle from "./components/ThemeToggle/ThemeToggle";
 
 import { ModalProvider, Modal } from "./context/Modal";
 
@@ -34,7 +34,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Provider store={store}>
             <App />
             <Modal />
-            <ThemeToggle />
+            {/* <ThemeToggle /> */}
           </Provider>
         </ModalProvider>
       </ThemeProvider>
