@@ -25,7 +25,7 @@ function ModalOverlay({ closeModal }) {
         navBar.style.paddingRight = "0px";
       }
       if (themeToggle) {
-        themeToggle.style.display = "flex";
+        themeToggle.style.removeProperty("display");
       }
     };
   }, []);

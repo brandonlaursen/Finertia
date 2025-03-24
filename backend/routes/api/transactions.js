@@ -219,6 +219,7 @@ router.get("/stock-summary", async (req, res) => {
       ...aggregates,
     };
 
+
     return res.json(userSummary);
   } catch (error) {
     await t.rollback();

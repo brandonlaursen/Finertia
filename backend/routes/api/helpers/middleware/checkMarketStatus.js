@@ -5,7 +5,7 @@ const checkMarketStatus = async (req, res, next) => {
     );
 
     const marketStatus = await response.json();
-
+ 
     if (marketStatus.market === "open") {
       req.marketStatus = "open";
     } else {
@@ -13,7 +13,6 @@ const checkMarketStatus = async (req, res, next) => {
     }
     next();
   } catch (error) {
-    console.error("Error updating database:", error);
     next(error);
   }
 };

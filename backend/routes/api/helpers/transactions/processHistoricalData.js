@@ -9,6 +9,7 @@ const {
 // * Get stock prices and how many shares a users owns
 // * Track and map data over time
 async function processHistoricalData(processedTransactions) {
+
   const todaysDate = getDate();
 
   // * users first transaction
@@ -54,6 +55,7 @@ async function processHistoricalData(processedTransactions) {
 
   if (roundedTransactionTimestamp >= fifteenMinutesAgo) {
     roundedTransactionTimestamp -= 20 * 60 * 1000; // Subtract 20 minutes
+
   }
 
   // * get users last transaction
@@ -71,10 +73,11 @@ async function processHistoricalData(processedTransactions) {
   for (let stockSymbol of stocksOwnedOverTime) {
     let currentUrl = `https://api.polygon.io/v2/aggs/ticker/${stockSymbol}/range/5/minute/${roundedTransactionTimestamp}/${todaysDate}?adjusted=true&sort=asc&apiKey=${process.env.STOCK_API_KEY2}`;
 
+
     while (currentUrl) {
       const response = await fetch(currentUrl);
       const data = await response.json();
-
+ 
       if (!data.results) {
         currentUrl = null;
         continue;

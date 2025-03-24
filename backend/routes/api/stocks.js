@@ -114,6 +114,7 @@ router.get(
         stockNews,
       } = await fetchStockSnapshot(stockSymbol);
 
+
       // * Fetch aggregates
       const { oneMonthData, fiveYearsData } =
         await fetchOneMonthAndFiveYearsAggregates(stock.id);

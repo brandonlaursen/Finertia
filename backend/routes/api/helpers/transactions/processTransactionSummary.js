@@ -7,6 +7,7 @@ const roundTimestampToInterval = require("./roundTimestampToInterval.js");
 // * Get users owned stocks
 // * Get timestamps of portfolio changes over time
 function processTransactionSummary(userTransactions, accountTransactions) {
+
   const allTransactions = [...userTransactions, ...accountTransactions].sort(
     (a, b) =>
       new Date(a.purchaseDate || a.transactionDate) -
@@ -45,7 +46,7 @@ function processTransactionSummary(userTransactions, accountTransactions) {
       } = transaction;
 
 
-   
+
       // summary.purchaseAmount = purchasePrice;
       summary.shares = quantity;
 

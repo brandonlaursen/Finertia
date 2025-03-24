@@ -51,6 +51,8 @@ async function fetchOneDayAndOneWeekAggregates(stockSymbol) {
       oneWeekDataResponse.json(),
     ]);
 
+
+   
     // If oneDayData is empty, use oneWeekData as fallback
     if (!oneDayData.results || oneDayData.results.length === 0) {
       oneDayData = oneWeekData;

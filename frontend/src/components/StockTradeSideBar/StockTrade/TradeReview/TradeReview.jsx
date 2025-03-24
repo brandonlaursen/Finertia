@@ -38,6 +38,7 @@ function TradeReview({
   const dispatch = useDispatch();
   const { setModalContent, setModalClass } = useModal();
 
+
   const [isLoading, setIsLoading] = useState(false);
 
   function handleDeposit(e) {
@@ -96,7 +97,7 @@ function TradeReview({
     };
 
     setIsLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    // await new Promise((resolve) => setTimeout(resolve, 1000));
 
     try {
       const result = await dispatch(executeStockTrade(transaction));
@@ -137,6 +138,8 @@ function TradeReview({
     }
   }
 
+
+
   return (
     <div className="TradeReview">
       {showReview && errors && (
@@ -173,6 +176,7 @@ function TradeReview({
           </button>
           <button
             className="TradeReview__button TradeReview__cancel-button"
+            disabled={isLoading}
             onClick={clearReview}
           >
             Cancel
@@ -182,7 +186,7 @@ function TradeReview({
 
       {!showReview && (
         <>
-          {stock.marketStatus === "closed" && (
+          {stock.market_status === "closed" && (
             <span className="TradeReview__market-closed">
               <span className="TradeReview__market-closed__info">
                 <LuInfo
@@ -202,13 +206,15 @@ function TradeReview({
               Market Closed
             </span>
           )}
+
+
           <button
             className={`TradeReview__button TradeReview__review-button ${
-              stock.marketStatus === "closed" &&
+              stock.market_status === "closed" &&
               "TradeReview__review-button--disabled"
             }`}
             onClick={handleStockTradeReview}
-            disabled={isLoading || stock.marketStatus === "closed"}
+            disabled={isLoading || stock.market_status === "closed"}
           >
             {isLoading ? (
               <span className="TradeReview__spinner"></span>

@@ -1,5 +1,3 @@
-/* ========== Trade Review ========== */
-/* Main container for the trade review section */
 .TradeReview {
   display: flex;
   flex-direction: column;
@@ -11,8 +9,6 @@
   border-bottom: 1px solid var(--border-color);
 }
 
-/* ========== Review Button ========== */
-/* Primary button for confirming the trade review */
 .TradeReview__button {
   width: 95%;
   height: 38px;
@@ -72,6 +68,15 @@
   border: solid 1px var(--button-primary);
 }
 
+.TradeReview__cancel-button:disabled {
+  border-color: var(--disabled-button-color);
+  color: var(--disabled-button-color);
+}
+
+.TradeReview__cancel-button:disabled:hover {
+  background-color: var(--color-surface);
+}
+
 .TradeReview__cancel-button:hover {
   background-color: var(--button-primary-hover-light);
 }
@@ -126,8 +131,6 @@
   background-color: var(--disabled-button-color);
 }
 
-/* ========== Review Confirmation Section ========== */
-/* Container for confirmation messages after submitting a trade */
 .TradeReview__confirmation {
   width: 100%;
   display: flex;
@@ -139,8 +142,6 @@
   font-size: 12px;
 }
 
-/* ========== Loading Spinner ========== */
-/* Spinner animation when trade is being processed */
 .TradeReview__spinner {
   width: 16px;
   height: 16px;
@@ -154,7 +155,6 @@
   animation: spin 0.6s linear infinite;
 }
 
-/* Keyframes for the spinner rotation */
 @keyframes spin {
   to {
     transform: rotate(360deg);

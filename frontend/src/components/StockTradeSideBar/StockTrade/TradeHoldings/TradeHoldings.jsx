@@ -43,11 +43,11 @@ function TradeHoldings({
 
           <button
             className={`TradeHoldings__holdings__sell-all-button ${
-              stock.marketStatus === "closed" &&
+              stock.market_status === "closed" &&
               "TradeHoldings__holdings__sell-all-button--disabled"
             }`}
             onClick={handleSellAllShares}
-            disabled={stock.marketStatus === "closed"}
+            disabled={stock.market_status === "closed"}
           >
             Sell All
           </button>

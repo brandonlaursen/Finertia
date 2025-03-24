@@ -89,7 +89,7 @@
 .CreateListToggleForm__emoji-wrapper {
   position: fixed;
   top: calc(20% + 24px);
-  left: 24px;
+
 
 
   z-index: 1000;
